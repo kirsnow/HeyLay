@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.planb.member.dao.MemberDAO">
+
+	<select id="login" parameterType="memberVO" resultType="memberVO">
+	    select no, email, password, last_name as lastName , first_name as firstName, birth, gender,email_receive as emailReceive, country, city, question, answer
+	     from Q_member
+	    where email = #{email} and password = #{password} 
+	</select>
+	
+	<insert id="enroll" parameterType="memberVO">
+	   insert into Q_member(no, email, password, last_name, first_name, birth, gender, email_receive, country, city, question, answer)
+	    values(Q_member_no.nextval, #{email}, #{password}, #{lastName},#{firstName}, #{birth} , #{gender}, #{emailReceive}, #{country}, #{city}, #{question}, #{answer})
+	</insert> 
+	
+	<select id="selectByNo" parameterType="memberVO" resultType="memberVO">
+	    select no, email, password, last_name as lastName , first_name as firstName, birth, gender,email_receive as emailReceive, country, city, question, answer
+	     from Q_member
+	    where no = #{no}
+	</select>
+	
+	<select id="findAccount"  parameterType="memberVO" resultType="memberVO">
+	   select email
+	     from Q_member
+	    where last_name = #{lastName} and first_name = #{firstName} and question = #{question} and answer = #{answer}
+	</select>
+	
+	<select id="findPw"  parameterType="memberVO" resultType="memberVO">
+	   select password
+	     from Q_member
+	    where email = #{email} and last_name = #{lastName} and first_name = #{firstName} and question = #{question} and answer = #{answer}
+	</select>
+
+	<update id="withdraw" parameterType="int" >
+		update Q_member
+		set email =#{no}, password  =' ', last_name =' ' , first_name  =' ', 
+		    birth  =null, gender  =null ,email_receive  =null, country  =null, 
+		    city  =null, question  =' ', answer  =' ', type=' ', rest =null, ban = null,
+	       	reg_date = null, last_date =null, profile_img = null, report_cnt = null
+		where no= #{no}
+	</update>
+	
+	<insert id="withdrawReason" parameterType="leavedVO">
+		insert into Q_LEAVED(member_no, reason_select, reason_input)
+		 values(#{memberNo}, #{reasonSelect}, #{reasonInput})
+	</insert>
+	
+	<update id="changePw" parameterType="memberVO" >
+		update Q_member
+		set password = #{password}
+		where no = #{no} and password= #{beforePassword}
+	</update> 
+	
+	<update id="mypageUpdate" parameterType="memberVO">
+		update Q_member
+	 	set last_name = #{lastName} , first_name = #{firstName}, 
+	    		gender = #{gender} ,email_receive = #{emailReceive}, 
+	    		country = #{country}, city = #{city}, question = #{question},
+	    		answer = #{answer}
+	 	where no = #{no} and password= #{password}
+	</update> 
+	
+	
+	
+	
+	<update id="updateType" parameterType="int">
+		UPDATE q_member
+		SET TYPE = 'P' 
+		WHERE no = #{ no }
+	</update>
+	
+	<insert id="insertFirstFolder">
+		insert into Q_DIRECTORY(no, NAME, MEMBER_NO)
+		values(Q_DIRECTORY_NO.nextval, '나의 첫 폴더', Q_MEMBER_NO.CURRVAL)
+	</insert>
+	
+	<select id="selectFolder" parameterType="int" resultType="directoryVO">
+		select no, name, MEMBER_NO as memberNo, to_char(reg_date, 'yyyy-mm-dd hh-mi') regDate
+		from Q_DIRECTORY
+		where MEMBER_NO = #{ memberNo }
+		ORDER BY regDate DESC
+	</select>
+	
+	<delete id="deleteDirectory" parameterType="int">
+		DELETE FROM Q_DIRECTORY
+		WHERE no = #{ no } 
+	</delete>
+	
+	<update id="updateName" parameterType="java.util.Map">
+		UPDATE Q_DIRECTORY
+		set name = #{ name }
+		where no = #{ no }
+	</update>
+
+
+</mapper>

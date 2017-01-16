@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.planb.contents.dao.ContentDAO">
+
+<!-- 	<sql id="selectId">
+		SELECT no, keyword, to_char(reg_date, 'yyyy-mm-dd') regDate, 
+				status reportCnt, MEMBER_NO as memberNo
+		FROM Q_KEYWORDS
+	</sql> -->
+
+	<select id="selectKeywordList" parameterType="int" resultType="keywordsVO">
+		SELECT no, keyword, to_char(reg_date, 'yyyy-mm-dd') regDate, status, MEMBER_NO memberNo
+			FROM Q_KEYWORDS
+			WHERE STATUS='O' and MEMBER_NO = #{ memberNo }
+			ORDER BY regDate DESC
+	</select>
+	
+	<update id="updateStatus" parameterType="int">
+		UPDATE Q_KEYWORDS
+			SET STATUS='X'
+			WHERE no = #{ no } 
+	</update>
+	
+	<!-- <select id="selectByNo" parameterType="int" resultType="memberVO">
+		<include refid="selectId" />
+		WHERE no = #{ no } 
+	</select>
+	
+	<select id="selectByOption" parameterType="java.lang.String" resultType="memberVO">
+		<include refid="selectId" />
+		WHERE type = #{ option } 
+		ORDER BY no DESC
+	</select>
+	
+	<select id="selectRest" resultType="memberVO">
+		<include refid="selectId" />
+		WHERE rest = 'Y' 
+		ORDER BY no DESC
+	</select>
+	
+	<select id="selectBan" resultType="memberVO">
+		<include refid="selectId" />
+		WHERE ban = 'Y' 
+		ORDER BY no DESC
+	</select>
+	
+	<update id="updateRest" parameterType="memberVO">
+		UPDATE q_member
+		SET rest = #{ rest } 
+		WHERE no = #{ no }
+	</update>
+	
+	<update id="updateBan" parameterType="memberVO">
+		UPDATE q_member
+		SET ban = #{ ban } 
+		WHERE no = #{ no }
+	</update>
+	
+	<select id="countMember" resultType="int">
+		SELECT COUNT(*) cnt 
+		FROM q_member 
+	</select>
+	
+	<select id="selectWithdraw" resultType="leavedVO">
+		SELECT member_no memberNo, reason_select reasonSelect, reason_input reasonInput, reg_date regDate 
+		FROM q_leaved 
+	</select>
+	
+	<delete id="deleteMember" parameterType="int">
+		DELETE FROM q_member 
+		WHERE no = #{ no } 
+	</delete> -->
+</mapper>
+
+
+
+
+
+
+  

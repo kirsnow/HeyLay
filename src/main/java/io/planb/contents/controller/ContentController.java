@@ -1,0 +1,168 @@
+package io.planb.contents.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import io.planb.contents.service.ContentService;
+import io.planb.contents.vo.SavedHeaderVO;
+import io.planb.contents.vo.SavedVO;
+import io.planb.keywords.vo.KeywordsVO;
+import io.planb.member.vo.MemberVO;
+
+@Controller
+public class ContentController {
+
+	@Autowired
+	private ContentService service;
+	
+	@RequestMapping("/contents/drawer_day.do")
+	public ModelAndView selectDayList(HttpSession session) {
+		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
+		
+		ModelAndView mav = new ModelAndView();
+		
+		if(userVO == null) {
+			mav.setViewName("redirect:/login/login.do");
+		} else {
+			int memberNo = userVO.getNo();
+			
+			List<SavedHeaderVO> drawerHeaders = service.drawerDates(memberNo);
+			List<SavedVO> drawerCards = service.drawerCards(memberNo);
+			
+			mav.setViewName("contents/drawer_day");
+			mav.addObject("drawerHeaders", drawerHeaders);
+			mav.addObject("drawerCards", drawerCards);
+		}
+		
+		return mav;
+	}
+	
+	@RequestMapping("/contents/drawer_category.do")
+	public ModelAndView selectCategoryList(HttpSession session) {
+		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
+		
+		ModelAndView mav = new ModelAndView();
+		
+		if(userVO == null) {
+			mav.setViewName("redirect:/login/login.do");
+		} else {
+			int memberNo = userVO.getNo();
+			
+			List<SavedHeaderVO> drawerHeaders = service.drawerCategory(memberNo);
+			List<SavedVO> drawerCards = service.drawerCards(memberNo);
+			
+			mav.setViewName("contents/drawer_category");
+			mav.addObject("drawerHeaders", drawerHeaders);
+			mav.addObject("drawerCards", drawerCards);
+		}
+		
+		return mav;
+	}
+	
+	@RequestMapping("/contents/drawer_source.do")
+	public ModelAndView selectSourceList(HttpSession session) {
+		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
+		
+		ModelAndView mav = new ModelAndView();
+		
+		if(userVO == null) {
+			mav.setViewName("redirect:/login/login.do");
+		} else {
+			int memberNo = userVO.getNo();
+			
+			List<SavedHeaderVO> drawerHeaders = service.drawerSource(memberNo);
+			List<SavedVO> drawerCards = service.drawerCards(memberNo);
+			
+			mav.setViewName("contents/drawer_source");
+			mav.addObject("drawerHeaders", drawerHeaders);
+			mav.addObject("drawerCards", drawerCards);
+		}
+		
+		return mav;
+	}
+	
+	@RequestMapping("/contents/drawer_directory.do")
+	public ModelAndView selectDirectoryList(HttpSession session) {
+		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
+		
+		ModelAndView mav = new ModelAndView();
+		
+		if(userVO == null) {
+			mav.setViewName("redirect:/login/login.do");
+		} else {
+			int memberNo = userVO.getNo();
+			
+			List<SavedHeaderVO> drawerHeaders = service.drawerDirectory(memberNo);
+			List<SavedVO> drawerCards = service.drawerCards(memberNo);
+			
+			mav.setViewName("contents/drawer_directory");
+			mav.addObject("drawerHeaders", drawerHeaders);
+			mav.addObject("drawerCards", drawerCards);
+		}
+		
+		return mav;
+	}
+	
+	@RequestMapping("/contents/curation.do")
+	public String curation(Model model) {
+		
+		return "contents/curation";
+	}
+	
+	@RequestMapping("/contents/word_cloud.do")
+	public String word_cloud(Model model) {
+		
+		return "contents/word_cloud";
+	}
+	
+	@RequestMapping("/contents/my_search.do")
+	public String my_search(Model model, @RequestParam("memberNo") int memberNo) {
+		List<KeywordsVO> keywordList = service.selectKeywordList(memberNo);
+		model.addAttribute("keywordList", keywordList);
+		
+		System.out.println("controller : " + keywordList);
+		System.out.println("controller : " + memberNo);
+		
+		return "contents/my_search";
+	}
+	
+	@RequestMapping("/contents/analysis.do")
+	public String analysis(Model model) {
+		
+		return "contents/analysis";
+	}
+	
+	@RequestMapping("/contents/update_status.do")
+	public String updateStatus(@RequestParam("no") int no, @RequestParam("memberNo") int memberNo) {
+		service.updateStatus(no);
+		
+		return "redirect:/contents/my_search.do?memberNo="+memberNo;
+	}
+	
+	@RequestMapping("/contents/customizing.do")
+	public String customizing(Model model) {
+		
+		return "contents/customizing";
+	}
+	
+	@RequestMapping("/contents/upgrade.do")
+	public String upgrade(Model model) {
+		
+		return "contents/upgrade";
+	}
+	
+	@RequestMapping("/card_enrollform_modal.do")
+	public String cardEnroll(Model model) {
+		
+		return "contents/card_enrollform_modal";
+	}
+
+}
