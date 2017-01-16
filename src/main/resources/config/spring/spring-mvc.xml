@@ -10,12 +10,19 @@
     http://www.springframework.org/schema/mvc
     http://www.springframework.org/schema/mvc/spring-mvc.xsd">
     
+    <bean class="java.net.URI" id="dbUrl">
+        <constructor-arg value="#{systemEnvironment['DATABASE_URL']}"/>
+    </bean>
+    
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
     	  destroy-method="close">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
-		<property name="username" value="hr" />
-		<property name="password" value="hr" />    
+<!--		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />-->
+        <property name="url" value="#{ 'jdbc::oracle:thin:' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath() }"/>
+<!--		<property name="username" value="hr" />-->
+        <property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>
+<!--		<property name="password" value="hr" />    -->
+        <property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>
     </bean>
     
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
