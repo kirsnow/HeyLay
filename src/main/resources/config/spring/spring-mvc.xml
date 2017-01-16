@@ -22,7 +22,7 @@
 <!--		<property name="username" value="hr" />-->
         <property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>
 <!--		<property name="password" value="hr" />    -->
-        <property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>
+        <property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1] }"/>
     </bean>
     
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
