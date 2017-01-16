@@ -29,9 +29,10 @@
         <div class="row">
            <div class="col-md-12">
                <ol class="breadcrumb" style="margin-top: 75px">
-                   <li><a href="${ root }">Home</a></li>
+                   <li><a href="/">Home</a></li>
                    <li>List</li>
                    <li class="active">Sitemap</li>
+                   <li><c:forEach begin="1" end="5">el 외 안되?</c:forEach></li>
                </ol>
            </div>
         </div>
