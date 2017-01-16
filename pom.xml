@@ -10,13 +10,13 @@
   
     <dependencies>
         
-        <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper -->
+        <!-- https://mvnrepository.com/artifact/javax.el/javax.el-api -->
         <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-jasper</artifactId>
-            <version>8.5.9</version>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+            <version>3.0.0</version>
         </dependency>
-        
+
         <dependency>
             <groupId>taglibs</groupId>
             <artifactId>standard</artifactId>
