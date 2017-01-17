@@ -15,12 +15,8 @@
     </bean>
     
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-<!--		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />-->
         <property name="url" value="#{ 'jdbc:postgresql://' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath() }"/>
-<!--		<property name="username" value="hr" />-->
         <property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>
-<!--		<property name="password" value="hr" />    -->
         <property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1] }"/>
     </bean>
     
