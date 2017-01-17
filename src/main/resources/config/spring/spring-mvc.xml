@@ -14,11 +14,10 @@
         <constructor-arg value="#{systemEnvironment['DATABASE_URL']}"/>
     </bean>
     
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-    	  destroy-method="close">
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
 <!--		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />-->
-        <property name="url" value="#{ 'jdbc::oracle:thin:' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath() }"/>
+        <property name="url" value="#{ 'jdbc:postgresql://' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath() }"/>
 <!--		<property name="username" value="hr" />-->
         <property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>
 <!--		<property name="password" value="hr" />    -->
