@@ -112,13 +112,14 @@
             <artifactId>spring-test</artifactId>
             <version>4.3.3.RELEASE</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.oracle/ojdbc6 -->
+        
+        <!-- https://mvnrepository.com/artifact/postgresql/postgresql -->
         <dependency>
-            <groupId>com.oracle</groupId>
-            <artifactId>ojdbc6</artifactId>
-            <version>11.1.0.7.0</version>
+            <groupId>postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.1-901.jdbc4</version>
         </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
         <dependency>
