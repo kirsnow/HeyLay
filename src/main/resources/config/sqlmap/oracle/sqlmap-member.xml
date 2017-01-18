@@ -5,7 +5,7 @@
 <mapper namespace="io.planb.member.dao.MemberDAO">
 
 	<select id="login" parameterType="memberVO" resultType="memberVO">
-	    select no, email, password, last_name as lastName , first_name as firstName, birth, gender,email_receive as emailReceive, country, city, question, answer
+	    select no, email, password, last_name as lastName , first_name as firstName, birth, gender, email_receive as emailReceive, country, city, question, answer
 	     from Q_member
 	    where email = #{email} and password = #{password} 
 	</select>
