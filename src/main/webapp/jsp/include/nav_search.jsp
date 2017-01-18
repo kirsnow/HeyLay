@@ -17,43 +17,58 @@
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header" style="width: 218px">
-			<a class="navbar-brand" href="${ pageContext.request.contextPath }">Quration</a>
+			<a class="navbar-brand" href="${ pageContext.request.contextPath }/">Quration</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse"
 			 id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="${ pageContext.request.contextPath }/contents/drawer_day.do" class="navbar-link" title="내 카드 보관함으로 이동">내 카드</a></li>
 				<c:choose>
-					<c:when test="${ empty userVO }"> 
-						<span > <a href="${ pageContext.request.contextPath }/login/login.do" class="btn btn-primary">login</a>  </span>
+					<c:when test="${ not empty userVO }">		
+						<li>
+							<a href="${ pageContext.request.contextPath }/contents/drawer_day.do" class="navbar-link" title="내 카드 보관함으로 이동">내 카드</a>
+						</li>
+						<%-- <c:choose>
+							<c:when test="${ empty userVO }"> 
+								<span > <a href="${ pageContext.request.contextPath }/login/login.do" class="btn btn-primary">login</a>  </span>
+							</c:when>
+							<c:otherwise> 
+								<span ><a href="${ pageContext.request.contextPath }/login/logout.do" class="btn btn-primary">로그아웃</a>&nbsp;&nbsp;&nbsp;&nbsp; </span>
+							</c:otherwise>
+						</c:choose>  --%>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" title="회원 정보 메뉴 열기">
+								<i class="fa fa-user-circle-o fa-2x fa-lg" aria-hidden="true"></i><span class="caret"></span>
+							</a>	
+						
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="${ pageContext.request.contextPath }/myPage/mypage.do"> <i class="fa fa-vcard-o fa-fw"
+										aria-hidden="true"></i> 회원 정보 수정
+								</a></li>
+								<li><a href="${ pageContext.request.contextPath }/myPage/original_password.do"> <i class="fa fa-lock fa-fw"
+										aria-hidden="true"></i> 비밀번호 변경
+								</a></li>
+								<c:if test="">
+									<li><a href="${ pageContext.request.contextPath }/jsp/admin/member_list.do"> 
+										<i class="fa fa-user-secret fa-fw" aria-hidden="true"></i> 관리자 페이지
+									</a></li>
+								</c:if>
+								<li class="divider"></li>
+								<li><a href="${ pageContext.request.contextPath }/login/logout.do"> <i class="fa fa-sign-out fa-fw"
+										aria-hidden="true"></i> 로그아웃
+								</a></li>
+							</ul>
+						</li>
 					</c:when>
-					<c:otherwise> 
-						<span ><a href="${ pageContext.request.contextPath }/login/logout.do" class="btn btn-primary">로그아웃</a>&nbsp;&nbsp;&nbsp;&nbsp; </span>
+					<c:otherwise>
+						<li>
+							<a href="https://quration.herokuapp.com/login/login.do" role="button" aria-expanded="false" title="로그인">
+								<i class="fa fa-sign-in" aria-hidden="true"></i> 로그인
+							</a>
+						</li>
 					</c:otherwise>
-				</c:choose> 
-				<c:if test="${ not empty userVO }">		
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
-					   title="회원 정보 메뉴 열기">
-					<i class="fa fa-user-circle-o fa-2x fa-lg" aria-hidden="true"></i><span class="caret"></span>
-					</a>	
-				
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="${ pageContext.request.contextPath }/myPage/mypage.do"> <i class="fa fa-vcard-o fa-fw"
-								aria-hidden="true"></i> 회원 정보 수정
-						</a></li>
-						<li><a href="${ pageContext.request.contextPath }/myPage/original_password.do"> <i class="fa fa-lock fa-fw"
-								aria-hidden="true"></i> 비밀번호 변경
-						</a></li>
-						<li class="divider"></li>
-						<li><a href="${ pageContext.request.contextPath }/login/logout.do"> <i class="fa fa-sign-out fa-fw"
-								aria-hidden="true"></i> 로그아웃
-						</a></li>
-					</ul>
-				</li>
-				</c:if>	
+				</c:choose>
 			</ul>
 			<form class="navbar-form" role="search">
 				<div class="form-group" style="display: inline;">
