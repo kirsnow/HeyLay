@@ -34,14 +34,14 @@
 	
 	<insert id="insertFaq" parameterType="faqVO">
 		INSERT INTO q_faq (no, title, content) 
-		VALUES (Q_FAQ_NO.NEXTVAL, #{ title }, #{ content }) 
+		VALUES (NEXTVAL('Q_FAQ_NO'), #{ title }, #{ content }) 
 	</insert>
 	
 	<update id="updateFaq" parameterType="faqVO">
 		UPDATE q_faq 
 		SET title = #{ title }, 
 			content = #{ content } 
-			reg_date = SYSDATE 
+			reg_date = NOW()  
 		WHERE no = #{ no } 
 	</update>
 	
@@ -52,12 +52,12 @@
 	
 	<insert id="insertNotice" parameterType="noticeVO">
 		INSERT INTO q_notice (no, title, contents, notice_type) 
-		VALUES (Q_NOTICE_NO.NEXTVAL, #{ title }, #{ contents }, #{ noticeType }) 
+		VALUES (NEXTVAL('Q_NOTICE_NO'), #{ title }, #{ contents }, #{ noticeType }) 
 	</insert>
 	
 	<insert id="insertNoticeAttach" parameterType="noticeAttachVO">
 		INSERT INTO q_notice_attach (no, notice_no, ori_name, saved_name, file_size) 
-		VALUES (Q_NOTICE_ATTACH_NO.NEXTVAL, Q_NOTICE_NO.CURRVAL, #{ oriName }, #{ savedName }, #{ fileSize }) 
+		VALUES (NEXTVAL('Q_NOTICE_ATTACH_NO'), Q_NOTICE_NO.CURRVAL, #{ oriName }, #{ savedName }, #{ fileSize }) 
 	</insert>
 	
 	<update id="updateNotice" parameterType="noticeVO">
@@ -65,7 +65,7 @@
 		SET title = #{ title }, 
 			contents = #{ contents }, 
 			notice_type = #{ noticeType },
-			reg_date = SYSDATE 
+			reg_date = NOW() 
 		WHERE no = #{ no } 
 	</update>
 	

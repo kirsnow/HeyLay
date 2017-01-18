@@ -5,33 +5,33 @@
 
   	<insert id="sendQuestion" parameterType="questionVO">
   		INSERT INTO Q_QUESTION (no, email, title, user_input, q_type)
-		VALUES (Q_QUESTION_NO.NEXTVAL, #{email}, #{title}, #{userInput}, 'Q')
+		VALUES (NEXTVAL('Q_QUESTION_NO'), #{email}, #{title}, #{userInput}, 'Q')
   	</insert>
 
   	<insert id="sendPartnership" parameterType="questionVO">
   		INSERT INTO Q_QUESTION (no, email, user_input, q_type)
-		VALUES (Q_QUESTION_NO.NEXTVAL, #{email}, #{userInput}, 'P')
+		VALUES (NEXTVAL('Q_QUESTION_NO'), #{email}, #{userInput}, 'P')
   	</insert>
 
 	<!-- report bug, spam -->
   	<insert id="sendBugReport" parameterType="reportVO">
   		INSERT INTO Q_BUG (NO, EMAIL, URL, USER_INPUT)
-		VALUES (Q_BUG_NO.NEXTVAL, #{email}, #{url}, #{userInput})
+		VALUES (NEXTVAL('Q_BUG_NO'), #{email}, #{url}, #{userInput})
   	</insert>
   	
   	<insert id="sendBugReportAttach" parameterType="reportVO">
   		INSERT INTO Q_BUG_ATTACH (no, BUG_NO, ori_name, saved_name, file_size) 
-		VALUES (Q_BUG_ATTACH_NO.NEXTVAL, Q_BUG_NO.CURRVAL, #{ oriName }, #{ savedName }, #{ fileSize }) 
+		VALUES (NEXTVAL('Q_BUG_ATTACH_NO'), Q_BUG_NO.CURRVAL, #{ oriName }, #{ savedName }, #{ fileSize }) 
   	</insert>
 
   	<insert id="sendSpamContents" parameterType="reportVO">
   		INSERT INTO Q_CONTENTS_SPAM (NO, EMAIL, CONTENTS_NO, SELECTED, USER_INPUT)
-		VALUES (Q_CONTENTS_SPAM_NO.NEXTVAL, #{email}, #{contentsNo}, #{selected}, #{userInput})
+		VALUES (NEXTVAL('Q_CONTENTS_SPAM_NO'), #{email}, #{contentsNo}, #{selected}, #{userInput})
   	</insert>
   	
   	<insert id="sendSpamMemo" parameterType="reportVO">
   		INSERT INTO Q_MEMO_SPAM (NO, EMAIL, MEMO_NO, SELECTED, USER_INPUT)
-		VALUES (Q_MEMO_SPAM_NO.NEXTVAL, #{email}, #{memoNo}, #{selected}, #{userInput})
+		VALUES (NEXTVAL('Q_MEMO_SPAM_NO'), #{email}, #{memoNo}, #{selected}, #{userInput})
   	</insert>
   	
   	<!-- report_cnt up -->

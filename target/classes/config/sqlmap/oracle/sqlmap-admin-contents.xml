@@ -30,7 +30,7 @@
 	
 	<insert id="insertSource" parameterType="sourceVO">
 		INSERT INTO q_source 
-		VALUES (Q_SOURCE_NO.NEXTVAL, #{ name }, #{ url }, #{ dataType }, #{ logoImg }) 
+		VALUES (NEXTVAL('Q_SOURCE_NO'), #{ name }, #{ url }, #{ dataType }, #{ logoImg }) 
 	</insert>
 	
 	<update id="updateSource" parameterType="sourceVO">

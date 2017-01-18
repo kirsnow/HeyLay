@@ -11,7 +11,7 @@
 	
 	<insert id="insertAd" parameterType="adVO">
 		INSERT INTO q_ad 
-		VALUES (Q_AD_NO.NEXTVAL, #{ location }, #{ code }) 
+		VALUES (NEXTVAL('Q_AD_NO'), #{ location }, #{ code }) 
 	</insert>
 	
 	<update id="updateAd" parameterType="adVO">
