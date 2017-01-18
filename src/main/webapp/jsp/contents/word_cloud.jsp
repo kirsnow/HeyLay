@@ -50,10 +50,31 @@
 
 				<div class="container text-center">
 					<h1>내가 가장 많이 검색한 검색어를 더 크게 보여드립니다.</h1>
-					<div>
-						<img alt="내가 가장 많이 검색한 결과를 더크게 보여주는 워드클라우드를 보여준다."
-							src="${ pageContext.request.contextPath }/img/wordCloud.jpg">
-					</div>
+					<c:choose>
+						<c:when test="${ (wordCloud eq null) or (empty wordCloud) }">
+							<div class="row">
+								<p class="lead">아직 검색한 키워드가 없습니다 &#58;O</p>
+							</div>
+							<div class="row">
+								<div class="col-md-4"></div>
+							</div>
+							<div class="row">
+								<div class="col-md-4">
+									<ul class="">
+										<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Juliet" title="Juliet 검색">Juliet 검색</a></li>
+										<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Romeo" title="Romeo 검색">Romeo 검색</a></li>
+										<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Tempest" title="Tempest 검색">Tempest 검색</a></li>
+									</ul>
+								</div>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div>
+								<img alt="내가 가장 많이 검색한 결과를 더크게 보여주는 워드클라우드를 보여준다."
+									src="${ pageContext.request.contextPath }/img/wordCloud.jpg">
+							</div>
+						</c:otherwise>
+					</c:choose>
 				</div>
 				<!-- /page content -->
 			</div>
