@@ -23,8 +23,10 @@ public class MemberController {
 	
 	/* 선택한 option 해당 회원 목록 조회 */
 	@RequestMapping("/jsp/admin/member_list.do")
-	public String selectByOption(@RequestParam("option") String option, Model model) {
-		if(option == null) option = "all";
+	public String selectByOption(@RequestParam("option") String op, Model model) {
+		
+		String option = op;
+		if( option == "" ) option = "all";
 		
 //		System.out.println("option : " + option);
 		

@@ -42,7 +42,7 @@
 										aria-hidden="true"></i> 비밀번호 변경
 								</a></li>
 								<c:if test="${ userVO.type eq 'A'}">
-									<li><a href="${ pageContext.request.contextPath }/jsp/admin/member_list.do"> 
+									<li><a href="${ pageContext.request.contextPath }/jsp/admin/member_list.do?option=all"> 
 										<i class="fa fa-user-secret fa-fw" aria-hidden="true"></i> 관리자 페이지
 									</a></li>
 								</c:if>
