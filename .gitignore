@@ -1,0 +1,5 @@
+/target/
+.class
+.war
+MANIFEST.MF
+pom.properties

@@ -5,7 +5,7 @@
   <artifactId>Quration</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>Quration Maven Webapp</name>
+  <name>Quration</name>
   <url>http://maven.apache.org</url>
   
     <dependencies>
@@ -187,12 +187,20 @@
            <artifactId>UserAgentUtils</artifactId>
            <version>1.20</version>
         </dependency>
-
+        
+        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+		<dependency>
+		    <groupId>org.postgresql</groupId>
+		    <artifactId>postgresql</artifactId>
+		    <version>9.4.1212</version>
+		</dependency>
+		
     </dependencies>
   
     <build>
         <finalName>Quration</finalName>
         <plugins>
+        
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -219,6 +227,13 @@
                     </execution>
                 </executions>
             </plugin>
+
+			<plugin>
+				<groupId>com.heroku.sdk</groupId>
+				<artifactId>heroku-maven-plugin</artifactId>
+				<version>1.1.3</version>
+			</plugin>
+            
         </plugins>
     </build>
   
