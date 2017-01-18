@@ -49,16 +49,37 @@
 						<h6>내가 검색한 검색어가 최근 순으로 100개만 보여집니다. 클릭하면 검색 페이지로 갑니다.</h6>
 					</div>
 					<div class="row">
-						<c:forEach var="keyword" items="${ keywordList }" varStatus="loop">
-							<div>
-								<p>
-									<c:out value="${loop.count}" />
-									.&nbsp;&nbsp; <a href="#" title="해당 단어 검색 결과로 가는 URL">${ keyword.keyword }</a>
-									 &nbsp;&nbsp;${ keyword.regDate }&nbsp;&nbsp;
-									<a href="javascript:update('${keyword.no}', '${userVO.no}')"><i class="fa fa-window-close" aria-hidden="true"></i></a>
-								</p>
-							</div>
-						</c:forEach>
+						<c:choose>
+							<c:when test="${ (keywordList eq null) or (empty keywordList) }">
+								<div class="row">
+									<p class="lead">아직 검색한 키워드가 없습니다 &#58;O</p>
+								</div>
+								<div class="row">
+									<div class="col-md-4"></div>
+								</div>
+								<div class="row">
+									<div class="col-md-4">
+										<ul class="">
+											<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Juliet" title="Juliet 검색">Juliet 검색</a></li>
+											<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Romeo" title="Romeo 검색">Romeo 검색</a></li>
+											<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Tempest" title="Tempest 검색">Tempest 검색</a></li>
+										</ul>
+									</div>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<c:forEach var="keyword" items="${ keywordList }" varStatus="loop">
+									<div>
+										<p>
+											<c:out value="${loop.count}" />
+											.&nbsp;&nbsp; <a href="#" title="해당 단어 검색 결과로 가는 URL">${ keyword.keyword }</a>
+											 &nbsp;&nbsp;${ keyword.regDate }&nbsp;&nbsp;
+											<a href="javascript:update('${keyword.no}', '${userVO.no}')"><i class="fa fa-window-close" aria-hidden="true"></i></a>
+										</p>
+									</div>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 

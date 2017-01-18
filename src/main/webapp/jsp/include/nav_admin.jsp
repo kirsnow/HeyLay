@@ -78,7 +78,7 @@
 <!-- top navigation -->
 <div class="top_nav">
 	<div class="nav_menu">
-		<nav class role="navigation">
+		<nav role="navigation">
 			<div class="nav toggle">
 				<a id="menu_toggle" title="사이드 메뉴를 크게 보고 작게 보고 할 수 있는 토글 버튼"><i class="fa fa-bars"></i></a>
 			</div>

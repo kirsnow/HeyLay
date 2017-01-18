@@ -32,7 +32,6 @@
                    <li><a href="/">Home</a></li>
                    <li>List</li>
                    <li class="active">Sitemap</li>
-                   <li><c:forEach begin="1" end="5">el 외 안되?</c:forEach></li>
                </ol>
            </div>
         </div>
@@ -51,7 +50,7 @@
 				<ul>
 					<li><a href="#" title="사이트 소개 페이지로 이동">사이트 소개</a></li>
 					<li><a href="${ pageContext.request.contextPath }/notice/list.do" title="공지사항 페이지로 이동">공지사항</a></li>
-					<li><a href="${ pageContext.request.contextPath }/contactUs/partnership.do" title="제휴 문의 페이지로 이동">제휴 문의</a></li>
+					<li><a href="${ pageContext.request.contextPath }/contact/partnership.do" title="제휴 문의 페이지로 이동">제휴 문의</a></li>
 					<li><a href="${ pageContext.request.contextPath }/contact/qna.do" title="Q&A 페이지로 이동">Q &amp; A</a></li>
 					<li><a href="${ pageContext.request.contextPath }/contact/bug.do">오류 신고</a></li>
 					<li><a href="${ pageContext.request.contextPath }/contact/spamContents.do">유해 게시물 신고</a></li>

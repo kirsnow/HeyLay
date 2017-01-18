@@ -37,14 +37,37 @@
 
         <div class="container text-center">
 			<c:choose>
-				<c:when test="${ empty userVO }"> 
-					<span><a href="${ pageContext.request.contextPath }/membership/membership.do" class="btn btn-info">join</a>  </span>
-					<span><a href="${ pageContext.request.contextPath }/login/login.do" class="btn btn-primary">login</a>  </span>
+				<c:when test="${ not empty userVO }"> 
+					<%-- <span><a href="${ pageContext.request.contextPath }/login/logout.do" class="" title="로그아웃">로그아웃</a></span>
+					<span><a href="${ pageContext.request.contextPath }/myPage/mypage.do" class="" title="회원정보수정">회원 정보 수정</a></span> --%>
+					<span><a href="${ pageContext.request.contextPath }/contents/drawer_day.do" class="" title="내카드">내 카드</a></span>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" title="회원 정보 메뉴 열기">
+							<i class="fa fa-user-circle-o fa-2x fa-lg" aria-hidden="true"></i><span class="caret"></span>
+						</a>	
+					
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="${ pageContext.request.contextPath }/myPage/mypage.do"> <i class="fa fa-vcard-o fa-fw"
+									aria-hidden="true"></i> 회원 정보 수정
+							</a></li>
+							<li><a href="${ pageContext.request.contextPath }/myPage/original_password.do"> <i class="fa fa-lock fa-fw"
+									aria-hidden="true"></i> 비밀번호 변경
+							</a></li>
+							<c:if test="${ userVO.type eq 'A'}">
+								<li><a href="${ pageContext.request.contextPath }/jsp/admin/member_list.do"> 
+									<i class="fa fa-user-secret fa-fw" aria-hidden="true"></i> 관리자 페이지
+								</a></li>
+							</c:if>
+							<li class="divider"></li>
+							<li><a href="${ pageContext.request.contextPath }/login/logout.do"> <i class="fa fa-sign-out fa-fw"
+									aria-hidden="true"></i> 로그아웃
+							</a></li>
+						</ul>
+					</li>
 				</c:when>
 				<c:otherwise> 
-					<span><a href="${ pageContext.request.contextPath }/login/logout.do" class="btn btn-primary btn-sm" title="로그아웃">로그아웃</a></span>
-					<span><a href="${ pageContext.request.contextPath }/myPage/mypage.do" class="btn btn-default btn-sm" title="회원정보수정">회원 정보 수정</a></span>
-					<span><a href="${ pageContext.request.contextPath }/contents/drawer_day.do" class="btn btn-default btn-sm" title="내카드">내카드</a></span>
+					<span><a href="${ pageContext.request.contextPath }/membership/membership.do" class=""> 회원가입</a>  </span>
+					<span><a href="${ pageContext.request.contextPath }/login/login.do" class=""> 로그인</a>  </span>
 				</c:otherwise>
 			</c:choose> 
             <!-- Navigation -->

@@ -44,7 +44,7 @@
 
 				<div class="container">
 					<c:choose>
-						<c:when test="${ drawerHeaders eq null }">
+						<c:when test="${ (drawerHeaders eq null) or (empty drawerHeaders) }">
 							<div class="row">
 								<p class="lead">아직 저장한 카드가 없습니다 &#58;O</p>
 							</div>
