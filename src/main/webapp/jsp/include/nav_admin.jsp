@@ -27,9 +27,9 @@
 			<div class="row">
 				<div class="col-md-offset-3  text-center">
 					<div class="profile_info">
-						<span>Welcome, Admin</span>
+						<span>Welcome, ${ userVO.firstName }</span>
 						<div class=" text-center">	
-						<img src="/Quration/img/team/02.jpg" alt="..." class="img-circle profile_img">			
+						<img src="/img/team/02.jpg" alt="..." class="img-circle profile_img">			
 						</div>
 					</div>
 				</div>	
@@ -46,10 +46,10 @@
 			<div class="menu_section">
 				<!-- <h3>General</h3> -->
 				<ul class="nav side-menu">
-					<li><a href="${ pageContext.request.contextPath }" title="사용자 페이지 홈으로 이동"><i class="fa fa-home"></i> Quration </a></li>
+					<li><a href="${ pageContext.request.contextPath }/" title="사용자 페이지 홈으로 이동"><i class="fa fa-home"></i> Quration </a></li>
 					<li><a title="회원 관리 메뉴 보기"><i class="fa fa-edit"></i> 회원 관리 <span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
-							<li><a href="${ pageContext.request.contextPath }/jsp/admin/member_list.do?option=all" title="회원 관리 페이지로 이동">회원</a></li>
+							<li><a href="${ pageContext.request.contextPath }/jsp/admin/member_list.do" title="회원 관리 페이지로 이동">회원</a></li>
 							<li><a href="${ pageContext.request.contextPath }/jsp/admin/qna_list.do" title="Q&A 조회 페이지로 이동">Q&A</a></li>
 							<li><a href="${ pageContext.request.contextPath }/jsp/admin/withdraw.do" title="탈퇴 사유 조회 페이지로 이동">탈퇴 사유</a></li>
 						</ul></li>

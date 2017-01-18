@@ -3,11 +3,12 @@ package io.planb.admin.contents.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,7 +28,10 @@ public class ContentsController {
 	
 	/* 선택한 option 해당 사이트 목록 조회 (ajax) */
 	@RequestMapping("/jsp/admin/source_list.do")
-	public String selectByOption(@RequestParam("option") int option, Model model) {
+	public String selectByOption(HttpServletRequest request, Model model) {
+		int option = 0;
+		if(request.getParameter("option") != null) option = Integer.parseInt(request.getParameter("option"));
+		
 		List<SourceVO> sourceList = service.selectByOption(option);
 		model.addAttribute("sourceList", sourceList);
 		

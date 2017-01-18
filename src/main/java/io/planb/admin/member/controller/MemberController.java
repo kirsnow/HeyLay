@@ -3,6 +3,8 @@ package io.planb.admin.member.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,10 +25,9 @@ public class MemberController {
 	
 	/* 선택한 option 해당 회원 목록 조회 */
 	@RequestMapping("/jsp/admin/member_list.do")
-	public String selectByOption(@RequestParam("option") String op, Model model) {
-		
-		String option = op;
-		if( option == "" ) option = "all";
+	public String selectByOption(HttpServletRequest request, Model model) {
+		String option = "all";
+		if(request.getParameter("option") != null) option = request.getParameter("option");
 		
 //		System.out.println("option : " + option);
 		
