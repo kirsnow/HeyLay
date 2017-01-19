@@ -3,6 +3,8 @@ package io.planb.admin.help.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -146,7 +148,10 @@ public class HelpController {
 	
 	/* 유해 콘텐츠, 메모 신고 목록 조회 (C: 콘텐츠 / M: 메모) */
 	@RequestMapping("/jsp/admin/spam_list.do")
-	public String seleteContentsSpamList(@RequestParam("type") String type, Model model) {
+	public String seleteContentsSpamList(HttpServletRequest request, Model model) {
+		String type = "C";
+		if(request.getParameter("type") != null) type = request.getParameter("type");
+		
 		List<ContentsSpamVO> spamList = service.seleteContentsSpamList(type);
 		model.addAttribute("spamList", spamList);
 		
@@ -175,7 +180,10 @@ public class HelpController {
 	
 	/* 유해 콘텐츠, 메모 목록 조회 */
 	@RequestMapping("/jsp/admin/spam_content_list.do")
-	public String seleteSpamList(@RequestParam("type") String type, Model model) {
+	public String seleteSpamList(HttpServletRequest request, Model model) {
+		String type = "C";
+		if(request.getParameter("type") != null) type = request.getParameter("type");
+		
 		List<ContentsSpamVO> spamList = service.seleteSpamList(type);
 		model.addAttribute("spamList", spamList);
 		
