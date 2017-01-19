@@ -1,5 +1,6 @@
-/target/
-.class
-.war
-MANIFEST.MF
-pom.properties
+
+*.class
+*.war
+*/MANIFEST.MF
+*/pom.properties
+*/spring-mvc.xml
