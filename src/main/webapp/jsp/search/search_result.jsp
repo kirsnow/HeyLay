@@ -6,12 +6,6 @@
 <head>
     <!-- Basic Page Needs -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta property="fb:app_id" content="APP_ID" />
-	<meta property="og:type" content="website" />
-	<meta property="og:title" content="웹 페이지 제목" />
-	<meta property="og:url" content="웹 페이지 URL" />
-	<meta property="og:description" content="웹 페이지 내용" />
-	<meta property="og:image" content="웹 페이지 대표 이미지" />
     <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>${ searchQuery } 검색 결과 | Quration: 답을 열어 줄 그런 사람</title>
@@ -96,7 +90,7 @@
 	                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
 	                                    <li><a href="#" title="카카오톡으로 공유"><i class="fa fa-commenting fa-fw" aria-hidden="true"></i> KakaoTalk</a></li>
 	                                    <li>
-	                                    	<a href="http://www.facebook.com/sharer/sharer.php?u=${ pageContext.request.contextPath }/search/result.do" title="페이스북으로 공유">
+	                                    	<a href="#" id="share_facebook" title="페이스북에 공유하기">
 	                                    		<i class="fa fa-facebook fa-fw" aria-hidden="true"></i> Facebook
 	                                    	</a>
 	                                    </li>
@@ -153,7 +147,21 @@
     <!-- Bootstrap JS SET -->
     <script src="${ pageContext.request.contextPath }/js/jquery.1.11.1.js"></script>
     <script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
+    
     <!-- icon-font -->
     <script src="https://use.fontawesome.com/bbddce3010.js"></script>
+    
+    <!-- Facebook share API 
+    	 https://developers.facebook.com/docs/sharing/reference/share-dialog
+    -->
+    <script>
+		document.getElementById('share_facebook').onclick = function() {
+		  FB.ui({
+		    method: 'share',
+		    display: 'popup',
+		    href: '{ pageContext.request.contextPath }/search/result.do',
+		  }, function(response){});
+		}
+	</script>
 </body>
 </html>
