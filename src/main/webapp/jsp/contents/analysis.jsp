@@ -59,7 +59,7 @@
 					</div>
 					<div class="row">
 						<div class="well div col-md-8 col-md-offset-2" id="yearSearch">
-							<h4>2017년 OO님의 주 검색어</h4>
+							<h4>2017년 ${userVO.firstName}님의 주 검색어</h4>
 							<span class="text-primary">챗봇</span>
 						</div>
 					</div>

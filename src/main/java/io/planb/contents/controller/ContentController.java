@@ -134,8 +134,11 @@ public class ContentController {
 		return "contents/my_search";
 	}
 	
+	//통계 분석 
 	@RequestMapping("/contents/analysis.do")
 	public String analysis(Model model) {
+		
+		
 		
 		return "contents/analysis";
 	}

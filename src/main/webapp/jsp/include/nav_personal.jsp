@@ -32,7 +32,7 @@ function doMember(memberNo) {
 			<div class="row">
 				<div class="col-md-offset-3  text-center">
 					<div class="profile_info">
-						<span>Welcome, ${ userVO.firstName } ${ userVO.lastName }</span>
+						<span>Welcome, ${ userVO.firstName }</span>
 						<div class=" text-center">	
 						<img src="/Quration/img/team/02.jpg" alt="..." class="img-circle profile_img">			
 						</div>
