@@ -1,7 +1,5 @@
 package io.planb.directory.vo;
 
-import java.util.Collection;
-
 public class DirectoryVO {
 	private int no;
 	private String name;

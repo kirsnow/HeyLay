@@ -14,8 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 import io.planb.admin.contents.dao.ContentsDAO;
 import io.planb.bug.vo.BugVO;
 import io.planb.bugAttach.vo.BugAttachVO;
-import io.planb.member.vo.MemberVO;
-import io.planb.noticeAttach.vo.NoticeAttachVO;
 import io.planb.source.vo.SourceVO;
 
 @Service

@@ -2,7 +2,6 @@ package io.planb.admin.help.service;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,7 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import io.planb.admin.help.dao.HelpDAO;
 import io.planb.answer.vo.AnswerVO;
-import io.planb.contents.vo.ContentsVO;
 import io.planb.contentsSpam.vo.ContentsSpamVO;
 import io.planb.faq.vo.FaqVO;
 import io.planb.notice.vo.NoticeVO;
