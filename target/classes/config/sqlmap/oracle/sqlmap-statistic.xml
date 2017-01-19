@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.planb.statistic.dao.StatisticDAO">
+	
+	<select id="selectSavedSource" parameterType="java.lang.String" resultType="statisticVO">
+		SELECT r.sourceName, COUNT(r.sourceName) cnt 
+		FROM (SELECT so.name as sourceName 
+		FROM q_contents_saved cs 
+		INNER JOIN q_contents co ON co.no = cs.contents_no 
+		INNER JOIN q_source so ON so.no = co.source_no 
+		WHERE cs.member_no = #{ member }) r 
+		GROUP BY r.sourceName 
+		ORDER BY cnt DESC 
+	</select>
+	
+</mapper>

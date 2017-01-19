@@ -24,5 +24,6 @@
 		<typeAlias type="io.planb.contents.vo.SavedHeaderVO" alias="savedHeaderVO" />
 		<typeAlias type="io.planb.source.vo.SourceVO" alias="sourceVO" />
 		<typeAlias type="io.planb.question.vo.QuestionVO" alias="questionVO" />
+		<typeAlias type="io.planb.statistic.vo.StatisticVO" alias="statisticVO" />
 	</typeAliases>
 </configuration>
