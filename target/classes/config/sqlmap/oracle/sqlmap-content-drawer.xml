@@ -24,8 +24,8 @@
 		select to_char(REG_DATE, 'YYYY. MM. DD.') as regDate, COUNT(CONTENTS_NO) as cnt
 		from Q_CONTENTS_SAVED 
 		where MEMBER_NO = #{memberNo}
-		group by REG_DATE 
-		order by REG_DATE desc
+		group by regDate 
+		order by regDate desc
 	</select>
 	
 	<select id="drawerDirectory" parameterType="int" resultType="savedHeaderVO">
