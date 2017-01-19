@@ -73,7 +73,7 @@
 	
 	<insert id="insertFirstFolder">
 		insert into Q_DIRECTORY(no, NAME, MEMBER_NO)
-		values(NEXTVAL('Q_DIRECTORY_NO'), '나의 첫 폴더', Q_MEMBER_NO.CURRVAL)
+		values(NEXTVAL('Q_DIRECTORY_NO'), '나의 첫 폴더', CURRVAL('Q_MEMBER_NO'))
 	</insert>
 	
 	<select id="selectFolder" parameterType="int" resultType="directoryVO">
