@@ -50,7 +50,7 @@
 					<li><a title="회원 관리 메뉴 보기"><i class="fa fa-edit"></i> 회원 관리 <span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
 							<li><a href="${ pageContext.request.contextPath }/jsp/admin/member_list.do" title="회원 관리 페이지로 이동">회원</a></li>
-							<li><a href="${ pageContext.request.contextPath }/jsp/admin/qna_list.do" title="Q&A 조회 페이지로 이동">Q&A</a></li>
+							<li><a href="${ pageContext.request.contextPath }/jsp/admin/qna_list.do" title="Q&A 조회 페이지로 이동">Q&amp;A</a></li>
 							<li><a href="${ pageContext.request.contextPath }/jsp/admin/withdraw.do" title="탈퇴 사유 조회 페이지로 이동">탈퇴 사유</a></li>
 						</ul></li>
 					<li><a title="사이트 및 카드 관리 메뉴 보기"><i class="fa fa-desktop"></i> 사이트 및 카드 <span class="fa fa-chevron-down"></span></a>

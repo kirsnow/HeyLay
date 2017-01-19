@@ -192,41 +192,35 @@
                 <div class="col-md-3 col-sm-6 nopadding">
                     <div class="portfolio-item">
                         <div class="hover-bg">
-                            <a href="#">
-                                <div class="hover-text">
-                                    <h5>Logo Design</h5>
-                                    <p class="lead">Client Seal</p>
-                                    <div class="hline"></div>
-                                </div>
-                                <img src="${ pageContext.request.contextPath }/img/portfolio/01.jpg" class="img-responsive" alt="...">
-                            </a>
+	                        <div class="hover-text">
+	                            <h5>Logo Design</h5>
+	                            <p class="lead">Client Seal</p>
+	                            <div class="hline"></div>
+	                        </div>
+	                        <img src="${ pageContext.request.contextPath }/img/portfolio/01.jpg" class="img-responsive" alt="...">
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6 nopadding">
                     <div class="portfolio-item">
                         <div class="hover-bg">
-                            <a href="#">
-                                <div class="hover-text">
-                                    <h5>Stationery</h5>
-                                    <p class="lead">Design Project</p>
-                                    <div class="hline"></div>
-                                </div>
-                                <img src="${ pageContext.request.contextPath }/img/portfolio/02.jpg" class="img-responsive" alt="...">
-                            </a>
+	                        <div class="hover-text">
+	                            <h5>Stationery</h5>
+	                            <p class="lead">Design Project</p>
+	                            <div class="hline"></div>
+	                        </div>
+	                        <img src="${ pageContext.request.contextPath }/img/portfolio/02.jpg" class="img-responsive" alt="...">
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6 nopadding">
                     <div class="portfolio-item">
                         <div class="hover-bg">
-                            <a href="#">
-                                <div class="hover-text">
-                                    <h5>Branding</h5>
-                                    <p class="lead">Metalbrand</p>
-                                    <div class="hline"></div>
-                                </div>
-                            </a>
+	                        <div class="hover-text">
+	                            <h5>Branding</h5>
+	                            <p class="lead">Metalbrand</p>
+	                            <div class="hline"></div>
+	                        </div>
                             <img src="${ pageContext.request.contextPath }/img/portfolio/03.jpg" class="img-responsive" alt="...">
                         </div>
                     </div>
@@ -234,13 +228,11 @@
                 <div class="col-md-3 col-sm-6 nopadding">
                     <div class="portfolio-item">
                         <div class="hover-bg">
-                            <a href="#">
-                                <div class="hover-text">
-                                    <h5>Business Card</h5>
-                                    <p class="lead">Clothing Line</p>
-                                    <div class="hline"></div>
-                                </div>
-                            </a>
+                            <div class="hover-text">
+                                <h5>Business Card</h5>
+                                <p class="lead">Clothing Line</p>
+                                <div class="hline"></div>
+                            </div>
                             <img src="${ pageContext.request.contextPath }/img/portfolio/04.jpg" class="img-responsive" alt="...">
                         </div>
                     </div>

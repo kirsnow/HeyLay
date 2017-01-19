@@ -30,7 +30,7 @@
  		<div class="page-header  text-center col-md-6 col-md-offset-3">
 			<h1>Contact Us</h1>
 			<h4>
-				<a href="${ pageContext.request.contextPath }/contact/qna.do" title="질문 문의 게시판 이동 링크">Q & A 게시판</a> | 
+				<a href="${ pageContext.request.contextPath }/contact/qna.do" title="질문 문의 게시판 이동 링크">Q &amp; A 게시판</a> | 
 				<a href="${ pageContext.request.contextPath }/contact/partnership.do" title="제휴 문의 게시판 이동 링크">제휴 안내</a> 
 			</h4>
 		</div>

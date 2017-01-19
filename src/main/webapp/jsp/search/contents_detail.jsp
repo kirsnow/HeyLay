@@ -54,7 +54,7 @@
                     <div class="panel">
                         <i class="fa fa-quote-left fa-pull-left" aria-hidden="true"></i>
                         <i class="fa fa-quote-right fa-pull-right" aria-hidden="true"></i>
-                        <summary class="text-center">Summary shows here, maximum 3 lines</summary>
+                        <div id="summary" class="text-center">Summary shows here, maximum 3 lines</div>
                     </div>
                     <p class="text-justify">Contents <mark>Lorem ipsum</mark> dolor sit amet, consectetur adipiscing elit. Etiam venenatis condimentum nisl sed vestibulum. Integer pellentesque eget orci at aliquet. Pellentesque vitae tellus a elit ultricies dapibus ac eu elit. In hac habitasse platea dictumst. In posuere nec nibh sit amet eleifend. Sed rutrum malesuada libero condimentum porta. Nulla fringilla magna ipsum, at iaculis libero congue sit amet. Proin metus dolor, pretium ut lorem vitae, dignissim congue neque.</p>
                     <p class="text-justify">Sed sagittis placerat ullamcorper. Aenean auctor vehicula orci, sit amet vulputate neque auctor eget. Aenean molestie dui auctor, lobortis purus id, commodo ipsum. Etiam hendrerit elementum orci a commodo. Quisque suscipit tempus dui eget sollicitudin. Proin magna enim, congue at tincidunt in, fermentum non neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent pharetra imperdiet justo, quis congue risus.</p>
@@ -67,7 +67,7 @@
 
                 <hr/>
                 <div role="toolbar">
-                    <button type="button" class="btn btn-xs btn-default" alt="카드를 보관함에 담기">
+                    <button type="button" class="btn btn-xs btn-default" title="카드를 보관함에 담기">
                         <i class="fa fa-star-o" aria-hidden="true"></i> 3,210
                     </button>
                     <button type="button" class="btn btn-xs btn-default disabled">
