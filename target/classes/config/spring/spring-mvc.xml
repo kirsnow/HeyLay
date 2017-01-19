@@ -9,25 +9,9 @@
     http://www.springframework.org/schema/context/spring-context.xsd
     http://www.springframework.org/schema/mvc
     http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-    
-    <!-- PostgreSQL JDBC setting 
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource" >
-		<property name="driverClass" value="org.postgresql.Driver" />
-		<property name="url" value="$jdbc:postgresql://yptxwahiogkkjr:aad5becb20b2450e706d01d68b8ff62de2234c6e0fc2ef52db0fd332ae3161cd@ec2-23-21-224-199.compute-1.amazonaws.com:5432/d4k49e3tapgsar?sslmode=require&amp;user=yptxwahiogkkjr&amp;password=aad5becb20b2450e706d01d68b8ff62de2234c6e0fc2ef52db0fd332ae3161cd" />
-		<property name="username" value="yptxwahiogkkjr" />
-		<property name="password" value="aad5becb20b2450e706d01d68b8ff62de2234c6e0fc2ef52db0fd332ae3161cd" />
-	</bean>		
-    -->
 	
-	<!-- mybatis setting 
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" >
-		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:config/mybatis/sqlMapConfig.xml" />
-		<property name="mapperLocations" value="classpath:config/sqlmap/oracle/*.xml" />
-	</bean>
-	-->
-	
-	<!-- Heroku : Using the DATABASE_URL in Spring with XML configuration
+	<!-- Heroku + ProgreSQL start
+		 : Using the DATABASE_URL in Spring with XML configuration
 		 https://devcenter.heroku.com/articles/connecting-to-relational-databases-on-heroku-with-java#using-the-database_url-in-spring-with-xml-configuration
 	-->
     <bean class="java.net.URI" id="dbUrl">
@@ -39,6 +23,17 @@
 	    <property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>
 	    <property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1] }"/>
 	</bean>
+	<!-- /Heroku + ProgreSQL end -->
+    
+    <!-- Localhost + OracleSQL start
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<property name="username" value="hr" />
+		<property name="password" value="hr" />    
+    </bean>
+    -->
+    <!-- /Localhost + OracleSQL end -->
     
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
     	<property name="dataSource" ref="dataSource" />
@@ -68,9 +63,11 @@
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
 	    <property name="order" value="0"></property>
 	</bean>
+	<!-- /jsonView 사용을 위한 설정 추가  -->
 	
-	<!-- jsonView 사용을 위한 설정 추가  -->
-
+	<!-- jackson json library/ -->
+	<bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
+	
 	<context:component-scan base-package="io.planb" />
     <mvc:annotation-driven />
 	<mvc:default-servlet-handler />

@@ -1,6 +1,8 @@
-
 *.class
 *.war
 */MANIFEST.MF
 */pom.properties
-*/spring-mvc.xml
+WebContent/META-INF/MANIFEST.MF
+target/maven-archiver/pom.properties
+target/tomcat.8080/webapps/expanded/META-INF/MANIFEST.MF
+target/tomcat.8080/webapps/expanded/META-INF/maven/io.quration/Quration/pom.properties
