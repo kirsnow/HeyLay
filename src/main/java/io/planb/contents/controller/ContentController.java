@@ -136,10 +136,11 @@ public class ContentController {
 	
 	//통계 분석 
 	@RequestMapping("/contents/analysis.do")
-	public String analysis(Model model) {
-		
-		
-		
+	public String analysis(Model model, @RequestParam("memberNo") int memberNo) {
+		List<KeywordsVO> keywordList = service.selectKeywordList(memberNo);
+	
+		System.out.println("controller : " + memberNo);
+			
 		return "contents/analysis";
 	}
 	
