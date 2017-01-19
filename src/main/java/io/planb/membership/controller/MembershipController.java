@@ -43,7 +43,7 @@ public class MembershipController {
 	}
 	
 	@RequestMapping(value="/contents/update_type.do", method=RequestMethod.POST)
-	public String updateType(Model model, @RequestParam("no") int no) {
+	public String upgradeType(Model model, @RequestParam("no") int no) {
 		
 		service.updateType(no);
 		System.out.println("controller : " + no);
