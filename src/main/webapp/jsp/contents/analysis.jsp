@@ -112,6 +112,7 @@
         	var svgHeight = 240;	// SVG 요소의 높이
 			var dataSet = [];
 			for(var i = 0; i < response.staticsList.length; i++) {
+				console.log(response.staticsList[i]);
 				dataSet.push(response.staticsList[i].cnt);
 			}
 			// 원 그래프의 좌표값을 계산하는 메서드
@@ -149,7 +150,7 @@
             	alert('ERROR');
             }
         });
-	
+
 </script>
 </body>
 </html>
