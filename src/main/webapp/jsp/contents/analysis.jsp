@@ -20,9 +20,6 @@
 <!-- icon-font -->
 <script src="https://use.fontawesome.com/bbddce3010.js"></script>
 
-<!-- D3.js -->
-<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -96,6 +93,8 @@
 	<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
 	<!-- Bootstrap -->
 	<script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
+	<!-- D3.js -->
+	<script src="${ pageContext.request.contextPath }/js/d3.v3.min.js" charset="utf-8"></script>
 
 	<!-- Custom Theme Scripts -->
 	<script src="${ pageContext.request.contextPath }/js/custom.min.js"></script>
