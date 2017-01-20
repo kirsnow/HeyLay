@@ -44,11 +44,11 @@ public class StaticsController {
 		MemberVO member = (MemberVO) session.getAttribute("userVO");
 		int no = member.getNo();
 		
-		System.out.println("controller no : " + no);
+//		System.out.println("controller no : " + no);
 		
 		List<StaticsVO> staticsList = service.selectSourceType(no);
 		
-		System.out.println("controller staticsList : " + staticsList);
+//		System.out.println("controller staticsList : " + staticsList);
 		
 		return new StaticsListVO(staticsList);
 	}
