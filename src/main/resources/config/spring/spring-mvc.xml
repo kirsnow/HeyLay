@@ -72,6 +72,14 @@
 	</bean>
 	<!-- /jsonView 사용을 위한 설정 추가  -->
 	
+	<mvc:annotation-driven>
+	    <mvc:message-converters>
+	        <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
+	        <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+	    </mvc:message-converters>
+	</mvc:annotation-driven>
+	
+	
 	<!-- jackson json library/ -->
 	
 	<context:component-scan base-package="io.planb" />

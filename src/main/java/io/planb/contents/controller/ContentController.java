@@ -136,7 +136,10 @@ public class ContentController {
 	
 	//통계 분석 
 	@RequestMapping("/contents/analysis.do")
-	public String analysis(Model model, @RequestParam("memberNo") int memberNo) {
+	public String analysis(Model model, HttpSession session) {
+		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
+		int memberNo = userVO.getNo();
+		
 		List<KeywordsVO> keywordList = service.selectKeywordList(memberNo);
 	
 		System.out.println("controller : " + memberNo);

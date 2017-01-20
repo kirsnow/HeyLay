@@ -4,13 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.planb.statics.dao.StaticsDAO">
 	
-	<select id="selectSavedSource" parameterType="java.lang.String" resultType="staticsVO">
-		SELECT r.sourceName, COUNT(r.sourceName) cnt 
+	<select id="selectSavedSource" parameterType="int" resultType="staticsVO">
+		SELECT r.sourceName columnName, COUNT(r.sourceName) cnt 
 		FROM (SELECT so.name as sourceName 
 		FROM q_contents_saved cs 
 		INNER JOIN q_contents co ON co.no = cs.contents_no 
 		INNER JOIN q_source so ON so.no = co.source_no 
-		WHERE cs.member_no = #{ member }) r 
+		WHERE cs.member_no = #{ no }) r 
 		GROUP BY r.sourceName 
 		ORDER BY cnt DESC 
 	</select>

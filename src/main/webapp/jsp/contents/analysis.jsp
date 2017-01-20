@@ -8,7 +8,11 @@
 <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>| Quration: 답을 열어줄 그런 사람</title>
-
+<style>
+	svg { width: 320px; height: 240px; border: 1px solid black; }
+	.pie { fill: orange; stroke: white; }
+</style>
+		
 <!-- Bootstrap -->
 <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 <link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
@@ -69,6 +73,11 @@
 							<img alt="한 해 검색 결과 꺽은선 그래프"
 								src="${ pageContext.request.contextPath }/img/graph.png">
 						</div>
+						<button id="joinOk">joinOk</button>
+						<p id="demo"></p>
+					</div>
+					<div class="row">
+						<svg class="well div col-md-8 col-md-offset-2" id="myGraph"></svg>
 					</div>
 				</div>
 			</div>
@@ -79,14 +88,68 @@
 			<!-- /footer -->
 		</div>
 	</div>
-
 	
 	<!-- jQuery -->
 	<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
 	<!-- Bootstrap -->
 	<script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
+	<!-- D3.js -->
+	<script src="${ pageContext.request.contextPath }/js/d3.v3.min.js" charset="utf-8"></script>
 
 	<!-- Custom Theme Scripts -->
 	<script src="${ pageContext.request.contextPath }/js/custom.min.js"></script>
+	
+<script>
+
+	$.ajax({
+		url : '${ pageContext.request.contextPath }/statics/savedSource.do',
+        type: 'get',
+        contentType: "application/json", 
+        data : { "no" : '${ userVO.no}' },
+        success : function(response){
+        	var svgWidth = 320;	// SVG 요소의 넓이
+        	var svgHeight = 240;	// SVG 요소의 높이
+			var dataSet = [];
+			for(var i = 0; i < response.staticsList.length; i++) {
+				console.log(response.staticsList[i]);
+				dataSet.push(response.staticsList[i].cnt);
+			}
+			// 원 그래프의 좌표값을 계산하는 메서드
+			var pie = d3.layout.pie()	// 원 그래프 레이아웃
+			// 원 그래프의 안쪽 반지름, 바깥쪽 반지름 설정
+			var arc = d3.svg.arc().innerRadius(0).outerRadius(100)
+			// 원 그래프 그리기
+			var pieElements = d3.select("#myGraph")
+			  .selectAll("path")	// path 요소 지정
+			  .data(pie(dataSet))	// 데이터를 요소에 연결
+			// 데이터 추가
+			pieElements.enter()	// 데이터 수만큼 반복
+			  .append("path")	// 데이터의 수만큼 path 요소가 추가됨
+			  .attr("class", "pie")	// CSS 클래스 설정
+			  .attr("transform", "translate(" + svgWidth/2 + ", " + svgHeight/2 + ")")    // 원 그래프의 중심으로 함
+			  .style("fill", function(d, i){
+					return ["#FCE4EC", "#F8BBD0", "#F48FB1", "#F06292", "#EC407A"][i];	// 표준 10색 중 색을 반환
+				})
+			  .transition()
+			  .duration(1000)
+			  .delay(function(d,i){   // 그릴 원 그래프의 시간을 어긋나게 표시
+					return i*1000;
+				})
+			  .attrTween("d", function(d, i){	// 보간 처리
+					var interpolate = d3.interpolate(
+						{ startAngle : d.startAngle, endAngle : d.startAngle }, // 각 부분의 시작 각도
+						{ startAngle : d.startAngle, endAngle : d.endAngle }    // 각 부분의 종료 각도
+			       	 );
+					return function(t){
+						return arc(interpolate(t)); // 시간에 따라 처리
+					}
+				})
+            },
+            error : function() {
+            	alert('ERROR');
+            }
+        });
+
+</script>
 </body>
 </html>

@@ -14,8 +14,8 @@ public class StaticsDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplte;
 
-	public List<StaticsVO> selectSavedSource(String member) {
-		List<StaticsVO> statisticList = sqlSessionTemplte.selectList("io.planb.statics.dao.staticsDAO.selectSavedSource", member);
+	public List<StaticsVO> selectSavedSource(int no) {
+		List<StaticsVO> statisticList = sqlSessionTemplte.selectList("io.planb.statics.dao.StaticsDAO.selectSavedSource", no);
 		
 		return statisticList;
 	}
