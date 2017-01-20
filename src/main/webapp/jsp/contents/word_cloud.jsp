@@ -62,8 +62,7 @@
 							<div class="row">
 								<div class="col-md-4"></div>
 							</div>
-							<svg id="wordCloud"></svg>
-							<script src="js/wordCloud.js"></script>
+							
 						</c:when>
 						<c:otherwise>
 							<div class="row">
