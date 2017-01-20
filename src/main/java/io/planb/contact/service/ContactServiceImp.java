@@ -12,7 +12,6 @@ import org.springframework.web.multipart.MultipartFile;
 import io.planb.bugAttach.vo.BugAttachVO;
 import io.planb.contact.dao.ContactDAOImp;
 import io.planb.contact.vo.ReportVO;
-import io.planb.noticeAttach.vo.NoticeAttachVO;
 import io.planb.question.vo.QuestionVO;
 
 @Service

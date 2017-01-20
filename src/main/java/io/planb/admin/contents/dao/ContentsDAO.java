@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import io.planb.bug.vo.BugVO;
 import io.planb.bugAttach.vo.BugAttachVO;
-import io.planb.member.vo.MemberVO;
 import io.planb.source.vo.SourceVO;
 
 @Repository

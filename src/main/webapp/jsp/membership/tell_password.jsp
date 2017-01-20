@@ -45,8 +45,8 @@
 				  
 				<div class="row">
 						<div class="col-md-6 col-md-offset-3 marginBottom">
-							<input type="input" name="email" class="form-control text-center" 
-							       value="고객님의 비밀번호는 '${userPw.password}' 입니다." alt="비밀번호 전달 폼" readonly/>
+							<input type="email" name="email" class="form-control text-center" 
+							       value="고객님의 비밀번호는 '${userPw.password}' 입니다." alt="비밀번호 전달 폼" readonly="readonly" />
 						</div>
 				</div>
 				<div class="row">

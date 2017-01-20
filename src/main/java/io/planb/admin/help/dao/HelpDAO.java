@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import io.planb.answer.vo.AnswerVO;
-import io.planb.contents.vo.ContentsVO;
 import io.planb.contentsSpam.vo.ContentsSpamVO;
 import io.planb.faq.vo.FaqVO;
 import io.planb.notice.vo.NoticeVO;

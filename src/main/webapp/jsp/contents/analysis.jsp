@@ -91,6 +91,10 @@
 			<!-- /footer -->
 		</div>
 	</div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> ffc660aa18394ddca5cf983dd18c3f11dfea3bf4
 	
 	<!-- jQuery -->
 	<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>

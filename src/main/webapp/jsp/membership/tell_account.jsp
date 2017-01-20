@@ -45,7 +45,7 @@
 				  
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 marginBottom">
-						<input type="input" name="email" class="form-control" value="고객님의 계정은 '${userAccount.email}' 입니다." alt="계정(이메일)전달 폼" readonly/>
+						<input type="email" name="email" class="form-control" value="고객님의 계정은 '${userAccount.email}' 입니다." alt="계정(이메일)전달 폼" readonly="readonly" />
 					</div>
 				</div>
 				<div class="row">
