@@ -80,11 +80,6 @@
 		</div>
 	</div>
 
-	<script type="text/javascript">
-	function doMember(memberNo) {
-		location.href = "${ pageContext.request.contextPath }/contents/analysis.do?memberNo=" + memberNo;
-	}
-	</script>
 	
 	<!-- jQuery -->
 	<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>

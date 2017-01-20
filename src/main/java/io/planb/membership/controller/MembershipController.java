@@ -18,7 +18,6 @@ import io.planb.directory.vo.DirectoryVO;
 import io.planb.member.service.MemberService;
 import io.planb.member.vo.MemberVO;
 
-@SessionAttributes("memberVO")
 @Controller
 public class MembershipController {
 
