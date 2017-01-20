@@ -8,8 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import io.planb.member.vo.MemberVO;
 import io.planb.statics.service.StaticsService;
+import io.planb.statics.vo.StaticsListVO;
 import io.planb.statics.vo.StaticsVO;
 
 @Controller
@@ -19,14 +22,20 @@ public class StaticsController {
 	private StaticsService service;
 	
 	/* 내가 많이 담은 사이트 */
+	@ResponseBody
 	@RequestMapping("/statics/savedSource.do")
-	public String selectSavedSource(HttpSession session,Model model) {
-		String member = (String) session.getAttribute("userVO");
+	public StaticsListVO selectSavedSource(HttpSession session, Model model) {
+		MemberVO member = (MemberVO) session.getAttribute("userVO");
+		int no = member.getNo();
 		
-		List<StaticsVO> statisticList = service.selectSavedSource(member);
-		model.addAttribute("statisticList", statisticList);
+//		System.out.println("controller no : " + no);
 		
-		return "admin/statistic";
+		List<StaticsVO> staticsList = service.selectSavedSource(no);
+//		model.addAttribute("staticsList", staticsList);
+		
+		System.out.println("controller staticsList : " + staticsList);
+		
+		return new StaticsListVO(staticsList);
 	}
 	
 }

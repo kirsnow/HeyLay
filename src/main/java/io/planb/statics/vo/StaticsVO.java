@@ -1,25 +1,25 @@
 package io.planb.statics.vo;
 
 public class StaticsVO {
-	private String column;
+	private String columnName;
 	private int cnt;
 	private String data;
 	
 	public StaticsVO() {}
 
-	public StaticsVO(String column, int cnt, String data) {
+	public StaticsVO(String columnName, int cnt, String data) {
 		super();
-		this.column = column;
+		this.columnName = columnName;
 		this.cnt = cnt;
 		this.data = data;
 	}
 
 	public String getColumn() {
-		return column;
+		return columnName;
 	}
 
-	public void setColumn(String column) {
-		this.column = column;
+	public void setColumn(String columnName) {
+		this.columnName = columnName;
 	}
 
 	public int getCnt() {
@@ -40,7 +40,7 @@ public class StaticsVO {
 
 	@Override
 	public String toString() {
-		return "StatisticVO [column=" + column + ", cnt=" + cnt + ", data=" + data + "]";
+		return "StatisticVO [columnName=" + columnName + ", cnt=" + cnt + ", data=" + data + "]";
 	}
 	
 }
