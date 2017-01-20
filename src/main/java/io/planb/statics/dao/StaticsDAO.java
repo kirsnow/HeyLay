@@ -15,9 +15,15 @@ public class StaticsDAO {
 	private SqlSessionTemplate sqlSessionTemplte;
 
 	public List<StaticsVO> selectSavedSource(int no) {
-		List<StaticsVO> statisticList = sqlSessionTemplte.selectList("io.planb.statics.dao.StaticsDAO.selectSavedSource", no);
+		List<StaticsVO> staticsList = sqlSessionTemplte.selectList("io.planb.statics.dao.StaticsDAO.selectSavedSource", no);
 		
-		return statisticList;
+		return staticsList;
+	}
+
+	public List<StaticsVO> selectSourceType(int no) {
+		List<StaticsVO> staticsList = sqlSessionTemplte.selectList("io.planb.statics.dao.StaticsDAO.selectSourceType", no);
+		
+		return staticsList;
 	}
 
 }

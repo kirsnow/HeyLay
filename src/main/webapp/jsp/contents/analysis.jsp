@@ -77,7 +77,14 @@
 						<p id="demo"></p>
 					</div>
 					<div class="row">
-						<svg class="well div col-md-8 col-md-offset-2" id="myGraph"></svg>
+						<div class="well div col-md-push-2 col-md-4">
+							<h4>내가 자주 담은 사이트 타입</h4>
+							<svg class="well div col-md-8 col-md-offset-2" id="myGraph2"></svg>
+						</div>
+						<div class="well div col-md-push-2 col-md-4">
+							<h4>내가 자주 담은 사이트</h4>
+							<svg class="well div col-md-8 col-md-offset-2" id="myGraph"></svg>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -111,38 +118,123 @@
         	var svgHeight = 240;	// SVG 요소의 높이
 			var dataSet = [];
 			for(var i = 0; i < response.staticsList.length; i++) {
-				console.log(response.staticsList[i]);
 				dataSet.push(response.staticsList[i].cnt);
 			}
 			// 원 그래프의 좌표값을 계산하는 메서드
 			var pie = d3.layout.pie()	// 원 그래프 레이아웃
 			// 원 그래프의 안쪽 반지름, 바깥쪽 반지름 설정
-			var arc = d3.svg.arc().innerRadius(0).outerRadius(100)
+			var arc = d3.svg.arc().innerRadius(30).outerRadius(100)
 			// 원 그래프 그리기
 			var pieElements = d3.select("#myGraph")
-			  .selectAll("path")	// path 요소 지정
+			  .selectAll("g")	// g 요소 지정
 			  .data(pie(dataSet))	// 데이터를 요소에 연결
+			  .enter()
+			  .append("g")	// 무게 중심 계산을 위하 그룹화하기
+			  .attr("transform", "translate("+svgWidth/2+", "+svgHeight/2+")")    // 원 그래프의 중심으로 함
 			// 데이터 추가
-			pieElements.enter()	// 데이터 수만큼 반복
+			pieElements	// 데이터 수만큼 반복
 			  .append("path")	// 데이터의 수만큼 path 요소가 추가됨
 			  .attr("class", "pie")	// CSS 클래스 설정
-			  .attr("transform", "translate(" + svgWidth/2 + ", " + svgHeight/2 + ")")    // 원 그래프의 중심으로 함
 			  .style("fill", function(d, i){
-					return ["#FCE4EC", "#F8BBD0", "#F48FB1", "#F06292", "#EC407A"][i];	// 표준 10색 중 색을 반환
+					return ["#C5CAE9", "#9FA8DA", "#7986CB", "#5C6BC0", "#3F51B5"][i];	// 통신사의 색을 반환
 				})
 			  .transition()
-			  .duration(1000)
+			  .duration(200)
 			  .delay(function(d,i){   // 그릴 원 그래프의 시간을 어긋나게 표시
-					return i*1000;
+					return i*200;
 				})
+			  .ease("linear")	// 직선적인 움직임으로 변경
 			  .attrTween("d", function(d, i){	// 보간 처리
 					var interpolate = d3.interpolate(
 						{ startAngle : d.startAngle, endAngle : d.startAngle }, // 각 부분의 시작 각도
 						{ startAngle : d.startAngle, endAngle : d.endAngle }    // 각 부분의 종료 각도
-			       	 );
+	       			 );
 					return function(t){
 						return arc(interpolate(t)); // 시간에 따라 처리
 					}
+				})
+			// 합계와 문자 표시
+// 			var textElements = d3.select("#myGraph")
+// 			  .append("text")	// text 요소 추가
+// 			  .attr("class", "total")	// CSS 클래스 설정
+// 			  .attr("transform", "translate("+svgWidth/2+", "+(svgHeight/2+5)+")")    // 가운데에 표시
+// 			  .text("점유율")	// 문자 표시
+			// 숫자를 부채꼴의 가운데 표시
+			pieElements
+			  .append("text")	// 데이터의 수만큼 text 요소가 추가됨
+			  .attr("class", "pieNum")	// CSS 클래스 설정
+			  .attr("transform", function(d, i){
+					return "translate("+arc.centroid(d)+")";    // 부채꼴의 중심으로 함
+				})
+			  .text(function(d, i){
+					return d.value;	// 값 표시
+				})
+            },
+            error : function() {
+            	alert('ERROR');
+            }
+        });
+	
+	$.ajax({
+		url : '${ pageContext.request.contextPath }/statics/sourceType.do',
+        type: 'get',
+        contentType: "application/json", 
+        data : { "no" : '${ userVO.no}' },
+        success : function(response){
+        	var svgWidth = 320;	// SVG 요소의 넓이
+        	var svgHeight = 240;	// SVG 요소의 높이
+			var dataSet = [];
+			for(var i = 0; i < response.staticsList.length; i++) {
+				dataSet.push(response.staticsList[i].cnt);
+			}
+			// 원 그래프의 좌표값을 계산하는 메서드
+			var pie = d3.layout.pie()	// 원 그래프 레이아웃
+			// 원 그래프의 안쪽 반지름, 바깥쪽 반지름 설정
+			var arc = d3.svg.arc().innerRadius(30).outerRadius(100)
+			// 원 그래프 그리기
+			var pieElements = d3.select("#myGraph2")
+			  .selectAll("g")	// g 요소 지정
+			  .data(pie(dataSet))	// 데이터를 요소에 연결
+			  .enter()
+			  .append("g")	// 무게 중심 계산을 위하 그룹화하기
+			  .attr("transform", "translate("+svgWidth/2+", "+svgHeight/2+")")    // 원 그래프의 중심으로 함
+			// 데이터 추가
+			pieElements	// 데이터 수만큼 반복
+			  .append("path")	// 데이터의 수만큼 path 요소가 추가됨
+			  .attr("class", "pie")	// CSS 클래스 설정
+			  .style("fill", function(d, i){
+					return ["#C8E6C9", "#A5D6A7", "#81C784", "#66BB6A", "#4CAF50"][i];	// 통신사의 색을 반환
+				})
+			  .transition()
+			  .duration(200)
+			  .delay(function(d,i){   // 그릴 원 그래프의 시간을 어긋나게 표시
+					return i*200;
+				})
+			  .ease("linear")	// 직선적인 움직임으로 변경
+			  .attrTween("d", function(d, i){	// 보간 처리
+					var interpolate = d3.interpolate(
+						{ startAngle : d.startAngle, endAngle : d.startAngle }, // 각 부분의 시작 각도
+						{ startAngle : d.startAngle, endAngle : d.endAngle }    // 각 부분의 종료 각도
+	       			 );
+					return function(t){
+						return arc(interpolate(t)); // 시간에 따라 처리
+					}
+				})
+			// 합계와 문자 표시
+// 			var textElements = d3.select("#myGraph")
+// 			  .append("text")	// text 요소 추가
+// 			  .attr("class", "total")	// CSS 클래스 설정
+// 			  .attr("transform", "translate("+svgWidth/2+", "+(svgHeight/2+5)+")")    // 가운데에 표시
+// 			  .text("점유율")	// 문자 표시
+			// 숫자를 부채꼴의 가운데 표시
+			pieElements
+			  .append("text")	// 데이터의 수만큼 text 요소가 추가됨
+			  .attr("class", "pieNum")	// CSS 클래스 설정
+			  .attr("transform", function(d, i){
+					return "translate("+arc.centroid(d)+")";    // 부채꼴의 중심으로 함
+				})
+			  .text(function(d, i){
+					return d.value;	// 값 표시
 				})
             },
             error : function() {

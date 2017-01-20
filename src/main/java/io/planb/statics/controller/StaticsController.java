@@ -31,7 +31,22 @@ public class StaticsController {
 //		System.out.println("controller no : " + no);
 		
 		List<StaticsVO> staticsList = service.selectSavedSource(no);
-//		model.addAttribute("staticsList", staticsList);
+		
+//		System.out.println("controller staticsList : " + staticsList);
+		
+		return new StaticsListVO(staticsList);
+	}
+	
+	/* 내가 많이 담은 사이트 타입 */
+	@ResponseBody
+	@RequestMapping("/statics/sourceType.do")
+	public StaticsListVO selectSourceType(HttpSession session, Model model) {
+		MemberVO member = (MemberVO) session.getAttribute("userVO");
+		int no = member.getNo();
+		
+		System.out.println("controller no : " + no);
+		
+		List<StaticsVO> staticsList = service.selectSourceType(no);
 		
 		System.out.println("controller staticsList : " + staticsList);
 		

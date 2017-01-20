@@ -15,9 +15,15 @@ public class StaticsService {
 	private StaticsDAO dao;
 
 	public List<StaticsVO> selectSavedSource(int no) {
-		List<StaticsVO> statisticList = dao.selectSavedSource(no);
+		List<StaticsVO> staticsList = dao.selectSavedSource(no);
 		
-		return statisticList;
+		return staticsList;
+	}
+
+	public List<StaticsVO> selectSourceType(int no) {
+		List<StaticsVO> staticsList = dao.selectSourceType(no);
+		
+		return staticsList;
 	}
 
 }
