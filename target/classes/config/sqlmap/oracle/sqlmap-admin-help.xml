@@ -57,7 +57,7 @@
 	
 	<insert id="insertNoticeAttach" parameterType="noticeAttachVO">
 		INSERT INTO q_notice_attach (no, notice_no, ori_name, saved_name, file_size) 
-		VALUES (NEXTVAL('Q_NOTICE_ATTACH_NO'), Q_NOTICE_NO.CURRVAL, #{ oriName }, #{ savedName }, #{ fileSize }) 
+		VALUES (NEXTVAL('Q_NOTICE_ATTACH_NO'), CURRVAL('Q_NOTICE_NO'), #{ oriName }, #{ savedName }, #{ fileSize }) 
 	</insert>
 	
 	<update id="updateNotice" parameterType="noticeVO">
