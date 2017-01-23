@@ -27,4 +27,11 @@
 		ORDER BY cnt DESC 
 	</select>
 	
+    <select id="selectWordCloudList" parameterType="int" resultType="staticsVO">
+		SELECT keyword as columnName, COUNT(keyword) as cnt 
+			FROM Q_KEYWORDS
+		WHERE MEMBER_NO = #{ memberNo }
+		GROUP BY keyword
+	</select> 
+
 </mapper>

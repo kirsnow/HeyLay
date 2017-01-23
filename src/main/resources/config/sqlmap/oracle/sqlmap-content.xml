@@ -10,12 +10,12 @@
 		FROM Q_KEYWORDS
 	</sql> -->
 
-	<select id="selectKeywordList" parameterType="int" resultType="keywordsVO">
+ 	<select id="selectKeywordList" parameterType="int" resultType="keywordsVO">
 		SELECT no, keyword, to_char(reg_date, 'yyyy-mm-dd') regDate, status, MEMBER_NO memberNo
 			FROM Q_KEYWORDS
 			WHERE STATUS='O' and MEMBER_NO = #{ memberNo }
 			ORDER BY regDate DESC
-	</select>
+	</select> 
 	
 	<update id="updateStatus" parameterType="int">
 		UPDATE Q_KEYWORDS

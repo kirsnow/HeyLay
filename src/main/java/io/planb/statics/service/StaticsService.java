@@ -26,4 +26,10 @@ public class StaticsService {
 		return staticsList;
 	}
 
+
+	public List<StaticsVO> selectwordCloudList(int memberNo) {
+		List<StaticsVO> wordCloudList = dao.selectWordCloudList(memberNo);
+		
+		return wordCloudList;
+	}
 }

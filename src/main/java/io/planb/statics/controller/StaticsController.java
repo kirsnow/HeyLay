@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.vo.MemberVO;
 import io.planb.statics.service.StaticsService;
 import io.planb.statics.vo.StaticsListVO;
@@ -52,12 +54,31 @@ public class StaticsController {
 		
 		return new StaticsListVO(staticsList);
 	}
-	
-	/*워드 크라우드*/
-	@RequestMapping("/statics/word_cloud.do")
-	public String word_cloud(HttpSession session, Model model) {
+
+	/*jsp 워드 크라우드*/
+	@ResponseBody
+	@RequestMapping("wordCloud.do")
+	public String analysis(Model model, HttpSession session) {
+		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
+		int memberNo = userVO.getNo();
 		
 		return "contents/word_cloud";
 	}
+	
+	/*json호출용 워드 크라우드*/
+	@ResponseBody
+	@RequestMapping("/statics/word_cloud.do")
+	public StaticsListVO selectSourceName(HttpSession session, Model model) {
+		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
+		int memberNo = userVO.getNo();
+		
+		List<StaticsVO> wordCloudList = service.selectwordCloudList(memberNo);
+		
+		System.out.println("controller wordCloudList : " + wordCloudList);
+		System.out.println("controller : " + memberNo);
+		
+		return new StaticsListVO(wordCloudList);
+	}
+	
 	
 }
