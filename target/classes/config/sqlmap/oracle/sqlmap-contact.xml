@@ -21,7 +21,7 @@
   	
   	<insert id="sendBugReportAttach" parameterType="reportVO">
   		INSERT INTO Q_BUG_ATTACH (no, BUG_NO, ori_name, saved_name, file_size) 
-		VALUES (NEXTVAL('Q_BUG_ATTACH_NO'), Q_BUG_NO.CURRVAL, #{ oriName }, #{ savedName }, #{ fileSize }) 
+		VALUES (NEXTVAL('Q_BUG_ATTACH_NO'), CURRVAL('Q_BUG_NO'), #{ oriName }, #{ savedName }, #{ fileSize }) 
   	</insert>
 
   	<insert id="sendSpamContents" parameterType="reportVO">

@@ -1,118 +1,156 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="ko">
-<%--
-	공지 사항 작성 페이지
-	- 파일 첨부 가능
- --%>
+<html>
 <head>
-<!-- Basic Page Needs -->
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
-<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-
-<!-- Bootstrap -->
-<link href="${ pageContext.request.contextPath }/css/bootstrap.min.css"
-	type="text/css" rel="stylesheet">
-
-<!-- icon-font -->
-<script src="https://use.fontawesome.com/bbddce3010.js"></script>
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-<title>공지 사항 등록 폼 | Quration: 답을 열어 줄 그런 사람</title>
+  <meta charset="utf-8">
+  <title>Hello Analytics - A quickstart guide for JavaScript</title>
 </head>
-<body class="nav-md">
-	<div class="container body">
-		<div class="main_container">
-			<!-- nav -->
-			<jsp:include page="/jsp/include/nav_admin.jsp" />
-			<!-- /nav -->
+<body>
 
-			<!-- page content -->
-			<div class="right_col" role="main">
-				<section>
-					<div id="container">
-						<form id="writeForm" action="#" method="post" class="form-horizontal">
-							<div class="row">
-								<div class="col-md-2 col-md-offset-2">
-									<select class="form-control">
-										<option value="N">공지 사항</option>
-										<option value="E">이벤트</option>
-									</select>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-8 col-md-offset-2">
-									<input type="text" name="title" placeholder="제목을 입력하세요" alt="공지 사항 제목 작성 text" class="form-control" value="Windows 8 이하 서비스 지원 종료" />
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-8 col-md-offset-2">
-									<textarea rows="15" cols="200" class="form-control">
-내용
-									</textarea>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-8 col-md-offset-2">
-									<input type="file" name="attachfile" alt="공지 사항 파일 첨부" class="form-control"/>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-2 col-md-offset-5">
-									<button type="submit" class="btn btn-default">수정</button>
-								</div>
-							</div>
-						</form>
-					</div>
-				</section>
+<button id="auth-button" hidden>Authorize</button>
 
-			</div>
-			<!-- /page content -->
+<h1>Hello Analytics</h1>
 
-			<!-- footer -->
-			<jsp:include page="/jsp/include/footer.jsp" />
-			<!-- /footer -->
-		</div>
-	</div>
+<textarea cols="80" rows="20" id="query-output"></textarea>
+
+<script>
+
+  // Replace with your client ID from the developer console.
+  var CLIENT_ID = '402552262030-oul5mtaukdqi0v29bloveqhvof74v917.apps.googleusercontent.com';
+
+  // Set authorized scope.
+  var SCOPES = ['https://www.googleapis.com/auth/analytics.readonly'];
 
 
-	<!-- jQuery -->
-	<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
-	<!-- Bootstrap -->
-	<script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
+  function authorize(event) {
+    // Handles the authorization flow.
+    // `immediate` should be false when invoked from the button click.
+    var useImmdiate = event ? false : true;
+    var authData = {
+      client_id: CLIENT_ID,
+      scope: SCOPES,
+      immediate: useImmdiate
+    };
 
-	<!-- Custom Theme Scripts -->
-	<script	src="${ pageContext.request.contextPath }/js/custom.min.js"></script>
-	
-	<script type="text/javascript">
-	jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실행
-		// 선택한 form에 서밋 이벤트가 발생하면 실행한다
-		// if (사용자 입력 값이 정규식 검사에 의해 참이 아니면) {포함한 코드를 실행}
-		// if 조건절 안의 '정규식.test(검사할값)' 형식은 true 또는 false를 반환한다
-		// if 조건절 안의 검사 결과가 '!= true' 참이 아니면 {...} 실행
-		// 사용자 입력 값이 참이 아니면 alert을 띄운다
-		// 사용자 입력 값이 참이 아니면 오류가 발생한 input으로 포커스를 보낸다
-		// 사용자 입력 값이 참이 아니면 form 서밋을 중단한다
-		$('#writeForm').submit( function() {
-			if ($('#title').val() == "") {
-				alert('제목을 입력하세요.');
-				$('#title').focus();
-				return false;
-			} else if ($('#content').val() == '') {
-				alert('내용을 입력하세요.');
-				$('#content').focus();
-				return false;
-			}
-		});
-	});
-	</script>
+    gapi.auth.authorize(authData, function(response) {
+      var authButton = document.getElementById('auth-button');
+      if (response.error) {
+        authButton.hidden = false;
+      }
+      else {
+        authButton.hidden = true;
+        queryAccounts();
+      }
+    });
+  }
+
+
+function queryAccounts() {
+  // Load the Google Analytics client library.
+  gapi.client.load('analytics', 'v3').then(function() {
+
+    // Get a list of all Google Analytics accounts for this user
+    gapi.client.analytics.management.accounts.list().then(handleAccounts);
+  });
+}
+
+
+function handleAccounts(response) {
+  // Handles the response from the accounts list method.
+  if (response.result.items && response.result.items.length) {
+    // Get the first Google Analytics account.
+    var firstAccountId = response.result.items[0].id;
+
+    // Query for properties.
+    queryProperties(firstAccountId);
+  } else {
+    console.log('No accounts found for this user.');
+  }
+}
+
+
+function queryProperties(accountId) {
+  // Get a list of all the properties for the account.
+  gapi.client.analytics.management.webproperties.list(
+      {'accountId': accountId})
+    .then(handleProperties)
+    .then(null, function(err) {
+      // Log any errors.
+      console.log(err);
+  });
+}
+
+
+function handleProperties(response) {
+  // Handles the response from the webproperties list method.
+  if (response.result.items && response.result.items.length) {
+
+    // Get the first Google Analytics account
+    var firstAccountId = response.result.items[0].accountId;
+
+    // Get the first property ID
+    var firstPropertyId = response.result.items[0].id;
+
+    // Query for Views (Profiles).
+    queryProfiles(firstAccountId, firstPropertyId);
+  } else {
+    console.log('No properties found for this user.');
+  }
+}
+
+
+function queryProfiles(accountId, propertyId) {
+  // Get a list of all Views (Profiles) for the first property
+  // of the first Account.
+  gapi.client.analytics.management.profiles.list({
+      'accountId': accountId,
+      'webPropertyId': propertyId
+  })
+  .then(handleProfiles)
+  .then(null, function(err) {
+      // Log any errors.
+      console.log(err);
+  });
+}
+
+
+function handleProfiles(response) {
+  // Handles the response from the profiles list method.
+  if (response.result.items && response.result.items.length) {
+    // Get the first View (Profile) ID.
+    var firstProfileId = response.result.items[0].id;
+
+    // Query the Core Reporting API.
+    queryCoreReportingApi(firstProfileId);
+  } else {
+    console.log('No views (profiles) found for this user.');
+  }
+}
+
+
+function queryCoreReportingApi(profileId) {
+  // Query the Core Reporting API for the number sessions for
+  // the past seven days.
+  gapi.client.analytics.data.ga.get({
+    'ids': 'ga:' + profileId,
+    'start-date': '7daysAgo',
+    'end-date': 'today',
+    'metrics': 'ga:sessions'
+  })
+  .then(function(response) {
+    var formattedJson = JSON.stringify(response.result, null, 2);
+    document.getElementById('query-output').value = formattedJson;
+  })
+  .then(null, function(err) {
+      // Log any errors.
+      console.log(err);
+  });
+}
+
+  // Add an event listener to the 'auth-button'.
+  document.getElementById('auth-button').addEventListener('click', authorize);
+</script>
+
+<script src="https://apis.google.com/js/client.js?onload=authorize"></script>
+
 </body>
 </html>
