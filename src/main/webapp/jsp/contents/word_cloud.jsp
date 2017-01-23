@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -9,23 +9,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- google analytics -->
-<script>
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	
-	ga('create', 'UA-90558257-1', 'auto');
-	ga('send', 'pageview');
-</script>
 <title>개인통계-워드클라우드 | Quration: 답을 열어 줄 그런 사람</title>
 <!-- Bootstrap -->
 <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css"
 	type="text/css" rel="stylesheet">
 <link href="${ pageContext.request.contextPath }/css/ssh.css"
 	type="text/css" rel="stylesheet">
+
 <script
 	src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script
@@ -45,46 +35,42 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     
- 		<style>
-			svg { width: 1000px; height: 1000px; border: 1px solid black; }
-		</style>
 </head>
 <body class="nav-md">
 	<div class="container body">
 		<header>
 			<jsp:include page="/jsp/include/nav_search.jsp" />
 		</header>
-
+		
 		<div class="main_container marginTop70">
 			<!-- nav -->
 			<jsp:include page="/jsp/include/nav_personal.jsp" />
 			<!-- /nav -->
-
+			
 			<div class="right_col" role="main">
 				<!-- page content -->
-
 				<div class="container text-center">
 					<h1>내가 가장 많이 검색한 검색어를 더 크게 보여드립니다.</h1>
 					<c:choose>
 						<c:when test="${ (wordCloud eq null) or (empty wordCloud) }">
-							<div class="row">
+							<!-- <div class="row">
 								<p class="lead">아직 검색한 키워드가 없습니다 &#58;O</p>
-							</div>
+							</div> --> 
 							<div class="row">
-								<div class="col-md-4"></div>
-							</div>
-							
-						</c:when>
-						<c:otherwise>
+								<div class="text-center">
+					            	<div id="word-cloud"></div>
+					            </div>
+					        </div>
+			            </c:when>
+			       		<c:otherwise>
 							<div class="row">
 								<p class="lead">에러에러에러 &#58;O</p>
 							</div>
 						</c:otherwise>
 					</c:choose>
-				</div>
-				<!-- /page content -->
+		        </div>
+		        <!-- /page content -->
 			</div>
-
 			<!-- footer -->
 			<jsp:include page="/jsp/include/footer.jsp" />
 			<!-- /footer -->
@@ -92,10 +78,11 @@
 	</div>
 	
 	<!-- for word Cloud d3.js library -->
-	<script src="http://d3js.org/d3.v3.min.js"></script>
-  	<script src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js"></script>
-	
-	<!-- jQuery -->
+    <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript" src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js"></script> 
+    <script type="text/javascript" src="${ pageContext.request.contextPath }/js/medley.js"></script>
+    
+    <!-- jQuery -->
 	<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
 	<!-- Bootstrap -->
 	<script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
@@ -104,3 +91,6 @@
 	<script src="${ pageContext.request.contextPath }/js/custom.min.js"></script>
 </body>
 </html>
+
+
+

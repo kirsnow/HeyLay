@@ -65,7 +65,7 @@ function doMember(memberNo) {
 					<li><a title="카드 분석 카테고리 보기"><i class="fa fa-bar-chart-o"></i>
 							카드 분석 <span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
-							<li><a href="${ pageContext.request.contextPath }/contents/word_cloud.do" title="워크 클라우드 링크">워드 클라우드</a></li>
+							<li><a href="${ pageContext.request.contextPath }/statics/word_cloud.do" title="워크 클라우드 링크">워드 클라우드</a></li>
 							<li><a href="javascript:doMember('${userVO.no}')" title="내가 검색한 검색어 링크">내 검색어</a></li>
 							<li><a href="${ pageContext.request.contextPath }/contents/analysis.do" title="내가 검색하고 저장한 통계 분석 링크">통계 분석</a></li>
 						</ul></li>
