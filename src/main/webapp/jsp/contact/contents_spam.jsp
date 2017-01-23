@@ -8,7 +8,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>유해 게시물 신고 | Quration: 답을 열어줄 그런 사람</title>
+	<title>유해 게시물 신고 | Quration: 답을 열어 줄 그런 사람</title>
 	
 
     <!-- Bootstrap -->
