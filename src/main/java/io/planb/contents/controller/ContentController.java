@@ -117,11 +117,6 @@ public class ContentController {
 		return "contents/curation";
 	}
 	
-	/*@RequestMapping("/contents/word_cloud.do")
-	public String word_cloud(Model model) {
-		
-		return "contents/word_cloud";
-	}*/
 	
 	@RequestMapping("/contents/my_search.do")
 	public String my_search(Model model, @RequestParam("memberNo") int memberNo) {
