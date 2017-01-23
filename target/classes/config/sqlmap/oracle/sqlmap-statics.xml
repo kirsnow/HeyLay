@@ -21,7 +21,8 @@
 		FROM q_contents_saved cs 
 		INNER JOIN q_contents co ON co.no = cs.contents_no 
 		INNER JOIN q_source so ON so.no = co.source_no 
-		INNER JOIN q_data_type dt ON dt.no = so.data_type) r 
+		INNER JOIN q_data_type dt ON dt.no = so.data_type 
+		WHERE cs.member_no = #{ no }) r 
 		GROUP BY r.dataType 
 		ORDER BY cnt DESC 
 	</select>

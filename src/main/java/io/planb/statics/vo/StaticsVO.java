@@ -14,11 +14,11 @@ public class StaticsVO {
 		this.data = data;
 	}
 
-	public String getColumn() {
+	public String getColumnName() {
 		return columnName;
 	}
 
-	public void setColumn(String columnName) {
+	public void setColumnName(String columnName) {
 		this.columnName = columnName;
 	}
 
