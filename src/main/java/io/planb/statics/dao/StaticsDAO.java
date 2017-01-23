@@ -12,18 +12,23 @@ import io.planb.statics.vo.StaticsVO;
 public class StaticsDAO {
 	
 	@Autowired
-	private SqlSessionTemplate sqlSessionTemplte;
+	private SqlSessionTemplate sqlSessionTemplate;
 
 	public List<StaticsVO> selectSavedSource(int no) {
-		List<StaticsVO> staticsList = sqlSessionTemplte.selectList("io.planb.statics.dao.StaticsDAO.selectSavedSource", no);
+		List<StaticsVO> staticsList = sqlSessionTemplate.selectList("io.planb.statics.dao.StaticsDAO.selectSavedSource", no);
 		
 		return staticsList;
 	}
 
 	public List<StaticsVO> selectSourceType(int no) {
-		List<StaticsVO> staticsList = sqlSessionTemplte.selectList("io.planb.statics.dao.StaticsDAO.selectSourceType", no);
+		List<StaticsVO> staticsList = sqlSessionTemplate.selectList("io.planb.statics.dao.StaticsDAO.selectSourceType", no);
 		
 		return staticsList;
 	}
 
+	public List<StaticsVO> selectWordCloudList(int memberNo) {
+		List<StaticsVO> wordCloudList = sqlSessionTemplate.selectList("io.planb.statics.dao.StaticsDAO.selectWordCloudList", memberNo);
+		
+		return wordCloudList;
+	}
 }

@@ -50,24 +50,23 @@
 			<div class="right_col" role="main">
 				<!-- page content -->
 				<div class="container text-center">
-					<h1>내가 가장 많이 검색한 검색어를 더 크게 보여드립니다.</h1>
-					<c:choose>
-						<c:when test="${ (wordCloud eq null) or (empty wordCloud) }">
-							<!-- <div class="row">
-								<p class="lead">아직 검색한 키워드가 없습니다 &#58;O</p>
-							</div> --> 
-							<div class="row">
-								<div class="text-center">
-					            	<div id="word-cloud"></div>
-					            </div>
-					        </div>
-			            </c:when>
-			       		<c:otherwise>
-							<div class="row">
-								<p class="lead">에러에러에러 &#58;O</p>
-							</div>
-						</c:otherwise>
-					</c:choose>
+					<div class="row">
+						<h1>내가 가장 많이 검색한 검색어를 더 크게 보여드립니다.</h1>
+						<c:choose>
+							<c:when test="${ (wordCloudList eq null) or (empty wordCloudList) }">
+								 <div class="row">
+									<div class="lead">아직 검색한 키워드가 없습니다 &#58;O</div>
+								</div> 
+				            </c:when>
+				       		<c:otherwise>
+								<div class="row">
+									<div class="text-center">
+						            	<svg id="word-cloud"></svg>
+						            </div>
+						        </div>
+							</c:otherwise>
+						</c:choose>
+					</div>
 		        </div>
 		        <!-- /page content -->
 			</div>
@@ -80,7 +79,7 @@
 	<!-- for word Cloud d3.js library -->
     <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
     <script type="text/javascript" src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js"></script> 
-    <script type="text/javascript" src="${ pageContext.request.contextPath }/js/medley.js"></script>
+   <%--  <script type="text/javascript" src="${ pageContext.request.contextPath }/js/wordCloud.js"></script> --%>
     
     <!-- jQuery -->
 	<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
@@ -89,6 +88,76 @@
 
 	<!-- Custom Theme Scripts -->
 	<script src="${ pageContext.request.contextPath }/js/custom.min.js"></script>
+	
+	<!-- for word Cloud js -->
+	<script>
+
+
+	$.ajax({
+		url : '${ pageContext.request.contextPath }/statics/word_cloud.do',
+	    type: 'get',
+	    contentType: "application/json", 
+	    data : { "memberNo" : '${ userVO.no}' },
+	    success :  function (response) { //json
+	   
+	    console.log("response : " , response);
+	    console.log("wordCloudList : " , response.staticsList);
+        console.log("items : " , response.staticsList[0].cnt);
+        
+       	var width = 1000,
+   			height = 800;
+		var fill = d3.scale.category20();
+	    var leaders = [];
+    	
+        if (response > 0) 
+        	leaders.push({text: columnName, size: Number(columnName.cnt)}); //text:row.keyword, size: Number(row.cnt)
+      	
+        
+	    var leaders = leaders.sort(function(a,b){
+	        return (a.size < b.size)? 1:(a.size == b.size)? 0:-1
+	    }).slice(0,100);
+	
+	    var leaderScale = d3.scale.linear()
+        .range([10,60])
+        .domain([d3.min(leaders,function(d) { return d.size; }),
+                 d3.max(leaders,function(d) { return d.size; })
+               ]);
+
+	  d3.layout.cloud().size([width, height])
+	       d3.layout.cloud().size([width, height])
+	      .words(leaders)
+	      .padding(2)
+	      .rotate(function() { return ~~(Math.random() * 10) * 90; })
+	      .font("Impact")
+	      .fontSize(function(d) { return leaderScale(d.size); })
+	      .on("end", draw) 
+	      .start(); 
+	
+	
+	function draw(words) {
+	    d3.select("#word-cloud").append("svg")
+	        .attr("width", width)
+	        .attr("height", height)
+	      .append("g")
+	        .attr("transform", "translate("+(width / 2)+","+(height / 2)+")")
+	      .selectAll("text")
+	        .data(words)
+	      .enter().append("text")
+	        .style("font-size", function(d) { return d.size + "px"; })
+	        .style("font-family", "Impact")
+	        .style("fill", function(d, i) { return fill(i); })
+	        .attr("text-anchor", "middle")
+	        .attr("transform", function(d) {
+	          return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+	        })
+	        .text(function(d) { return d.text; });
+		}	
+	},
+    error : function() {
+    	alert('ERROR');
+    }
+});
+</script>
 </body>
 </html>
 
