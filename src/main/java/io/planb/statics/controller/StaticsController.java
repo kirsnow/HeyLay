@@ -53,4 +53,11 @@ public class StaticsController {
 		return new StaticsListVO(staticsList);
 	}
 	
+	/*워드 크라우드*/
+	@RequestMapping("/statics/word_cloud.do")
+	public String word_cloud(HttpSession session, Model model) {
+		
+		return "contents/word_cloud";
+	}
+	
 }

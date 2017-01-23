@@ -15,6 +15,7 @@
 	type="text/css" rel="stylesheet">
 <link href="${ pageContext.request.contextPath }/css/ssh.css"
 	type="text/css" rel="stylesheet">
+
 <script
 	src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script
@@ -34,9 +35,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     
- 		<style>
-			svg { width: 1000px; height: 1000px; border: 1px solid black; }
-		</style>
+
 </head>
 <body class="nav-md">
 	<div class="container body">
@@ -55,13 +54,13 @@
 				<div class="container text-center">
 					<h1>내가 가장 많이 검색한 검색어를 더 크게 보여드립니다.</h1>
 					<c:choose>
-						<c:when test="${ (wordCloud eq null) or (empty wordCloud) }">
-							<div class="row">
+						<c:when test="${ (keyword eq null) or (empty keyword) }">
+						<!--<div class="row">
 								<p class="lead">아직 검색한 키워드가 없습니다 &#58;O</p>
-							</div>
+							</div> -->
 							<div class="row">
-								<div class="col-md-4"></div>
-							</div>
+					            <div id="word-cloud"></div>
+					        </div>
 							
 						</c:when>
 						<c:otherwise>
@@ -81,8 +80,12 @@
 	</div>
 	
 	<!-- for word Cloud d3.js library -->
-	<script src="http://d3js.org/d3.v3.min.js"></script>
-  	<script src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js"></script>
+	  <!-- <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+      <script type="text/javascript" src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js"></script> -->
+      <script type="text/javascript" src="medley.js"></script>
+	  <script type="text/javascript" src="${ pageContext.request.contextPath }/js/d3.layout.cloud.js"></script>
+	  <script type="text/javascript" src="${ pageContext.request.contextPath }/js/d3.v3.min.js"></script>
+    
 	
 	<!-- jQuery -->
 	<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
@@ -91,5 +94,6 @@
 
 	<!-- Custom Theme Scripts -->
 	<script src="${ pageContext.request.contextPath }/js/custom.min.js"></script>
+	
 </body>
 </html>
