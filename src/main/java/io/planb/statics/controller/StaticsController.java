@@ -56,7 +56,6 @@ public class StaticsController {
 	}
 
 	/*jsp 워드 크라우드*/
-	@ResponseBody
 	@RequestMapping("wordCloud.do")
 	public String analysis(Model model, HttpSession session) {
 		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
@@ -65,7 +64,7 @@ public class StaticsController {
 		return "contents/word_cloud";
 	}
 	
-	/*json호출용 워드 크라우드*/
+	/*ajax호출용 워드 크라우드*/
 	@ResponseBody
 	@RequestMapping("/statics/word_cloud.do")
 	public StaticsListVO selectSourceName(HttpSession session, Model model) {
