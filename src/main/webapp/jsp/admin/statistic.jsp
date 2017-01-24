@@ -51,7 +51,7 @@
 								<div class="row">
 									<div class="col-md-push-4 col-md-3">
 										<a href="https://analytics.google.com/analytics/web/?hl=ko&pli=1#dashboard/uwKM73EoRiOPz9RMGZuRGw/a90558257w134284174p138375987/%3F_u.date00%3D20170124%26_u.date01%3D20170124/" 
-										class="btn btn-primary" role="button" title="관리자용 통계 더 보기">통계 더 보기</a>
+											class="btn btn-primary" role="button" target="_blank" title="관리자용 통계 더 보기">통계 더 보기</a>
 									</div>
 								</div>
 							</div>
