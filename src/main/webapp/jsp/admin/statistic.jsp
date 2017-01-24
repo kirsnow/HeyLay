@@ -41,9 +41,19 @@
 <%-- 						<img src="${ pageContext.request.contextPath }/img/layout/Gif.gif" width="1000px" /> --%>
 						<div class="row">
 							<div class="well div col-md-push-2 col-md-8">
-								<section id="auth-button"></section>
-								<section id="view-selector"></section>
-								<section id="timeline"></section>
+								<div class="row">
+									<div class="col-md-push-3 col-md-6">
+										<section id="auth-button"></section>
+										<section id="view-selector"></section>
+										<section id="timeline"></section>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-push-4 col-md-3">
+										<a href="https://analytics.google.com/analytics/web/?hl=ko&pli=1#dashboard/uwKM73EoRiOPz9RMGZuRGw/a90558257w134284174p138375987/%3F_u.date00%3D20170124%26_u.date01%3D20170124/" 
+										class="btn btn-primary" role="button" title="관리자용 통계 더 보기">통계 더 보기</a>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -99,7 +109,7 @@ gapi.analytics.ready(function() {
 	      'dimensions': 'ga:date',
 	      'metrics': 'ga:sessions',
 	      'start-date': '30daysAgo',
-	      'end-date': 'yesterday',
+	      'end-date': 'today',
 	    },
 	    chart: {
 	      type: 'LINE',
