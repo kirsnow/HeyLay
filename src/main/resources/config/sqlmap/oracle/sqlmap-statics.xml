@@ -34,5 +34,12 @@
 		GROUP BY keyword
 		ORDER BY cnt DESC 
 	</select> 
+	
+	<select id="wholeWordCloudList" parameterType="int" resultType="staticsVO">
+		SELECT keyword as columnName, COUNT(keyword) as cnt 
+			FROM Q_KEYWORDS
+		GROUP BY keyword
+		ORDER BY cnt DESC 
+	</select>
 
 </mapper>

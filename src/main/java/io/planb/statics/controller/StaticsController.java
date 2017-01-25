@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.vo.MemberVO;
@@ -61,6 +62,10 @@ public class StaticsController {
 		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
 		int memberNo = userVO.getNo();
 		
+		List<StaticsVO> wordCloudList = service.selectwordCloudList(memberNo);
+		model.addAttribute("wordCloudList", wordCloudList);
+		System.out.println("controller page : " + wordCloudList);
+		
 		return "contents/word_cloud";
 	}
 	
@@ -73,11 +78,10 @@ public class StaticsController {
 		
 		List<StaticsVO> wordCloudList = service.selectwordCloudList(memberNo);
 		
-		System.out.println("controller wordCloudList : " + wordCloudList);
-		System.out.println("controller : " + memberNo);
+		/*System.out.println("controller wordCloudList : " + wordCloudList);
+		System.out.println("controller : " + memberNo);*/
 		
 		return new StaticsListVO(wordCloudList);
 	}
-	
 	
 }

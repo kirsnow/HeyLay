@@ -58,13 +58,13 @@
 				<div class="container text-center">
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2">
-						<h1>내가 가장 많이 검색한 검색어를 더 크게 보여드립니다.</h1>
+							<h1>내가 가장 많이 검색한 검색어를 더 크게 보여드립니다.</h1>
 						</div>
 					</div>
 					<c:choose>
-						<c:when test="${ (wordCloudList eq null) or (empty wordCloudList) }">
+						<c:when test="${ (wordCloudList eq null) or (empty wordCloudList ) }">
 							 <div class="row">
-								<div class="lead">아직 검색한 키워드가 없습니다 &#58;O</div>
+								<div >검색어가 없을시 나타나지 않습니다 &#58;O</div>
 							</div> 
 			            </c:when>
 			       		<c:otherwise> 
@@ -97,10 +97,11 @@
 	<!-- Custom Theme Scripts -->
 	<script src="${ pageContext.request.contextPath }/js/custom.min.js"></script>
 	
+	
 	<!-- for word Cloud js -->
 	<script>
      	var width = 1000,
-			height = 800;
+			height = 730;
      	
 		var fill = d3.scale.category20(); //워드 클라우드 색 채우기 부분
 			
