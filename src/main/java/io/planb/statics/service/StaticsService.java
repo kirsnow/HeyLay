@@ -38,4 +38,16 @@ public class StaticsService {
 		
 		return AllWordCloudList;
 	}
+	
+	public List<StaticsVO> selectAllSavedSource() {
+		List<StaticsVO> staticsList = dao.selectAllSavedSource();
+		
+		return staticsList;
+	}
+
+	public List<StaticsVO> selectAllSourceType() {
+		List<StaticsVO> staticsList = dao.selectAllSourceType();
+		
+		return staticsList;
+	}
 }

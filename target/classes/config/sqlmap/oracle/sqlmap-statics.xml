@@ -41,5 +41,26 @@
 		GROUP BY keyword
 		ORDER BY cnt DESC 
 	</select>
+	
+	<select id="selectAllSavedSource" parameterType="int" resultType="staticsVO">
+		SELECT r.sourceName columnName, COUNT(r.sourceName) cnt 
+		FROM (SELECT so.name as sourceName 
+		FROM q_contents_saved cs 
+		INNER JOIN q_contents co ON co.no = cs.contents_no 
+		INNER JOIN q_source so ON so.no = co.source_no) r 
+		GROUP BY r.sourceName 
+		ORDER BY cnt DESC 
+	</select>
+	
+	<select id="selectAllSourceType" parameterType="int" resultType="staticsVO">
+		SELECT r.dataType columnName, COUNT(r.dataType) cnt 
+		FROM (SELECT dt.data_type as dataType 
+		FROM q_contents_saved cs 
+		INNER JOIN q_contents co ON co.no = cs.contents_no 
+		INNER JOIN q_source so ON so.no = co.source_no 
+		INNER JOIN q_data_type dt ON dt.no = so.data_type) r 
+		GROUP BY r.dataType 
+		ORDER BY cnt DESC 
+	</select>
 
 </mapper>

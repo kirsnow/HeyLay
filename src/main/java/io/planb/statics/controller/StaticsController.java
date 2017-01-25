@@ -8,11 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
-import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.vo.MemberVO;
 import io.planb.statics.service.StaticsService;
 import io.planb.statics.vo.StaticsListVO;
@@ -23,6 +20,8 @@ public class StaticsController {
 	
 	@Autowired
 	private StaticsService service;
+	
+	/* 유저 통계 */
 	
 	/* 내가 많이 담은 사이트 */
 	@ResponseBody
@@ -110,5 +109,28 @@ public class StaticsController {
 	}
 	
 	
+	/* 관리자 통계 */
+	
+	/* 전체 회원 많이 담은 사이트 */
+	@ResponseBody
+	@RequestMapping("/admin/statics/savedSource.do")
+	public StaticsListVO selectAllSavedSource(Model model) {
+		List<StaticsVO> staticsList = service.selectAllSavedSource();
+		
+//		System.out.println("controller staticsList : " + staticsList);
+		
+		return new StaticsListVO(staticsList);
+	}
+	
+	/* 전체 회원 많이 담은 사이트 타입 */
+	@ResponseBody
+	@RequestMapping("/admin/statics/sourceType.do")
+	public StaticsListVO selectAllSourceType(Model model) {
+		List<StaticsVO> staticsList = service.selectAllSourceType();
+		
+//		System.out.println("controller staticsList : " + staticsList);
+		
+		return new StaticsListVO(staticsList);
+	}
 	
 }

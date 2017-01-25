@@ -37,4 +37,16 @@ public class StaticsDAO {
 		
 		return AllWordCloudList;
 	}
+	
+	public List<StaticsVO> selectAllSavedSource() {
+		List<StaticsVO> staticsList = sqlSessionTemplate.selectList("io.planb.statics.dao.StaticsDAO.selectAllSavedSource");
+		
+		return staticsList;
+	}
+
+	public List<StaticsVO> selectAllSourceType() {
+		List<StaticsVO> staticsList = sqlSessionTemplate.selectList("io.planb.statics.dao.StaticsDAO.selectAllSourceType");
+		
+		return staticsList;
+	}
 }
