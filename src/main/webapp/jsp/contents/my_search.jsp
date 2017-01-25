@@ -65,18 +65,6 @@
 								<div class="row">
 									<p class="lead">아직 검색한 키워드가 없습니다 &#58;O</p>
 								</div>
-								<div class="row">
-									<div class="col-md-4"></div>
-								</div>
-								<div class="row">
-									<div class="col-md-4">
-										<ul class="">
-											<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Juliet" title="Juliet 검색">Juliet 검색</a></li>
-											<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Romeo" title="Romeo 검색">Romeo 검색</a></li>
-											<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Tempest" title="Tempest 검색">Tempest 검색</a></li>
-										</ul>
-									</div>
-								</div>
 							</c:when>
 							<c:otherwise>
 								<c:forEach var="keyword" items="${ keywordList }" varStatus="loop">

@@ -84,4 +84,6 @@ public class StaticsController {
 		return new StaticsListVO(wordCloudList);
 	}
 	
+	
+	
 }
