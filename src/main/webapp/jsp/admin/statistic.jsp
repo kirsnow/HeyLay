@@ -26,6 +26,10 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 <title>통계 | Quration: 답을 열어 줄 그런 사람</title>
+<style>
+	svg { width: 320px; height: 240px; border: 1px solid black; }
+	.pie { fill: orange; stroke: white; }
+</style>
 </head>
 <body class="nav-md">
 	<div class="container body">
@@ -38,7 +42,16 @@
 			<div class="right_col" role="main">
 				<section>
 					<div class="container">
-<%-- 						<img src="${ pageContext.request.contextPath }/img/layout/Gif.gif" width="1000px" /> --%>
+						<div class="row">
+							<div class="well div col-md-push-2 col-md-4">
+								<h4>회원 전체 자주 담은 사이트 타입</h4>
+								<svg class="well div col-md-8 col-md-offset-2" id="myGraph2"></svg>
+							</div>
+							<div class="well div col-md-push-2 col-md-4">
+								<h4>회원 전체 자주 담은 사이트</h4>
+								<svg class="well div col-md-8 col-md-offset-2" id="myGraph"></svg>
+							</div>
+						</div>
 						<div class="row">
 							<div class="well div col-md-push-2 col-md-8">
 								<div class="row">
@@ -71,12 +84,166 @@
 <script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
+<!-- D3.js -->
+<script src="${ pageContext.request.contextPath }/js/d3.v3.min.js" charset="utf-8"></script>
 
 <!-- Custom Theme Scripts -->
 <script	src="${ pageContext.request.contextPath }/js/custom.min.js"></script>
 
 <!-- Embed API -->
 <script>
+	$.ajax({
+		url : '${ pageContext.request.contextPath }/admin/statics/sourceType.do',
+		type : 'get',
+		contentType : "application/json",
+		data : {
+			"no" : '${ userVO.no}'
+		},
+		success : function(response) {
+			var w = 200;
+			var h = 200;
+			var r = h / 2;
+	
+			var color = d3.scale.ordinal().range(
+					[ "#C8E6C9", "#A5D6A7", "#81C784", "#66BB6A", "#4CAF50" ]); // GPVF
+	
+			var ydata = [ {
+				"good" : 5,
+				"pto" : 10,
+				"v" : 25,
+				"f" : 8
+			} ];
+	
+			var data = [];
+	
+			for (var i = 0; i < response.staticsList.length; i++) {
+				data.push({
+					"label" : response.staticsList[i].columnName,
+					"value" : response.staticsList[i].cnt
+				});
+			}
+	
+			var vis = d3.select("#myGraph2").append("svg:svg").data([ data ]).attr(
+					"width", w).attr("height", h).append("svg:g").attr("transform",
+					"translate(" + r + "," + r + ")");
+			var pie = d3.layout.pie().value(function(d) {
+				return d.value;
+			});
+	
+			var arc = d3.svg.arc().outerRadius(r);
+	
+			var arcs = vis.selectAll("g.slice").data(pie).enter().append("svg:g")
+					.attr("class", "slice");
+	
+			arcs.append("svg:path").attr("fill", function(d, i) {
+				return color(i);
+				// return color(d.data.value)
+			}).attr("d", function(d) {
+				return arc(d);
+			}).attr('stroke', '#fff')
+			// <-- THIS
+			.attr('stroke-width', '3');
+	
+			// add the text
+			arcs.append("svg:text").attr("transform", function(d) {
+				d.innerRadius = 0;
+				d.outerRadius = 0;
+				var c = arc.centroid(d);
+				return "translate(" + c[0] + "," + c[1] + ")";
+			}).attr("text-anchor", "middle").attr("dominant-baseline", "central")
+					.style("font-size", "20px").style("text-decoration", "bold")
+					.text(function(d, i) {
+						return data[i].label;
+					});
+			arcs.append("svg:text").attr("transform", function(d) {
+				var c = arc.centroid(d);
+				return "translate(" + c[0] + "," + c[1] + ")";
+			}).attr('dy', '2em').attr("text-anchor", "middle").style("font-size",
+					"12px").style("text-decoration", "bold").text(function(d, i) {
+				return data[i].value;
+			});
+		},
+		error : function() {
+			alert('ERROR');
+		}
+	});
+    
+	$.ajax({
+		url : '${ pageContext.request.contextPath }/admin/statics/savedSource.do',
+		type : 'get',
+		contentType : "application/json",
+		data : {
+			"no" : '${ userVO.no}'
+		},
+		success : function(response) {
+			var w = 200;
+			var h = 200;
+			var r = h / 2;
+
+			var color = d3.scale.ordinal().range(
+					[ "#C8E6C9", "#A5D6A7", "#81C784", "#66BB6A", "#4CAF50" ]); // GPVF
+
+			var ydata = [ {
+				"good" : 5,
+				"pto" : 10,
+				"v" : 25,
+				"f" : 8
+			} ];
+
+			var data = [];
+
+			for (var i = 0; i < response.staticsList.length; i++) {
+				data.push({
+					"label" : response.staticsList[i].columnName,
+					"value" : response.staticsList[i].cnt
+				});
+			}
+
+			var vis = d3.select("#myGraph").append("svg:svg").data([ data ]).attr(
+					"width", w).attr("height", h).append("svg:g").attr("transform",
+					"translate(" + r + "," + r + ")");
+			var pie = d3.layout.pie().value(function(d) {
+				return d.value;
+			});
+
+			var arc = d3.svg.arc().outerRadius(r);
+
+			var arcs = vis.selectAll("g.slice").data(pie).enter().append("svg:g")
+					.attr("class", "slice");
+
+			arcs.append("svg:path").attr("fill", function(d, i) {
+				return color(i);
+				// return color(d.data.value)
+			}).attr("d", function(d) {
+				return arc(d);
+			}).attr('stroke', '#fff')
+			// <-- THIS
+			.attr('stroke-width', '3');
+
+			// add the text
+			arcs.append("svg:text").attr("transform", function(d) {
+				d.innerRadius = 0;
+				d.outerRadius = 0;
+				var c = arc.centroid(d);
+				return "translate(" + c[0] + "," + c[1] + ")";
+			}).attr("text-anchor", "middle").attr("dominant-baseline", "central")
+					.style("font-size", "20px").style("text-decoration", "bold")
+					.text(function(d, i) {
+						return data[i].label;
+					});
+			arcs.append("svg:text").attr("transform", function(d) {
+				var c = arc.centroid(d);
+				return "translate(" + c[0] + "," + c[1] + ")";
+			}).attr('dy', '2em').attr("text-anchor", "middle").style("font-size",
+					"12px").style("text-decoration", "bold").text(function(d, i) {
+				return data[i].value;
+			});
+		},
+		error : function() {
+			alert('ERROR');
+		}
+	});
+
 (function(w,d,s,g,js,fjs){
 	  g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(cb){this.q.push(cb)}};
 	  js=d.createElement(s);fjs=d.getElementsByTagName(s)[0];
