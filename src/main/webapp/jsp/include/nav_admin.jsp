@@ -17,6 +17,13 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+<script type="text/javascript">
+function doMember(memberNo) {
+	location.href = "${ pageContext.request.contextPath }/contents/my_search.do?memberNo=" + memberNo;
+}
+</script>
+
 <div class="col-md-3 left_col">
 	<div class="left_col scroll-view">
 
@@ -62,6 +69,7 @@
 						</ul></li>
 					<li><a title="통계 메뉴 보기"><i class="fa fa-bar-chart-o"></i> 통계 <span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
+							<li><a href="javascript:doMember('${userVO.no}')" title="유저 검색어 랭킹 확인 링크">유저 검색어 랭킹</a></li>
 							<li><a href="${ pageContext.request.contextPath }/jsp/admin/statistic.jsp" title="통계 페이지로 이동">Chart JS</a></li>
 						</ul></li>
 					<li><a title="광고 관리 메뉴 보기"><i class="fa fa-clone"></i> 광고 관리 <span class="fa fa-chevron-down"></span></a>

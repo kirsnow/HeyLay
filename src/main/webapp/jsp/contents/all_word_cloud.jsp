@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>개인통계-워드클라우드 | Quration: 답을 열어 줄 그런 사람</title>
+<title>전체 유저 통계-워드클라우드 | Quration: 답을 열어 줄 그런 사람</title>
 <style>
 	#word-cloud{
 		width : 1000px;
@@ -58,17 +58,17 @@
 				<div class="container text-center">
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2">
-							<h1>내가 가장 많이 검색한 검색어를 더 크게 보여드립니다.</h1>
+							<h1>가장 많이 검색된 검색어를 더 크게 보여드립니다.</h1>
 						</div>
 					</div>
 					<c:choose>
-						<c:when test="${ (wordCloudList eq null) or (empty wordCloudList ) }">
+						<c:when test="${ (AllWordCloudList eq null) or (empty AllWordCloudList ) }">
 							 <div class="row">
 								<div >검색어가 없습니다. 검색 후 사용해 주세요 &#58;O</div>
-							 </div> 
+							</div> 
 			            </c:when>
 			       		<c:otherwise> 
-							<div class="row">
+							<div >
 					            <svg id="word-cloud"></svg>
 						    </div> 
 						</c:otherwise>
@@ -106,7 +106,7 @@
 		var fill = d3.scale.category20(); //워드 클라우드 색 채우기 부분
 			
 		$.ajax({
-			url : '${ pageContext.request.contextPath }/statics/word_cloud.do',
+			url : '${ pageContext.request.contextPath }/statics/AllUserWordCloud.do',
 		    type: 'get',
 		    contentType: "application/json", 
 		    data : { "memberNo" : '${ userVO.no}' },

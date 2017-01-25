@@ -31,4 +31,10 @@ public class StaticsDAO {
 		
 		return wordCloudList;
 	}
+	
+	public List<StaticsVO> selectAllUserWordCloudList(StaticsVO columnName) {
+		List<StaticsVO> AllWordCloudList = sqlSessionTemplate.selectList("io.planb.statics.dao.StaticsDAO.selectAllUserWordCloudList", columnName);
+		
+		return AllWordCloudList;
+	}
 }

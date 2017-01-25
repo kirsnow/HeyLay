@@ -58,13 +58,12 @@ public class StaticsController {
 
 	/*jsp 워드 크라우드*/
 	@RequestMapping("wordCloud.do")
-	public String analysis(Model model, HttpSession session) {
+	public String wordCloud(Model model, HttpSession session) {
 		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
 		int memberNo = userVO.getNo();
 		
 		List<StaticsVO> wordCloudList = service.selectwordCloudList(memberNo);
 		model.addAttribute("wordCloudList", wordCloudList);
-		System.out.println("controller page : " + wordCloudList);
 		
 		return "contents/word_cloud";
 	}
@@ -82,6 +81,32 @@ public class StaticsController {
 		System.out.println("controller : " + memberNo);*/
 		
 		return new StaticsListVO(wordCloudList);
+	}
+	
+	/*전체 유저 키워드 part*/
+	
+	/*jsp 워드 크라우드*/
+	@RequestMapping("AllUserWordCloud.do")
+	public String analysis(Model model, StaticsVO columnName) {
+		
+		List<StaticsVO> AllWordCloudList = service.selectAllUserWordCloudList(columnName);
+		model.addAttribute("AllWordCloudList", AllWordCloudList);
+		
+		return "contents/all_word_cloud";
+	}
+	
+	/*ajax호출용 워드 크라우드*/
+	@ResponseBody
+	@RequestMapping("/statics/AllUserWordCloud.do")
+	public StaticsListVO AllUserWordCloudList(Model model, StaticsVO columnName) {
+		
+		
+		List<StaticsVO> AllWordCloudList = service.selectAllUserWordCloudList(columnName);
+		model.addAttribute("columnName", columnName);
+		
+		/*System.out.println("controller ajax : " + AllWordCloudList);*/
+		
+		return new StaticsListVO(AllWordCloudList);
 	}
 	
 	

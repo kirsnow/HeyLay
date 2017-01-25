@@ -32,4 +32,10 @@ public class StaticsService {
 		
 		return wordCloudList;
 	}
+
+	public List<StaticsVO> selectAllUserWordCloudList(StaticsVO columnName) {
+		List<StaticsVO> AllWordCloudList = dao.selectAllUserWordCloudList(columnName);
+		
+		return AllWordCloudList;
+	}
 }
