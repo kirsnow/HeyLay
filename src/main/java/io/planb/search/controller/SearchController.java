@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import io.planb.search.service.SearchServiceImp;
@@ -29,21 +30,23 @@ public class SearchController {
 		String searchQuery = (String)request.getParameter("q");
 		searchVO.setSearchQuery(searchQuery);
 		searchVO.setHostIP((String)request.getParameter("host"));
-		List<SearchVO> searchResults = null;
-		String viewName = null;
 		
-		if(searchQuery == null) {
-			searchResults = null;
-			viewName = "search/search_result_none";
-		} else {
-			searchResults = service.searchResult(searchVO);
-			viewName = "search/search_result";
-		}
+		List<SearchVO> searchResults = service.searchResult(searchVO);
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName(viewName);
+		mav.setViewName("search/search_result");
 		mav.addObject("searchQuery", searchQuery);
 		mav.addObject("searchResults", searchResults);
+		return mav;
+	}
+	
+	@RequestMapping(value="/contents.do", method=RequestMethod.GET)
+	public ModelAndView viewContents(@RequestParam int contentsNo) {
+		
+		SearchVO contents = service.getContents(contentsNo);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("");
 		return mav;
 	}
 	
