@@ -4,94 +4,132 @@ public class ContentsVO {
 	private int no;
 	private String title;
 	private String summary;
-	private int reportCnt;
-	private int sourceNo;
-	private int categoryNo;
+	private String url;
+	private String lastScraped;
+	private String ban;
+	
+	private String source;
+	private String sourceUrl;
+	private String category;
+	private String dataType;
+	
 	private int saveCnt;
+	private int reportCnt;
 	private int likeCnt;
+	private int viewCnt;
 	
 	public ContentsVO() {}
-
-	public ContentsVO(int no, String title, String summary, int viewCnt, int reportCnt, int sourceNo,
-			int categoryNo, int saveCnt, int likeCnt) {
+	
+	public ContentsVO(int no, String title, String summary, String url, String lastScraped, String ban, String source,
+			String sourceUrl, String category, String dataType, int saveCnt, int reportCnt, int likeCnt, int viewCnt) {
 		super();
 		this.no = no;
 		this.title = title;
 		this.summary = summary;
-		this.reportCnt = reportCnt;
-		this.sourceNo = sourceNo;
-		this.categoryNo = categoryNo;
+		this.url = url;
+		this.lastScraped = lastScraped;
+		this.ban = ban;
+		this.source = source;
+		this.sourceUrl = sourceUrl;
+		this.category = category;
+		this.dataType = dataType;
 		this.saveCnt = saveCnt;
+		this.reportCnt = reportCnt;
 		this.likeCnt = likeCnt;
+		this.viewCnt = viewCnt;
 	}
 
 	public int getNo() {
 		return no;
 	}
-
 	public void setNo(int no) {
 		this.no = no;
 	}
-
 	public String getTitle() {
 		return title;
 	}
-
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
 	public String getSummary() {
 		return summary;
 	}
-
 	public void setSummary(String summary) {
 		this.summary = summary;
 	}
-
-	public int getReportCnt() {
-		return reportCnt;
+	public String getUrl() {
+		return url;
 	}
-
-	public void setReportCnt(int reportCnt) {
-		this.reportCnt = reportCnt;
+	public void setUrl(String url) {
+		this.url = url;
 	}
-
-	public int getSourceNo() {
-		return sourceNo;
+	public String getLastScraped() {
+		return lastScraped;
 	}
-
-	public void setSourceNo(int sourceNo) {
-		this.sourceNo = sourceNo;
+	public void setLastScraped(String lastScraped) {
+		this.lastScraped = lastScraped;
 	}
-
-	public int getCategoryNo() {
-		return categoryNo;
+	public String getBan() {
+		return ban;
 	}
-
-	public void setCategoryNo(int categoryNo) {
-		this.categoryNo = categoryNo;
+	public void setBan(String ban) {
+		this.ban = ban;
 	}
-
+	public String getSource() {
+		return source;
+	}
+	public void setSource(String source) {
+		this.source = source;
+	}
+	public String getSourceUrl() {
+		return sourceUrl;
+	}
+	public void setSourceUrl(String sourceUrl) {
+		this.sourceUrl = sourceUrl;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	public String getDataType() {
+		return dataType;
+	}
+	public void setDataType(String dataType) {
+		this.dataType = dataType;
+	}
 	public int getSaveCnt() {
 		return saveCnt;
 	}
-
 	public void setSaveCnt(int saveCnt) {
 		this.saveCnt = saveCnt;
 	}
-
+	public int getReportCnt() {
+		return reportCnt;
+	}
+	public void setReportCnt(int reportCnt) {
+		this.reportCnt = reportCnt;
+	}
 	public int getLikeCnt() {
 		return likeCnt;
 	}
-
 	public void setLikeCnt(int likeCnt) {
 		this.likeCnt = likeCnt;
+	}
+	public int getViewCnt() {
+		return viewCnt;
+	}
+	public void setViewCnt(int viewCnt) {
+		this.viewCnt = viewCnt;
 	}
 
 	@Override
 	public String toString() {
-		return "ContentsVO [no=" + no + ", title=" + title + ", summary=" + summary + ", reportCnt=" + reportCnt 
-				+ ", sourceNo=" + sourceNo + ", categoryNo=" + categoryNo + ", saveCnt=" + saveCnt + ", likeCnt=" + likeCnt + "]";
+		return "ContentsVO [no=" + no + ", title=" + title + ", summary=" + summary + ", url=" + url + ", lastScraped="
+				+ lastScraped + ", ban=" + ban + ", source=" + source + ", sourceUrl=" + sourceUrl + ", category="
+				+ category + ", dataType=" + dataType + ", saveCnt=" + saveCnt + ", reportCnt=" + reportCnt
+				+ ", likeCnt=" + likeCnt + ", viewCnt=" + viewCnt + "]";
 	}
+
 }

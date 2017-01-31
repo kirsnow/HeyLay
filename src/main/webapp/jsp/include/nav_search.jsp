@@ -55,22 +55,23 @@
 					</c:when>
 					<c:otherwise>
 						<li>
-							<a href="https://quration.herokuapp.com/login/login.do" role="button" aria-expanded="false" title="로그인">
+							<a href="${ pageContext.request.contextPath }/login/login.do" role="button" aria-expanded="false" title="로그인">
 								<i class="fa fa-sign-in" aria-hidden="true"></i> 로그인
 							</a>
 						</li>
 					</c:otherwise>
 				</c:choose>
 			</ul>
-			<form class="navbar-form" role="search">
+			<form class="navbar-form" action="${pageContext.request.contextPath }/search/result.do" 
+                  method="get" role="search">
 				<div class="form-group" style="display: inline;">
 					<div class="input-group" style="display: table;">
-						<input type="search" class="form-control input-lg" alt="검색어 입력" value="${ searchQuery }"
-							   placeholder="search" style="margin-left: -3px;" /> 
+						<input type="search" name="q" class="form-control input-lg" alt="검색어 입력" value="${ searchQuery }"
+							   placeholder="검색어 입력" style="margin-left: -3px;" /> 
 						
 						<span class="input-group-btn" style="width: 1%; padding: 0px 0px;">
 						
-						<button type="button" class="btn btn-primary" title="검색 실행">
+						<button type="submit" class="btn btn-primary" title="검색 실행">
 							<i class="fa fa-search" aria-hidden="true"></i>
 						</button>
 						</span>

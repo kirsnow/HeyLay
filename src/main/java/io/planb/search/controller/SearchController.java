@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import io.planb.contents.vo.ContentsVO;
+import io.planb.memo.vo.MemoVO;
 import io.planb.search.service.SearchServiceImp;
 import io.planb.search.vo.SearchVO;
 
@@ -24,29 +26,28 @@ public class SearchController {
 	private SearchServiceImp service;
 	
 	@RequestMapping(value="/result.do", method=RequestMethod.GET)
-	public ModelAndView searchResult(HttpServletRequest request) throws JSONException, IOException {
+	public ModelAndView searchResult(HttpServletRequest request, @RequestParam(required=false) String q, @RequestParam(required=false) String host) throws JSONException, IOException {
 		
-		SearchVO searchVO = new SearchVO();
-		String searchQuery = (String)request.getParameter("q");
-		searchVO.setSearchQuery(searchQuery);
-		searchVO.setHostIP((String)request.getParameter("host"));
-		
-		List<SearchVO> searchResults = service.searchResult(searchVO);
+		SearchVO searchResult = null;
+		if(q != null) searchResult = service.searchResult(q, host);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("search/search_result");
-		mav.addObject("searchQuery", searchQuery);
-		mav.addObject("searchResults", searchResults);
+		mav.addObject("searchQuery", q);
+		mav.addObject("searchResult", searchResult);
 		return mav;
 	}
 	
 	@RequestMapping(value="/contents.do", method=RequestMethod.GET)
-	public ModelAndView viewContents(@RequestParam int contentsNo) {
+	public ModelAndView viewContents(@RequestParam int no) {
 		
-		SearchVO contents = service.getContents(contentsNo);
+		ContentsVO contents = service.getContents(no);
+		List<MemoVO> memoList = service.getMemo(no);
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("");
+		mav.setViewName("search/contents_detail");
+		mav.addObject("contents", contents);
+		mav.addObject("memoList", memoList);
 		return mav;
 	}
 	

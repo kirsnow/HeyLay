@@ -1,31 +1,32 @@
 package io.planb.search.vo;
 
-public class SearchVO {
+import java.util.List;
 
-	String searchQuery;
-	String hostIP;
+import io.planb.contents.vo.ContentsVO;
+
+public class SearchVO {
+	private String query;
+	private int total;
+	private double maxScore;
+	private List<ContentsVO> contents;
 	
-	int total;
-	double maxScore;
-	 
-	String source;
-	String title;
-	String content;
-	String tags;
-	String imgPath;
+	public SearchVO() {
+		super();
+	}
 	
-	
-	public String getHostIP() {
-		return hostIP;
+	public SearchVO(String query, int total, double maxScore, List<ContentsVO> contents) {
+		super();
+		this.query = query;
+		this.total = total;
+		this.maxScore = maxScore;
+		this.contents = contents;
 	}
-	public void setHostIP(String hostIP) {
-		this.hostIP = hostIP;
+
+	public String getQuery() {
+		return query;
 	}
-	public String getSearchQuery() {
-		return searchQuery;
-	}
-	public void setSearchQuery(String searchQuery) {
-		this.searchQuery = searchQuery;
+	public void setQuery(String query) {
+		this.query = query;
 	}
 	public int getTotal() {
 		return total;
@@ -39,34 +40,17 @@ public class SearchVO {
 	public void setMaxScore(double maxScore) {
 		this.maxScore = maxScore;
 	}
-	public String getSource() {
-		return source;
+	public List<ContentsVO> getContents() {
+		return contents;
 	}
-	public void setSource(String source) {
-		this.source = source;
+	public void setContents(List<ContentsVO> contents) {
+		this.contents = contents;
 	}
-	public String getTitle() {
-		return title;
+
+	@Override
+	public String toString() {
+		return "SearchVO [query=" + query + ", total=" + total + ", maxScore=" + maxScore + ", contents=" + contents
+				+ "]";
 	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
-	public String getTags() {
-		return tags;
-	}
-	public void setTags(String tags) {
-		this.tags = tags;
-	}
-	public String getImgPath() {
-		return imgPath;
-	}
-	public void setImgPath(String imgPath) {
-		this.imgPath = imgPath;
-	}
+
 }

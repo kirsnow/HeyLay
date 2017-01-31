@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -46,16 +45,16 @@
         </div>
         <!-- /Breadcrumb -->
 
-		<div class="row">
-			<div class="col-md-12">
-				<p class="lead">${ searchQuery } 검색결과 ${ fn:length(searchResults) }건</p>
-			</div>
-		</div>
 		<c:choose>
-        	<c:when test="${ (empty searchResults) or (searchResults eq null) }">
+			<%-- 검색결과가 없을 때 --%>
+        	<c:when test="${ (empty searchResult) or (searchResult eq null) }">
+				<div class="row">
+					<div class="col-md-12">
+						<p class="lead">이런, 검색 결과가 없습니다 &#58;&#40;</p>
+					</div>
+				</div>
 				<div class="row marginTop20">
 					<div class="col-md-10">
-						<p class="lead">이런, 검색 결과가 없습니다 &#58;&#40;</p>
 						<div class="row">
 							<div class="col-md-4">
 								<p class="">다른 단어로 검색해보시겠어요?</p>
@@ -64,28 +63,33 @@
 						<div class="row">
 							<div class="col-md-4">
 								<ul class="">
-									<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Juliet" title="Juliet 검색">Juliet</a></li>
-									<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Romeo" title="Romeo 검색">Romeo</a></li>
-									<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Tempest" title="Tempest 검색">Tempest</a></li>
-									<li><a href="${ pageContext.request.contextPath }/search/contents.do?no=1">view sample Contents</a></li>
+									<li><a href="${ pageContext.request.contextPath }/search/result.do?q=John" title="John 검색">John</a></li>
+									<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Kim" title="Kim 검색">Kim</a></li>
+									<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Elasticsearch" title="Elasticsearch 검색">Elasticsearch</a></li>
+									<li><a href="${ pageContext.request.contextPath }/search/contents.do?no=143">view sample Contents</a></li>
 								</ul>
 							</div>
 						</div>
 					</div>
 				</div>
 			</c:when>
+			
+			<%-- 검색결과가 존재할 때 --%>
         	<c:otherwise>
+        		<div class="row">
+					<div class="col-md-12">
+						<p class="lead">${ searchQuery } 검색결과 ${ searchResult.total }건</p>
+					</div>
+				</div>
 				<div class="row">
 					<section class="col-md-10 card-container mdl-grid">
-						<c:forEach var="searchResult" items="${ searchResults }"
-							varStatus="loop">
+						<c:forEach var="result" items="${ searchResult }" varStatus="loop">
 							<!-- card -->
-							<div
-								class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-shadow--3dp">
+							<div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-shadow--3dp">
 
 								<!-- card top: contents source -->
 								<div class="mdl-card__title mdl-color-text--grey-500">
-									<span class="label label-default">${ searchResult.source }</span>
+									<span class="label label-default">${ result.source }</span>
 								</div>
 								<%--
 	                    <!-- card image -->
@@ -95,13 +99,13 @@
 						--%>
 								<!-- card title -->
 								<div class="mdl-card__title">
-									<h5 class="author mdl-card__title-text">${ searchResult.title }</h5>
+									<h5 class="author mdl-card__title-text">${ result.title }</h5>
 								</div>
 
 								<!-- card text -->
 								<div
 									class="content mdl-card__supporting-text mdl-color-text--grey-800">
-									<p class="text-justify">${ searchResult.content }</p>
+									<p class="text-justify">${ result.content }</p>
 								</div>
 
 								<!-- card menu (top-right) -->
@@ -124,19 +128,30 @@
 												<i class="fa fa-share-alt fa-lg mdl-color-text--grey-500" aria-hidden="true"></i>
 											</a>
 											<ul class="dropdown-menu dropdown-menu-right" role="menu">
-												<li><a href="#" title="카카오톡으로 공유"><i
-														class="fa fa-commenting fa-fw" aria-hidden="true"></i>
-														KakaoTalk</a></li>
-												<li><a href="#" id="share_facebook" title="페이스북에 공유하기">
+												<li>
+													<a href="#" title="카카오톡으로 공유">
+														<i class="fa fa-commenting fa-fw" aria-hidden="true"></i>
+														KakaoTalk
+													</a>
+												</li>
+												<li>
+													<a href="#" id="share_facebook" title="페이스북에 공유하기">
 														<i class="fa fa-facebook fa-fw" aria-hidden="true"></i>
 														Facebook
-												</a></li>
-												<li><a href="#" title="트위터로 공유"><i
-														class="fa fa-twitter fa-fw" aria-hidden="true"></i>
-														Twitter</a></li>
-												<li><a href="#" title="에버노트로 공유"><i
-														class="fa fa-sticky-note fa-fw" aria-hidden="true"></i>
-														Evernote</a></li>
+													</a>
+												</li>
+												<li>
+													<a href="#" title="트위터로 공유">
+														<i class="fa fa-twitter fa-fw" aria-hidden="true"></i>
+														Twitter
+													</a>
+												</li>
+												<li>
+													<a href="#" title="에버노트로 공유">
+														<i class="fa fa-sticky-note fa-fw" aria-hidden="true"></i>
+														Evernote
+													</a>
+												</li>
 											</ul>
 										</div>
 										<div id="report" class="btn-group dropup" title="신고">
@@ -147,14 +162,18 @@
 												aria-hidden="true"></i>
 											</a>
 											<ul class="dropdown-menu dropdown-menu-right" role="menu">
-												<li><a
-													href="${ pageContext.request.contextPath }/contact/bug.do"
-													title="오류 신고"><i class="fa fa-bug fa-fw"
-														aria-hidden="true"></i> 오류 신고</a></li>
-												<li><a
-													href="${ pageContext.request.contextPath }/contact/spamContents.do"
-													title="유해물 신고"><i class="fa fa-ban fa-fw"
-														aria-hidden="true"></i> 유해물 신고</a></li>
+												<li>
+													<a href="${ pageContext.request.contextPath }/contact/bug.do" title="오류 신고">
+														<i class="fa fa-bug fa-fw" aria-hidden="true"></i>
+														오류 신고
+													</a>
+												</li>
+												<li>
+													<a href="${ pageContext.request.contextPath }/contact/spamContents.do" title="유해물 신고">
+														<i class="fa fa-ban fa-fw" aria-hidden="true"></i>
+														유해물 신고
+													</a>
+												</li>
 											</ul>
 										</div>
 									</div>
