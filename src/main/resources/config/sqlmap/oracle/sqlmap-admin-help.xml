@@ -89,8 +89,10 @@
 	</select>
 	
 	<select id="seleteContentsSpamList" resultType="contentsSpamVO">
-		SELECT s.no, s.email, s.selected, c.report_cnt reportCnt, q.name reported, s.reg_date regDate
-		FROM q_contents_spam s, q_contents c, q_source q 
+		SELECT s.no, s.email, s.selected, r.reportCnt, q.name reported, s.reg_date regDate
+		FROM q_contents_spam s, q_contents c, q_source q, (SELECT COUNT(no) reportCnt 
+				FROM q_contents_spam 
+				GROUP BY no) r 
 		WHERE s.contents_no = c.no AND c.source_no = q.no 
 	</select>
 	
@@ -105,8 +107,10 @@
 	</delete>
 	
 	<select id="seleteMemoSpamList" resultType="contentsSpamVO">
-		SELECT s.no, s.email, s.selected, m.report_cnt reportCnt, q.emial reported, s.reg_date regDate
-		FROM q_memo_spam s, q_memo m, q_member q 
+		SELECT s.no, s.email, s.selected, r.reportCnt, q.emial reported, s.reg_date regDate
+		FROM q_memo_spam s, q_memo m, q_member q, (SELECT COUNT(no) reportCnt 
+				FROM q_memo_spam 
+				GROUP BY no) r 
 		WHERE s.memo_no = m.no AND m.member_no = q.no  
 	</select>
 	
@@ -121,26 +125,34 @@
 	</delete>
 	
 	<select id="selectContentsSpamDetail" parameterType="int" resultType="contentsSpamVO">
-		SELECT s.no, s.email, s.selected, s.user_input userInput, c.report_cnt reportCnt, q.name reported, s.reg_date regDate
-		FROM q_contents_spam s, q_contents c, q_source q 
+		SELECT s.no, s.email, s.selected, s.user_input userInput, r.reportCnt, q.name reported, s.reg_date regDate
+		FROM q_contents_spam s, q_contents c, q_source q, (SELECT COUNT(no) reportCnt 
+				FROM q_contents_spam 
+				GROUP BY no) r  
 		WHERE s.contents_no = c.no AND c.source_no = q.no AND s.no = #{ no } 
 	</select>
 	
 	<select id="selectMemoSpamDetail" parameterType="int" resultType="contentsSpamVO">
-		SELECT s.no, s.email, s.selected, s.user_input userInput, m.report_cnt reportCnt, q.emial reported, s.reg_date regDate
-		FROM q_memo_spam s, q_memo m, q_member q 
+		SELECT s.no, s.email, s.selected, s.user_input userInput, r.reportCnt, q.emial reported, s.reg_date regDate
+		FROM q_memo_spam s, q_memo m, q_member q, (SELECT COUNT(no) reportCnt 
+				FROM q_memo_spam 
+				GROUP BY no) r  
 		WHERE s.memo_no = m.no AND m.member_no = q.no AND s.no = #{ no } 
 	</select>
 	
 	<select id="seleteSpamContentList" resultType="contentsSpamVO">
-		SELECT c.no, c.report_cnt reportCnt, s.name email
-		FROM q_contents c, q_source s
+		SELECT c.no, r.reportCnt, s.name email
+		FROM q_contents c, q_source s, (SELECT COUNT(no) reportCnt 
+				FROM q_contents_spam 
+				GROUP BY no) r  
 		WHERE c.source_no = s.no AND c.report_cnt > 0 
 	</select>
 	
 	<select id="seleteSpamMemoList" resultType="contentsSpamVO">
-		SELECT m.no, m.report_cnt reportCnt, q.email
-		FROM q_memo m, q_member q
+		SELECT m.no, r.reportCnt, q.email
+		FROM q_memo m, q_member q, (SELECT COUNT(no) reportCnt 
+				FROM q_memo_spam 
+				GROUP BY no) r  
 		WHERE m.member_no = q.no AND m.report_cnt > 0
 	</select>
 	
