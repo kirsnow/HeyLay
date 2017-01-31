@@ -18,9 +18,8 @@ public class SearchServiceImp {
 	
 	public List<SearchVO> searchResult(SearchVO searchVO) throws JSONException, IOException {
 		
-		String defaultHostIP = "http://192.168.1.4";
-		
-		//Host IP가 미설정된 경우, Default로 "http://192.168.1.4"를 입력한다.
+		String defaultHostIP = "http://54.244.108.159"; //Host IP 미설정 시, defaultHostIP에서 검색 실행
+														//Host IP 뒤에 포트가 붙어 "http://54.244.108.159:9200" 형식이 된다.
 		if(searchVO.getHostIP() == null) {
 			searchVO.setHostIP(defaultHostIP);
 		}
@@ -29,6 +28,11 @@ public class SearchServiceImp {
 		List<SearchVO> searchResults = dao.searchResult(searchVO);
 		
 		return searchResults;
+	}
+
+	public SearchVO getContents(int contentsNo) {
+		SearchVO contents = dao.getContents(contentsNo);
+		return contents;
 	}
 	
 }

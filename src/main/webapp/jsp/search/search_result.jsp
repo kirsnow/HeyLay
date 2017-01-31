@@ -45,107 +45,146 @@
             </div>
         </div>
         <!-- /Breadcrumb -->
-        
-        <div class="row">
-            <div class="col-md-12">
-                <p class="lead">${ searchQuery } 검색 결과 ${ fn:length(searchResults) }건</p>
-            </div>
-        </div>
-        <div class="row">
-            <section class="col-md-10 card-container mdl-grid">
-				<c:forEach var="searchResult" items="${ searchResults }" varStatus="loop">
-	                <!-- card -->
-	                <div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-shadow--3dp">
-	
-	                    <!-- card top: contents source -->
-	                    <div class="mdl-card__title mdl-color-text--grey-500">
-	                        <span class="label label-default">${ searchResult.source }</span>
-	                    </div>
-						<%--
+
+		<div class="row">
+			<div class="col-md-12">
+				<p class="lead">${ searchQuery } 검색결과 ${ fn:length(searchResults) }건</p>
+			</div>
+		</div>
+		<c:choose>
+        	<c:when test="${ (empty searchResults) or (searchResults eq null) }">
+				<div class="row marginTop20">
+					<div class="col-md-10">
+						<p class="lead">이런, 검색 결과가 없습니다 &#58;&#40;</p>
+						<div class="row">
+							<div class="col-md-4">
+								<p class="">다른 단어로 검색해보시겠어요?</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<ul class="">
+									<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Juliet" title="Juliet 검색">Juliet</a></li>
+									<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Romeo" title="Romeo 검색">Romeo</a></li>
+									<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Tempest" title="Tempest 검색">Tempest</a></li>
+									<li><a href="${ pageContext.request.contextPath }/search/contents.do?no=1">view sample Contents</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</c:when>
+        	<c:otherwise>
+				<div class="row">
+					<section class="col-md-10 card-container mdl-grid">
+						<c:forEach var="searchResult" items="${ searchResults }"
+							varStatus="loop">
+							<!-- card -->
+							<div
+								class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-shadow--3dp">
+
+								<!-- card top: contents source -->
+								<div class="mdl-card__title mdl-color-text--grey-500">
+									<span class="label label-default">${ searchResult.source }</span>
+								</div>
+								<%--
 	                    <!-- card image -->
 	                    <figure class="mdl-card__media" style="margin:0px">
 	                        <img src="../../img/bg1.jpg" style="width:100%; height:200px">
 	                    </figure>
 						--%>
-	                    <!-- card title -->
-	                    <div class="mdl-card__title">
-	                        <h5 class="author mdl-card__title-text">${ searchResult.title }</h5>
-	                    </div>
-	
-	                    <!-- card text -->
-	                    <div class="content mdl-card__supporting-text mdl-color-text--grey-800">
-	                        <p class="text-justify">${ searchResult.content }</p>
-	                    </div>
-	
-	                    <!-- card menu (top-right) -->
-	                    <div class="mdl-card__menu">
-	                        <div id="report" class="btn-group dropdown pull-right"
-	                            title="신고">
-	                            <a href="#" role="button" class="" title="카드를 보관함에 담기"> 
-	                               <i class="fa fa-star fa-lg" aria-hidden="true"></i>
-	                            </a>
-	                        </div>
-	                    </div>
-	
-	                    <!-- card action buttons (bottom) -->
-	                    <div class="mdl-card__actions mdl-card--border">
-	                        <a class="btn btn-link" title="상세 페이지로 이동">
-	                        	더 보기
-	                        </a>
-	                        <!-- buttons (bottom-right) -->
-	                        <div class="pull-right">
-	                            <div id="share" class="btn-group dropup">
-	                                <a href="#" role="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="외부 서비스로 공유">
-	                                    <i class="fa fa-share-alt fa-lg mdl-color-text--grey-500" aria-hidden="true"></i>
-	                                </a>
-	                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
-	                                    <li><a href="#" title="카카오톡으로 공유"><i class="fa fa-commenting fa-fw" aria-hidden="true"></i> KakaoTalk</a></li>
-	                                    <li>
-	                                    	<a href="#" id="share_facebook" title="페이스북에 공유하기">
-	                                    		<i class="fa fa-facebook fa-fw" aria-hidden="true"></i> Facebook
-	                                    	</a>
-	                                    </li>
-	                                    <li><a href="#" title="트위터로 공유"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i> Twitter</a></li>
-	                                    <li><a href="#" title="에버노트로 공유"><i class="fa fa-sticky-note fa-fw" aria-hidden="true"></i> Evernote</a></li>
-	                                </ul>
-	                            </div>
-	                            <div id="report" class="btn-group dropup" title="신고">
-	                                <a href="#" role="button" class="btn dropdown-toggle mdl-color-text--grey-500" data-toggle="dropdown" aria-expanded="false" title="신고">
-	                                    <i class="fa fa-exclamation-triangle fa-lg" aria-hidden="true"></i>
-	                                </a>
-	                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
-	                                    <li><a href="${ pageContext.request.contextPath }/contact/bug.do" title="오류 신고"><i class="fa fa-bug fa-fw" aria-hidden="true"></i> 오류 신고</a></li>
-	                                    <li><a href="${ pageContext.request.contextPath }/contact/spamContents.do" title="유해물 신고"><i class="fa fa-ban fa-fw" aria-hidden="true"></i> 유해물 신고</a></li>
-	                                </ul>
-	                            </div>
-	                        </div> <!-- /buttons (bottom-right) -->
-	                    </div> <!-- /card action buttons (bottom) -->
-	                </div> <!-- /card -->
-            	</c:forEach>
-            </section>
-            
-            <!-- Search result filter -->
-            <aside class="col-md-2">
-               <div class="well marginTop20">
-                    <p class="lead">필터</p>
-                    <ul class="fa-ul">
-                        <li>
-                            <i class="fa-li fa fa-check-square-o" aria-hidden="true"></i>
-                            <a href="#" title="조건 적용">조건</a>
-                        </li>
-                        <li>
-                            <i class="fa-li fa fa-square-o" aria-hidden="true"></i>
-                            <a href="#" title="조건 적용">조건</a>
-                        </li>
-                        <li>
-                            <i class="fa-li fa fa-square-o" aria-hidden="true"></i>
-                            <a href="#" title="조건 적용">조건</a>
-                        </li>
-                    </ul>
-                </div>
-            </aside><!-- /Search result filter -->
-            
-        </div>
+								<!-- card title -->
+								<div class="mdl-card__title">
+									<h5 class="author mdl-card__title-text">${ searchResult.title }</h5>
+								</div>
+
+								<!-- card text -->
+								<div
+									class="content mdl-card__supporting-text mdl-color-text--grey-800">
+									<p class="text-justify">${ searchResult.content }</p>
+								</div>
+
+								<!-- card menu (top-right) -->
+								<div class="mdl-card__menu">
+									<div id="report" class="btn-group dropdown pull-right"
+										title="신고">
+										<a href="#" role="button" class="" title="카드를 보관함에 담기">
+											<i class="fa fa-star fa-lg" aria-hidden="true"></i>
+										</a>
+									</div>
+								</div>
+
+								<!-- card action buttons (bottom) -->
+								<div class="mdl-card__actions mdl-card--border">
+									<a class="btn btn-link" title="상세 페이지로 이동"> 더 보기 </a>
+									<!-- buttons (bottom-right) -->
+									<div class="pull-right">
+										<div id="share" class="btn-group dropup">
+											<a href="#" role="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="외부 서비스로 공유">
+												<i class="fa fa-share-alt fa-lg mdl-color-text--grey-500" aria-hidden="true"></i>
+											</a>
+											<ul class="dropdown-menu dropdown-menu-right" role="menu">
+												<li><a href="#" title="카카오톡으로 공유"><i
+														class="fa fa-commenting fa-fw" aria-hidden="true"></i>
+														KakaoTalk</a></li>
+												<li><a href="#" id="share_facebook" title="페이스북에 공유하기">
+														<i class="fa fa-facebook fa-fw" aria-hidden="true"></i>
+														Facebook
+												</a></li>
+												<li><a href="#" title="트위터로 공유"><i
+														class="fa fa-twitter fa-fw" aria-hidden="true"></i>
+														Twitter</a></li>
+												<li><a href="#" title="에버노트로 공유"><i
+														class="fa fa-sticky-note fa-fw" aria-hidden="true"></i>
+														Evernote</a></li>
+											</ul>
+										</div>
+										<div id="report" class="btn-group dropup" title="신고">
+											<a href="#" role="button"
+												class="btn dropdown-toggle mdl-color-text--grey-500"
+												data-toggle="dropdown" aria-expanded="false" title="신고">
+												<i class="fa fa-exclamation-triangle fa-lg"
+												aria-hidden="true"></i>
+											</a>
+											<ul class="dropdown-menu dropdown-menu-right" role="menu">
+												<li><a
+													href="${ pageContext.request.contextPath }/contact/bug.do"
+													title="오류 신고"><i class="fa fa-bug fa-fw"
+														aria-hidden="true"></i> 오류 신고</a></li>
+												<li><a
+													href="${ pageContext.request.contextPath }/contact/spamContents.do"
+													title="유해물 신고"><i class="fa fa-ban fa-fw"
+														aria-hidden="true"></i> 유해물 신고</a></li>
+											</ul>
+										</div>
+									</div>
+									<!-- /buttons (bottom-right) -->
+								</div>
+								<!-- /card action buttons (bottom) -->
+							</div>
+							<!-- /card -->
+						</c:forEach>
+					</section>
+
+					<!-- Search result filter -->
+					<aside class="col-md-2">
+						<div class="well marginTop20">
+							<p class="lead">필터</p>
+							<ul class="fa-ul">
+								<li><i class="fa-li fa fa-check-square-o"
+									aria-hidden="true"></i> <a href="#" title="조건 적용">조건</a></li>
+								<li><i class="fa-li fa fa-square-o" aria-hidden="true"></i>
+									<a href="#" title="조건 적용">조건</a></li>
+								<li><i class="fa-li fa fa-square-o" aria-hidden="true"></i>
+									<a href="#" title="조건 적용">조건</a></li>
+							</ul>
+						</div>
+					</aside>
+					<!-- /Search result filter -->
+
+				</div>
+			</c:otherwise>
+        </c:choose>
     </div>
     <!-- /container -->
 
