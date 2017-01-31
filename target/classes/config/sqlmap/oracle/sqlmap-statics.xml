@@ -73,7 +73,7 @@
 	<select id="selectCiteContents" parameterType="int" resultType="staticsVO">
 		SELECT qs.name as columnName, SUM(qc.view_cnt) as cnt
 		FROM  q_source qs 
-		INNER JOINq_contents as qc on qc.source_no = qs.no
+		INNER JOIN q_contents as qc on qc.source_no = qs.no
 		GROUP BY name
 		ORDER BY cnt DESC
 		Limit 5

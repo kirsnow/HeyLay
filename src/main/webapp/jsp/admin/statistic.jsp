@@ -311,7 +311,7 @@ $.ajax({
 				d.innerRadius = 0;
 				d.outerRadius = 0;
 				var c = arc.centroid(d);
-				return "translate(" + c[20] + "," + c[1] + ")";
+				return "translate(" + c[0] + "," + c[1] + ")";
 			}).attr("text-anchor", "middle").attr("dominant-baseline", "central")
 					.style("font-size", "15px").style("text-decoration", "bold")
 					.text(function(d, i) {
