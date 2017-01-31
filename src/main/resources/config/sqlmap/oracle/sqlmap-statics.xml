@@ -62,5 +62,18 @@
 		GROUP BY r.dataType 
 		ORDER BY cnt DESC 
 	</select>
-
+	
+	<select id="selectAllCntContents" parameterType="int" resultType="staticsVO">
+		SELECT title as columnName, view_cnt as cnt
+		FROM q_contents
+		ORDER BY cnt DESC 
+		limit 5
+	</select>
+	
+	<select id="selectCiteContents" parameterType="int" resultType="staticsVO">
+		select qs.name as columnName, sum(qc.view_cnt) as cnt
+		from q_source qs inner join q_contents as qc on qc.source_no = qs.no
+		GROUP BY name
+		order by cnt DESC
+	</select>
 </mapper>
