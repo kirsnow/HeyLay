@@ -4,16 +4,5 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.planb.serach.dao.SearchDAO">
 
-	<select id="selectContentsByNo" resultType="SearchVO">
-  		select CON.NO as no, CON.TITLE as title, CON.SUMMARY as summary, CON.URL as url
-  		, to_char(CON.LAST_SCRAPED, 'YYYY. MM. DD.') as lastScraped
-  		, SOU.NAME as source, SOU.URL as sourceUrl, CAT.CATEGORY as category, DAT.DATA_TYPE as dataType
-  		, CON.SAVE_CNT as saveCnt, CON.REPORT_CNT as reportCnt, CON.LIKE_CNT as likeCnt, CON.VIEW_CNT as viewCnt
-  		from Q_CONTENTS CON
-        inner join Q_CATEGORY CAT on CAT.NO = CON.CATEGORY_NO
-        inner join Q_SOURCE SOU on SOU.NO = CON.SOURCE_NO
-        inner join Q_DATA_TYPE DAT on DAT.NO = SOU.DATA_TYPE
-  		where CON.NO = #{no}
-  	</select>
   	
 </mapper>
