@@ -78,4 +78,12 @@
 		ORDER BY cnt DESC
 		Limit 5
 	</select>
+	
+	<select id="selectAllKeywordList" resultType="KeywordsVO">
+		SELECT keyword, COUNT(keyword) as cnt
+		FROM Q_KEYWORDS
+		GROUP BY keyword
+		ORDER BY cnt DESC 
+		Limit 50
+	</select>
 </mapper>

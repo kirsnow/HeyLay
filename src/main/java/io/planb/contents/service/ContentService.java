@@ -20,10 +20,10 @@ public class ContentService {
 		List<KeywordsVO> keywordList = dao.selectKeywordList(memberNo);
 		return keywordList;
 	}
-	
+	/*
 	public void updateStatus(int no) {
 		dao.updateStatus(no);
-	}
+	} */
 	
 	public List<SavedVO> drawerCards(int memberNo) {
 		List<SavedVO> drawerCards = dao.drawerCards(memberNo);

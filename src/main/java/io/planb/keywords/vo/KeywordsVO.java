@@ -5,17 +5,19 @@ public class KeywordsVO {
 	private String keyword;
 	private String regDate;
 	private String status;
-	private String memberNo;
+	private int memberNo;
+	private int cnt;
 	
 	public KeywordsVO() {}
 
-	public KeywordsVO(int no, String keyword, String regDate, String status, String memberNo) {
+	public KeywordsVO(int no, String keyword, String regDate, String status, int memberNo, int cnt) {
 		super();
 		this.no = no;
 		this.keyword = keyword;
 		this.regDate = regDate;
 		this.status = status;
 		this.memberNo = memberNo;
+		this.cnt = cnt;
 	}
 
 	public int getNo() {
@@ -50,17 +52,25 @@ public class KeywordsVO {
 		this.status = status;
 	}
 
-	public String getMemberNo() {
+	public int getMemberNo() {
 		return memberNo;
 	}
 
-	public void setMemberNo(String memberNo) {
+	public void setMemberNo(int memberNo) {
 		this.memberNo = memberNo;
+	}
+
+	public int getCnt() {
+		return cnt;
+	}
+
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
 	}
 
 	@Override
 	public String toString() {
 		return "KeywordsVO [no=" + no + ", keyword=" + keyword + ", regDate=" + regDate + ", status=" + status
-				+ ", memberNo=" + memberNo + "]";
+				+ ", memberNo=" + memberNo + ", cnt=" + cnt + "]";
 	}
 }

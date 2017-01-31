@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import io.planb.keywords.vo.KeywordsVO;
 import io.planb.statics.dao.StaticsDAO;
 import io.planb.statics.vo.StaticsVO;
 
@@ -61,5 +62,10 @@ public class StaticsService {
 		List<StaticsVO> citeStaticsList = dao.selectCiteContents();
 		
 		return citeStaticsList;
+	}
+
+	public List<KeywordsVO> selectAllKeywordList() {
+		List<KeywordsVO> allKeywordList = dao.selectAllKeywordList();
+		return allKeywordList;
 	}
 }

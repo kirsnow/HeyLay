@@ -15,6 +15,8 @@
 <!-- Bootstrap -->
 <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css"
 	type="text/css" rel="stylesheet">
+<!-- Custom Theme Style -->
+<link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet"> 	
 
 <!-- icon-font -->
 <script src="https://use.fontawesome.com/bbddce3010.js"></script>
@@ -27,8 +29,8 @@
     <![endif]-->
 <title>통계 | Quration: 답을 열어 줄 그런 사람</title>
 <style>
-	svg { width: 320px; height: 220px; }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ㅛㅗ ㅅ   ㅎㅎㅎ
-	.pie { fill: orange; stroke: white; }
+	svg { width: 320px; height: 210px; }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ㅛㅗ ㅅ   ㅎㅎㅎ
+	
 </style>
 </head>
 <body class="nav-md">
@@ -63,9 +65,9 @@
 							</div> 
 						</div>
 						<div class="row">
-							<div class="well div col-md-push-2 col-md-8">
+							<div class="div col-md-push-2 col-md-8">
 								<div class="row">
-									<div class="col-md-push-3 col-md-6">
+									<div class="text-center">
 										<section id="auth-button"></section>
 										<section id="view-selector"></section>
 										<section id="timeline"></section>
@@ -102,157 +104,94 @@
 
 <!-- Embed API -->
 <script>
-$.ajax({
-	url : '${ pageContext.request.contextPath }/admin/statics/cntCite.do',
-	type : 'get',
-	contentType : "application/json",
-	data : {
-		"no" : '${ userVO.no}'
-	},
-	success : function(response) {
-		var w = 200;
-		var h = 200;
-		var r = h / 2;
-
-		var color = d3.scale.ordinal().range(
-				[ "#FFF9C4", "#FFF59D", "#FFF176", "#FFEE58", "#FFEB3B" ]); // GPVF
-
-		var ydata = [ {
-			"good" : 5,
-			"pto" : 10,
-			"v" : 25,
-			"f" : 8
-		} ];
-
-		var data = [];
-
-		for (var i = 0; i < response.staticsList.length; i++) {
-			data.push({
-				"label" : response.staticsList[i].columnName,
-				"value" : response.staticsList[i].cnt
-			});
-		}
-
-		var vis = d3.select("#myGraph4").append("svg:svg").data([ data ]).attr(
-				"width", w).attr("height", h).append("svg:g").attr("transform",
-				"translate(" + r + "," + r + ")");
-		var pie = d3.layout.pie().value(function(d) {
-			return d.value;
-		});
-
-		var arc = d3.svg.arc().outerRadius(r);
-
-		var arcs = vis.selectAll("g.slice").data(pie).enter().append("svg:g")
-				.attr("class", "slice");
-
-		arcs.append("svg:path").attr("fill", function(d, i) {
-			return color(i);
-			// return color(d.data.value)
-		}).attr("d", function(d) {
-			return arc(d);
-		}).attr('stroke', '#fff')
-		// <-- THIS
-		.attr('stroke-width', '3');
-
-		// add the text
-		arcs.append("svg:text").attr("transform", function(d) {
-			d.innerRadius = 0;
-			d.outerRadius = 0;
-			var c = arc.centroid(d);
-			return "translate(" + c[0] + "," + c[1] + ")";
-		}).attr("text-anchor", "middle").attr("dominant-baseline", "central")
-				.style("font-size", "15px").style("text-decoration", "bold")
-				.text(function(d, i) {
-					return data[i].label;
-				});
-		arcs.append("svg:text").attr("transform", function(d) {
-			var c = arc.centroid(d);
-			return "translate(" + c[0] + "," + c[1] + ")";
-		}).attr('dy', '2em').attr("text-anchor", "middle").style("font-size",
-				"12px").style("text-decoration", "bold").text(function(d, i) {
-			return data[i].value;
-		});
-	},
-	error : function() {
-		alert('ERROR');
-	}  
-});
-
-$.ajax({
-	url : '${ pageContext.request.contextPath }/admin/statics/cntContents.do',
-	type : 'get',
-	contentType : "application/json",
-	data : {
+	/* 회원 전체의 조회수가 높은 사이트 */
+	$.ajax({
+		url : '${ pageContext.request.contextPath }/admin/statics/cntCite.do',
+		type : 'get',
+		contentType : "application/json",
+		data : {
 			"no" : '${ userVO.no}'
-	},
-	success : function(response) {
-		var w = 200;
-		var h = 200;
-		var r = h / 2;
-
-		var color = d3.scale.ordinal().range(
-				[ "#FFF9C4", "#FFF59D", "#FFF176", "#FFEE58", "#FFEB3B" ]); // GPVF
-
-		var ydata = [ {
-			"good" : 5,
-			"pto" : 10,
-			"v" : 25,
-			"f" : 8
-		} ];
-
-		var data = [];
-
-		for (var i = 0; i < response.staticsList.length; i++) {
-			data.push({
-				"label" : response.staticsList[i].columnName,
-				"value" : response.staticsList[i].cnt
-			});
-		}
-
-		var vis = d3.select("#myGraph3").append("svg:svg").data([ data ]).attr(
-				"width", w).attr("height", h).append("svg:g").attr("transform",
-				"translate(" + r + "," + r + ")");
-		var pie = d3.layout.pie().value(function(d) {
-			return d.value;
-		});
-
-		var arc = d3.svg.arc().outerRadius(r);
-
-		var arcs = vis.selectAll("g.slice").data(pie).enter().append("svg:g")
-				.attr("class", "slice");
-
-		arcs.append("svg:path").attr("fill", function(d, i) {
-			return color(i);
-			// return color(d.data.value)
-		}).attr("d", function(d) {
-			return arc(d);
-		}).attr('stroke', '#fff')
-		// <-- THIS
-		.attr('stroke-width', '3');
-
-		// add the text
-		arcs.append("svg:text").attr("transform", function(d) {
-			d.innerRadius = 0;
-			d.outerRadius = 0;
-			var c = arc.centroid(d);
-			return "translate(" + c[0] + "," + c[1] + ")";
-		}).attr("text-anchor", "middle").attr("dominant-baseline", "central")
-				.style("font-size", "15px").style("text-decoration", "bold")
-				.text(function(d, i) {
-					return data[i].label;
+		},
+		success : function(response) {
+			var w = 200;
+			var h = 200;
+			var r = h / 2;
+	
+			var color = d3.scale.ordinal().range(
+					[ "#FFF9C4", "#FFF59D", "#FFF176", "#FFEE58", "#FFEB3B" ]); // GPVF
+	
+			var data = [];
+	
+			for (var i = 0; i < response.staticsList.length; i++) {
+				data.push({
+					"label" : response.staticsList[i].columnName,
+					"value" : response.staticsList[i].cnt
 				});
-		arcs.append("svg:text").attr("transform", function(d) {
-			var c = arc.centroid(d);
-			return "translate(" + c[0] + "," + c[1] + ")";
-		}).attr('dy', '2em').attr("text-anchor", "middle").style("font-size",
-				"12px").style("text-decoration", "bold").text(function(d, i) {
-			return data[i].value;
-		});
-	},
-	error : function() {
-		alert('ERROR');
-	} 
-});
+			}
+	
+			var vis = d3.select("#myGraph4").append("svg:svg").data([ data ]).attr(
+					"width", w).attr("height", h).append("svg:g").attr("transform",
+					"translate(" + r + "," + r + ")");
+			var pie = d3.layout.pie().value(function(d) {
+				return d.value;
+			});
+	
+			var arc = d3.svg.arc().outerRadius(r);
+	
+			var arcs = vis.selectAll("g.slice").data(pie).enter().append("svg:g")
+					.attr("class", "slice");
+	
+			arcs.append("svg:path").attr("fill", function(d, i) {
+				return color(i);
+				// return color(d.data.value)
+			}).attr("d", function(d) {
+				return arc(d);
+			}).attr('stroke', '#fff')
+			// <-- THIS
+			.attr('stroke-width', '3');
+	
+			// add the text
+			arcs.append("svg:text").attr("transform", function(d) {
+				d.innerRadius = 0;
+				d.outerRadius = 0;
+				var c = arc.centroid(d);
+				return "translate(" + c[0] + "," + c[1] + ")";
+			}).attr("text-anchor", "middle").attr("dominant-baseline", "central")
+					.style("font-size", "15px").style("text-decoration", "bold")
+					.text(function(d, i) {
+						return data[i].label;
+					});
+			arcs.append("svg:text").attr("transform", function(d) {
+				var c = arc.centroid(d);
+				return "translate(" + c[0] + "," + c[1] + ")";
+			}).attr('dy', '2em').attr("text-anchor", "middle").style("font-size",
+					"12px").style("text-decoration", "bold").text(function(d, i) {
+				return data[i].value;
+			});
+		},
+		error : function() {
+			alert('ERROR');
+		}  
+	});
+
+	/* 회원 전체의 조회수가 높은 콘텐츠  */
+	
+	
+	   $.ajax({
+	      url : '${ pageContext.request.contextPath }/admin/statics/cntContents.do',
+	      type : 'get',
+	      contentType : "application/json",
+	      data : {
+	            "no" : '${ userVO.no}'
+	      },
+	      success : function(response) {
+	   	 
+	    	
+	      }
+	 });
+	
+	/* 회원 전체 자주 담은 사이트 타입 */
+
 
 	$.ajax({
 		url : '${ pageContext.request.contextPath }/admin/statics/sourceType.do',
@@ -267,14 +206,8 @@ $.ajax({
 			var r = h / 2;
 	
 			var color = d3.scale.ordinal().range(
-					[ "#C8E6C9", "#A5D6A7", "#81C784", "#66BB6A", "#4CAF50" ]); // GPVF
+					[ "#FCE4EC", "#F8BBD0", "#F48FB1", "#F06292", "#EC407A"]); // GPVF
 	
-			var ydata = [ {
-				"good" : 5,
-				"pto" : 10,
-				"v" : 25,
-				"f" : 8
-			} ];
 	
 			var data = [];
 	
@@ -330,6 +263,7 @@ $.ajax({
 		}
 	});
     
+	/* 회원 전체 자주 담은 사이트 */
 	$.ajax({
 		url : '${ pageContext.request.contextPath }/admin/statics/savedSource.do',
 		type : 'get',

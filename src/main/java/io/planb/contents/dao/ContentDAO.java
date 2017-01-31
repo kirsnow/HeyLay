@@ -25,9 +25,9 @@ public class ContentDAO {
 		return keywordList;
 	}
 	
-	public void updateStatus(int no) {
+	/*public void updateStatus(int no) {
 		sqlSessionTemplate.update("io.planb.contents.dao.ContentDAO.updateStatus", no);
-	}
+	}*/
 	
 	public List<SavedVO> drawerCards(int memberNo) {
 		List<SavedVO> drawerCards = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.drawerCards", memberNo);

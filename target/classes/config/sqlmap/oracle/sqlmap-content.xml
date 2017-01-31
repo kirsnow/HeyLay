@@ -17,11 +17,11 @@
 			ORDER BY regDate DESC
 	</select> 
 	
-	<update id="updateStatus" parameterType="int">
+	<!-- <update id="updateStatus" parameterType="int">
 		UPDATE Q_KEYWORDS
 			SET STATUS='X'
 			WHERE no = #{ no } 
-	</update>
+	</update>-->
 	
 	<!-- <select id="selectByNo" parameterType="int" resultType="memberVO">
 		<include refid="selectId" />
