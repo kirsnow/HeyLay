@@ -50,4 +50,16 @@ public class StaticsService {
 		
 		return staticsList;
 	}
+
+	public List<StaticsVO> selectAllCntContents() {
+		List<StaticsVO> contentStaticsList = dao.selectAllCntContents();
+		
+		return contentStaticsList;
+	}
+	
+	public List<StaticsVO> selectCiteContents() {
+		List<StaticsVO> citeStaticsList = dao.selectCiteContents();
+		
+		return citeStaticsList;
+	}
 }

@@ -49,4 +49,16 @@ public class StaticsDAO {
 		
 		return staticsList;
 	}
+
+	public List<StaticsVO> selectAllCntContents() {
+		List<StaticsVO> contentStaticsList = sqlSessionTemplate.selectList("io.planb.statics.dao.StaticsDAO.selectAllCntContents");
+		
+		return contentStaticsList;
+	}
+
+	public List<StaticsVO> selectCiteContents() {
+		List<StaticsVO> citeStaticsList = sqlSessionTemplate.selectList("io.planb.statics.dao.StaticsDAO.selectCiteContents");
+		
+		return citeStaticsList;
+	}
 }

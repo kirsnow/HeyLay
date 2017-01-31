@@ -133,4 +133,26 @@ public class StaticsController {
 		return new StaticsListVO(staticsList);
 	}
 	
+	/*회원 전체의 조회수가 높은 콘텐츠*/
+	@ResponseBody
+	@RequestMapping("/admin/statics/cntContents.do")
+	public StaticsListVO selectAllCntContents(Model model) {
+		List<StaticsVO> contentStaticsList = service.selectAllCntContents();
+		
+		System.out.println("controller contentStaticsList : " + contentStaticsList);
+		
+		return new StaticsListVO(contentStaticsList);
+	}
+	
+	/*회원 전체의 조회수가 높은 사이트*/
+	@ResponseBody
+	@RequestMapping("/admin/statics/cntCite.do")
+	public StaticsListVO selectCiteContents(Model model) {
+		List<StaticsVO> citeStaticsList = service.selectCiteContents();
+		
+		System.out.println("controller citeStaticsList : " + citeStaticsList);
+		
+		return new StaticsListVO(citeStaticsList);
+	}
+	
 }
