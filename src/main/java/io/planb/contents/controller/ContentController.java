@@ -165,5 +165,12 @@ public class ContentController {
 		
 		return "contents/card_enrollform_modal";
 	}
+	
+	/* 통계 자세히 보기 페이지로 이동 */
+	@RequestMapping("/contents/stats.do")
+	public String stats() {
+		
+		return "contents/stats";
+	}
 
 }
