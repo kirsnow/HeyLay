@@ -64,7 +64,9 @@
                   <div class="row">
                      <div class="div col-md-push-2 col-md-14">
                         <h4 class="text-center marginBottom30">회원 전체의 조회수가 높은 콘텐츠</h4>
-                        <svg class="col-md-offset-3" id="myGraph3"></svg>
+                        <div class="">
+                       		<svg class="col-md-8 col-md-offset-2" id="myGraph3"></svg>
+                        </div>
                      </div>
                   </div>
                   <div class="row">
@@ -117,7 +119,8 @@
       contentType : "application/json",
       data : { "contentStaticsList" : '${ staticsVO.columnName}' },
       success : function(json){
-       
+       var w = 600;
+       var h = 20;
           
        var dataSet = [ ];   // 데이터를 저장할 배열을 준비
        
@@ -125,7 +128,7 @@
                   [ "#DCE775", "#FFAB91", "#FFF59D", "#81D4FA", "#E1BEE7" ]); //컬러 변경
                
          for(var i = 0; i < json.staticsList.length; i++) { //데이터 줄수만큼 반복
-                dataSet.push(json.staticsList[i].cnt);
+                dataSet.push(json.staticsList[i].cnt, json.staticsList[i].columnName);
              }
             
             // 그래프 그리기
@@ -137,14 +140,22 @@
               .attr("class", "rect")   // CSS 클래스를 지정
               .attr("fill",function(d,i){return colors(i)})
               .attr("width", function(d,i){   // 넓이를 지정. 두 번째의 파라미터에 함수를 지정
-               return d * 30;   // 데이터 값을 그대로 넓이로 반환
+               return d * 10;   // 데이터 값을 그대로 넓이로 반환
                })
               
-              .attr("height", 20)   // 높이를 지정
+              .attr("height", h)   // 높이를 지정
               .attr("x", 0)   // X 좌표를 0으로 함
               .attr("y", function(d, i){   // Y 좌표를 지정함
-                  return i * 30   // 표시 순서에 30을 곱해 위치를 계산
+                  return i * 20   // 표시 순서에 20을 곱해 위치를 계산
                })
+             d3.append("svg:text")
+               .attr("class", "tick_label")
+               .attr("text-anchor", "middle")
+               .attr("y", chart_top)
+               .text(function(d,i)
+               {
+               return d;
+               });
             }
         }); 
 

@@ -143,7 +143,6 @@ public class StaticsController {
 		List<StaticsVO> contentStaticsList = service.selectAllCntContents();
 		
 		model.addAttribute("columnName", columnName);
-		
 		System.out.println("controller contentStaticsList : " + contentStaticsList);
 		
 		return new StaticsListVO(contentStaticsList);
