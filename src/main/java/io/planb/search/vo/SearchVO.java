@@ -6,6 +6,7 @@ import io.planb.contents.vo.ContentsVO;
 
 public class SearchVO {
 	private String query;
+	private int userNo;
 	private int total;
 	private double maxScore;
 	private List<ContentsVO> contents;
@@ -14,9 +15,10 @@ public class SearchVO {
 		super();
 	}
 	
-	public SearchVO(String query, int total, double maxScore, List<ContentsVO> contents) {
+	public SearchVO(String query, int userNo, int total, double maxScore, List<ContentsVO> contents) {
 		super();
 		this.query = query;
+		this.userNo = userNo;
 		this.total = total;
 		this.maxScore = maxScore;
 		this.contents = contents;
@@ -27,6 +29,12 @@ public class SearchVO {
 	}
 	public void setQuery(String query) {
 		this.query = query;
+	}
+	public int getUserNo() {
+		return userNo;
+	}
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
 	}
 	public int getTotal() {
 		return total;
@@ -49,8 +57,8 @@ public class SearchVO {
 
 	@Override
 	public String toString() {
-		return "SearchVO [query=" + query + ", total=" + total + ", maxScore=" + maxScore + ", contents=" + contents
-				+ "]";
+		return "SearchVO [query=" + query + ", userNo=" + userNo + ", total=" + total + ", maxScore=" + maxScore
+				+ ", contents=" + contents + "]";
 	}
 
 }
