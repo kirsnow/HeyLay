@@ -11,9 +11,10 @@
 	</sql> -->
 
  	<select id="selectKeywordList" parameterType="int" resultType="keywordsVO">
-		SELECT no, keyword, to_char(reg_date, 'yyyy-mm-dd') regDate, status, MEMBER_NO memberNo
+		SELECT max(no), keyword, to_char(max(reg_date), 'yyyy-mm-dd') regDate
 			FROM Q_KEYWORDS
 			WHERE STATUS='Y' and MEMBER_NO = #{ memberNo }
+            group by keyword
 			ORDER BY regDate DESC
 			limit 50
 	</select> 
@@ -21,7 +22,7 @@
 	<update id="updateStatus" parameterType="int">
 		UPDATE Q_KEYWORDS
 			SET STATUS='N'
-			WHERE no = #{ no } 
+			WHERE keyword = #{ keyword }
 	</update>
 	
 	<!-- <select id="selectByNo" parameterType="int" resultType="memberVO">
