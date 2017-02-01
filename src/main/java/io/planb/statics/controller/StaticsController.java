@@ -136,13 +136,14 @@ public class StaticsController {
 		return new StaticsListVO(staticsList);
 	}
 	
-	/*회원 전체의 조회수가 높은 콘텐츠*/
+	/*회원 전체의 조회수가 높은 콘텐츠 가로형 막대 그래프*/
 	@ResponseBody
 	@RequestMapping("/admin/statics/cntContents.do")
-	public StaticsListVO selectAllCntContents(Model model) {
+	public StaticsListVO selectAllCntContents(Model model , StaticsVO columnName) {
 		List<StaticsVO> contentStaticsList = service.selectAllCntContents();
 		
-		//System.out.println("controller contentStaticsList : " + contentStaticsList);
+		model.addAttribute("columnName", columnName);
+		System.out.println("controller contentStaticsList : " + contentStaticsList);
 		
 		return new StaticsListVO(contentStaticsList);
 	}
@@ -150,7 +151,7 @@ public class StaticsController {
 	/*회원 전체의 조회수가 높은 사이트*/
 	@ResponseBody
 	@RequestMapping("/admin/statics/cntCite.do")
-	public StaticsListVO selectCiteContents(Model model) {
+	public StaticsListVO selectCiteContents() {
 		List<StaticsVO> citeStaticsList = service.selectCiteContents();
 		
 		/*System.out.println("controller citeStaticsList : " + citeStaticsList);*/
@@ -168,7 +169,7 @@ public class StaticsController {
 		mav.setViewName("admin/search_list");
 		mav.addObject("allKeywordList", allKeywordList);
 		
-		System.out.println("allKeywordList controller : " + allKeywordList);
+		//System.out.println("allKeywordList controller : " + allKeywordList);
 		
 		return mav;
 	}

@@ -57,26 +57,28 @@
 
 				<div class="container text-center">
 					<div class="row">
-						<h6>내가 검색한 검색어가 최근 순으로 50개만 보여집니다. 클릭하면 검색 페이지로 갑니다.</h6>
+						<div class="col-md-8 col-md-offset-2">
+							<h4>최신 검색어 Top50</h4>
+						</div>
 					</div>
 					<div class="row">
 						<c:choose>
 							<c:when test="${ (keywordList eq null) or (empty keywordList) }">
 								<div class="row">
-									<p class="lead">아직 검색한 키워드가 없습니다 &#58;O</p>
+									<p class="lead marginTop180">아직 검색한 키워드가 없습니다 &#58;O</p>
 								</div>
 							</c:when>
 							<c:otherwise>
-								<c:forEach var="keyword" items="${ keywordList }" varStatus="loop">
-									<div>
-										<p>
+								<ul class="list-unstyled">
+									<c:forEach var="keyword" items="${ keywordList }" varStatus="loop">
+										<li class="marginBottom">
 											<c:out value="${loop.count}" />
 											.&nbsp;&nbsp; <a href="#" title="해당 단어 검색 결과로 가는 URL">${ keyword.keyword }</a>
 											 &nbsp;&nbsp;${ keyword.regDate }&nbsp;&nbsp;
 											<a href="javascript:update('${keyword.no}', '${userVO.no}')"><i class="fa fa-window-close" aria-hidden="true"></i></a>
-										</p>
-									</div>
-								</c:forEach>
+										</li>
+									</c:forEach>
+								</ul>
 							</c:otherwise>
 						</c:choose>
 					</div>

@@ -13,15 +13,16 @@
  	<select id="selectKeywordList" parameterType="int" resultType="keywordsVO">
 		SELECT no, keyword, to_char(reg_date, 'yyyy-mm-dd') regDate, status, MEMBER_NO memberNo
 			FROM Q_KEYWORDS
-			WHERE STATUS='O' and MEMBER_NO = #{ memberNo }
+			WHERE STATUS='Y' and MEMBER_NO = #{ memberNo }
 			ORDER BY regDate DESC
+			limit 50
 	</select> 
 	
-	<!-- <update id="updateStatus" parameterType="int">
+	<update id="updateStatus" parameterType="int">
 		UPDATE Q_KEYWORDS
-			SET STATUS='X'
+			SET STATUS='N'
 			WHERE no = #{ no } 
-	</update>-->
+	</update>
 	
 	<!-- <select id="selectByNo" parameterType="int" resultType="memberVO">
 		<include refid="selectId" />

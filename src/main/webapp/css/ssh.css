@@ -74,6 +74,10 @@
         margin-top: 80px;
     }
     
+      .marginTop180{
+        margin-top: 180px;
+    }
+    
     .paddingTop{
     	padding-top: 10px;
     }
@@ -147,7 +151,3 @@
   	.formBottom15 > div > div {
       margin-bottom:15px !important;
    }
-   
-
-}
-   

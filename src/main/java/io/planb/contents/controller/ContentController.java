@@ -117,14 +117,13 @@ public class ContentController {
 		return "contents/curation";
 	}
 	
-	
-	/*@RequestMapping("/contents/my_search.do")
+	/*내 검색어*/
+	@RequestMapping("/contents/my_search.do")
 	public String my_search(Model model, @RequestParam("memberNo") int memberNo) {
 		List<KeywordsVO> keywordList = service.selectKeywordList(memberNo);
 		model.addAttribute("keywordList", keywordList);
 		
-		System.out.println("controller : " + keywordList);
-		System.out.println("controller : " + memberNo);
+		System.out.println("keywordList controller : " + keywordList);
 		
 		return "contents/my_search";
 	}
@@ -134,7 +133,7 @@ public class ContentController {
 		service.updateStatus(no);
 		
 		return "redirect:/contents/my_search.do?memberNo="+memberNo;
-	}*/
+	}
 	
 	//통계 분석 
 	@RequestMapping("/contents/analysis.do")
@@ -144,7 +143,7 @@ public class ContentController {
 		
 		List<KeywordsVO> keywordList = service.selectKeywordList(memberNo);
 		
-		System.out.println("controller : " + memberNo);
+		//System.out.println("controller : " + memberNo);
 			
 		return "contents/analysis";
 	}
