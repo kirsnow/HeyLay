@@ -78,7 +78,7 @@
 						<c:otherwise>
 							<c:forEach var="drawerHeader" items="${ drawerHeaders }" varStatus="loop">
 								<div class="row marginTop30">
-									<span class="text-primary lead">${ drawerHeader.regDate } <small>저장해 둔 카드 ${ drawerHeader.cnt } 건</small></span>
+									<span class="text-primary lead">${ drawerHeader.daysAgo } <small>저장한 카드 ${ drawerHeader.cnt } 건</small></span>
 								</div>
 								<div class="row card-container mdl-grid">
 									<c:forEach var="card" items="${ drawerCards }" varStatus="loop">
@@ -88,8 +88,15 @@
 						
 						                    <!-- card top: contents source -->
 						                    <div class="mdl-card__title mdl-color-text--grey-500">
-						                        <span class="label label-default">${ card.sourceName }</span>
-						                        <span class="label label-default">${ card.categoryName }</span>
+						                        <span class="label label-default">
+					                            	${ card.categoryName }
+					                            </span>
+					                            <span class="label label-info">
+					                            	${ card.dataType }
+					                            </span>
+					                            <a href="${ card.sourceUrl }" class="label label-primary" target="_blank" title="원본 사이트로 이동(새 창)">
+					                            	${ card.sourceName }
+					                            </a>
 						                    </div>
 						                    <c:if test="${ card.imgUrl ne null }">
 							                    <!-- card image -->
@@ -99,13 +106,18 @@
 											</c:if>
 						                    <!-- card title -->
 						                    <div class="mdl-card__title">
-						                        <h5 class="author mdl-card__title-text">${ card.title }</h5>
+						                        <h5 class="author mdl-card__title-text">${ card.title }&nbsp;</h5>
+						                        <div class="pull-right">
+							                        <a href="${ card.url }" target="_blank" title="원본 페이지로 이동(새 창)">
+							                        	<i class="fa fa-external-link" aria-hidden="true"></i>
+						                        	</a>
+					                        	</div>
 						                    </div>
 						
 						                    <!-- card text -->
 						                    <div class="content mdl-card__supporting-text mdl-color-text--grey-800">
-						                        <p class="text-justify">${ card.regDate }</p>
 						                        <p class="text-justify">${ card.summary }</p>
+						                        <p class="text-right text-muted">${ card.daysAgo } 저장</p>
 						                    </div>
 						
 						                    <!-- card menu (top-right) -->
@@ -120,7 +132,7 @@
 						
 						                    <!-- card action buttons (bottom) -->
 						                    <div class="mdl-card__actions mdl-card--border">
-						                        <a class="btn btn-link" title="상세 페이지로 이동">
+						                        <a href="${ pageContext.request.contextPath }/search/contents.do?no=${ card.no }" class="btn btn-link" title="상세 페이지로 이동">
 						                        	더 보기
 						                        </a>
 						                        <!-- buttons (bottom-right) -->
@@ -141,8 +153,8 @@
 						                                    <i class="fa fa-exclamation-triangle fa-lg" aria-hidden="true"></i>
 						                                </a>
 						                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
-						                                    <li><a href="${ pageContext.request.contextPath }/contact/bug.do" title="오류 신고"><i class="fa fa-bug fa-fw" aria-hidden="true"></i> 오류 신고</a></li>
-						                                    <li><a href="${ pageContext.request.contextPath }/contact/spamContents.do" title="유해물 신고"><i class="fa fa-ban fa-fw" aria-hidden="true"></i> 유해물 신고</a></li>
+						                                    <li><a href="${ pageContext.request.contextPath }/contact/bug.do?no=${ card.no }&type=contents" title="오류 신고"><i class="fa fa-bug fa-fw" aria-hidden="true"></i> 오류 신고</a></li>
+						                                    <li><a href="${ pageContext.request.contextPath }/contact/spamContents.do?no=${ card.no }" title="유해물 신고"><i class="fa fa-ban fa-fw" aria-hidden="true"></i> 유해물 신고</a></li>
 						                                </ul>
 						                            </div>
 						                        </div> <!-- /buttons (bottom-right) -->
