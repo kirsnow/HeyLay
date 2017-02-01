@@ -8,8 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.vo.MemberVO;
 import io.planb.statics.service.StaticsService;
 import io.planb.statics.vo.StaticsListVO;
@@ -133,4 +136,40 @@ public class StaticsController {
 		return new StaticsListVO(staticsList);
 	}
 	
+	/*회원 전체의 조회수가 높은 콘텐츠*/
+	@ResponseBody
+	@RequestMapping("/admin/statics/cntContents.do")
+	public StaticsListVO selectAllCntContents(Model model) {
+		List<StaticsVO> contentStaticsList = service.selectAllCntContents();
+		
+		//System.out.println("controller contentStaticsList : " + contentStaticsList);
+		
+		return new StaticsListVO(contentStaticsList);
+	}
+	
+	/*회원 전체의 조회수가 높은 사이트*/
+	@ResponseBody
+	@RequestMapping("/admin/statics/cntCite.do")
+	public StaticsListVO selectCiteContents(Model model) {
+		List<StaticsVO> citeStaticsList = service.selectCiteContents();
+		
+		/*System.out.println("controller citeStaticsList : " + citeStaticsList);*/
+		
+		return new StaticsListVO(citeStaticsList);
+	}
+	
+	/*전체 키워드 랭킹*/
+	@RequestMapping("/admin/statics/allKeywordList.do")
+	public ModelAndView allKeywordList() {
+		
+		ModelAndView mav = new ModelAndView();
+		List<KeywordsVO> allKeywordList = service.selectAllKeywordList();
+		
+		mav.setViewName("admin/search_list");
+		mav.addObject("allKeywordList", allKeywordList);
+		
+		System.out.println("allKeywordList controller : " + allKeywordList);
+		
+		return mav;
+	}
 }

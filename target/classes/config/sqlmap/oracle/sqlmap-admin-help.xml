@@ -89,9 +89,11 @@
 	</select>
 	
 	<select id="seleteContentsSpamList" resultType="contentsSpamVO">
-		SELECT s.no, s.email, s.selected, c.report_cnt reportCnt, q.name reported, s.reg_date regDate
-		FROM q_contents_spam s, q_contents c, q_source q 
-		WHERE s.contents_no = c.no AND c.source_no = q.no 
+		SELECT s.no, s.email, s.selected, COUNT (s.no) reportCnt, q.name reported, s.reg_date regDate
+		FROM q_contents_spam s
+		INNER JOIN q_contents c ON c.no = s.contents_no 
+		INNER JOIN q_source q ON q.no = c.source_no 
+		GROUP BY s.no, c.no, q.no 
 	</select>
 	
 	<select id="countContentsSpam" resultType="int">
@@ -105,9 +107,11 @@
 	</delete>
 	
 	<select id="seleteMemoSpamList" resultType="contentsSpamVO">
-		SELECT s.no, s.email, s.selected, m.report_cnt reportCnt, q.emial reported, s.reg_date regDate
-		FROM q_memo_spam s, q_memo m, q_member q 
-		WHERE s.memo_no = m.no AND m.member_no = q.no  
+		SELECT s.no, s.email, s.selected, COUNT (s.no) reportCnt, q.email reported, s.reg_date regDate
+		FROM q_memo_spam s 
+		INNER JOIN q_memo m ON m.no = s.memo_no 
+		INNER JOIN q_member q ON q.no = m.member_no 
+		GROUP BY s.no, m.no, q.no 
 	</select>
 	
 	<select id="countMemoSpam" resultType="int">
@@ -121,39 +125,47 @@
 	</delete>
 	
 	<select id="selectContentsSpamDetail" parameterType="int" resultType="contentsSpamVO">
-		SELECT s.no, s.email, s.selected, s.user_input userInput, c.report_cnt reportCnt, q.name reported, s.reg_date regDate
-		FROM q_contents_spam s, q_contents c, q_source q 
-		WHERE s.contents_no = c.no AND c.source_no = q.no AND s.no = #{ no } 
+		SELECT s.no, s.email, s.selected, s.user_input userInput, COUNT (s.no) reportCnt, q.name reported, s.reg_date regDate
+		FROM q_contents_spam s 
+		INNER JOIN q_contents c ON c.no = s.contents_no 
+		INNER JOIN q_source q ON q.no = c.source_no 
+		WHERE s.no = #{ no }
+		GROUP BY s.no, c.no, q.no 
 	</select>
 	
 	<select id="selectMemoSpamDetail" parameterType="int" resultType="contentsSpamVO">
-		SELECT s.no, s.email, s.selected, s.user_input userInput, m.report_cnt reportCnt, q.emial reported, s.reg_date regDate
-		FROM q_memo_spam s, q_memo m, q_member q 
-		WHERE s.memo_no = m.no AND m.member_no = q.no AND s.no = #{ no } 
+		SELECT s.no, s.email, s.selected, s.user_input userInput, COUNT (s.no) reportCnt, q.email reported, s.reg_date regDate
+		FROM q_memo_spam s 
+		INNER JOIN q_memo m ON m.no = s.memo_no 
+		INNER JOIN q_member q ON q.no = m.member_no 
+		WHERE s.no = #{ no } 
+		GROUP BY s.no, m.no, q.no 
 	</select>
 	
 	<select id="seleteSpamContentList" resultType="contentsSpamVO">
-		SELECT c.no, c.report_cnt reportCnt, s.name email
-		FROM q_contents c, q_source s
-		WHERE c.source_no = s.no AND c.report_cnt > 0 
+		SELECT c.no, COUNT (cs.no) reportCnt, s.name email
+		FROM q_contents c 
+		INNER JOIN q_contents_spam cs ON cs.contents_no = c.no 
+		INNER JOIN q_source s ON s.no = c.source_no 
+		GROUP BY c.no, s.no, cs.no 
 	</select>
 	
 	<select id="seleteSpamMemoList" resultType="contentsSpamVO">
-		SELECT m.no, m.report_cnt reportCnt, q.email
-		FROM q_memo m, q_member q
-		WHERE m.member_no = q.no AND m.report_cnt > 0
+		SELECT m.no, COUNT (ms.no) reportCnt, q.email
+		FROM q_memo m 
+		INNER JOIN q_memo_spam ms ON ms.memo_no = m.no 
+		INNER JOIN q_member q ON q.no = m.member_no 
+		GROUP BY m.no, q.no, ms.no 
 	</select>
 	
 	<select id="countSpamContent" resultType="int">
 		SELECT COUNT (*) cnt 
-		FROM q_contents 
-		WHERE report_cnt > 0 
+		FROM q_contents_spam 
 	</select>
 	
 	<select id="countSpamMemo" resultType="int">
 		SELECT COUNT (*) cnt 
-		FROM q_memo 
-		WHERE report_cnt > 0 
+		FROM q_memo_spam 
 	</select>
 	
 </mapper>
