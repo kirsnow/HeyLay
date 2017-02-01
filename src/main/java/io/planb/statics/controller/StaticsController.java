@@ -139,10 +139,11 @@ public class StaticsController {
 	/*회원 전체의 조회수가 높은 콘텐츠 가로형 막대 그래프*/
 	@ResponseBody
 	@RequestMapping("/admin/statics/cntContents.do")
-	public StaticsListVO selectAllCntContents(Model model , StaticsVO columnName) {
+	public StaticsListVO selectAllCntContents(Model model , StaticsVO columnName, StaticsVO cnt) {
 		List<StaticsVO> contentStaticsList = service.selectAllCntContents();
 		
 		model.addAttribute("columnName", columnName);
+		
 		System.out.println("controller contentStaticsList : " + contentStaticsList);
 		
 		return new StaticsListVO(contentStaticsList);
