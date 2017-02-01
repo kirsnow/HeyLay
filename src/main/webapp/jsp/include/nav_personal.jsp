@@ -70,6 +70,7 @@ function doMember(memberNo) {
 						    <li><a href="javascript:doMember('${userVO.no}')" title="내가 검색한 검색어 링크">내 검색어</a></li>
 							<li><a href="${ pageContext.request.contextPath }/AllUserWordCloud.do" title="전체 유저 검색어를 기반으로한 워크 클라우드 링크">전체 유저 검색어</a></li>
 							<li><a href="${ pageContext.request.contextPath }/contents/analysis.do" title="내가 검색하고 저장한 통계 분석 링크">통계 분석</a></li>
+							<li><a href="${ pageContext.request.contextPath }/contents/stats.do" title="내가 검색하고 저장한 통계 분석 상세 페이지 링크">상세 통계</a></li>
 						</ul></li>
 					<li><a title="나만의 커스터 마이징 링크" href="${ pageContext.request.contextPath }/contents/customizing.do"><i class="fa fa-puzzle-piece" aria-hidden="true"></i> 
 						커스터마이징 <span class="fa fa-chevron-right"></span></a>

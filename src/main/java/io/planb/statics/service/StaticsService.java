@@ -55,6 +55,7 @@ public class StaticsService {
 	public List<StaticsVO> selectAllCntContents() {
 		List<StaticsVO> contentStaticsList = dao.selectAllCntContents();
 		
+		
 		return contentStaticsList;
 	}
 	
