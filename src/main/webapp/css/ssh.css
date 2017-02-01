@@ -74,6 +74,10 @@
         margin-top: 80px;
     }
     
+	.marginTop180{
+		margin-top: 180px;
+	}
+    
     .paddingTop{
     	padding-top: 10px;
     }
@@ -107,6 +111,10 @@
     
     .tdFont{
         font-size: 15px;
+    }
+    
+    .font20{
+    	font-size: 20px;
     }
     
     .ajaxFont{
@@ -147,7 +155,3 @@
   	.formBottom15 > div > div {
       margin-bottom:15px !important;
    }
-   
-
-}
-   

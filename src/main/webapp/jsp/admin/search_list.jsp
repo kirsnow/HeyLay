@@ -47,7 +47,7 @@ L5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 
 				<div class="container text-center">
 					<div class="row marginBottom">
-						<h4>많이 검색된 순으로 50개만 보여집니다.</h4>
+						<h4 class="well col-md-6 col-md-offset-3">많이 검색된 순으로 50개만 보여집니다.</h4>
 					</div>
 					<div class="row">
 						<c:choose>
@@ -60,7 +60,8 @@ L5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 								<dl>
 								<c:forEach var="keyword" items="${ allKeywordList }" varStatus="loop">
 									<dt class="col-md-6 col-md-offset-4 text-left"><c:out value="${loop.count}"/>.&nbsp;&nbsp;${ keyword.keyword }</dt>
-									<dd class="col-md-1 col-md-pull-3">${ keyword.cnt }번&nbsp;&nbsp;검색&nbsp;됨</dd>
+									<dd class="col-md-1 col-md-pull-3">${ keyword.cnt }번&nbsp;&nbsp;검색됨</dd>
+									<hr class="col-md-6 col-md-offset-3 "/>
 								</c:forEach>
 								</dl>
 							</c:otherwise>
