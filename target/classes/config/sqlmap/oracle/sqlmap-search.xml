@@ -49,4 +49,9 @@
 		order by MMO.REG_DATE desc
   	</select>
   	
+  	<insert id="insertKeyword" parameterType="searchVO">
+  		insert into q_keywords(keyword, member_no, search_result)
+  		values(#{ query }, #{ userNo }, #{ total })
+  	</insert>
+  	
 </mapper>

@@ -13,7 +13,7 @@
 <style>
 	#word-cloud{
 		width : 1000px;
-		height : 700px;
+		height : 600px;
 	}
 </style>
 <!-- Bootstrap -->
@@ -58,7 +58,7 @@
 				<div class="container text-center">
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2">
-							<h1>가장 많이 검색된 검색어를 더 크게 보여드립니다.</h1>
+							<h4>한 눈에 보는 인기 검색어 워드 클라우드</h4>
 						</div>
 					</div>
 					<c:choose>
@@ -68,9 +68,12 @@
 							</div> 
 			            </c:when>
 			       		<c:otherwise> 
-							<div >
-					            <svg id="word-cloud"></svg>
+							<div class="row">
+								<div class="col-md-8 col-md-offset-2">
+					            	<svg id="word-cloud"></svg>
+					            </div>
 						    </div> 
+						    <small>많이 검색된 검색어일수록 크게 보여집니다.</small>
 						</c:otherwise>
 					</c:choose> 
 		        </div>
@@ -85,8 +88,12 @@
 	
 	
 	<!-- for word Cloud d3.js library -->
-    <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
     <script type="text/javascript" src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js"></script> 
+    
+    <%-- <script type="text/javascript" src="${ pageContext.request.contextPath }/js/d3.v3.min.js"></script>
+    <script type="text/javascript" src="${ pageContext.request.contextPath }/js/d3.layout.cloud.js"></script> --%>
+    
    <%--  <script type="text/javascript" src="${ pageContext.request.contextPath }/js/wordCloud.js"></script> --%>
     
     <!-- jQuery -->
@@ -100,8 +107,8 @@
 	
 	<!-- for word Cloud js -->
 	<script>
-     	var width = 1000,
-			height = 730;
+	 	var width = 850,
+			height = 600;
      	
 		var fill = d3.scale.category20(); //워드 클라우드 색 채우기 부분
 			

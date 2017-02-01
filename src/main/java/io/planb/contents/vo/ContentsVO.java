@@ -5,6 +5,7 @@ public class ContentsVO {
 	private String title;
 	private String summary;
 	private String url;
+	private String imgUrl;
 	private String lastScraped;
 	private String ban;
 	
@@ -20,13 +21,15 @@ public class ContentsVO {
 	
 	public ContentsVO() {}
 	
-	public ContentsVO(int no, String title, String summary, String url, String lastScraped, String ban, String source,
-			String sourceUrl, String category, String dataType, int saveCnt, int reportCnt, int likeCnt, int viewCnt) {
+	public ContentsVO(int no, String title, String summary, String url, String imgUrl, String lastScraped, String ban,
+			String source, String sourceUrl, String category, String dataType, int saveCnt, int reportCnt, int likeCnt,
+			int viewCnt) {
 		super();
 		this.no = no;
 		this.title = title;
 		this.summary = summary;
 		this.url = url;
+		this.imgUrl = imgUrl;
 		this.lastScraped = lastScraped;
 		this.ban = ban;
 		this.source = source;
@@ -63,6 +66,14 @@ public class ContentsVO {
 	public void setUrl(String url) {
 		this.url = url;
 	}
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
+
 	public String getLastScraped() {
 		return lastScraped;
 	}
@@ -126,10 +137,10 @@ public class ContentsVO {
 
 	@Override
 	public String toString() {
-		return "ContentsVO [no=" + no + ", title=" + title + ", summary=" + summary + ", url=" + url + ", lastScraped="
-				+ lastScraped + ", ban=" + ban + ", source=" + source + ", sourceUrl=" + sourceUrl + ", category="
-				+ category + ", dataType=" + dataType + ", saveCnt=" + saveCnt + ", reportCnt=" + reportCnt
-				+ ", likeCnt=" + likeCnt + ", viewCnt=" + viewCnt + "]";
+		return "ContentsVO [no=" + no + ", title=" + title + ", summary=" + summary + ", url=" + url + ", imgUrl="
+				+ imgUrl + ", lastScraped=" + lastScraped + ", ban=" + ban + ", source=" + source + ", sourceUrl="
+				+ sourceUrl + ", category=" + category + ", dataType=" + dataType + ", saveCnt=" + saveCnt
+				+ ", reportCnt=" + reportCnt + ", likeCnt=" + likeCnt + ", viewCnt=" + viewCnt + "]";
 	}
 
 	public String toJson() {

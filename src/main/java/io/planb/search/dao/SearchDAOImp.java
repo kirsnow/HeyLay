@@ -1,6 +1,7 @@
 package io.planb.search.dao;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,15 +25,20 @@ public class SearchDAOImp {
 	public SearchVO searchResult(String q, String host) {
 		
 		SearchVO searchResult = null;
+		int searchSize = 100;
 		
 		try {
+			String restAPI = "http://" + host + ":9200/_all/_search?pretty=true&size=" + searchSize + "&q="
+					+ URLEncoder.encode(q, "UTF-8");
+			System.out.println(restAPI);
 			JsonReader jsonReader = new JsonReader();
-			JSONObject json = jsonReader.readJsonFromUrl("http://" + host + ":9200/_all/_search?pretty=true&q=" + q);
+			JSONObject json = jsonReader.readJsonFromUrl(restAPI);
 			JSONObject hits = json.getJSONObject("hits");
 			
 			//Search result
-			int total = hits.getInt("total");
-			
+			int total = hits.has("total") ? hits.getInt("total") : 0;
+			System.out.println(total);
+			System.out.println(json);
 			if(total == 0) {
 				
 				return null;
@@ -40,6 +46,7 @@ public class SearchDAOImp {
 			} else {
 				searchResult = new SearchVO();
 				searchResult.setQuery(q);
+				if(total > searchSize) total = searchSize;	//엘라스틱 서치 설정 확인 중 (현재 10건 이상 검색되지 않음)
 				searchResult.setTotal(total);
 				searchResult.setMaxScore(hits.getDouble("max_score"));
 				
@@ -49,22 +56,23 @@ public class SearchDAOImp {
 					JSONObject document = hits.getJSONArray("hits").getJSONObject(i).getJSONObject("_source");
 					
 					//Document Contents
-					int no			   = document.getInt("no") < 1 ? 1 : document.getInt("no");
-					String title	   = document.getString("title")		 == null ? null : document.getString("title");
-					String summary	   = document.getString("summary")		 == null ? null : document.getString("summary");
-					String url		   = document.getString("url")			 == null ? null : document.getString("url");
-					String lastScraped = document.getString("lastScraped")	 == null ? null : document.getString("lastScraped");
-					String ban		   = document.getString("ban")			 == null ? null : document.getString("ban");
+					int no			   = document.has("no")				 ? document.getInt("no")				 : 1;
+					String title	   = document.has("title")			 ? document.getString("title")			 : null;
+					String summary	   = document.has("summary")		 ? document.getString("summary")		 : null;
+					String url		   = document.has("url")			 ? document.getString("url")			 : null;
+					String imgUrl	   = document.has("img_url")			 ? document.getString("img_url")	 : null;
+					String lastScraped = document.has("last_scraped")	 ? document.getString("last_scraped")	 : null;
+					String ban		   = document.has("ban")			 ? document.getString("ban")			 : null;
 					
-					String source	 = document.getString("source")	   == null ? null : document.getString("source");
-					String sourceUrl = document.getString("sourceUrl") == null ? null : document.getString("sourceUrl");
-					String category	 = document.getString("category")  == null ? null : document.getString("category");
-					String dataType	 = document.getString("dataType")  == null ? null : document.getString("dataType");
+					String source	 = document.has("sourceName")		 ? document.getString("sourceName")		 : "source";
+					String sourceUrl = document.has("sourceUrl")		 ? document.getString("sourceUrl")		 : null;
+					String category	 = document.has("categoryName")		 ? document.getString("categoryName")	 : "category";
+					String dataType	 = document.has("dataType")			 ? document.getString("dataType")		 : "dataType";
 					
-					int saveCnt		 = document.getInt("saveCnt")	> 0 ? document.getInt("saveCnt")   : 0;
-					int reportCnt	 = document.getInt("reportCnt") > 0 ? document.getInt("reportCnt") : 0;
-					int likeCnt		 = document.getInt("likeCnt")	> 0 ? document.getInt("likeCnt")   : 0;
-					int viewCnt		 = document.getInt("viewCnt")	> 0 ? document.getInt("viewCnt")   : 0;
+					int saveCnt		 = document.has("saveCnt")	 ? document.getInt("saveCnt")	 : 0;
+					int reportCnt	 = document.has("reportCnt") ? document.getInt("reportCnt")	 : 0;
+					int likeCnt		 = document.has("likeCnt")	 ? document.getInt("likeCnt")	 : 0;
+					int viewCnt		 = document.has("view_cnt")	 ? document.getInt("view_cnt")	 : 0;
 					
 					//Save search result to ContentsVO
 					ContentsVO contentsVO = new ContentsVO();
@@ -72,6 +80,7 @@ public class SearchDAOImp {
 					contentsVO.setTitle(title);
 					contentsVO.setSummary(summary);
 					contentsVO.setUrl(url);
+					contentsVO.setImgUrl(imgUrl);
 					contentsVO.setLastScraped(lastScraped);
 					contentsVO.setBan(ban);
 					
@@ -96,6 +105,11 @@ public class SearchDAOImp {
 		}
 		
 		return searchResult;
+	}
+	
+	public void saveKeyword(SearchVO searchResult) {
+		sqlSessionTemplate.insert("io.planb.serach.dao.SearchDAO.insertKeyword", searchResult);
+		
 	}
 
 	public ContentsVO getContents(int contentsNo) {

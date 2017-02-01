@@ -155,3 +155,8 @@
   	.formBottom15 > div > div {
       margin-bottom:15px !important;
    }
+   
+   .font > dt{
+   	font-size: 20px;
+   }
+   
