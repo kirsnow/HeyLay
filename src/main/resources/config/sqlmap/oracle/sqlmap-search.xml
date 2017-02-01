@@ -8,7 +8,8 @@
   		select CON.NO as no, CON.TITLE as title, CON.SUMMARY as summary, CON.URL as url
   		, to_char(CON.LAST_SCRAPED, 'YYYY. MM. DD.') as lastScraped, CON.BAN as ban
   		, SOU.NAME as source, SOU.URL as sourceUrl, CAT.CATEGORY as category, DAT.DATA_TYPE as dataType
-		, count(SAV.CONTENTS_NO) as saveCnt, count(SPA.CONTENTS_NO) as reportCnt, count(LIK.CONTENTS_NO) as likeCnt, CON.VIEW_CNT as viewCnt 		
+		, count(SAV.CONTENTS_NO) as saveCnt, count(SPA.CONTENTS_NO) as reportCnt, count(LIK.CONTENTS_NO) as likeCnt
+		, CON.VIEW_CNT as viewCnt 		
 		from Q_CONTENTS CON
 		inner join Q_CATEGORY CAT on CAT.NO = CON.CATEGORY_NO
 		inner join Q_SOURCE SOU on SOU.NO = CON.SOURCE_NO

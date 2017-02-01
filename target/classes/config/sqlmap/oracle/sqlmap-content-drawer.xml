@@ -7,7 +7,8 @@
 	<select id="drawerCards" parameterType="int" resultType="savedVO">
 		select CS.NO as no, CS.MEMBER_NO as memberNo, to_char(CS.REG_DATE, 'YYYY. MM. DD.') as regDate
 		, CS.CONTENTS_NO as contentsNo, CO.TITLE as title, CO.SUMMARY as summary
-		, CO.SAVE_CNT as viewCnt
+		, CO.VIEW_CNT as viewCnt
+		, count(SAV.CONTENTS_NO) as saveCnt, count(SPA.CONTENTS_NO) as reportCnt, count(LIK.CONTENTS_NO) as likeCnt
 		, CS.DIRECTORY_NO as directoryNo, DI.NAME as directoryName
     	, CO.SOURCE_NO as sourceNo, SO.NAME as sourceName, SO.URL as sourceUrl, SO.LOGO_IMG as logoImg
     	, CO.CATEGORY_NO as categoryNo, CA.CATEGORY as categoryName
@@ -16,7 +17,11 @@
 		inner join Q_DIRECTORY DI on DI.NO = CS.DIRECTORY_NO
 		inner join Q_CATEGORY CA on CA.NO = CO.CATEGORY_NO
 		inner join Q_SOURCE SO on SO.NO = CO.SOURCE_NO
-		where CS.MEMBER_NO = #{memberNo}
+		left join Q_CONTENTS_SAVED SAV on SAV.CONTENTS_NO = CS.NO
+		left join Q_CONTENTS_SPAM SPA on SPA.CONTENTS_NO = CS.NO
+		left join Q_LIKE LIK on LIK.CONTENTS_NO = CS.NO
+        where CS.MEMBER_NO = #{memberNo}
+        group by CS.NO, CO.NO, DI.NO, CA.NO, SO.NO
 		order by CS.REG_DATE desc, CS.NO desc
 	</select>
 	
