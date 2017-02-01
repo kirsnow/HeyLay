@@ -15,6 +15,7 @@
 			FROM Q_KEYWORDS
 			WHERE STATUS='Y' and MEMBER_NO = #{ memberNo }
 			ORDER BY regDate DESC
+			group
 			limit 50
 	</select> 
 	
