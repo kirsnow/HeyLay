@@ -6,12 +6,13 @@ public class SavedVO {
 	private int no;
 	private int memberNo;
 	private String regDate;
+	private String daysAgo;
 	
 	// Q_CONTENTS
 	private int contentsNo;
 	private String title;
 	private String summary;
-	private String contents;
+	private String url;
 	private String imgUrl;
 	private int viewCnt;
 	
@@ -28,7 +29,41 @@ public class SavedVO {
 	//Q_CATEGORY
 	private int categoryNo;
 	private String categoryName;
+
+	//Q_DATA_TYPE
+	private int dataNo;
+	private String dataType;
 	
+	public SavedVO() {
+		super();
+	}
+	
+	public SavedVO(int no, int memberNo, String regDate, String daysAgo, int contentsNo, String title, String summary,
+			String url, String imgUrl, int viewCnt, int directoryNo, String directoryName, int sourceNo,
+			String sourceName, String sourceUrl, String logoImg, int categoryNo, String categoryName, int dataNo,
+			String dataType) {
+		super();
+		this.no = no;
+		this.memberNo = memberNo;
+		this.regDate = regDate;
+		this.daysAgo = daysAgo;
+		this.contentsNo = contentsNo;
+		this.title = title;
+		this.summary = summary;
+		this.url = url;
+		this.imgUrl = imgUrl;
+		this.viewCnt = viewCnt;
+		this.directoryNo = directoryNo;
+		this.directoryName = directoryName;
+		this.sourceNo = sourceNo;
+		this.sourceName = sourceName;
+		this.sourceUrl = sourceUrl;
+		this.logoImg = logoImg;
+		this.categoryNo = categoryNo;
+		this.categoryName = categoryName;
+		this.dataNo = dataNo;
+		this.dataType = dataType;
+	}
 	
 	public int getNo() {
 		return no;
@@ -48,6 +83,12 @@ public class SavedVO {
 	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
+	public String getDaysAgo() {
+		return daysAgo;
+	}
+	public void setDaysAgo(String daysAgo) {
+		this.daysAgo = daysAgo;
+	}
 	public int getContentsNo() {
 		return contentsNo;
 	}
@@ -66,11 +107,11 @@ public class SavedVO {
 	public void setSummary(String summary) {
 		this.summary = summary;
 	}
-	public String getContents() {
-		return contents;
+	public String getUrl() {
+		return url;
 	}
-	public void setContents(String contents) {
-		this.contents = contents;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 	public String getImgUrl() {
 		return imgUrl;
@@ -133,13 +174,26 @@ public class SavedVO {
 		this.categoryName = categoryName;
 	}
 	
-	@Override
-	public String toString() {
-		return "SavedVO [no=" + no + ", memberNo=" + memberNo + ", regDate=" + regDate + ", contentsNo=" + contentsNo
-				+ ", title=" + title + ", summary=" + summary + ", contents=" + contents + ", imgUrl=" + imgUrl
-				+ ", viewCnt=" + viewCnt + ", directoryNo=" + directoryNo + ", directoryName=" + directoryName
-				+ ", sourceNo=" + sourceNo + ", sourceName=" + sourceName + ", sourceUrl=" + sourceUrl + ", logoImg="
-				+ logoImg + ", categoryNo=" + categoryNo + ", categoryName=" + categoryName + "]";
+	public int getDataNo() {
+		return dataNo;
+	}
+	public void setDataNo(int dataNo) {
+		this.dataNo = dataNo;
+	}
+	public String getDataType() {
+		return dataType;
+	}
+	public void setDataType(String dataType) {
+		this.dataType = dataType;
 	}
 	
+	@Override
+	public String toString() {
+		return "SavedVO [no=" + no + ", memberNo=" + memberNo + ", regDate=" + regDate + ", daysAgo=" + daysAgo
+				+ ", contentsNo=" + contentsNo + ", title=" + title + ", summary=" + summary + ", url=" + url
+				+ ", imgUrl=" + imgUrl + ", viewCnt=" + viewCnt + ", directoryNo=" + directoryNo + ", directoryName="
+				+ directoryName + ", sourceNo=" + sourceNo + ", sourceName=" + sourceName + ", sourceUrl=" + sourceUrl
+				+ ", logoImg=" + logoImg + ", categoryNo=" + categoryNo + ", categoryName=" + categoryName + ", dataNo="
+				+ dataNo + ", dataType=" + dataType + "]";
+	}
 }

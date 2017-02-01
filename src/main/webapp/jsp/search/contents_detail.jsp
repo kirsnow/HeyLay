@@ -13,9 +13,9 @@
     <!-- 각 콘텐츠 제목을 title로 동적 지정 -->
 
     <!-- Bootstrap CSS SET -->
-    <link href="../../css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="../../js/bootstrap.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
     <!-- icon-font -->
     <script src="https://use.fontawesome.com/bbddce3010.js"></script>
 
@@ -61,7 +61,7 @@
                     <header>
                         <p class="pull-right">
                         	<a href="${ contents.url }" target="_blank" title="원본 페이지로 이동(새 창)">
-	                        	<i class="fa fa-link" aria-hidden="true"></i>
+	                        	<i class="fa fa-external-link" aria-hidden="true"></i>
 	                        	원본 보기
                         	</a>
                         </p>
@@ -217,32 +217,7 @@
     <!-- /container -->
 
     <!-- footer -->
-    <footer class="mdl-mega-footer">
-        <div class="mdl-mega-footer--top-section">
-            <div class="mdl-mega-footer--left-section">
-                <a href="#" title="페이스북 페이지로 이동" class=""><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a> &nbsp;
-                <a href="#" title="트위터 공식 계정으로 이동"><i class="fa fa-twitter fa-2x fa-fw" aria-hidden="true"></i></a>
-                <a href="#" title="인스타그램 공식 계정으로 이동"><i class="fa fa-instagram fa-2x fa-fw" aria-hidden="true"></i></a>
-            </div>
-            <div class="mdl-mega-footer--right-section">
-                <a class="mdl-typography--font-light" href="#top">
-                Back to Top
-                <i class="fa fa-angle-up fa-lg fa-fw" aria-hidden="true"></i>
-              </a>
-            </div>
-        </div>
-        <div class="mdl-mega-footer--middle-section">
-            About | Help | Get Primium service
-        </div>
-        <div class="mdl-mega-footer--bottom-section">
-            <div class="mdl-logo">
-                <span class="mdl-typography--font-light">Quration © 2016 PlanB.io</span>
-            </div>
-            <ul class="mdl-mega-footer--link-list">
-                <li><a href="#">Privacy and Terms</a></li>
-            </ul>
-        </div>
-    </footer>
+    <jsp:include page="/jsp/include/footer.jsp" />
     <!-- /footer -->
 </body>
 
