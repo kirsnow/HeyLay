@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <%-- 회원별 통계 분석 페이지 --%>
@@ -54,26 +53,17 @@
 			<div class="right_col" role="main">
 				<section>
 					<div class="container text-center">
-						<c:choose>
-							<c:when test="${ empty staticsList }">
-								 <div class="row">
-									<div>아직 카드를 담지 않았군요 카드를 담아볼까요!</div>
-								 </div> 
-				            </c:when>
-				       		<c:otherwise> 
-								<div class="row">
-									<div class="well div col-md-push-2 col-md-4">
-										<h4 class="text-center">${ userVO.firstName } 님이 자주 담은 사이트 유형</h4>
-										<svg class="col-md-offset-1" id="myGraph"></svg>
-										<div id="rmfo"></div>
-									</div>
-									<div class="well div col-md-push-2 col-md-4">
-										<h4 class="text-center">${ userVO.firstName } 님이 자주 담은 사이트</h4>
-										<svg class="col-md-offset-1" id="myGraph2"></svg>
-									</div>
-								</div>
-							</c:otherwise>
-						</c:choose>
+						<div class="row">
+							<div class="well div col-md-push-2 col-md-4">
+								<h4 class="text-center">${ userVO.firstName } 님이 자주 담은 사이트 유형</h4>
+								<svg class="col-md-offset-1" id="myGraph"></svg>
+								<div id="rmfo"></div>
+							</div>
+							<div class="well div col-md-push-2 col-md-4">
+								<h4 class="text-center">${ userVO.firstName } 님이 자주 담은 사이트</h4>
+								<svg class="col-md-offset-1" id="myGraph2"></svg>
+							</div>
+						</div>
 					</div>
 				</section>
 			</div>
