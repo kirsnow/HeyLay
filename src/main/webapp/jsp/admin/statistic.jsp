@@ -56,18 +56,18 @@
                            
                         <div class="div col-md-4 col-md-push-1 ">
                            <h4 class="text-center marginBottom30">회원 전체 자주 담은 사이트</h4>
-                           <svg class="col-md-offset-3 marginBottom30" id="myGraph"></svg>
+                           <svg class="col-md-offset-3 " id="myGraph"></svg>
                         </div>
                         <div class="div col-md-4 col-md-push-1">
                            <h4 class="text-center marginBottom30">회원 전체의 조회수가 높은 사이트</h4>
-                           <svg class="col-md-offset-3 marginBottom30" id="myGraph4"></svg>
+                           <svg class="col-md-offset-3 " id="myGraph4"></svg>
                         </div> 
                      </div>
                   </div>
                   <div class="row">
-                     <div class="div col-md-push-2 col-md-14">
+                     <div class="div col-md-push-2 col-md-14 marginTop60">
                         <h4 class="text-center marginBottom30">회원 전체의 조회수가 높은 콘텐츠</h4>
-                        <div class="">
+                        <div>
                        		<svg class="col-md-8 col-md-offset-2 text marginBottom30" id="myGraph3"></svg>
                         </div>
                      </div>
@@ -125,8 +125,9 @@ $.ajax({
     var h = 30;
     var barElements;
     
-    var colors = d3.scale.ordinal().range(
-               [ "#DCE775", "#FFAB91", "#FFF59D", "#81D4FA", "#E1BEE7" ]); //컬러 변경
+    var colorSet_colorful= [ "#DCE775", "#FFAB91", "#FFF59D", "#81D4FA", "#E1BEE7" ]; //무지개
+    var colorSet_blue= [ "#03A9F4", "#9E9E9E", "#BDBDBD", "#E0E0E0", "#EEEEEE" ]; //블루 & 그레이
+    var color = d3.scale.ordinal().range( colorSet_blue ); //컬러 변경
    
     var dataSet = [ ];   // 데이터를 저장할 배열을 준비
             
@@ -149,7 +150,7 @@ $.ajax({
          barElements.enter()   // 데이터 개수만큼 반복
            .append("rect")   // 데이터 개수만큼 rect 요소가 추가됨
            .attr("class", "rect")   // CSS 클래스를 지정
-           .attr("fill",function(d,i){return colors(i)})
+           .attr("fill",function(d,i){return color(i)})
            .attr("width", function(d,i){   // 넓이를 지정. 두 번째의 파라미터에 함수를 지정
             return dataSet[i].value * 10;   // 데이터 값을 그대로 넓이로 반환
             })
@@ -166,7 +167,7 @@ $.ajax({
 			.attr("y", function(d, i){	// X 좌표를 지정
 				return i * 40 + 20;	// 막대그래프의 표시 간격을 맞춤
 			})
-			.attr("x", 150)	// Y 좌표를 지정
+			.attr("x", 200)	// Y 좌표를 지정
 			.text(function(d, i){	// 데이터 표시
 				return dataSet[i].label;
 		    })
@@ -201,8 +202,9 @@ $.ajax({
          var h = 200;
          var r = h / 2;
    
-         var color = d3.scale.ordinal().range(
-               [ "#03A9F4", "#EEEEEE", "#EEEEEE", "#EEEEEE", "#EEEEEE" ]); // GPVF
+         var colorSet_colorful= [ "#FFF9C4", "#FFF59D", "#FFF176", "#FFEE58", "#FFEB3B"]; //핑크
+         var colorSet_blue= [ "#03A9F4", "#BDBDBD", "#E0E0E0", "#EEEEEE", "#F5F5F5" ]; //블루 & 그레이
+         var color = d3.scale.ordinal().range( colorSet_blue ); //컬러 변경
    
          var data = [];
    
@@ -274,9 +276,9 @@ $.ajax({
          var h = 200;
          var r = h / 2;
    
-         var color = d3.scale.ordinal().range(
-               [  "#03A9F4", "#EEEEEE", "#EEEEEE", "#EEEEEE", "#EEEEEE"]); // GPVF
-   
+         var colorSet_colorful= [ "#FCE4EC", "#F8BBD0", "#F48FB1", "#F06292", "#EC407A"]; //그린
+         var colorSet_blue= [ "#03A9F4", "#BDBDBD", "#E0E0E0", "#EEEEEE", "#F5F5F5" ]; //블루 & 그레이
+         var color = d3.scale.ordinal().range( colorSet_blue ); //컬러 변경
    
          var data = [];
    
@@ -345,9 +347,10 @@ $.ajax({
          var h = 200;
          var r = h / 2;
 
-         var color = d3.scale.ordinal().range(
-               [  "#03A9F4", "#EEEEEE", "#EEEEEE", "#EEEEEE", "#EEEEEE" ]); // GPVF
-
+         var colorSet_colorful= [ "#C8E6C9", "#A5D6A7", "#81C784", "#66BB6A", "#4CAF50"]; //옐로우
+         var colorSet_blue= [ "#03A9F4", "#BDBDBD", "#E0E0E0", "#EEEEEE", "#F5F5F5" ]; //블루 & 그레이
+         var color = d3.scale.ordinal().range( colorSet_blue ); //컬러 변경
+               
          var ydata = [ {
             "good" : 5,
             "pto" : 10,

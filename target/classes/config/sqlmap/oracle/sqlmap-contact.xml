@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="io.planb.contact.dao.contactDAO">
+
+  	<insert id="sendQuestion" parameterType="questionVO">
+  		INSERT INTO Q_QUESTION (no, email, title, user_input, q_type)
+		VALUES (NEXTVAL('Q_QUESTION_NO'), #{email}, #{title}, #{userInput}, 'Q')
+  	</insert>
+
+  	<insert id="sendPartnership" parameterType="questionVO">
+  		INSERT INTO Q_QUESTION (no, email, user_input, q_type)
+		VALUES (NEXTVAL('Q_QUESTION_NO'), #{email}, #{userInput}, 'P')
+  	</insert>
+
+	<!-- report bug, spam -->
+  	<insert id="sendBugReport" parameterType="reportVO">
+  		INSERT INTO Q_BUG (NO, EMAIL, URL, USER_INPUT)
+		VALUES (NEXTVAL('Q_BUG_NO'), #{email}, #{url}, #{userInput})
+  	</insert>
+  	
+  	<insert id="sendBugReportAttach" parameterType="reportVO">
+  		INSERT INTO Q_BUG_ATTACH (no, BUG_NO, ori_name, saved_name, file_size) 
+		VALUES (NEXTVAL('Q_BUG_ATTACH_NO'), CURRVAL('Q_BUG_NO'), #{ oriName }, #{ savedName }, #{ fileSize }) 
+  	</insert>
+
+  	<insert id="sendSpamContents" parameterType="reportVO">
+  		INSERT INTO Q_CONTENTS_SPAM (NO, EMAIL, CONTENTS_NO, SELECTED, USER_INPUT)
+		VALUES (NEXTVAL('Q_CONTENTS_SPAM_NO'), #{email}, #{contentsNo}, #{selected}, #{userInput})
+  	</insert>
+  	
+  	<insert id="sendSpamMemo" parameterType="reportVO">
+  		INSERT INTO Q_MEMO_SPAM (NO, EMAIL, MEMO_NO, SELECTED, USER_INPUT)
+		VALUES (NEXTVAL('Q_MEMO_SPAM_NO'), #{email}, #{memoNo}, #{selected}, #{userInput})
+  	</insert>
+  	
+  	<!-- report_cnt up -->
+  	<update id="reportCntUp2Contents" parameterType="int">
+  		UPDATE Q_CONTENTS 
+  		SET REPORT_CNT = REPORT_CNT + 1 
+  		WHERE NO = #{no}
+  	</update>
+  	
+  	<update id="reportCntUp2Memo" parameterType="int">
+  		UPDATE Q_MEMO
+  		SET REPORT_CNT = REPORT_CNT + 1 
+  		WHERE NO = #{no}
+  	</update>
+  	
+</mapper>

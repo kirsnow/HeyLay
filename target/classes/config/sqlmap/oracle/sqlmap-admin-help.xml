@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.planb.admin.help.dao.HelpDAO">
+
+	<select id="selectQuestionList" resultType="questionVO">
+		SELECT no, email, title, q_type qType, answer, reg_date regDate 
+		FROM q_question 
+		ORDER BY no 
+	</select>
+	
+	<select id="countQuestion" resultType="int">
+		SELECT COUNT(*) cnt 
+		FROM q_question 
+	</select>
+	
+	<select id="selectQuestionDetail" parameterType="int" resultType="questionVO">
+		SELECT no, email, title, user_input userInput, q_type qType, answer, reg_date regDate 
+		FROM q_question 
+		WHERE no = #{ no }
+	</select>
+	
+	<select id="selectAnswerDetail" parameterType="int" resultType="answerVO">
+		SELECT answer, reg_date regDate
+		FROM q_answer 
+		WHERE question_no = #{ no } 
+	</select>
+	
+	<delete id="deleteQna" parameterType="int">
+		DELETE FROM q_question 
+		WHERE no = #{ no } 
+	</delete>
+	
+	<insert id="insertFaq" parameterType="faqVO">
+		INSERT INTO q_faq (no, title, content) 
+		VALUES (NEXTVAL('Q_FAQ_NO'), #{ title }, #{ content }) 
+	</insert>
+	
+	<update id="updateFaq" parameterType="faqVO">
+		UPDATE q_faq 
+		SET title = #{ title }, 
+			content = #{ content } 
+			reg_date = NOW()  
+		WHERE no = #{ no } 
+	</update>
+	
+	<delete id="deleteFaq" parameterType="int">
+		DELETE FROM q_faq 
+		WHERE no = #{ no } 
+	</delete>
+	
+	<insert id="insertNotice" parameterType="noticeVO">
+		INSERT INTO q_notice (no, title, contents, notice_type) 
+		VALUES (NEXTVAL('Q_NOTICE_NO'), #{ title }, #{ contents }, #{ noticeType }) 
+	</insert>
+	
+	<insert id="insertNoticeAttach" parameterType="noticeAttachVO">
+		INSERT INTO q_notice_attach (no, notice_no, ori_name, saved_name, file_size) 
+		VALUES (NEXTVAL('Q_NOTICE_ATTACH_NO'), CURRVAL('Q_NOTICE_NO'), #{ oriName }, #{ savedName }, #{ fileSize }) 
+	</insert>
+	
+	<update id="updateNotice" parameterType="noticeVO">
+		UPDATE q_notice 
+		SET title = #{ title }, 
+			contents = #{ contents }, 
+			notice_type = #{ noticeType },
+			reg_date = NOW() 
+		WHERE no = #{ no } 
+	</update>
+	
+	<update id="updateNoticeAttach" parameterType="noticeAttachVO">
+		UPDATE q_notice_attach 
+		SET ori_name = #{ oriName }, 
+			saved_name = #{ savedName }, 
+			file_size = #{ fileSize } 
+		WHERE notice_no = #{ noticeNo } 
+	</update>
+	
+	<delete id="deleteNotice" parameterType="int">
+		DELETE FROM q_notice 
+		WHERE no = #{ no } 
+	</delete>
+	
+	<select id="selectNoticeDetail" parameterType="int" resultType="noticeVO">
+		SELECT no, title, contents, notice_type noticeType, view_cnt viewCnt, reg_date regDate 
+		FROM q_notice
+		WHERE no = #{ no } 
+	</select>
+	
+	<select id="seleteContentsSpamList" resultType="contentsSpamVO">
+		SELECT s.no, s.email, s.selected, COUNT (s.no) reportCnt, q.name reported, s.reg_date regDate
+		FROM q_contents_spam s
+		INNER JOIN q_contents c ON c.no = s.contents_no 
+		INNER JOIN q_source q ON q.no = c.source_no 
+		GROUP BY s.no, c.no, q.no 
+	</select>
+	
+	<select id="countContentsSpam" resultType="int">
+		SELECT COUNT (*) cnt 
+		FROM q_contents_spam 
+	</select>
+	
+	<delete id="deleteContentsSpam" parameterType="int">
+		DELETE FROM q_contents_spam 
+		WHERE no = #{ no } 
+	</delete>
+	
+	<select id="seleteMemoSpamList" resultType="contentsSpamVO">
+		SELECT s.no, s.email, s.selected, COUNT (s.no) reportCnt, q.email reported, s.reg_date regDate
+		FROM q_memo_spam s 
+		INNER JOIN q_memo m ON m.no = s.memo_no 
+		INNER JOIN q_member q ON q.no = m.member_no 
+		GROUP BY s.no, m.no, q.no 
+	</select>
+	
+	<select id="countMemoSpam" resultType="int">
+		SELECT COUNT (*) cnt 
+		FROM q_memo_spam 
+	</select>
+	
+	<delete id="deleteMemoSpam" parameterType="int">
+		DELETE FROM q_memo_spam 
+		WHERE no = #{ no } 
+	</delete>
+	
+	<select id="selectContentsSpamDetail" parameterType="int" resultType="contentsSpamVO">
+		SELECT s.no, s.email, s.selected, s.user_input userInput, COUNT (s.no) reportCnt, q.name reported, s.reg_date regDate
+		FROM q_contents_spam s 
+		INNER JOIN q_contents c ON c.no = s.contents_no 
+		INNER JOIN q_source q ON q.no = c.source_no 
+		WHERE s.no = #{ no }
+		GROUP BY s.no, c.no, q.no 
+	</select>
+	
+	<select id="selectMemoSpamDetail" parameterType="int" resultType="contentsSpamVO">
+		SELECT s.no, s.email, s.selected, s.user_input userInput, COUNT (s.no) reportCnt, q.email reported, s.reg_date regDate
+		FROM q_memo_spam s 
+		INNER JOIN q_memo m ON m.no = s.memo_no 
+		INNER JOIN q_member q ON q.no = m.member_no 
+		WHERE s.no = #{ no } 
+		GROUP BY s.no, m.no, q.no 
+	</select>
+	
+	<select id="seleteSpamContentList" resultType="contentsSpamVO">
+		SELECT c.no, COUNT (cs.no) reportCnt, s.name email
+		FROM q_contents c 
+		INNER JOIN q_contents_spam cs ON cs.contents_no = c.no 
+		INNER JOIN q_source s ON s.no = c.source_no 
+		GROUP BY c.no, s.no, cs.no 
+	</select>
+	
+	<select id="seleteSpamMemoList" resultType="contentsSpamVO">
+		SELECT m.no, COUNT (ms.no) reportCnt, q.email
+		FROM q_memo m 
+		INNER JOIN q_memo_spam ms ON ms.memo_no = m.no 
+		INNER JOIN q_member q ON q.no = m.member_no 
+		GROUP BY m.no, q.no, ms.no 
+	</select>
+	
+	<select id="countSpamContent" resultType="int">
+		SELECT COUNT (*) cnt 
+		FROM q_contents_spam 
+	</select>
+	
+	<select id="countSpamMemo" resultType="int">
+		SELECT COUNT (*) cnt 
+		FROM q_memo_spam 
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+  
