@@ -3,13 +3,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- Bootstrap SET -->
+<%-- 
 <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css"
 	type="text/css" rel="stylesheet">
 <script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
-<script src="${ pageContext.request.contextPath }/js/jquery.1.11.1.js"></script>
+<script src="${ pageContext.request.contextPath }/js/jquery.1.11.1.js"></script> 
 
 <!-- icon-font -->
 <script src="https://use.fontawesome.com/bbddce3010.js"></script>
+--%>
 
 <!-- top navigation -->
 <nav class="navbar navbar-fixed-top navbar-default">

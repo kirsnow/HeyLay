@@ -14,11 +14,12 @@
 
     <!-- Bootstrap CSS SET -->
     <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
+    
     <!-- icon-font -->
     <script src="https://use.fontawesome.com/bbddce3010.js"></script>
-
+    
     <!-- MDL Hosted start -->
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-light_blue.min.css" />
     
@@ -32,16 +33,15 @@
 		ga('create', 'UA-90558257-1', 'auto');
 		ga('send', 'pageview');
 	</script>
+	
 </head>
 
 <body>
     <div class="container">
-    
 	    <header>
 			<jsp:include page="/jsp/include/nav_search.jsp" />
 		</header> 
-        
-
+		
         <!-- Breadcrumb -->
         <div class="row">
         	<div class="col-md-12">
@@ -164,61 +164,128 @@
             <hr/>
             <h4>Memo</h4>
             
-            <div class="card-container mdl-grid">
-				<c:choose>
-					<%-- 메모가 없을 때 --%>
-		        	<c:when test="${ (empty memoList) or (memoList eq null) }">
-		        	</c:when>
-		        	
-		        	<%-- 메모가 있을 때 --%>
-		        	<c:otherwise>
-		        		<c:forEach var="memo" items="${ memoList }" varStatus="loop">
-		                <!-- card -->
-		                <div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-shadow--3dp">
-		                    <div class="mdl-card__title mdl-color-text--grey-500">
-		                        <h5 class="author mdl-card__title-text">
-		                        	<i class="fa fa-user-circle-o" aria-hidden="true"></i> &nbsp;
-		                        	${ memo.firstName } ${ memo.lastName }
-		                        </h5>
-		                    </div>
-		                    <div class="content mdl-card__supporting-text mdl-color-text--grey-800">
-		                        <p class="text-justify">${ memo.message }</p>
-		                    </div>
-		                    <div class="mdl-card__menu">
-		                        <div id="report" class="btn-group dropdown pull-right" title="신고">
-		                            <a href="#" role="button" class="dropdown-toggle mdl-color-text--grey-500" data-toggle="dropdown" aria-expanded="false" title="외부 서비스로 공유">
-		                                <i class="fa fa-exclamation-triangle fa-lg" aria-hidden="true"></i>
-		                            </a>
-		                            <ul class="dropdown-menu" role="menu">
-		                                <li>
-		                                	<a href="${ pageContext.request.contextPath }/contact/bug.do?no=${ memo.no }&type=memo" title="오류 신고">
-			                                	<i class="fa fa-bug fa-fw" aria-hidden="true"></i>
-			                                	오류 신고
-		                                	</a>
-		                                </li>
-		                                <li>
-		                                	<a href="${ pageContext.request.contextPath }/contact/spamMemo.do?no=${ memo.no }" title="유해물 신고">
-		                                		<i class="fa fa-ban fa-fw" aria-hidden="true"></i>
-		                                		유해물 신고
-		                                	</a>
-		                                </li>
-		                            </ul>
-		                        </div>
-		                    </div>
-		                </div>
-		                <!-- /card -->
-						</c:forEach>
-					</c:otherwise>
-	        	</c:choose>
-            </div>
+			<%-- 메모가 없을 때 --%>
+        	<c:if test="${ (memoList eq null) or (empty memoList) }">
+				<div class="row">
+					<div class="col-md-12">
+						<p class="lead text-muted">첫 메모를 남겨보세요 &#58;&#41;</p>
+					</div>
+				</div>
+				<div class="row">
+					
+				</div>
+        	</c:if>
+	        	
+       		<div class="row card-container mdl-grid">
+				<!-- Button trigger modal -->
+       			<div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-shadow--0dp">
+					<button type="button" class="btn btn-default btn-block"
+							data-toggle="modal" data-target="#addMemo" 
+							<%-- data-backdrop="false" --%>
+							style="min-height: 15.2em">
+						<i class="fa fa-plus-circle fa-5x text-muted" aria-hidden="true"></i>
+					</button>
+				</div>
+					
+	        	<%-- 메모가 있을 때 --%>
+	        	<c:if test="${ (memoList ne null) and (not empty memoList) }">
+	        		<c:forEach var="memo" items="${ memoList }" varStatus="loop">
+	                <!-- card -->
+	                <div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-shadow--3dp">
+	                    <div class="mdl-card__title mdl-color-text--grey-500">
+	                        <h5 class="author mdl-card__title-text">
+	                        	<i class="fa fa-user-circle-o" aria-hidden="true"></i> &nbsp;
+	                        	<c:out value="${ memo.firstName } ${ memo.lastName }"/>
+	                        </h5>
+	                    </div>
+	                    <div class="content mdl-card__supporting-text mdl-color-text--grey-800">
+	                        <p class="text-justify">
+	                        	<c:out value="${ memo.message }"/>
+	                        </p>
+	                    </div>
+	                    <div class="mdl-card__menu">
+	                        <div id="report" class="btn-group dropdown pull-right" title="신고">
+	                            <a href="#" role="button" class="dropdown-toggle mdl-color-text--grey-500" data-toggle="dropdown" aria-expanded="false" title="외부 서비스로 공유">
+	                                <i class="fa fa-exclamation-triangle fa-lg" aria-hidden="true"></i>
+	                            </a>
+	                            <ul class="dropdown-menu" role="menu">
+	                                <li>
+	                                	<a href="${ pageContext.request.contextPath }/contact/bug.do?no=${ memo.no }&type=memo" title="오류 신고">
+		                                	<i class="fa fa-bug fa-fw" aria-hidden="true"></i>
+		                                	오류 신고
+	                                	</a>
+	                                </li>
+	                                <li>
+	                                	<a href="${ pageContext.request.contextPath }/contact/spamMemo.do?no=${ memo.no }" title="유해물 신고">
+	                                		<i class="fa fa-ban fa-fw" aria-hidden="true"></i>
+	                                		유해물 신고
+	                                	</a>
+	                                </li>
+	                            </ul>
+	                        </div>
+	                    </div>
+	                </div>
+	                <!-- /card -->
+					</c:forEach>
+				</c:if>
+       		</div>
         </section>
         <!-- /memo -->
     </div>
     <!-- /container -->
-
+    
     <!-- footer -->
     <jsp:include page="/jsp/include/footer.jsp" />
     <!-- /footer -->
+
+    <!-- Modal -->
+	<div class="modal fade" id="addMemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title text-muted" id="myModalLabel">
+						<i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;
+						<c:choose>
+							<c:when test="${ userVO ne null }">
+	                   			<c:out value="${ userVO.firstName } ${ userVO.lastName }"/>
+		                   	</c:when>
+		                   	<c:otherwise>
+		                   		Guest
+		                   	</c:otherwise>
+						</c:choose>
+					</h4>
+				</div>
+				<div class="modal-body">
+					<textarea id="memoMessage" class="form-control" rows="7"></textarea>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">저장</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		$('#addMemo').on('shown.bs.modal', function () {
+		  $('#memoMessage').focus()
+		})
+		
+		$('.modal').on('show.bs.modal', function () {
+	        if ($(document).height() > $(window).height()) {
+	            // no-scroll
+	            $('body').addClass("modal-open-noscroll");
+	        }
+	        else {
+	            $('body').removeClass("modal-open-noscroll");
+	        }
+	    });
+	    $('.modal').on('hide.bs.modal', function () {
+	        $('body').removeClass("modal-open-noscroll");
+	    });
+	</script>
+	<!-- /Modal -->
+	
 </body>
 
 </html>

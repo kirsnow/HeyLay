@@ -7035,7 +7035,7 @@ button.close {
 }
 
 .modal-open {
-    overflow: hidden
+    overflow: inherit;
 }
 
 .modal {
@@ -7098,7 +7098,7 @@ button.close {
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 1040;
+    /* z-index: 1040; */
     background-color: #000000
 }
 
@@ -7114,7 +7114,7 @@ button.close {
 
 .modal-header {
     padding: 15px;
-    border-bottom: 1px solid #e5e5e5
+    /* border-bottom: 1px solid #e5e5e5 */
 }
 
 .modal-header .close {
@@ -7128,13 +7128,13 @@ button.close {
 
 .modal-body {
     position: relative;
-    padding: 20px
+    padding: 0px 20px
 }
 
 .modal-footer {
     padding: 20px;
     text-align: right;
-    border-top: 1px solid #e5e5e5
+    /* border-top: 1px solid #e5e5e5 */
 }
 
 .modal-footer .btn+.btn {
@@ -7178,6 +7178,11 @@ button.close {
     }
 }
 
+.modal-open, .modal-open .navbar-fixed-top {
+	padding-right: 0 !important;
+}
+
+ 
 .tooltip {
     position: absolute;
     z-index: 1070;
