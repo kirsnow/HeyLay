@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Custom Theme Style -->
-<link href="${ pageContext.request.contextPath }/css/custom.min.css" rel="stylesheet">
+<link href="${ pageContext.request.contextPath }/css/custom.min.css?ver=1" rel="stylesheet">
 <!-- icon-font -->
 <script src="https://use.fontawesome.com/bbddce3010.js"></script>
 
