@@ -38,6 +38,12 @@ public class SearchServiceImp {
 		ContentsVO contents = dao.getContents(contentsNo);
 		return contents;
 	}
+	
+	public ContentsVO getContentsAll() {
+		ContentsVO contentsA = dao.getContentsAll();
+		System.out.println(contentsA.toJson());
+		return contentsA;
+	}
 
 	public List<MemoVO> getMemo(int no) {
 		List<MemoVO> memoList = dao.getMemo(no);

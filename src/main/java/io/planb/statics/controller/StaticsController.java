@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,6 +24,13 @@ public class StaticsController {
 	private StaticsService service;
 	
 	/* 유저 통계 */
+	
+	/* 통계 자세히 보기 페이지로 이동 */
+	@RequestMapping("/contents/stats.do")
+	public String stats() {
+		
+		return "contents/stats";
+	}
 	
 	/* 내가 많이 담은 사이트 */
 	@ResponseBody
@@ -44,16 +50,36 @@ public class StaticsController {
 	
 	/* 내가 많이 담은 사이트 타입 */
 	@ResponseBody
-	@RequestMapping("/statics/sourceType.do")
-	public StaticsListVO selectSourceType(HttpSession session, Model model) {
+	@RequestMapping("/statics/savedSourceType.do")
+	public StaticsListVO selectSavedSourceType(HttpSession session, Model model) {
 		MemberVO member = (MemberVO) session.getAttribute("userVO");
 		int no = member.getNo();
 		
-//		System.out.println("controller no : " + no);
+		List<StaticsVO> staticsList = service.selectSavedSourceType(no);
 		
-		List<StaticsVO> staticsList = service.selectSourceType(no);
+		return new StaticsListVO(staticsList);
+	}
+	
+	/* 내가 좋아하는 콘텐츠가 많은 사이트 */
+	@ResponseBody
+	@RequestMapping("/statics/likeSource.do")
+	public StaticsListVO selectLikeSource(HttpSession session, Model model) {
+		MemberVO member = (MemberVO) session.getAttribute("userVO");
+		int no = member.getNo();
 		
-//		System.out.println("controller staticsList : " + staticsList);
+		List<StaticsVO> staticsList = service.selectLikeSource(no);
+		
+		return new StaticsListVO(staticsList);
+	}
+	
+	/* 내가 좋아하는 콘텐츠가 많은 사이트 유형 */
+	@ResponseBody
+	@RequestMapping("/statics/likeSourceType.do")
+	public StaticsListVO selectLikeSourceType(HttpSession session, Model model) {
+		MemberVO member = (MemberVO) session.getAttribute("userVO");
+		int no = member.getNo();
+		
+		List<StaticsVO> staticsList = service.selectLikeSourceType(no);
 		
 		return new StaticsListVO(staticsList);
 	}
@@ -143,7 +169,6 @@ public class StaticsController {
 		List<StaticsVO> contentStaticsList = service.selectAllCntContents();
 		
 		model.addAttribute("columnName", columnName);
-		
 		System.out.println("controller contentStaticsList : " + contentStaticsList);
 		
 		return new StaticsListVO(contentStaticsList);

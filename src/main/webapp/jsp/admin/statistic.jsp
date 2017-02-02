@@ -30,7 +30,10 @@
 <title>통계 | Quration: 답을 열어 줄 그런 사람</title>
 <style>
    svg { width: 320px; height: 210px; }  
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+   .barNum {
+				font-size: 10pt;
+				text-anchor : middle;
+			}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 </style>
 </head>
 <body class="nav-md">
@@ -53,18 +56,20 @@
                            
                         <div class="div col-md-4 col-md-push-1 ">
                            <h4 class="text-center marginBottom30">회원 전체 자주 담은 사이트</h4>
-                           <svg class="col-md-offset-3 marginBottom30" id="myGraph"></svg>
+                           <svg class="col-md-offset-3 " id="myGraph"></svg>
                         </div>
                         <div class="div col-md-4 col-md-push-1">
                            <h4 class="text-center marginBottom30">회원 전체의 조회수가 높은 사이트</h4>
-                           <svg class="col-md-offset-3 marginBottom30" id="myGraph4"></svg>
+                           <svg class="col-md-offset-3 " id="myGraph4"></svg>
                         </div> 
                      </div>
                   </div>
                   <div class="row">
-                     <div class="div col-md-push-2 col-md-14">
+                     <div class="div col-md-push-2 col-md-14 marginTop60">
                         <h4 class="text-center marginBottom30">회원 전체의 조회수가 높은 콘텐츠</h4>
-                        <svg class="col-md-offset-3" id="myGraph3"></svg>
+                        <div>
+                       		<svg class="col-md-8 col-md-offset-2 text marginBottom30" id="myGraph3"></svg>
+                        </div>
                      </div>
                   </div>
                   <div class="row">
@@ -108,45 +113,81 @@
 <!-- Embed API -->
 <script>
 
-   /* 회원 전체의 조회수가 높은 콘텐츠  */
+/* 회원 전체의 조회수가 높은 콘텐츠  */
+
+$.ajax({
+   url : '${ pageContext.request.contextPath }/admin/statics/cntContents.do',
+   type : 'get',
+   contentType : "application/json",
+   data : { "contentStaticsList" : '${ staticsVO.columnName}' },
+   success : function(json){
+    var w = 600;
+    var h = 30;
+    var barElements;
+    
+    var colorSet_colorful= [ "#DCE775", "#FFAB91", "#FFF59D", "#81D4FA", "#E1BEE7" ]; //무지개
+    var colorSet_blue= [ "#03A9F4", "#9E9E9E", "#BDBDBD", "#E0E0E0", "#EEEEEE" ]; //블루 & 그레이
+    var color = d3.scale.ordinal().range( colorSet_blue ); //컬러 변경
    
-   
-   $.ajax({
-      url : '${ pageContext.request.contextPath }/admin/statics/cntContents.do',
-      type : 'get',
-      contentType : "application/json",
-      data : { "contentStaticsList" : '${ staticsVO.columnName}' },
-      success : function(json){
-       
-          
-       var dataSet = [ ];   // 데이터를 저장할 배열을 준비
-       
-       var colors = d3.scale.ordinal().range(
-                  [ "#DCE775", "#FFAB91", "#FFF59D", "#81D4FA", "#E1BEE7" ]); //컬러 변경
-               
-         for(var i = 0; i < json.staticsList.length; i++) { //데이터 줄수만큼 반복
-                dataSet.push(json.staticsList[i].cnt);
-             }
+    var dataSet = [ ];   // 데이터를 저장할 배열을 준비
             
-            // 그래프 그리기
-            d3.select("#myGraph3")
-              .selectAll("rect")   // rect 요소 지정
-              .data(dataSet)   // 데이터를 요소에 연결
-              .enter()   // 데이터 개수만큼 반복
-              .append("rect")   // 데이터 개수만큼 rect 요소가 추가됨
-              .attr("class", "rect")   // CSS 클래스를 지정
-              .attr("fill",function(d,i){return colors(i)})
-              .attr("width", function(d,i){   // 넓이를 지정. 두 번째의 파라미터에 함수를 지정
-               return d * 30;   // 데이터 값을 그대로 넓이로 반환
-               })
-              
-              .attr("height", 20)   // 높이를 지정
-              .attr("x", 0)   // X 좌표를 0으로 함
-              .attr("y", function(d, i){   // Y 좌표를 지정함
-                  return i * 30   // 표시 순서에 30을 곱해 위치를 계산
-               })
-            }
-        }); 
+      for(var i = 0; i < json.staticsList.length; i++) { //데이터 줄수만큼 반복
+    	  dataSet.push({
+              "label" : json.staticsList[i].columnName,
+              "value" : json.staticsList[i].cnt,
+              "viewCnt" : json.staticsList[i].data
+           	});
+          }
+    	
+         console.log(Object.values(dataSet));
+         
+         // 그래프 그리기
+         barElements = d3.select("#myGraph3")
+           .selectAll("rect")   // rect 요소 지정
+           .data(dataSet)   // 데이터를 요소에 연결
+           
+         //cnt를 통해 그래프 그리기  
+         barElements.enter()   // 데이터 개수만큼 반복
+           .append("rect")   // 데이터 개수만큼 rect 요소가 추가됨
+           .attr("class", "rect")   // CSS 클래스를 지정
+           .attr("fill",function(d,i){return color(i)})
+           .attr("width", function(d,i){   // 넓이를 지정. 두 번째의 파라미터에 함수를 지정
+            return dataSet[i].value * 10;   // 데이터 값을 그대로 넓이로 반환
+            })
+           
+           .attr("height", h)   // 높이를 지정
+           .attr("x", 400)   // X 좌표를 0으로 함
+           .attr("y", function(d, i){   // Y 좌표를 지정함
+               return i * 40  // 표시 순서에 20을 곱해 위치를 계산
+            })
+        
+          //columnName를 통해 title 입력
+          barElements.enter()	// text 요소 지정●↓
+			.append("text")	// text 요소 추가
+			.attr("y", function(d, i){	// X 좌표를 지정
+				return i * 40 + 20;	// 막대그래프의 표시 간격을 맞춤
+			})
+			.attr("x", 200)	// Y 좌표를 지정
+			.text(function(d, i){	// 데이터 표시
+				return dataSet[i].label;
+		    })
+		    
+		 //view_cnt를 그래프에 넣기  
+         barElements.enter()   // 데이터 개수만큼 반복
+            .append("text")	// text 요소 추가
+			.attr("y", function(d, i){	// X 좌표를 지정
+				return i * 40 + 20;	// 막대그래프의 표시 간격을 맞춤
+			})
+			.attr("x", 410)	// Y 좌표를 지정
+			.text(function(d, i){	// 데이터 표시
+				return dataSet[i].viewCnt;
+		    })
+        }
+   }); 
+
+
+
+	
 
    /* 회원 전체의 조회수가 높은 사이트 */
    $.ajax({
@@ -161,8 +202,9 @@
          var h = 200;
          var r = h / 2;
    
-         var color = d3.scale.ordinal().range(
-               [ "#FFF9C4", "#FFF59D", "#FFF176", "#FFEE58", "#FFEB3B" ]); // GPVF
+         var colorSet_colorful= [ "#FFF9C4", "#FFF59D", "#FFF176", "#FFEE58", "#FFEB3B"]; //핑크
+         var colorSet_blue= [ "#03A9F4", "#BDBDBD", "#E0E0E0", "#EEEEEE", "#F5F5F5" ]; //블루 & 그레이
+         var color = d3.scale.ordinal().range( colorSet_blue ); //컬러 변경
    
          var data = [];
    
@@ -234,9 +276,9 @@
          var h = 200;
          var r = h / 2;
    
-         var color = d3.scale.ordinal().range(
-               [ "#FCE4EC", "#F8BBD0", "#F48FB1", "#F06292", "#EC407A"]); // GPVF
-   
+         var colorSet_colorful= [ "#FCE4EC", "#F8BBD0", "#F48FB1", "#F06292", "#EC407A"]; //그린
+         var colorSet_blue= [ "#03A9F4", "#BDBDBD", "#E0E0E0", "#EEEEEE", "#F5F5F5" ]; //블루 & 그레이
+         var color = d3.scale.ordinal().range( colorSet_blue ); //컬러 변경
    
          var data = [];
    
@@ -305,9 +347,10 @@
          var h = 200;
          var r = h / 2;
 
-         var color = d3.scale.ordinal().range(
-               [ "#C8E6C9", "#A5D6A7", "#81C784", "#66BB6A", "#4CAF50" ]); // GPVF
-
+         var colorSet_colorful= [ "#C8E6C9", "#A5D6A7", "#81C784", "#66BB6A", "#4CAF50"]; //옐로우
+         var colorSet_blue= [ "#03A9F4", "#BDBDBD", "#E0E0E0", "#EEEEEE", "#F5F5F5" ]; //블루 & 그레이
+         var color = d3.scale.ordinal().range( colorSet_blue ); //컬러 변경
+               
          var ydata = [ {
             "good" : 5,
             "pto" : 10,

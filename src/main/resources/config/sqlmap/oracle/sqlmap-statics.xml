@@ -13,9 +13,10 @@
 		WHERE cs.member_no = #{ no }) r 
 		GROUP BY r.sourceName 
 		ORDER BY cnt DESC 
+		LIMIT 5 
 	</select>
 	
-	<select id="selectSourceType" parameterType="int" resultType="staticsVO">
+	<select id="selectSavedSourceType" parameterType="int" resultType="staticsVO">
 		SELECT r.dataType columnName, COUNT(r.dataType) cnt 
 		FROM (SELECT dt.data_type as dataType 
 		FROM q_contents_saved cs 
@@ -25,6 +26,32 @@
 		WHERE cs.member_no = #{ no }) r 
 		GROUP BY r.dataType 
 		ORDER BY cnt DESC 
+		LIMIT 5 
+	</select>
+	
+	<select id="selectLikeSource" parameterType="int" resultType="staticsVO">
+		SELECT r.sourceName columnName, COUNT(r.sourceName) cnt 
+		FROM (SELECT so.name as sourceName 
+		FROM q_like l
+		INNER JOIN q_contents co ON co.no = l.contents_no 
+		INNER JOIN q_source so ON so.no = co.source_no 
+		WHERE l.member_no = #{ no }) r 
+		GROUP BY r.sourceName 
+		ORDER BY cnt DESC 
+		LIMIT 5 
+	</select>
+	
+	<select id="selectLikeSourceType" parameterType="int" resultType="staticsVO">
+		SELECT r.dataType columnName, COUNT(r.dataType) cnt 
+		FROM (SELECT dt.data_type as dataType 
+		FROM q_like l
+		INNER JOIN q_contents co ON co.no = l.contents_no 
+		INNER JOIN q_source so ON so.no = co.source_no 
+		INNER JOIN q_data_type dt ON dt.no = so.data_type 
+		WHERE l.member_no = #{ no }) r 
+		GROUP BY r.dataType 
+		ORDER BY cnt DESC 
+		LIMIT 5 
 	</select>
 	
     <select id="selectWordCloudList" parameterType="int" resultType="staticsVO">
@@ -64,7 +91,7 @@
 	</select>
 	
 	<select id="selectAllCntContents" parameterType="int" resultType="staticsVO">
-      SELECT title as columnName, view_cnt, round((view_cnt / sum(view_cnt) over ())*100,2) as cnt
+      SELECT title as columnName, view_cnt as data, round((view_cnt / sum(view_cnt) over ())*100,2) as cnt
       FROM q_contents
       ORDER BY cnt DESC
       limit 5

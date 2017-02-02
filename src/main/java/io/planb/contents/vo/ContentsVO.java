@@ -143,4 +143,12 @@ public class ContentsVO {
 				+ ", reportCnt=" + reportCnt + ", likeCnt=" + likeCnt + ", viewCnt=" + viewCnt + "]";
 	}
 
+	public String toJson() {
+		return "{ \"update\" : { \"_index\": \"planbs\", \"_type\": \"planb\", \"_id\": " + no + "\"} }\n"
+				+ "{ \"title\": \"" + title + "\", \"summary\": \"" + summary + "\", \"url\": \"" + url 
+				+ "\", \"lastScraped\": \"" + lastScraped + "\", \"ban\": \"" + ban + "\", \"source\": \"" + source
+				+ "\", \"sourceUrl\": \"" + sourceUrl + "\", \"category\": \"" + category + "\", \"dataType\": \"" + dataType 
+				+ "\", \"saveCnt\": \"" + saveCnt + "\", \"reportCnt\": \"" + reportCnt + "\", \"likeCnt\": \"" + likeCnt 
+				+ "\", \"viewCnt\": \"" + viewCnt;
+	}
 }
