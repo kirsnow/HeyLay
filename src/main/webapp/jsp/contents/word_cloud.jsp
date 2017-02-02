@@ -154,7 +154,7 @@
 		        .attr("width", width)
 		        .attr("height", height)
 		      .append("g")
-		        .attr("transform", "translate("+(width)+","+(height)+")")
+		        .attr("transform", "translate("+(width / 2)+","+(height / 2)+")")
 		      .selectAll("text")
 		        .data(words)
 		      .enter().append("text")
