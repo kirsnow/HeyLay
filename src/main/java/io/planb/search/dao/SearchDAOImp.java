@@ -117,6 +117,12 @@ public class SearchDAOImp {
 		ContentsVO contents = sqlSessionTemplate.selectOne("io.planb.serach.dao.SearchDAO.selectContentsByNo", contentsNo);
 		return contents;
 	}
+	
+	public ContentsVO getContentsAll() {
+		
+		ContentsVO contentsA = sqlSessionTemplate.selectOne("io.planb.serach.dao.SearchDAO.selectContentsAll");
+		return contentsA;
+	}
 
 	public List<MemoVO> getMemo(int contentsNo) {
 		List<MemoVO> memoList = sqlSessionTemplate.selectList("io.planb.serach.dao.SearchDAO.selectMemoByNo", contentsNo);
