@@ -91,7 +91,7 @@
 	</select>
 	
 	<select id="selectAllCntContents" parameterType="int" resultType="staticsVO">
-      SELECT title as columnName, view_cnt as data, round((view_cnt / sum(view_cnt) over ())*100,2) as cnt
+      SELECT title as columnName, view_cnt, round((view_cnt / sum(view_cnt) over ())*100,2) as cnt
       FROM q_contents
       ORDER BY cnt DESC
       limit 5

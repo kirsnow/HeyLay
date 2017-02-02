@@ -21,8 +21,8 @@ public class StaticsService {
 		return staticsList;
 	}
 
-	public List<StaticsVO> selectSourceType(int no) {
-		List<StaticsVO> staticsList = dao.selectSourceType(no);
+	public List<StaticsVO> selectSavedSourceType(int no) {
+		List<StaticsVO> staticsList = dao.selectSavedSourceType(no);
 		
 		return staticsList;
 	}
@@ -68,5 +68,17 @@ public class StaticsService {
 	public List<KeywordsVO> selectAllKeywordList() {
 		List<KeywordsVO> allKeywordList = dao.selectAllKeywordList();
 		return allKeywordList;
+	}
+
+	public List<StaticsVO> selectLikeSource(int no) {
+		List<StaticsVO> staticsList = dao.selectLikeSource(no);
+		
+		return staticsList;
+	}
+
+	public List<StaticsVO> selectLikeSourceType(int no) {
+		List<StaticsVO> staticsList = dao.selectLikeSourceType(no);
+		
+		return staticsList;
 	}
 }

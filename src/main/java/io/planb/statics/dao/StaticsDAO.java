@@ -21,8 +21,8 @@ public class StaticsDAO {
 		return staticsList;
 	}
 
-	public List<StaticsVO> selectSourceType(int no) {
-		List<StaticsVO> staticsList = sqlSessionTemplate.selectList("io.planb.statics.dao.StaticsDAO.selectSourceType", no);
+	public List<StaticsVO> selectSavedSourceType(int no) {
+		List<StaticsVO> staticsList = sqlSessionTemplate.selectList("io.planb.statics.dao.StaticsDAO.selectSavedSourceType", no);
 		
 		return staticsList;
 	}
@@ -69,5 +69,17 @@ public class StaticsDAO {
 		System.out.println(allKeywordList);
 		
 		return allKeywordList;
+	}
+
+	public List<StaticsVO> selectLikeSource(int no) {
+		List<StaticsVO> staticsList = sqlSessionTemplate.selectList("io.planb.statics.dao.StaticsDAO.selectLikeSource", no);
+		
+		return staticsList;
+	}
+
+	public List<StaticsVO> selectLikeSourceType(int no) {
+		List<StaticsVO> staticsList = sqlSessionTemplate.selectList("io.planb.statics.dao.StaticsDAO.selectLikeSourceType", no);
+		
+		return staticsList;
 	}
 }
