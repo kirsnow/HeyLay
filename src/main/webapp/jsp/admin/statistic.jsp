@@ -30,7 +30,10 @@
 <title>통계 | Quration: 답을 열어 줄 그런 사람</title>
 <style>
    svg { width: 320px; height: 210px; }  
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+   .barNum {
+				font-size: 10pt;
+				text-anchor : middle;
+			}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 </style>
 </head>
 <body class="nav-md">
@@ -65,9 +68,7 @@
                      <div class="div col-md-push-2 col-md-14">
                         <h4 class="text-center marginBottom30">회원 전체의 조회수가 높은 콘텐츠</h4>
                         <div class="">
-                       		<svg class="col-md-8 col-md-offset-2 text" id="myGraph3">
-                       		<text class="text"></text>
-                       		</svg>
+                       		<svg class="col-md-8 col-md-offset-2 text marginBottom30" id="myGraph3"></svg>
                         </div>
                      </div>
                   </div>
@@ -121,56 +122,68 @@ $.ajax({
    data : { "contentStaticsList" : '${ staticsVO.columnName}' },
    success : function(json){
     var w = 600;
-    var h = 25;
-       
+    var h = 30;
+    var barElements;
+    
     var colors = d3.scale.ordinal().range(
                [ "#DCE775", "#FFAB91", "#FFF59D", "#81D4FA", "#E1BEE7" ]); //컬러 변경
    
     var dataSet = [ ];   // 데이터를 저장할 배열을 준비
             
       for(var i = 0; i < json.staticsList.length; i++) { //데이터 줄수만큼 반복
-             dataSet.push(json.staticsList[i].cnt);
-             dataSet.push(json.staticsList[i].columnName);
+    	  dataSet.push({
+              "label" : json.staticsList[i].columnName,
+              "value" : json.staticsList[i].cnt,
+              "viewCnt" : json.staticsList[i].data
+           	});
           }
-         
+    	
          console.log(Object.values(dataSet));
          
          // 그래프 그리기
-        d3.select("#myGraph3")				// SVG 요소 지정
-			.selectAll("rect")					// SVG로 사각형을 표시할 요소를 지정
-			.data(dataSet)						// 데이터 설정
-			.enter()									// 데이터 수에 따라 rect 요소 생성
-			.append("rect")						// SVG 사각형 생성
-			  .attr("class", "rect")   // CSS 클래스를 지정
-              .attr("fill",function(d,i){return colors(i)})
-
-			.attr("x", 0)							// 가로형 막대그래프이므로 X좌표를 0으로 함
-			.attr("y", function(d,i){			// Y 좌표를 배열의 순서에 따라 계산
-				return i * 20;					// 막대그래프의 높이를 25px 단위로 계산
-			})
-			.attr("height", "20px")			// 막대그래프의 높이를 20px로 지정
-			.attr("width", "0px")				// 최초 막대그래프의 넓이를 0px로 지정
-			.transition()							// 그래프 출력 시 애니메이션 효과 적용
-			.delay(function(d, i){
-				return i * 500;					// 0.5초마다 그리도록 대기 시간을 설정
-			})
-			.duration(2500)					// 2.5초에 걸쳐 애니메이션화 함
-			.attr("width", function(d, i){	// 넓이를 배열 내용에 따라 계산
-				return d +"px";					// 데이터의 수를 그대로 넓이로 함
-			})
-		  d3.enter()	// text 요소 지정●↓
+         barElements = d3.select("#myGraph3")
+           .selectAll("rect")   // rect 요소 지정
+           .data(dataSet)   // 데이터를 요소에 연결
+           
+         //cnt를 통해 그래프 그리기  
+         barElements.enter()   // 데이터 개수만큼 반복
+           .append("rect")   // 데이터 개수만큼 rect 요소가 추가됨
+           .attr("class", "rect")   // CSS 클래스를 지정
+           .attr("fill",function(d,i){return colors(i)})
+           .attr("width", function(d,i){   // 넓이를 지정. 두 번째의 파라미터에 함수를 지정
+            return dataSet[i].value * 10;   // 데이터 값을 그대로 넓이로 반환
+            })
+           
+           .attr("height", h)   // 높이를 지정
+           .attr("x", 400)   // X 좌표를 0으로 함
+           .attr("y", function(d, i){   // Y 좌표를 지정함
+               return i * 40  // 표시 순서에 20을 곱해 위치를 계산
+            })
+        
+          //columnName를 통해 title 입력
+          barElements.enter()	// text 요소 지정●↓
 			.append("text")	// text 요소 추가
-			.attr("class", "barNum")	// CSS 클래스 설정
-			.attr("x", function(d, i){	// X 좌표를 지정
-				return i * 25 + 10;	// 막대그래프의 표시 간격을 맞춤
+			.attr("y", function(d, i){	// X 좌표를 지정
+				return i * 40 + 20;	// 막대그래프의 표시 간격을 맞춤
 			})
-			.attr("y", svgHeight - 5)	// Y 좌표를 지정
+			.attr("x", 150)	// Y 좌표를 지정
 			.text(function(d, i){	// 데이터 표시
-				return d;
+				return dataSet[i].label;
+		    })
+		    
+		 //view_cnt를 그래프에 넣기  
+         barElements.enter()   // 데이터 개수만큼 반복
+            .append("text")	// text 요소 추가
+			.attr("y", function(d, i){	// X 좌표를 지정
+				return i * 40 + 20;	// 막대그래프의 표시 간격을 맞춤
 			})
+			.attr("x", 410)	// Y 좌표를 지정
+			.text(function(d, i){	// 데이터 표시
+				return dataSet[i].viewCnt;
+		    })
+        }
+   }); 
 
-         }
-     }); 
 
 
 	
@@ -189,7 +202,7 @@ $.ajax({
          var r = h / 2;
    
          var color = d3.scale.ordinal().range(
-               [ "#FFF9C4", "#FFF59D", "#FFF176", "#FFEE58", "#FFEB3B" ]); // GPVF
+               [ "#03A9F4", "#EEEEEE", "#EEEEEE", "#EEEEEE", "#EEEEEE" ]); // GPVF
    
          var data = [];
    
@@ -262,7 +275,7 @@ $.ajax({
          var r = h / 2;
    
          var color = d3.scale.ordinal().range(
-               [ "#FCE4EC", "#F8BBD0", "#F48FB1", "#F06292", "#EC407A"]); // GPVF
+               [  "#03A9F4", "#EEEEEE", "#EEEEEE", "#EEEEEE", "#EEEEEE"]); // GPVF
    
    
          var data = [];
@@ -333,7 +346,7 @@ $.ajax({
          var r = h / 2;
 
          var color = d3.scale.ordinal().range(
-               [ "#C8E6C9", "#A5D6A7", "#81C784", "#66BB6A", "#4CAF50" ]); // GPVF
+               [  "#03A9F4", "#EEEEEE", "#EEEEEE", "#EEEEEE", "#EEEEEE" ]); // GPVF
 
          var ydata = [ {
             "good" : 5,
