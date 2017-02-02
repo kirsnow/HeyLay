@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>통계 상세 보기 | Quration: 답을 열어 줄 그런 사람</title>
 <style>
-	svg { width: 320px; height: 210px; }
+	svg { width: 250px; height: 250px; }
 	.pie { fill: orange; stroke: white; stroke-width: 3;}
 </style>
 		
@@ -37,6 +37,11 @@
 	ga('create', 'UA-90558257-1', 'auto');
 	ga('send', 'pageview');
 </script>
+<style type="text/css">
+	#myGraphText {
+		vertical-align: middle;
+	}
+</style>
 </head>
 <body class="nav-md">
 	<div class="container body marginTop70">
@@ -53,14 +58,33 @@
 			<div class="right_col" role="main">
 				<section>
 					<div class="container text-center">
-						<div class="row">
-							<div class="div col-md-4 col-md-push-1">
-								<h4 class="text-center marginBottom30">${ userVO.firstName } 님이 자주 담은 사이트 유형</h4>
-								<svg class="col-md-offset-3" id="myGraph"></svg>
+						<div class="row marginBottom100">
+							<div class="div col-md-8 col-md-push-2 marginTop">
+								<h2>${ userVO.firstName } 님의 취향 통계</h2>
 							</div>
-							<div class="div col-md-4 col-md-push-1">
-								<h4 class="text-center marginBottom30">${ userVO.firstName } 님이 자주 담은 사이트</h4>
-								<svg class="col-md-offset-3" id="myGraph2"></svg>
+						</div>
+						<div class="row marginBottom100">
+							<div class="div col-md-8 col-md-push-2">
+								<div class="lead marginBottom30" id="myGraphText"></div>
+								<svg id="myGraph"></svg>
+							</div>
+						</div>
+						<div class="row marginBottom100">
+							<div class="div col-md-8 col-md-push-2">
+								<div class="lead marginBottom30" id="myGraphText2"></div>
+								<svg id="myGraph2"></svg>
+							</div>
+						</div>
+						<div class="row marginBottom100">
+							<div class="div col-md-8 col-md-push-2">
+								<div class="lead marginBottom30" id="myGraphText3"></div>
+								<svg id="myGraph3"></svg>
+							</div>
+						</div>
+						<div class="row marginBottom100">
+							<div class="div col-md-8 col-md-push-2">
+								<div class="lead marginBottom30" id="myGraphText4"></div>
+								<svg id="myGraph4"></svg>
 							</div>
 						</div>
 					</div>
@@ -86,13 +110,13 @@
 	
 <script>
 	$.ajax({
-		url : '${ pageContext.request.contextPath }/statics/sourceType.do',
+		url : '${ pageContext.request.contextPath }/statics/savedSourceType.do',
 	    type: 'get',
 	    contentType: "application/json", 
 	    data : { "no" : '${ userVO.no}' },
 	    success : function(response){
-	    	var svgWidth = 200;	// SVG 요소의 넓이
-	    	var svgHeight = 200;	// SVG 요소의 높이
+	    	var svgWidth = 250;	// SVG 요소의 넓이
+	    	var svgHeight = 250;	// SVG 요소의 높이
 	    	var r = svgHeight / 2;
 	    	
 			var dataSet = [];
@@ -132,7 +156,7 @@
 			  .append("svg:path")	// 데이터의 수만큼 path 요소가 추가됨
 			  .attr("class", "pie")	// CSS 클래스 설정
 			  .style("fill", function(d, i){
-					return ["#C8E6C9", "#A5D6A7", "#81C784", "#66BB6A", "#4CAF50"][i];	// 통신사의 색을 반환
+					return ["#03A9F4", "#BDBDBD", "#E0E0E0", "#EEEEEE", "#F5F5F5"][i];
 				})
 			  .transition()
 			  .duration(200)
@@ -159,7 +183,7 @@
 									})
 						.attr("text-anchor","middle")
 						.attr("dominant-baseline", "central")
-						.style("font-size","15px")
+						.style("font-size","18px")
 						.style("text-decoration","bold")
 						.text(function(d, i) {
 									return dataSet[i].label;
@@ -170,12 +194,13 @@
 							return "translate("+ c[0] + "," + c[1] + ")";	})
 					.attr('dy', '2em')
 					.attr("text-anchor", "middle")
-					.style("font-size","12px")
+					.style("font-size","15px")
 					.style("text-decoration","bold")
 					.text(function(d, i) {
 							return dataSet[i].value;
 						})
-        },
+			$('#myGraphText').text('${ userVO.firstName } 님은 ' + dataSet[0].label + ' 유형을 많이 담으셨군요!');
+		},
         error : function() {
         	alert('ERROR');
         }
@@ -187,8 +212,8 @@
         contentType: "application/json", 
         data : { "no" : '${ userVO.no}' },
         success : function(response){
-        	var svgWidth = 200;	// SVG 요소의 넓이
-        	var svgHeight = 200;	// SVG 요소의 높이
+        	var svgWidth = 250;	// SVG 요소의 넓이
+        	var svgHeight = 250;	// SVG 요소의 높이
         	var r = svgHeight / 2;
         	
 			var dataSet = [];
@@ -228,7 +253,7 @@
 			  .append("svg:path")	// 데이터의 수만큼 path 요소가 추가됨
 			  .attr("class", "pie")	// CSS 클래스 설정
 			  .style("fill", function(d, i){
-					return ["#C5CAE9", "#9FA8DA", "#7986CB", "#5C6BC0", "#3F51B5"][i];	// 통신사의 색을 반환
+					return ["#03A9F4", "#BDBDBD", "#E0E0E0", "#EEEEEE", "#F5F5F5"][i];
 				})
 			  .transition()
 			  .duration(200)
@@ -271,7 +296,202 @@
 						.text(function(d, i) {
 								return dataSet[i].value;
 							})
+			$('#myGraphText2').text('${ userVO.firstName } 님은 ' + dataSet[0].label + ' 사이트에서 많이 담으셨군요!');			
             },
+            error : function() {
+            	alert('ERROR');
+            }
+        });
+	
+	$.ajax({
+		url : '${ pageContext.request.contextPath }/statics/likeSourceType.do',
+	    type: 'get',
+	    contentType: "application/json", 
+	    data : { "no" : '${ userVO.no}' },
+	    success : function(response){
+	    	var svgWidth = 250;	// SVG 요소의 넓이
+	    	var svgHeight = 250;	// SVG 요소의 높이
+	    	var r = svgHeight / 2;
+	    	
+			var dataSet = [];
+			
+			for(var i = 0; i < response.staticsList.length; i++) {
+				dataSet.push({
+					"label" : response.staticsList[i].columnName, 
+					"value" : response.staticsList[i].cnt
+				});
+			}
+			
+			var vis = d3
+					.select("#myGraph3")
+					.append("svg:svg")
+					.data([ dataSet ])
+					.attr("width", svgWidth)
+					.attr("height", svgHeight)
+					.append("svg:g")
+					.attr("transform", "translate(" + svgWidth/2 + ", " + svgHeight/2 + ")");
+			
+			// 원 그래프의 좌표값을 계산하는 메서드
+			var pie = d3.layout.pie()	// 원 그래프 레이아웃
+						.value(function(d) {
+									return d.value;
+								});
+			// 원 그래프의 안쪽 반지름, 바깥쪽 반지름 설정
+			var arc = d3.svg.arc().outerRadius(r)
+			// 원 그래프 그리기
+			
+			var pieElements = vis.selectAll("g.slice")
+									.data(pie)
+									.enter()
+									.append("svg:g")
+									.attr("class", "slice");
+			
+			pieElements	// 데이터 수만큼 반복
+			  .append("svg:path")	// 데이터의 수만큼 path 요소가 추가됨
+			  .attr("class", "pie")	// CSS 클래스 설정
+			  .style("fill", function(d, i){
+					return ["#03A9F4", "#BDBDBD", "#E0E0E0", "#EEEEEE", "#F5F5F5"][i];
+				})
+			  .transition()
+			  .duration(200)
+			  .delay(function(d,i){   // 그릴 원 그래프의 시간을 어긋나게 표시
+					return i*200;
+				})
+			  .ease("linear")	// 직선적인 움직임으로 변경
+			  .attrTween("d", function(d, i){	// 보간 처리
+					var interpolate = d3.interpolate(
+						{ startAngle : d.startAngle, endAngle : d.startAngle }, // 각 부분의 시작 각도
+						{ startAngle : d.startAngle, endAngle : d.endAngle }    // 각 부분의 종료 각도
+	       			 );
+					return function(t){
+						return arc(interpolate(t)); // 시간에 따라 처리
+					}
+				})
+				
+			pieElements.append("text")
+						.attr("transform", function(d) {
+										d.innerRadius = 0;
+										d.outerRadius = 0;
+										var c  =arc.centroid(d);
+										return "translate(" + c[0] + "," + c[1] + ")";
+									})
+						.attr("text-anchor","middle")
+						.attr("dominant-baseline", "central")
+						.style("font-size","15px")
+						.style("text-decoration","bold")
+						.text(function(d, i) {
+									return dataSet[i].label;
+								})
+			pieElements.append("svg:text")
+					.attr("transform", function(d) {
+							var c = arc.centroid(d);
+							return "translate("+ c[0] + "," + c[1] + ")";	})
+					.attr('dy', '2em')
+					.attr("text-anchor", "middle")
+					.style("font-size","12px")
+					.style("text-decoration","bold")
+					.text(function(d, i) {
+							return dataSet[i].value;
+						})
+			$('#myGraphText3').text('${ userVO.firstName } 님은 ' + dataSet[0].label + ' 유형을 좋아하시는군요!');
+        },
+        error : function() {
+        	alert('ERROR');
+        }
+    });
+
+	$.ajax({
+		url : '${ pageContext.request.contextPath }/statics/likeSource.do',
+        type: 'get',
+        contentType: "application/json", 
+        data : { "no" : '${ userVO.no}' },
+        success : function(response){
+        	var svgWidth = 250;	// SVG 요소의 넓이
+        	var svgHeight = 250;	// SVG 요소의 높이
+        	var r = svgHeight / 2;
+        	
+			var dataSet = [];
+			
+			for(var i = 0; i < response.staticsList.length; i++) {
+				dataSet.push({
+					"label" : response.staticsList[i].columnName, 
+					"value" : response.staticsList[i].cnt
+				});
+			}
+			
+			var vis = d3
+					.select("#myGraph4")
+					.append("svg:svg")
+					.data([ dataSet ])
+					.attr("width", svgWidth)
+					.attr("height", svgHeight)
+					.append("svg:g")
+					.attr("transform", "translate(" + svgWidth/2 + ", " + svgHeight/2 + ")");
+			
+			// 원 그래프의 좌표값을 계산하는 메서드
+			var pie = d3.layout.pie()	// 원 그래프 레이아웃
+						.value(function(d) {
+									return d.value;
+								});
+			// 원 그래프의 안쪽 반지름, 바깥쪽 반지름 설정
+			var arc = d3.svg.arc().outerRadius(r)
+			// 원 그래프 그리기
+			
+			var pieElements = vis.selectAll("g.slice")
+									.data(pie)
+									.enter()
+									.append("svg:g")
+									.attr("class", "slice");
+			
+			pieElements	// 데이터 수만큼 반복
+			  .append("svg:path")	// 데이터의 수만큼 path 요소가 추가됨
+			  .attr("class", "pie")	// CSS 클래스 설정
+			  .style("fill", function(d, i){
+					return ["#03A9F4", "#BDBDBD", "#E0E0E0", "#EEEEEE", "#F5F5F5"][i];
+				})
+			  .transition()
+			  .duration(200)
+			  .delay(function(d,i){   // 그릴 원 그래프의 시간을 어긋나게 표시
+					return i*200;
+				})
+			  .ease("linear")	// 직선적인 움직임으로 변경
+			  .attrTween("d", function(d, i){	// 보간 처리
+					var interpolate = d3.interpolate(
+						{ startAngle : d.startAngle, endAngle : d.startAngle }, // 각 부분의 시작 각도
+						{ startAngle : d.startAngle, endAngle : d.endAngle }    // 각 부분의 종료 각도
+	       			 );
+					return function(t){
+						return arc(interpolate(t)); // 시간에 따라 처리
+					}
+				})
+				
+			pieElements.append("text")
+						.attr("transform", function(d) {
+										d.innerRadius = 0;
+										d.outerRadius = 0;
+										var c  =arc.centroid(d);
+										return "translate(" + c[0] + "," + c[1] + ")";
+									})
+						.attr("text-anchor","middle")
+						.attr("dominant-baseline", "central")
+						.style("font-size","15px")
+						.style("text-decoration","bold")
+						.text(function(d, i) {
+									return dataSet[i].label;
+								})
+			pieElements.append("svg:text")
+						.attr("transform", function(d) {
+								var c = arc.centroid(d);
+								return "translate("+ c[0] + "," + c[1] + ")";	})
+						.attr('dy', '2em')
+						.attr("text-anchor", "middle")
+						.style("font-size","12px")
+						.style("text-decoration","bold")
+						.text(function(d, i) {
+								return dataSet[i].value;
+							})
+			$('#myGraphText4').text('${ userVO.firstName } 님은 ' + dataSet[0].label + ' 사이트를 좋아하시는군요!');
+        },
             error : function() {
             	alert('ERROR');
             }
