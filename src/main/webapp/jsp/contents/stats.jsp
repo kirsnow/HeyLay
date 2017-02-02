@@ -54,14 +54,13 @@
 				<section>
 					<div class="container text-center">
 						<div class="row">
-							<div class="well div col-md-push-2 col-md-4">
-								<h4 class="text-center">${ userVO.firstName } 님이 자주 담은 사이트 유형</h4>
-								<svg class="col-md-offset-1" id="myGraph"></svg>
-								<div id="rmfo"></div>
+							<div class="div col-md-4 col-md-push-1">
+								<h4 class="text-center marginBottom30">${ userVO.firstName } 님이 자주 담은 사이트 유형</h4>
+								<svg class="col-md-offset-3" id="myGraph"></svg>
 							</div>
-							<div class="well div col-md-push-2 col-md-4">
-								<h4 class="text-center">${ userVO.firstName } 님이 자주 담은 사이트</h4>
-								<svg class="col-md-offset-1" id="myGraph2"></svg>
+							<div class="div col-md-4 col-md-push-1">
+								<h4 class="text-center marginBottom30">${ userVO.firstName } 님이 자주 담은 사이트</h4>
+								<svg class="col-md-offset-3" id="myGraph2"></svg>
 							</div>
 						</div>
 					</div>
