@@ -18,11 +18,8 @@ public class SearchServiceImp {
 	
 	public SearchVO searchResult(String q, String ip, int userNo) {
 		
-		String defaultHostIP = "52.35.61.184";  //Host IP 미설정 시, defaultHostIP에서 검색 실행. "http://hostIP:9200" 형식이 된다.
-		String hostIP = ip != null ? ip : defaultHostIP;
-		
 		//검색 실행
-		SearchVO searchResult = dao.searchResult(q, hostIP);
+		SearchVO searchResult = dao.searchResult(q, ip);
 		
 		//검색 키워드 저장
 		SearchVO keyword = new SearchVO();

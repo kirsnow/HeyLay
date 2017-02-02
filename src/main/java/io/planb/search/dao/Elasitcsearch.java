@@ -24,6 +24,8 @@ public class Elasitcsearch {
      * 미지정 시, 상위 10건이 표시된다.
      */
 	private final int searchSize = 100;
+	private final String ipES = "52.35.61.184";
+	private final String ipBit = "192.168.1.64";
 
 	/**
 	 * Elasticsearch URI Search
@@ -35,9 +37,9 @@ public class Elasitcsearch {
 	 */
 	public SearchVO searchURI(String q, String ip) {
 		SearchVO searchResult = null;
-		
+		String searchIP = ip != null ? ip : ipBit;
 		try {
-			String restAPI = "http://" + ip + ":9200/_all/_search?pretty=true" 
+			String restAPI = "http://" + searchIP + ":9200/contentss/_search?pretty=true" 
 							+ "&q=" + URLEncoder.encode(q, "UTF-8");
 			if(searchSize > 0) restAPI += "&size=" + searchSize;
 			
@@ -107,19 +109,19 @@ public class Elasitcsearch {
 				String title	   = document.has("title")			 ? document.getString("title")			 : null;
 				String summary	   = document.has("summary")		 ? document.getString("summary")		 : null;
 				String url		   = document.has("url")			 ? document.getString("url")			 : null;
-				String imgUrl	   = document.has("img_url")		 ? document.getString("img_url")		 : null;
-				String lastScraped = document.has("last_scraped")	 ? document.getString("last_scraped")	 : null;
+				String imgUrl	   = document.has("imgurl")			 ? document.getString("imgurl")			 : null;
+				String lastScraped = document.has("lastscraped")	 ? document.getString("lastscraped")	 : null;
 				String ban		   = document.has("ban")			 ? document.getString("ban")			 : null;
 				
-				String source	 = document.has("sourceName")		 ? document.getString("sourceName")		 : "source";
-				String sourceUrl = document.has("sourceUrl")		 ? document.getString("sourceUrl")		 : null;
-				String category	 = document.has("categoryName")		 ? document.getString("categoryName")	 : "category";
-				String dataType	 = document.has("dataType")			 ? document.getString("dataType")		 : "dataType";
+				String source	 = document.has("source")		 ? document.getString("source")		 : "source";
+				String sourceUrl = document.has("sourceurl")	 ? document.getString("sourceurl")	 : null;
+				String category	 = document.has("category")		 ? document.getString("category")	 : "category";
+				String dataType	 = document.has("datatype")		 ? document.getString("datatype")	 : "dataType";
 				
-				int saveCnt		 = document.has("saveCnt")	 ? document.getInt("saveCnt")	 : 0;
-				int reportCnt	 = document.has("reportCnt") ? document.getInt("reportCnt")	 : 0;
-				int likeCnt		 = document.has("likeCnt")	 ? document.getInt("likeCnt")	 : 0;
-				int viewCnt		 = document.has("view_cnt")	 ? document.getInt("view_cnt")	 : 0;
+				int saveCnt		 = document.has("savecnt")	 ? document.getInt("savecnt")	 : 0;
+				int reportCnt	 = document.has("reportcnt") ? document.getInt("reportcnt")	 : 0;
+				int likeCnt		 = document.has("likecnt")	 ? document.getInt("likecnt")	 : 0;
+				int viewCnt		 = document.has("viewcnt")	 ? document.getInt("viewcnt")	 : 0;
 				
 				//Save search result to ContentsVO
 				ContentsVO contentsVO = new ContentsVO();
