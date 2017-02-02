@@ -1,9 +1,7 @@
 package io.planb.search.service;
 
-import java.io.IOException;
 import java.util.List;
 
-import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,10 +16,10 @@ public class SearchServiceImp {
 	@Autowired
 	private SearchDAOImp dao;
 	
-	public SearchVO searchResult(String q, String host, int userNo) throws JSONException, IOException {
+	public SearchVO searchResult(String q, String ip, int userNo) {
 		
 		String defaultHostIP = "52.35.61.184";  //Host IP 미설정 시, defaultHostIP에서 검색 실행. "http://hostIP:9200" 형식이 된다.
-		String hostIP = host != null ? host : defaultHostIP;
+		String hostIP = ip != null ? ip : defaultHostIP;
 		
 		//검색 실행
 		SearchVO searchResult = dao.searchResult(q, hostIP);
