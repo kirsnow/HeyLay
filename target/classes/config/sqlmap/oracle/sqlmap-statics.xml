@@ -3,6 +3,82 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.planb.statics.dao.StaticsDAO">
+
+	<select id="countTotalSaved" parameterType="int" resultType="int">
+		SELECT COUNT (*) cnt 
+		FROM q_contents_saved 
+		WHERE member_no = #{ no } 
+	</select>
+	
+	<select id="countTodaySaved" parameterType="int" resultType="int">
+		SELECT COUNT (*) cnt 
+		FROM q_contents_saved 
+		WHERE member_no = #{ no } 
+		AND TO_CHAR(reg_date, 'YYYY-MM-DD') = TO_CHAR(current_date, 'YYYY-MM-DD') 
+	</select>
+	
+	<select id="countYesSaved" parameterType="int" resultType="int">
+		SELECT COUNT (*) 
+		FROM q_contents_saved 
+		WHERE member_no = #{ no } 
+		AND TO_CHAR(reg_date, 'YYYY-MM-DD') = TO_CHAR(current_date - 1, 'YYYY-MM-DD')
+	</select>
+	
+	<select id="countBeforeYesSaved" parameterType="int" resultType="int">
+		SELECT COUNT (*) 
+		FROM q_contents_saved 
+		WHERE member_no = #{ no } 
+		AND TO_CHAR(reg_date, 'YYYY-MM-DD') = TO_CHAR(current_date - 2, 'YYYY-MM-DD')
+	</select>
+	
+		<select id="selectLikeSource" parameterType="int" resultType="staticsVO">
+		SELECT r.sourceName columnName, COUNT(r.sourceName) cnt 
+		FROM (SELECT so.name as sourceName 
+		FROM q_like l
+		INNER JOIN q_contents co ON co.no = l.contents_no 
+		INNER JOIN q_source so ON so.no = co.source_no 
+		WHERE l.member_no = #{ no }) r 
+		GROUP BY r.sourceName 
+		ORDER BY cnt DESC 
+		LIMIT 10 
+	</select>
+	
+	<select id="selectSavedMoreSaved" parameterType="int" resultType="staticsVO">
+		SELECT c.title columnName, COUNT (*) cnt 
+		FROM q_contents_saved cs2 
+		INNER JOIN q_contents c ON c.no = cs2.contents_no 
+		WHERE cs2.contents_no IN (SELECT cs.contents_no 
+		FROM q_contents_saved cs 
+		WHERE cs.member_no = #{ no } )
+		GROUP BY cs2.no, c.no
+		ORDER BY cnt DESC 
+		LIMIT 10 
+	</select>
+	
+	<select id="selectSavedLessSaved" parameterType="int" resultType="staticsVO">
+		SELECT c.title columnName, COUNT (*) cnt 
+		FROM q_contents_saved cs2 
+		INNER JOIN q_contents c ON c.no = cs2.contents_no 
+		WHERE cs2.contents_no IN (SELECT cs.contents_no 
+		FROM q_contents_saved cs 
+		WHERE cs.member_no = #{ no } )
+		GROUP BY cs2.no, c.no
+		ORDER BY cnt 
+		LIMIT 10 
+	</select>
+	
+	<select id="selectSavedLike" parameterType="int" resultType="staticsVO">
+		SELECT c.title columnName, COUNT (*) cnt
+		FROM q_like l
+		INNER JOIN q_contents c ON c.no = l.contents_no 
+		WHERE l.contents_no IN (SELECT cs.contents_no 
+		FROM q_contents_saved cs 
+		WHERE cs.member_no = #{ no } ) 
+		GROUP BY l.no, c.no
+		ORDER BY cnt DESC 
+		LIMIT 10 
+	</select>
+	
 	
 	<select id="selectSavedSource" parameterType="int" resultType="staticsVO">
 		SELECT r.sourceName columnName, COUNT(r.sourceName) cnt 
@@ -25,18 +101,6 @@
 		INNER JOIN q_data_type dt ON dt.no = so.data_type 
 		WHERE cs.member_no = #{ no }) r 
 		GROUP BY r.dataType 
-		ORDER BY cnt DESC 
-		LIMIT 5 
-	</select>
-	
-	<select id="selectLikeSource" parameterType="int" resultType="staticsVO">
-		SELECT r.sourceName columnName, COUNT(r.sourceName) cnt 
-		FROM (SELECT so.name as sourceName 
-		FROM q_like l
-		INNER JOIN q_contents co ON co.no = l.contents_no 
-		INNER JOIN q_source so ON so.no = co.source_no 
-		WHERE l.member_no = #{ no }) r 
-		GROUP BY r.sourceName 
 		ORDER BY cnt DESC 
 		LIMIT 5 
 	</select>

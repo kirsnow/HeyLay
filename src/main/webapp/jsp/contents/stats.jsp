@@ -44,6 +44,12 @@
 	.row .scene_wrapper {
 		height: 700px;
 	}
+	.scene1 {
+		text-align: center;
+	    background: url(/Quration/img/sample/back1.png) no-repeat bottom center;
+	    height: 800px;
+	    background-color: #F7F7F7;
+	}
 </style>
 </head>
 <body class="nav-md">
@@ -63,58 +69,7 @@
 					<div class="container text-center">
 						<div class="row scene1">
 							<div class="div col-md-12 scene_wrapper">
-								<h2>${ userVO.firstName } 님은 큐레이션을 통해,<br/>총 개의 카드를 만났습니다.</h2>
-								<div class="row card-container mdl-grid">
-					                <!-- card -->
-					                <div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-shadow--3dp">
-					                    <!-- card top: contents source -->
-					                    <div class="mdl-card__title mdl-color-text--grey-500">
-					                        <span class="label label-default">분야</span>
-				                            <span class="label label-info">유형</span>
-				                            <span class="label label-primary">사이트</span>
-					                    </div>
-						                    <!-- card image -->
-						                    <figure class="mdl-card__media" style="margin:0px">
-<!-- 							                        <img src="/Quration/img/sample/img1.jpg" style="width:350px; height:200px"> -->
-						                    </figure>
-					                    <!-- card title -->
-					                    <div class="mdl-card__title">
-					                        <h5 class="author mdl-card__title-text">lorem ipsum&nbsp;</h5>
-					                    </div>
-					
-					                    <!-- card text -->
-					                    <div class="content mdl-card__supporting-text mdl-color-text--grey-800">
-					                        <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-					                    </div>
-					
-					                    <!-- card menu (top-right) -->
-					                    <div class="mdl-card__menu">
-					                        <div id="report" class="btn-group dropdown pull-right"
-					                            title="신고">
-					                            <a href="#" role="button" class="" title="카드를 보관함에 담기"> 
-					                               <i class="fa fa-star fa-lg" aria-hidden="true"></i>
-					                            </a>
-					                        </div>
-					                    </div>
-					
-					                    <!-- card action buttons (bottom) -->
-					                    <div class="mdl-card__actions mdl-card--border">
-					                        <!-- buttons (bottom-right) -->
-					                        <div class="pull-right">
-					                            <div id="share" class="btn-group dropup">
-					                                <a href="#" role="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="외부 서비스로 공유">
-					                                    <i class="fa fa-share-alt fa-lg mdl-color-text--grey-500" aria-hidden="true"></i>
-					                                </a>
-					                            </div>
-					                            <div id="report" class="btn-group dropup" title="신고">
-					                                <a href="#" role="button" class="btn dropdown-toggle mdl-color-text--grey-500" data-toggle="dropdown" aria-expanded="false" title="신고">
-					                                    <i class="fa fa-exclamation-triangle fa-lg" aria-hidden="true"></i>
-					                                </a>
-					                            </div>
-					                        </div> <!-- /buttons (bottom-right) -->
-					                    </div> <!-- /card action buttons (bottom) -->
-					                </div> <!-- /card -->
-						        </div>
+								<h2 class="marginTop70">${ userVO.firstName } 님은 큐레이션을 통해,<br/>총 ${ countTotalSaved } 개의 카드를 만났습니다.</h2>
 							</div>
 						</div>
 					

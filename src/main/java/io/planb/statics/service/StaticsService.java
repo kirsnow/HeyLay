@@ -81,4 +81,47 @@ public class StaticsService {
 		
 		return staticsList;
 	}
+
+	
+	public int countTotalSaved(int no) {
+		int countTotalSaved = dao.countTotalSaved(no);	
+		
+		return countTotalSaved;
+	}
+
+	public int countTodaySaved(int no) {
+		int countTodaySaved = dao.countTodaySaved(no);
+		
+		return countTodaySaved;
+	}
+
+	public int countYesSaved(int no) {
+		int countYesSaved = dao.countYesSaved(no);
+		
+		return countYesSaved;
+	}
+
+	public int countBeforeYesSaved(int no) {
+		int countBeforeYesSaved = dao.countBeforeYesSaved(no);
+		
+		return countBeforeYesSaved;
+	}
+
+	public List<StaticsVO> selectSavedMoreSaved(int no) {
+		List<StaticsVO> savedMoreSavedList = dao.selectSavedMoreSaved(no);
+		
+		return savedMoreSavedList;
+	}
+
+	public List<StaticsVO> selectSavedLessSaved(int no) {
+		List<StaticsVO> savedLessSavedList = dao.selectSavedLessSaved(no);
+		
+		return savedLessSavedList;
+	}
+
+	public List<StaticsVO> selectSavedLike(int no) {
+		List<StaticsVO> savedLikeList = dao.selectSavedLike(no);
+		
+		return savedLikeList;
+	}
 }
