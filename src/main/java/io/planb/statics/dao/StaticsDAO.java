@@ -82,4 +82,10 @@ public class StaticsDAO {
 		
 		return staticsList;
 	}
+
+	public int selectNewUserCnt() {
+		int newUserCnt = sqlSessionTemplate.selectOne("io.planb.statics.dao.StaticsDAO.selectNewUserCnt");
+		
+		return newUserCnt;
+	}
 }

@@ -90,6 +90,7 @@
 		ORDER BY cnt DESC 
 	</select>
 	
+	<!-- 회원 전체의 조회수가 높은 콘텐츠 가로형 막대 그래프  -->
 	<select id="selectAllCntContents" parameterType="int" resultType="staticsVO">
       SELECT title as columnName, view_cnt as data, round((view_cnt / sum(view_cnt) over ())*100,2) as cnt
       FROM q_contents
@@ -97,6 +98,14 @@
       limit 5
 	</select>
 	
+	<!-- 신규 가입 유저 수 확인 --> 
+	<select id="selectNewUserCnt" resultType="int">
+		SELECT COUNT(no) as cnt
+			FROM Q_member
+		where reg_date &gt; current_date - interval '1 day'
+	</select>
+	
+	<!-- 회원 전체의 조회수가 높은 사이트  -->
 	<select id="selectCiteContents" parameterType="int" resultType="staticsVO">
 		SELECT qs.name as columnName, SUM(qc.view_cnt) as cnt
 		FROM  q_source qs 
@@ -113,4 +122,5 @@
 		ORDER BY cnt DESC 
 		Limit 50
 	</select>
+	
 </mapper>

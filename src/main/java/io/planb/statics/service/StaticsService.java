@@ -81,4 +81,10 @@ public class StaticsService {
 		
 		return staticsList;
 	}
+
+	public int selectNewUserCnt() {
+		int newUserCnt = dao.selectNewUserCnt();
+		
+		return newUserCnt;
+	}
 }
