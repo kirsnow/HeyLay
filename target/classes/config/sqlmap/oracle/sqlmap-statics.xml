@@ -3,6 +3,82 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.planb.statics.dao.StaticsDAO">
+
+	<select id="countTotalSaved" parameterType="int" resultType="int">
+		SELECT COUNT (*) cnt 
+		FROM q_contents_saved 
+		WHERE member_no = #{ no } 
+	</select>
+	
+	<select id="countTodaySaved" parameterType="int" resultType="int">
+		SELECT COUNT (*) cnt 
+		FROM q_contents_saved 
+		WHERE member_no = #{ no } 
+		AND TO_CHAR(reg_date, 'YYYY-MM-DD') = TO_CHAR(current_date, 'YYYY-MM-DD') 
+	</select>
+	
+	<select id="countYesSaved" parameterType="int" resultType="int">
+		SELECT COUNT (*) 
+		FROM q_contents_saved 
+		WHERE member_no = #{ no } 
+		AND TO_CHAR(reg_date, 'YYYY-MM-DD') = TO_CHAR(current_date - 1, 'YYYY-MM-DD')
+	</select>
+	
+	<select id="countBeforeYesSaved" parameterType="int" resultType="int">
+		SELECT COUNT (*) 
+		FROM q_contents_saved 
+		WHERE member_no = #{ no } 
+		AND TO_CHAR(reg_date, 'YYYY-MM-DD') = TO_CHAR(current_date - 2, 'YYYY-MM-DD')
+	</select>
+	
+		<select id="selectLikeSource" parameterType="int" resultType="staticsVO">
+		SELECT r.sourceName columnName, COUNT(r.sourceName) cnt 
+		FROM (SELECT so.name as sourceName 
+		FROM q_like l
+		INNER JOIN q_contents co ON co.no = l.contents_no 
+		INNER JOIN q_source so ON so.no = co.source_no 
+		WHERE l.member_no = #{ no }) r 
+		GROUP BY r.sourceName 
+		ORDER BY cnt DESC 
+		LIMIT 10 
+	</select>
+	
+	<select id="selectSavedMoreSaved" parameterType="int" resultType="staticsVO">
+		SELECT c.title columnName, COUNT (*) cnt 
+		FROM q_contents_saved cs2 
+		INNER JOIN q_contents c ON c.no = cs2.contents_no 
+		WHERE cs2.contents_no IN (SELECT cs.contents_no 
+		FROM q_contents_saved cs 
+		WHERE cs.member_no = #{ no } )
+		GROUP BY cs2.no, c.no
+		ORDER BY cnt DESC 
+		LIMIT 10 
+	</select>
+	
+	<select id="selectSavedLessSaved" parameterType="int" resultType="staticsVO">
+		SELECT c.title columnName, COUNT (*) cnt 
+		FROM q_contents_saved cs2 
+		INNER JOIN q_contents c ON c.no = cs2.contents_no 
+		WHERE cs2.contents_no IN (SELECT cs.contents_no 
+		FROM q_contents_saved cs 
+		WHERE cs.member_no = #{ no } )
+		GROUP BY cs2.no, c.no
+		ORDER BY cnt 
+		LIMIT 10 
+	</select>
+	
+	<select id="selectSavedLike" parameterType="int" resultType="staticsVO">
+		SELECT c.title columnName, COUNT (*) cnt
+		FROM q_like l
+		INNER JOIN q_contents c ON c.no = l.contents_no 
+		WHERE l.contents_no IN (SELECT cs.contents_no 
+		FROM q_contents_saved cs 
+		WHERE cs.member_no = #{ no } ) 
+		GROUP BY l.no, c.no
+		ORDER BY cnt DESC 
+		LIMIT 10 
+	</select>
+	
 	
 	<select id="selectSavedSource" parameterType="int" resultType="staticsVO">
 		SELECT r.sourceName columnName, COUNT(r.sourceName) cnt 
@@ -25,18 +101,6 @@
 		INNER JOIN q_data_type dt ON dt.no = so.data_type 
 		WHERE cs.member_no = #{ no }) r 
 		GROUP BY r.dataType 
-		ORDER BY cnt DESC 
-		LIMIT 5 
-	</select>
-	
-	<select id="selectLikeSource" parameterType="int" resultType="staticsVO">
-		SELECT r.sourceName columnName, COUNT(r.sourceName) cnt 
-		FROM (SELECT so.name as sourceName 
-		FROM q_like l
-		INNER JOIN q_contents co ON co.no = l.contents_no 
-		INNER JOIN q_source so ON so.no = co.source_no 
-		WHERE l.member_no = #{ no }) r 
-		GROUP BY r.sourceName 
 		ORDER BY cnt DESC 
 		LIMIT 5 
 	</select>
@@ -90,6 +154,7 @@
 		ORDER BY cnt DESC 
 	</select>
 	
+	<!-- 회원 전체의 조회수가 높은 콘텐츠 가로형 막대 그래프  -->
 	<select id="selectAllCntContents" parameterType="int" resultType="staticsVO">
       SELECT title as columnName, view_cnt as data, round((view_cnt / sum(view_cnt) over ())*100,2) as cnt
       FROM q_contents
@@ -97,6 +162,38 @@
       limit 5
 	</select>
 	
+	<!-- 신규 가입 유저 수 확인 --> 
+	<select id="selectNewUserCnt" resultType="int">
+		SELECT COUNT(no) as cnt
+			FROM Q_member
+		where reg_date &gt; current_date - interval '1 day'
+	</select>
+	
+	<!-- 오늘의 검색 횟수  --> 
+	<select id="selectSerachToday" resultType="int">
+		SELECT COUNT(keyword) as cnt
+			FROM Q_keywords
+		where reg_date &gt; current_date - interval '1 day'
+	</select>
+	
+	<!-- 오늘의 인기 키워드  --> 
+	<select id="selectPopularKeyword" resultType="String">
+		SELECT keyword, COUNT(keyword) as cnt
+			FROM Q_keywords
+		where reg_date &gt; current_date - interval '1 day'
+		group by keyword
+		order by cnt desc
+		limit 1
+	</select>
+	
+	<!-- 오늘 저장된 컨텐츠  --> 
+	<select id="selectSavedContent" resultType="int">
+		SELECT COUNT(no) as cnt
+			FROM Q_contents_saved
+		where reg_date &gt; current_date - interval '1 day'
+	</select>
+	
+	<!-- 회원 전체의 조회수가 높은 사이트  -->
 	<select id="selectCiteContents" parameterType="int" resultType="staticsVO">
 		SELECT qs.name as columnName, SUM(qc.view_cnt) as cnt
 		FROM  q_source qs 
@@ -106,6 +203,7 @@
 		Limit 5
 	</select>
 	
+	<!-- 전체 키워드 랭킹 -->
 	<select id="selectAllKeywordList" resultType="KeywordsVO">
 		SELECT keyword, COUNT(keyword) as cnt
 		FROM Q_KEYWORDS
@@ -113,4 +211,5 @@
 		ORDER BY cnt DESC 
 		Limit 50
 	</select>
+	
 </mapper>

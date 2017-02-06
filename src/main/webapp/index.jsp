@@ -42,7 +42,6 @@
   <body>
 
 	
-	
     <!-- Home Section -->
     <div id="home">
 

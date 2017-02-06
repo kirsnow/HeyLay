@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
 	
-	
+
 	.spanPadding {
    	 	padding-right: 20px;
    	}
@@ -15,6 +15,10 @@
 
    	.marginLeft30 {
    		margin-left: 30px;
+   	}
+   	
+   	.marginRight30{
+   		margin-right: 30px;
    	}
    	
 	.paddingleft30{
@@ -165,4 +169,8 @@
 	    vertical-align: middle;
 	    float: none;
 	}
-   
+	
+   .pie { 
+	   	stroke: white; 
+	   	stroke-width: 3;
+   	}
