@@ -82,12 +82,11 @@ public class StaticsService {
 		return staticsList;
 	}
 
-<<<<<<< HEAD
 	public int selectNewUserCnt() {
 		int newUserCnt = dao.selectNewUserCnt();
 		
 		return newUserCnt;
-=======
+	}
 	
 	public int countTotalSaved(int no) {
 		int countTotalSaved = dao.countTotalSaved(no);	
@@ -129,6 +128,5 @@ public class StaticsService {
 		List<StaticsVO> savedLikeList = dao.selectSavedLike(no);
 		
 		return savedLikeList;
->>>>>>> c7a5f45a498d34ddbbca220314bc5638edb749e1
 	}
 }

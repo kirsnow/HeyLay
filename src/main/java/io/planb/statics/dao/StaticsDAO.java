@@ -83,12 +83,11 @@ public class StaticsDAO {
 		return staticsList;
 	}
 
-<<<<<<< HEAD
 	public int selectNewUserCnt() {
 		int newUserCnt = sqlSessionTemplate.selectOne("io.planb.statics.dao.StaticsDAO.selectNewUserCnt");
 		
 		return newUserCnt;
-=======
+	}
 	
 	public int countTotalSaved(int no) {
 		int countTotalSaved = sqlSessionTemplate.selectOne("io.planb.statics.dao.StaticsDAO.countTotalSaved", no);
@@ -130,6 +129,5 @@ public class StaticsDAO {
 		List<StaticsVO> savedLikeList = sqlSessionTemplate.selectList("io.planb.statics.dao.StaticsDAO.selectSavedLike", no);
 		
 		return savedLikeList;
->>>>>>> c7a5f45a498d34ddbbca220314bc5638edb749e1
 	}
 }
