@@ -239,8 +239,35 @@ public class StaticsController {
 	@RequestMapping("/admin/statics/newUserCnt.do")
 	public int selectNewUserCnt() {
 		int newUserCnt = service.selectNewUserCnt();
-		System.out.println("controller newUserCnt : " + newUserCnt);
+		//System.out.println("controller newUserCnt : " + newUserCnt);
 		return newUserCnt;
+	}
+	
+	/*오늘의 검색 횟수 */
+	@ResponseBody
+	@RequestMapping("/admin/statics/serachToday.do")
+	public int selectSerachToday() {
+		int serachToday = service.selectSerachToday();
+		//System.out.println("controller serachToday : " + serachToday);
+		return serachToday;
+	}
+	
+	/*오늘의 인기 키워드 */
+	@ResponseBody
+	@RequestMapping("/admin/statics/popularKeyword.do")
+	public String selectPopularKeyword() {
+		String popularKeyword = service.selectPopularKeyword();
+		//System.out.println("controller popularKeyword : " + popularKeyword);
+		return popularKeyword;
+	}
+	
+	/*오늘 저장된 컨텐츠 */
+	@ResponseBody
+	@RequestMapping("/admin/statics/savedContent.do")
+	public int selectSavedContent() {
+		int savedContent = service.selectSavedContent();
+		System.out.println("controller savedContent : " + savedContent);
+		return savedContent;
 	}
 	
 }

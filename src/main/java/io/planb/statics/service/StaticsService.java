@@ -82,11 +82,6 @@ public class StaticsService {
 		return staticsList;
 	}
 
-	public int selectNewUserCnt() {
-		int newUserCnt = dao.selectNewUserCnt();
-		
-		return newUserCnt;
-	}
 	
 	public int countTotalSaved(int no) {
 		int countTotalSaved = dao.countTotalSaved(no);	
@@ -128,5 +123,29 @@ public class StaticsService {
 		List<StaticsVO> savedLikeList = dao.selectSavedLike(no);
 		
 		return savedLikeList;
+	}
+
+	public int selectNewUserCnt() {
+		int newUserCnt = dao.selectNewUserCnt();
+		
+		return newUserCnt;
+	}
+	
+	public int selectSerachToday() {
+		int serachToday = dao.selectSerachToday();
+		
+		return serachToday;
+	}
+	
+	public String selectPopularKeyword() {
+		String popularKeyword = dao.selectPopularKeyword();
+		
+		return popularKeyword;
+	}
+
+	public int selectSavedContent() {
+		int savedContent = dao.selectSavedContent();
+		
+		return savedContent;
 	}
 }

@@ -33,11 +33,7 @@
     height : 210px;
    }
 
-   .Contentsmargin20px > div {
-    margin : 20px;
-   } 
-   
-  h1 > i {
+   h1 > i {
    	font-color: gray;
    }
    
@@ -45,10 +41,14 @@
    	color : #BDBDBD;
    }
    
-   small{
+   small {
    	color : #03A9F4;
    }
  
+ 	.border10px{
+ 		border : 10px solid  #F7F7F7;
+ 	
+ 	}
 </style>
 </head>
 <body class="nav-md">
@@ -61,36 +61,35 @@
 			<!-- page content -->
 			<div class="right_col" role="main">
 				<section class="section">
-					<div class="row marginBottom">
-						<div class="contents marginLeft text-center ">
-							<div class="col-md-2 panel ">
+					<div class="row ">
+						<div class=" text-center col-md-12">
+							<div class="col-md-3 panel border10px">
 								<h1><i class="fa fa-user " aria-hidden="true"></i>
-								    <span class="marginLeft" id="newUserCnt"></span><small> 명</small>
+								    <span id="newUserCnt"></span><small> 명</small>
 								</h1>
 								<p>
-									<small class="text-center">신규 가입 유저</small>
+									<small class="text-center ">신규 가입 유저</small>
 								</p>
 							</div>
-							<div class="col-md-3 panel">
-								<h1><i class="fa fa-keyboard-o" aria-hidden="true"></i>
-								    <span class="marginLeft">${ searchTodayCnt.cnt } 1 <small> 회</small></span>
+							<div class="col-md-3 panel border10px">
+								<h1><i class="fa fa-search" aria-hidden="true"></i>
+								    <span id="serachToday"></span><small> 회</small>
 								</h1>
 								<p>
 									<small class="text-center">오늘의 검색&nbsp;횟수</small>
 								</p>
 							</div>
-							<div class="col-md-3 panel">
-								<h1><i class="fa fa-file-text-o" aria-hidden="true"></i>
-								    <span class="marginLeft">${ savedContent.cnt } 1 <small> 개</small></span>
+							<div class="col-md-3 panel border10px">
+								<h1><i class="fa fa-star" aria-hidden="true"></i>
+								    <span id="savedContent"></span><small> 개</small>
 								</h1>
 								<p>
 									<small class="text-center">오늘 저장된 컨텐츠</small>
 								</p>
 							</div>
-							<div class="col-md-3 panel">
-								<h1><i class="fa fa-keyboard-o" aria-hidden="true"></i>
-								    ${ popularKeyword.cnt }
-								     <span class="marginLeft">${ savedContent.cnt } 1</span>
+							<div class="col-md-3 panel border10px">
+								<h1><i class="fa fa-search-plus" aria-hidden="true"></i>
+								     <span id="popularKeyword"></span>
 								</h1>
 								<p>
 									<small class="text-center">오늘의 인기 검색어</small>
@@ -99,50 +98,47 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="Contentsmargin20px">
-							<div class="col-md-4 panel">
-								<h4 class="text-center marginBottom30">회원 전체 자주 담은 사이트 타입</h4>
-								<svg class="marginBottom col-md-offset-3" id="myGraph2"></svg>
-							</div>
-							<div class="col-md-4 panel">
-								<h4 class="text-center marginBottom30">회원 전체 자주 담은 사이트</h4>
-								<svg class="c marginBottom col-md-offset-3" id="myGraph"></svg>
-							</div>
-						</div>
-						<div class="Contentsmargin20px">
-							<div class="col-md-4 panel">
+						<div class="col-md-12">
+							<div class="col-md-4 panel border10px">
 								<h4 class="text-center marginBottom30">회원 전체의 조회수가 높은 사이트</h4>
-								<svg class="marginBottom col-md-offset-3" id="myGraph4"></svg>
+								<svg class="col-md-10 marginBottom col-md-offset-3" id="myGraph4"></svg>
 							</div>
-							<div class="col-md-7 panel">
-								<h4 class="text-center marginBottom30">회원 전체의 조회수가 높은 콘텐츠</h4>
+							<div class="col-md-8 panel border10px">
+								<h4 class="text-center marginBottom30 ">회원 전체의 조회수가 높은 콘텐츠</h4>
 								<svg class="col-md-10 marginBottom" id="myGraph3"></svg>
 							</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class="div col-md-push-2 col-md-8">
-							<div class="row">
+						<div class="col-md-12">
+							<div class="col-md-4 panel border10px">
+								<h4 class="text-center marginBottom30 ">회원 전체 자주 담은 사이트 타입</h4>
+								<svg class="marginBottom col-md-offset-3" id="myGraph2"></svg>
+							</div>
+							<div class="col-md-4 panel border10px">
+								<h4 class="text-center marginBottom30">회원 전체 자주 담은 사이트</h4>
+								<svg class="c marginBottom col-md-offset-3" id="myGraph"></svg>
+							</div>
+							<div class="col-md-4  marginTop40">
 								<div class="text-center">
 									<section id="auth-button"></section>
 									<section id="view-selector"></section>
 									<section id="timeline"></section>
 								</div>
-							</div>
-							<div class="row">
-								<div class="text-center">
+								<div class="text-center marginTop80">
 									<a href="https://analytics.google.com/analytics/web/?hl=ko&pli=1#dashboard/uwKM73EoRiOPz9RMGZuRGw/a90558257w134284174p138375987/%3F_u.date00%3D20170124%26_u.date01%3D20170124/"
 									   class="btn btn-primary marginBottom30" role="button" target="_blank"
-									   title="구글 애널리틱스에서 관리자용 통계 더 보기">구글 애널리틱스에서 통계 더 보기</a>
-									</div>
+									   title="구글 애널리틱스에서 관리자용 통계 더 보기">구글 애널리틱스에서 통계 더 보기
+									</a>
 								</div>
 							</div>
 						</div>
-					</section>
-				</div>
-				<!-- /page content -->
+					</div>
+				</section>
 			</div>
+			<!-- /page content -->
 		</div>
+	</div>
 	<!-- footer -->
          <jsp:include page="/jsp/include/footer.jsp" />
     <!-- /footer -->
@@ -159,20 +155,52 @@
 
 <!-- Embed API -->
 <script>
-
+	
+	/*오늘 저장된 컨텐츠  */
+	$.ajax({
+			url: "${ pageContext.request.contextPath }/admin/statics/savedContent.do",
+			type : 'get',
+			contentType : "application/json",
+			success: function(result){
+	        	$("#savedContent").text(result);
+	        	//console.log(result);
+	        	
+	}});
+	
+	
+	/*오늘의 인기 검색어 */
+	$.ajax({
+			url: "${ pageContext.request.contextPath }/admin/statics/popularKeyword.do",
+			type : 'get',
+			contentType : "application/json",
+			success: function(result){
+	        	$("#popularKeyword").text(result);
+	        	//console.log(result);
+	        	
+    	}});
+    	
+	/*오늘의 검색 횟수 */
+	$.ajax({
+			url: "${ pageContext.request.contextPath }/admin/statics/serachToday.do",
+			type : 'get',
+			contentType : "application/json",
+			success: function(result){
+            	$("#serachToday").text(result);
+            	//console.log(result);
+            	
+        	}});
+	
 	/*신규 가입 유저 수 확인 */
-
-	/* 회원 전체의 조회수가 높은 콘텐츠  */
 	$.ajax({
 			url: "${ pageContext.request.contextPath }/admin/statics/newUserCnt.do",
 			type : 'get',
 			contentType : "application/json",
 			success: function(result){
             	$("#newUserCnt").text(result);
-            	console.log(result);
+            	//console.log(result);
             	
         	}});
-	
+	/* 회원 전체의 조회수가 높은 콘텐츠  */
 	$.ajax({
 			url : '${ pageContext.request.contextPath }/admin/statics/cntContents.do',
 			type : 'get',

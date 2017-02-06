@@ -17,6 +17,10 @@
    		margin-left: 30px;
    	}
    	
+   	.marginRight30{
+   		margin-right: 30px;
+   	}
+   	
 	.paddingleft30{
    		padding-left: 30px;
 	}
@@ -160,25 +164,7 @@
    	font-size: 20px;
    }
    
-      /* 핀터레스트 효과부여  */
-     div > .columns{
-      	margin-top:50px;
-      }
-     div > .columns figure{
-        display: inline-block;				      	 /* 이미지와 텍스트가 분리되어 뜨는문제를 해결해 줌  */
-        margin:5px; 							     /* figure는 기본적으로 margin값을 가지고 있다. */
-        margin-bottom: 20px;					     /* 그림 위 아래 간격을 띄워 줌 */
-        background-color: white;
-      }
-    
-     div > .columns figure figcaption{
-        padding:10px;       				        /*글과 줄간 간격*/
-        margin-top:11px;
-        font-size : 18px;
-      } 
+
       
-     .contents > div {
-	    margin : 10px;
-	   } 
    
    

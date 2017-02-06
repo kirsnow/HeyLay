@@ -83,12 +83,6 @@ public class StaticsDAO {
 		return staticsList;
 	}
 
-	public int selectNewUserCnt() {
-		int newUserCnt = sqlSessionTemplate.selectOne("io.planb.statics.dao.StaticsDAO.selectNewUserCnt");
-		
-		return newUserCnt;
-	}
-	
 	public int countTotalSaved(int no) {
 		int countTotalSaved = sqlSessionTemplate.selectOne("io.planb.statics.dao.StaticsDAO.countTotalSaved", no);
 		
@@ -129,5 +123,29 @@ public class StaticsDAO {
 		List<StaticsVO> savedLikeList = sqlSessionTemplate.selectList("io.planb.statics.dao.StaticsDAO.selectSavedLike", no);
 		
 		return savedLikeList;
+	}
+
+	public int selectNewUserCnt() {
+		int newUserCnt = sqlSessionTemplate.selectOne("io.planb.statics.dao.StaticsDAO.selectNewUserCnt");
+		
+		return newUserCnt;
+	}
+	
+	public int selectSerachToday() {
+		int serachToday = sqlSessionTemplate.selectOne("io.planb.statics.dao.StaticsDAO.selectSerachToday");
+		
+		return serachToday;
+	}
+
+	public String selectPopularKeyword() {
+		String serachToday = sqlSessionTemplate.selectOne("io.planb.statics.dao.StaticsDAO.selectPopularKeyword");
+		
+		return serachToday;
+	}
+
+	public int selectSavedContent() {
+		int savedContent = sqlSessionTemplate.selectOne("io.planb.statics.dao.StaticsDAO.selectSavedContent");
+		
+		return savedContent;
 	}
 }
