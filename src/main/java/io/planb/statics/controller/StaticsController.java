@@ -266,7 +266,7 @@ public class StaticsController {
 	@RequestMapping("/admin/statics/savedContent.do")
 	public int selectSavedContent() {
 		int savedContent = service.selectSavedContent();
-		System.out.println("controller savedContent : " + savedContent);
+		//System.out.println("controller savedContent : " + savedContent);
 		return savedContent;
 	}
 	
