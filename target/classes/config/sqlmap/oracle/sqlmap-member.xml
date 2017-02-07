@@ -68,7 +68,7 @@
 		WHERE no = #{ no }
 	</update>
 	
-	<insert id="insertFirstFolder">
+	 <insert id="insertFirstFolder">
 		insert into Q_DIRECTORY(no, NAME, MEMBER_NO)
 		values(NEXTVAL('Q_DIRECTORY_NO'), '나의 첫 폴더', CURRVAL('Q_MEMBER_NO'))
 	</insert>
@@ -93,10 +93,11 @@
 	
 	<!-- 관심 키워드 선택 페이지를 위한 키워드 호출   -->
 	<select id="selectInterestList" resultType="KeywordsVO">
-		SELECT keyword, COUNT(keyword) as cnt
+		SELECT keyword, COUNT(keyword) as cnt, search_result as data
 		FROM Q_KEYWORDS
-		GROUP BY keyword
-		ORDER BY cnt DESC 
+        WHERE search_result > 0
+		GROUP BY keyword, search_result
+		ORDER BY cnt DESC, search_result desc
 		Limit 30
 	</select>
 </mapper>
