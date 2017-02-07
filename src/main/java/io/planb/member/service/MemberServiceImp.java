@@ -27,7 +27,6 @@ public class MemberServiceImp implements MemberService {
 
 	@Autowired
 	private ServletContext servletContext;
-	
 
 	@Override
 	public MemberVO login(MemberVO member) {
@@ -37,8 +36,12 @@ public class MemberServiceImp implements MemberService {
 
 	@Override
 	public void enroll(MemberVO member) {
+		int nextMeberNo = dao.getNextMemberNo();
+		member.setNo(nextMeberNo);
+		
 		dao.enroll(member);
 
+		dao.firstFolder(nextMeberNo);
 	}
 
 	@Override
@@ -134,12 +137,6 @@ public class MemberServiceImp implements MemberService {
 	}
 
 	@Override
-	public void firstFolder() {
-		dao.firstFolder();
-
-	}
-
-	@Override
 	public List<DirectoryVO> selectFolder(int memberNo) {
 		List<DirectoryVO> folderList = dao.selectFolder(memberNo);
 		return folderList;
@@ -147,15 +144,15 @@ public class MemberServiceImp implements MemberService {
 
 	@Override
 	public void deleteDirectory(ArrayList<Map<Integer, String>> list) {
-		
+
 	}
 
 	@Override
 	public void updateName(Map<Integer, String> params) {
 		dao.updateName(params);
-		
+
 	}
-	
+
 	@Override
 	public List<KeywordsVO> selectInterestList() {
 		List<KeywordsVO> interestList = dao.selectInterestList();
