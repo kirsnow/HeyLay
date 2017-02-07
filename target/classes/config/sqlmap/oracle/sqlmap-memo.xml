@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="io.planb.memo.dao.MemoDAO">
+	
+	<sql id="selectMemo">
+		select MMO.NO as no, MMO.MESSAGE as message, MMO.BAN as ban
+		, to_char(MMO.REG_DATE, 'YYYY. MM. DD.') as regDate 
+		, MMO.CONTENTS_NO as contentsNo, CON.TITLE as contentsTitle
+		, MMO.MEMBER_NO as memberNo, MBR.FIRST_NAME as firstName, MBR.LAST_NAME as lastName
+		from Q_MEMO MMO
+		inner join Q_CONTENTS CON on CON.NO = MMO.CONTENTS_NO
+		inner join Q_MEMBER MBR on MBR.NO = MMO.MEMBER_NO
+	</sql>
+	
+	<select id="selectMemoList" parameterType="int" resultType="memoVO">
+		<include refid="selectMemo" />
+  		where MMO.BAN = 'N' and MMO.CONTENTS_NO = #{contentsNo}
+		order by MMO.REG_DATE desc
+  	</select>
+  	
+	<select id="selectMemoByNo" parameterType="int" resultType="memoVO">
+  		<include refid="selectMemo" />
+  		where MMO.BAN = 'N' and MMO.NO = #{no}
+  	</select>
+	 
+	<select id="selectNextMemoNo" resultType="int">
+		select nextval('q_memo_no')
+	</select>
+	
+	<insert id="insertMemo" parameterType="memoVO">
+		insert into Q_MEMO (no, message, member_no, contents_no)
+		values ( #{no}, #{message}, #{memberNo}, #{contentsNo} )
+	</insert>
+	
+	<update id="updateMemo" parameterType="memoVO">
+		UPDATE q_memo
+		SET message = #{message}
+		WHERE no = #{no}
+	</update>
+	
+	<delete id="deleteMemo" parameterType="int">
+		DELETE FROM q_memo
+		WHERE no = #{no}
+	</delete>
+  	
+</mapper>

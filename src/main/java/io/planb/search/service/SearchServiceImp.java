@@ -46,5 +46,5 @@ public class SearchServiceImp {
 		List<MemoVO> memoList = dao.getMemo(no);
 		return memoList;
 	}
-	
+
 }

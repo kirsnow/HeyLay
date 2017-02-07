@@ -126,6 +126,7 @@ public class StaticsService {
 		return savedLikeList;
 	}
 
+<<<<<<< HEAD
 	public List<StaticsVO> selectSavedMonth(int no) {
 		List<StaticsVO> staticsList2 = dao.selectSavedMonth(no);
 		
@@ -143,5 +144,29 @@ public class StaticsService {
 		}
 		
 		return staticsList;
+=======
+	public int selectNewUserCnt() {
+		int newUserCnt = dao.selectNewUserCnt();
+		
+		return newUserCnt;
+	}
+	
+	public int selectSerachToday() {
+		int serachToday = dao.selectSerachToday();
+		
+		return serachToday;
+	}
+	
+	public String selectPopularKeyword() {
+		String popularKeyword = dao.selectPopularKeyword();
+		
+		return popularKeyword;
+	}
+
+	public int selectSavedContent() {
+		int savedContent = dao.selectSavedContent();
+		
+		return savedContent;
+>>>>>>> 9a1a131f97b6ebf2aee17af899ad89199a97a05b
 	}
 }

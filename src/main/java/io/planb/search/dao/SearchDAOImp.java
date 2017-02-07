@@ -43,4 +43,5 @@ public class SearchDAOImp {
 		List<MemoVO> memoList = sqlSessionTemplate.selectList("io.planb.serach.dao.SearchDAO.selectMemoByNo", contentsNo);
 		return memoList;
 	}
+	
 }

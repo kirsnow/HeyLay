@@ -211,11 +211,11 @@ public class StaticsController {
 	/*회원 전체의 조회수가 높은 콘텐츠 가로형 막대 그래프*/
 	@ResponseBody
 	@RequestMapping("/admin/statics/cntContents.do")
-	public StaticsListVO selectAllCntContents(Model model , StaticsVO columnName, StaticsVO cnt) {
+	public StaticsListVO selectAllCntContents(Model model , StaticsVO columnName) {
 		List<StaticsVO> contentStaticsList = service.selectAllCntContents();
 		
 		model.addAttribute("columnName", columnName);
-		System.out.println("controller contentStaticsList : " + contentStaticsList);
+		//System.out.println("controller contentStaticsList : " + contentStaticsList);
 		
 		return new StaticsListVO(contentStaticsList);
 	}
@@ -245,4 +245,41 @@ public class StaticsController {
 		
 		return mav;
 	}
+	
+	/*신규 가입 유저 수 확인 */
+	@ResponseBody
+	@RequestMapping("/admin/statics/newUserCnt.do")
+	public int selectNewUserCnt() {
+		int newUserCnt = service.selectNewUserCnt();
+		//System.out.println("controller newUserCnt : " + newUserCnt);
+		return newUserCnt;
+	}
+	
+	/*오늘의 검색 횟수 */
+	@ResponseBody
+	@RequestMapping("/admin/statics/serachToday.do")
+	public int selectSerachToday() {
+		int serachToday = service.selectSerachToday();
+		//System.out.println("controller serachToday : " + serachToday);
+		return serachToday;
+	}
+	
+	/*오늘의 인기 키워드 */
+	@ResponseBody
+	@RequestMapping("/admin/statics/popularKeyword.do")
+	public String selectPopularKeyword() {
+		String popularKeyword = service.selectPopularKeyword();
+		//System.out.println("controller popularKeyword : " + popularKeyword);
+		return popularKeyword;
+	}
+	
+	/*오늘 저장된 컨텐츠 */
+	@ResponseBody
+	@RequestMapping("/admin/statics/savedContent.do")
+	public int selectSavedContent() {
+		int savedContent = service.selectSavedContent();
+		//System.out.println("controller savedContent : " + savedContent);
+		return savedContent;
+	}
+	
 }
