@@ -126,7 +126,6 @@ public class StaticsService {
 		return savedLikeList;
 	}
 
-<<<<<<< HEAD
 	public List<StaticsVO> selectSavedMonth(int no) {
 		List<StaticsVO> staticsList2 = dao.selectSavedMonth(no);
 		
@@ -144,7 +143,8 @@ public class StaticsService {
 		}
 		
 		return staticsList;
-=======
+	}
+	
 	public int selectNewUserCnt() {
 		int newUserCnt = dao.selectNewUserCnt();
 		
@@ -167,6 +167,5 @@ public class StaticsService {
 		int savedContent = dao.selectSavedContent();
 		
 		return savedContent;
->>>>>>> 9a1a131f97b6ebf2aee17af899ad89199a97a05b
 	}
 }
