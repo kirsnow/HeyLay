@@ -66,6 +66,18 @@ public class StaticsController {
 		return "contents/stats";
 	}
 	
+	/* 월 평균 저장 개수 (d3) */
+	@ResponseBody
+	@RequestMapping("/statics/savedMonth.do")
+	public StaticsListVO selectSavedMonth(HttpSession session, Model model) {
+		MemberVO member = (MemberVO) session.getAttribute("userVO");
+		int no = member.getNo();
+		
+		List<StaticsVO> staticsList = service.selectSavedMonth(no);
+		
+		return new StaticsListVO(staticsList);
+	}
+	
 	/* 내가 많이 담은 사이트 */
 	@ResponseBody
 	@RequestMapping("/statics/savedSource.do")

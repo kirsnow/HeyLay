@@ -125,6 +125,12 @@ public class StaticsDAO {
 		return savedLikeList;
 	}
 
+	public List<StaticsVO> selectSavedMonth(int no) {
+		List<StaticsVO> staticsList = sqlSessionTemplate.selectList("io.planb.statics.dao.StaticsDAO.selectSavedMonth", no);
+		
+		return staticsList;
+	}
+	
 	public int selectNewUserCnt() {
 		int newUserCnt = sqlSessionTemplate.selectOne("io.planb.statics.dao.StaticsDAO.selectNewUserCnt");
 		

@@ -31,7 +31,7 @@
 		AND TO_CHAR(reg_date, 'YYYY-MM-DD') = TO_CHAR(current_date - 2, 'YYYY-MM-DD')
 	</select>
 	
-		<select id="selectLikeSource" parameterType="int" resultType="staticsVO">
+	<select id="selectLikeSource" parameterType="int" resultType="staticsVO">
 		SELECT r.sourceName columnName, COUNT(r.sourceName) cnt 
 		FROM (SELECT so.name as sourceName 
 		FROM q_like l
@@ -77,6 +77,15 @@
 		GROUP BY l.no, c.no
 		ORDER BY cnt DESC 
 		LIMIT 10 
+	</select>
+	
+	<select id="selectSavedMonth" parameterType="int" resultType="staticsVO">
+		SELECT TO_CHAR(reg_date, 'MM') columnName, COUNT (*) cnt
+		FROM q_contents_saved 
+		WHERE member_no = #{ no } 
+		AND TO_CHAR(reg_date, 'YYYY') = TO_CHAR(current_date, 'YYYY')
+		GROUP BY TO_CHAR(reg_date, 'MM')
+		ORDER BY cnt DESC 
 	</select>
 	
 	
