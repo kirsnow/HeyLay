@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import io.planb.directory.vo.DirectoryVO;
+import io.planb.keywords.vo.KeywordsVO;
 import io.planb.leaved.vo.LeavedVO;
 import io.planb.member.vo.MemberVO;
 
@@ -30,12 +31,15 @@ public interface MemberDAO {
 	
 	public void deleteDirectory(int memberNo);				// 폴더 삭제
 	
-	public void updateName(Map<Integer, String> params);			// 폴더 이름 변경
+	public void updateName(Map<Integer, String> params);	// 폴더 이름 변경
+	
 	public void withdrawReason(LeavedVO leaved);			//회원 탈퇴 사유 입력
 
 	public void changePw(MemberVO member);					//비밀번호 변경 
 
 	public void mypageUpdate(MemberVO member);				//회원 정보 수정
+
+	public List<KeywordsVO> selectInterestList();			//선호 키워드 호출
 	
 
 }

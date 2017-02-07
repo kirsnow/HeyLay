@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import io.planb.leaved.vo.LeavedVO;
 import io.planb.directory.vo.DirectoryVO;
+import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.vo.MemberVO;
 
 public interface MemberService {
@@ -40,6 +41,8 @@ public interface MemberService {
 	public void changePw(MemberVO member);										//비밀번호 변경
 
 	public void mypageUpdate(MultipartFile multipartFile, MemberVO member);		//회원 정보 수정 및 파일 업로드
+
+	public List<KeywordsVO> selectInterestList();
 
 	
 }

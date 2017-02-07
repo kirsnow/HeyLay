@@ -66,7 +66,7 @@ public class StaticsDAO {
 	public List<KeywordsVO> selectAllKeywordList() {
 		List<KeywordsVO> allKeywordList = sqlSessionTemplate.selectList("io.planb.statics.dao.StaticsDAO.selectAllKeywordList");
 		
-		System.out.println(allKeywordList);
+		//System.out.println(allKeywordList);
 		
 		return allKeywordList;
 	}

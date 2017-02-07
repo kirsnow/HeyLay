@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import io.planb.directory.vo.DirectoryVO;
+import io.planb.keywords.vo.KeywordsVO;
 import io.planb.leaved.vo.LeavedVO;
 import io.planb.member.vo.MemberVO;
 
@@ -97,6 +98,12 @@ public class MemberDAOImp implements MemberDAO {
 		sqlSessionTemplate.update("io.planb.member.dao.MemberDAO.updateName", params);
 		
 	}
-
+	
+	/*선호 키워드 호출*/
+	public List<KeywordsVO> selectInterestList() {
+		List<KeywordsVO> interestList = sqlSessionTemplate.selectList("io.planb.member.dao.MemberDAO.selectInterestList");
+		
+		return interestList;
+	}
 
 }

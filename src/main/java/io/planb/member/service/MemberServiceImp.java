@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import io.planb.leaved.vo.LeavedVO;
 import io.planb.directory.vo.DirectoryVO;
+import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.dao.MemberDAO;
 import io.planb.member.vo.MemberVO;
 
@@ -154,6 +155,10 @@ public class MemberServiceImp implements MemberService {
 		dao.updateName(params);
 		
 	}
-
-
+	
+	@Override
+	public List<KeywordsVO> selectInterestList() {
+		List<KeywordsVO> interestList = dao.selectInterestList();
+		return interestList;
+	}
 }

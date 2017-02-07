@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import io.planb.directory.vo.DirectoryVO;
+import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.service.MemberService;
 import io.planb.member.vo.MemberVO;
 
@@ -37,7 +39,7 @@ public class MembershipController {
 		service.firstFolder();
 		model.addAttribute("memberVO", member);
 		
-		return "redirect:/";
+		return "membership/interest";
 	}
 	
 	@RequestMapping(value="/contents/update_type.do", method=RequestMethod.POST)
@@ -63,6 +65,20 @@ public class MembershipController {
 		service.updateName(params);
 
 		return "완료";
+	}
+	
+	/*관심 키워드 선택 */
+	@RequestMapping("/interest.do")
+	public ModelAndView interestList() {
+		ModelAndView mav = new ModelAndView();
+		List<KeywordsVO> interestList = service.selectInterestList();
+		
+		mav.setViewName("membership/interest");
+		mav.addObject("interestList", interestList);
+		
+		System.out.println("interestList controller : " + interestList);
+		
+		return mav;
 	}
 }
 
