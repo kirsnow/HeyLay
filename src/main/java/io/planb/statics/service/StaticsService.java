@@ -107,6 +107,12 @@ public class StaticsService {
 		
 		return countBeforeYesSaved;
 	}
+	
+	public int sumSavedMonth(int no) {
+		int sumSavedMonth = dao.sumSavedMonth(no);
+		
+		return sumSavedMonth;
+	}
 
 	public List<StaticsVO> selectSavedMoreSaved(int no) {
 		List<StaticsVO> savedMoreSavedList = dao.selectSavedMoreSaved(no);
