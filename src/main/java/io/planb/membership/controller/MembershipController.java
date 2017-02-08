@@ -35,7 +35,6 @@ public class MembershipController {
 	@RequestMapping(value="/membership/membershipForm.do", method=RequestMethod.POST)
 	public String membership(@ModelAttribute("member") MemberVO member, Model model) {
 		service.enroll(member);
-		service.firstFolder();
 		model.addAttribute("memberVO", member);
 		System.out.println(member);
 		

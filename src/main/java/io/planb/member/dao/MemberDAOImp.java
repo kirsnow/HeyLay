@@ -78,8 +78,14 @@ public class MemberDAOImp implements MemberDAO {
 	}
 	
 	@Override
-	public void firstFolder() {
-		sqlSessionTemplate.insert("io.planb.member.dao.MemberDAO.insertFirstFolder");
+	public int getNextMemberNo() {
+		int nextMemberNo = sqlSessionTemplate.selectOne("io.planb.member.dao.MemberDAO.selectMemberNo");
+		return nextMemberNo;
+	}
+	
+	@Override
+	public void firstFolder(int memberNo) {
+		sqlSessionTemplate.insert("io.planb.member.dao.MemberDAO.insertFirstFolder", memberNo);
 	}
 
 	@Override

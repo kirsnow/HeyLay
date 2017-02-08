@@ -25,7 +25,7 @@ public interface MemberDAO {
 	
 	public void updateType(int no);							// 멤버 타입 F->P로 업데이트
 	
-	public void firstFolder();								// 회원 가입시 디폴트 폴더 생성
+	public void firstFolder(int memberNo);					// 회원 가입시 디폴트 폴더 생성
 	
 	public List<DirectoryVO> selectFolder(int memberNo);	// 폴더 변경시 폴더 리스트 호출
 	
@@ -40,6 +40,8 @@ public interface MemberDAO {
 	public void mypageUpdate(MemberVO member);				//회원 정보 수정
 
 	public List<KeywordsVO> selectInterestList();			//선호 키워드 호출
+	
+	public int getNextMemberNo();							// 멤버 넥스트 넘버
 	
 
 }

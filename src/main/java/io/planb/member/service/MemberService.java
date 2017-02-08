@@ -26,8 +26,6 @@ public interface MemberService {
 
 	public void updateType(int no);							// 멤버 타입 F->P로 업데이트
 	
-	public void firstFolder();								// 회원 가입시 디폴트 폴더 생성
-	
 	public List<DirectoryVO> selectFolder(int memberNo);	// 폴더 변경시 폴더 리스트 호출
 	
 	public void deleteDirectory(ArrayList<Map<Integer, String>> list);				// 폴더 삭제
