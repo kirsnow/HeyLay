@@ -47,17 +47,42 @@
                </div>
          	</div>
          	
-         	 <form name="interestForm" class="formBottom15" 
-                   action="${pageContext.request.contextPath }/interest.do" method="post">
-             		<c:forEach var="keyword" items="${ interestList }" varStatus="loop">
-             			<div class="col-md-6 col-md-offset-3">
-             				<c:out value="${loop.count}"/>
-             				<label for="interest">
-             					<c:out value="${keyword.keyword}"/>
-             				</label>
-             				<input type="checkbox" name="interest" id="interest"/> 
-             			</div>
-             		</c:forEach>
+         	<form name="interestForm" class="formBottom15" 
+                  action="${pageContext.request.contextPath }/interest.do" method="post">
+                <div class="row">
+                	<div class="col-md-8 col-md-offset-2">
+		           		<div class="col-md-3">
+			           		<c:forEach var="keywordInterest" items="${ interestKeywordList }" begin="1" end="10">
+		           				<div>
+			           				<label for="interest">
+			           					<c:out value="${keywordInterest.keyword}"/>
+			           				</label>
+			           				<span class="paddingleft30"><input type="checkbox" name="interest" id="interest"/></span>
+		           				</div>
+			           		</c:forEach>
+			           	</div>
+			           	<div class="col-md-3">
+			           		<c:forEach var="keywordInterest" items="${ interestKeywordList }" begin="11" end="20">
+		           				<div>
+			           				<label for="interest">
+			           					<c:out value="${keywordInterest.keyword}"/>
+			           				</label>
+			           				<span class="paddingleft30"><input type="checkbox" name="interest" id="interest"/></span>
+		           				</div>
+			           		</c:forEach>
+		           		</div>
+		           		<div class="col-md-3">
+			           		<c:forEach var="keywordInterest" items="${ interestKeywordList }" begin="21" end="30">
+		           				<div>
+			           				<label for="interest">
+			           					<c:out value="${keywordInterest.keyword}"/>
+			           				</label>
+			           				<span class="paddingleft30"><input type="checkbox" name="interest" id="interest"/></span>
+		           				</div>
+			           		</c:forEach>
+		           		</div>
+	           		</div>
+           		</div>
              	<p class="text-center"><small>최소 3항목을 선택해 주세요.</small></p>
              	
              	<div class="row"> 
@@ -74,7 +99,9 @@
 		<jsp:include page="/jsp/include/footer.jsp" />
 	</Footer> 
 	
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<!-- jQuery -->
+	<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
+
 	
 </body>
 </html>

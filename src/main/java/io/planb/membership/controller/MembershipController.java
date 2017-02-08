@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import io.planb.directory.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.service.MemberService;
 import io.planb.member.vo.MemberVO;
+
 
 @Controller
 public class MembershipController {
@@ -33,10 +33,14 @@ public class MembershipController {
 	
 	
 	@RequestMapping(value="/membership/membershipForm.do", method=RequestMethod.POST)
-	public String membership(@ModelAttribute("member") MemberVO member, Model model) {
+	public String membership(@ModelAttribute("member") MemberVO member, Model model, KeywordsVO interestKeyword) {
 		service.enroll(member);
+		List<KeywordsVO> interestKeywordList = service.selectInterestList();
+		
 		model.addAttribute("memberVO", member);
-		System.out.println(member);
+		model.addAttribute("interestKeywordList", interestKeywordList);
+		
+		System.out.println("interestKeywordList : " + interestKeywordList);
 		
 		return "membership/interest";
 	}
@@ -66,19 +70,11 @@ public class MembershipController {
 		return "완료";
 	}
 	
-	/*관심 키워드 선택 */
+	/*관심 키워드 선택 
 	@RequestMapping("/interest.do")
 	public ModelAndView interestList() {
-		ModelAndView mav = new ModelAndView();
-		List<KeywordsVO> interestList = service.selectInterestList();
 		
-		mav.setViewName("membership/interest");
-		mav.addObject("interestList", interestList);
-		
-		System.out.println("interestList controller : " + interestList);
-		
-		return mav;
-	}
+	}*/
 }
 
 

@@ -107,9 +107,9 @@ public class MemberDAOImp implements MemberDAO {
 	
 	/*선호 키워드 호출*/
 	public List<KeywordsVO> selectInterestList() {
-		List<KeywordsVO> interestList = sqlSessionTemplate.selectList("io.planb.member.dao.MemberDAO.selectInterestList");
+		List<KeywordsVO> interestKeywordList = sqlSessionTemplate.selectList("io.planb.member.dao.MemberDAO.selectInterestList");
 		
-		return interestList;
+		return interestKeywordList;
 	}
 
 }
