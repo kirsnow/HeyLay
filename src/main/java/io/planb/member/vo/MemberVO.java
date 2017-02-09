@@ -12,7 +12,7 @@ public class MemberVO {
 	private String emailReceive;
 	private String country;
 	private String city;
-	private String question;
+	private int question;
 	private String answer;
 	private String type;
 	private String rest;
@@ -107,11 +107,11 @@ public class MemberVO {
 		this.city = city;
 	}
 
-	public String getQuestion() {
+	public int getQuestion() {
 		return question;
 	}
 
-	public void setQuestion(String question) {
+	public void setQuestion(int question) {
 		this.question = question;
 	}
 

@@ -106,6 +106,12 @@ public class StaticsDAO {
 		
 		return countBeforeYesSaved;
 	}
+	
+	public int sumSavedMonth(int no) {
+		int sumSavedMonth = sqlSessionTemplate.selectOne("io.planb.statics.dao.StaticsDAO.sumSavedMonth", no);
+		
+		return sumSavedMonth;
+	}
 
 	public List<StaticsVO> selectSavedMoreSaved(int no) {
 		List<StaticsVO> savedMoreSavedList = sqlSessionTemplate.selectList("io.planb.statics.dao.StaticsDAO.selectSavedMoreSaved", no);

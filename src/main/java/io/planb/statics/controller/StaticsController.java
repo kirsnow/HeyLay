@@ -47,6 +47,10 @@ public class StaticsController {
 		int countBeforeYesSaved = service.countBeforeYesSaved(no);
 		model.addAttribute("countBeforeYesSaved", countBeforeYesSaved);
 		
+		/* 월 평균 저장 개수 */
+		int sumSavedMonth = service.sumSavedMonth(no);
+		model.addAttribute("sumSavedMonth", sumSavedMonth);
+		
 		/* 제일 좋아요 많이 누른 사이트 10 */
 		List<StaticsVO> likeSourceList = service.selectLikeSource(no);
 		model.addAttribute("likeSourceList", likeSourceList);
@@ -66,7 +70,7 @@ public class StaticsController {
 		return "contents/stats";
 	}
 	
-	/* 월 평균 저장 개수 (d3) */
+	/* 월 저장 개수 (d3) */
 	@ResponseBody
 	@RequestMapping("/statics/savedMonth.do")
 	public StaticsListVO selectSavedMonth(HttpSession session, Model model) {
