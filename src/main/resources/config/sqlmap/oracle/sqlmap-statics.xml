@@ -32,13 +32,13 @@
 	</select>
 	
 	<select id="selectLikeSource" parameterType="int" resultType="staticsVO">
-		SELECT r.sourceName columnName, COUNT(r.sourceName) cnt 
-		FROM (SELECT so.name as sourceName 
+		SELECT r.sourceName columnName, COUNT(r.sourceName) cnt, r.data 
+		FROM (SELECT so.name as sourceName, so.logo_img AS data 
 		FROM q_like l
 		INNER JOIN q_contents co ON co.no = l.contents_no 
 		INNER JOIN q_source so ON so.no = co.source_no 
 		WHERE l.member_no = #{ no }) r 
-		GROUP BY r.sourceName 
+		GROUP BY r.sourceName, r.data  
 		ORDER BY cnt DESC 
 		LIMIT 10 
 	</select>
@@ -56,7 +56,7 @@
 	</select>
 	
 	<select id="selectSavedLessSaved" parameterType="int" resultType="staticsVO">
-		SELECT c.title columnName, COUNT (*) cnt 
+		SELECT c.title columnName, COUNT (*) cnt
 		FROM q_contents_saved cs2 
 		INNER JOIN q_contents c ON c.no = cs2.contents_no 
 		WHERE cs2.contents_no IN (SELECT cs.contents_no 
@@ -86,6 +86,15 @@
 		AND TO_CHAR(reg_date, 'YYYY') = TO_CHAR(current_date, 'YYYY')
 		GROUP BY TO_CHAR(reg_date, 'MM')
 		ORDER BY cnt DESC 
+	</select>
+	
+	<select id="sumSavedMonth" parameterType="int" resultType="int">
+		SELECT SUM(r.cnt)
+		FROM (SELECT COUNT(*) cnt
+		FROM q_contents_saved 
+		WHERE member_no = #{ no } 
+		AND EXTRACT(YEAR FROM reg_date)  = EXTRACT(YEAR FROM NOW()) 
+		GROUP BY TO_CHAR(reg_date, 'YYYY-MM') ) r
 	</select>
 	
 	

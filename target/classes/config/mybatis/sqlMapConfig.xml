@@ -26,5 +26,6 @@
 		<typeAlias type="io.planb.source.vo.SourceVO" alias="sourceVO" />
 		<typeAlias type="io.planb.question.vo.QuestionVO" alias="questionVO" />
 		<typeAlias type="io.planb.statics.vo.StaticsVO" alias="staticsVO" />
+		<typeAlias type="io.planb.member.vo.IdentifyQuestionVO" alias="identifyQuestionVO" />
 	</typeAliases>
 </configuration>

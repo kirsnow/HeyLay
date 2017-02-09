@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import io.planb.leaved.vo.LeavedVO;
 import io.planb.directory.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
+import io.planb.member.vo.IdentifyQuestionVO;
 import io.planb.member.vo.MemberVO;
 
 public interface MemberService {
@@ -42,5 +43,5 @@ public interface MemberService {
 
 	public List<KeywordsVO> selectInterestList();
 
-	
+	public List<IdentifyQuestionVO> selectIdenQuestion();
 }

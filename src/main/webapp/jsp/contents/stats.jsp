@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 <%-- 회원별 통계 분석 페이지 --%>
@@ -10,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>통계 상세 보기 | Quration: 답을 열어 줄 그런 사람</title>
 <style>
-	svg { width: 930px; height: 250px; }
+	svg { width: 840px; height: 250px; }
 	.bar { fill : #BDBDBD; }
 	.barNum {
 		font-size: 15pt;
@@ -42,8 +43,35 @@
 	    height: 700px;
 	    background-color: #F7F7F7;
 	}
+	.scene2 {
+		text-align: center;
+	    background: url(/Quration/img/sample/back2.png) no-repeat center;
+	    background-size: 1200px;
+	    height: 700px;
+	    background-color: #ffffff;
+	}
 	.u_color {
 		color: #03A9F4;
+	}
+	.scene_n3 {
+		font-size: 30px;
+	    font-weight: 100;
+	    letter-spacing: -.05em;
+	    line-height: 140%;
+	    color: #999999;
+	}
+	.scene_n4 {
+		font-size: 30px;
+	    font-weight: 100;
+	    letter-spacing: -.05em;
+	    line-height: 140%;
+	}
+	.scene4, .scene6 {
+		background-color: #ffffff;
+	}
+	.tCenter .i {
+		margin-bottom: 10px;
+		margin-top: 10px;
 	}
 </style>
 		
@@ -92,40 +120,66 @@
 					<div class="container text-center">
 						<div class="row scene1">
 							<div class="div col-md-12 scene_wrapper">
-								<h3 class="marginTop70">${ userVO.firstName } 님은 큐레이션을 통해,<br/>총 <span class="u_color">${ countTotalSaved }</span> 개의 카드를 만났습니다.</h3>
+								<h3 class="marginTop70">${ userVO.lastName } ${ userVO.firstName } 님은 큐레이션을 통해,<br/>총 <span class="u_color">${ countTotalSaved }</span>개의 카드를 만났습니다.</h3>
 							</div>
 						</div>
 						<div class="row scene2">
-							<div class="div col-md-12 scene_wrapper">
-								<h3 class="marginTop70">어제보다는 
-								<c:choose>
-									<c:when test="${ countTodaySaved > countYesSaved }"> <span class="u_color">${ countTodaySaved - countYesSaved } 개</span> 더, </c:when>
-									<c:when test="${ countTodaySaved eq countYesSaved }"> <span class="u_color">${ countTodaySaved - countYesSaved } 개</span> 같게, </c:when>
-									<c:otherwise> <span class="u_color">${ countYesSaved - countTodaySaved } 개</span> 덜, </c:otherwise>
-								</c:choose>
-								<br/>
-								그저께보다는 
-								<c:choose>
-									<c:when test="${ countTodaySaved > countBeforeYesSaved }"> <span class="u_color">${ countTodaySaved - countBeforeYesSaved } 개</span> 더, </c:when>
-									<c:when test="${ countTodaySaved eq countBeforeYesSaved }"> <span class="u_color">${ countTodaySaved - countBeforeYesSaved } 개</span> 같게, </c:when>
-									<c:otherwise> <span class="u_color">${ countBeforeYesSaved - countTodaySaved } 개</span> 덜, </c:otherwise>
-								</c:choose>
-								<br/>
-								카드를 담으셨습니다.
-								</h3>
-								<h4>어제 ${ countYesSaved } 개</h4>
-								<h4>그저께 ${ countBeforeYesSaved } 개</h4>
+							<div class="div col-md-8 col-md-offset-2 scene_wrapper">
+								<div class="row">
+									<div class="div col-md-4">
+										<h3 class="marginTop70">어제보다는 
+										<c:choose>
+											<c:when test="${ countTodaySaved > countYesSaved }"> <span class="u_color">${ countTodaySaved - countYesSaved }개</span> 더, </c:when>
+											<c:when test="${ countTodaySaved eq countYesSaved }"> <span class="u_color">${ countTodaySaved - countYesSaved }개</span> 같게, </c:when>
+											<c:otherwise> <span class="u_color">${ countYesSaved - countTodaySaved }개</span> 덜, </c:otherwise>
+										</c:choose>
+										<br/>
+										그저께보다는 
+										<c:choose>
+											<c:when test="${ countTodaySaved > countBeforeYesSaved }"> <span class="u_color">${ countTodaySaved - countBeforeYesSaved }개</span> 더, </c:when>
+											<c:when test="${ countTodaySaved eq countBeforeYesSaved }"> <span class="u_color">${ countTodaySaved - countBeforeYesSaved }개</span> 같게, </c:when>
+											<c:otherwise> <span class="u_color">${ countBeforeYesSaved - countTodaySaved }개</span> 덜, </c:otherwise>
+										</c:choose>
+										<br/>
+										카드를 담으셨습니다.
+										</h3>
+									</div>
+								</div>
+								<div class="row tCenter">
+									<div class="div col-md-2"><h3><span class="scene_n3">그저께</span><br/> ${ countBeforeYesSaved }개</h3></div>
+									<div class="div col-md-1">
+										<c:choose>
+											<c:when test="${ countBeforeYesSaved > countYesSaved }"><i class="fa fa-chevron-right fa-5x" aria-hidden="true"></i></c:when>
+											<c:when test="${ countBeforeYesSaved < countYesSaved }"><i class="fa fa-chevron-left fa-5x" aria-hidden="true"></i></c:when>
+											<c:otherwise><img src="http://image.aladin.co.kr/img/events/book/2015/2015_award_records_i3.png"></c:otherwise>
+										</c:choose>
+									</div>
+									<div class="div col-md-1"><h3><span class="scene_n3">어제</span><br/> ${ countYesSaved }개</h3></div>
+								</div>
 							</div>
 						</div>
 						<div class="row scene3">
 							<div class="div col-md-12 scene_wrapper">
-								<h3 class="marginTop70">D3.js 막대 그래프 넣을 예정 아직 미적용</h3>
-								<svg id="myGraph"></svg>
+								<div class="row">
+									<div class="div col-md-12">
+										<fmt:parseNumber var="averageSavedMonth" integerOnly="true" value="${ sumSavedMonth / 12 }" />
+										<h3><span class="scene_n4">월 평균 저장 카드 개수</span><br/>${ averageSavedMonth }개</h3>
+									</div>
+								</div>
+								<div class="row">
+									<div class="div col-md-12">
+										<svg id="myGraph" class="marginTop180"></svg>
+									</div>
+								</div>
+								<div class="row">
+									<div class="div col-md-12 mon_text marginTop30">
+									</div>
+								</div>
 							</div>
 						</div>
 						<div class="row scene4">
 							<div class="div col-md-12 scene_wrapper">
-								<h3 class="marginTop70">${ userVO.firstName } 님이 사랑하는 사이트는 <span class="u_color">${ likeSourceList[0].columnName }</span>입니다.</h3>
+								<h3 class="marginTop70">${ userVO.lastName } ${ userVO.firstName } 님이 사랑하는 사이트는 <span class="u_color">${ likeSourceList[0].columnName }</span>입니다.</h3>
 								<c:forEach var="likeSource" items="${ likeSourceList }">
 									${ likeSource.columnName }
 								</c:forEach>
@@ -133,7 +187,7 @@
 						</div>
 						<div class="row scene5">
 							<div class="div col-md-12 scene_wrapper">
-								<h3 class="marginTop70">${ userVO.firstName } 회원님이 담은 카드 중<br/>가장 많은 분들의 사랑을 받은 카드입니다.</h3>
+								<h3 class="marginTop70">${ userVO.lastName } ${ userVO.firstName } 회원님이 담은 카드 중<br/>가장 많은 분들의 사랑을 받은 카드입니다.</h3>
 								<c:forEach var="savedMoreSaved" items="${ savedMoreSavedList }">
 									${ savedMoreSaved.columnName }
 								</c:forEach>
@@ -157,7 +211,7 @@
 						</div>
 						<div class="row scene8">
 							<div class="div col-md-12 scene_wrapper">
-								<h3 class="marginTop70">THANK YOU, ${ userVO.firstName }<br/>오늘 하루도 함께여서 행복했어요!</h3>
+								<h3 class="marginTop70">THANK YOU, ${ userVO.lastName } ${ userVO.firstName }<br/>오늘 하루도 함께여서 행복했어요!</h3>
 							</div>
 						</div>
 					</div>
@@ -182,71 +236,6 @@
 <script src="${ pageContext.request.contextPath }/js/custom.min.js"></script>
 	
 <script>
-// 	$.ajax({
-// 		url : '${ pageContext.request.contextPath }/statics/savedMonth.do',
-// 		type : 'get',
-// 		contentType : "application/json",
-// 		data : { "no" : '${ userVO.no}' },
-// 		success : function(response) {
-// 			var w = 600;
-// 			var h = 30;
-// 			var barElements;
-	
-// 			var colorSet_blue = [ "#03A9F4", "#9E9E9E", "#BDBDBD", "#E0E0E0", "#EEEEEE" ]; //블루 & 그레이
-// 			var color = d3.scale.ordinal().range(colorSet_blue); //컬러 변경
-	
-// 			var dataSet = []; // 데이터를 저장할 배열을 준비
-	
-// 			for (var i = 0; i < response.staticsList.length; i++) { //데이터 줄수만큼 반복
-// 				dataSet.push({
-// 					"label" : response.staticsList[i].columnName,
-// 					"value" : response.staticsList[i].cnt
-// 				});
-// 			}
-	
-// 			// 그래프 그리기
-// 			barElements = d3.select("#myGraph").selectAll("rect") // rect 요소 지정
-// 			.data(dataSet) // 데이터를 요소에 연결
-	
-// 			//cnt를 통해 그래프 그리기  
-// 			barElements.enter() // 데이터 개수만큼 반복
-// 				.append("rect") // 데이터 개수만큼 rect 요소가 추가됨
-// 				.attr("class", "rect") // CSS 클래스를 지정
-// 				.attr("fill", function(d, i) {
-// 					return color(i)
-// 				}).attr("width", function(d, i) { // 넓이를 지정. 두 번째의 파라미터에 함수를 지정
-// 					return dataSet[i].value * 10; // 데이터 값을 그대로 넓이로 반환
-// 				})
-		
-// 				.attr("height", h) // 높이를 지정
-// 				.attr("x", 400) // X 좌표를 0으로 함
-// 				.attr("y", function(d, i) { // Y 좌표를 지정함
-// 					return i * 40 // 표시 순서에 20을 곱해 위치를 계산
-// 				})
-	
-// 			//columnName를 통해 title 입력
-// 			barElements.enter() // text 요소 지정●↓
-// 				.append("text") // text 요소 추가
-// 				.attr("y", function(d, i) { // X 좌표를 지정
-// 					return i * 40 + 20; // 막대그래프의 표시 간격을 맞춤
-// 				}).attr("x", 200) // Y 좌표를 지정
-// 				.text(function(d, i) { // 데이터 표시
-// 					return dataSet[i].label;
-// 				})
-	
-// 			//view_cnt를 그래프에 넣기  
-// 			barElements.enter() // 데이터 개수만큼 반복
-// 				.append("text") // text 요소 추가
-// 				.attr("y", function(d, i) { // X 좌표를 지정
-// 					return i * 40 + 20; // 막대그래프의 표시 간격을 맞춤
-// 				}).attr("x", 410) // Y 좌표를 지정
-// 				.text(function(d, i) { // 데이터 표시
-// 					return dataSet[i].value;
-// 				})
-// 		}
-// 	});
-
-
 	$.ajax({
 		url : '${ pageContext.request.contextPath }/statics/savedMonth.do',
 	    type: 'get',
@@ -275,15 +264,42 @@
 				.append("rect")	// 데이터 수만큼 rect 요소가 추가됨
 				.attr("class", "bar")	// CSS 클래스 설정
 				.attr("height", function(d,i){	// 넓이 설정. 2번째의 파라미터에 함수를 지정
-					return d.value;	// 데이터 값을 그대로 높이로 지정
+					return d.value * 10;	// 데이터 값을 그대로 높이로 지정
 				})
 				.attr("width", 50)	// 넓이 지정
 				.attr("x", function(d, i){
 					return i * 70 + offsetX;		// X 좌표를 표시 순서
 				})
 				.attr("y", function(d, i){	// Y 좌표를 지정
-					return svgHeight - d.value - offsetY;	// Y 좌표를 계산
+					return svgHeight - (d.value * 10) - offsetY;	// Y 좌표를 계산
 				})
+				
+			var maxCnt = 0;
+			var maxLabel = '3';
+			for(var i = 0; i < response.staticsList.length; i++) {
+				if(maxCnt < response.staticsList[i].cnt) { 
+					maxCnt = response.staticsList[i].cnt;
+					maxLabel = response.staticsList[i].columnName;
+				}
+			}
+			$('.mon_text').html('<h3>가장 카드를 많이 저장한 달은 <span class="u_color">' + maxLabel + '월</span>입니다.</h3>');
+			
+			console.log("maxLabel: ", maxLabel);
+			console.log("maxCnt: ", maxCnt);
+			console.log("barElements.attr(height): ", barElements.attr("height"));
+			
+			if(barElements.attr("height") == (maxCnt * 10)) {
+				var maxElement = barElements;
+				console.log("barElements: ", barElements);
+				barElements.style("fill", "#03A9F4");
+			}
+
+// 			barElements.style("fill", "#03A9F4");
+
+// 			barElements.on(function() {
+// 				barElements.attr("height") == maxCnt
+// 			});
+			
 			barElements.enter()	// text 요소 지정
 				.append("text")	// text 요소 추가
 				.attr("class", "barNum")	// CSS 클래스 설정
@@ -291,7 +307,7 @@
 					return i * 65 + 25 + offsetX;	// 막대그래프의 표시 간격을 맞춤
 				})
 				.attr("y", function(d, i){
-					return svgHeight - d.value - offsetY - 5;	// Y 좌표를 지정
+					return svgHeight - (d.value * 10) - offsetY - 5;	// Y 좌표를 지정
 				})
 				.text(function(d, i){	// 데이터 표시
 					return d.value;

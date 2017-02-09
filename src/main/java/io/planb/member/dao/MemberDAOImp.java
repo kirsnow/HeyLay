@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import io.planb.directory.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.leaved.vo.LeavedVO;
+import io.planb.member.vo.IdentifyQuestionVO;
 import io.planb.member.vo.MemberVO;
 
 @Repository
@@ -110,6 +111,13 @@ public class MemberDAOImp implements MemberDAO {
 		List<KeywordsVO> interestKeywordList = sqlSessionTemplate.selectList("io.planb.member.dao.MemberDAO.selectInterestList");
 		
 		return interestKeywordList;
+	}
+
+	@Override
+	public List<IdentifyQuestionVO> selectIdenQuestion() {
+		List<IdentifyQuestionVO> idenQuestionList = sqlSessionTemplate.selectList("io.planb.member.dao.MemberDAO.selectIdenQuestion");
+		
+		return idenQuestionList;
 	}
 
 }
