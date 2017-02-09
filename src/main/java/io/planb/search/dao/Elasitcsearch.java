@@ -39,7 +39,7 @@ public class Elasitcsearch {
 		SearchVO searchResult = null;
 		String searchIP = ip != null ? ip : ipBit;
 		try {
-			String restAPI = "http://" + searchIP + ":9200/contentss/_search?pretty=true" 
+			String restAPI = "http://" + searchIP + ":9200/_all/_search?pretty=true" 
 							+ "&q=" + URLEncoder.encode(q, "UTF-8");
 			if(searchSize > 0) restAPI += "&size=" + searchSize;
 			

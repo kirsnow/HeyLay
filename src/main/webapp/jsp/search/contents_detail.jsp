@@ -53,7 +53,7 @@
             </div>
         </div>
         <!-- /Breadcrumb -->
-<%-- 
+
         <div class="row">
             <section class="col-md-9">
                 <!-- main information of contents -->
@@ -158,7 +158,7 @@
             </aside>
             <!-- /additional information of contents -->
         </div>
- --%>
+        
         <!-- memo -->
         <section id="memo" class="row">
             <hr/>
@@ -268,20 +268,12 @@
 	<script>
 		/* modal autofocus */
 		$('#writeMemo').on('shown.bs.modal', function () {
-		  $('#memoMessage').focus()
 		  $('button#saveMemo').removeAttr('disabled', 'disabled').removeClass('btn-warning btn-success btn-danger').addClass('btn-primary')
   			.html('<i class="fa fa-pencil" aria-hidden="true"></i> 작성');
+		  $('#memoMessage').focus()
 		});
 		
-		/* ajax */
-     	var btnSuccess = $('#saveMemo').attr('id', 'closeMemo').attr('data-dismiss', 'modal')
-			.removeClass('btn-primary').addClass('btn-success')
-			.html('<i class="fa fa-check" aria-hidden="true"></i> 완료');
-     	var modalHide = $('#writeMemo').modal('hide');
-     	var clearText = $('#memoMessage').empty();
-     	var btnBack = $('#closeMemo').attr('id', 'saveMemo').removeAttr('data-dismiss', 'modal')
-			.removeClass('btn-success').addClass('btn-primary')
-			.html('<i class="fa fa-pencil" aria-hidden="true"></i> 작성');
+		/* memo 추가용 변수 */
      	
      	var memoHeader  =  '<!-- card -->';
 	     	memoHeader  += '<div id="';
@@ -332,7 +324,7 @@
 	   		memoFooter += '<!-- /card -->';
      	
 	   	/* 메모 추가 모달에서 작성 버튼 클릭 시, ajax를 통해 DB에 메모 추가 */
-	    $('button#saveMemo').click(function(){
+	    $('button#saveMemo').click(function() {
 	    	$(this).attr('disabled', 'disabled').removeClass('btn-primary').addClass('btn-warning')
     		.html('<i class="fa fa-spinner fa-pulse" aria-hidden="true"></i> 작성 중');
 	    	
@@ -341,10 +333,9 @@
 	        	, type: 'POST'
 	        	, data : { 
 	        		'memoMessage' : $('#memoMessage').val()
-	        		, 'contentsNo' : 143 //"${ contents.no }"
+	        		, 'contentsNo' : '${ contents.no }'
 			    }, success: function(added) {
 	            	$('#memoMessage').val('');
-	            	$('#writeMemo').modal('hide');
 	            	var memo = memoHeader;
 	            	memo += added.no;
 	            	memo += memoHeader2;
@@ -364,22 +355,26 @@
 	            	memo += memoMenu4;
 	            	memo += memoFooter;
 	            	
-	            	$('#addMemo').after(memo);
-	            	
 	            	$('button#saveMemo').removeClass('btn-warning').addClass('btn-success')
     	    		.html('<i class="fa fa-check" aria-hidden="true"></i> 작성 완료');
+	            	
+	            	$('#writeMemo').modal('hide');
+	            	
+	            	$('button#saveMemo').removeAttr('disabled', 'disabled').removeClass('btn-warning btn-success btn-danger').addClass('btn-primary')
+	      			.html('<i class="fa fa-pencil" aria-hidden="true"></i> 작성');
+	            	
+	            	$('#addMemo').after(memo).fadeIn("slow", function() {});
+	            	
 	        	}, error : function() {
 	        		console.log('메모 작성 오류');
 	        		$('button#saveMemo').removeClass('btn-warning').addClass('btn-danger')
     	    		.html('<i class="fa fa-exclamation-circle" aria-hidden="true"></i> 작성 오류');
-	        	}, complete : function() {
-	        		
         	}});
 	    });
 	    
 	    
 	    /* 메모 수정 메뉴 클릭 시, 수정 폼 로드 */
-	    $(document).on('click','a.editMemo', function(){
+	    $(document).on('click','a.editMemo', function() {
 	    	var memoNo = $(this).attr('id');
 	    	var message = $('p#' + memoNo + '.message');
 	    	message.html('<textarea id="editMessage" class="form-control" rows="3">' + message.text() + '</textarea><button type="button" id="' + memoNo + '" class="saveEdit btn btn-primary btn-block"><i class="fa fa-pencil" aria-hidden="true"></i> 수정</button>');
