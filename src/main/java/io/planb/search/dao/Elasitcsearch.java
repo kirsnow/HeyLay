@@ -46,6 +46,7 @@ public class Elasitcsearch {
 			JsonReader jsonReader = new JsonReader();
 			JSONObject json = jsonReader.readJsonFromUrl(restAPI);
 			searchResult = parseJsonToSearchHeader(json);
+			searchResult.setQuery(q);
 			
 		} catch(JSONException | IOException e) {
 			e.printStackTrace();

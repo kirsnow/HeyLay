@@ -44,9 +44,9 @@ public class SearchController {
 	}
 	
 	@RequestMapping(value="/contents.do", method=RequestMethod.GET)
-	public ModelAndView viewContents(@RequestParam int no) {
+	public ModelAndView viewContents(@RequestParam int no, @RequestParam(required=false) String q) {
 		
-		ContentsVO contents = service.getContents(no);
+		ContentsVO contents = service.getContents(no, q);
 		List<MemoVO> memoList = memoService.getMemoList(no);
 		
 		ModelAndView mav = new ModelAndView();

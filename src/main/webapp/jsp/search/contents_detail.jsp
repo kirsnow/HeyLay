@@ -17,6 +17,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
     
+    <link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
     <!-- icon-font -->
     <script src="https://use.fontawesome.com/bbddce3010.js"></script>
     
@@ -55,7 +56,7 @@
         <!-- /Breadcrumb -->
 
         <div class="row">
-            <section class="col-md-9">
+            <section class="col-md-8">
                 <!-- main information of contents -->
                 <article>
                     <header>
@@ -76,26 +77,25 @@
                             	${ contents.source }
                             </a>
                         </p>
-                        <div class="page-header">
+                        <div class="">
                         	<h2>${ contents.title }</h2>
                         </div>
                     </header>
                     
-                    <p class="text-justify">${ contents.summary }</p>
+                    <p class="text-justify marginTop40">${ contents.summary }</p>
                     <footer class="text-right ">
-                        <time class="text-muted"><small>${ contents.lastScraped } 확인</small></time>
+                        <time class="text-muted">${ contents.lastScraped }</time>
                     </footer>
                 </article>
 
-                <hr/>
-                <div role="toolbar">
-                    <button type="button" class="btn btn-xs btn-default" title="카드를 보관함에 담습니다.">
-                        <i class="fa fa-star-o" aria-hidden="true"></i> ${ contents.saveCnt }
+                <div role="toolbar" class="pull-right marginTop40">
+                    <button type="button" class="btn btn-info" title="카드를 보관함에 담습니다.">
+                        <i class="fa fa-star-o" aria-hidden="true"></i> 저장하기
                     </button>
-                    <button type="button" class="btn btn-xs btn-default" title="카드를 좋아합니다.">
-                        <i class="fa fa-heart-o" aria-hidden="true"></i> ${ contents.likeCnt }
+                    <button type="button" class="btn btn-info" title="카드를 좋아합니다.">
+                        <i class="fa fa-heart-o" aria-hidden="true"></i> 좋아요
                     </button>
-                    <div id="share" class="btn-group">
+                    <%-- <div id="share" class="btn-group">
                         <a href="#" role="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="외부 서비스로 공유">
                             <i class="fa fa-share-alt" aria-hidden="true"></i> Share
                             <span class="caret"></span>
@@ -106,9 +106,9 @@
                             <li><a href="#" title="트위터로 공유"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i> Twitter</a></li>
                             <li><a href="#" title="에버노트로 공유"><i class="fa fa-sticky-note fa-fw" aria-hidden="true"></i> Evernote</a></li>
                         </ul>
-                    </div>
+                    </div> --%>
                     <div id="report" class="btn-group" title="신고">
-                        <a href="#" role="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="외부 서비스로 공유">
+                        <a href="#" role="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="외부 서비스로 공유">
                             <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Report
                             <span class="caret"></span>
                         </a>
@@ -132,27 +132,25 @@
             <!-- /main information of contents -->
 
             <!-- additional information of contents -->
-            <aside class="col-md-3 well">
-                <div id="img">
-                    <p class="lead"><i class="fa fa-image" aria-hidden="true"></i> images</p>
-                    <figure>
-                        <img src="${ pageContext.request.contextPath }/img/defaultImage.png" alt="Default Image" width="250px" />
-                        <figcaption>Fig1. - The Pulpit Rock, Norway.</figcaption>
-                    </figure>
-                </div>
-                <hr/>
+            <aside class="col-md-3 well pull-right marginRight15">
                 <div id="info">
-                	<p class="lead"><i class="fa fa-info-circle" aria-hidden="true"></i> info</p>
+                	<p class="lead"><i class="fa fa-info-circle" aria-hidden="true"></i> 정보</p>
                 	<ul class="list-unstyled">
-                		<li><strong>${ contents.viewCnt }</strong>회 조회되었습니다.</li>
-                		<li><strong>${ contents.saveCnt }</strong>명이 저장했습니다.</li>
-                		<li><strong>${ contents.likeCnt }</strong>명이 좋아했습니다.</li>
+                		<li><strong>${ contents.viewCnt }</strong>회 조회</li>
+                		<li><strong>${ contents.saveCnt }</strong>명이 저장함</li>
+                		<li><strong>${ contents.likeCnt }</strong>명이 좋아함</li>
                 	</ul>
                 </div>
                 
                 <hr/>
-                <div id="stats">
-                    <p class="lead"><i class="fa fa-pie-chart" aria-hidden="true"></i> stats</p>
+                <div id="share">
+                    <p class="lead"><i class="fa fa-share-alt" aria-hidden="true"></i> 공유</p>
+                    <ul class="list-unstyled" role="menu">
+                            <li><a href="#" title="카카오톡으로 공유"><i class="fa fa-commenting fa-fw" aria-hidden="true"></i> KakaoTalk</a></li>
+                            <li><a href="#" title="페이스북으로 공유"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i> Facebook</a></li>
+                            <li><a href="#" title="트위터로 공유"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i> Twitter</a></li>
+                            <li><a href="#" title="에버노트로 공유"><i class="fa fa-sticky-note fa-fw" aria-hidden="true"></i> Evernote</a></li>
+                        </ul>
                 </div>
                
             </aside>
@@ -205,7 +203,7 @@
 	                <div id="${ memo.no }" class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-shadow--3dp">
 	                    <div class="mdl-card__title mdl-color-text--grey-500">
 	                        <h5 class="author mdl-card__title-text">
-	                        	<c:out value="${ memo.firstName } ${ memo.lastName }"/>
+	                        	<c:out value="${ memo.lastName } ${ memo.firstName }"/>
 	                        </h5>
 	                    </div>
 	                    <div class="content mdl-card__supporting-text mdl-color-text--grey-800">
@@ -339,7 +337,7 @@
 	            	var memo = memoHeader;
 	            	memo += added.no;
 	            	memo += memoHeader2;
-	            	memo += added.firstName + '&nbsp;' + added.lastName;
+	            	memo += added.lastName + '&nbsp;' + added.firstName;
 	            	memo += memoHeader3;
 	            	memo += memoText;
 	            	memo += added.no;

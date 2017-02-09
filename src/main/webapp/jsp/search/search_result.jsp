@@ -79,7 +79,7 @@
         	<c:otherwise>
         		<div class="row">
 					<div class="col-md-12">
-						<p class="lead"><c:out value="${ card.searchQuery }" /> 검색결과 ${ searchResult.total }건</p>
+						<p class="lead"><c:out value="${ searchResult.query }" /> 검색결과 ${ searchResult.total }건</p>
 					</div>
 				</div>
 				<div class="row">
@@ -147,7 +147,7 @@
 			
 			                    <!-- card action buttons (bottom) -->
 			                    <div class="mdl-card__actions mdl-card--border">
-			                        <a href="${ pageContext.request.contextPath }/search/contents.do?no=${ card.no }" class="btn btn-link" title="상세 페이지로 이동">
+			                        <a href="${ pageContext.request.contextPath }/search/contents.do?no=${ card.no }&q=${ searchResult.query }" class="btn btn-link" title="상세 페이지로 이동">
 			                        	더 보기
 			                        </a>
 			                        <!-- buttons (bottom-right) -->
