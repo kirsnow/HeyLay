@@ -153,11 +153,12 @@ public class MemberServiceImp implements MemberService {
 		dao.updateName(params);
 
 	}
-
+    
+	/*관심 키워드 선택*/
 	@Override
 	public List<KeywordsVO> selectInterestList() {
-		List<KeywordsVO> interestList = dao.selectInterestList();
-		return interestList;
+		List<KeywordsVO> interestKeywordList = dao.selectInterestList();
+		return interestKeywordList;
 	}
 
 	@Override
