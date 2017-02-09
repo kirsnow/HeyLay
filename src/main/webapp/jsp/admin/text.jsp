@@ -45,55 +45,31 @@
 	            <h1>관심 키워드 선택</h1>
 	        </div>
 	  	</div>
-	   	<div class="row">
-	         	<div class="col-md-8 col-md-offset-2">
-	         	<c:forEach begin="1" end="10">
-	         		<div class="col-md-3 text-left">
-	       				<label for="interest">
-	       					자바자바자바자바
-	       				</label>
-		       			<span>
-		       				<input type="checkbox" name="interest" id="interest"/>
-		          		</span>
-		          	</div>
-		          	<div class="col-md-3 text-left">	
-          				<label for="interest">
-          					스프링 프레임 워크
-          				</label>
-          				<span>
-		       				<input type="checkbox" name="interest" id="interest"/>
-		          		</span>
-		          	</div>
-          			<div class="col-md-3  text-left">	
-          				<label for="interest">
-          					아아아아앙아
-          				</label>
-          				<span>
-		       				<input type="checkbox" name="interest" id="interest"/>
-		          		</span>
-	          		</div>
-	          		<div class="col-md-3 text-left">
-	       				<label for="interest">
-	       					자바자바자바자바
-	       				</label>
-		       			<span>
-		       				<input type="checkbox" name="interest" id="interest"/>
-		          		</span>
-		          	</div>
-	   			</div>
-	   		</c:forEach>	
-	   		<div class="text-center col-md-6 col-md-offset-3">
+	   		<div class="row">
+	         	<div class="col-md-8 col-md-offset-2 ">
+		         	<c:forEach begin="1" end="30">
+		         		<div class="col-md-4 text-left marginBottom">
+		       				<label for="interest">
+		       					자바자바자바자바
+		       				</label>
+			       			<span class="col-md-2 pull-right marginRight30">
+			       				<input type="checkbox" name="interest" id="interest"/>
+			          		</span>
+			          	</div>
+		   			</c:forEach>
+		    	</div>
+	   		<div class="text-center col-md-6 col-md-offset-3 marginTop marginBottom">
 	   			<div>
         			<small>최소 3항목을 선택해 주세요.</small>
         		</div>
         	</div>
-     	</div>	
+     	</div>
         <div class="row"> 
               <div class="col-md-6 col-md-offset-3 text-center ">
                  <button type="submit" class="btn btn-primary marginRight" >키워드 선택 완료</button>
                  <button type="reset" class="btn">초기화</button>
               </div>
         </div>  
-     </div>
+	 </div>
 </body>
 </html>
