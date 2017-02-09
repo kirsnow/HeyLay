@@ -59,7 +59,8 @@ public class MemberDAOImp implements MemberDAO {
 	public void changePw(MemberVO member) {
 		sqlSessionTemplate.update("io.planb.member.dao.MemberDAO.changePw", member);
 	}
-
+	
+	/*회원정보 수정*/
 	@Override
 	public void mypageUpdate(MemberVO member) {
 		sqlSessionTemplate.update("io.planb.member.dao.MemberDAO.mypageUpdate", member);

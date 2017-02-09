@@ -53,6 +53,7 @@
 		where no = #{no} and password= #{beforePassword}
 	</update> 
 	
+	<!-- 회원 정보 수정 -->
 	<update id="mypageUpdate" parameterType="memberVO">
 		update Q_member
 	 	set last_name = #{lastName} , first_name = #{firstName}, 

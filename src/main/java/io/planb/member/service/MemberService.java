@@ -25,13 +25,13 @@ public interface MemberService {
 
 	public MemberVO findPw(MemberVO member); 									//비밀번호 찾기
 
-	public void updateType(int no);							// 멤버 타입 F->P로 업데이트
+	public void updateType(int no);												// 멤버 타입 F->P로 업데이트
 	
-	public List<DirectoryVO> selectFolder(int memberNo);	// 폴더 변경시 폴더 리스트 호출
+	public List<DirectoryVO> selectFolder(int memberNo);						// 폴더 변경시 폴더 리스트 호출
 	
-	public void deleteDirectory(ArrayList<Map<Integer, String>> list);				// 폴더 삭제
+	public void deleteDirectory(ArrayList<Map<Integer, String>> list);		    // 폴더 삭제
 	
-	public void updateName(Map<Integer, String> params);			// 폴더 이름 변경
+	public void updateName(Map<Integer, String> params);						// 폴더 이름 변경
 
 	public void withdraw(int no); 												//회원 탈퇴
 
@@ -39,9 +39,11 @@ public interface MemberService {
 
 	public void changePw(MemberVO member);										//비밀번호 변경
 
-	public void mypageUpdate(MultipartFile multipartFile, MemberVO member);		//회원 정보 수정 및 파일 업로드
+	public void mypageUpdate(MemberVO member);									//회원 정보 수정 및 파일 업로드
 
 	public List<KeywordsVO> selectInterestList();
 
 	public List<IdentifyQuestionVO> selectIdenQuestion();
+
+	
 }

@@ -41,15 +41,15 @@ public class ProfileFormController {
 		
 		/* 회원정보 수정 */ 
 		@RequestMapping(value="/update.do", method=RequestMethod.POST)
-		public ModelAndView newPassword(  @RequestParam("profileImg") MultipartFile multipartFile,
-				                  		  @ModelAttribute MemberVO member, HttpSession session) {
+		public ModelAndView newPassword(@ModelAttribute MemberVO member, HttpSession session) {
+				                  		  
 			
 			MemberVO userVO = (MemberVO) session.getAttribute("userVO");
 			member.setNo(userVO.getNo());
 			member.setQuestion(userVO.getQuestion());
 			member.setAnswer(userVO.getAnswer());
 		
-			service.mypageUpdate(multipartFile, member);
+			service.mypageUpdate(member);
 
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("myPage/profile_form");

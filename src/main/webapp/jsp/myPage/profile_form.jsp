@@ -54,7 +54,7 @@
 	 		<jsp:include page="/jsp/include/my_page.jsp" />
  			
 			<form name="membershipForm" action="${pageContext.request.contextPath }/myPage/update.do" 
-			      method="post" onsubmit="return checkForm()" autocomplete="off" class="formBottom15" enctype="multipart/form-data">  	
+			      method="post" onsubmit="return checkForm()" autocomplete="off" class="formBottom15">  	
 					
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3 marginTop">
@@ -128,8 +128,8 @@
 				 
 				  <div class="row">
 					  <div class="col-md-6 col-md-offset-3">   
-						  <section>
-								<%-- <img src="${ pageContext.request.contextPath }/img/defaultImage.png" class="img-rounded" alt="프로필 이미지">  --%>
+						 <%--  <section>
+								<img src="${ pageContext.request.contextPath }/img/defaultImage.png" class="img-rounded" alt="프로필 이미지"> 
 								<img src="${ pageContext.request.contextPath }/img/${userVO.profileImg}" class="img-rounded paddingleft30" alt="프로필 이미지">  
 								
 								<!-- 나중에 DB에 넣은 사진 불러오게 수정해야 함 -->
@@ -142,10 +142,10 @@
 										<small>5MB 이하 파일을 첨부하실 수 있습니다.</small>
 									</div>
 								</div> 
-							</section>
+							</section> --%>
 							
 							<div class="row">
-							  <div class= "col-md-6 col-md-offset-3 marginTop30">
+							  <div class= "col-md-6 col-md-offset-3">
 							    <input type="password" name="password" class="form-control" placeholder="비밀번호" alt="비밀번호 입력 폼"/>
 							    <div class="text-center">
 							    	<small>회원정보 수정을 위해 비밀번호를 입력해주세요.</small>

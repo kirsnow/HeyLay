@@ -79,9 +79,9 @@ public class MemberServiceImp implements MemberService {
 	}
 
 	@Override
-	public void mypageUpdate(MultipartFile multipartFile, MemberVO member) {
+	public void mypageUpdate(MemberVO member) {
 
-		// 실행되는 웹어플리케이션의 실제 경로 가져오기
+		/*// 실행되는 웹어플리케이션의 실제 경로 가져오기
 		String uploadDir = servletContext.getRealPath("/upload/");
 		// System.out.println("uploadDir : " + uploadDir);
 
@@ -125,10 +125,10 @@ public class MemberServiceImp implements MemberService {
 
 				// System.out.println("Service notice : " + notice);
 				// System.out.println("Service noticeAttach : " + noticeAttach);
-
+*/
 				dao.mypageUpdate(member);
-			}
-		}
+		/*	}
+		}*/
 	}
 
 	@Override
