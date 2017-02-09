@@ -35,7 +35,7 @@ public class LoginController {
 		if(userVO != null) {
 			
 			model.addAttribute("userVO", userVO);
-			model.addAttribute("msg", userVO.getFirstName() + "님 환영합니다.");
+//			model.addAttribute("msg", userVO.getFirstName() + "님 환영합니다.");
 			/*System.out.println(userVO.getEmail());*/
 			return "redirect:/";
 			
