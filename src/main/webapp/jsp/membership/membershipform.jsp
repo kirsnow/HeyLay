@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -116,11 +116,9 @@
 	                  <div class="col-md-6 col-md-offset-3">
 	                     <select name="question" class="form-control " >
 	                        <option value="계정 or 비밀번호 찾기용 선택하세요" disabled selected> 계정 or 비밀번호 찾기용 질문 </option>
-	                        <option value="첫 애완 동물 이름은 무엇인가요?">첫 애완 동물 이름은 무엇인가요? </option>
-	                        <option value="나의 보물 1호">나의 보물 1호 는?   </option>
-	                        <option value="처음 여행 간 도시 이름">처음 여행 간 도시 이름은?  </option>
-	                        <option value="어머니 성함">어머니 성함은? </option>
-	                        <option value="아버지 성함">아버지 성함은? </option>
+	                        <c:forEach var="idenQustion" items="${ idenQustionList }">
+	                        	<option value="${ idenQuestion.no }"> ${ idenQuestion.question }</option>
+	                        </c:forEach>
 	                     </select>
 	                  </div> 
 	               </div>

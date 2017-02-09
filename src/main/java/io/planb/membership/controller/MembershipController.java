@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import io.planb.directory.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.service.MemberService;
+import io.planb.member.vo.IdentifyQuestionVO;
 import io.planb.member.vo.MemberVO;
 
 @Controller
@@ -27,7 +28,10 @@ public class MembershipController {
 	private MemberService service;
 	
 	@RequestMapping(value="/membership/membership.do", method=RequestMethod.GET)
-	public String membershipForm() {
+	public String membershipForm(Model model) {
+		List<IdentifyQuestionVO> idenQuestionList = service.selectIdenQuestion();
+		model.addAttribute("idenQuestionList", idenQuestionList);
+		
 		return "membership/membershipform";
 	}
 	

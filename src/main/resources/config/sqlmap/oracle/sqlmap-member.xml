@@ -104,4 +104,11 @@
 		ORDER BY cnt DESC, search_result desc
 		Limit 30
 	</select>
+	
+	<select id="selectIdenQuestion" resultType="identifyQuestionVO">
+		SELECT * 
+		FROM q_identify_question 
+		ORDER BY no 
+	</select>
+	
 </mapper>

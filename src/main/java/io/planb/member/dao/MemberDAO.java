@@ -6,6 +6,7 @@ import java.util.Map;
 import io.planb.directory.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.leaved.vo.LeavedVO;
+import io.planb.member.vo.IdentifyQuestionVO;
 import io.planb.member.vo.MemberVO;
 
 public interface MemberDAO {
@@ -42,6 +43,6 @@ public interface MemberDAO {
 	public List<KeywordsVO> selectInterestList();			//선호 키워드 호출
 	
 	public int getNextMemberNo();							// 멤버 넥스트 넘버
-	
 
+	public List<IdentifyQuestionVO> selectIdenQuestion();
 }

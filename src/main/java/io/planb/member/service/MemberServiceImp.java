@@ -17,6 +17,7 @@ import io.planb.leaved.vo.LeavedVO;
 import io.planb.directory.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.dao.MemberDAO;
+import io.planb.member.vo.IdentifyQuestionVO;
 import io.planb.member.vo.MemberVO;
 
 @Service
@@ -157,5 +158,12 @@ public class MemberServiceImp implements MemberService {
 	public List<KeywordsVO> selectInterestList() {
 		List<KeywordsVO> interestList = dao.selectInterestList();
 		return interestList;
+	}
+
+	@Override
+	public List<IdentifyQuestionVO> selectIdenQuestion() {
+		List<IdentifyQuestionVO> idenQuestionList = dao.selectIdenQuestion();
+		
+		return idenQuestionList;
 	}
 }
