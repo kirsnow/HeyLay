@@ -116,7 +116,7 @@
 	                  <div class="col-md-6 col-md-offset-3">
 	                     <select name="question" class="form-control " >
 	                        <option value="계정 or 비밀번호 찾기용 선택하세요" disabled selected> 계정 or 비밀번호 찾기용 질문 </option>
-	                        <c:forEach var="idenQustion" items="${ idenQustionList }">
+	                        <c:forEach var="idenQuestion" items="${ idenQuestionList }">
 	                        	<option value="${ idenQuestion.no }"> ${ idenQuestion.question }</option>
 	                        </c:forEach>
 	                     </select>
