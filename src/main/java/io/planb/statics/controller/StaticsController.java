@@ -92,7 +92,7 @@ public class StaticsController {
 //		System.out.println("controller staticsList : " + staticsList);
 		
 		return new StaticsListVO(staticsList);
-	}
+	} 
 	
 	/* 내가 많이 담은 사이트 타입 */
 	@ResponseBody
