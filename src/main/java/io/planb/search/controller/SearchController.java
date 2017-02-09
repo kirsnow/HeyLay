@@ -6,12 +6,20 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+<<<<<<< HEAD
+import io.planb.contents.vo.ContentsListVO;
 import io.planb.contents.vo.ContentsVO;
+import io.planb.keywords.vo.KeywordsVO;
+=======
+import io.planb.contents.vo.ContentsVO;
+>>>>>>> c97ae3d6693f3aab64094d5a3ec3b9e0e0142152
 import io.planb.member.vo.MemberVO;
 import io.planb.memo.service.MemoServiceImp;
 import io.planb.memo.vo.MemoVO;
@@ -56,5 +64,16 @@ public class SearchController {
 		return mav;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/saveCard.do", method=RequestMethod.POST)
+	public ContentsListVO getContents(HttpSession session, @RequestParam("param") int param) {
+		
+//		ContentsVO contents = (ContentsVO)session.getAttribute("contentsVO");
+//		int no = contents.getNo();
+		
+		List<ContentsVO> contentsList = service.getContentsList(param);
+		
+		return new ContentsListVO(contentsList);
+	}
 	
 }

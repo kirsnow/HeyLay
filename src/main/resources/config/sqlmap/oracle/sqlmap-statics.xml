@@ -44,37 +44,40 @@
 	</select>
 	
 	<select id="selectSavedMoreSaved" parameterType="int" resultType="staticsVO">
-		SELECT c.title columnName, COUNT (*) cnt 
+		SELECT c.title columnName, COUNT (*) cnt, im.url AS data 
 		FROM q_contents_saved cs2 
 		INNER JOIN q_contents c ON c.no = cs2.contents_no 
+		INNER JOIN q_image im ON c.no = im.contents_no 
 		WHERE cs2.contents_no IN (SELECT cs.contents_no 
 		FROM q_contents_saved cs 
 		WHERE cs.member_no = #{ no } )
-		GROUP BY cs2.no, c.no
+		GROUP BY cs2.no, c.no, im.no 
 		ORDER BY cnt DESC 
 		LIMIT 10 
 	</select>
 	
 	<select id="selectSavedLessSaved" parameterType="int" resultType="staticsVO">
-		SELECT c.title columnName, COUNT (*) cnt
+		SELECT c.title columnName, COUNT (*) cnt, im.url AS data 
 		FROM q_contents_saved cs2 
 		INNER JOIN q_contents c ON c.no = cs2.contents_no 
+		INNER JOIN q_image im ON c.no = im.contents_no 
 		WHERE cs2.contents_no IN (SELECT cs.contents_no 
 		FROM q_contents_saved cs 
-		WHERE cs.member_no = #{ no } )
-		GROUP BY cs2.no, c.no
+		WHERE cs.member_no = #{ no } ) 
+		GROUP BY cs2.no, c.no, im.no 
 		ORDER BY cnt 
 		LIMIT 10 
 	</select>
 	
 	<select id="selectSavedLike" parameterType="int" resultType="staticsVO">
-		SELECT c.title columnName, COUNT (*) cnt
+		SELECT c.title columnName, COUNT (*) cnt, im.url AS data 
 		FROM q_like l
 		INNER JOIN q_contents c ON c.no = l.contents_no 
+		INNER JOIN q_image im ON c.no = im.contents_no 
 		WHERE l.contents_no IN (SELECT cs.contents_no 
 		FROM q_contents_saved cs 
 		WHERE cs.member_no = #{ no } ) 
-		GROUP BY l.no, c.no
+		GROUP BY l.no, c.no, im.no 
 		ORDER BY cnt DESC 
 		LIMIT 10 
 	</select>

@@ -147,14 +147,14 @@
 								</div>
 								<div class="row tCenter">
 									<div class="div col-md-2"><h3><span class="scene_n3">그저께</span><br/> ${ countBeforeYesSaved }개</h3></div>
-									<div class="div col-md-1">
+									<div class="div col-md-2">
 										<c:choose>
 											<c:when test="${ countBeforeYesSaved > countYesSaved }"><i class="fa fa-chevron-right fa-5x" aria-hidden="true"></i></c:when>
 											<c:when test="${ countBeforeYesSaved < countYesSaved }"><i class="fa fa-chevron-left fa-5x" aria-hidden="true"></i></c:when>
 											<c:otherwise><img src="http://image.aladin.co.kr/img/events/book/2015/2015_award_records_i3.png"></c:otherwise>
 										</c:choose>
 									</div>
-									<div class="div col-md-1"><h3><span class="scene_n3">어제</span><br/> ${ countYesSaved }개</h3></div>
+									<div class="div col-md-2"><h3><span class="scene_n3">어제</span><br/> ${ countYesSaved }개</h3></div>
 								</div>
 							</div>
 						</div>
@@ -189,7 +189,10 @@
 							<div class="div col-md-12 scene_wrapper">
 								<h3 class="marginTop70">${ userVO.lastName } ${ userVO.firstName } 회원님이 담은 카드 중<br/>가장 많은 분들의 사랑을 받은 카드입니다.</h3>
 								<c:forEach var="savedMoreSaved" items="${ savedMoreSavedList }">
-									${ savedMoreSaved.columnName }
+									<div>
+										<img alt="" src="${ savedMoreSaved.data }">
+										${ savedMoreSaved.columnName }
+									</div>
 								</c:forEach>
 							</div>
 						</div>
@@ -197,7 +200,10 @@
 							<div class="div col-md-12 scene_wrapper">
 								<h3 class="marginTop70">담은 카드 중 소수만이 담은,<br/>희소성이 있는 카드입니다.</h3>
 								<c:forEach var="savedLessSaved" items="${ savedLessSavedList }">
-									${ savedLessSaved.columnName }
+									<div>
+										<img alt="" src="${ savedLessSaved.data }">
+										${ savedLessSaved.columnName }
+									</div>
 								</c:forEach>
 							</div>
 						</div>
@@ -205,7 +211,10 @@
 							<div class="div col-md-12 scene_wrapper">
 								<h3 class="marginTop70">담은 카드 중<br/>다른 회원님들로부터 좋은 평가를 받은 카드입니다.</h3>
 								<c:forEach var="savedLike" items="${ savedLikeList }">
-									${ savedLike.columnName }
+									<div>
+										<img alt="" src="${ savedLike.data }">
+										${ savedLike.columnName }
+									</div>
 								</c:forEach>
 							</div>
 						</div>

@@ -41,6 +41,11 @@ public class SearchServiceImp {
 		return contents;
 	}
 	
+	public List<ContentsVO> getContentsList(int contentsNo) {
+		List<ContentsVO> contentsList = dao.getContentsList(contentsNo);
+		return contentsList;
+	}
+	
 	public ContentsVO getContentsAll() {
 		ContentsVO contentsA = dao.getContentsAll();
 		System.out.println(contentsA.toJson());

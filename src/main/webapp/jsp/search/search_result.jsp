@@ -136,16 +136,24 @@
 			                    </div>
 			
 			                    <!-- card menu (top-right) -->
-			                    <div class="mdl-card__menu">
-			                        <div id="report" class="btn-group dropdown pull-right"
-			                            title="신고">
-			                            <a href="#" role="button" class="" title="카드를 보관함에 담기"> 
-			                               <i class="fa fa-star fa-lg" aria-hidden="true"></i>
-			                            </a>
-			                        </div>
-			                    </div>
-			
-			                    <!-- card action buttons (bottom) -->
+								<div class="mdl-card__menu">
+									<div id="save" class="btn-group dropdown pull-right" title="담기">
+										<c:choose>
+											<c:when test="${ (userVO ne null) and (not empty userVO) }">
+												<button type="button" class="btn btn-link saveBtn" data-toggle="modal" data-target="#saveCard" id="${ card.no }">
+													<i class="fa fa-star fa-lg" aria-hidden="true"></i>
+												</button>
+											</c:when>
+											<c:otherwise>
+												<button type="button" class="btn" onclick="location.href='${ pageContext.request.contextPath }/login/login.do'">
+													<i class="fa fa-star fa-lg" aria-hidden="true"></i>
+												</button>
+											</c:otherwise>
+										</c:choose>
+									</div>
+								</div>
+
+								<!-- card action buttons (bottom) -->
 			                    <div class="mdl-card__actions mdl-card--border">
 			                        <a href="${ pageContext.request.contextPath }/search/contents.do?no=${ card.no }&q=${ searchResult.query }" class="btn btn-link" title="상세 페이지로 이동">
 			                        	더 보기
@@ -204,7 +212,73 @@
     <jsp:include page="/jsp/include/footer.jsp" />
     <!-- /footer -->
     
-    
+    <!-- Modal -->
+	<jsp:include page="/jsp/modal/card_save_modal.jsp" />
+	<script>
+		/* modal autofocus */
+// 		$('#saveCard').on('shown.bs.modal', function () {		
+// 			console.log("열림");
+// 			var param = $(this).attr('no')
+// 			alert(document.getElementById("no").no);
+			
+// 		  $.ajax({
+// 				url : '/modal/saveCard.do',
+// 			    type: 'POST',
+// 			    contentType: "application/json", 
+// 			    data : {param : param},
+// 			    success : function(response){
+// 					console.log("response : ", response);
+// 					for(var i = 0; i < response.contentsList.length; i++) {
+// 						dataSet.push({
+// 							"category" : response.contentsList[i].category, 
+// 							"dataType" : response.contentsList[i].dataType,
+// 							"source" : response.contentsList[i].source,
+// 							"title" : response.contentsList[i].title
+// 						});
+// 					}
+					
+// 					$('#category').text(dataSet[0].category);
+// 			    },
+// 			    error : function() {
+// 			    	alert('ERROR');
+// 			    }
+// 			});
+		  
+// 		  $('#memo').focus()
+// 		}); 
+		$('#saveBtn').click(function(e){ 
+			
+			console.log("열림");
+			var param = $(this).attr('no')
+			
+			$.ajax({
+				url : '${ pageContext.request.contextPath }/modal/saveCard.do',
+			    type: 'POST',
+			    contentType: "application/json", 
+			    data : {param : param},
+			    success : function(response){
+					console.log("response : ", response);
+					for(var i = 0; i < response.contentsList.length; i++) {
+						dataSet.push({
+							"category" : response.contentsList[i].category, 
+							"dataType" : response.contentsList[i].dataType,
+							"source" : response.contentsList[i].source,
+							"title" : response.contentsList[i].title
+						});
+					}
+					
+					$('#category').text(dataSet[0].category);
+			    },
+			    error : function() {
+			    	alert('ERROR');
+			    }
+			});
+			
+			//모달 보이기
+			$('#saveCard').modal('show')
+			$('#memo').focus()
+		});
+	</script>
     
     <!-- Bootstrap JS SET -->
     <script src="${ pageContext.request.contextPath }/js/jquery.1.11.1.js"></script>
