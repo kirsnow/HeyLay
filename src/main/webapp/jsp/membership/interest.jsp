@@ -50,47 +50,31 @@
          	<form name="interestForm" class="formBottom15" 
                   action="${pageContext.request.contextPath }/interest.do" method="post">
                 <div class="row">
-                	<div class="col-md-8 col-md-offset-2">
-		           		<div class="col-md-3">
-			           		<c:forEach var="keywordInterest" items="${ interestKeywordList }" begin="1" end="10">
-		           				<div>
-			           				<label for="interest">
-			           					<c:out value="${keywordInterest.keyword}"/>
-			           				</label>
-			           				<span class="paddingleft30"><input type="checkbox" name="interest" id="interest"/></span>
-		           				</div>
-			           		</c:forEach>
-			           	</div>
-			           	<div class="col-md-3">
-			           		<c:forEach var="keywordInterest" items="${ interestKeywordList }" begin="11" end="20">
-		           				<div>
-			           				<label for="interest">
-			           					<c:out value="${keywordInterest.keyword}"/>
-			           				</label>
-			           				<span class="paddingleft30"><input type="checkbox" name="interest" id="interest"/></span>
-		           				</div>
-			           		</c:forEach>
-		           		</div>
-		           		<div class="col-md-3">
-			           		<c:forEach var="keywordInterest" items="${ interestKeywordList }" begin="21" end="30">
-		           				<div>
-			           				<label for="interest">
-			           					<c:out value="${keywordInterest.keyword}"/>
-			           				</label>
-			           				<span class="paddingleft30"><input type="checkbox" name="interest" id="interest"/></span>
-		           				</div>
-			           		</c:forEach>
-		           		</div>
+                	<div class="col-md-8 col-md-offset2">
+		           		<c:forEach var="keywordInterest" items="${ interestKeywordList }" begin="1" end="30">
+	           				<div class="col-md-4 text-left marginBottom">
+		           				<label for="interest">
+		           		 			<c:out value="${keywordInterest.keyword}"/>
+		           				</label>
+	           				</div>
+		           			<span class="col-md-2 pull-right marginRight30">
+		           				<input type="checkbox" name="interest" id="interest"/>
+		           			</span>
+		           		</c:forEach>
 	           		</div>
            		</div>
-             	<p class="text-center"><small>최소 3항목을 선택해 주세요.</small></p>
-             	
+           		
+             	<div class="text-center col-md-6 col-md-offset-3 marginTop marginBottom">
+		   			<div>
+	        			<small>최소 3항목을 선택해 주세요.</small>
+	        		</div>
+        		</div>
              	<div class="row"> 
-	                  <div class="col-md-6 col-md-offset-3 text-center ">
+	                  <div class="text-center col-md-6 col-md-offset-3 marginTop marginBottom">
 	                     <button type="submit" class="btn btn-primary marginRight" >키워드 선택 완료</button>
 	                     <button type="reset" class="btn">초기화</button>
 	                  </div>
-	            </div>      
+	             </div>      
              </form> 
          </div>
 	</section>

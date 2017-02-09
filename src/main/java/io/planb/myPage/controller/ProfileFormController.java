@@ -35,6 +35,7 @@ public class ProfileFormController {
 		@RequestMapping(value="/mypage.do", method=RequestMethod.POST)
 		public String profileForm(@ModelAttribute("member") MemberVO member, Model model) {
 			
+			model.addAttribute("userVO", member);
 			return "myPage/profile_form";	
 		}
 		
