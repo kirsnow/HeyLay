@@ -66,7 +66,7 @@ public class StaticsDAO {
 	public List<KeywordsVO> selectAllKeywordList() {
 		List<KeywordsVO> allKeywordList = sqlSessionTemplate.selectList("io.planb.statics.dao.StaticsDAO.selectAllKeywordList");
 		
-		System.out.println(allKeywordList);
+		//System.out.println(allKeywordList);
 		
 		return allKeywordList;
 	}
@@ -106,6 +106,12 @@ public class StaticsDAO {
 		
 		return countBeforeYesSaved;
 	}
+	
+	public int sumSavedMonth(int no) {
+		int sumSavedMonth = sqlSessionTemplate.selectOne("io.planb.statics.dao.StaticsDAO.sumSavedMonth", no);
+		
+		return sumSavedMonth;
+	}
 
 	public List<StaticsVO> selectSavedMoreSaved(int no) {
 		List<StaticsVO> savedMoreSavedList = sqlSessionTemplate.selectList("io.planb.statics.dao.StaticsDAO.selectSavedMoreSaved", no);
@@ -125,6 +131,12 @@ public class StaticsDAO {
 		return savedLikeList;
 	}
 
+	public List<StaticsVO> selectSavedMonth(int no) {
+		List<StaticsVO> staticsList = sqlSessionTemplate.selectList("io.planb.statics.dao.StaticsDAO.selectSavedMonth", no);
+		
+		return staticsList;
+	}
+	
 	public int selectNewUserCnt() {
 		int newUserCnt = sqlSessionTemplate.selectOne("io.planb.statics.dao.StaticsDAO.selectNewUserCnt");
 		

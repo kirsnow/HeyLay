@@ -1,5 +1,6 @@
 package io.planb.statics.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -106,6 +107,12 @@ public class StaticsService {
 		
 		return countBeforeYesSaved;
 	}
+	
+	public int sumSavedMonth(int no) {
+		int sumSavedMonth = dao.sumSavedMonth(no);
+		
+		return sumSavedMonth;
+	}
 
 	public List<StaticsVO> selectSavedMoreSaved(int no) {
 		List<StaticsVO> savedMoreSavedList = dao.selectSavedMoreSaved(no);
@@ -125,6 +132,25 @@ public class StaticsService {
 		return savedLikeList;
 	}
 
+	public List<StaticsVO> selectSavedMonth(int no) {
+		List<StaticsVO> staticsList2 = dao.selectSavedMonth(no);
+		
+		List<StaticsVO> staticsList = new ArrayList<>();
+		for(int i = 1; i <= 12; i++) {
+			String label = Integer.toString(i);
+			int value = 0;
+			for(StaticsVO statics2 : staticsList2) {
+				if(i == Integer.parseInt(statics2.getColumnName())) {
+					value = statics2.getCnt();
+				}
+			}
+			StaticsVO statics = new StaticsVO(label, value, null);
+			staticsList.add(statics);
+		}
+		
+		return staticsList;
+	}
+	
 	public int selectNewUserCnt() {
 		int newUserCnt = dao.selectNewUserCnt();
 		

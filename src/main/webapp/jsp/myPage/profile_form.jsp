@@ -54,7 +54,7 @@
 	 		<jsp:include page="/jsp/include/my_page.jsp" />
  			
 			<form name="membershipForm" action="${pageContext.request.contextPath }/myPage/update.do" 
-			      method="post" onsubmit="return checkForm()" autocomplete="off" class="formBottom15" enctype="multipart/form-data">  	
+			      method="post" onsubmit="return checkForm()" autocomplete="off" class="formBottom15">  	
 					
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3 marginTop">
@@ -125,41 +125,31 @@
 	                     <input type="text" name="city" value="${userVO.city}" class="form-control" alt="거주 도시 입력 폼"/>
 	                  </div>
                   </div>
-				  <%-- <div class="row">
-	                  <div class="col-md-6 col-md-offset-3">
-	                     <select name="question" class="form-control" value="${userVO.question}">
-	                        <option value="계정 or 비밀번호 찾기용 선택하세요" disabled selected> 계정 or 비밀번호 찾기용 질문 </option>
-	                        <option value="첫 애완 동물 이름은 무엇인가요?">첫 애완 동물 이름은 무엇인가요? </option>
-	                        <option value="나의 보물 1호">나의 보물 1호 는?   </option>
-	                        <option value="처음 여행 간 도시 이름">처음 여행 간 도시 이름은?  </option>
-	                        <option value="어머니 성함">어머니 성함은? </option>
-	                        <option value="아버지 성함">아버지 성함은? </option>
-	                     </select>
-	                  </div> 
-	               </div>
-	               
-				   <div class="row">
-	                  <div class="col-md-6 col-md-offset-3">   
-	                     <input type="text" name="answer" value="${userVO.answer}" class="form-control" alt="아이디 or 비밀번호 찾기용 답변 입력 폼"/>
-	                  </div>
-	               </div>  --%>
-					<div class="row">
-						<div class="col-md-6 col-md-offset-3">   
-							<section>
-								<%-- <img src="${ pageContext.request.contextPath }/img/defaultImage.png" class="img-rounded" alt="프로필 이미지">  --%>
-								<img src="${ pageContext.request.contextPath }/upload/${userVO.profileImg}" class="img-rounded" alt="프로필 이미지">  
+				 
+				  <div class="row">
+					  <div class="col-md-6 col-md-offset-3">   
+						 <%--  <section>
+								<img src="${ pageContext.request.contextPath }/img/defaultImage.png" class="img-rounded" alt="프로필 이미지"> 
+								<img src="${ pageContext.request.contextPath }/img/${userVO.profileImg}" class="img-rounded paddingleft30" alt="프로필 이미지">  
+								
 								<!-- 나중에 DB에 넣은 사진 불러오게 수정해야 함 -->
-								 <div class="pull-right">
+								 <div class="pull-right marginRight30">
 									<input type="file" name="profileImg" size="100" class="marginBottom" alt="파일 선택 폼"/>	
-									<div>10mb이하의 이미지 파일만 등록하실 수 있습니다.</div>
-									<div class="marginBottom">jpg, png, gif, emp파일만 등록 가능합니다.</div>		
+									<div>
+										<small>프로필 이미지를 등록해 주세요.</small>
+									</div>
+									<div>
+										<small>5MB 이하 파일을 첨부하실 수 있습니다.</small>
+									</div>
 								</div> 
-							</section>
+							</section> --%>
 							
 							<div class="row">
 							  <div class= "col-md-6 col-md-offset-3">
 							    <input type="password" name="password" class="form-control" placeholder="비밀번호" alt="비밀번호 입력 폼"/>
-							    <div class="text-center"><small>회원정보 수정을 위해 비밀번호를 입력해주세요.</small></div>
+							    <div class="text-center">
+							    	<small>회원정보 수정을 위해 비밀번호를 입력해주세요.</small>
+							    </div>
 							    <!-- 비밀번호가 맞아야 회원 정보 수정이 되게 수정  -->
 							  </div>
 							</div>	

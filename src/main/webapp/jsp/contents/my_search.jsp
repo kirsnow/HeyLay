@@ -59,6 +59,7 @@
 									<c:forEach var="keyword" items="${ keywordList }" varStatus="loop">
 											<dt class="col-md-5 col-md-offset-4 text-left"><c:out value="${loop.count}"/>.&nbsp;&nbsp;
 										    	<a href="#" title="해당 단어 검색 결과로 가는 URL">${ keyword.keyword }</a>
+									
 										    </dt>
 										    <dd class="col-md-3  marginBottom30">&nbsp;&nbsp;${ keyword.regDate }&nbsp;&nbsp;
 											<a href="javascript:update('${keyword.no}', '${userVO.no}')"><i class="fa fa-times" aria-hidden="true"></i></a></dd> 

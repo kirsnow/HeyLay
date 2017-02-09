@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import io.planb.directory.vo.DirectoryVO;
+import io.planb.keywords.vo.KeywordsVO;
 import io.planb.leaved.vo.LeavedVO;
+import io.planb.member.vo.IdentifyQuestionVO;
 import io.planb.member.vo.MemberVO;
 
 @Repository
@@ -57,7 +59,8 @@ public class MemberDAOImp implements MemberDAO {
 	public void changePw(MemberVO member) {
 		sqlSessionTemplate.update("io.planb.member.dao.MemberDAO.changePw", member);
 	}
-
+	
+	/*회원정보 수정*/
 	@Override
 	public void mypageUpdate(MemberVO member) {
 		sqlSessionTemplate.update("io.planb.member.dao.MemberDAO.mypageUpdate", member);
@@ -77,8 +80,14 @@ public class MemberDAOImp implements MemberDAO {
 	}
 	
 	@Override
-	public void firstFolder() {
-		sqlSessionTemplate.insert("io.planb.member.dao.MemberDAO.insertFirstFolder");
+	public int getNextMemberNo() {
+		int nextMemberNo = sqlSessionTemplate.selectOne("io.planb.member.dao.MemberDAO.selectMemberNo");
+		return nextMemberNo;
+	}
+	
+	@Override
+	public void firstFolder(int memberNo) {
+		sqlSessionTemplate.insert("io.planb.member.dao.MemberDAO.insertFirstFolder", memberNo);
 	}
 
 	@Override
@@ -97,6 +106,19 @@ public class MemberDAOImp implements MemberDAO {
 		sqlSessionTemplate.update("io.planb.member.dao.MemberDAO.updateName", params);
 		
 	}
+	
+	/*선호 키워드 호출*/
+	public List<KeywordsVO> selectInterestList() {
+		List<KeywordsVO> interestKeywordList = sqlSessionTemplate.selectList("io.planb.member.dao.MemberDAO.selectInterestList");
+		
+		return interestKeywordList;
+	}
 
+	@Override
+	public List<IdentifyQuestionVO> selectIdenQuestion() {
+		List<IdentifyQuestionVO> idenQuestionList = sqlSessionTemplate.selectList("io.planb.member.dao.MemberDAO.selectIdenQuestion");
+		
+		return idenQuestionList;
+	}
 
 }

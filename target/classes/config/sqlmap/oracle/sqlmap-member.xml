@@ -12,7 +12,7 @@
 	
 	<insert id="enroll" parameterType="memberVO">
 	   insert into Q_member(no, email, password, last_name, first_name, birth, gender, email_receive, country, city, question, answer)
-	    values(NEXTVAL('Q_member_no'), #{email}, #{password}, #{lastName},#{firstName}, to_date(#{birth}, 'YYYY-MM-DD') , #{gender}, #{emailReceive}, #{country}, #{city}, #{question}, #{answer})
+	    values(#{no}, #{email}, #{password}, #{lastName},#{firstName}, to_date(#{birth}, 'YYYY-MM-DD') , #{gender}, #{emailReceive}, #{country}, #{city}, #{question}, #{answer})
 	</insert> 
 	
 	<select id="selectByNo" parameterType="memberVO" resultType="memberVO">
@@ -53,6 +53,7 @@
 		where no = #{no} and password= #{beforePassword}
 	</update> 
 	
+	<!-- 회원 정보 수정 -->
 	<update id="mypageUpdate" parameterType="memberVO">
 		update Q_member
 	 	set last_name = #{lastName} , first_name = #{firstName}, 
@@ -62,18 +63,19 @@
 	 	where no = #{no} and password= #{password}
 	</update> 
 	
-	
-	
-	
 	<update id="updateType" parameterType="int">
 		UPDATE q_member
 		SET TYPE = 'P' 
 		WHERE no = #{ no }
 	</update>
 	
-	<insert id="insertFirstFolder">
+	<select id="selectMemberNo" resultType="int">
+		select nextval('Q_MEMBER_NO')
+	</select>
+	
+	 <insert id="insertFirstFolder" parameterType="int">
 		insert into Q_DIRECTORY(no, NAME, MEMBER_NO)
-		values(NEXTVAL('Q_DIRECTORY_NO'), '나의 첫 폴더', CURRVAL('Q_MEMBER_NO'))
+		values(NEXTVAL('Q_DIRECTORY_NO'), '나의 첫 폴더', #{memberNo})
 	</insert>
 	
 	<select id="selectFolder" parameterType="int" resultType="directoryVO">
@@ -93,6 +95,21 @@
 		set name = #{ name }
 		where no = #{ no }
 	</update>
-
+	
+	<!-- 관심 키워드 선택 페이지를 위한 키워드 호출   -->
+	<select id="selectInterestList" resultType="KeywordsVO">
+		SELECT keyword, COUNT(keyword) as cnt, search_result 
+		FROM Q_KEYWORDS
+        
+		GROUP BY keyword, search_result
+		ORDER BY cnt DESC, search_result DESC
+		Limit 30
+	</select>
+	
+	<select id="selectIdenQuestion" resultType="identifyQuestionVO">
+		SELECT * 
+		FROM q_identify_question 
+		ORDER BY no 
+	</select>
 
 </mapper>

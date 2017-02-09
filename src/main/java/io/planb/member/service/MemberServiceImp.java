@@ -15,7 +15,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import io.planb.leaved.vo.LeavedVO;
 import io.planb.directory.vo.DirectoryVO;
+import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.dao.MemberDAO;
+import io.planb.member.vo.IdentifyQuestionVO;
 import io.planb.member.vo.MemberVO;
 
 @Service
@@ -26,7 +28,6 @@ public class MemberServiceImp implements MemberService {
 
 	@Autowired
 	private ServletContext servletContext;
-	
 
 	@Override
 	public MemberVO login(MemberVO member) {
@@ -36,8 +37,12 @@ public class MemberServiceImp implements MemberService {
 
 	@Override
 	public void enroll(MemberVO member) {
+		int nextMeberNo = dao.getNextMemberNo();
+		member.setNo(nextMeberNo);
+		
 		dao.enroll(member);
 
+		dao.firstFolder(nextMeberNo);
 	}
 
 	@Override
@@ -74,9 +79,9 @@ public class MemberServiceImp implements MemberService {
 	}
 
 	@Override
-	public void mypageUpdate(MultipartFile multipartFile, MemberVO member) {
+	public void mypageUpdate(MemberVO member) {
 
-		// 실행되는 웹어플리케이션의 실제 경로 가져오기
+		/*// 실행되는 웹어플리케이션의 실제 경로 가져오기
 		String uploadDir = servletContext.getRealPath("/upload/");
 		// System.out.println("uploadDir : " + uploadDir);
 
@@ -120,21 +125,15 @@ public class MemberServiceImp implements MemberService {
 
 				// System.out.println("Service notice : " + notice);
 				// System.out.println("Service noticeAttach : " + noticeAttach);
-
+*/
 				dao.mypageUpdate(member);
-			}
-		}
+		/*	}
+		}*/
 	}
 
 	@Override
 	public void updateType(int no) {
 		dao.updateType(no);
-
-	}
-
-	@Override
-	public void firstFolder() {
-		dao.firstFolder();
 
 	}
 
@@ -146,14 +145,26 @@ public class MemberServiceImp implements MemberService {
 
 	@Override
 	public void deleteDirectory(ArrayList<Map<Integer, String>> list) {
-		
+
 	}
 
 	@Override
 	public void updateName(Map<Integer, String> params) {
 		dao.updateName(params);
-		
+
+	}
+    
+	/*관심 키워드 선택*/
+	@Override
+	public List<KeywordsVO> selectInterestList() {
+		List<KeywordsVO> interestKeywordList = dao.selectInterestList();
+		return interestKeywordList;
 	}
 
-
+	@Override
+	public List<IdentifyQuestionVO> selectIdenQuestion() {
+		List<IdentifyQuestionVO> idenQuestionList = dao.selectIdenQuestion();
+		
+		return idenQuestionList;
+	}
 }
