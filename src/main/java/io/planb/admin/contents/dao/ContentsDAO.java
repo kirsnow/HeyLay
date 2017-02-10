@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import io.planb.bug.vo.BugVO;
 import io.planb.bugAttach.vo.BugAttachVO;
+import io.planb.contents.vo.DataTypeVO;
 import io.planb.source.vo.SourceVO;
 
 @Repository
@@ -78,6 +79,12 @@ public class ContentsDAO {
 		int sourceCnt = sqlSessionTemplate.selectOne("io.planb.admin.contents.dao.ContentsDAO.countByOption", option);
 		
 		return sourceCnt;
+	}
+
+	public List<DataTypeVO> selectDataType() {
+		List<DataTypeVO> dataTypeList = sqlSessionTemplate.selectList("io.planb.admin.contents.dao.ContentsDAO.dataTypeList");
+		
+		return dataTypeList;
 	}
 
 }

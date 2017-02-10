@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import io.planb.admin.contents.service.ContentsService;
 import io.planb.bug.vo.BugVO;
 import io.planb.bugAttach.vo.BugAttachVO;
+import io.planb.contents.vo.DataTypeVO;
 import io.planb.source.vo.SourceVO;
 
 @Controller
@@ -32,6 +33,9 @@ public class ContentsController {
 		int option = 0;
 		if(request.getParameter("option") != null) option = Integer.parseInt(request.getParameter("option"));
 		
+		List<DataTypeVO> dataTypeList = service.selectDataType();
+		model.addAttribute("dataTypeList", dataTypeList);
+		
 		List<SourceVO> sourceList = service.selectByOption(option);
 		model.addAttribute("sourceList", sourceList);
 		
@@ -45,10 +49,10 @@ public class ContentsController {
 	
 	/* 사이트 추가 */
 	@RequestMapping(value = "/jsp/admin/source_add.do", method = RequestMethod.POST)
-	public String insertSource(@RequestParam("attachfile") MultipartFile multipartFile, @ModelAttribute SourceVO source) {
+	public String insertSource(/*@RequestParam("attachfile") MultipartFile multipartFile, */@ModelAttribute SourceVO source) {
 //		System.out.println("source : " + source);
 		
-		service.insertSource(multipartFile, source);
+		service.insertSource(/*multipartFile, */source);
 		
 		return "redirect:/jsp/admin/source_list.do?option=0";
 	}

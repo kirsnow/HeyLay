@@ -84,7 +84,7 @@ function doMember(memberNo) {
 </div>
 
 <!-- top navigation -->
-<div class="top_nav">
+<div class="visible-xs top_nav">
 	<div class="nav_menu">
 		<nav role="navigation">
 			<div class="nav toggle">
