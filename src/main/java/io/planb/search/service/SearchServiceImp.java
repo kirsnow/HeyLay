@@ -31,9 +31,19 @@ public class SearchServiceImp {
 		return searchResult;
 	}
 
-	public ContentsVO getContents(int contentsNo) {
+	public ContentsVO getContents(int contentsNo, String q) {
 		ContentsVO contents = dao.getContents(contentsNo);
+		if(q != null) {
+			String text = contents.getSummary();
+			text = text.replace(q, "<mark>" + q + "</mark>");
+			contents.setSummary(text);
+		}
 		return contents;
+	}
+	
+	public List<ContentsVO> getContentsList(int contentsNo) {
+		List<ContentsVO> contentsList = dao.getContentsList(contentsNo);
+		return contentsList;
 	}
 	
 	public ContentsVO getContentsAll() {

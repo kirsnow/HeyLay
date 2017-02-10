@@ -9,6 +9,10 @@
    		margin-right: 10px;
    	}
    	
+   	.marginRight15 {
+   		margin-right: 15px;
+   	}
+   	
    	.marginLeft {
    		margin-left: 10px;
    	}
@@ -92,6 +96,10 @@
     
     .paddingTop30{
     	padding-top: 30px;
+    }
+    
+    .paddingRight10 {
+    	padding-right: 10px;
     }
     
     .clearBoth{
