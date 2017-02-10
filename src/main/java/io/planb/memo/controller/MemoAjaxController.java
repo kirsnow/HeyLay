@@ -13,16 +13,16 @@ import io.planb.member.vo.MemberVO;
 import io.planb.memo.service.MemoServiceImp;
 import io.planb.memo.vo.MemoVO;
 
-@RequestMapping("/memo")
+@RequestMapping("/memo/ajax")
 @Controller
-public class MemoController {
+public class MemoAjaxController {
 		
 	@Autowired
 	private MemoServiceImp service;
 	
 	
 	@ResponseBody
-	@RequestMapping(value="/ajax/addMemo.do", method=RequestMethod.POST)
+	@RequestMapping(value="/addMemo.do", method=RequestMethod.POST)
 	public MemoVO addMemo(HttpSession session, @RequestParam int contentsNo, @RequestParam String memoMessage) {
 		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
 		int userNo = userVO != null ? userVO.getNo() : 0;
@@ -38,7 +38,7 @@ public class MemoController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/ajax/editMemo.do", method=RequestMethod.POST)
+	@RequestMapping(value="/editMemo.do", method=RequestMethod.POST)
 	public MemoVO editMemo(HttpSession session, @RequestParam int memoNo, @RequestParam String memoMessage){
 		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
 		MemoVO edited = null;
@@ -55,7 +55,7 @@ public class MemoController {
 	};
 	
 	@ResponseBody
-	@RequestMapping(value="/ajax/delMemo.do", method=RequestMethod.POST)
+	@RequestMapping(value="/delMemo.do", method=RequestMethod.POST)
 	public int delMemo(HttpSession session, @RequestParam String memoNo) {
 		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
 		int no = Integer.parseInt(memoNo);

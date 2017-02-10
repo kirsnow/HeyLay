@@ -85,7 +85,7 @@
             
             <div class="content">
                 <h4>
-                	<a href="${ pageContext.request.contextPath }/search/result.do">
+                	<a href="${ pageContext.request.contextPath }/search/result.do?q=파이썬">
                 		We've got the special power
                 	</a>
                 </h4>
