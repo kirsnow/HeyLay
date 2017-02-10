@@ -48,6 +48,7 @@ public class MembershipController {
 		return "membership/interest";
 	}
 	
+	
 	@RequestMapping(value="/contents/update_type.do", method=RequestMethod.POST)
 	public String updateType(Model model, @RequestParam("no") int no) {
 		
