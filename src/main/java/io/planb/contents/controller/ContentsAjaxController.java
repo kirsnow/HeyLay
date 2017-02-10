@@ -31,11 +31,6 @@ public class ContentsAjaxController {
 			, @RequestParam String dirName
 			, @RequestParam(required=false) String memoMessage) {
 		
-		System.out.println("contentsNo: " + contentsNo);
-		System.out.println("dirNo: " + dirNo);
-		System.out.println("dirName: " + dirName);
-		System.out.println("memoMessage: " + memoMessage);
-		
 		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
 		int userNo = userVO != null ? userVO.getNo() : 0;
 		

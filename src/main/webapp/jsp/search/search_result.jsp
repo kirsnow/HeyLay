@@ -142,12 +142,12 @@
 											<c:when test="${ (userVO ne null) and (not empty userVO) }">
 												<a href="#" role="button" class="saveCardBtn"
 												 data-toggle="modal" data-target="#saveCardModal" id="${ card.no }" title="카드 담기">
-			                                    	<i class="fa fa-bookmark fa-lg" aria-hidden="true"></i>
+			                                    	<i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
 			                                	</a>
 											</c:when>
 											<c:otherwise>
 												<a href="${ pageContext.request.contextPath }/login/login.do" class="saveCardBtn" id="${ card.no }" title="카드 담기: 로그인이 필요한 서비스입니다">
-			                                    	<i class="fa fa-bookmark fa-lg" aria-hidden="true"></i>
+			                                    	<i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
 			                                	</a>
 											</c:otherwise>
 										</c:choose>

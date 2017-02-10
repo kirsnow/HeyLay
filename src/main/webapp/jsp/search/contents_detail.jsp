@@ -87,12 +87,26 @@
                 </article>
 
                 <div role="toolbar" class="pull-right marginTop40">
-                    <button type="button" class="btn btn-info" title="카드를 보관함에 담습니다.">
-                        <i class="fa fa-bookmark-o" aria-hidden="true"></i> 저장하기
-                    </button>
+					<c:choose>
+						<c:when test="${ (userVO ne null) and (not empty userVO) }">
+							<button type="button" class="btn btn-info saveCardBtn" 
+								data-toggle="modal" data-target="#saveCardModal" 
+								id="${ card.no }" title="카드 담기">
+		                        <i class="fa fa-bookmark-o" aria-hidden="true"></i> 저장하기
+		                    </button>
+						</c:when>
+						<c:otherwise>
+							<button type="button" class="btn btn-info saveCardBtn" 
+								id="${ card.no }" title="카드 담기: 로그인이 필요한 서비스입니다">
+		                        <i class="fa fa-bookmark-o" aria-hidden="true"></i> 저장하기
+		                    </button>
+						</c:otherwise>
+					</c:choose>
+					<%-- 
                     <button type="button" class="btn btn-info" title="카드를 좋아합니다.">
                         <i class="fa fa-heart-o" aria-hidden="true"></i> 좋아요
-                    </button>
+                    </button> 
+                    --%>
                     <div id="report" class="btn-group" title="신고">
                         <a href="#" role="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="외부 서비스로 공유">
                             <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Report
@@ -119,6 +133,7 @@
 
             <!-- additional information of contents -->
             <aside class="col-md-3 well pull-right marginRight15">
+            	<%--
                 <div id="info">
                 	<p class="lead"><i class="fa fa-info-circle" aria-hidden="true"></i> 정보</p>
                 	<ul class="list-unstyled">
@@ -127,16 +142,16 @@
                 		<li><strong>${ contents.likeCnt }</strong>명이 좋아함</li>
                 	</ul>
                 </div>
-                
+                --%>
                 <hr/>
                 <div id="share">
                     <p class="lead"><i class="fa fa-share-alt" aria-hidden="true"></i> 공유</p>
                     <ul class="list-unstyled" role="menu">
-                            <li><a href="#" title="카카오톡으로 공유"><i class="fa fa-commenting fa-fw" aria-hidden="true"></i> KakaoTalk</a></li>
-                            <li><a href="#" title="페이스북으로 공유"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i> Facebook</a></li>
-                            <li><a href="#" title="트위터로 공유"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i> Twitter</a></li>
-                            <li><a href="#" title="에버노트로 공유"><i class="fa fa-sticky-note fa-fw" aria-hidden="true"></i> Evernote</a></li>
-                        </ul>
+                        <li><a href="#" title="카카오톡으로 공유"><i class="fa fa-commenting fa-fw" aria-hidden="true"></i> KakaoTalk</a></li>
+                        <li><a href="#" title="페이스북으로 공유"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i> Facebook</a></li>
+                        <li><a href="#" title="트위터로 공유"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i> Twitter</a></li>
+                        <li><a href="#" title="에버노트로 공유"><i class="fa fa-sticky-note fa-fw" aria-hidden="true"></i> Evernote</a></li>
+                    </ul>
                 </div>
                
             </aside>
@@ -253,6 +268,9 @@
 
     <!-- Modal -->
 	<jsp:include page="/jsp/modal/memo_add.jsp" />
+	
+	<!-- Modal -->
+	<jsp:include page="/jsp/modal/card_save.jsp" />
 	
 	
 </body>

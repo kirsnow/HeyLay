@@ -60,7 +60,8 @@
 	var dirNo = 1;
 	
 	/* modal set cardInfo */
-	$('a.saveCardBtn').on('click', function() {
+	$('.saveCardBtn').on('click', function() {
+		saveCardBtn = $(this);
 		contentsNo = $(this).attr('id');
 		
 		var card = $(this).parents('div.mdl-card');
@@ -105,18 +106,25 @@
         		, 'memoMessage' : $('#memoMessage').val()
 		    }, success: function(data) {
 		    	console.log('카드 담기 성공');
+		    	
+		    	/* Success button */
 		    	$('button#putCard').removeClass('btn-warning').addClass('btn-success')
    	    		.html('<i class="fa fa-check" aria-hidden="true"></i> 완료');
             	
+		    	/* modal close */
             	$('#saveCardModal').modal('hide');
             	
+            	/* modal UI reset */
             	$('button#putCard').removeAttr('disabled', 'disabled').removeClass('btn-warning btn-success btn-danger').addClass('btn-primary')
       			.html('담기');
             	$('input#dirName').val('나의 첫 폴더').attr('readonly', 'readonly');
             	$('#memoMessage').val('');
+            	saveCardBtn.html('<i class="fa fa-bookmark fa-lg" aria-hidden="true"></i>');
             	
 		    }, error : function() {
         		console.log('카드 담기 오류');
+        		
+        		/* Error button */
         		$('button#putCard').removeClass('btn-warning').addClass('btn-danger')
    	    		.html('<i class="fa fa-exclamation-circle" aria-hidden="true"></i> 오류');
        	}});
