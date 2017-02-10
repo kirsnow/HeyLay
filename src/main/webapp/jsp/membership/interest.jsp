@@ -40,7 +40,7 @@
 	</header> 
 	
 	<section id="interest">
-		<div class="container marginTop60">
+		<div class="container marginTop60 minHeight">
           	<div class="row">
                <div class="page-header text-center col-md-6 col-md-offset-3">
                    <h1>관심 키워드 선택</h1>
@@ -63,7 +63,7 @@
 	           		</div>
 	             	<div class="text-center col-md-6 col-md-offset-3 marginTop marginBottom">
 			   			<div>
-		        			<small>최소 3항목을 선택해 주세요.</small>
+		        			<small>최소 1가지 이상의 항목을 선택해 주세요.</small>
 		        		</div>
 	        		</div>
         		</div>

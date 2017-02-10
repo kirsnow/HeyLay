@@ -13,6 +13,7 @@
 		<typeAlias type="io.planb.directory.vo.DirectoryVO" alias="directoryVO" />
 		<typeAlias type="io.planb.faq.vo.FaqVO" alias="faqVO" />
 		<typeAlias type="io.planb.keywords.vo.KeywordsVO" alias="keywordsVO" />
+		<typeAlias type="io.planb.member.vo.SelectKeywordVO" alias="selectKeywordVO" />
 		<typeAlias type="io.planb.leaved.vo.LeavedVO" alias="leavedVO" />
 		<typeAlias type="io.planb.list.vo.ListVO" alias="listVO" />
 		<typeAlias type="io.planb.member.vo.MemberVO" alias="memberVO" />

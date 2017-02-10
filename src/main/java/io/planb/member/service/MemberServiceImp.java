@@ -19,6 +19,7 @@ import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.dao.MemberDAO;
 import io.planb.member.vo.IdentifyQuestionVO;
 import io.planb.member.vo.MemberVO;
+import io.planb.member.vo.SelectKeywordVO;
 
 @Service
 public class MemberServiceImp implements MemberService {
@@ -154,7 +155,7 @@ public class MemberServiceImp implements MemberService {
 
 	}
     
-	/*관심 키워드 선택*/
+	/*관심 키워드 선택지 호출*/
 	@Override
 	public List<KeywordsVO> selectInterestList() {
 		List<KeywordsVO> interestKeywordList = dao.selectInterestList();
@@ -166,5 +167,12 @@ public class MemberServiceImp implements MemberService {
 		List<IdentifyQuestionVO> idenQuestionList = dao.selectIdenQuestion();
 		
 		return idenQuestionList;
+	}
+    
+	/*관심 키워드 선택*/
+	@Override
+	public void insertKeyword(SelectKeywordVO keyword) {
+		dao.insertKeyword(keyword);
+		
 	}
 }

@@ -12,6 +12,7 @@ import io.planb.keywords.vo.KeywordsVO;
 import io.planb.leaved.vo.LeavedVO;
 import io.planb.member.vo.IdentifyQuestionVO;
 import io.planb.member.vo.MemberVO;
+import io.planb.member.vo.SelectKeywordVO;
 
 @Repository
 public class MemberDAOImp implements MemberDAO {
@@ -121,4 +122,9 @@ public class MemberDAOImp implements MemberDAO {
 		return idenQuestionList;
 	}
 
+	@Override
+	public void insertKeyword(SelectKeywordVO keyword) {
+		sqlSessionTemplate.insert("io.planb.member.dao.MemberDAO.enroll", keyword);
+		
+	}
 }

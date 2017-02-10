@@ -8,6 +8,7 @@ import io.planb.keywords.vo.KeywordsVO;
 import io.planb.leaved.vo.LeavedVO;
 import io.planb.member.vo.IdentifyQuestionVO;
 import io.planb.member.vo.MemberVO;
+import io.planb.member.vo.SelectKeywordVO;
 
 public interface MemberDAO {
 
@@ -40,9 +41,11 @@ public interface MemberDAO {
 
 	public void mypageUpdate(MemberVO member);				//회원 정보 수정
 
-	public List<KeywordsVO> selectInterestList();			//선호 키워드 호출
+	public List<KeywordsVO> selectInterestList();			//관심 키워드 선택지 호출
 	
 	public int getNextMemberNo();							// 멤버 넥스트 넘버
 
 	public List<IdentifyQuestionVO> selectIdenQuestion();
+
+	public void insertKeyword(SelectKeywordVO keyword);     //관심 키워드 선택
 }

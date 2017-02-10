@@ -11,6 +11,7 @@ import io.planb.directory.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.vo.IdentifyQuestionVO;
 import io.planb.member.vo.MemberVO;
+import io.planb.member.vo.SelectKeywordVO;
 
 public interface MemberService {
 	
@@ -41,9 +42,11 @@ public interface MemberService {
 
 	public void mypageUpdate(MemberVO member);									//회원 정보 수정 및 파일 업로드
 
-	public List<KeywordsVO> selectInterestList();
+	public List<KeywordsVO> selectInterestList();								//관심 키워드 선택지 호출
 
 	public List<IdentifyQuestionVO> selectIdenQuestion();
+
+	public void insertKeyword(SelectKeywordVO keyword);							//관심 키워드 입력
 
 	
 }
