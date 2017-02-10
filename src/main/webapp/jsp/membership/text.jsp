@@ -38,28 +38,66 @@
 	<header>
 		<jsp:include page="/jsp/include/nav_search.jsp" />
 	</header> 
-	
 	<section id="interest">
 		<div class="container marginTop60">
-          	<div class="row">
-               <div class="page-header text-center col-md-6 col-md-offset-3">
-                   <h1>관심 키워드 선택</h1>
-               </div>
-         	</div>
-    		<form name="interestForm" class="formBottom15" 
+		   	<div class="row">
+		        <div class="page-header text-center col-md-6 col-md-offset-3">
+		            <h1>관심 키워드 선택</h1>
+		        </div>
+		  	</div>
+		  	<form name="interestForm" class="formBottom15" 
                   action="${pageContext.request.contextPath }/interest.do" method="post">
                 <div class="row">
                 	<div class="col-md-8 col-md-offset-2">
-                		<c:forEach var="keywordInterest" items="${ interestKeywordList }" begin="1" end="30">
-	           				<div class="col-md-3 text-left marginBottom">
+                			
+		           			<div class="col-md-3 text-left marginBottom">
 		           				<label for="interest">
-		           		 			<c:out value="${keywordInterest.keyword}"/>
+		           		 			wiki
 		           				</label>
 	           				</div>
 		           			<span class="col-md-1">
 		           				<input type="checkbox" name="interest" id="interest"/>
 		           			</span>
-		           		</c:forEach>
+		           			<div class="col-md-3 text-left marginBottom">
+		           				<label for="interest">
+		           		 			java
+		           				</label>
+	           				</div>
+		           			<span class="col-md-1">
+		           				<input type="checkbox" name="interest" id="interest"/>
+		           			</span>
+		           			<div class="col-md-3 text-left marginBottom">
+		           				<label for="interest">
+		           		 			Elasticsearch
+		           				</label>
+	           				</div>
+		           			<span class="col-md-1">
+		           				<input type="checkbox" name="interest" id="interest"/>
+		           			</span>
+		           			<div class="col-md-3 text-left marginBottom">
+		           				<label for="interest">
+		           		 			test
+		           				</label>
+	           				</div>
+		           			<span class="col-md-1">
+		           				<input type="checkbox" name="interest" id="interest"/>
+		           			</span>
+		           			<div class="col-md-3 text-left marginBottom">
+		           				<label for="interest">
+		           		 			john
+		           				</label>
+	           				</div>
+		           			<span class="col-md-1">
+		           				<input type="checkbox" name="interest" id="interest"/>
+		           			</span>
+		           			<div class="col-md-3 text-left marginBottom">
+		           				<label for="interest">
+		           		 			kim
+		           				</label>
+	           				</div>
+	           				<span class="col-md-1">
+		           				<input type="checkbox" name="interest" id="interest"/>
+		           			</span>
 	           		</div>
 	             	<div class="text-center col-md-6 col-md-offset-3 marginTop marginBottom">
 			   			<div>
@@ -74,16 +112,16 @@
 	                  </div>
 	             </div>      
              </form> 
-         </div>
-	</section>
-	<!-- Footer -->
+		 </div>
+		
+	 </section>
+	 
+	 <!-- Footer -->
     <Footer>
 		<jsp:include page="/jsp/include/footer.jsp" />
 	</Footer> 
 	
 	<!-- jQuery -->
 	<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
-
-	
 </body>
 </html>
