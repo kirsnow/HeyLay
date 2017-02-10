@@ -47,19 +47,34 @@
 									class="form-horizontal" method="post" enctype="multipart/form-data">
 								<div class="form-group col-md-2">
 									<select class="form-control" name="dataType" id="dataType">
-										<option value="1">사전</option>
-										<option value="2">기사</option>
-										<option value="3">논문</option>
+										<c:forEach var="dt" items="${ dataTypeList }">
+											<option value="${ dt.no }">${ dt.dataType }</option>
+										</c:forEach>
 									</select>
 								</div>
 								<div class="form-group col-md-12">
-									<span><input type="text" name="name" id="name" placeholder="콘텐츠 이름" alt="콘텐츠 이름 작성" /></span>
-									<span><input type="text" name="url" id="url" placeholder="콘텐츠  URL" alt="콘텐츠 URL 작성" /></span>
-									<span><button type="submit" class="btn btn-default">추가</button></span>
+									<div class="row">
+										<div class="col-md-2">
+											<span><input type="text" name="name" id="name" class="form-control" placeholder="콘텐츠 이름" alt="콘텐츠 이름 작성" /></span>
+										</div>
+										<div class="col-md-2">
+											<span><input type="text" name="url" id="url" class="form-control" placeholder="콘텐츠  URL" alt="콘텐츠 URL 작성" /></span>
+										</div>
+									</div>
 								</div>
-								<div class="form-group col-md-3">
-									<input type="file" name="attachfile" id="attachfile" alt="파일 첨부" />
+								<div class="form-group col-md-12">
+									<div class="row">
+										<div class="col-md-3">
+											<span><input type="text" name="logoImg" id="logoImg" class="form-control" placeholder="콘텐츠 이미지 주소" alt="콘텐츠 이미지 주소 작성" /></span>
+										</div>
+										<div class="col-md-1">
+											<span><button type="submit" class="btn btn-default">추가</button></span>
+										</div>
+									</div>
 								</div>
+<!-- 								<div class="form-group col-md-3"> -->
+<!-- 									<input type="file" name="attachfile" id="attachfile" alt="파일 첨부" /> -->
+<!-- 								</div> -->
 							</form>
 						</div>
 						<div class="row">
@@ -67,9 +82,9 @@
 							<div class="col-md-2 col-md-push-8">
 								<select class="form-control" id="viewTypeList">
 									<option value="0" selected="selected">전체 콘텐츠</option>
-									<option value="1">사전</option>
-									<option value="2">기사</option>
-									<option value="3">논문</option>
+									<c:forEach var="dataType" items="${ dataTypeList }">
+											<option value="${ dataType.no }">${ dataType.dataType }</option>
+										</c:forEach>
 								</select>
 							</div>
 						</div>
@@ -104,14 +119,8 @@
 										<c:forEach var="source" items="${ sourceList }">
 											<tr>
 												<td><input type="checkbox" class="no" value="${ source.no }" alt="삭제 및 차단할 콘텐츠 소스 선택 체크 박스"/></td>
-												<td><img alt="로고 이미지" src="/Quration/upload/${ source.logoImg }" width="100px"></td>
-												<td>
-													<c:choose>
-														<c:when test="${ source.dataType == 1 }">사전</c:when>
-														<c:when test="${ source.dataType == 2 }">기사</c:when>
-														<c:when test="${ source.dataType == 3 }">논문</c:when>
-													</c:choose>
-												</td>
+												<td><img alt="로고 이미지" src="${ source.logoImg }" width="100px"></td>
+												<td>${ source.dataTypeName }</td>
 												<td>${ source.name }</td>
 												<td>
 													<a href="${ source.url }" target="_blank" title="해당 사이트로 가는 링크">${ source.url }</a>

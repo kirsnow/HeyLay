@@ -4,9 +4,18 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.planb.admin.contents.dao.ContentsDAO">
 
+	<select id="dataTypeList" resultType="dataTypeVO">
+		SELECT no, data_type dataType, data_type_eng dataTypeEng, fun_name funName 
+		FROM q_data_type 
+		WHERE no > 0 
+		ORDER BY no 
+	</select>
+
 	<select id="selectSourceList" resultType="sourceVO">
-		SELECT no, name, url, data_type dataType, logo_img logoImg 
-		FROM q_source 
+		SELECT ss.no, ss.name, ss.url, ss.data_type dataType, ss.logo_img logoImg,  dt.data_type dataTypeName 
+		FROM q_source ss, q_data_type dt
+		WHERE ss.data_type = dt.no  
+		AND ss.data_type > 0 
 		ORDER BY no 
 	</select>
 	
@@ -22,9 +31,10 @@
 	</select>
 	
 	<select id="selectByOption" parameterType="int" resultType="sourceVO">
-		SELECT no, name, url, data_type dataType, logo_img logoImg 
-		FROM q_source 
-		WHERE data_type = #{ no } 
+		SELECT ss.no, ss.name, ss.url, ss.data_type dataType, ss.logo_img logoImg,  dt.data_type dataTypeName 
+		FROM q_source ss, q_data_type dt
+		WHERE ss.data_type = dt.no  
+		AND ss.data_type = #{ no } 
 		ORDER BY no 
 	</select>
 	

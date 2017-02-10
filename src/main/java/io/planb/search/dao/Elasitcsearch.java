@@ -24,7 +24,7 @@ public class Elasitcsearch {
      * 미지정 시, 상위 10건이 표시된다.
      */
 	private final int searchSize = 100;
-	private final String ipES = "52.35.61.184";
+	private final String ipES = "35.166.249.194";
 	private final String ipBit = "192.168.1.64";
 
 	/**
@@ -37,7 +37,7 @@ public class Elasitcsearch {
 	 */
 	public SearchVO searchURI(String q, String ip) {
 		SearchVO searchResult = null;
-		String searchIP = ip != null ? ip : ipBit;
+		String searchIP = ip != null ? ip : ipES;
 		try {
 			String restAPI = "http://" + searchIP + ":9200/_all/_search?pretty=true" 
 							+ "&q=" + URLEncoder.encode(q, "UTF-8");
@@ -132,6 +132,7 @@ public class Elasitcsearch {
 				contentsVO.setUrl(url);
 				contentsVO.setImgUrl(imgUrl);
 				contentsVO.setLastScraped(lastScraped);
+				
 				contentsVO.setBan(ban);
 				
 				contentsVO.setSource(source);
@@ -145,7 +146,9 @@ public class Elasitcsearch {
 				contentsVO.setViewCnt(viewCnt);
 				
 				//Save ContentsVO to Contents List
+				if(!ban.equals("Y")) {
 				contentsList.add(contentsVO);
+				}
 			}
 			return contentsList;
 	  }

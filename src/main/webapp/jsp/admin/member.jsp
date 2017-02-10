@@ -11,8 +11,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <!-- Bootstrap -->
-<link href="${ pageContext.request.contextPath }/css/bootstrap.min.css"
-	type="text/css" rel="stylesheet">
+<link href="${ pageContext.request.contextPath }/css/bootstrap.min.css"	type="text/css" rel="stylesheet">
+<%-- <link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet"> --%>
 
 <!-- icon-font -->
 <script src="https://use.fontawesome.com/bbddce3010.js"></script>
@@ -29,7 +29,7 @@
 			<div class="right_col" role="main">
 				<section>
 					<div id="container">
-						<div class="row">
+						<div class="row marginTop40">
 							<div class="col-md-2">총 회원 ${ memberCnt } 명</div>
 							<div class="col-md-8 col-md-push-2"></div>
 							<div class="col-md-2">
