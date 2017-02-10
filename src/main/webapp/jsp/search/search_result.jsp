@@ -89,7 +89,7 @@
 			                <div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-shadow--3dp">
 			
 			                    <!-- card top: contents source -->
-			                    <div class="mdl-card__title mdl-color-text--grey-500">
+			                    <div id="card-belong" class="mdl-card__title mdl-color-text--grey-500">
 			                        <span class="label label-default">
 		                            	<c:out value="${ card.category }" />
 		                            </span>
@@ -119,7 +119,7 @@
 			                    </div>
 			
 			                    <!-- card text -->
-			                    <div class="content mdl-card__supporting-text mdl-color-text--grey-800">
+			                    <div class="content mdl-card__supporting-text mdl-color-text--grey-800 ">
 			                        <p class="text-justify">
 			                        	<c:choose>
            									<c:when test="${fn:length(card.summary) > 105}">
@@ -137,17 +137,18 @@
 			
 			                    <!-- card menu (top-right) -->
 								<div class="mdl-card__menu">
-									<div id="save" class="btn-group dropdown pull-right" title="담기">
+									<div id="save" class="btn-group dropdown pull-right">
 										<c:choose>
 											<c:when test="${ (userVO ne null) and (not empty userVO) }">
-												<button type="button" class="btn btn-link saveBtn" data-toggle="modal" data-target="#saveCard" id="${ card.no }">
-													<i class="fa fa-star fa-lg" aria-hidden="true"></i>
-												</button>
+												<a href="#" role="button" class="saveCardBtn"
+												 data-toggle="modal" data-target="#saveCardModal" id="${ card.no }" title="카드 담기">
+			                                    	<i class="fa fa-bookmark fa-lg" aria-hidden="true"></i>
+			                                	</a>
 											</c:when>
 											<c:otherwise>
-												<button type="button" class="btn" onclick="location.href='${ pageContext.request.contextPath }/login/login.do'">
-													<i class="fa fa-star fa-lg" aria-hidden="true"></i>
-												</button>
+												<a href="${ pageContext.request.contextPath }/login/login.do" class="saveCardBtn" id="${ card.no }" title="카드 담기: 로그인이 필요한 서비스입니다">
+			                                    	<i class="fa fa-bookmark fa-lg" aria-hidden="true"></i>
+			                                	</a>
 											</c:otherwise>
 										</c:choose>
 									</div>
@@ -212,77 +213,12 @@
     <jsp:include page="/jsp/include/footer.jsp" />
     <!-- /footer -->
     
-    <!-- Modal -->
-	<jsp:include page="/jsp/modal/card_save_modal.jsp" />
-	<script>
-		/* modal autofocus */
-// 		$('#saveCard').on('shown.bs.modal', function () {		
-// 			console.log("열림");
-// 			var param = $(this).attr('no')
-// 			alert(document.getElementById("no").no);
-			
-// 		  $.ajax({
-// 				url : '/modal/saveCard.do',
-// 			    type: 'POST',
-// 			    contentType: "application/json", 
-// 			    data : {param : param},
-// 			    success : function(response){
-// 					console.log("response : ", response);
-// 					for(var i = 0; i < response.contentsList.length; i++) {
-// 						dataSet.push({
-// 							"category" : response.contentsList[i].category, 
-// 							"dataType" : response.contentsList[i].dataType,
-// 							"source" : response.contentsList[i].source,
-// 							"title" : response.contentsList[i].title
-// 						});
-// 					}
-					
-// 					$('#category').text(dataSet[0].category);
-// 			    },
-// 			    error : function() {
-// 			    	alert('ERROR');
-// 			    }
-// 			});
-		  
-// 		  $('#memo').focus()
-// 		}); 
-		$('#saveBtn').click(function(e){ 
-			
-			console.log("열림");
-			var param = $(this).attr('no')
-			
-			$.ajax({
-				url : '${ pageContext.request.contextPath }/modal/saveCard.do',
-			    type: 'POST',
-			    contentType: "application/json", 
-			    data : {param : param},
-			    success : function(response){
-					console.log("response : ", response);
-					for(var i = 0; i < response.contentsList.length; i++) {
-						dataSet.push({
-							"category" : response.contentsList[i].category, 
-							"dataType" : response.contentsList[i].dataType,
-							"source" : response.contentsList[i].source,
-							"title" : response.contentsList[i].title
-						});
-					}
-					
-					$('#category').text(dataSet[0].category);
-			    },
-			    error : function() {
-			    	alert('ERROR');
-			    }
-			});
-			
-			//모달 보이기
-			$('#saveCard').modal('show')
-			$('#memo').focus()
-		});
-	</script>
-    
     <!-- Bootstrap JS SET -->
-    <script src="${ pageContext.request.contextPath }/js/jquery.1.11.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
+    
+    <!-- Modal -->
+	<jsp:include page="/jsp/modal/card_save.jsp" />
     
     <!-- icon-font -->
     <script src="https://use.fontawesome.com/bbddce3010.js"></script>
@@ -290,6 +226,7 @@
     <!-- Facebook share API 
     	 https://developers.facebook.com/docs/sharing/reference/share-dialog
     -->
+    <!-- 
     <script>
 		document.getElementById('share_facebook').onclick = function() {
 		  FB.ui({
@@ -299,5 +236,6 @@
 		  }, function(response){});
 		}
 	</script>
+	 -->
 </body>
 </html>

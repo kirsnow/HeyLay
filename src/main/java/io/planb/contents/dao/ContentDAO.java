@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import io.planb.contents.vo.SavedHeaderVO;
 import io.planb.contents.vo.SavedVO;
+import io.planb.directory.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
 
 @Repository
@@ -52,6 +53,24 @@ public class ContentDAO {
 	public List<SavedHeaderVO> drawerSource(int memberNo) {
 		List<SavedHeaderVO> drawerSource = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.drawerSource", memberNo);
 		return drawerSource;
+	}
+
+	public int nextDirNo() {
+		int nextDirNo = sqlSessionTemplate.selectOne("io.planb.contents.dao.ContentDAO.selectNextDirNo");
+		return nextDirNo;
+	}
+	
+	public List<DirectoryVO> directoryList(int userNo) {
+		List<DirectoryVO> dirList = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.selectDirList", userNo);
+		return dirList;
+	}
+
+	public void newDirectory(DirectoryVO newDir) {
+		sqlSessionTemplate.insert("io.planb.contents.dao.ContentDAO.insertDir", newDir);		
+	}
+
+	public void saveCard(SavedVO card) {
+		sqlSessionTemplate.insert("io.planb.contents.dao.ContentDAO.insertCardToSave", card);
 	}
 
 }

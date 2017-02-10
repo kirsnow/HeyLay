@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import io.planb.contents.dao.ContentDAO;
 import io.planb.contents.vo.SavedHeaderVO;
 import io.planb.contents.vo.SavedVO;
+import io.planb.directory.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
 
 @Service
@@ -48,6 +49,30 @@ public class ContentService {
 	public List<SavedHeaderVO> drawerSource(int memberNo) {
 		List<SavedHeaderVO> drawerSource = dao.drawerSource(memberNo);
 		return drawerSource;
+	}
+	
+	public List<DirectoryVO> directoryList(int userNo) {
+		List<DirectoryVO> dirList = dao.directoryList(userNo);
+		return dirList;
+	}
+
+	public void saveCard(SavedVO card) {
+		if(card.getDirectoryNo() < 0) {
+			DirectoryVO newDir = new DirectoryVO();
+			newDir.setMemberNo(card.getMemberNo());
+			newDir.setName(card.getDirectoryName());
+			
+			int directoryNo = this.newDirectory(newDir);
+			card.setDirectoryNo(directoryNo);
+		}
+		dao.saveCard(card);
+	}
+
+	public int newDirectory(DirectoryVO newDir) {
+		int dirNo = dao.nextDirNo();
+		newDir.setNo(dirNo);
+		dao.newDirectory(newDir);
+		return dirNo;
 	}
 
 }
