@@ -87,13 +87,11 @@
 			</div>
             <div class="content">
                 <h4>
-                	<a href="${ pageContext.request.contextPath }/search/result.do">
                 		We've got the special power
-                	</a>
                 </h4>
                 <hr>
                 <div class="header-text btn">
-                    <h1><span id="head-title"></span></h1>
+                    <h1 style="color: white"><a href="${ pageContext.request.contextPath }/search/result.do?q=bloter"><span id="head-title">Bloter</span></a></h1>
                 </div>
             </div>
 
