@@ -217,8 +217,9 @@
 	<!-- 회원 전체의 조회수가 높은 사이트  -->
 	<select id="selectCiteContents" parameterType="int" resultType="staticsVO">
 		SELECT qs.name as columnName, SUM(qc.view_cnt) as cnt
-		FROM  q_source qs 
+		FROM q_source qs
 		INNER JOIN q_contents as qc on qc.source_no = qs.no
+		where view_cnt > 0
 		GROUP BY name
 		ORDER BY cnt DESC
 		Limit 5
