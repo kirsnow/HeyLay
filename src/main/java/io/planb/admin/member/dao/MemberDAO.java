@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import io.planb.leaved.vo.LeavedVO;
+import io.planb.member.vo.IdentifyQuestionVO;
 import io.planb.member.vo.MemberVO;
 
 @Repository
@@ -93,6 +94,12 @@ public class MemberDAO {
 
 	public void updateUser(MemberVO member) {
 		sqlSessionTemplate.update("io.planb.admin.member.dao.MemberDAO.updateUser", member);
+	}
+
+	public List<IdentifyQuestionVO> selectIdenQuestion() {
+		List<IdentifyQuestionVO> idenQuestionList = sqlSessionTemplate.selectList("io.planb.member.dao.MemberDAO.selectIdenQuestion");
+		
+		return idenQuestionList;
 	}
 
 }

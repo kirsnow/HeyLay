@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import io.planb.admin.member.service.MemberService;
 import io.planb.leaved.vo.LeavedVO;
+import io.planb.member.vo.IdentifyQuestionVO;
 import io.planb.member.vo.MemberVO;
 
 @Controller
@@ -128,8 +129,11 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/jsp/admin/user_modify.do", method=RequestMethod.POST)
-	public String updateUser(@ModelAttribute MemberVO member) {
+	public String updateUser(@ModelAttribute MemberVO member, Model model) {
 		service.updateUser(member);
+		
+		List<IdentifyQuestionVO> idenQuestionList = service.selectIdenQuestion();
+		model.addAttribute("idenQuestionList", idenQuestionList);
 		
 		return "redirect:/jsp/admin/member_list.do";	
 	}

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -108,6 +108,21 @@
 	                     <input type="text" name="city" value="${member.city}" class="form-control" alt="거주 도시 입력 폼"/>
 	                  </div>
                   </div>
+                  <div class="row">
+	                  <div class="col-md-6 col-md-offset-3">
+	                     <select name="question" class="form-control" id="question" >
+	                        <option value="계정 or 비밀번호 찾기용 선택하세요" disabled selected> 계정 or 비밀번호 찾기용 질문 </option>
+	                        <c:forEach var="idenQuestion" items="${ idenQuestionList }">
+	                        	<option value="${ idenQuestion.no }"> ${ idenQuestion.question }</option>
+	                        </c:forEach>
+	                     </select>
+	                  </div> 
+	               </div>
+	               <div class="row">
+	                  <div class="col-md-6 col-md-offset-3 ">   
+	                     <input type="text" name="answer" placeholder="답변" class="form-control " alt="아이디 or 비밀번호 찾기용 답변 입력 폼" value="${ member.answer }" />
+	                  </div>
+	               </div>
 				 
 				  <div class="row">
 					  <div class="col-md-6 col-md-offset-3">   
@@ -190,7 +205,15 @@
 			alert('도시를 입력해주세요.');
 			form.city.focus();
 			return false;
-		}/*  else if(form.password.value != '${ member.password }') {
+		} else if (form.question.value == '') {
+	        alert('질문을 선택해주세요.');
+	        form.question.focus();
+	        return false;
+	    } else if (form.answer.value == '') {
+	        alert('답변을 입력하세요');
+	        form.answer.focus();
+	        return false;
+	    }/*  else if(form.password.value != '${ member.password }') {
 			alert('비밀번호');
 			form.password.focus();
 			return false;
@@ -206,6 +229,7 @@
 	$(document).ready(function() {
 		$(".gender:radio[value='${ member.gender }']").attr("checked", true);
 		$(".emailReceive:radio[value='${ member.emailReceive }']").attr("checked", true);
+		$("#question").val('${ member.question }').attr("selected", "selected");
 	});
 </script>
 	   

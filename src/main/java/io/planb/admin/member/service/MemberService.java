@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import io.planb.admin.member.dao.MemberDAO;
 import io.planb.leaved.vo.LeavedVO;
+import io.planb.member.vo.IdentifyQuestionVO;
 import io.planb.member.vo.MemberVO;
 
 @Service
@@ -141,6 +142,12 @@ public class MemberService {
 
 	public void updateUser(MemberVO member) {
 		dao.updateUser(member);
+	}
+
+	public List<IdentifyQuestionVO> selectIdenQuestion() {
+		List<IdentifyQuestionVO> idenQuestionList = dao.selectIdenQuestion();
+		
+		return idenQuestionList;
 	}
 
 }
