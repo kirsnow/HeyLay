@@ -86,5 +86,11 @@
 		WHERE no = #{ no } 
 	</delete>
 	
+	<update id="banSource" parameterType="int">
+		UPDATE q_source 
+		SET data_type = -1 
+		WHERE no = #{ no } 
+	</update>
+	
 </mapper>
 

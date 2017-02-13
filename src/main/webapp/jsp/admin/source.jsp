@@ -72,9 +72,6 @@
 										</div>
 									</div>
 								</div>
-<!-- 								<div class="form-group col-md-3"> -->
-<!-- 									<input type="file" name="attachfile" id="attachfile" alt="파일 첨부" /> -->
-<!-- 								</div> -->
 							</form>
 						</div>
 						<div class="row">
@@ -97,9 +94,10 @@
 								<label>전체 선택</label>
 							</div>
 							<div class="col-md-2">
+								<a href="javascript:blockSource()" class="btn btn-default"
+									role="button" title="선택한 콘텐츠 소스 차단">차단</a>
 								<a href="javascript:deleteSource()" class="btn btn-default"
 									role="button" title="선택한 콘텐츠 소스 삭제">삭제</a>
-<!-- 								<button type="button" id="btnBlock" class="btn btn-default">차단</button> -->
 							</div>
 						</div>
 						<div class="row">
@@ -126,10 +124,10 @@
 													<a href="${ source.url }" target="_blank" title="해당 사이트로 가는 링크">${ source.url }</a>
 												</td>
 												<td>	
-													<div><button onclick="" class="btn btn-default btn-xs">수정</button></div>
+													<div><a href="${ pageContext.request.contextPath }/jsp/admin/source_block.do?no=${ source.no }" class="btn btn-default btn-xs"
+															role="button" title="선택한 콘텐츠 소스 차단">차단</a></div>
 													<div><a href="${ pageContext.request.contextPath }/jsp/admin/source_delete.do?no=${ source.no }" class="btn btn-default btn-xs"
 															role="button" title="선택한 콘텐츠 소스 삭제">삭제</a></div>
-<!-- 													<div><button onclick="" class="btn btn-default btn-xs">차단</button></div> -->
 												</td>
 											</tr>
 										</c:forEach>
@@ -193,6 +191,26 @@
 
 		$.ajax({
 	        url:"${ pageContext.request.contextPath }/jsp/admin/source_delete.do",
+	        type:'POST',
+	        data: { 
+	        	"checkboxValues" : checkboxValues
+	        },  
+	        success:function(data){
+	        	if(data == "완료")
+	            alert("완료!");
+	        	location.reload();
+	        },
+	        error:function(jqXHR, textStatus, errorThrown){
+	            alert("에러 발생 ㅅㅂ \n" + textStatus + " : " + errorThrown);
+	        }
+	    });
+	}
+	
+	function blockSource() {
+		var checkboxValues = checkedValue();
+
+		$.ajax({
+	        url:"${ pageContext.request.contextPath }/jsp/admin/source_block.do",
 	        type:'POST',
 	        data: { 
 	        	"checkboxValues" : checkboxValues

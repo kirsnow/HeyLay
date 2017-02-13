@@ -143,4 +143,14 @@ public class ContentsService {
 		return dataTypeList;
 	}
 
+	public void banSource(ArrayList<Integer> list) {
+		for(Integer no : list) {
+			dao.banSource(no);
+		}
+	}
+
+	public void banSource(int no) {
+		dao.banSource(no);
+	}
+
 }

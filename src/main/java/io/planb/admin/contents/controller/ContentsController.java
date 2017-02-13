@@ -54,14 +54,7 @@ public class ContentsController {
 		
 		service.insertSource(/*multipartFile, */source);
 		
-		return "redirect:/jsp/admin/source_list.do?option=0";
-	}
-	
-	/* 사이트 수정 */
-	public String updateSource(@ModelAttribute SourceVO source) {
-		service.updateSource(source);
-		
-		return "admin/source";
+		return "redirect:/jsp/admin/source_list.do";
 	}
 	
 	/* 사이트 삭제 (여러 개) */
@@ -81,15 +74,27 @@ public class ContentsController {
 	public String deleteSource(@RequestParam("no") int no) {
 		service.deleteSource(no);
 		
-		return "redirect:/jsp/admin/source_list.do?option=0";
+		return "redirect:/jsp/admin/source_list.do";
 	}
 	
-	/* 사이트 차단 (보류)*/
-	@RequestMapping("/jsp/admin/source_block.do")
-	public String blockSource(@RequestParam("no") int no, Model model) {
-//		service.
+	/* 사이트 차단 (여러개) */
+	@ResponseBody
+	@RequestMapping(value="/jsp/admin/source_block.do", method=RequestMethod.POST)
+	public String banSource(@RequestParam(value="checkboxValues[]") List<Integer> param) {
+		ArrayList<Integer> list = new ArrayList<>();
+		list.addAll(param);
 		
-		return "admin/source";
+		service.banSource(list);
+		
+		return "완료";
+	}
+	
+	/* 사이트 차단 (단일) */
+	@RequestMapping(value="/jsp/admin/source_block.do", method=RequestMethod.GET)
+	public String banSource(@RequestParam(value="no") int no) {
+		service.banSource(no);
+		
+		return "redirect:/jsp/admin/source_list.do";
 	}
 	
 	/* 오류 목록 조회 */

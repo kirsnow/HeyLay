@@ -125,15 +125,16 @@ public class MemberController {
 		MemberVO member = service.selectUserInfo(no);
 		model.addAttribute("member", member);
 		
+		List<IdentifyQuestionVO> idenQuestionList = service.selectIdenQuestion();
+		model.addAttribute("idenQuestionList", idenQuestionList);
+		
 		return "admin/profile_form";
 	}
 	
+	/* 선택한 회원 (1명) 정보 수정 */
 	@RequestMapping(value="/jsp/admin/user_modify.do", method=RequestMethod.POST)
 	public String updateUser(@ModelAttribute MemberVO member, Model model) {
 		service.updateUser(member);
-		
-		List<IdentifyQuestionVO> idenQuestionList = service.selectIdenQuestion();
-		model.addAttribute("idenQuestionList", idenQuestionList);
 		
 		return "redirect:/jsp/admin/member_list.do";	
 	}

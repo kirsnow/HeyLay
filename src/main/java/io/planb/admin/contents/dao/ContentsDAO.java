@@ -87,4 +87,8 @@ public class ContentsDAO {
 		return dataTypeList;
 	}
 
+	public void banSource(Integer no) {
+		sqlSessionTemplate.update("io.planb.admin.contents.dao.ContentsDAO.banSource", no);
+	}
+
 }
