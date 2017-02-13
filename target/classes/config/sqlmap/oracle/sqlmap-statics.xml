@@ -92,7 +92,7 @@
 	</select>
 	
 	<select id="sumSavedMonth" parameterType="int" resultType="int">
-		SELECT SUM(r.cnt)
+		SELECT COALESCE(SUM(r.cnt), 0) 
 		FROM (SELECT COUNT(*) cnt
 		FROM q_contents_saved 
 		WHERE member_no = #{ no } 
