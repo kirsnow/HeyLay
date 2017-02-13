@@ -69,7 +69,7 @@
 				<div class="text-center marginTop">
 					<div>
 						<a href="${pageContext.request.contextPath}/myPage/moveWithdrawReason.do" class="btn btn-primary marginRight" title="탈퇴 사유 입력 페이지 이동 링크" role="button">탈퇴</a>        
-						<a href="${pageContext.request.contextPath}" class="btn btn-default" title="홈화면 이동 링크" role="button">홈으로</a>
+						<a href="${pageContext.request.contextPath}/" class="btn btn-default" title="홈화면 이동 링크" role="button">홈으로</a>
 					</div>
 				</div>
 			</div>

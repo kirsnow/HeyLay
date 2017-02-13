@@ -81,7 +81,7 @@
 							<button type="submit" class="btn btn-primary marginRight">확인</button>
 							<a href="${pageContext.request.contextPath }/membership/findPw.do" 
 							   class="btn btn-default marginRight" title="비밀번호 찾기 이동 링크" role="button">비밀번호 찾기</a>
-							<a href="${pageContext.request.contextPath}" class="btn btn-default" title="홈 화면 이동 링크" role="button">홈으로</a>
+							<a href="${pageContext.request.contextPath}/" class="btn btn-default" title="홈 화면 이동 링크" role="button">홈으로</a>
 						</div>	
 					</div>
 				</form>

@@ -158,7 +158,7 @@
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 text-center marginBottom">
 						<button type="submit" class="btn btn-primary marginRight" id="update" name="update">회원정보 수정</button>
-						<a href="${pageContext.request.contextPath}" class="btn btn-default" title="홈화면 이동 링크" role="button">홈으로</a>			
+						<a href="${ pageContext.request.contextPath }/" class="btn btn-default" title="홈화면 이동 링크" role="button">홈으로</a>			
 					</div>
 				</div>	
 			</form>

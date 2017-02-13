@@ -63,7 +63,7 @@
 					<div class="col-md-6 col-md-offset-3 text-center marginTop">
 						<a href="${pageContext.request.contextPath }/login/login.do" 
 						   class="btn btn-primary marginRight" title="로그인 페이지 이동 링크" role="button">로그인</a>
-						<a href="${pageContext.request.contextPath}" class="btn btn-default" title="홈화면 이동 링크" >홈으로</a>
+						<a href="${pageContext.request.contextPath}/" class="btn btn-default" title="홈화면 이동 링크" >홈으로</a>
 
 					</div>
 				</div>

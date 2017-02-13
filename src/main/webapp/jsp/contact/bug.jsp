@@ -126,7 +126,7 @@
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3 text-center marginBottom30">
 				<button type="submit" class="btn btn-primary marginRight">작성완료</button>
-				<a href="${pageContext.request.contextPath}" class="btn btn-default" title="홈화면 이동 링크" role="button">홈으로</a>		
+				<a href="${pageContext.request.contextPath}/" class="btn btn-default" title="홈화면 이동 링크" role="button">홈으로</a>		
 			</div>
 		</div>	
 		</form>
