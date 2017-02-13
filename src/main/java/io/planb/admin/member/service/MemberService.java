@@ -133,4 +133,14 @@ public class MemberService {
 		}
 	}
 
+	public MemberVO selectUserInfo(int no) {
+		MemberVO userVO = dao.selectUserInfo(no);
+		
+		return userVO;
+	}
+
+	public void updateUser(MemberVO member) {
+		dao.updateUser(member);
+	}
+
 }

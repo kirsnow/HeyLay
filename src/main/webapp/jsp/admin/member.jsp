@@ -102,8 +102,7 @@
 												<td>${ member.regDate }</td>
 												<td>${ member.lastDate }</td>
 												<td>${ member.reportCnt }</td>
-												<td><button id="btnModify"
-														class="btn btn-default btn-xs">수정</button></td>
+												<td><a href="javascript:updateUser(${ member.no })" class="btn btn-default btn-xs" role="button" title="선택한 회원 정보 수정 페이지로 이동">수정</a></td>
 											</tr>
 										</c:forEach>
 									</tbody>
@@ -261,6 +260,10 @@
 	$(document).ready(function() {
 		$('#viewTypeList').val('${ option }').attr("selected", "selected");
 	});
+	
+	function updateUser(no) {
+		location.href="${ pageContext.request.contextPath }/jsp/admin/user_modify.do?no=" + no;
+	}
 </script>
 </body>
 </html>

@@ -4,14 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import io.planb.admin.member.service.MemberService;
 import io.planb.leaved.vo.LeavedVO;
@@ -113,6 +116,22 @@ public class MemberController {
 		service.deleteReason(list);
 		
 		return "완료";
+	}
+	
+	/* 선택한 회원 (1명) 정보 수정 페이지로 이동 */
+	@RequestMapping(value="/jsp/admin/user_modify.do", method=RequestMethod.GET)
+	public String updateUser(@RequestParam(value="no") int no, Model model) {
+		MemberVO member = service.selectUserInfo(no);
+		model.addAttribute("member", member);
+		
+		return "admin/profile_form";
+	}
+	
+	@RequestMapping(value="/jsp/admin/user_modify.do", method=RequestMethod.POST)
+	public String updateUser(@ModelAttribute MemberVO member) {
+		service.updateUser(member);
+		
+		return "redirect:/jsp/admin/member_list.do";	
 	}
 
 }

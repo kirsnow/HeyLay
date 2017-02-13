@@ -85,4 +85,14 @@ public class MemberDAO {
 		sqlSessionTemplate.delete("io.planb.admin.member.dao.MemberDAO.deleteReason", no);
 	}
 
+	public MemberVO selectUserInfo(int no) {
+		MemberVO userVO = sqlSessionTemplate.selectOne("io.planb.admin.member.dao.MemberDAO.selectUserInfo", no);
+		
+		return userVO;
+	}
+
+	public void updateUser(MemberVO member) {
+		sqlSessionTemplate.update("io.planb.admin.member.dao.MemberDAO.updateUser", member);
+	}
+
 }

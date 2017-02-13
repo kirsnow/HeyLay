@@ -99,6 +99,19 @@
 		DELETE FROM q_leaved 
 		WHERE member_no = #{ no } 
 	</delete>
+	
+	<select id="selectUserInfo" parameterType="int" resultType="memberVO">
+		SELECT no, email, first_name firstName, last_name lastName, birth, gender, email_receive emailReceive, country, city, password 
+		FROM q_member 
+		WHERE no = #{ no } 
+	</select>
+	
+	<update id="updateUser" parameterType="memberVO">
+		UPDATE q_member 
+		SET first_name = #{ firstName }, last_name = #{ lastName }, gender = #{ gender }, email_receive = #{ emailReceive }, 
+			country = #{ country }, city = #{ city } 
+		WHERE no = #{ no } 
+	</update>
 
 </mapper>
 
