@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -7,7 +7,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>회원정보 확인 및 수정 | Quration: 답을 열어 줄 그런 사람</title>
+	<title>회원 정보 수정 | Quration: 답을 열어 줄 그런 사람</title>
 	
 
     <!-- Bootstrap -->
@@ -53,25 +53,26 @@
 	 		<!-- include myPage -->
 	 		<jsp:include page="/jsp/include/my_page.jsp" />
  			
-			<form name="membershipForm" action="${pageContext.request.contextPath }/myPage/update.do" 
+			<form name="membershipForm" action="${pageContext.request.contextPath }/jsp/admin/user_modify.do" 
 			      method="post" onsubmit="return checkForm()" autocomplete="off" class="formBottom15">  	
+			      <input type="hidden" name="no" value="${ member.no }" />
 					
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3 marginTop">
-							<input type="text" name="email" class="form-control" value="${userVO.email}" alt="계정(이메일)입력 폼" readonly/>
+							<input type="text" name="email" class="form-control" value="${ member.email }" alt="계정(이메일)입력 폼" readonly/>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-push-3 col-md-3">
-							<input type="text" name="firstName" class="form-control" value="${userVO.firstName}" alt="이름 입력 폼"/>
+							<input type="text" name="firstName" class="form-control" value="${ member.firstName }" alt="이름 입력 폼"/>
 						</div>
 						<div class="col-md-push-3 col-md-3">
-							<input type="text" name="lastName" class="form-control" value="${userVO.lastName}" alt="성 입력 폼"/>		
+							<input type="text" name="lastName" class="form-control" value="${ member.lastName }" alt="성 입력 폼"/>		
 						</div> 
 					</div>
 					<div class="row">
                   		<div class="col-md-6 col-md-offset-3">
-                     		<input type="date"  name="birth" class="form-control" value="${userVO.birth}"alt="생년월일 선택 폼" readonly/> 
+                     		<input type="date"  name="birth" class="form-control" value="${ member.birth }"alt="생년월일 선택 폼" readonly/> 
                   		</div>
                  		</div>
 					<div class="row">
@@ -79,20 +80,10 @@
 		                  <div class="form-control">
 		                     <span class="spanPadding">성별을 표시해 주세요.</span>
 		                     <span>
-		                      	 <label for="genderMen">남</label>  <input type="radio" name="gender" id="genderMen" value="M" alt="성별 선택 라디오 박스 (남)"/> 
-		                       	 <label for="genderWomen">여</label> <input type="radio" name="gender" id="genderWomen" value="F" alt="성별 선택 라디오 박스 (여)"/>  
-		                         <label for="genderEtc">기타</label> <input type="radio" name="gender" id="genderEtc" value="O" alt="성별 선택 라디오 박스 (기타)"/>  
+		                       	 <input type="radio" name="gender" class="gender" value="F" alt="성별 선택 라디오 박스 (여)"/>  <label for="genderWomen"> 여 </label>   
+		                      	 <input type="radio" name="gender" class="gender" value="M" alt="성별 선택 라디오 박스 (남)"/>  <label for="genderMen"> 남 </label>  
+		                         <input type="radio" name="gender" class="gender" value="O" alt="성별 선택 라디오 박스 (기타)"/>  <label for="genderEtc"> 기타 </label> 
 		                     </span>
-							 <script>
-								console.log('${userVO.gender}');
-								if ('${userVO.gender}' == "M") {
-									$("input[value='M']").prop("checked", true);
-								} else if ('${userVO.gender}' == "F") {
-									$("input[value='F']").prop("checked", true);
-								} else {
-									$("input[value='O']").prop("checked", true);
-								}
-							</script>
 	                     </div>
 	                  </div>
                   </div>
@@ -101,36 +92,43 @@
 		                 <div class="form-control">
 		                     <span class="spanPadding">메일 수신여부를 선택해주세요.</span>
 		                     <span>
-					           <label for="yes"> 네  </label> 
-					           		<input type="radio" name="emailReceive" id="yes" value="Y" alt="메일 수신여부 선택 라디오 박스(네)"/> 
-					           <label for="no"> 아니오   </label>
-					           		<input type="radio" name="emailReceive" id="no" value="N" alt="메일 수신여부 선택 라디오 박스(아니오)"/>
+								<input type="radio" name="emailReceive" class="emailReceive" value="Y" alt="메일 수신여부 선택 라디오 박스(네)"/> 
+						           <label for="yes"> 네  </label> 
+				           		<input type="radio" name="emailReceive" class="emailReceive" value="N" alt="메일 수신여부 선택 라디오 박스(아니오)"/>
+						           <label for="no"> 아니오   </label>
 					         </span>
-					         <script>
-								console.log('${userVO.emailReceive}');
-								if ('${userVO.emailReceive}' == "Y") {
-									$("input[value='Y']").prop("checked", true);
-								} else {
-									$("input[value='N']").prop("checked", true);
-								}
-							</script>
 		                  </div>
 	                  </div>
                   </div>
 				  <div class="row">
 	                  <div class="col-md-push-3 col-md-3">
-	                     <input type="text" name="country" value="${userVO.country}" class="form-control" alt="거주 국가 입력 폼"/>
+	                     <input type="text" name="country" value="${member.country}" class="form-control" alt="거주 국가 입력 폼"/>
 	                  </div>
 	                  <div class="col-md-push-3 col-md-3">
-	                     <input type="text" name="city" value="${userVO.city}" class="form-control" alt="거주 도시 입력 폼"/>
+	                     <input type="text" name="city" value="${member.city}" class="form-control" alt="거주 도시 입력 폼"/>
 	                  </div>
                   </div>
+                  <div class="row">
+	                  <div class="col-md-6 col-md-offset-3">
+	                     <select name="question" class="form-control" id="question" >
+	                        <option value="계정 or 비밀번호 찾기용 선택하세요" disabled selected> 계정 or 비밀번호 찾기용 질문 </option>
+	                        <c:forEach var="idenQuestion" items="${ idenQuestionList }">
+	                        	<option value="${ idenQuestion.no }"> ${ idenQuestion.question }</option>
+	                        </c:forEach>
+	                     </select>
+	                  </div> 
+	               </div>
+	               <div class="row">
+	                  <div class="col-md-6 col-md-offset-3 ">   
+	                     <input type="text" name="answer" placeholder="답변" class="form-control " alt="아이디 or 비밀번호 찾기용 답변 입력 폼" value="${ member.answer }" />
+	                  </div>
+	               </div>
 				 
 				  <div class="row">
 					  <div class="col-md-6 col-md-offset-3">   
 						 <%--  <section>
 								<img src="${ pageContext.request.contextPath }/img/defaultImage.png" class="img-rounded" alt="프로필 이미지"> 
-								<img src="${ pageContext.request.contextPath }/img/${userVO.profileImg}" class="img-rounded paddingleft30" alt="프로필 이미지">  
+								<img src="${ pageContext.request.contextPath }/img/${member.profileImg}" class="img-rounded paddingleft30" alt="프로필 이미지">  
 								
 								<!-- 나중에 DB에 넣은 사진 불러오게 수정해야 함 -->
 								 <div class="pull-right marginRight30">
@@ -144,21 +142,21 @@
 								</div> 
 							</section> --%>
 							
-							<div class="row">
+							<!-- <div class="row">
 							  <div class= "col-md-6 col-md-offset-3">
 							    <input type="password" name="password" class="form-control" placeholder="비밀번호" alt="비밀번호 입력 폼"/>
 							    <div class="text-center">
 							    	<small>회원정보 수정을 위해 비밀번호를 입력해주세요.</small>
 							    </div>
-							    <!-- 비밀번호가 맞아야 회원 정보 수정이 되게 수정  -->
+							    비밀번호가 맞아야 회원 정보 수정이 되게 수정 
 							  </div>
-							</div>	
+							</div>	 -->
 						</div>
 					</div>
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 text-center marginBottom">
-						<button type="submit" class="btn btn-primary marginRight" id="update" name="update">회원정보 수정</button>
-						<a href="${ pageContext.request.contextPath }/" class="btn btn-default" title="홈화면 이동 링크" role="button">홈으로</a>			
+						<button type="submit" class="btn btn-primary marginRight" id="update" name="update">회원 정보 수정</button>
+						<a href="${pageContext.request.contextPath}/" class="btn btn-default" title="홈 화면 이동 링크" role="button">홈으로</a>			
 					</div>
 				</div>	
 			</form>
@@ -195,11 +193,11 @@
 			alert('메일 수신 여부를 체크해주세요.');
 			form.emailReceive.focus();
 			return false;
-		} else if (form.password.value == '') {
+		}/*  else if (form.password.value == '') {
 			alert('비밀번호를 입력해주세요.');
 			form.password.focus();
 			return false;
-		} else if (form.country.value == '') {
+		} */ else if (form.country.value == '') {
 			alert('국가를 입력해주세요.');
 			form.country.focus();
 			return false;
@@ -208,21 +206,32 @@
 			form.city.focus();
 			return false;
 		} else if (form.question.value == '') {
-			alert('질문을 선택해주세요.');
-			form.question.focus();
+	        alert('질문을 선택해주세요.');
+	        form.question.focus();
+	        return false;
+	    } else if (form.answer.value == '') {
+	        alert('답변을 입력하세요');
+	        form.answer.focus();
+	        return false;
+	    }/*  else if(form.password.value != '${ member.password }') {
+			alert('비밀번호');
+			form.password.focus();
 			return false;
-		} else if (form.answer.value == '') {
-			alert('답변을 입력하세요');
-			form.answer.focus();
-			return false;
-		}
+		} */
 		return true;
 	}
 </script>
  
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
 <!-- Google reCAPTCHA API : 로봇이 아닙니다. -->
 <script src='https://www.google.com/recaptcha/api.js'></script>
+<script>
+	$(document).ready(function() {
+		$(".gender:radio[value='${ member.gender }']").attr("checked", true);
+		$(".emailReceive:radio[value='${ member.emailReceive }']").attr("checked", true);
+		$("#question").val('${ member.question }').attr("selected", "selected");
+	});
+</script>
 	   
 </body>
 </html>
