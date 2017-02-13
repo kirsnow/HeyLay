@@ -199,7 +199,7 @@
 	}
 </script>
  
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
 <!-- Google reCAPTCHA API : 로봇이 아닙니다. -->
 <script src='https://www.google.com/recaptcha/api.js'></script>
 <script>
