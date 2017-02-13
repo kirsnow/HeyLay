@@ -43,97 +43,104 @@
 		
         <!-- Breadcrumb -->
         <div class="row">
-        	<div class="col-md-12">
-	            <ol class="breadcrumb" style="margin-top: 75px">
-	                <li><a href="${ pageContext.request.contextPath }/">Home</a></li>
-	                <li><a href="#">${ contents.category }</a></li>
-	                <li class="active">${ contents.title }</li>
-	            </ol>
-            </div>
+            <ol class="col-xs-12 breadcrumb" style="margin-top: 75px">
+                <li><a href="${ pageContext.request.contextPath }/">Home</a></li>
+                <li><a href="#">${ contents.category }</a></li>
+                <li class="active">${ contents.title }</li>
+            </ol>
         </div>
         <!-- /Breadcrumb -->
 
         <div class="row">
-            <section class="col-md-8">
+            <section class="card-ancestor col-xs-12 col-sm-8">
                 <!-- main information of contents -->
-                <article>
-                    <header>
-                        <p class="pull-right">
-                        	<a href="${ contents.url }" target="_blank" title="원본 페이지로 이동(새 창)">
-	                        	<i class="fa fa-external-link" aria-hidden="true"></i>
-	                        	원본 보기
-                        	</a>
-                        </p>
-                        <p>
-                            <span class="label label-default">
-                            	${ contents.category }
-                            </span>
-                            <span class="label label-info">
-                            	${ contents.dataType }
-                            </span>
-                            <a href="${ contents.sourceUrl }" class="label label-primary" target="_blank" title="원본 사이트로 이동(새 창)">
-                            	${ contents.source }
-                            </a>
-                        </p>
-                        <div class="">
-                        	<h2>${ contents.title }</h2>
-                        </div>
-                    </header>
-                    
-                    <p class="text-justify marginTop40">${ contents.summary }</p>
-                    <footer class="text-right ">
-                        <time class="text-muted">${ contents.lastScraped }</time>
-                    </footer>
-                </article>
-
-                <div role="toolbar" class="pull-right marginTop40">
-					<c:choose>
-						<c:when test="${ (userVO ne null) and (not empty userVO) }">
-							<button type="button" class="btn btn-info saveCardBtn" 
-								data-toggle="modal" data-target="#saveCardModal" 
-								id="${ card.no }" title="카드 담기">
-		                        <i class="fa fa-bookmark-o" aria-hidden="true"></i> 저장하기
-		                    </button>
-						</c:when>
-						<c:otherwise>
-							<button type="button" class="btn btn-info saveCardBtn" 
-								id="${ card.no }" title="카드 담기: 로그인이 필요한 서비스입니다">
-		                        <i class="fa fa-bookmark-o" aria-hidden="true"></i> 저장하기
-		                    </button>
-						</c:otherwise>
-					</c:choose>
-					<%-- 
-                    <button type="button" class="btn btn-info" title="카드를 좋아합니다.">
-                        <i class="fa fa-heart-o" aria-hidden="true"></i> 좋아요
-                    </button> 
-                    --%>
-                    <div id="report" class="btn-group" title="신고">
-                        <a href="#" role="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="외부 서비스로 공유">
-                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Report
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                            	<a href="${ pageContext.request.contextPath }/contact/bug.do?no=${ contents.no }&type=contents" title="오류 신고">
-	                            	<i class="fa fa-bug fa-fw" aria-hidden="true"></i>
-	                            	오류 신고
+                <div class="row marginBottom30">
+	                <article class="col-xs-12">
+	                    <header>
+	                        <div class="pull-right">
+	                        	<a href="${ contents.url }" target="_blank" title="원본 페이지로 이동(새 창)">
+		                        	<i class="fa fa-external-link" aria-hidden="true"></i>
+		                        	원본 보기
+	                        	</a>
+	                        </div>
+	                        <div class="card-labels">
+	                            <span class="label label-default">
+	                            	${ contents.category }
+	                            </span>
+	                            <span class="label label-info">
+	                            	${ contents.dataType }
+	                            </span>
+	                            <a href="${ contents.sourceUrl }" class="label label-primary" target="_blank" title="원본 사이트로 이동(새 창)">
+	                            	${ contents.source }
 	                            </a>
-                            </li>
-                            <li>
-	                            <a href="${ pageContext.request.contextPath }/contact/spamContents.do?no=${ contents.no }" title="유해물 신고">
-	                            	<i class="fa fa-ban fa-fw" aria-hidden="true"></i>
-	                            	유해물 신고
-	                            </a>
-                            </li>
-                        </ul>
-                    </div>
+	                        </div>
+                        	<h2 class="card-title marginBottom30">
+                        		<%-- <c:out value="${ contents.title }" /> --%>
+                        		${ contents.title }
+                        	</h2>
+	                    </header>
+	                    
+	                    <section class="card-content text-justify marginBottom">
+	                    	<%-- <c:out value="${ contents.summary }" /> --%>
+	                    	${ contents.summary }
+                    	</section>
+	                    <footer class="text-right">
+	                        <time class="text-muted">${ contents.lastScraped }</time>
+	                    </footer>
+	                </article>
+                </div>
+                
+                <div class="row marginBottom30">
+	                <div role="toolbar" class="col-xs-12 text-right">
+						<c:choose>
+							<c:when test="${ (userVO ne null) and (not empty userVO) }">
+								<button type="button" class="btn btn-info saveCardBtn" 
+									data-toggle="modal" data-target="#saveCardModal" 
+									id="${ contents.no }" page="contentsDetail" title="카드 담기">
+			                        <i class="fa fa-bookmark-o" aria-hidden="true"></i> 저장하기
+			                    </button>
+			                    <button type="button" class="btn btn-info" title="카드를 좋아합니다.">
+			                        <i class="fa fa-heart-o" aria-hidden="true"></i> 좋아요
+			                    </button> 
+							</c:when>
+							<c:otherwise>
+								<button type="button" class="btn btn-info" onclick="location.href='${ pageContext.request.contextPath }/login/login.do'"
+									title="카드 담기: 로그인이 필요한 서비스입니다">
+			                        <i class="fa fa-bookmark-o" aria-hidden="true"></i> 저장하기
+			                    </button>
+			                    <button type="button" class="btn btn-info" onclick="location.href='${ pageContext.request.contextPath }/login/login.do'" 
+			                    	title="좋아요: 로그인이 필요한 서비스입니다">
+			                        <i class="fa fa-heart-o" aria-hidden="true"></i> 좋아요
+			                    </button> 
+							</c:otherwise>
+						</c:choose>
+	                    <div id="report" class="btn-group" title="신고">
+	                        <a href="#" role="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="외부 서비스로 공유">
+	                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Report
+	                            <span class="caret"></span>
+	                        </a>
+	                        <ul class="dropdown-menu" role="menu">
+	                            <li>
+	                            	<a href="${ pageContext.request.contextPath }/contact/bug.do?no=${ contents.no }&type=contents" title="오류 신고">
+		                            	<i class="fa fa-bug fa-fw" aria-hidden="true"></i>
+		                            	오류 신고
+		                            </a>
+	                            </li>
+	                            <li>
+		                            <a href="${ pageContext.request.contextPath }/contact/spamContents.do?no=${ contents.no }" title="유해물 신고">
+		                            	<i class="fa fa-ban fa-fw" aria-hidden="true"></i>
+		                            	유해물 신고
+		                            </a>
+	                            </li>
+	                        </ul>
+	                    </div>
+	                </div>
                 </div>
             </section>
             <!-- /main information of contents -->
 
             <!-- additional information of contents -->
-            <aside class="col-md-3 well pull-right marginRight15">
-            	<%--
+            <aside class="col-xs-12 col-sm-3 col-sm-offset-1 well">
                 <div id="info">
                 	<p class="lead"><i class="fa fa-info-circle" aria-hidden="true"></i> 정보</p>
                 	<ul class="list-unstyled">
@@ -142,7 +149,6 @@
                 		<li><strong>${ contents.likeCnt }</strong>명이 좋아함</li>
                 	</ul>
                 </div>
-                --%>
                 <hr/>
                 <div id="share">
                     <p class="lead"><i class="fa fa-share-alt" aria-hidden="true"></i> 공유</p>
@@ -153,7 +159,6 @@
                         <li><a href="#" title="에버노트로 공유"><i class="fa fa-sticky-note fa-fw" aria-hidden="true"></i> Evernote</a></li>
                     </ul>
                 </div>
-               
             </aside>
             <!-- /additional information of contents -->
         </div>
@@ -166,7 +171,7 @@
 			<%-- 메모가 없을 때 --%>
         	<c:if test="${ (memoList eq null) or (empty memoList) }"> 
 				<div class="row">
-					<div class="col-md-12">
+					<div class="col-xs-12">
 						<p class="lead text-muted">첫 메모를 남겨보세요 &#58;&#41;</p>
 					</div>
 				</div>
@@ -201,7 +206,7 @@
 	        	<c:if test="${ (memoList ne null) and (not empty memoList) }">
 	        		<c:forEach var="memo" items="${ memoList }" varStatus="loop">
 	                <!-- card -->
-	                <div id="${ memo.no }" class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-shadow--3dp">
+	                <div id="${ memo.no }" class="mdl-card mdl-cell--4-col mdl-cell--12-col-phone mdl-shadow--3dp">
 	                    <div class="mdl-card__title mdl-color-text--grey-500">
 	                        <h5 class="author mdl-card__title-text">
 	                        	<c:out value="${ memo.lastName } ${ memo.firstName }"/>

@@ -37,12 +37,12 @@
         
         <!-- Breadcrumb -->
         <div class="row">
-            <div class="col-md-12">
-                <ol class="breadcrumb" style="margin-top: 75px">
-                    <li><a href="#">Home</a></li>
-                    <li class="active">검색 결과</li>
-                </ol>
-            </div>
+        	<div class="col-xs-12">
+		        <ol class="breadcrumb" style="margin-top: 75px">
+		            <li><a href="#">Home</a></li>
+		            <li class="active">검색 결과</li>
+		        </ol>
+	        </div>
         </div>
         <!-- /Breadcrumb -->
 
@@ -50,27 +50,21 @@
 			<%-- 검색결과가 없을 때 --%>
         	<c:when test="${ (empty searchResult) or (searchResult eq null) }">
 				<div class="row">
-					<div class="col-md-12">
+					<div class="col-xs-12">
 						<p class="lead">이런, 검색 결과가 없습니다 &#58;&#40;</p>
 					</div>
 				</div>
 				<div class="row marginTop20">
-					<div class="col-md-10">
-						<div class="row">
-							<div class="col-md-4">
-								<p class="">다른 단어로 검색해보시겠어요?</p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-4">
-								<ul class="">
-									<li><a href="${ pageContext.request.contextPath }/search/result.do?q=John" title="John 검색">John</a></li>
-									<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Kim" title="Kim 검색">Kim</a></li>
-									<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Elasticsearch" title="Elasticsearch 검색">Elasticsearch</a></li>
-									<li><a href="${ pageContext.request.contextPath }/search/contents.do?no=143">view sample Contents</a></li>
-								</ul>
-							</div>
-						</div>
+					<div class="col-xs-12">
+						다른 단어로 검색해보시겠어요?
+					</div>
+					<div class="col-xs-12">
+						<ul class="">
+							<li><a href="${ pageContext.request.contextPath }/search/result.do?q=John" title="John 검색">John</a></li>
+							<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Kim" title="Kim 검색">Kim</a></li>
+							<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Elasticsearch" title="Elasticsearch 검색">Elasticsearch</a></li>
+							<li><a href="${ pageContext.request.contextPath }/search/contents.do?no=143">view sample Contents</a></li>
+						</ul>
 					</div>
 				</div>
 			</c:when>
@@ -78,18 +72,18 @@
 			<%-- 검색결과가 존재할 때 --%>
         	<c:otherwise>
         		<div class="row">
-					<div class="col-md-12">
-						<p class="lead"><c:out value="${ searchResult.query }" /> 검색결과 ${ searchResult.total }건</p>
+					<div class="col-xs-12 lead">
+						<c:out value="${ searchResult.query }" /> 검색결과 ${ searchResult.total }건
 					</div>
 				</div>
 				<div class="row">
-					<section class="col-md-10 card-container mdl-grid">
+					<section class="col-xs-12 col-md-9 card-container mdl-grid">
 						<c:forEach var="card" items="${ searchResult.contents }" varStatus="loop">
 							<!-- card -->
-			                <div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-shadow--3dp">
+			                <div class="card-ancestor mdl-card mdl-cell mdl-cell--4-col mdl-cell--12-col-phone mdl-shadow--3dp">
 			
 			                    <!-- card top: contents source -->
-			                    <div id="card-belong" class="mdl-card__title mdl-color-text--grey-500">
+			                    <div class="card-labels mdl-card__title mdl-color-text--grey-500">
 			                        <span class="label label-default">
 		                            	<c:out value="${ card.category }" />
 		                            </span>
@@ -108,7 +102,8 @@
 								</c:if>
 			                    <!-- card title -->
 			                    <div class="mdl-card__title">
-			                        <h5 class="author mdl-card__title-text">
+			                        <h5 class="card-title mdl-card__title-text drop-text-2" title="${ card.title }"
+				                        data-toggle="tooltip" data-placement="bottom">
 			                        	<c:out value="${ card.title }" />&nbsp;
 			                        </h5>
 			                        <div class="pull-right">
@@ -117,21 +112,12 @@
 			                        	</a>
 		                        	</div>
 			                    </div>
+			                    
 			
 			                    <!-- card text -->
 			                    <div class="content mdl-card__supporting-text mdl-color-text--grey-800 ">
-			                        <p class="text-justify">
-			                        	<c:choose>
-           									<c:when test="${fn:length(card.summary) > 105}">
-			                        			<c:out value="${ fn:substring(card.summary, 0, 105) }" /> ...
-           									</c:when>
-           									<c:otherwise>
-           										<c:out value="${ card.summary }" />
-           										<c:forEach var="i" begin="0" end="${(105 - fn:length(card.summary))*1.5}">
-           											&nbsp;
-           										</c:forEach>
-           									</c:otherwise>
-         								</c:choose>
+			                        <p class="card-content drop-text-5" title="${ card.summary }">
+			                        	<c:out value="${ card.summary }" />
 		                        	</p>
 			                    </div>
 			
@@ -141,12 +127,14 @@
 										<c:choose>
 											<c:when test="${ (userVO ne null) and (not empty userVO) }">
 												<a href="#" role="button" class="saveCardBtn"
-												 data-toggle="modal" data-target="#saveCardModal" id="${ card.no }" title="카드 담기">
+												 	data-toggle="modal" data-target="#saveCardModal" 
+												 	id="${ card.no }" title="카드 담기">
 			                                    	<i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
 			                                	</a>
 											</c:when>
 											<c:otherwise>
-												<a href="${ pageContext.request.contextPath }/login/login.do" class="saveCardBtn" id="${ card.no }" title="카드 담기: 로그인이 필요한 서비스입니다">
+												<a href="${ pageContext.request.contextPath }/login/login.do" class="saveCardBtn" 
+													id="${ card.no }" title="카드 담기: 로그인이 필요한 서비스입니다">
 			                                    	<i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
 			                                	</a>
 											</c:otherwise>
@@ -188,7 +176,7 @@
 					</section>
 
 					<!-- Search result filter -->
-					<aside class="col-md-2">
+					<aside class="col-xs-12 col-md-3">
 						<div class="well marginTop20">
 							<p class="lead">필터</p>
 							<ul class="fa-ul">
@@ -216,6 +204,9 @@
     <!-- Bootstrap JS SET -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
+    <script>
+	    $('[data-toggle="tooltip"]').tooltip(); 
+	</script>
     
     <!-- Modal -->
 	<jsp:include page="/jsp/modal/card_save.jsp" />

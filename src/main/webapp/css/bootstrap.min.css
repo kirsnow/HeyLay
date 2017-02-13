@@ -1536,7 +1536,7 @@ h6,
 .h6 {
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 300;
-    line-height: 1.1;
+    line-height: normal;
     color: inherit
 }
 
@@ -8406,7 +8406,7 @@ input[type="checkbox"] {
 }
 
 .label-default {
-    background-color: #FFFFFF;
+    background-color: #EEEEEE;
     color: #333333
 }
 

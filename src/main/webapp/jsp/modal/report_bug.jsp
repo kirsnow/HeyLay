@@ -1,5 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="modal fade" id="saveCardModal" tabindex="-1" role="dialog"
@@ -12,15 +11,15 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 				<h4 class="modal-title text-muted" id="myModalLabel">
-					<i class="fa fa-bookmark" aria-hidden="true"></i>&nbsp; 카드 담기
+					<i class="fa fa-bug" aria-hidden="true"></i>&nbsp; 오류 신고
 				</h4>
 			</div>
 			<div class="modal-body">
-				<section>
-					<div class="cardInfo">Labels</div>
+				<section class="">
+					<div class="cardInfo"></div>
 					<dl>
-						<dt class="cardInfo marginTop drop-text-1">Title</dt>
-						<dd class="cardInfo marginTop drop-text-3">undefined</dd>
+						<dt class="cardInfo marginTop">Title</dt>
+						<dd class="cardInfo marginTop">undefined</dd>
 					</dl>
 				</section>
 				<textarea id="memoMessage" class="form-control marginTop" rows="3" placeholder="메모 쓰기..."></textarea>
@@ -62,17 +61,16 @@
 	/* modal set cardInfo */
 	$('.saveCardBtn').on('click', function() {
 		saveCardBtn = $(this);
-		contentsNo = saveCardBtn.attr('id');
+		contentsNo = $(this).attr('id');
 		
-		var card = saveCardBtn.parents('.card-ancestor');
-		var title = card.find('.card-title').text();
-		var summary = card.find('.card-content').text().substring(0, 200);
-		var labels = card.find('div.card-labels').html();
+		var card = $(this).parents('div.mdl-card');
+		var title = card.children('div.mdl-card__title').children('h5').text();
+		var summary = card.children('div.mdl-card__supporting-text').children('p').text();
+		var belong = card.children('div#card-belong').html();
 		
-		
-		$('div#saveCardModal div.cardInfo').html(labels);
+		$('div#saveCardModal div.cardInfo').html(belong);
 		$('div#saveCardModal dt.cardInfo').text(title);
-		$('div#saveCardModal dd.cardInfo').text(summary + '...');
+		$('div#saveCardModal dd.cardInfo').text(summary);
 	})
 	
 	/* modal autofocus */
@@ -120,8 +118,6 @@
       			.html('담기');
             	$('input#dirName').val('나의 첫 폴더').attr('readonly', 'readonly');
             	$('#memoMessage').val('');
-            	
-            	/* page UI reset */
             	saveCardBtn.html('<i class="fa fa-bookmark fa-lg" aria-hidden="true"></i>');
             	
 		    }, error : function() {
