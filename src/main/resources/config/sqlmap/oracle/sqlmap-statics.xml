@@ -219,18 +219,11 @@
 		SELECT qs.name as columnName, SUM(qc.view_cnt) as cnt
 		FROM  q_source qs 
 		INNER JOIN q_contents as qc on qc.source_no = qs.no
+		where view_cnt > 0
 		GROUP BY name
 		ORDER BY cnt DESC
 		Limit 5
 	</select>
 	
-	<!-- 전체 키워드 랭킹 -->
-	<select id="selectAllKeywordList" resultType="KeywordsVO">
-		SELECT keyword, COUNT(keyword) as cnt
-		FROM Q_KEYWORDS
-		GROUP BY keyword
-		ORDER BY cnt DESC 
-		Limit 50
-	</select>
 	
 </mapper>

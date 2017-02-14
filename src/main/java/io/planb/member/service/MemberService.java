@@ -46,7 +46,6 @@ public interface MemberService {
 
 	public List<IdentifyQuestionVO> selectIdenQuestion();
 
-	public void insertKeyword(SelectKeywordVO keyword);							//관심 키워드 입력
 
 	
 }

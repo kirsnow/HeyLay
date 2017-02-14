@@ -47,5 +47,4 @@ public interface MemberDAO {
 
 	public List<IdentifyQuestionVO> selectIdenQuestion();
 
-	public void insertKeyword(SelectKeywordVO keyword);     //관심 키워드 선택
 }

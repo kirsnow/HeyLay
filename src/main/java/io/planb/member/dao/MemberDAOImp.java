@@ -121,10 +121,5 @@ public class MemberDAOImp implements MemberDAO {
 		
 		return idenQuestionList;
 	}
-
-	@Override
-	public void insertKeyword(SelectKeywordVO keyword) {
-		sqlSessionTemplate.insert("io.planb.member.dao.MemberDAO.enroll", keyword);
-		
-	}
+	
 }

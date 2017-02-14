@@ -37,15 +37,13 @@ public class MembershipController {
 	
 	
 	@RequestMapping(value="/membership/membershipForm.do", method=RequestMethod.POST)
-	public String membership(@ModelAttribute("member") MemberVO member, Model model, KeywordsVO interestKeyword) {
+	public String membership(@ModelAttribute("member") MemberVO member, Model model) {
 		service.enroll(member);
-		List<KeywordsVO> interestKeywordList = service.selectInterestList();
+		
 		
 		model.addAttribute("memberVO", member);
-		model.addAttribute("interestKeywordList", interestKeywordList);
-		//System.out.println("interestKeywordList : " + interestKeywordList);
 		
-		return "membership/interest";
+		return "redirect:/";
 	}
 	
 	
@@ -72,23 +70,6 @@ public class MembershipController {
 		service.updateName(params);
 
 		return "완료";
-	}
-	
-	/*관심 키워드 입력*/
-	@RequestMapping(value="/interest.do", method=RequestMethod.GET)
-	public String selectKeyword() {
-		
-		return "membership/membershipform";
-	}
-	
-	@RequestMapping(value="/membership/interest.do", method=RequestMethod.POST)
-	public String selectKeywordForm(@ModelAttribute("member") MemberVO member, Model model, SelectKeywordVO keyword) {
-	
-		service.insertKeyword(keyword);
-		model.addAttribute("memberVO", member);
-		
-		System.out.println("keyword Controller : " + keyword);
-		return "membership/interest";
 	}
 	
 }

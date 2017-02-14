@@ -168,11 +168,5 @@ public class MemberServiceImp implements MemberService {
 		
 		return idenQuestionList;
 	}
-    
-	/*관심 키워드 선택*/
-	@Override
-	public void insertKeyword(SelectKeywordVO keyword) {
-		dao.insertKeyword(keyword);
-		
-	}
+
 }
