@@ -11,8 +11,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <!-- Bootstrap -->
-<link href="${ pageContext.request.contextPath }/css/bootstrap.min.css"
-	type="text/css" rel="stylesheet">
+<link href="${ pageContext.request.contextPath }/css/bootstrap.min.css"	type="text/css" rel="stylesheet">
+<%-- <link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet"> --%>
 
 <!-- icon-font -->
 <script src="https://use.fontawesome.com/bbddce3010.js"></script>
@@ -29,7 +29,7 @@
 			<div class="right_col" role="main">
 				<section>
 					<div id="container">
-						<div class="row">
+						<div class="row marginTop40">
 							<div class="col-md-2">총 회원 ${ memberCnt } 명</div>
 							<div class="col-md-8 col-md-push-2"></div>
 							<div class="col-md-2">
@@ -102,8 +102,7 @@
 												<td>${ member.regDate }</td>
 												<td>${ member.lastDate }</td>
 												<td>${ member.reportCnt }</td>
-												<td><button id="btnModify"
-														class="btn btn-default btn-xs">수정</button></td>
+												<td><a href="javascript:updateUser(${ member.no })" class="btn btn-default btn-xs" role="button" title="선택한 회원 정보 수정 페이지로 이동">수정</a></td>
 											</tr>
 										</c:forEach>
 									</tbody>
@@ -261,6 +260,10 @@
 	$(document).ready(function() {
 		$('#viewTypeList').val('${ option }').attr("selected", "selected");
 	});
+	
+	function updateUser(no) {
+		location.href="${ pageContext.request.contextPath }/jsp/admin/user_modify.do?no=" + no;
+	}
 </script>
 </body>
 </html>

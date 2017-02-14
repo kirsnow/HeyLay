@@ -60,7 +60,7 @@ function doMember(memberNo) {
 							<li><a href="${ pageContext.request.contextPath }/jsp/admin/qna_list.do" title="Q&A 조회 페이지로 이동">Q&amp;A</a></li>
 							<li><a href="${ pageContext.request.contextPath }/jsp/admin/withdraw.do" title="탈퇴 사유 조회 페이지로 이동">탈퇴 사유</a></li>
 						</ul></li>
-					<li><a title="사이트 및 카드 관리 메뉴 보기"><i class="fa fa-desktop"></i> 사이트 및 카드 <span class="fa fa-chevron-down"></span></a>
+					<li><a title="사이트 및 카드 관리 메뉴 보기"><i class="fa fa-desktop"></i> 사이트 관리 <span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
 							<li><a href="${ pageContext.request.contextPath }/jsp/admin/source_list.do" title="콘텐츠 소스 관리 페이지로 이동">콘텐츠 소스</a></li>
 							<li><a href="${ pageContext.request.contextPath }/jsp/admin/spam_list.do" title="유해 콘텐츠 신고 관리 페이지로 이동">유해 콘텐츠 신고</a></li>
@@ -70,7 +70,7 @@ function doMember(memberNo) {
 					<li><a title="통계 메뉴 보기"><i class="fa fa-bar-chart-o"></i> 통계 <span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
 							<li><a href="${ pageContext.request.contextPath }/admin/statics/allKeywordList.do"  title="유저 검색어 랭킹 확인 링크">유저 검색어 랭킹</a></li>
-							<li><a href="${ pageContext.request.contextPath }/jsp/admin/statistic.jsp" title="통계 페이지로 이동">Chart JS</a></li>
+							<li><a href="${ pageContext.request.contextPath }/jsp/admin/statistic.jsp" title="통계 페이지로 이동">유저 통계</a></li>
 						</ul></li>
 					<li><a title="광고 관리 메뉴 보기"><i class="fa fa-clone"></i> 광고 관리 <span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
@@ -84,7 +84,7 @@ function doMember(memberNo) {
 </div>
 
 <!-- top navigation -->
-<div class="top_nav">
+<div class="visible-xs top_nav">
 	<div class="nav_menu">
 		<nav role="navigation">
 			<div class="nav toggle">

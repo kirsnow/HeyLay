@@ -35,7 +35,7 @@ function doMember(memberNo) {
 					<div class="profile_info">
 						<span>Welcome, ${ userVO.firstName }</span>
 						<div class=" text-center">	
-						<img src="/Quration/img/team/02.jpg" alt="..." class="img-circle profile_img">			
+						<img src="/img/team/02.jpg" alt="..." class="img-circle profile_img">			
 						</div>
 					</div>
 				</div>	
@@ -83,7 +83,7 @@ function doMember(memberNo) {
 </div>
 
 <!-- top navigation -->
-<div class="top_nav">
+<div class="visible-xs top_nav">
 	<div class="nav_menu">
 		<nav role="navigation">
 			<div class="nav toggle">
