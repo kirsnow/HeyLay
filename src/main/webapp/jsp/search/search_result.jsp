@@ -17,17 +17,7 @@
 
     <!-- MDL Hosted start -->
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-light_blue.min.css" />
-    
-    <!-- google analytics -->
-	<script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-		
-		ga('create', 'UA-90558257-1', 'auto');
-		ga('send', 'pageview');
-	</script>
+
 </head>
 <body>
     <div class="container">
@@ -116,16 +106,24 @@
     
     <!-- Modal -->
 	<jsp:include page="/jsp/modal/card_save.jsp" />
-    
     <!-- icon-font -->
     <script src="https://use.fontawesome.com/bbddce3010.js"></script>
     
+    <script>
+    <!-- google analytics -->
+    	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-90558257-1', 'auto');
+		ga('send', 'pageview');
+		
     <!-- Facebook share API 
     	 https://developers.facebook.com/docs/sharing/reference/share-dialog
     -->
-    <!-- 
-    <script>
-		document.getElementById('share_facebook').onclick = function() {
+
+    document.getElementById('share_facebook').onclick = function() {
 		  FB.ui({
 		    method: 'share',
 		    display: 'popup',
@@ -133,6 +131,5 @@
 		  }, function(response){});
 		}
 	</script>
-	 -->
 </body>
 </html>

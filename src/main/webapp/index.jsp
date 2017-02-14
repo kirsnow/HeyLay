@@ -43,7 +43,7 @@
   <body>
     <!-- Home Section -->
     <div id="home">
-        <div class="container text-center">
+        <div class="container text-center ">
             <!-- Navigation -->
             <h1 class="text-muted">Quration</h1>
             <div class="row">

@@ -38,9 +38,9 @@
 	<header>
 		<jsp:include page="/jsp/include/nav_search.jsp" />
 	</header> 
-	<section id="interest">
-		<div class="container marginTop60">
-		   	<div class="row">
+	<section id="interest ">
+		<div class="container marginTop60 minHeight">
+		   	<div class="row ">
 		        <div class="page-header text-center col-md-6 col-md-offset-3">
 		            <h1>관심 키워드 선택</h1>
 		        </div>

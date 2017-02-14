@@ -9,10 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import io.planb.contents.service.ContentService;
 import io.planb.contents.vo.ContentsVO;
+import io.planb.contents.service.ContentService;
 import io.planb.directory.vo.DirectoryVO;
 import io.planb.member.vo.MemberVO;
 import io.planb.memo.service.MemoServiceImp;
@@ -68,12 +69,6 @@ public class SearchController {
 		mav.setViewName("search/contents_detail");
 		mav.addObject("contents", contents);
 		mav.addObject("memoList", memoList);
-		
-		if(userVO != null) {
-			List<DirectoryVO> dirList = contentService.directoryList(userNo);
-			mav.addObject("dirList", dirList);
-		}
-		
 		return mav;
 	}
 	

@@ -234,13 +234,5 @@
 		Limit 5
 	</select>
 	
-	<!-- 전체 키워드 랭킹 -->
-	<select id="selectAllKeywordList" resultType="KeywordsVO">
-		SELECT keyword, COUNT(keyword) as cnt
-		FROM Q_KEYWORDS
-		GROUP BY keyword
-		ORDER BY cnt DESC 
-		Limit 50
-	</select>
 	
 </mapper>

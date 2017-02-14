@@ -40,7 +40,7 @@
 	</header> 
 	
 	<section id="interest">
-		<div class="container marginTop60">
+		<div class="container marginTop60 minHeight">
           	<div class="row">
                <div class="page-header text-center col-md-6 col-md-offset-3">
                    <h1>관심 키워드 선택</h1>
@@ -50,20 +50,20 @@
                   action="${pageContext.request.contextPath }/interest.do" method="post">
                 <div class="row">
                 	<div class="col-md-8 col-md-offset-2">
-                		<c:forEach var="keywordInterest" items="${ interestKeywordList }" begin="1" end="30">
+                		<c:forEach var="keyword" items="${ interestKeywordList }" begin="1" end="30">
 	           				<div class="col-md-3 text-left marginBottom">
 		           				<label for="interest">
-		           		 			<c:out value="${keywordInterest.keyword}"/>
+		           		 			<c:out value="${keyword.keyword}"/>
 		           				</label>
 	           				</div>
 		           			<span class="col-md-1">
-		           				<input type="checkbox" name="interest" id="interest"/>
+		           				<input type="checkbox" name="chkbox" value="${keyword.keyword}"/>
 		           			</span>
 		           		</c:forEach>
 	           		</div>
 	             	<div class="text-center col-md-6 col-md-offset-3 marginTop marginBottom">
 			   			<div>
-		        			<small>최소 3항목을 선택해 주세요.</small>
+		        			<small>최소 1가지 이상의 항목을 선택해 주세요.</small>
 		        		</div>
 	        		</div>
         		</div>
@@ -83,7 +83,7 @@
 	
 	<!-- jQuery -->
 	<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
-
+	
 	
 </body>
 </html>

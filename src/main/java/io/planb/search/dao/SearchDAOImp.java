@@ -34,7 +34,7 @@ public class SearchDAOImp {
 	}
 	
 	public List<ContentsVO> getContentsList(int contentsNo) {
-		List<ContentsVO> contentsList = sqlSessionTemplate.selectOne("io.planb.serach.dao.SearchDAO.selectContentsByNo", contentsNo);
+		List<ContentsVO> contentsList = sqlSessionTemplate.selectList("io.planb.serach.dao.SearchDAO.selectContentsByNo", contentsNo);
 		return contentsList;
 	}
 	

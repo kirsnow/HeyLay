@@ -5,9 +5,15 @@
 <mapper namespace="io.planb.member.dao.MemberDAO">
 
 	<select id="login" parameterType="memberVO" resultType="memberVO">
-	    select no, email, password, last_name as lastName, first_name as firstName, type, birth, gender, email_receive as emailReceive, country, city, question, answer
-	     from Q_member
-	    where email = #{email} and password = #{password} 
+	    SELECT	* 
+		FROM 	(SELECT no, email, password, last_name as lastName, first_name as firstName, type, birth, gender, 
+		   				email_receive as emailReceive, country, city, question, answer
+				 FROM Q_member
+				 WHERE email = #{ email }) mm, 
+				(SELECT COUNT(*) selectKeywords 
+				 FROM q_select_keywords sk
+				 INNER JOIN q_member mm ON mm.no = sk.member_no 
+				 WHERE mm.email = #{ email }) r 
 	</select>
 	
 	<insert id="enroll" parameterType="memberVO">
@@ -111,5 +117,5 @@
 		FROM q_identify_question 
 		ORDER BY no 
 	</select>
-
+	
 </mapper>
