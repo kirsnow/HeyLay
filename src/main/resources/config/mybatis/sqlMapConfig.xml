@@ -28,10 +28,7 @@
 		<typeAlias type="io.planb.question.vo.QuestionVO" alias="questionVO" />
 		<typeAlias type="io.planb.statics.vo.StaticsVO" alias="staticsVO" />
 		<typeAlias type="io.planb.member.vo.IdentifyQuestionVO" alias="identifyQuestionVO" />
-<<<<<<< HEAD
-		<!-- <typeAlias type="io.planb.member.vo.SelectKeywordVO" alias="selectKeywordVO" /> -->
-=======
 		<typeAlias type="io.planb.contents.vo.DataTypeVO" alias="dataTypeVO" />
->>>>>>> 2f3178ed6932f2375c8b4698956947c9fe895d4e
+		<!-- <typeAlias type="io.planb.member.vo.SelectKeywordVO" alias="selectKeywordVO" /> -->
 	</typeAliases>
 </configuration>
