@@ -46,6 +46,7 @@ public class SearchController {
 		mav.setViewName("search/search_result");
 		mav.addObject("searchQuery", q);
 		mav.addObject("searchResult", searchResult);
+		mav.addObject("cards", searchResult.getContents());
 		
 		if(userVO != null) {
 			List<DirectoryVO> dirList = contentService.directoryList(userNo);
