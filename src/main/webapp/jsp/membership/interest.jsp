@@ -47,18 +47,16 @@
                </div>
          	</div>
     		<form name="interestForm" class="formBottom15" 
-                  action="${pageContext.request.contextPath }/interest.do" method="post">
+                  action="${ pageContext.request.contextPath }/interest.do" method="post">
                 <div class="row">
                 	<div class="col-md-8 col-md-offset-2">
-                		<c:forEach var="keyword" items="${ interestKeywordList }" begin="1" end="30">
-	           				<div class="col-md-3 text-left marginBottom">
-		           				<label for="interest">
-		           		 			<c:out value="${keyword.keyword}"/>
-		           				</label>
-	           				</div>
+                		<c:forEach var="keyword" items="${ interestKeywordList }">
 		           			<span class="col-md-1">
-		           				<input type="checkbox" name="chkbox" value="${keyword.keyword}"/>
+		           				<input type="checkbox" name="keyword" class="keyword" value="${ keyword.keyword }"/>
 		           			</span>
+	           				<div class="col-md-3 text-left marginBottom">
+		           				<label for="interest">${ keyword.keyword }</label>
+	           				</div>
 		           		</c:forEach>
 	           		</div>
 	             	<div class="text-center col-md-6 col-md-offset-3 marginTop marginBottom">
@@ -67,9 +65,10 @@
 		        		</div>
 	        		</div>
         		</div>
-             	<div class="row"> 
-	                  <div class="text-center col-md-6 col-md-offset-3 marginTop marginBottom">
-	                     <button type="submit" class="btn btn-primary marginRight" >키워드 선택 완료</button>
+             	<div class="row">
+	                <div class="text-center col-md-6 col-md-offset-3 marginTop marginBottom">
+	                  	<a href="javascript:setSeywords()" class="btn btn-primary marginRight" role="button" title="휴면 계정으로 설정">키워드 선택 완료</a>
+<!-- 	                     <button type="submit" class="btn btn-primary marginRight" >키워드 선택 완료</button> -->
 	                     <button type="reset" class="btn">초기화</button>
 	                  </div>
 	             </div>      
@@ -81,9 +80,32 @@
 		<jsp:include page="/jsp/include/footer.jsp" />
 	</Footer> 
 	
-	<!-- jQuery -->
-	<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
+<!-- jQuery -->
+<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
 	
-	
+<script>
+	function setSeywords() {
+		var checkboxValues = [];
+		$('.keyword:checked').each(function() {
+			checkboxValues.push($(this).val());
+	    });
+		
+		$.ajax({
+	        url:"${ pageContext.request.contextPath }/jsp/keyword_insert.do",
+	        type:'POST',
+	        data: { 
+	        	"checkboxValues" : checkboxValues
+	        },  
+	        success:function(data){
+	        	if(data == "완료")
+	            alert("완료!");
+	        	location.replace('${ pageContext.request.contextPath }/');
+	        },
+	        error:function(jqXHR, textStatus, errorThrown){
+	            alert("에러 발생 ㅅㅂ \n" + textStatus + " : " + errorThrown);
+	        }
+	    });
+	}
+</script>
 </body>
 </html>

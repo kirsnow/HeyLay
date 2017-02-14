@@ -1,8 +1,12 @@
 package io.planb.membership.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
+import org.apache.catalina.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +22,7 @@ import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.service.MemberService;
 import io.planb.member.vo.IdentifyQuestionVO;
 import io.planb.member.vo.MemberVO;
-import io.planb.member.vo.SelectKeywordVO;
+import io.planb.member.vo.SelectKeywordsVO;
 
 
 @Controller
@@ -72,14 +76,18 @@ public class MembershipController {
 		return "완료";
 	}
 	
+	/* 선호 키워드 추가 */
+	@RequestMapping("/jsp/keyword_insert.do")
+	public String insertKeywords(@RequestParam(value="checkboxValues[]") List<String> param, HttpSession session) {
+		ArrayList<String> list = new ArrayList<>();
+        list.addAll(param);
+		
+        MemberVO member = (MemberVO) session.getAttribute("userVO");
+        
+		service.insertKeywords(list, member.getNo());
+		
+		return "redirect:/";
+	}
+	
 }
-
-
-
-
-
-
-
-
-
 

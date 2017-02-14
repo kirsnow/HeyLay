@@ -7,7 +7,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>탈퇴 재문의 | Quration: 답을 열어 줄 그런 사람</title>
+	<title>회원 탈퇴 페이지 | Quration: 답을 열어 줄 그런 사람</title>
 	
 	<!-- Bootstrap -->
     <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
@@ -59,7 +59,7 @@
 				<div class="panel panel-default col-md-6 col-md-offset-3  marginBottom">
 				  	<div class="panel-body text-center">
 					    <div><sub><i class="material-icons">info_outline</i></sub>
-							회원님은 현재  1234 개의 콘텐츠를 보유하고 계십니다. 
+							회원님은 현재  <span class="numberFont" id="savedContent"></span> 개의 콘텐츠를 보유하고 계십니다. 
 						</div>
 						<div>탈퇴하시겠습니까?</div>
 				  	</div>
@@ -80,5 +80,19 @@
     <Footer>
 		<jsp:include page="/jsp/include/footer.jsp" />
 	</Footer>
+	
+	<script>
+	   /*오늘 저장된 컨텐츠  */
+	   $.ajax({
+	         url: "${ pageContext.request.contextPath }/myPage/withdrawQuestionCnt.do",
+	         type : 'get',
+	         contentType : "application/json",
+	         success: function(result){
+	              $("#savedContent").text(result)
+	              					.attr("font-size","20px")
+	              					.attr("text-decoration","bold")
+	              					.attr("text-color","#03A9F4");
+	   }});
+	</script>
 </body>
 </html>

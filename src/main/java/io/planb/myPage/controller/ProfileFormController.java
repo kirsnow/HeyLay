@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 import io.planb.member.service.MemberService;
 import io.planb.member.vo.MemberVO;
 
-@SessionAttributes("userVO")
 @RequestMapping("/myPage")
 @Controller
 public class ProfileFormController {
@@ -33,7 +32,7 @@ public class ProfileFormController {
 		}
 		
 		@RequestMapping(value="/mypage.do", method=RequestMethod.POST)
-		public String profileForm(@ModelAttribute("member") MemberVO member, Model model) {
+		public String profileForm(@ModelAttribute("userVO") MemberVO member, Model model) {
 			
 			model.addAttribute("userVO", member);
 			return "myPage/profile_form";	

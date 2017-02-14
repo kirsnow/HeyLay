@@ -85,9 +85,9 @@
 		                     </span>
 							 <script>
 								console.log('${userVO.gender}');
-								if ('${userVO.gender}' == "M") {
+								if ('${userVO.gender}' == 'M') {
 									$("input[value='M']").prop("checked", true);
-								} else if ('${userVO.gender}' == "F") {
+								} else if ('${userVO.gender}' == 'F') {
 									$("input[value='F']").prop("checked", true);
 								} else {
 									$("input[value='O']").prop("checked", true);
@@ -108,7 +108,7 @@
 					         </span>
 					         <script>
 								console.log('${userVO.emailReceive}');
-								if ('${userVO.emailReceive}' == "Y") {
+								if ('${userVO.emailReceive}' == 'Y') {
 									$("input[value='Y']").prop("checked", true);
 								} else {
 									$("input[value='N']").prop("checked", true);

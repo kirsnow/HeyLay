@@ -4,11 +4,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import io.planb.leaved.vo.LeavedVO;
 import io.planb.member.service.MemberService;
+import io.planb.member.vo.MemberVO;
 
 @RequestMapping("/myPage")
 @Controller
@@ -17,11 +20,25 @@ public class LeavedContorller {
 	@Autowired
 	private MemberService service;
 	
-	/*회원 탈퇴 재문의*/
-	@RequestMapping(value = "/withdrawQuestion.do", method = RequestMethod.GET)
-	public String withdrawQuestion() {
+	/*회원 탈퇴 재문의 _ ajax */
+	@ResponseBody
+	@RequestMapping(value = "/withdrawQuestionCnt.do")
+	public int withdrawQuestion(HttpSession session, Model model) {
 		
-		return "myPage/leaved_question";
+		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
+		int memberNo = userVO.getNo();
+		
+		int withdrawContentCnt = service.selectWithdrawContentCnt(memberNo);
+		//System.out.println("controller withdrawContentCnt : " + withdrawContentCnt);
+		
+		return withdrawContentCnt;
+	}
+	
+	/*회원 탈퇴 재문의 _ 페이지 호출 */
+	@RequestMapping(value = "/withdrawQuestion.do")
+	public String withdrawQuestionForm() {
+
+        return "myPage/leaved_question";
 	}
 	
 	/*회원 탈퇴 사유 페이지 이동*/

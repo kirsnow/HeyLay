@@ -52,7 +52,7 @@
 				  
 				<div class="row">
 				  	<div class="col-md-6 col-md-offset-3 marginBottom marginTop">
-					  	<input type="text" name="email" class="form-control" placeholder="계정 E-mail" alt="계정 입력 폼">
+					  	<input type="text" name="email" class="form-control" placeholder="계정 E-mail" alt="계정 입력 폼" autofocus="autofocus">
 					</div>
 				</div>
 				<div class="row">

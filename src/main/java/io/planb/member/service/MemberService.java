@@ -3,15 +3,11 @@ package io.planb.member.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-import org.springframework.web.multipart.MultipartFile;
-
 import io.planb.leaved.vo.LeavedVO;
 import io.planb.directory.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.vo.IdentifyQuestionVO;
 import io.planb.member.vo.MemberVO;
-import io.planb.member.vo.SelectKeywordVO;
 
 public interface MemberService {
 	
@@ -46,6 +42,8 @@ public interface MemberService {
 
 	public List<IdentifyQuestionVO> selectIdenQuestion();
 
+	public void insertKeywords(ArrayList<String> list, int no);
 
-	
+	public int selectWithdrawContentCnt(int memberNo);							//회원 탈퇴 시 보유 컨텐츠 호출
+
 }
