@@ -54,6 +54,13 @@ public class LoginController {
 		return "login/login";
 	}
 	
+    @RequestMapping("/login/logout.do")
+    public String logout(SessionStatus sessionStatus  /*HttpServletRequest request*/) {
+       
+    	sessionStatus.setComplete();
+        
+    	return "redirect:/";
+    }
 }
 
 
