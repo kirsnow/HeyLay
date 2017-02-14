@@ -9,16 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-<<<<<<< HEAD
-import io.planb.contents.vo.ContentsListVO;
 import io.planb.contents.vo.ContentsVO;
-=======
 import io.planb.contents.service.ContentService;
-import io.planb.contents.vo.ContentsVO;
 import io.planb.directory.vo.DirectoryVO;
->>>>>>> 188601bf436cc729ab50726ff0733494241b9f89
 import io.planb.member.vo.MemberVO;
 import io.planb.memo.service.MemoServiceImp;
 import io.planb.memo.vo.MemoVO;
@@ -72,25 +68,6 @@ public class SearchController {
 		mav.setViewName("search/contents_detail");
 		mav.addObject("contents", contents);
 		mav.addObject("memoList", memoList);
-<<<<<<< HEAD
-		return mav;
-	}
-	
-	@ResponseBody
-	@RequestMapping(value="/ajax/saveCard.do", method=RequestMethod.GET)
-	public ContentsListVO getContents(HttpSession session, @RequestParam("param") int param) {
-		
-//		ContentsVO contents = (ContentsVO)session.getAttribute("contentsVO");
-//		int no = contents.getNo();
-		System.out.println("오니 안 오니 데이터 어디갔니");
-=======
->>>>>>> 188601bf436cc729ab50726ff0733494241b9f89
-		
-		if(userVO != null) {
-			List<DirectoryVO> dirList = contentService.directoryList(userNo);
-			mav.addObject("dirList", dirList);
-		}
-		
 		return mav;
 	}
 	

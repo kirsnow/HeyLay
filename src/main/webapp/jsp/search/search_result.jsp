@@ -191,48 +191,6 @@
     <jsp:include page="/jsp/include/footer.jsp" />
     <!-- /footer -->
     
-<<<<<<< HEAD
-    <!-- Modal -->
-	<jsp:include page="/jsp/modal/card_save_modal.jsp" />
-<!-- 	<script>
-		/* modal autofocus */
-// 		$('#saveCard').on('shown.bs.modal', function () {		
-// 			console.log("열림");
-// 			var param = $(this).attr('no')
-// 			alert(document.getElementById("no").no);
-			
-// 		  $.ajax({
-// 				url : '/modal/saveCard.do',
-// 			    type: 'POST',
-// 			    contentType: "application/json", 
-// 			    data : {param : param},
-// 			    success : function(response){
-// 					console.log("response : ", response);
-// 					for(var i = 0; i < response.contentsList.length; i++) {
-// 						dataSet.push({
-// 							"category" : response.contentsList[i].category, 
-// 							"dataType" : response.contentsList[i].dataType,
-// 							"source" : response.contentsList[i].source,
-// 							"title" : response.contentsList[i].title
-// 						});
-// 					}
-					
-// 					$('#category').text(dataSet[0].category);
-// 			    },
-// 			    error : function() {
-// 			    	alert('ERROR');
-// 			    }
-// 			});
-		  
-// 		  $('#memo').focus()
-// 		}); 
-		
-	</script> -->
-    
-    <!-- Bootstrap JS SET -->
-    <script src="${ pageContext.request.contextPath }/js/jquery.1.11.1.js"></script>
-    <script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
-=======
     <!-- Bootstrap JS SET -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
@@ -242,15 +200,9 @@
     
     <!-- Modal -->
 	<jsp:include page="/jsp/modal/card_save.jsp" />
->>>>>>> 188601bf436cc729ab50726ff0733494241b9f89
-    
     <!-- icon-font -->
     <script src="https://use.fontawesome.com/bbddce3010.js"></script>
     
-    <!-- Facebook share API 
-    	 https://developers.facebook.com/docs/sharing/reference/share-dialog
-    -->
-<<<<<<< HEAD
     <script>
     <!-- google analytics -->
     	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -261,47 +213,11 @@
 		ga('create', 'UA-90558257-1', 'auto');
 		ga('send', 'pageview');
 		
-		
-		// 카드 저장용 모달
-		$('.saveBtn').click(function(e){ 
-			
-			var param = $(this).attr('id')
-			console.log(param);
-			
-			$.ajax({
-				url : '${ pageContext.request.contextPath }/search/ajax/saveCard.do',
-			    type: 'GET',
-			    contentType: "application/json", 
-			    data : {'param' : param},
-			    success : function(response){
-					console.log("response : ", response);
-					var dataSet = [];
-					for(var i = 0; i < response.contentsList.length; i++) {
-						dataSet.push({
-							"category" : response.contentsList[i].category, 
-							"dataType" : response.contentsList[i].dataType,
-							"source" : response.contentsList[i].source,
-							"title" : response.contentsList[i].title
-						});
-					}
-					
-					$('#category').text(dataSet[0].category);
-			    },
-			    error : function() {
-			    	alert('ERROR');
-			    }
-			});
-			
-			//모달 보이기
-			$('#saveCard').modal('show')
-			$('#memo').focus()
-		});
-    
-=======
-    <!-- 
-    <script>
->>>>>>> 188601bf436cc729ab50726ff0733494241b9f89
-		document.getElementById('share_facebook').onclick = function() {
+    <!-- Facebook share API 
+    	 https://developers.facebook.com/docs/sharing/reference/share-dialog
+    -->
+
+    document.getElementById('share_facebook').onclick = function() {
 		  FB.ui({
 		    method: 'share',
 		    display: 'popup',
@@ -309,6 +225,5 @@
 		  }, function(response){});
 		}
 	</script>
-	 -->
 </body>
 </html>
