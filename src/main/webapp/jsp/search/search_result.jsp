@@ -17,17 +17,7 @@
 
     <!-- MDL Hosted start -->
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-light_blue.min.css" />
-    
-    <!-- google analytics -->
-	<script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-		
-		ga('create', 'UA-90558257-1', 'auto');
-		ga('send', 'pageview');
-	</script>
+
 </head>
 <body>
     <div class="container">
@@ -214,7 +204,7 @@
     
     <!-- Modal -->
 	<jsp:include page="/jsp/modal/card_save_modal.jsp" />
-	<script>
+<!-- 	<script>
 		/* modal autofocus */
 // 		$('#saveCard').on('shown.bs.modal', function () {		
 // 			console.log("열림");
@@ -246,18 +236,44 @@
 		  
 // 		  $('#memo').focus()
 // 		}); 
-		$('#saveBtn').click(function(e){ 
+		
+	</script> -->
+    
+    <!-- Bootstrap JS SET -->
+    <script src="${ pageContext.request.contextPath }/js/jquery.1.11.1.js"></script>
+    <script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
+    
+    <!-- icon-font -->
+    <script src="https://use.fontawesome.com/bbddce3010.js"></script>
+    
+    <!-- Facebook share API 
+    	 https://developers.facebook.com/docs/sharing/reference/share-dialog
+    -->
+    <script>
+    <!-- google analytics -->
+    	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-90558257-1', 'auto');
+		ga('send', 'pageview');
+		
+		
+		// 카드 저장용 모달
+		$('.saveBtn').click(function(e){ 
 			
-			console.log("열림");
-			var param = $(this).attr('no')
+			var param = $(this).attr('id')
+			console.log(param);
 			
 			$.ajax({
-				url : '${ pageContext.request.contextPath }/modal/saveCard.do',
-			    type: 'POST',
+				url : '${ pageContext.request.contextPath }/search/ajax/saveCard.do',
+			    type: 'GET',
 			    contentType: "application/json", 
-			    data : {param : param},
+			    data : {'param' : param},
 			    success : function(response){
 					console.log("response : ", response);
+					var dataSet = [];
 					for(var i = 0; i < response.contentsList.length; i++) {
 						dataSet.push({
 							"category" : response.contentsList[i].category, 
@@ -278,19 +294,7 @@
 			$('#saveCard').modal('show')
 			$('#memo').focus()
 		});
-	</script>
     
-    <!-- Bootstrap JS SET -->
-    <script src="${ pageContext.request.contextPath }/js/jquery.1.11.1.js"></script>
-    <script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
-    
-    <!-- icon-font -->
-    <script src="https://use.fontawesome.com/bbddce3010.js"></script>
-    
-    <!-- Facebook share API 
-    	 https://developers.facebook.com/docs/sharing/reference/share-dialog
-    -->
-    <script>
 		document.getElementById('share_facebook').onclick = function() {
 		  FB.ui({
 		    method: 'share',
