@@ -112,15 +112,4 @@
 		ORDER BY no 
 	</select>
 	
-	<!-- 관심 키워드 입력  -->
-	<insert id="insertKeyword" parameterType="selectKeywordVO">
-		insert into Q_SELECT_KEYWORDS(NO, KEYWORD, MEMBER_NO)
-		values(NEXTVAL('Q_SELECT_KEYWORDS_NO'), #{checkArr}, #{memberNo})
-	</insert>
-	
-	<!-- 관심 키워드 입력  -->
-	<!-- <insert id="insertKeyword" parameterType="selectKeywordVO">
-		insert into Q_SELECT_KEYWORDS(NO, KEYWORD, MEMBER_NO)
-		values(NEXTVAL('Q_SELECT_KEYWORDS_NO'), #{keyword}, #{memberNo})
-	</insert> -->
 </mapper>
