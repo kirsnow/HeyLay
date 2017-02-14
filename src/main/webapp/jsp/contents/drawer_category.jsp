@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="ko">
 <%-- 카드 서랍 속 분야별 정렬 페이지 --%>
@@ -113,7 +114,18 @@
 						
 						                    <!-- card text -->
 						                    <div class="content mdl-card__supporting-text mdl-color-text--grey-800">
-						                        <p class="text-justify">${ card.summary }</p>
+						                        <p class="text-justify">
+						                        	<c:choose>
+			           									<c:when test="${ fn:length(card.summary) > 105 }">
+						                        			<c:out value="${ fn:substring(card.summary, 0, 105) }" /> ...
+			           									</c:when>
+			           									<c:otherwise>
+			           										<c:out value="${ card.summary }" />
+			           										<c:forEach var="i" begin="0" end="${(105 - fn:length(card.summary))*1.5}">
+			           											&nbsp;
+			           										</c:forEach>
+			           									</c:otherwise>
+			         								</c:choose></p>
 						                        <p class="text-right text-muted">${ card.daysAgo } 저장</p>
 						                    </div>
 						
