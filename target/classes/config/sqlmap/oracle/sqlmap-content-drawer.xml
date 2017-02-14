@@ -4,8 +4,8 @@
 <mapper namespace="io.planb.contents.dao.ContentDAO">
 
   	<!-- drawer -->
-	<select id="drawerCards" parameterType="int" resultType="savedVO">
-		select CS.NO as no, CS.MEMBER_NO as memberNo
+	<select id="drawerCards" parameterType="int" resultType="contentsVO">
+		select CS.NO as savedNo, CS.MEMBER_NO as memberNo
 		, CS.CONTENTS_NO as contentsNo, CO.TITLE as title, CO.SUMMARY as summary, CO.URL as url
 		, CO.VIEW_CNT as viewCnt
 		, count(SAV.CONTENTS_NO) as saveCnt, count(SPA.CONTENTS_NO) as reportCnt, count(LIK.CONTENTS_NO) as likeCnt

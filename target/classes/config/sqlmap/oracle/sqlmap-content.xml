@@ -25,12 +25,10 @@
 			WHERE keyword = #{ keyword }
 	</update>
 	
-	<insert id="insertCardToSave" parameterType="savedVO">
+	<insert id="insertCardToSave" parameterType="contentsVO">
 		INSERT INTO q_contents_saved (no, member_no, contents_no, directory_no)
 		VALUES ( NEXTVAL('q_contents_saved_no'), #{memberNo}, #{contentsNo}, #{directoryNo} )
 	</insert>
-	
-	
 	
 	<!-- Directory -->
 	<select id="selectNextDirNo" resultType="int">

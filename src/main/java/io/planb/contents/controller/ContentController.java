@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import io.planb.contents.service.ContentService;
+import io.planb.contents.vo.ContentsVO;
 import io.planb.contents.vo.SavedHeaderVO;
 import io.planb.contents.vo.SavedVO;
 import io.planb.keywords.vo.KeywordsVO;
@@ -35,11 +36,11 @@ public class ContentController {
 			int memberNo = userVO.getNo();
 			
 			List<SavedHeaderVO> drawerHeaders = service.drawerDates(memberNo);
-			List<SavedVO> drawerCards = service.drawerCards(memberNo);
+			List<ContentsVO> drawerCards = service.drawerCards(memberNo);
 			
 			mav.setViewName("contents/drawer_day");
 			mav.addObject("drawerHeaders", drawerHeaders);
-			mav.addObject("drawerCards", drawerCards);
+			mav.addObject("cards", drawerCards);
 		}
 		
 		return mav;
@@ -57,11 +58,11 @@ public class ContentController {
 			int memberNo = userVO.getNo();
 			
 			List<SavedHeaderVO> drawerHeaders = service.drawerCategory(memberNo);
-			List<SavedVO> drawerCards = service.drawerCards(memberNo);
+			List<ContentsVO> drawerCards = service.drawerCards(memberNo);
 			
 			mav.setViewName("contents/drawer_category");
 			mav.addObject("drawerHeaders", drawerHeaders);
-			mav.addObject("drawerCards", drawerCards);
+			mav.addObject("cards", drawerCards);
 		}
 		
 		return mav;
@@ -79,11 +80,11 @@ public class ContentController {
 			int memberNo = userVO.getNo();
 			
 			List<SavedHeaderVO> drawerHeaders = service.drawerSource(memberNo);
-			List<SavedVO> drawerCards = service.drawerCards(memberNo);
+			List<ContentsVO> drawerCards = service.drawerCards(memberNo);
 			
 			mav.setViewName("contents/drawer_source");
 			mav.addObject("drawerHeaders", drawerHeaders);
-			mav.addObject("drawerCards", drawerCards);
+			mav.addObject("cards", drawerCards);
 		}
 		
 		return mav;
@@ -101,11 +102,11 @@ public class ContentController {
 			int memberNo = userVO.getNo();
 			
 			List<SavedHeaderVO> drawerHeaders = service.drawerDirectory(memberNo);
-			List<SavedVO> drawerCards = service.drawerCards(memberNo);
+			List<ContentsVO> drawerCards = service.drawerCards(memberNo);
 			
 			mav.setViewName("contents/drawer_directory");
 			mav.addObject("drawerHeaders", drawerHeaders);
-			mav.addObject("drawerCards", drawerCards);
+			mav.addObject("cards", drawerCards);
 		}
 		
 		return mav;

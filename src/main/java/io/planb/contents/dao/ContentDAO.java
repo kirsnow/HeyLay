@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import io.planb.contents.vo.ContentsVO;
 import io.planb.contents.vo.SavedHeaderVO;
 import io.planb.contents.vo.SavedVO;
 import io.planb.directory.vo.DirectoryVO;
@@ -30,8 +31,8 @@ public class ContentDAO {
 		sqlSessionTemplate.update("io.planb.contents.dao.ContentDAO.updateStatus", no);
 	}
 	
-	public List<SavedVO> drawerCards(int memberNo) {
-		List<SavedVO> drawerCards = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.drawerCards", memberNo);
+	public List<ContentsVO> drawerCards(int memberNo) {
+		List<ContentsVO> drawerCards = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.drawerCards", memberNo);
 		return drawerCards;
 	}
 	

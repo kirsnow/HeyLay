@@ -7,13 +7,13 @@
 		<!-- card top: contents source -->
 		<div class="card-labels mdl-card__title mdl-color-text--grey-500">
 			<span class="label label-default">
-				<c:out value="${ card.category }" />
+				<c:out value="${ card.categoryName }" />
 			</span>
 			<span class="label label-info"> 
 				<c:out value="${ card.dataType }" />
 			</span>
 			<a href="${ card.sourceUrl }" class="label label-primary" target="_blank" title="원본 사이트로 이동(새 창)"> 
-				<c:out value="${ card.source }" />
+				<c:out value="${ card.sourceName }" />
 			</a>
 			&nbsp;
 			<a href="${ card.url }" target="_blank" title="원본 페이지로 이동(새 창)"> 
@@ -31,10 +31,10 @@
 		
 		<!-- card title -->
 		<div class="mdl-card__title">
-			<h5 class="card-title mdl-card__title-text drop-text-2"
-				title="${ card.title }" data-toggle="tooltip" data-placement="bottom">
-				${ card.title }
-			</h5>
+			<h5 class="card-title mdl-card__title-text drop-text-2" 
+			title="${ card.title }" data-toggle="tooltip" data-placement="bottom">
+			<a href="${ pageContext.request.contextPath }/search/contents.do?no=${ card.contentsNo }&q=${ searchResult.query }" 
+				title="상세 페이지 더 보기">${ card.title }</a></h5>
 		</div>
 	
 		<!-- card text -->
@@ -49,7 +49,7 @@
 			<div id="save" class="btn-group dropdown pull-right">
 				<c:choose>
 					<c:when test="${ (userVO ne null) and (not empty userVO) }">
-						<a href="#" role="button" id="${ card.no }" class="saveCardBtn nofocus"
+						<a href="#" role="button" id="${ card.contentsNo }" class="saveCardBtn nofocus"
 							data-toggle="modal" data-target="#saveCardModal"
 							title="카드 담기"> 
 							<i class="fa fa-bookmark-o fa-2x text-muted" aria-hidden="true"></i>
@@ -57,7 +57,7 @@
 					</c:when>
 					<c:otherwise>
 						<a href="${ pageContext.request.contextPath }/login/login.do"
-							id="${ card.no }" class="saveCardBtn"
+							id="${ card.contentsNo }" class="saveCardBtn"
 							title="카드 담기: 로그인이 필요한 서비스입니다">
 							<i class="fa fa-bookmark-o fa-2x text-muted" aria-hidden="true"></i>
 						</a>
@@ -68,8 +68,9 @@
 	
 		<!-- card action buttons (bottom) -->
 		<div class="mdl-card__actions mdl-card--border">
-			<a href="${ pageContext.request.contextPath }/search/contents.do?no=${ card.no }&q=${ searchResult.query }"
-				class="btn btn-link" title="상세 페이지로 이동"> 더 보기 </a>
+			<a href="${ card.url }" target="_blank" title="원본 페이지로 이동(새 창)" class="btn btn-link">
+				원본 페이지&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i>
+			</a>
 			
 			<!-- buttons (bottom-right) -->
 			<div class="pull-right">
@@ -113,14 +114,14 @@
 					</a>
 					<ul class="dropdown-menu dropdown-menu-right" role="menu">
 						<li>
-							<a href="${ pageContext.request.contextPath }/contact/bug.do?no=${ card.no }&type=contents"
+							<a href="${ pageContext.request.contextPath }/contact/bug.do?no=${ card.contentsNo }&type=contents"
 								title="오류 신고">
 								<i class="fa fa-bug fa-fw" aria-hidden="true"></i>
 								오류 신고
 							</a>
 						</li>
 						<li>
-							<a href="${ pageContext.request.contextPath }/contact/spamContents.do?no=${ card.no }"
+							<a href="${ pageContext.request.contextPath }/contact/spamContents.do?no=${ card.contentsNo }"
 								title="유해물 신고">
 								<i class="fa fa-ban fa-fw" aria-hidden="true"></i>
 								유해물 신고
