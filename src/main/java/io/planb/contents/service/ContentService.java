@@ -23,8 +23,8 @@ public class ContentService {
 		return keywordList;
 	}
 	
-	public void updateStatus(int no) {
-		dao.updateStatus(no);
+	public void updateStatus(KeywordsVO keyword) {
+		dao.updateStatus(keyword);
 	} 
 	
 	public List<ContentsVO> drawerCards(int memberNo) {

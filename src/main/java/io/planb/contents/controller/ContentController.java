@@ -130,10 +130,17 @@ public class ContentController {
 	}
 	
 	@RequestMapping("/contents/update_status.do")
-	public String updateStatus(@RequestParam("no") int no, @RequestParam("memberNo") int memberNo) {
-		service.updateStatus(no);
+	public String updateStatus(HttpSession session, @RequestParam("no") int no) {
+		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
+		int userNo = userVO != null ? userVO.getNo() : 0;
 		
-		return "redirect:/contents/my_search.do?memberNo="+memberNo;
+		KeywordsVO keywords = new KeywordsVO();
+		keywords.setMemberNo(userNo);
+		keywords.setNo(no);
+		
+		service.updateStatus(keywords);
+		
+		return "redirect:/contents/my_search.do?memberNo="+userNo;
 	}
 	
 	//통계 분석 

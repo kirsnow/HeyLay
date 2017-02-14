@@ -1,16 +1,18 @@
 package io.planb.keywords.vo;
 
+import java.sql.Date;
+
 public class KeywordsVO {
 	private int no;
 	private String keyword;
-	private String regDate;
+	private Date regDate;
 	private String status;
 	private int memberNo;
 	private int cnt;
 	
 	public KeywordsVO() {}
 
-	public KeywordsVO(int no, String keyword, String regDate, String status, int memberNo, int cnt) {
+	public KeywordsVO(int no, String keyword, Date regDate, String status, int memberNo, int cnt) {
 		super();
 		this.no = no;
 		this.keyword = keyword;
@@ -36,11 +38,11 @@ public class KeywordsVO {
 		this.keyword = keyword;
 	}
 
-	public String getRegDate() {
+	public Date getRegDate() {
 		return regDate;
 	}
 
-	public void setRegDate(String regDate) {
+	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
 

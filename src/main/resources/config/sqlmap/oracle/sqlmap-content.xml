@@ -11,18 +11,18 @@
 	</sql> -->
 
  	<select id="selectKeywordList" parameterType="int" resultType="keywordsVO">
-		SELECT max(no), keyword, to_char(max(reg_date), 'yyyy-mm-dd') regDate
+		SELECT max(no), keyword, max(reg_date) as regDate
 			FROM q_keywords
 			WHERE status='Y' and member_no = #{ memberNo }
-            GROUP by keyword
+      		GROUP by keyword
 			ORDER BY regDate DESC
 			LIMIT 50
 	</select> 
 	
-	<update id="updateStatus" parameterType="int">
+	<update id="updateStatus" parameterType="keywordsVO">
 		UPDATE q_keywords
 			SET status='N'
-			WHERE keyword = #{ keyword }
+			WHERE keyword = #{ keyword } and member_no = #{ memberNo }
 	</update>
 	
 	<insert id="insertCardToSave" parameterType="contentsVO">
