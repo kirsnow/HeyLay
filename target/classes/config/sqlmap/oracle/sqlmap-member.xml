@@ -118,4 +118,9 @@
 		ORDER BY no 
 	</select>
 	
+	<insert id="insertKeywords" parameterType="selectKeywordsVO">
+		INSERT INTO q_select_keywords (no, keyword, member_no) 
+		VALUES (NEXTVAL('q_select_keywords_no'), #{ keyword }, #{ memberNo }) 
+	</insert>
+	
 </mapper>

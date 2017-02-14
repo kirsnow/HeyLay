@@ -1,4 +1,3 @@
-
 package io.planb.member.service;
 
 import java.util.ArrayList;
@@ -19,7 +18,7 @@ import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.dao.MemberDAO;
 import io.planb.member.vo.IdentifyQuestionVO;
 import io.planb.member.vo.MemberVO;
-import io.planb.member.vo.SelectKeywordVO;
+import io.planb.member.vo.SelectKeywordsVO;
 
 @Service
 public class MemberServiceImp implements MemberService {
@@ -167,6 +166,17 @@ public class MemberServiceImp implements MemberService {
 		List<IdentifyQuestionVO> idenQuestionList = dao.selectIdenQuestion();
 		
 		return idenQuestionList;
+	}
+
+	@Override
+	public void insertKeywords(ArrayList<String> list, int no) {
+		for(String keyword : list) {
+			SelectKeywordsVO keywords = new SelectKeywordsVO();
+			keywords.setMemberNo(no);
+			keywords.setKeyword(keyword);
+			
+			dao.insertKeywords(keywords);
+		}
 	}
 
 }

@@ -32,18 +32,20 @@ public class LoginController {
 	public String login(@ModelAttribute("member") MemberVO member, Model model) {
 		MemberVO userVO = service.login(member);
 		
+		// member.getEmail()이랑 email 일치하는 userVO 가 있다면
 		if(userVO != null) {
+			
+			// member.getPassword()랑 userVO.getPassword가 일치한다면
 			if(userVO.getPassword().equals(member.getPassword())) { 
 				model.addAttribute("userVO", userVO);
 
+				// 로그인 된 유저의 선호 키워드가 없다면
 				if(userVO.getSelectKeywords() == 0) {
-					System.out.println(userVO.toString());
-					
 					List<KeywordsVO> interestKeywordList = service.selectInterestList();
 					model.addAttribute("interestKeywordList", interestKeywordList);
 					
 					return "membership/interest";
-				} else return "/";
+				} else return "redirect:/";
 			}
 			else model.addAttribute("msg", "잘못된 비밀번호입니다. 다시 시도하세요.");
 		} else model.addAttribute("msg", "이메일을 인식할 수 없습니다. 다시 시도하세요.");
@@ -59,14 +61,4 @@ public class LoginController {
     	return "redirect:/";
     }
 }
-
-
-
-
-
-
-
-
-
-
 

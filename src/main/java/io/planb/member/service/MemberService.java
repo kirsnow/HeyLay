@@ -11,7 +11,7 @@ import io.planb.directory.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.vo.IdentifyQuestionVO;
 import io.planb.member.vo.MemberVO;
-import io.planb.member.vo.SelectKeywordVO;
+import io.planb.member.vo.SelectKeywordsVO;
 
 public interface MemberService {
 	
@@ -46,6 +46,6 @@ public interface MemberService {
 
 	public List<IdentifyQuestionVO> selectIdenQuestion();
 
+	public void insertKeywords(ArrayList<String> list, int no);
 
-	
 }

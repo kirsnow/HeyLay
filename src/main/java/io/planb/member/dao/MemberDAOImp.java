@@ -1,5 +1,6 @@
- package io.planb.member.dao;
+package io.planb.member.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -12,7 +13,7 @@ import io.planb.keywords.vo.KeywordsVO;
 import io.planb.leaved.vo.LeavedVO;
 import io.planb.member.vo.IdentifyQuestionVO;
 import io.planb.member.vo.MemberVO;
-import io.planb.member.vo.SelectKeywordVO;
+import io.planb.member.vo.SelectKeywordsVO;
 
 @Repository
 public class MemberDAOImp implements MemberDAO {
@@ -121,5 +122,9 @@ public class MemberDAOImp implements MemberDAO {
 		
 		return idenQuestionList;
 	}
-	
+
+	@Override
+	public void insertKeywords(SelectKeywordsVO keywords) {
+		sqlSessionTemplate.insert("io.planb.member.dao.MemberDAO.insertKeywords", keywords);
+	}
 }
