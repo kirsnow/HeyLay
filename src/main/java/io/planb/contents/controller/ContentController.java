@@ -112,8 +112,11 @@ public class ContentController {
 		return mav;
 	}
 	
+	/* 큐레이션 */
 	@RequestMapping("/contents/curation.do")
 	public String curation(Model model) {
+		List<ContentsVO> popularList = service.selectPopularList();
+		model.addAttribute("popularList", popularList);
 		
 		return "contents/curation";
 	}

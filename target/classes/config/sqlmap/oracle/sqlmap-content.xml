@@ -95,6 +95,25 @@
 		DELETE FROM q_member 
 		WHERE no = #{ no } 
 	</delete> -->
+	
+	<select id="selectPopularList" resultType="contentsVO">
+		SELECT CO.NO contentsNo, CO.TITLE as title, CO.SUMMARY as summary, CO.URL as url 
+			, CO.VIEW_CNT as viewCnt 
+			, count(SPA.CONTENTS_NO) as reportCnt, count(LIK.CONTENTS_NO) as likeCnt 
+			, CO.SOURCE_NO as sourceNo, SO.NAME as sourceName, SO.URL as sourceUrl, SO.LOGO_IMG as logoImg 
+		    , CO.CATEGORY_NO as categoryNo, CA.CATEGORY as categoryName 
+		    , DAT.DATA_TYPE as dataType 
+		FROM Q_CONTENTS CO 
+		INNER JOIN Q_CATEGORY CA on CA.NO = CO.CATEGORY_NO 
+		INNER JOIN Q_SOURCE SO on SO.NO = CO.SOURCE_NO 
+		INNER JOIN Q_DATA_TYPE DAT on DAT.NO = SO.DATA_TYPE 
+		LEFT JOIN Q_CONTENTS_SPAM SPA on SPA.CONTENTS_NO = CO.NO 
+		LEFT JOIN Q_LIKE LIK on LIK.CONTENTS_NO = CO.NO 
+		WHERE co.ban = 'N' 
+		GROUP BY CO.NO, CA.NO, SO.NO, DAT.NO 
+		ORDER BY co.view_cnt DESC, co.last_scraped DESC 
+		LIMIT 3 
+	</select>
 </mapper>
 
 

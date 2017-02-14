@@ -83,16 +83,6 @@
 		                       	 <label for="genderWomen">여</label> <input type="radio" name="gender" id="genderWomen" value="F" alt="성별 선택 라디오 박스 (여)"/>  
 		                         <label for="genderEtc">기타</label> <input type="radio" name="gender" id="genderEtc" value="O" alt="성별 선택 라디오 박스 (기타)"/>  
 		                     </span>
-							 <script>
-								console.log('${userVO.gender}');
-								if ('${userVO.gender}' == 'M') {
-									$("input[value='M']").prop("checked", true);
-								} else if ('${userVO.gender}' == 'F') {
-									$("input[value='F']").prop("checked", true);
-								} else {
-									$("input[value='O']").prop("checked", true);
-								}
-							</script>
 	                     </div>
 	                  </div>
                   </div>
@@ -106,14 +96,6 @@
 					           <label for="no"> 아니오   </label>
 					           		<input type="radio" name="emailReceive" id="no" value="N" alt="메일 수신여부 선택 라디오 박스(아니오)"/>
 					         </span>
-					         <script>
-								console.log('${userVO.emailReceive}');
-								if ('${userVO.emailReceive}' == 'Y') {
-									$("input[value='Y']").prop("checked", true);
-								} else {
-									$("input[value='N']").prop("checked", true);
-								}
-							</script>
 		                  </div>
 	                  </div>
                   </div>
@@ -146,7 +128,7 @@
 							
 							<div class="row">
 							  <div class= "col-md-6 col-md-offset-3">
-							    <input type="password" name="password" class="form-control" placeholder="비밀번호" alt="비밀번호 입력 폼"/>
+							    <input type="password" name="password" id="passwordForUpdate" class="form-control" placeholder="비밀번호" alt="비밀번호 입력 폼"/>
 							    <div class="text-center">
 							    	<small>회원정보 수정을 위해 비밀번호를 입력해주세요.</small>
 							    </div>
@@ -221,6 +203,28 @@
 </script>
  
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<script>
+	console.log('${userVO.gender}');
+	if ('${userVO.gender}' == 'M') {
+		$("input[value='M']").prop("checked", true);
+	} else if ('${userVO.gender}' == 'F') {
+		$("input[value='F']").prop("checked", true);
+	} else {
+		$("input[value='O']").prop("checked", true);
+}
+</script>
+
+<script>
+	console.log('${userVO.emailReceive}');
+	if ('${userVO.emailReceive}' == 'Y') {
+		$("input[value='Y']").prop("checked", true);
+	} else {
+		$("input[value='N']").prop("checked", true);
+	}
+</script>
+
+
 <!-- Google reCAPTCHA API : 로봇이 아닙니다. -->
 <script src='https://www.google.com/recaptcha/api.js'></script>
 	   
