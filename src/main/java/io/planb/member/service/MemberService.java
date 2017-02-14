@@ -46,6 +46,8 @@ public interface MemberService {
 
 	public List<IdentifyQuestionVO> selectIdenQuestion();
 
+	public int selectWithdrawContentCnt(int memberNo);							//회원 탈퇴 시 보유 컨텐츠 호출
+
 
 	
 }

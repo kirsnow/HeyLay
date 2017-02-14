@@ -221,3 +221,9 @@
 		-webkit-line-clamp: 5;
 		-webkit-box-orient: vertical;
 	}
+	
+	.numberFont {
+		font-size: 20px;
+		color:#03A9F4;
+		font-weight: bold;
+	}

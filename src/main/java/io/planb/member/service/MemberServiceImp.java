@@ -168,5 +168,12 @@ public class MemberServiceImp implements MemberService {
 		
 		return idenQuestionList;
 	}
+	
+	//회원 탈퇴 시 보유 컨텐츠 호출
+	@Override
+	public int selectWithdrawContentCnt(int memberNo) {
+		int withdrawContentCnt = dao.selectWithdrawContentCnt(memberNo);
+		return withdrawContentCnt;
+	}
 
 }
