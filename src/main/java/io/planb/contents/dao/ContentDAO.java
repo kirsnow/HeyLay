@@ -74,4 +74,10 @@ public class ContentDAO {
 		sqlSessionTemplate.insert("io.planb.contents.dao.ContentDAO.insertCardToSave", card);
 	}
 
+	public List<ContentsVO> selectPopularList() {
+		List<ContentsVO> popularList = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.selectPopularList");
+		
+		return popularList;
+	}
+
 }

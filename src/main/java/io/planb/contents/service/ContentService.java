@@ -76,4 +76,10 @@ public class ContentService {
 		return dirNo;
 	}
 
+	public List<ContentsVO> selectPopularList() {
+		List<ContentsVO> popularList = dao.selectPopularList();
+		
+		return popularList;
+	}
+
 }
