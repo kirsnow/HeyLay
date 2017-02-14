@@ -1,7 +1,6 @@
 package io.planb.member.vo;
 
 public class MemberVO {
-
 	private int no;
 	private String email;
 	private String password;
@@ -22,11 +21,38 @@ public class MemberVO {
 	private String profileImg;
 	private int reportCnt;
 	private String beforePassword;
-	
+	private int selectKeywords;
 	
 	public MemberVO() {}
 
-	
+	public MemberVO(int no, String email, String password, String firstName, String lastName, String birth,
+			String gender, String emailReceive, String country, String city, int question, String answer, String type,
+			String rest, String ban, String regDate, String lastDate, String profileImg, int reportCnt,
+			String beforePassword, int selectKeywords) {
+		super();
+		this.no = no;
+		this.email = email;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.birth = birth;
+		this.gender = gender;
+		this.emailReceive = emailReceive;
+		this.country = country;
+		this.city = city;
+		this.question = question;
+		this.answer = answer;
+		this.type = type;
+		this.rest = rest;
+		this.ban = ban;
+		this.regDate = regDate;
+		this.lastDate = lastDate;
+		this.profileImg = profileImg;
+		this.reportCnt = reportCnt;
+		this.beforePassword = beforePassword;
+		this.selectKeywords = selectKeywords;
+	}
+
 	public int getNo() {
 		return no;
 	}
@@ -187,6 +213,14 @@ public class MemberVO {
 		this.beforePassword = beforePassword;
 	}
 
+	public int getSelectKeywords() {
+		return selectKeywords;
+	}
+
+	public void setSelectKeywords(int selectKeywords) {
+		this.selectKeywords = selectKeywords;
+	}
+
 	@Override
 	public String toString() {
 		return "MemberVO [no=" + no + ", email=" + email + ", password=" + password + ", firstName=" + firstName
@@ -194,7 +228,7 @@ public class MemberVO {
 				+ emailReceive + ", country=" + country + ", city=" + city + ", question=" + question + ", answer="
 				+ answer + ", type=" + type + ", rest=" + rest + ", ban=" + ban + ", regDate=" + regDate + ", lastDate="
 				+ lastDate + ", profileImg=" + profileImg + ", reportCnt=" + reportCnt + ", beforePassword="
-				+ beforePassword + "]";
+				+ beforePassword + ", selectKeywords=" + selectKeywords + "]";
 	}
 
 }

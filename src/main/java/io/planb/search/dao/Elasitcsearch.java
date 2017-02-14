@@ -24,7 +24,7 @@ public class Elasitcsearch {
      * 미지정 시, 상위 10건이 표시된다.
      */
 	private final int searchSize = 100;
-	private final String ipES = "35.166.249.194";
+	private final String ipAmazon = "35.166.249.194";
 	private final String ipBit = "192.168.1.64";
 
 	/**
@@ -37,7 +37,34 @@ public class Elasitcsearch {
 	 */
 	public SearchVO searchURI(String q, String ip) {
 		SearchVO searchResult = null;
-		String searchIP = ip != null ? ip : ipES;
+		String searchIP = null;
+		
+		/* IP setup */
+		if(ip == null) {
+			searchIP = ipBit;
+		} else {
+			ip = ip.toLowerCase();
+			
+			switch(ip) {
+			
+			case "b": 
+			case "bit": 
+			case "l": 
+			case "local": 
+			case "localhost": searchIP = ipBit;
+
+			case "a":
+			case "amazon":
+			case "e":
+			case "ec2":
+			case "c":
+			case "cloud": searchIP = ipAmazon;
+			
+			default: searchIP = ip;
+			}
+		}
+		
+		/* Search */
 		try {
 			String restAPI = "http://" + searchIP + ":9200/_all/_search?pretty=true" 
 							+ "&q=" + URLEncoder.encode(q, "UTF-8");
@@ -47,6 +74,9 @@ public class Elasitcsearch {
 			JSONObject json = jsonReader.readJsonFromUrl(restAPI);
 			searchResult = parseJsonToSearchHeader(json);
 			searchResult.setQuery(q);
+			
+			/* Highlight search query ** only one word */
+			searchResult.setContents(highlighter(q, searchResult.getContents()));
 			
 		} catch(JSONException | IOException e) {
 			e.printStackTrace();
@@ -146,10 +176,38 @@ public class Elasitcsearch {
 				contentsVO.setViewCnt(viewCnt);
 				
 				//Save ContentsVO to Contents List
-				if(!ban.equals("Y")) {
-				contentsList.add(contentsVO);
-				}
+				if(!ban.equals("Y")) contentsList.add(contentsVO);
 			}
 			return contentsList;
 	  }
+	
+	public List<ContentsVO> highlighter(String q, List<ContentsVO> contentsList) {
+		
+		List<ContentsVO> highlighted = new ArrayList<ContentsVO>();
+		
+		for(ContentsVO contents : contentsList) {
+			String title = contents.getTitle();
+			String summary = contents.getSummary();
+			
+			List<String> qCases = new ArrayList<String>();
+			qCases.add(q.toLowerCase());
+			qCases.add(q.toUpperCase());
+			qCases.add(q.toLowerCase().substring(0, 1).toUpperCase() + q.substring(1));
+			
+			title = title.replace(q, "<mark>" + q + "</mark>");
+			summary = summary.replace(q, "<mark>" + q + "</mark>");
+			
+			for(String qCase : qCases) {
+				if(!qCase.equals(q)) {
+					title = title.replace(qCase, "<mark>" + qCase + "</mark>");
+					summary = summary.replace(qCase, "<mark>" + qCase + "</mark>");
+				}
+			}
+			
+			contents.setTitle(title);
+			contents.setSummary(summary);
+			highlighted.add(contents);
+		}
+		return highlighted;
+	}
 }

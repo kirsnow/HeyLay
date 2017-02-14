@@ -17,17 +17,7 @@
 
     <!-- MDL Hosted start -->
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-light_blue.min.css" />
-    
-    <!-- google analytics -->
-	<script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-		
-		ga('create', 'UA-90558257-1', 'auto');
-		ga('send', 'pageview');
-	</script>
+
 </head>
 <body>
     <div class="container">
@@ -73,106 +63,12 @@
         	<c:otherwise>
         		<div class="row">
 					<div class="col-xs-12 lead">
-						<c:out value="${ searchResult.query }" /> 검색결과 ${ searchResult.total }건
+						<c:out value="${ searchResult.query }" /> 검색결과 ${ searchResult.total }건 :P
 					</div>
 				</div>
 				<div class="row">
 					<section class="col-xs-12 col-md-9 card-container mdl-grid">
-						<c:forEach var="card" items="${ searchResult.contents }" varStatus="loop">
-							<!-- card -->
-			                <div class="card-ancestor mdl-card mdl-cell mdl-cell--4-col mdl-cell--12-col-phone mdl-shadow--3dp">
-			
-			                    <!-- card top: contents source -->
-			                    <div class="card-labels mdl-card__title mdl-color-text--grey-500">
-			                        <span class="label label-default">
-		                            	<c:out value="${ card.category }" />
-		                            </span>
-		                            <span class="label label-info">
-		                            	<c:out value="${ card.dataType }" />
-		                            </span>
-		                            <a href="${ card.sourceUrl }" class="label label-primary" target="_blank" title="원본 사이트로 이동(새 창)">
-		                            	<c:out value="${ card.source }" />
-		                            </a>
-			                    </div>
-			                    <c:if test="${ card.imgUrl ne null }">
-				                    <!-- card image -->
-				                    <figure class="mdl-card__media" style="margin:0px">
-				                        <img src="<c:out value="${ card.imgUrl }" />" style="width:100%; height:200px">
-				                    </figure>
-								</c:if>
-			                    <!-- card title -->
-			                    <div class="mdl-card__title">
-			                        <h5 class="card-title mdl-card__title-text drop-text-2" title="${ card.title }"
-				                        data-toggle="tooltip" data-placement="bottom">
-			                        	<c:out value="${ card.title }" />&nbsp;
-			                        </h5>
-			                        <div class="pull-right">
-				                        <a href="<c:out value="${ card.url }" />" target="_blank" title="원본 페이지로 이동(새 창)">
-				                        	<i class="fa fa-external-link" aria-hidden="true"></i>
-			                        	</a>
-		                        	</div>
-			                    </div>
-			                    
-			
-			                    <!-- card text -->
-			                    <div class="content mdl-card__supporting-text mdl-color-text--grey-800 ">
-			                        <p class="card-content drop-text-5" title="${ card.summary }">
-			                        	<c:out value="${ card.summary }" />
-		                        	</p>
-			                    </div>
-			
-			                    <!-- card menu (top-right) -->
-								<div class="mdl-card__menu">
-									<div id="save" class="btn-group dropdown pull-right">
-										<c:choose>
-											<c:when test="${ (userVO ne null) and (not empty userVO) }">
-												<a href="#" role="button" class="saveCardBtn"
-												 	data-toggle="modal" data-target="#saveCardModal" 
-												 	id="${ card.no }" title="카드 담기">
-			                                    	<i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
-			                                	</a>
-											</c:when>
-											<c:otherwise>
-												<a href="${ pageContext.request.contextPath }/login/login.do" class="saveCardBtn" 
-													id="${ card.no }" title="카드 담기: 로그인이 필요한 서비스입니다">
-			                                    	<i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
-			                                	</a>
-											</c:otherwise>
-										</c:choose>
-									</div>
-								</div>
-
-								<!-- card action buttons (bottom) -->
-			                    <div class="mdl-card__actions mdl-card--border">
-			                        <a href="${ pageContext.request.contextPath }/search/contents.do?no=${ card.no }&q=${ searchResult.query }" class="btn btn-link" title="상세 페이지로 이동">
-			                        	더 보기
-			                        </a>
-			                        <!-- buttons (bottom-right) -->
-			                        <div class="pull-right">
-			                            <div id="share" class="btn-group dropup">
-			                                <a href="#" role="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="외부 서비스로 공유">
-			                                    <i class="fa fa-share-alt fa-lg mdl-color-text--grey-500" aria-hidden="true"></i>
-			                                </a>
-			                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
-			                                    <li><a href="#" title="카카오톡으로 공유"><i class="fa fa-commenting fa-fw" aria-hidden="true"></i> KakaoTalk</a></li>
-			                                    <li><a href="#" title="페이스북으로 공유"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i> Facebook</a></li>
-			                                    <li><a href="#" title="트위터로 공유"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i> Twitter</a></li>
-			                                    <li><a href="#" title="에버노트로 공유"><i class="fa fa-sticky-note fa-fw" aria-hidden="true"></i> Evernote</a></li>
-			                                </ul>
-			                            </div>
-			                            <div id="report" class="btn-group dropup" title="신고">
-			                                <a href="#" role="button" class="btn dropdown-toggle mdl-color-text--grey-500" data-toggle="dropdown" aria-expanded="false" title="신고">
-			                                    <i class="fa fa-exclamation-triangle fa-lg" aria-hidden="true"></i>
-			                                </a>
-			                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
-			                                    <li><a href="${ pageContext.request.contextPath }/contact/bug.do?no=${ card.no }&type=contents" title="오류 신고"><i class="fa fa-bug fa-fw" aria-hidden="true"></i> 오류 신고</a></li>
-			                                    <li><a href="${ pageContext.request.contextPath }/contact/spamContents.do?no=${ card.no }" title="유해물 신고"><i class="fa fa-ban fa-fw" aria-hidden="true"></i> 유해물 신고</a></li>
-			                                </ul>
-			                            </div>
-			                        </div> <!-- /buttons (bottom-right) -->
-			                    </div> <!-- /card action buttons (bottom) -->
-			                </div> <!-- /card -->
-						</c:forEach>
+						<jsp:include page="/jsp/component/card.jsp" />
 					</section>
 
 					<!-- Search result filter -->
@@ -210,16 +106,24 @@
     
     <!-- Modal -->
 	<jsp:include page="/jsp/modal/card_save.jsp" />
-    
     <!-- icon-font -->
     <script src="https://use.fontawesome.com/bbddce3010.js"></script>
     
+    <script>
+    <!-- google analytics -->
+    	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-90558257-1', 'auto');
+		ga('send', 'pageview');
+		
     <!-- Facebook share API 
     	 https://developers.facebook.com/docs/sharing/reference/share-dialog
     -->
-    <!-- 
-    <script>
-		document.getElementById('share_facebook').onclick = function() {
+
+    document.getElementById('share_facebook').onclick = function() {
 		  FB.ui({
 		    method: 'share',
 		    display: 'popup',
@@ -227,6 +131,5 @@
 		  }, function(response){});
 		}
 	</script>
-	 -->
 </body>
 </html>
