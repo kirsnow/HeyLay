@@ -98,11 +98,11 @@
 	
 	<!-- 관심 키워드 선택 페이지를 위한 키워드 호출   -->
 	<select id="selectInterestList" resultType="KeywordsVO">
-		SELECT keyword, COUNT(keyword) as cnt, search_result 
+		SELECT keyword, COUNT(keyword) as cnt
 		FROM Q_KEYWORDS
-        
-		GROUP BY keyword, search_result
-		ORDER BY cnt DESC, search_result DESC
+ 		where search_result > 0
+		GROUP BY keyword
+		ORDER BY cnt DESC
 		Limit 30
 	</select>
 	
@@ -111,5 +111,5 @@
 		FROM q_identify_question 
 		ORDER BY no 
 	</select>
-
+	
 </mapper>

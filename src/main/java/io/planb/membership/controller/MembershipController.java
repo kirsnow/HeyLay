@@ -18,6 +18,7 @@ import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.service.MemberService;
 import io.planb.member.vo.IdentifyQuestionVO;
 import io.planb.member.vo.MemberVO;
+import io.planb.member.vo.SelectKeywordVO;
 
 
 @Controller
@@ -36,17 +37,15 @@ public class MembershipController {
 	
 	
 	@RequestMapping(value="/membership/membershipForm.do", method=RequestMethod.POST)
-	public String membership(@ModelAttribute("member") MemberVO member, Model model, KeywordsVO interestKeyword) {
+	public String membership(@ModelAttribute("member") MemberVO member, Model model) {
 		service.enroll(member);
-		List<KeywordsVO> interestKeywordList = service.selectInterestList();
+		
 		
 		model.addAttribute("memberVO", member);
-		model.addAttribute("interestKeywordList", interestKeywordList);
 		
-		System.out.println("interestKeywordList : " + interestKeywordList);
-		
-		return "membership/interest";
+		return "redirect:/";
 	}
+	
 	
 	@RequestMapping(value="/contents/update_type.do", method=RequestMethod.POST)
 	public String updateType(Model model, @RequestParam("no") int no) {
@@ -73,11 +72,6 @@ public class MembershipController {
 		return "완료";
 	}
 	
-	/*관심 키워드 선택 
-	@RequestMapping("/interest.do")
-	public ModelAndView interestList() {
-		
-	}*/
 }
 
 

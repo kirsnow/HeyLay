@@ -39,7 +39,7 @@
 			<div class="right_col" role="main">
 				<section>
 					<div id="container">
-						<div class="row">
+						<div class="row marginTop40">
 							<div class="col-md-2">총 신고 건수 ${ spamCnt } 개</div>
 							<div class="col-md-8 col-md-push-2"></div>
 							<div class="col-md-2">

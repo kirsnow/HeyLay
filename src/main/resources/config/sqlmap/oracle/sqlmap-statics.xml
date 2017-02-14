@@ -44,37 +44,49 @@
 	</select>
 	
 	<select id="selectSavedMoreSaved" parameterType="int" resultType="staticsVO">
-		SELECT c.title columnName, COUNT (*) cnt 
+		SELECT c.title columnName, COUNT (*) cnt, im.url AS data 
 		FROM q_contents_saved cs2 
 		INNER JOIN q_contents c ON c.no = cs2.contents_no 
-		WHERE cs2.contents_no IN (SELECT cs.contents_no 
-		FROM q_contents_saved cs 
-		WHERE cs.member_no = #{ no } )
-		GROUP BY cs2.no, c.no
+		INNER JOIN q_image im ON c.no = im.contents_no 
+		WHERE cs2.member_no != #{ no }
+		AND cs2.contents_no IN (SELECT cs.contents_no 
+		FROM q_contents_saved cs, q_contents cc 
+		WHERE cs.member_no = #{ no } 
+		AND cs.contents_no = cc.no
+		AND cc.ban = 'N' )
+		GROUP BY cs2.no, c.no, im.no 
 		ORDER BY cnt DESC 
 		LIMIT 10 
 	</select>
 	
 	<select id="selectSavedLessSaved" parameterType="int" resultType="staticsVO">
-		SELECT c.title columnName, COUNT (*) cnt
+		SELECT c.title columnName, COUNT (*) cnt, im.url AS data 
 		FROM q_contents_saved cs2 
 		INNER JOIN q_contents c ON c.no = cs2.contents_no 
-		WHERE cs2.contents_no IN (SELECT cs.contents_no 
-		FROM q_contents_saved cs 
-		WHERE cs.member_no = #{ no } )
-		GROUP BY cs2.no, c.no
+		INNER JOIN q_image im ON c.no = im.contents_no 
+		WHERE cs2.member_no != #{ no }
+		AND cs2.contents_no IN (SELECT cs.contents_no 
+		FROM q_contents_saved cs, q_contents cc 
+		WHERE cs.member_no = #{ no } 
+		AND cs.contents_no = cc.no
+		AND cc.ban = 'N' ) 
+		GROUP BY cs2.no, c.no, im.no 
 		ORDER BY cnt 
 		LIMIT 10 
 	</select>
 	
 	<select id="selectSavedLike" parameterType="int" resultType="staticsVO">
-		SELECT c.title columnName, COUNT (*) cnt
+		SELECT c.title columnName, COUNT (*) cnt, im.url AS data 
 		FROM q_like l
 		INNER JOIN q_contents c ON c.no = l.contents_no 
-		WHERE l.contents_no IN (SELECT cs.contents_no 
-		FROM q_contents_saved cs 
-		WHERE cs.member_no = #{ no } ) 
-		GROUP BY l.no, c.no
+		INNER JOIN q_image im ON c.no = im.contents_no 
+		WHERE l.member_no != #{ no }
+		AND l.contents_no IN (SELECT cs.contents_no 
+		FROM q_contents_saved cs, q_contents cc 
+		WHERE cs.member_no = #{ no } 
+		AND cs.contents_no = cc.no
+		AND cc.ban = 'N' ) 
+		GROUP BY l.no, c.no, im.no 
 		ORDER BY cnt DESC 
 		LIMIT 10 
 	</select>
@@ -89,7 +101,7 @@
 	</select>
 	
 	<select id="sumSavedMonth" parameterType="int" resultType="int">
-		SELECT SUM(r.cnt)
+		SELECT COALESCE(SUM(r.cnt), 0) 
 		FROM (SELECT COUNT(*) cnt
 		FROM q_contents_saved 
 		WHERE member_no = #{ no } 
@@ -214,20 +226,13 @@
 	<!-- 회원 전체의 조회수가 높은 사이트  -->
 	<select id="selectCiteContents" parameterType="int" resultType="staticsVO">
 		SELECT qs.name as columnName, SUM(qc.view_cnt) as cnt
-		FROM  q_source qs 
+		FROM q_source qs
 		INNER JOIN q_contents as qc on qc.source_no = qs.no
+		where view_cnt > 0
 		GROUP BY name
 		ORDER BY cnt DESC
 		Limit 5
 	</select>
 	
-	<!-- 전체 키워드 랭킹 -->
-	<select id="selectAllKeywordList" resultType="KeywordsVO">
-		SELECT keyword, COUNT(keyword) as cnt
-		FROM Q_KEYWORDS
-		GROUP BY keyword
-		ORDER BY cnt DESC 
-		Limit 50
-	</select>
 	
 </mapper>

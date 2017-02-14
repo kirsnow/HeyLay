@@ -14,8 +14,7 @@
 
     <!-- Bootstrap CSS SET -->
     <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
+    <link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
     
     <!-- icon-font -->
     <script src="https://use.fontawesome.com/bbddce3010.js"></script>
@@ -44,117 +43,122 @@
 		
         <!-- Breadcrumb -->
         <div class="row">
-        	<div class="col-md-12">
-	            <ol class="breadcrumb" style="margin-top: 75px">
-	                <li><a href="${ pageContext.request.contextPath }/">Home</a></li>
-	                <li><a href="#">${ contents.category }</a></li>
-	                <li class="active">${ contents.title }</li>
-	            </ol>
-            </div>
+            <ol class="col-xs-12 breadcrumb" style="margin-top: 75px">
+                <li><a href="${ pageContext.request.contextPath }/">Home</a></li>
+                <li><a href="#">${ contents.category }</a></li>
+                <li class="active">${ contents.title }</li>
+            </ol>
         </div>
         <!-- /Breadcrumb -->
 
         <div class="row">
-            <section class="col-md-9">
+            <section class="card-ancestor col-xs-12 col-sm-8">
                 <!-- main information of contents -->
-                <article>
-                    <header>
-                        <p class="pull-right">
-                        	<a href="${ contents.url }" target="_blank" title="원본 페이지로 이동(새 창)">
-	                        	<i class="fa fa-external-link" aria-hidden="true"></i>
-	                        	원본 보기
-                        	</a>
-                        </p>
-                        <p>
-                            <span class="label label-default">
-                            	${ contents.category }
-                            </span>
-                            <span class="label label-info">
-                            	${ contents.dataType }
-                            </span>
-                            <a href="${ contents.sourceUrl }" class="label label-primary" target="_blank" title="원본 사이트로 이동(새 창)">
-                            	${ contents.source }
-                            </a>
-                        </p>
-                        <div class="page-header">
-                        	<h2>${ contents.title }</h2>
-                        </div>
-                    </header>
-                    
-                    <p class="text-justify">${ contents.summary }</p>
-                    <footer class="text-right ">
-                        <time class="text-muted"><small>${ contents.lastScraped } 확인</small></time>
-                    </footer>
-                </article>
-
-                <hr/>
-                <div role="toolbar">
-                    <button type="button" class="btn btn-xs btn-default" title="카드를 보관함에 담습니다.">
-                        <i class="fa fa-star-o" aria-hidden="true"></i> ${ contents.saveCnt }
-                    </button>
-                    <button type="button" class="btn btn-xs btn-default" title="카드를 좋아합니다.">
-                        <i class="fa fa-heart-o" aria-hidden="true"></i> ${ contents.likeCnt }
-                    </button>
-                    <div id="share" class="btn-group">
-                        <a href="#" role="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="외부 서비스로 공유">
-                            <i class="fa fa-share-alt" aria-hidden="true"></i> Share
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#" title="카카오톡으로 공유"><i class="fa fa-commenting fa-fw" aria-hidden="true"></i> KakaoTalk</a></li>
-                            <li><a href="#" title="페이스북으로 공유"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i> Facebook</a></li>
-                            <li><a href="#" title="트위터로 공유"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i> Twitter</a></li>
-                            <li><a href="#" title="에버노트로 공유"><i class="fa fa-sticky-note fa-fw" aria-hidden="true"></i> Evernote</a></li>
-                        </ul>
-                    </div>
-                    <div id="report" class="btn-group" title="신고">
-                        <a href="#" role="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="외부 서비스로 공유">
-                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Report
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                            	<a href="${ pageContext.request.contextPath }/contact/bug.do?no=${ contents.no }&type=contents" title="오류 신고">
-	                            	<i class="fa fa-bug fa-fw" aria-hidden="true"></i>
-	                            	오류 신고
+                <div class="row marginBottom30">
+	                <article class="col-xs-12">
+	                    <header>
+	                        <div class="pull-right">
+	                        	<a href="${ contents.url }" target="_blank" title="원본 페이지로 이동(새 창)">
+		                        	<i class="fa fa-external-link" aria-hidden="true"></i>
+		                        	원본 보기
+	                        	</a>
+	                        </div>
+	                        <div class="card-labels">
+	                            <span class="label label-default">
+	                            	${ contents.category }
+	                            </span>
+	                            <span class="label label-info">
+	                            	${ contents.dataType }
+	                            </span>
+	                            <a href="${ contents.sourceUrl }" class="label label-primary" target="_blank" title="원본 사이트로 이동(새 창)">
+	                            	${ contents.source }
 	                            </a>
-                            </li>
-                            <li>
-	                            <a href="${ pageContext.request.contextPath }/contact/spamContents.do?no=${ contents.no }" title="유해물 신고">
-	                            	<i class="fa fa-ban fa-fw" aria-hidden="true"></i>
-	                            	유해물 신고
-	                            </a>
-                            </li>
-                        </ul>
-                    </div>
+	                        </div>
+                        	<h2 class="card-title marginBottom30">
+                        		<%-- <c:out value="${ contents.title }" /> --%>
+                        		${ contents.title }
+                        	</h2>
+	                    </header>
+	                    
+	                    <section class="card-content text-justify marginBottom">
+	                    	<%-- <c:out value="${ contents.summary }" /> --%>
+	                    	${ contents.summary }
+                    	</section>
+	                    <footer class="text-right">
+	                        <time class="text-muted">${ contents.lastScraped }</time>
+	                    </footer>
+	                </article>
+                </div>
+                
+                <div class="row marginBottom30">
+	                <div role="toolbar" class="col-xs-12 text-right">
+						<c:choose>
+							<c:when test="${ (userVO ne null) and (not empty userVO) }">
+								<button type="button" class="btn btn-info saveCardBtn" 
+									data-toggle="modal" data-target="#saveCardModal" 
+									id="${ contents.no }" page="contentsDetail" title="카드 담기">
+			                        <i class="fa fa-bookmark-o" aria-hidden="true"></i> 저장하기
+			                    </button>
+			                    <button type="button" class="btn btn-info" title="카드를 좋아합니다.">
+			                        <i class="fa fa-heart-o" aria-hidden="true"></i> 좋아요
+			                    </button> 
+							</c:when>
+							<c:otherwise>
+								<button type="button" class="btn btn-info" onclick="location.href='${ pageContext.request.contextPath }/login/login.do'"
+									title="카드 담기: 로그인이 필요한 서비스입니다">
+			                        <i class="fa fa-bookmark-o" aria-hidden="true"></i> 저장하기
+			                    </button>
+			                    <button type="button" class="btn btn-info" onclick="location.href='${ pageContext.request.contextPath }/login/login.do'" 
+			                    	title="좋아요: 로그인이 필요한 서비스입니다">
+			                        <i class="fa fa-heart-o" aria-hidden="true"></i> 좋아요
+			                    </button> 
+							</c:otherwise>
+						</c:choose>
+	                    <div id="report" class="btn-group" title="신고">
+	                        <a href="#" role="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="외부 서비스로 공유">
+	                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Report
+	                            <span class="caret"></span>
+	                        </a>
+	                        <ul class="dropdown-menu" role="menu">
+	                            <li>
+	                            	<a href="${ pageContext.request.contextPath }/contact/bug.do?no=${ contents.no }&type=contents" title="오류 신고">
+		                            	<i class="fa fa-bug fa-fw" aria-hidden="true"></i>
+		                            	오류 신고
+		                            </a>
+	                            </li>
+	                            <li>
+		                            <a href="${ pageContext.request.contextPath }/contact/spamContents.do?no=${ contents.no }" title="유해물 신고">
+		                            	<i class="fa fa-ban fa-fw" aria-hidden="true"></i>
+		                            	유해물 신고
+		                            </a>
+	                            </li>
+	                        </ul>
+	                    </div>
+	                </div>
                 </div>
             </section>
             <!-- /main information of contents -->
 
             <!-- additional information of contents -->
-            <aside class="col-md-3 well">
-                <div id="img">
-                    <p class="lead"><i class="fa fa-image" aria-hidden="true"></i> images</p>
-                    <figure>
-                        <img src="${ pageContext.request.contextPath }/img/defaultImage.png" alt="Default Image" width="250px" />
-                        <figcaption>Fig1. - The Pulpit Rock, Norway.</figcaption>
-                    </figure>
-                </div>
-                <hr/>
+            <aside class="col-xs-12 col-sm-3 col-sm-offset-1 well">
                 <div id="info">
-                	<p class="lead"><i class="fa fa-info-circle" aria-hidden="true"></i> info</p>
+                	<p class="lead"><i class="fa fa-info-circle" aria-hidden="true"></i> 정보</p>
                 	<ul class="list-unstyled">
-                		<li><strong>${ contents.viewCnt }</strong>회 조회되었습니다.</li>
-                		<li><strong>${ contents.saveCnt }</strong>명이 저장했습니다.</li>
-                		<li><strong>${ contents.likeCnt }</strong>명이 좋아했습니다.</li>
+                		<li><strong>${ contents.viewCnt }</strong>회 조회</li>
+                		<li><strong>${ contents.saveCnt }</strong>명이 저장함</li>
+                		<li><strong>${ contents.likeCnt }</strong>명이 좋아함</li>
                 	</ul>
                 </div>
-                
                 <hr/>
-                <div id="stats">
-                    <p class="lead"><i class="fa fa-pie-chart" aria-hidden="true"></i> stats</p>
+                <div id="share">
+                    <p class="lead"><i class="fa fa-share-alt" aria-hidden="true"></i> 공유</p>
+                    <ul class="list-unstyled" role="menu">
+                        <li><a href="#" title="카카오톡으로 공유"><i class="fa fa-commenting fa-fw" aria-hidden="true"></i> KakaoTalk</a></li>
+                        <li><a href="#" title="페이스북으로 공유"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i> Facebook</a></li>
+                        <li><a href="#" title="트위터로 공유"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i> Twitter</a></li>
+                        <li><a href="#" title="에버노트로 공유"><i class="fa fa-sticky-note fa-fw" aria-hidden="true"></i> Evernote</a></li>
+                    </ul>
                 </div>
-               
             </aside>
             <!-- /additional information of contents -->
         </div>
@@ -167,7 +171,7 @@
 			<%-- 메모가 없을 때 --%>
         	<c:if test="${ (memoList eq null) or (empty memoList) }"> 
 				<div class="row">
-					<div class="col-md-12">
+					<div class="col-xs-12">
 						<p class="lead text-muted">첫 메모를 남겨보세요 &#58;&#41;</p>
 					</div>
 				</div>
@@ -202,10 +206,10 @@
 	        	<c:if test="${ (memoList ne null) and (not empty memoList) }">
 	        		<c:forEach var="memo" items="${ memoList }" varStatus="loop">
 	                <!-- card -->
-	                <div id="${ memo.no }" class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-shadow--3dp">
+	                <div id="${ memo.no }" class="mdl-card mdl-cell--4-col mdl-cell--12-col-phone mdl-shadow--3dp">
 	                    <div class="mdl-card__title mdl-color-text--grey-500">
 	                        <h5 class="author mdl-card__title-text">
-	                        	<c:out value="${ memo.firstName } ${ memo.lastName }"/>
+	                        	<c:out value="${ memo.lastName } ${ memo.firstName }"/>
 	                        </h5>
 	                    </div>
 	                    <div class="content mdl-card__supporting-text mdl-color-text--grey-800">
@@ -263,166 +267,16 @@
     <jsp:include page="/jsp/include/footer.jsp" />
     <!-- /footer -->
 
+	<!-- Bootstrap JS SET -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
+
     <!-- Modal -->
 	<jsp:include page="/jsp/modal/memo_add.jsp" />
-	<script>
-		/* modal autofocus */
-		$('#writeMemo').on('shown.bs.modal', function () {
-		  $('button#saveMemo').removeAttr('disabled', 'disabled').removeClass('btn-warning btn-success btn-danger').addClass('btn-primary')
-  			.html('<i class="fa fa-pencil" aria-hidden="true"></i> 작성');
-		  $('#memoMessage').focus()
-		});
-		
-		/* memo 추가용 변수 */
-     	
-     	var memoHeader  =  '<!-- card -->';
-	     	memoHeader  += '<div id="';
-     	var memoHeader2 =  			'" class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-shadow--3dp">';
-	     	memoHeader2 += '	<div class="mdl-card__title mdl-color-text--grey-500">';
-	     	memoHeader2 += '		<h5 class="author mdl-card__title-text">';
-	    var memoHeader3 =  		'</h5>';
-	    	memoHeader3 += '	</div>';
-	    	
-    	var memoText  =  '	<div class="content mdl-card__supporting-text mdl-color-text--grey-800">';
-	     	memoText  += '		<p class="text-justify">';
-	     	memoText  += '		<p id="';
-	    var memoText2 =  			'" class="message text-justify">';
-	    var memoText3 =  		'</p>';
-		    memoText3 += '	</div>';
-		    
-	    var memoMenu  =  '	<div class="mdl-card__menu">';
-		    memoMenu  += '		<div id="report" class="btn-group dropdown pull-right" title="신고">';
-		    memoMenu  += '			<a href="#" role="button" class="dropdown-toggle mdl-color-text--grey-500" data-toggle="dropdown" aria-expanded="false" title="메모 관리">';
-		    memoMenu  += '				<i class="fa fa-bars fa-lg" aria-hidden="true"></i>';
-		    memoMenu  += '			</a>';
-		    memoMenu  += '			<ul class="dropdown-menu" role="menu">';
-		    memoMenu  += '				<li>';
-		    memoMenu  += '					<a href="#" id="';
-    	var	memoMenu2 =  						'" class="editMemo" role="button" title="메모 수정">';
-	    	memoMenu2 += '						<i class="fa fa-pencil fa-fw" aria-hidden="true"></i> 수정';
-	    	memoMenu2 += '					</a>';
-	    	memoMenu2 += '				</li>';
-	    	memoMenu2 += '				<li>';
-	    	memoMenu2 += '					<a href="#" id="';
-   		var memoMenu3 =  						'" class="delMemo" role="button" title="메모 삭제">';
-	  		memoMenu3 += '					<i class="fa fa-trash fa-fw" aria-hidden="true"></i> 삭제';
-	  		memoMenu3 += '					</a>';
-	  		memoMenu3 += '				</li>';
-	  		memoMenu3 += '				<li role="presentation" class="divider"></li>';
-	  		memoMenu3 += '				<li>';
-	  		memoMenu3 += '					<a href="${ pageContext.request.contextPath }/contact/bug.do?no=';
-   		var memoMenu4 =  								'&type=memo" title="오류 신고">';
-	   		memoMenu4 += '						<i class="fa fa-bug fa-fw" aria-hidden="true"></i>';
-	   		memoMenu4 += '						오류 신고';
-	   		memoMenu4 += '					</a>';
-	   		memoMenu4 += '				</li>';
-	   		memoMenu4 += '			</ul>';
-	   		memoMenu4 += '		</div>';
-	   		memoMenu4 += '	</div>';
-	   		
-   		var memoFooter =  '</div>';
-	   		memoFooter += '<!-- /card -->';
-     	
-	   	/* 메모 추가 모달에서 작성 버튼 클릭 시, ajax를 통해 DB에 메모 추가 */
-	    $('button#saveMemo').click(function() {
-	    	$(this).attr('disabled', 'disabled').removeClass('btn-primary').addClass('btn-warning')
-    		.html('<i class="fa fa-spinner fa-pulse" aria-hidden="true"></i> 작성 중');
-	    	
-	        $.ajax({
-	        	url: '${ pageContext.request.contextPath }/memo/ajax/addMemo.do'
-	        	, type: 'POST'
-	        	, data : { 
-	        		'memoMessage' : $('#memoMessage').val()
-	        		, 'contentsNo' : '${ contents.no }'
-			    }, success: function(added) {
-	            	$('#memoMessage').val('');
-	            	var memo = memoHeader;
-	            	memo += added.no;
-	            	memo += memoHeader2;
-	            	memo += added.firstName + '&nbsp;' + added.lastName;
-	            	memo += memoHeader3;
-	            	memo += memoText;
-	            	memo += added.no;
-	            	memo += memoText2;
-	            	memo += added.message;
-	            	memo += memoText3;
-	            	memo += memoMenu;
-	            	memo += added.no;
-	            	memo += memoMenu2;
-	            	memo += added.no;
-	            	memo += memoMenu3;
-	            	memo += added.no;
-	            	memo += memoMenu4;
-	            	memo += memoFooter;
-	            	
-	            	$('button#saveMemo').removeClass('btn-warning').addClass('btn-success')
-    	    		.html('<i class="fa fa-check" aria-hidden="true"></i> 작성 완료');
-	            	
-	            	$('#writeMemo').modal('hide');
-	            	
-	            	$('button#saveMemo').removeAttr('disabled', 'disabled').removeClass('btn-warning btn-success btn-danger').addClass('btn-primary')
-	      			.html('<i class="fa fa-pencil" aria-hidden="true"></i> 작성');
-	            	
-	            	$('#addMemo').after(memo).fadeIn("slow", function() {});
-	            	
-	        	}, error : function() {
-	        		console.log('메모 작성 오류');
-	        		$('button#saveMemo').removeClass('btn-warning').addClass('btn-danger')
-    	    		.html('<i class="fa fa-exclamation-circle" aria-hidden="true"></i> 작성 오류');
-        	}});
-	    });
-	    
-	    
-	    /* 메모 수정 메뉴 클릭 시, 수정 폼 로드 */
-	    $(document).on('click','a.editMemo', function() {
-	    	var memoNo = $(this).attr('id');
-	    	var message = $('p#' + memoNo + '.message');
-	    	message.html('<textarea id="editMessage" class="form-control" rows="3">' + message.text() + '</textarea><button type="button" id="' + memoNo + '" class="saveEdit btn btn-primary btn-block"><i class="fa fa-pencil" aria-hidden="true"></i> 수정</button>');
-	    });
-	    
-	    /* 메모 수정 폼에서 수정 버튼 클릭 시, ajax를 통해 DB에서 메모 수정 */
-	    $(document).on('click','button.saveEdit', function(){
-	    	$(this).attr('disabled', 'disabled').removeClass('btn-primary').addClass('btn-warning')
-	    		.html('<i class="fa fa-spinner fa-pulse" aria-hidden="true"></i> 수정 중');
-	    	$.ajax({
-	        	url: '${ pageContext.request.contextPath }/memo/ajax/editMemo.do'
-	        	, type: 'POST'
-	        	, data : { 
-	        		'memoMessage' : $('#editMessage').val()
-	        		, 'memoNo' : $(this).attr('id')
-			    }, success: function(edited) {
-	            	console.log(edited);
-	            	$('#memoMessage').val('');
-	            	$('button#' + edited.no +'.saveEdit').removeClass('btn-warning').addClass('btn-success')
-	    	    		.html('<i class="fa fa-check" aria-hidden="true"></i> 수정 완료');
-	            	$('p#' + edited.no + '.message').html(edited.message);
-	            	console.log('메모 수정 성공');
-	        	}, error : function() {
-	        		console.log('메모 수정 오류');
-	        }});
-	    });
-	    
-	    /* 메모 삭제 메뉴 클릭 시, ajax를 통해 DB에서 메모 삭제 */
-	    $(document).on('click','a.delMemo', function(){
-	    	$(this).parents('div.mdl-card').fadeTo("slow", 0.4, function() {
-	    		$(this).children('div.content').addClass('lead text-center vcenter')
-	    		.html('<i class="fa fa-spinner fa-5x fa-spin" aria-hidden="true"></i>');
-	    	});
-	    		
-	        $.ajax({
-	        	url: '${ pageContext.request.contextPath }/memo/ajax/delMemo.do'
-	        	, type: 'POST'
-	        	, data : { 
-	        		'memoNo' : $(this).attr('id')
-			    }, success: function(deleted) {
-	            	$('div.mdl-card#' + deleted).fadeOut("slow", function() { $(this).remove() });
-	            	console.log('메모 ' + deleted + '번 삭제 성공');
-	        	}, error : function() {
-	        		console.log('메모 삭제 오류');
-	        }});
-	    });
-	</script>
-	<!-- /Modal -->
+	
+	<!-- Modal -->
+	<jsp:include page="/jsp/modal/card_save.jsp" />
+	
 	
 </body>
 

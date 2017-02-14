@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import io.planb.admin.contents.service.ContentsService;
 import io.planb.bug.vo.BugVO;
 import io.planb.bugAttach.vo.BugAttachVO;
+import io.planb.contents.vo.DataTypeVO;
 import io.planb.source.vo.SourceVO;
 
 @Controller
@@ -32,6 +33,9 @@ public class ContentsController {
 		int option = 0;
 		if(request.getParameter("option") != null) option = Integer.parseInt(request.getParameter("option"));
 		
+		List<DataTypeVO> dataTypeList = service.selectDataType();
+		model.addAttribute("dataTypeList", dataTypeList);
+		
 		List<SourceVO> sourceList = service.selectByOption(option);
 		model.addAttribute("sourceList", sourceList);
 		
@@ -45,19 +49,12 @@ public class ContentsController {
 	
 	/* 사이트 추가 */
 	@RequestMapping(value = "/jsp/admin/source_add.do", method = RequestMethod.POST)
-	public String insertSource(@RequestParam("attachfile") MultipartFile multipartFile, @ModelAttribute SourceVO source) {
+	public String insertSource(/*@RequestParam("attachfile") MultipartFile multipartFile, */@ModelAttribute SourceVO source) {
 //		System.out.println("source : " + source);
 		
-		service.insertSource(multipartFile, source);
+		service.insertSource(/*multipartFile, */source);
 		
-		return "redirect:/jsp/admin/source_list.do?option=0";
-	}
-	
-	/* 사이트 수정 */
-	public String updateSource(@ModelAttribute SourceVO source) {
-		service.updateSource(source);
-		
-		return "admin/source";
+		return "redirect:/jsp/admin/source_list.do";
 	}
 	
 	/* 사이트 삭제 (여러 개) */
@@ -77,15 +74,27 @@ public class ContentsController {
 	public String deleteSource(@RequestParam("no") int no) {
 		service.deleteSource(no);
 		
-		return "redirect:/jsp/admin/source_list.do?option=0";
+		return "redirect:/jsp/admin/source_list.do";
 	}
 	
-	/* 사이트 차단 (보류)*/
-	@RequestMapping("/jsp/admin/source_block.do")
-	public String blockSource(@RequestParam("no") int no, Model model) {
-//		service.
+	/* 사이트 차단 (여러개) */
+	@ResponseBody
+	@RequestMapping(value="/jsp/admin/source_block.do", method=RequestMethod.POST)
+	public String banSource(@RequestParam(value="checkboxValues[]") List<Integer> param) {
+		ArrayList<Integer> list = new ArrayList<>();
+		list.addAll(param);
 		
-		return "admin/source";
+		service.banSource(list);
+		
+		return "완료";
+	}
+	
+	/* 사이트 차단 (단일) */
+	@RequestMapping(value="/jsp/admin/source_block.do", method=RequestMethod.GET)
+	public String banSource(@RequestParam(value="no") int no) {
+		service.banSource(no);
+		
+		return "redirect:/jsp/admin/source_list.do";
 	}
 	
 	/* 오류 목록 조회 */

@@ -1,16 +1,22 @@
 package io.planb.login.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.service.MemberService;
 import io.planb.member.vo.MemberVO;
+import io.planb.member.vo.SelectKeywordVO;
 
 
 
@@ -28,35 +34,35 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="/login/login.do", method=RequestMethod.POST)
-	public String login(@ModelAttribute("member") MemberVO member, Model model) {
+	public String login(@ModelAttribute("member") MemberVO member, Model model , KeywordsVO interestKeyword) {
 	
 		MemberVO userVO = service.login(member);
+		
+		List<KeywordsVO> interestKeywordList = service.selectInterestList();
+		model.addAttribute("interestKeywordList", interestKeywordList);
+		//System.out.println("interestKeywordList : " + interestKeywordList);
 		
 		if(userVO != null) {
 			
 			model.addAttribute("userVO", userVO);
-//			model.addAttribute("msg", userVO.getFirstName() + "님 환영합니다.");
-			/*System.out.println(userVO.getEmail());*/
-			return "redirect:/";
 			
+			return "membership/interest";
 			
 		} else {
+			
 			model.addAttribute("msg", "아이디 또는 패스워드가 일치하지 않습니다.");
 		}
 		
 		return "login/login";
-
-		
-		
 	}
 	
-	@RequestMapping("/login/logout.do")
-	public String logout(SessionStatus sessionStatus  /*HttpServletRequest request*/) {
-		
-		sessionStatus.setComplete();
-		
-		return "redirect:/";
-	}
+    @RequestMapping("/login/logout.do")
+    public String logout(SessionStatus sessionStatus  /*HttpServletRequest request*/) {
+       
+    	sessionStatus.setComplete();
+        
+    	return "redirect:/";
+    }
 }
 
 

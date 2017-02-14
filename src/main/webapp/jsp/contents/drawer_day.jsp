@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="ko">
 <%-- 카드 서랍 속 날짜순 정렬 페이지 --%>
@@ -78,7 +79,7 @@
 						<c:otherwise>
 							<c:forEach var="drawerHeader" items="${ drawerHeaders }" varStatus="loop">
 								<div class="row marginTop30">
-									<span class="text-primary lead">${ drawerHeader.daysAgo } <small>저장한 카드 ${ drawerHeader.cnt } 건</small></span>
+									<span class="text-primary lead">${ drawerHeader.regDate } <small>저장한 카드 ${ drawerHeader.cnt } 건</small></span>
 								</div>
 								<div class="row card-container mdl-grid">
 									<c:forEach var="card" items="${ drawerCards }" varStatus="loop">
@@ -116,7 +117,19 @@
 						
 						                    <!-- card text -->
 						                    <div class="content mdl-card__supporting-text mdl-color-text--grey-800">
-						                        <p class="text-justify">${ card.summary }</p>
+						                        <p class="text-justify">
+						                        	<c:choose>
+			           									<c:when test="${fn:length(card.summary) > 105}">
+						                        			<c:out value="${ fn:substring(card.summary, 0, 105) }" /> ...
+			           									</c:when>
+			           									<c:otherwise>
+			           										<c:out value="${ card.summary }" />
+			           										<c:forEach var="i" begin="0" end="${(105 - fn:length(card.summary))*1.5}">
+			           											&nbsp;
+			           										</c:forEach>
+			           									</c:otherwise>
+			         								</c:choose>
+					                        	</p>
 						                        <p class="text-right text-muted">${ card.daysAgo } 저장</p>
 						                    </div>
 						
