@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import io.planb.contents.dao.ContentDAO;
+import io.planb.contents.vo.ContentsVO;
 import io.planb.contents.vo.SavedHeaderVO;
 import io.planb.contents.vo.SavedVO;
 import io.planb.directory.vo.DirectoryVO;
@@ -26,8 +27,8 @@ public class ContentService {
 		dao.updateStatus(no);
 	} 
 	
-	public List<SavedVO> drawerCards(int memberNo) {
-		List<SavedVO> drawerCards = dao.drawerCards(memberNo);
+	public List<ContentsVO> drawerCards(int memberNo) {
+		List<ContentsVO> drawerCards = dao.drawerCards(memberNo);
 		return drawerCards;
 	}
 	

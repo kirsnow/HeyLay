@@ -45,7 +45,7 @@
         <div class="row">
             <ol class="col-xs-12 breadcrumb" style="margin-top: 75px">
                 <li><a href="${ pageContext.request.contextPath }/">Home</a></li>
-                <li><a href="#">${ contents.category }</a></li>
+                <li><a href="#">${ contents.categoryName }</a></li>
                 <li class="active">${ contents.title }</li>
             </ol>
         </div>
@@ -65,13 +65,13 @@
 	                        </div>
 	                        <div class="card-labels">
 	                            <span class="label label-default">
-	                            	${ contents.category }
+	                            	${ contents.categoryName }
 	                            </span>
 	                            <span class="label label-info">
 	                            	${ contents.dataType }
 	                            </span>
 	                            <a href="${ contents.sourceUrl }" class="label label-primary" target="_blank" title="원본 사이트로 이동(새 창)">
-	                            	${ contents.source }
+	                            	${ contents.sourceName }
 	                            </a>
 	                        </div>
                         	<h2 class="card-title marginBottom30">
@@ -96,7 +96,7 @@
 							<c:when test="${ (userVO ne null) and (not empty userVO) }">
 								<button type="button" class="btn btn-info saveCardBtn" 
 									data-toggle="modal" data-target="#saveCardModal" 
-									id="${ contents.no }" page="contentsDetail" title="카드 담기">
+									id="${ contents.contentsNo }" page="contentsDetail" title="카드 담기">
 			                        <i class="fa fa-bookmark-o" aria-hidden="true"></i> 저장하기
 			                    </button>
 			                    <button type="button" class="btn btn-info" title="카드를 좋아합니다.">
@@ -121,13 +121,13 @@
 	                        </a>
 	                        <ul class="dropdown-menu" role="menu">
 	                            <li>
-	                            	<a href="${ pageContext.request.contextPath }/contact/bug.do?no=${ contents.no }&type=contents" title="오류 신고">
+	                            	<a href="${ pageContext.request.contextPath }/contact/bug.do?no=${ contents.contentsNo }&type=contents" title="오류 신고">
 		                            	<i class="fa fa-bug fa-fw" aria-hidden="true"></i>
 		                            	오류 신고
 		                            </a>
 	                            </li>
 	                            <li>
-		                            <a href="${ pageContext.request.contextPath }/contact/spamContents.do?no=${ contents.no }" title="유해물 신고">
+		                            <a href="${ pageContext.request.contextPath }/contact/spamContents.do?no=${ contents.contentsNo }" title="유해물 신고">
 		                            	<i class="fa fa-ban fa-fw" aria-hidden="true"></i>
 		                            	유해물 신고
 		                            </a>

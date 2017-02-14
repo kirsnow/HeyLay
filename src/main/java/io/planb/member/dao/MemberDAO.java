@@ -1,5 +1,6 @@
 package io.planb.member.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -8,7 +9,7 @@ import io.planb.keywords.vo.KeywordsVO;
 import io.planb.leaved.vo.LeavedVO;
 import io.planb.member.vo.IdentifyQuestionVO;
 import io.planb.member.vo.MemberVO;
-import io.planb.member.vo.SelectKeywordVO;
+import io.planb.member.vo.SelectKeywordsVO;
 
 public interface MemberDAO {
 
@@ -46,6 +47,8 @@ public interface MemberDAO {
 	public int getNextMemberNo();							// 멤버 넥스트 넘버
 
 	public List<IdentifyQuestionVO> selectIdenQuestion();
+
+	public void insertKeywords(SelectKeywordsVO keywords);
 
 	public int selectWithdrawContentCnt(int memberNo);		//회원 탈퇴 시 보유 컨텐츠 호출
 

@@ -99,7 +99,7 @@
         	, type: 'POST'
         	, data : { 
         		'memoMessage' : $('#memoMessage').val()
-        		, 'contentsNo' : '${ contents.no }'
+        		, 'contentsNo' : '${ contents.contentsNo }'
 		    }, success: function(added) {
             	$('#memoMessage').val('');
             	var memo = memoHeader;
