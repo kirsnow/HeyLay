@@ -64,8 +64,7 @@
 		update Q_member
 	 	set last_name = #{lastName} , first_name = #{firstName}, 
 	    		gender = #{gender} ,email_receive = #{emailReceive}, 
-	    		country = #{country}, city = #{city}, question = #{question},
-	    		answer = #{answer}
+	    		country = #{country}, city = #{city}
 	 	where no = #{no} and password= #{password}
 	</update> 
 	

@@ -1,5 +1,6 @@
 package io.planb.contents.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,6 +81,26 @@ public class ContentService {
 		List<ContentsVO> popularList = dao.selectPopularList();
 		
 		return popularList;
+	}
+
+	public List<ContentsVO> selectCustomSourceList(int no) {
+		List<ContentsVO> customSourceList = dao.selectCustomSourceList(no);
+		
+		return customSourceList;
+	}
+
+	public List<ContentsVO> selectCustomKeywordList(int no) {
+		List<KeywordsVO> keywordList = dao.selectUserKeywordList(no);
+		String keywords = "";
+		
+		for(int i = 0, j = keywordList.size(); i < j; i++) {
+			if(i != 0) keywords += "|";
+			keywords += keywordList.get(i).getKeyword();
+		}
+		
+		List<ContentsVO> customKeywordList = dao.selectCustomCuration(keywords);
+		
+		return customKeywordList;
 	}
 
 }

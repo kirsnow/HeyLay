@@ -80,4 +80,22 @@ public class ContentDAO {
 		return popularList;
 	}
 
+	public List<ContentsVO> selectCustomSourceList(int no) {
+		List<ContentsVO> customSourceList = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.selectCustomSourceList", no);
+		
+		return customSourceList;
+	}
+
+	public List<KeywordsVO> selectUserKeywordList(int no) {
+		List<KeywordsVO> keywordList = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.selectUserKeywordList", no);
+		
+		return keywordList;
+	}
+
+	public List<ContentsVO> selectCustomCuration(String keywords) {
+		List<ContentsVO> customKeywordList = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.selectCustomCuration", keywords);
+		
+		return customKeywordList;
+	}
+
 }
