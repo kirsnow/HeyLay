@@ -1,5 +1,6 @@
 package io.planb.contents.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,6 +87,7 @@ public class ContentService {
 		dao.updateDir(dir);
 	}
 
+<<<<<<< HEAD
 //	public void delDir(List<Integer> noList){
 //		for(int no : noList) {
 //			dao.delDir(no);
@@ -95,4 +97,26 @@ public class ContentService {
 	public void delDir(List<Integer> noList) {
 		dao.delDir(noList);
 	}
+=======
+	public List<ContentsVO> selectCustomSourceList(int no) {
+		List<ContentsVO> customSourceList = dao.selectCustomSourceList(no);
+		
+		return customSourceList;
+	}
+
+	public List<ContentsVO> selectCustomKeywordList(int no) {
+		List<KeywordsVO> keywordList = dao.selectUserKeywordList(no);
+		String keywords = "";
+		
+		for(int i = 0, j = keywordList.size(); i < j; i++) {
+			if(i != 0) keywords += "|";
+			keywords += keywordList.get(i).getKeyword();
+		}
+		
+		List<ContentsVO> customKeywordList = dao.selectCustomCuration(keywords);
+		
+		return customKeywordList;
+	}
+
+>>>>>>> ecad7d9462cdba1e33d413c183b1e3ce66817f83
 }

@@ -117,9 +117,20 @@ public class ContentController {
 	
 	/* 큐레이션 */
 	@RequestMapping("/contents/curation.do")
-	public String curation(Model model) {
+	public String curation(Model model, HttpSession session) {
+		MemberVO member = (MemberVO) session.getAttribute("userVO");
+		
+		// 전체 유저가 많이 본 콘텐츠 top 3
 		List<ContentsVO> popularList = service.selectPopularList();
 		model.addAttribute("popularList", popularList);
+		
+		// 내가 제일 많이 담은 사이트의 콘텐츠 중 전체 유저가 많이 본 콘텐츠 top 3
+		List<ContentsVO> customSourceList = service.selectCustomSourceList(member.getNo());
+		model.addAttribute("customSourceList", customSourceList);
+		
+		// 관심 키워드 & 검색 키워드 해당 콘텐츠 중 전체 유저가 많이 본 콘텐츠 top 3
+		List<ContentsVO> customKeywordList = service.selectCustomKeywordList(member.getNo());
+		model.addAttribute("customKeywordList", customKeywordList);
 		
 		return "contents/curation";
 	}
