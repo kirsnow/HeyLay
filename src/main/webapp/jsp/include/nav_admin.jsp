@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Custom Theme Style -->
-<link href="${ pageContext.request.contextPath }/css/custom.min.css?ver=18" rel="stylesheet">
+<link href="${ pageContext.request.contextPath }/css/custom.min.css?ver=19" rel="stylesheet">
 <link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet"> 	
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
