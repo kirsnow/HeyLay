@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <%-- 카드분석 - 내 검색어 페이지 입니다. --%>
@@ -28,6 +29,7 @@
 
 </head>
 <body class="nav-md">
+
 	<div class="container body">
 		<header>
 			<jsp:include page="/jsp/include/nav_search.jsp" />
@@ -48,6 +50,7 @@
 						</div>
 					</div>
 					<div class="row">
+						<c:set var="keyword.regDate" value="<%=new java.util.Date()%>" />
 						<c:choose>
 							<c:when test="${ (keywordList eq null) or (empty keywordList) }">
 								<div class="row">
@@ -57,12 +60,12 @@
 							<c:otherwise>
 								<dl class="col-md-8 col-md-offset-1 font">
 									<c:forEach var="keyword" items="${ keywordList }" varStatus="loop">
-											<dt class="col-md-5 col-md-offset-4 text-left"><c:out value="${loop.count}"/>.&nbsp;&nbsp;
-										    	<a href="#" title="해당 단어 검색 결과로 가는 URL">${ keyword.keyword }</a>
-									
-										    </dt>
-										    <dd class="col-md-3  marginBottom30">&nbsp;&nbsp;${ keyword.regDate }&nbsp;&nbsp;
-											<a href="javascript:update('${keyword.no}', '${userVO.no}')"><i class="fa fa-times" aria-hidden="true"></i></a></dd> 
+										<dt class="col-md-5 col-md-offset-4 text-left"><c:out value="${loop.count}"/>.&nbsp;&nbsp;
+									    	<a href="#" title="해당 단어 검색 결과로 가는 URL">${ keyword.keyword }</a>
+									    </dt>
+									    <dd class="col-md-3  marginBottom30">
+									    	&nbsp;&nbsp;<fmt:formatDate pattern="yyyy-MM-dd" value="${keyword.regDate}" />&nbsp;&nbsp;
+										<a href="javascript:update('${keyword.no}')"><i class="fa fa-times" aria-hidden="true"></i></a></dd> 
 									</c:forEach>
 								</dl>
 								<div class="row">
@@ -85,9 +88,9 @@
 	</div>
 
 	<script type="text/javascript">
-		function update(no, memberNo) {
-// 			alert(memberNo);
-			location.href = "${ pageContext.request.contextPath }/contents/update_status.do?no=" + no + "&memberNo=" + memberNo;
+		function update(no) {
+ 			alert(no);
+			location.href = "${ pageContext.request.contextPath }/contents/update_status.do?no=" + no;
 		}
 	</script>
 	<!-- jQuery -->

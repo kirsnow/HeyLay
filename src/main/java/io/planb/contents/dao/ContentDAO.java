@@ -27,8 +27,8 @@ public class ContentDAO {
 		return keywordList;
 	}
 	
-	public void updateStatus(int no) {
-		sqlSessionTemplate.update("io.planb.contents.dao.ContentDAO.updateStatus", no);
+	public void updateStatus(KeywordsVO keyword) {
+		sqlSessionTemplate.update("io.planb.contents.dao.ContentDAO.updateStatus", keyword);
 	}
 	
 	public List<ContentsVO> drawerCards(int memberNo) {
@@ -72,6 +72,30 @@ public class ContentDAO {
 
 	public void saveCard(SavedVO card) {
 		sqlSessionTemplate.insert("io.planb.contents.dao.ContentDAO.insertCardToSave", card);
+	}
+
+	public List<ContentsVO> selectPopularList() {
+		List<ContentsVO> popularList = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.selectPopularList");
+		
+		return popularList;
+	}
+
+	public List<ContentsVO> selectCustomSourceList(int no) {
+		List<ContentsVO> customSourceList = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.selectCustomSourceList", no);
+		
+		return customSourceList;
+	}
+
+	public List<KeywordsVO> selectUserKeywordList(int no) {
+		List<KeywordsVO> keywordList = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.selectUserKeywordList", no);
+		
+		return keywordList;
+	}
+
+	public List<ContentsVO> selectCustomCuration(String keywords) {
+		List<ContentsVO> customKeywordList = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.selectCustomCuration", keywords);
+		
+		return customKeywordList;
 	}
 
 }
