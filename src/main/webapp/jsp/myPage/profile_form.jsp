@@ -79,9 +79,9 @@
 		                  <div class="form-control">
 		                     <span class="spanPadding">성별을 표시해 주세요.</span>
 		                     <span>
-		                      	 <label for="genderMen">남</label>  <input type="radio" name="gender" id="genderMen" value="M" alt="성별 선택 라디오 박스 (남)"/> 
-		                       	 <label for="genderWomen">여</label> <input type="radio" name="gender" id="genderWomen" value="F" alt="성별 선택 라디오 박스 (여)"/>  
-		                         <label for="genderEtc">기타</label> <input type="radio" name="gender" id="genderEtc" value="O" alt="성별 선택 라디오 박스 (기타)"/>  
+		                      	 <input type="radio" name="gender" id="genderMen" value="M" alt="성별 선택 라디오 박스 (남)"/> <label for="genderMen">남</label>  
+		                       	 <input type="radio" name="gender" id="genderWomen" value="F" alt="성별 선택 라디오 박스 (여)"/> <label for="genderWomen">여</label>
+		                         <input type="radio" name="gender" id="genderEtc" value="O" alt="성별 선택 라디오 박스 (기타)"/> <label for="genderEtc">기타</label> 
 		                     </span>
 	                     </div>
 	                  </div>
@@ -91,10 +91,10 @@
 		                 <div class="form-control">
 		                     <span class="spanPadding">메일 수신여부를 선택해주세요.</span>
 		                     <span>
-					           <label for="yes"> 네  </label> 
-					           		<input type="radio" name="emailReceive" id="yes" value="Y" alt="메일 수신여부 선택 라디오 박스(네)"/> 
-					           <label for="no"> 아니오   </label>
-					           		<input type="radio" name="emailReceive" id="no" value="N" alt="메일 수신여부 선택 라디오 박스(아니오)"/>
+				           		<input type="radio" name="emailReceive" id="yes" value="Y" alt="메일 수신여부 선택 라디오 박스(네)"/> 
+				           		<label for="yes"> 네  </label> 
+				           		<input type="radio" name="emailReceive" id="no" value="N" alt="메일 수신여부 선택 라디오 박스(아니오)"/>
+				           		<label for="no"> 아니오   </label>
 					         </span>
 		                  </div>
 	                  </div>
@@ -128,7 +128,7 @@
 							
 							<div class="row">
 							  <div class= "col-md-6 col-md-offset-3">
-							    <input type="password" name="password" id="passwordForUpdate" class="form-control" placeholder="비밀번호" alt="비밀번호 입력 폼"/>
+							    <input type="password" name="password"  class="form-control" placeholder="비밀번호" alt="비밀번호 입력 폼"/>
 							    <div class="text-center">
 							    	<small>회원정보 수정을 위해 비밀번호를 입력해주세요.</small>
 							    </div>
@@ -177,29 +177,27 @@
 			alert('메일 수신 여부를 체크해주세요.');
 			form.emailReceive.focus();
 			return false;
+		} else if (form.country.value == '') {
+			alert('국가를 입력해주세요.');
+			form.country.focus();
+			return false;
 		} else if (form.password.value == '') {
 			alert('비밀번호를 입력해주세요.');
 			form.password.focus();
 			return false;
-		} else if (form.country.value == '') {
-			alert('국가를 입력해주세요.');
-			form.country.focus();
+		} else if (form.password.value != '${userVO.password}') {
+			alert('비밀번호가 일치하지 않습니다. 다시 입력해 주세요.');
+			form.password.focus();
 			return false;
 		} else if (form.city.value == '') {
 			alert('도시를 입력해주세요.');
 			form.city.focus();
 			return false;
-		} else if (form.question.value == '') {
-			alert('질문을 선택해주세요.');
-			form.question.focus();
-			return false;
-		} else if (form.answer.value == '') {
-			alert('답변을 입력하세요');
-			form.answer.focus();
-			return false;
 		}
 		return true;
 	}
+	
+
 </script>
  
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>

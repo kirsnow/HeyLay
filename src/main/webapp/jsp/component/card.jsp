@@ -10,7 +10,7 @@
 				<c:out value="${ card.categoryName }" />
 			</span>
 			<span class="label label-info"> 
-				<c:out value="${ card.dataType }" />
+				<c:out value="${ card.dataTypeName }" />
 			</span>
 			<a href="${ card.sourceUrl }" class="label label-primary" target="_blank" title="원본 사이트로 이동(새 창)"> 
 				<c:out value="${ card.sourceName }" />
@@ -25,7 +25,7 @@
 		<c:if test="${ card.imgUrl ne null }">
 			<figure class="mdl-card__media" style="margin: 0px">
 				<img src="<c:out value="${ card.imgUrl }" />"
-					style="width: 100%; height: 200px">
+					alt="${ card.imgAlt }" style="width: 100%; height: 200px">
 			</figure>
 		</c:if>
 		
