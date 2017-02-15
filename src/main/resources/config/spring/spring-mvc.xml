@@ -33,7 +33,7 @@
     </bean>
     -->
     
-    <!-- Localhost + ProgreSQL start
+    <!-- Heroku / Localhost + ProgreSQL start
     -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource" >
  		<property name="driverClass" value="org.postgresql.Driver" />
