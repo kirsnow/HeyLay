@@ -156,7 +156,7 @@ public class Elasitcsearch {
 				
 				//Save search result to ContentsVO
 				ContentsVO contentsVO = new ContentsVO();
-				contentsVO.setNo(no);
+				contentsVO.setContentsNo(no);
 				contentsVO.setTitle(title);
 				contentsVO.setSummary(summary);
 				contentsVO.setUrl(url);
@@ -165,9 +165,9 @@ public class Elasitcsearch {
 				
 				contentsVO.setBan(ban);
 				
-				contentsVO.setSource(source);
+				contentsVO.setSourceName(source);
 				contentsVO.setSourceUrl(sourceUrl);
-				contentsVO.setCategory(category);
+				contentsVO.setCategoryName(category);
 				contentsVO.setDataType(dataType);
 				
 				contentsVO.setSaveCnt(saveCnt);

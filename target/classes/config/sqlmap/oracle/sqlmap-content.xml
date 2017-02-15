@@ -22,7 +22,7 @@
 	<update id="updateStatus" parameterType="keywordsVO">
 		UPDATE q_keywords
 			SET status='N'
-			WHERE keyword = #{ keyword } and member_no = #{ memberNo }
+			WHERE no = #{ no } and member_no = #{ memberNo }
 	</update>
 	
 	<insert id="insertCardToSave" parameterType="contentsVO">
