@@ -79,9 +79,9 @@
 		                  <div class="form-control">
 		                     <span class="spanPadding">성별을 표시해 주세요.</span>
 		                     <span>
-		                      	 <label for="genderMen">남</label>  <input type="radio" name="gender" id="genderMen" value="M" alt="성별 선택 라디오 박스 (남)"/> 
-		                       	 <label for="genderWomen">여</label> <input type="radio" name="gender" id="genderWomen" value="F" alt="성별 선택 라디오 박스 (여)"/>  
-		                         <label for="genderEtc">기타</label> <input type="radio" name="gender" id="genderEtc" value="O" alt="성별 선택 라디오 박스 (기타)"/>  
+		                      	 <input type="radio" name="gender" id="genderMen" value="M" alt="성별 선택 라디오 박스 (남)"/> <label for="genderMen">남</label>  
+		                       	 <input type="radio" name="gender" id="genderWomen" value="F" alt="성별 선택 라디오 박스 (여)"/> <label for="genderWomen">여</label>
+		                         <input type="radio" name="gender" id="genderEtc" value="O" alt="성별 선택 라디오 박스 (기타)"/> <label for="genderEtc">기타</label> 
 		                     </span>
 	                     </div>
 	                  </div>
@@ -91,10 +91,10 @@
 		                 <div class="form-control">
 		                     <span class="spanPadding">메일 수신여부를 선택해주세요.</span>
 		                     <span>
-					           <label for="yes"> 네  </label> 
-					           		<input type="radio" name="emailReceive" id="yes" value="Y" alt="메일 수신여부 선택 라디오 박스(네)"/> 
-					           <label for="no"> 아니오   </label>
-					           		<input type="radio" name="emailReceive" id="no" value="N" alt="메일 수신여부 선택 라디오 박스(아니오)"/>
+				           		<input type="radio" name="emailReceive" id="yes" value="Y" alt="메일 수신여부 선택 라디오 박스(네)"/> 
+				           		<label for="yes"> 네  </label> 
+				           		<input type="radio" name="emailReceive" id="no" value="N" alt="메일 수신여부 선택 라디오 박스(아니오)"/>
+				           		<label for="no"> 아니오   </label>
 					         </span>
 		                  </div>
 	                  </div>
