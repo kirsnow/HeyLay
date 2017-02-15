@@ -98,7 +98,6 @@ public class ContentService {
 			keywords += keywordList.get(i).getKeyword();
 		}
 		
-		System.out.println("service keywords : " + keywords);
 		List<ContentsVO> customKeywordList = dao.selectCustomCuration(keywords);
 		
 		return customKeywordList;

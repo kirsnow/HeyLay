@@ -67,6 +67,9 @@
 					<!-- span으로 되어 있었 -->
 
 					<div class="row card-container mdl-grid ">
+						<c:if test="${ empty customKeywordList }">
+							<div class="col-md-6 col-md-offset-3 text-center">카드를 담거나, 검색하지 않았습니다. Quration을 이용해 볼까요!</div>
+						</c:if>
 						<c:forEach var="card" items="${ customKeywordList }" varStatus="loop">
 							<!-- card -->
 							<div class="card-ancestor mdl-card mdl-cell mdl-cell--4-col mdl-cell--12-col-phone mdl-shadow--3dp">
@@ -210,6 +213,9 @@
 						<span class="label label-primary" title="내가 가장 많이 담은 사이트의 인기 콘텐츠 추천">사이트 맞춤 추천</span>
 					</div>
 					<div class="row card-container mdl-grid ">
+						<c:if test="${ empty customSourceList }">
+							<div class="col-md-6 col-md-offset-3 text-center">카드를 담지 않았습니다. 카드를 담아 볼까요!</div>
+						</c:if>
 						<c:forEach var="card" items="${ customSourceList }" varStatus="loop">
 							<!-- card -->
 							<div class="card-ancestor mdl-card mdl-cell mdl-cell--4-col mdl-cell--12-col-phone mdl-shadow--3dp">
