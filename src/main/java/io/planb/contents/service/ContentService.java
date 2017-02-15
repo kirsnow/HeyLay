@@ -81,5 +81,18 @@ public class ContentService {
 		
 		return popularList;
 	}
+	
+	public void updateDir(DirectoryVO dir) {
+		dao.updateDir(dir);
+	}
 
+//	public void delDir(List<Integer> noList){
+//		for(int no : noList) {
+//			dao.delDir(no);
+//		}
+//	}
+	
+	public void delDir(List<Integer> noList) {
+		dao.delDir(noList);
+	}
 }

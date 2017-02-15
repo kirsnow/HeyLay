@@ -33,6 +33,7 @@
 		ga('create', 'UA-90558257-1', 'auto');
 		ga('send', 'pageview');
 	</script>
+		
 </head>
 <body>
 	<header>
@@ -79,10 +80,11 @@
     <Footer>
 		<jsp:include page="/jsp/include/footer.jsp" />
 	</Footer> 
-	
-<!-- jQuery -->
-<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
-	
+
+	<!-- jQuery -->
+	<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
+    	
 <script>
 	function setSeywords() {
 		var checkboxValues = [];

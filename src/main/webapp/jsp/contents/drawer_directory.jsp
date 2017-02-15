@@ -55,18 +55,8 @@
 				<div class="container">
 					<div class="row">
 						<div class="pull-right">
-							<div class="form-group col-md-5">
-								<select class="form-control" id="select">
-									<option value="">정렬할 기준 선택</option>
-									<option value="최근 수정 순">최근 수정 순</option>
-									<option value="폴더 등록 순">폴더 등록 순</option>
-									<option value="폴더 제목 순">폴더 제목 순</option>
-								</select>
-							</div>
-							<a href="#" class="btn btn-primary">정렬</a>
-							<a title="폴더를 추가할 수 있는 기능" class="btn btn-default">폴더추가</a>
 							<a href="javascript:doMember('${userVO.no}')"
-								class="btn btn-default" title="편집모드로 전환되는 URL">편집모드</a>
+								class="btn btn-primary" title="편집모드로 전환되는 URL">폴더 편집</a>
 						</div>
 					</div>
 					<c:choose>
