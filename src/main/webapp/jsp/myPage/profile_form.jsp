@@ -128,7 +128,7 @@
 							
 							<div class="row">
 							  <div class= "col-md-6 col-md-offset-3">
-							    <input type="password" name="password" id="passwordForUpdate" class="form-control" placeholder="비밀번호" alt="비밀번호 입력 폼"/>
+							    <input type="password" name="password"  class="form-control" placeholder="비밀번호" alt="비밀번호 입력 폼"/>
 							    <div class="text-center">
 							    	<small>회원정보 수정을 위해 비밀번호를 입력해주세요.</small>
 							    </div>
@@ -177,29 +177,27 @@
 			alert('메일 수신 여부를 체크해주세요.');
 			form.emailReceive.focus();
 			return false;
+		} else if (form.country.value == '') {
+			alert('국가를 입력해주세요.');
+			form.country.focus();
+			return false;
 		} else if (form.password.value == '') {
 			alert('비밀번호를 입력해주세요.');
 			form.password.focus();
 			return false;
-		} else if (form.country.value == '') {
-			alert('국가를 입력해주세요.');
-			form.country.focus();
+		} else if (form.password.value != '${userVO.password}') {
+			alert('비밀번호가 일치하지 않습니다. 다시 입력해 주세요.');
+			form.password.focus();
 			return false;
 		} else if (form.city.value == '') {
 			alert('도시를 입력해주세요.');
 			form.city.focus();
 			return false;
-		} else if (form.question.value == '') {
-			alert('질문을 선택해주세요.');
-			form.question.focus();
-			return false;
-		} else if (form.answer.value == '') {
-			alert('답변을 입력하세요');
-			form.answer.focus();
-			return false;
 		}
 		return true;
 	}
+	
+
 </script>
  
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
