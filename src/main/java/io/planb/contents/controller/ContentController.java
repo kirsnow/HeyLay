@@ -116,6 +116,7 @@ public class ContentController {
 	
 	/* 큐레이션 */
 	@RequestMapping("/contents/curation.do")
+	public String curation(Model model, HttpSession session) {
 	public String curation(Model model) {
 		List<ContentsVO> popularList = service.selectPopularList();
 		model.addAttribute("popularList", popularList);
