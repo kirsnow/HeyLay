@@ -96,12 +96,12 @@ public class ContentService {
 	public void delDir(List<Integer> noList) {
 		dao.delDir(noList);
 	}
-
-//	public List<ContentsVO> selectCustomSourceList(int no) {
-//		List<ContentsVO> customSourceList = dao.selectCustomSourceList(no);
-//		
-//		return customSourceList;
-//	}
+	
+	public List<ContentsVO> selectCustomSourceList(int no) {
+		List<ContentsVO> customSourceList = dao.selectCustomSourceList(no);
+		
+		return customSourceList;
+	}
 
 	public List<ContentsVO> selectCustomKeywordList(int no) {
 		List<KeywordsVO> keywordList = dao.selectUserKeywordList(no);
