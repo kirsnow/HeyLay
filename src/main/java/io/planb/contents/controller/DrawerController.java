@@ -10,18 +10,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import io.planb.contents.service.ContentService2;
-import io.planb.contents.vo.ContentsVO;
+import io.planb.contents.service.DrawerService;
+import io.planb.contents.vo.DrawerVO;
 import io.planb.member.vo.MemberVO;
 
 @SessionAttributes("userVO")
+@RequestMapping("/drawer")
 @Controller
-public class ContentController2 {
-
-	@Autowired
-	private ContentService2 service;
+public class DrawerController {
 	
-	@RequestMapping("/contents/drawer.do")
+	@Autowired
+	private DrawerService service;
+	
+	@RequestMapping("/days.do")
 	public ModelAndView selectSavedList(HttpSession session) {
 		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
 		
@@ -39,13 +40,12 @@ public class ContentController2 {
 			int memberNo = userVO.getNo();
 			System.out.println("memberNo: " + memberNo);
 			
-			List<ContentsVO> savedCards = service.getSavedCards(memberNo);
+			List<DrawerVO> cardsByDays = service.getSavedCardsByDays(memberNo);
 			
-			mav.setViewName("contents/drawer");
-			mav.addObject("cards", savedCards);
+			mav.setViewName("drawer/days");
+			mav.addObject("cardsByDays", cardsByDays);
 		/*}*/
 		
 		return mav;
 	}
-
 }

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="ko">
 <%-- 카드 서랍 속 날짜순 정렬 페이지 --%>
@@ -56,18 +56,17 @@
         <div class="row" style="margin-top: 60px"></div>
 	</header>
 
-<%-- 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <jsp:include page="/jsp/include/nav_left.jsp" />
+            <jsp:include page="/jsp/include/nav_personal.jsp" />
         </div>
         <!-- /#sidebar-wrapper -->
- --%>
+        
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <section class="container-fluid-?">
                 <c:choose>
-					<c:when test="${ (cards eq null) or (empty cards) }">
+					<c:when test="${ (cardsByDays eq null) or (empty cardsByDays) }">
 						<div class="row">
 							<p class="lead">아직 저장한 카드가 없습니다 &#58;O</p>
 						</div>
@@ -89,13 +88,18 @@
 					</c:when>
 					<c:otherwise>
 						<div class="row">
-							<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-							<p class="lead">저장한 카드 &#58; &#41;</p>
 						</div>
 						<div class="row">
-							<section class="col-lg-12 card-container mdl-grid">
-								<jsp:include page="/jsp/component/card.jsp" />
-							</section>
+							<c:forEach var="drawer" items="${ cardsByDays }" varStatus="loop">
+								<h4 class="col-lg-12 text-muted">
+									${ drawer.header } 
+									<small>${ fn:length(drawer.cards) }건</small>
+								</h4>
+								<c:set var="cards" value="${ drawer.cards }" scope="request" />
+								<section class="col-lg-12 card-container mdl-grid">
+									<jsp:include page="/jsp/component/card.jsp"/>
+								</section>
+							</c:forEach>
 						</div>
 					</c:otherwise>
 				</c:choose>
@@ -107,79 +111,11 @@
     <!-- /#wrapper -->
 
 
-
-	<%--
-	<header>
-		<jsp:include page="/jsp/include/nav_search.jsp" />
-        <div class="row" style="margin-top: 60px"></div>
-	</header>
-		<div class="wrapper">
-			<!-- nav -->
-			<div class="sidebar-wrapper">
-				<jsp:include page="/jsp/include/nav_left.jsp" />
-			</div>
-			<!-- /nav -->
-			
-			<!-- page content -->
-			<div class="page-content-wrapper">
-				<div class="container-fluid">
-				<c:choose>
-					<c:when test="${ (cards eq null) or (empty cards) }">
-						<div class="row">
-							<p class="lead">아직 저장한 카드가 없습니다 &#58;O</p>
-						</div>
-						<div class="row">
-							<div class="col-lg-12"></div>
-						</div>
-						<div class="row">
-							<div class="col-lg-12">
-								<ul class="">
-									<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Juliet"
-										title="Juliet 검색">Juliet 검색</a></li>
-									<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Romeo"
-										title="Romeo 검색">Romeo 검색</a></li>
-									<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Tempest"
-										title="Tempest 검색">Tempest 검색</a></li>
-								</ul>
-							</div>
-						</div>
-					</c:when>
-					<c:otherwise>
-						<div class="row">
-							<section class="col-lg-12 card-container mdl-grid">
-								
-								<jsp:include page="/jsp/component/card.jsp" />
-							</section>
-						</div>
-					</c:otherwise>
-				</c:choose>
-				</div>
-			</div>
-			<!-- /page content --> 
-		</div>
-	<!-- footer -->
-	<jsp:include page="/jsp/include/footer.jsp" />
-	<!-- /footer -->
-	
-	--%>
 	<!-- jQuery -->
 	<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
 	
 	<!-- Bootstrap -->
 	<script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
 	
-	
-	
-	
-	
-	
-	<!-- Menu Toggle Script -->
-    <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    </script>
-    
 </body>
 </html>
