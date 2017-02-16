@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 import io.planb.contents.service.ContentService;
 import io.planb.contents.vo.ContentsVO;
 import io.planb.contents.vo.SavedHeaderVO;
-import io.planb.contents.vo.SavedVO;
 import io.planb.directory.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.vo.MemberVO;
@@ -141,7 +140,7 @@ public class ContentController {
 		List<KeywordsVO> keywordList = service.selectKeywordList(memberNo);
 		model.addAttribute("keywordList", keywordList);
 		
-		System.out.println("keywordList controller : " + keywordList);
+		// System.out.println("keywordList controller : " + keywordList);
 		
 		return "contents/my_search";
 	}

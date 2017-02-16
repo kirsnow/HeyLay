@@ -11,10 +11,9 @@
 	</sql> -->
 
  	<select id="selectKeywordList" parameterType="int" resultType="keywordsVO">
-		SELECT max(no), keyword, max(reg_date) as regDate
-			FROM q_keywords
-			WHERE status='Y' and member_no = #{ memberNo }
-      		GROUP by keyword
+		select no, keyword, reg_date as regDate
+			from q_keywords
+			where status='Y' and member_no = #{ memberNo }
 			ORDER BY regDate DESC
 			LIMIT 50
 	</select> 
