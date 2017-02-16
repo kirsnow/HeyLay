@@ -15,7 +15,7 @@ function doMember(memberNo) {
 			<div class="row">
 				<div class="col-md-offset-3  text-center">
 					<div class="profile_info">
-						<span>Welcome, ${ userVO.firstName }</span>
+						<span>Welcome<br/>${ userVO.firstName }</span>
 						<div class=" text-center">	
 						<img src="/img/team/02.jpg" alt="..." class="img-circle profile_img">			
 						</div>
@@ -30,17 +30,17 @@ function doMember(memberNo) {
 		<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 			<div class="menu_section">
 				<ul class="nav side-menu">
-					<li><a href="${ pageContext.request.contextPath }/" title="홈으로 가는 링크"><i class="fa fa-home"></i> 
-						Home <span class="fa fa-chevron-right"></span></a>
+					<li>
+						<a href="${ pageContext.request.contextPath }/" title="홈으로 가는 링크">
+							<i class="fa fa-home"></i> 
+							Home <span class="fa fa-chevron-right"></span>
+						</a>
 					</li>
-					<li><a title="카드 서랍 카테고리 보기"><i class="fa fa-inbox" aria-hidden="true"></i> 
-						카드 서랍 <span class="fa fa-chevron-down"></span></a>
-						<ul class="nav child_menu">
-							<li><a href="${ pageContext.request.contextPath }/contents/drawer_day.do" title="날짜 순으로 정렬된 카드 서랍 링크">날짜순</a></li>
-							<li><a href="${ pageContext.request.contextPath }/contents/drawer_category.do" title="분야별로 정렬된 카드 서랍 링크">분야별</a></li>
-							<li><a href="${ pageContext.request.contextPath }/contents/drawer_source.do" title="유형별로 정렬된 카드 서랍 링크">유형별</a></li>
-							<li><a href="${ pageContext.request.contextPath }/contents/drawer_directory.do" title="개인 폴더 별로 정렬된 카드 서랍 링크">폴더별</a></li>
-						</ul>
+					<li>
+						<a href="${ pageContext.request.contextPath }/drawer.do" title="카드 서랍 보기">
+							<i class="fa fa-inbox" aria-hidden="true"></i> 
+							카드 서랍 <span class="fa fa-chevron-right"></span>
+						</a>
 					</li>
 					<li><a href="${ pageContext.request.contextPath }/contents/curation.do" title="카드 추천으로 가는 링크"><i class="fa fa-archive" aria-hidden="true"></i> 
 						카드 추천<span class="fa fa-chevron-right"></span></a>

@@ -10,18 +10,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>날짜순 카드 서랍 | Quration: 답을 열어 줄 그런 사람</title>
+<title>카드 서랍 | Quration: 답을 열어 줄 그런 사람</title>
 
 <!-- Bootstrap -->
 <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 <link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
 
-<!-- icon-font -->
-<script src="https://use.fontawesome.com/bbddce3010.js"></script>
-
 <!-- MDL Hosted start -->
 <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-light_blue.min.css" />
-<link href="${ pageContext.request.contextPath }/css/simple-sidebar.css" type="text/css" rel="stylesheet">
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -48,23 +44,21 @@
 	ga('send', 'pageview');
 </script>
 </head>
-<body>
-	<div id="container">
+<body class="nav-md">
+	<div class="container body">
 
-	<header>
-		<jsp:include page="/jsp/include/nav_search.jsp" />
-        <div class="row" style="margin-top: 60px"></div>
-	</header>
+		<header>
+			<jsp:include page="/jsp/include/nav_search.jsp" />
+	        <div class="row" style="margin-top: 60px"></div>
+		</header>
 
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <jsp:include page="/jsp/include/nav_personal.jsp" />
-        </div>
-        <!-- /#sidebar-wrapper -->
+        <!-- nav -->
+		<jsp:include page="/jsp/include/nav_personal.jsp" />
+		<!-- /nav -->
         
         <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <section class="container-fluid-?">
+        <div class="right_col" role="main">
+            <section class="container">
                 <c:choose>
 					<c:when test="${ (cardsByDays eq null) or (empty cardsByDays) }">
 						<div class="row">
@@ -88,15 +82,22 @@
 					</c:when>
 					<c:otherwise>
 						<div class="row">
+							<div class="col-xs-12">
+								Sort: 
+								<a href="${ pageContext.request.contextPath }/drawer.do?sort=directory">Directory</a>
+								| <a href="${ pageContext.request.contextPath }/drawer.do?sort=days">Days</a>
+								| <a href="${ pageContext.request.contextPath }/drawer.do?sort=type">Type</a>
+								| <a href="${ pageContext.request.contextPath }/drawer.do?sort=source">Source</a>
+							</div>
 						</div>
 						<div class="row">
 							<c:forEach var="drawer" items="${ cardsByDays }" varStatus="loop">
-								<h4 class="col-lg-12 text-muted">
+								<h4 class="col-xs-12 text-muted">
 									${ drawer.header } 
 									<small>${ fn:length(drawer.cards) }건</small>
 								</h4>
 								<c:set var="cards" value="${ drawer.cards }" scope="request" />
-								<section class="col-lg-12 card-container mdl-grid">
+								<section class="col-xs-12 card-container mdl-grid">
 									<jsp:include page="/jsp/component/card.jsp"/>
 								</section>
 							</c:forEach>
@@ -117,5 +118,10 @@
 	<!-- Bootstrap -->
 	<script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
 	
+	<!-- Custom Theme Scripts -->
+	<script src="${ pageContext.request.contextPath }/js/custom.min.js"></script>
+	
+	<!-- icon-font -->
+	<script src="https://use.fontawesome.com/bbddce3010.js"></script>
 </body>
 </html>

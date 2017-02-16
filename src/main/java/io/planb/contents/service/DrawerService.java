@@ -27,41 +27,53 @@ public class DrawerService {
 		return savedCards;
 	}
 	
-	public List<DrawerVO> getSavedCardsByDays(int memberNo) {
-		List<ContentsVO> savedCards = getSavedCardsForMember(memberNo);
-		
-		Set<String> savedDays = new LinkedHashSet<String>();
+	public Set<String> getHeaderList(List<ContentsVO> savedCards, String sort) {
+		Set<String> headerList = new LinkedHashSet<String>();
 		for(ContentsVO card : savedCards) {
-			String cardDate = card.getSavedDaysAgo();
-			if( !savedDays.contains(cardDate) ) {
-				savedDays.add(cardDate);
+			String header = getCompare(card, sort);
+			if( !headerList.contains(header) ) {
+				headerList.add(header);
 			}
 		}
+		return headerList;
+	}
+	
+	public String getCompare(ContentsVO card, String sort) {
+		String compare = null;
+		switch(sort) {
+			case "days": compare = card.getSavedDaysAgo(); break;
+			case "type": compare = card.getDataTypeName(); break;
+			case "source": compare = card.getSourceName(); break;
+			case "directory": compare = card.getDirectoryName(); break;
+			default: compare = card.getDirectoryName(); break;
+		}
+		return compare;
+	}
+	
+	public List<DrawerVO> getDrawerList(int memberNo, String sort) {
+		if(sort == null) sort = "directory";
+		// Get saved cards from DB
+		List<ContentsVO> savedCards = getSavedCardsForMember(memberNo);
 		
+		// Get header list
+		Set<String> drawerHeader = getHeaderList(savedCards, sort);
+		
+		// Get card list to print
 		List<DrawerVO> drawerList = new ArrayList<>();
-		for(String day : savedDays) {
+		for(String header : drawerHeader) {
 			List<ContentsVO> cardList = new ArrayList<ContentsVO>();
 			
 			for(ContentsVO card : savedCards) {
-				if( day.equals(card.getSavedDaysAgo()) ) {
+				if( header.equals(getCompare(card, sort)) ) {
 					cardList.add(card);
 				}
 			}
 			DrawerVO drawer = new DrawerVO();
-			drawer.setHeader(day);
+			drawer.setHeader(header);
 			drawer.setCards(cardList);
 			drawerList.add(drawer);
 		}
-		System.out.println("drawerList.size: " + drawerList.size());
-		
 		return drawerList;
 	}
 	
-	public List<ContentsVO> getSavedCardsBySavedNo(int savedNo) {
-		ContentsVO vo = new ContentsVO();
-		vo.setSavedNo(savedNo);
-		
-		List<ContentsVO> savedCards = dao.getSavedCards(vo);
-		return savedCards;
-	}
 }

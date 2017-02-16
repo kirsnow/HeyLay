@@ -15,10 +15,6 @@
 			<a href="${ card.sourceUrl }" class="label label-primary" target="_blank" title="원본 사이트로 이동(새 창)"> 
 				<c:out value="${ card.sourceName }" />
 			</a>
-			&nbsp;
-			<a href="${ card.url }" target="_blank" title="원본 페이지로 이동(새 창)"> 
-				<i class="fa fa-external-link" aria-hidden="true"></i>
-			</a>
 		</div>
 		
 		<!-- card image -->
@@ -33,8 +29,7 @@
 		<div class="mdl-card__title">
 			<h5 class="card-title mdl-card__title-text drop-text-2" 
 			title="${ card.title }" data-toggle="tooltip" data-placement="bottom">
-			<a href="${ pageContext.request.contextPath }/search/contents.do?no=${ card.contentsNo }&q=${ searchResult.query }" 
-				title="상세 페이지 더 보기">${ card.title }</a></h5>
+			${ card.title }</h5>
 		</div>
 	
 		<!-- card text -->
@@ -42,7 +37,7 @@
 			<p class="card-content drop-text-5">
 				${ card.summary }
 			</p>
-			<p>${ card.savedDaysAgo }</p>
+			<div class="text-muted text-right">${ card.savedDaysAgo }</div>
 		</div>
 	
 		<!-- card menu (top-right) -->
@@ -71,7 +66,6 @@
 			<a href="${ pageContext.request.contextPath }/search/contents.do?no=${ card.contentsNo }&q=${ searchResult.query }" 
 				 class="btn btn-link" title="상세 페이지 더 보기">
 				더 보기
-				<i class="fa fa-external-link" aria-hidden="true"></i>
 			</a>
 			
 			<!-- buttons (bottom-right) -->
