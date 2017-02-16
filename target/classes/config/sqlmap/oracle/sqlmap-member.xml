@@ -34,6 +34,13 @@
 	    where last_name = #{lastName} and first_name = #{firstName} and question = #{question} and answer = #{answer}
 	</select>
 	
+	<!-- 계정 중복 확인 -->
+	<select id="checkEmail"  parameterType="String" resultType="String">
+	   select email
+	     from Q_member
+	    where email = #{email} 
+	</select>
+	
 	<!-- 비밀번호 찾기 -->
 	<select id="selectMemberPassword"  parameterType="memberVO" resultType="String">
 	   select password
