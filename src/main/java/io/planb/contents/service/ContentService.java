@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import io.planb.contents.dao.ContentDAO;
 import io.planb.contents.vo.ContentsVO;
-import io.planb.contents.vo.SavedHeaderVO;
+import io.planb.contents.vo.DrawerHeaderVO;
 import io.planb.contents.vo.SavedVO;
 import io.planb.directory.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
@@ -33,23 +33,23 @@ public class ContentService {
 		return drawerCards;
 	}
 	
-	public List<SavedHeaderVO> drawerDates(int memberNo) {
-		List<SavedHeaderVO> drawerDates = dao.drawerDates(memberNo);
+	public List<DrawerHeaderVO> drawerDates(int memberNo) {
+		List<DrawerHeaderVO> drawerDates = dao.drawerDates(memberNo);
 		return drawerDates;
 	}
 	
-	public List<SavedHeaderVO> drawerDirectory(int memberNo) {
-		List<SavedHeaderVO> drawerDirectory = dao.drawerDirectory(memberNo);
+	public List<DrawerHeaderVO> drawerDirectory(int memberNo) {
+		List<DrawerHeaderVO> drawerDirectory = dao.drawerDirectory(memberNo);
 		return drawerDirectory;
 	}
 	
-	public List<SavedHeaderVO> drawerCategory(int memberNo) {
-		List<SavedHeaderVO> drawerCategory = dao.drawerCategory(memberNo);
+	public List<DrawerHeaderVO> drawerCategory(int memberNo) {
+		List<DrawerHeaderVO> drawerCategory = dao.drawerCategory(memberNo);
 		return drawerCategory;
 	}
 	
-	public List<SavedHeaderVO> drawerSource(int memberNo) {
-		List<SavedHeaderVO> drawerSource = dao.drawerSource(memberNo);
+	public List<DrawerHeaderVO> drawerSource(int memberNo) {
+		List<DrawerHeaderVO> drawerSource = dao.drawerSource(memberNo);
 		return drawerSource;
 	}
 	

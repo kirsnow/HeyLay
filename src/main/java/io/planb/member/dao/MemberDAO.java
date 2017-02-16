@@ -1,6 +1,5 @@
 package io.planb.member.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -48,8 +47,10 @@ public interface MemberDAO {
 
 	public int selectWithdrawContentCnt(int memberNo);		//회원 탈퇴 시 보유 컨텐츠 호출
 
-	public String selectMemberAccount(MemberVO member);  //계정 찾기
+	public String selectMemberAccount(MemberVO member);  	//계정 찾기
 
-	public String selectMemberPassword(MemberVO member);   //비밀번호 찾기
+	public String selectMemberPassword(MemberVO member);    //비밀번호 찾기
+
+	public String checkEmail(String email);;		                //계정 중복 확인
 
 }

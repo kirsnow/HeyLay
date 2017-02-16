@@ -21,7 +21,9 @@
 		<typeAlias type="io.planb.noticeAttach.vo.NoticeAttachVO" alias="noticeAttachVO" />
 		<typeAlias type="io.planb.contact.vo.ReportVO" alias="reportVO" />
 		<typeAlias type="io.planb.contents.vo.SavedVO" alias="savedVO" />
-		<typeAlias type="io.planb.contents.vo.SavedHeaderVO" alias="savedHeaderVO" />
+		<typeAlias type="io.planb.contents.vo.SavedVO" alias="savedHeaderVO" />
+		<typeAlias type="io.planb.contents.vo.DrawerHeaderVO" alias="drawerHeaderVO" />
+		<typeAlias type="io.planb.contents.vo.DrawerVO" alias="drawerVO" />
 		<typeAlias type="io.planb.search.vo.SearchVO" alias="searchVO" />
 		<typeAlias type="io.planb.source.vo.SourceVO" alias="sourceVO" />
 		<typeAlias type="io.planb.question.vo.QuestionVO" alias="questionVO" />
