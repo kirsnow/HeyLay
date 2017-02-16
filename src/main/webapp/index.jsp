@@ -387,8 +387,7 @@
     <script type="text/javascript" src="${ pageContext.request.contextPath }/js/main.js"></script>
     <script type="text/javascript" src="${ pageContext.request.contextPath }/js/jasny-bootstrap.min.js"></script>
     
-    <!-- Include all compiled plugins (below), or include individual files as needed
-    -->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script type="text/javascript" src="${ pageContext.request.contextPath }/js/SmoothScroll.js"></script>
     <script type="text/javascript" src="${ pageContext.request.contextPath }/js/typed.js"></script>
     <script>

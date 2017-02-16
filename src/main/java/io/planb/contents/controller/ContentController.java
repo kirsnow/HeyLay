@@ -8,13 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import io.planb.contents.service.ContentService;
 import io.planb.contents.vo.ContentsVO;
 import io.planb.contents.vo.SavedHeaderVO;
-import io.planb.contents.vo.SavedVO;
+import io.planb.directory.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.vo.MemberVO;
 
@@ -114,20 +116,9 @@ public class ContentController {
 	
 	/* 큐레이션 */
 	@RequestMapping("/contents/curation.do")
-	public String curation(Model model, HttpSession session) {
-		MemberVO member = (MemberVO) session.getAttribute("userVO");
-		
-		// 전체 유저가 많이 본 콘텐츠 top 3
+	public String curation(Model model) {
 		List<ContentsVO> popularList = service.selectPopularList();
 		model.addAttribute("popularList", popularList);
-		
-		// 내가 제일 많이 담은 사이트의 콘텐츠 중 전체 유저가 많이 본 콘텐츠 top 3
-		List<ContentsVO> customSourceList = service.selectCustomSourceList(member.getNo());
-		model.addAttribute("customSourceList", customSourceList);
-		
-		// 관심 키워드 & 검색 키워드 해당 콘텐츠 중 전체 유저가 많이 본 콘텐츠 top 3
-		List<ContentsVO> customKeywordList = service.selectCustomKeywordList(member.getNo());
-		model.addAttribute("customKeywordList", customKeywordList);
 		
 		return "contents/curation";
 	}
@@ -182,10 +173,47 @@ public class ContentController {
 		return "contents/upgrade";
 	}
 	
-	@RequestMapping("/card_enrollform_modal.do")
+	@RequestMapping("/contents/card_enrollform_modal.do")
 	public String cardEnroll(Model model) {
 		
 		return "contents/card_enrollform_modal";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/contents/updateDir.do", method=RequestMethod.POST)
+	public String updateDir(@RequestParam("no") int no, @RequestParam("name") String name) {
+		
+		DirectoryVO directory = new DirectoryVO();
+		directory.setNo(no);
+		directory.setName(name);
+		
+		service.updateDir(directory);
+		
+		return "완료";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/contents/addDir.do", method=RequestMethod.POST)
+	public String addDir(HttpSession session, @RequestParam("name") String name) {
+		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
+		int userNo = userVO != null ? userVO.getNo() : 0;
+		
+		DirectoryVO directory = new DirectoryVO();
+		directory.setMemberNo(userNo);
+		directory.setName(name);
+		
+		service.newDirectory(directory);
+		
+		return "완료";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/contents/delDir.do", method=RequestMethod.POST)
+	public String delDir(HttpSession session, @RequestParam("no[]") List<Integer> noList) {
+
+		service.delDir(noList);
+		
+		return "완료";
 	}
 
 }
