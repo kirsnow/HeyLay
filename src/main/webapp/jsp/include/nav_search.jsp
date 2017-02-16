@@ -29,7 +29,9 @@
 				<c:choose>
 					<c:when test="${ not empty userVO }">		
 						<li>
-							<a href="${ pageContext.request.contextPath }/contents/drawer_day.do" class="navbar-link" title="내 카드 보관함으로 이동">내 카드</a>
+							<a href="${ pageContext.request.contextPath }/drawer.do" class="navbar-link" title="내 카드 보관함으로 이동">
+								내 카드
+							</a>
 						</li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" title="회원 정보 메뉴 열기">

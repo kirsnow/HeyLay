@@ -46,6 +46,7 @@ public class ContentsVO {
 	
 	/* about Saved contents */
 	// Q_CONTENTS_SAVED
+	private int memberNo;
 	private int savedNo;
 	private int savedCnt;
 	private Date savedDate;
@@ -56,6 +57,8 @@ public class ContentsVO {
 	private String directoryName;
 	private Date directoryDate;
 	private String directoryDaysAgo;
+	
+	private int limit;
 	
 	
 	public ContentsVO() {
@@ -206,6 +209,15 @@ public class ContentsVO {
 	public void setImgAlt(String imgAlt) {
 		this.imgAlt = imgAlt;
 	}
+	
+	public int getMemberNo() {
+		return memberNo;
+	}
+
+	public void setMemberNo(int memberNo) {
+		this.memberNo = memberNo;
+	}
+
 	public int getSavedNo() {
 		return savedNo;
 	}
@@ -255,19 +267,27 @@ public class ContentsVO {
 		this.directoryDaysAgo = directoryDaysAgo;
 	}
 	
+	public int getLimit() {
+		return limit;
+	}
+
+	public void setLimit(int limit) {
+		this.limit = limit;
+	}
+
 	@Override
 	public String toString() {
 		return "ContentsVO [contentsNo=" + contentsNo + ", title=" + title + ", summary=" + summary + ", url=" + url
 				+ ", scrapedDate=" + scrapedDate + ", scrapedDaysAgo=" + scrapedDaysAgo + ", language=" + language
-				+ ", ban=" + ban + ", viewCnt=" + viewCnt + ", likeCnt=" + likeCnt
-				+ ", sourceNo=" + sourceNo + ", sourceName=" + sourceName + ", sourceUrl=" + sourceUrl
-				+ ", sourceDomain=" + sourceDomain + ", sourceImg=" + sourceImg + ", dataTypeNo=" + dataTypeNo
-				+ ", dataTypeName=" + dataTypeName + ", dataTypeNameEng=" + dataTypeNameEng + ", dataTypeNameFun="
-				+ dataTypeNameFun + ", categoryNo=" + categoryNo + ", categoryName=" + categoryName + ", imgNo=" + imgNo
-				+ ", imgUrl=" + imgUrl + ", imgAlt=" + imgAlt + ", savedNo=" + savedNo + ", savedCnt=" + savedCnt
-				+ ", savedDate=" + savedDate + ", savedDaysAgo=" + savedDaysAgo + ", directoryNo=" + directoryNo
+				+ ", ban=" + ban + ", viewCnt=" + viewCnt + ", likeCnt=" + likeCnt + ", sourceNo=" + sourceNo
+				+ ", sourceName=" + sourceName + ", sourceUrl=" + sourceUrl + ", sourceDomain=" + sourceDomain
+				+ ", sourceImg=" + sourceImg + ", dataTypeNo=" + dataTypeNo + ", dataTypeName=" + dataTypeName
+				+ ", dataTypeNameEng=" + dataTypeNameEng + ", dataTypeNameFun=" + dataTypeNameFun + ", categoryNo="
+				+ categoryNo + ", categoryName=" + categoryName + ", imgNo=" + imgNo + ", imgUrl=" + imgUrl
+				+ ", imgAlt=" + imgAlt + ", savedNo=" + savedNo + ", savedCnt=" + savedCnt + ", savedDate=" + savedDate
+				+ ", savedDaysAgo=" + savedDaysAgo + ", memberNo=" + memberNo + ", directoryNo=" + directoryNo
 				+ ", directoryName=" + directoryName + ", directoryDate=" + directoryDate + ", directoryDaysAgo="
-				+ directoryDaysAgo + "]";
+				+ directoryDaysAgo + ", limit=" + limit + "]";
 	}
 	
 }

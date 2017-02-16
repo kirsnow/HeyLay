@@ -1,7 +1,5 @@
 package io.planb.contents.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,18 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import io.planb.contents.service.ContentService2;
-import io.planb.contents.vo.ContentsVO;
+import io.planb.contents.service.ContentsServiceTest;
 import io.planb.member.vo.MemberVO;
 
 @SessionAttributes("userVO")
 @Controller
-public class ContentController2 {
+public class ContentsControllerTest {
 
 	@Autowired
-	private ContentService2 service;
+	private ContentsServiceTest service;
 	
-	@RequestMapping("/contents/drawer.do")
+	@RequestMapping("/contents/drawer-test.do")
 	public ModelAndView selectSavedList(HttpSession session) {
 		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
 		
@@ -39,10 +36,9 @@ public class ContentController2 {
 			int memberNo = userVO.getNo();
 			System.out.println("memberNo: " + memberNo);
 			
-			List<ContentsVO> savedCards = service.getSavedCards(memberNo);
 			
 			mav.setViewName("contents/drawer");
-			mav.addObject("cards", savedCards);
+			mav.addObject("cards", memberNo);
 		/*}*/
 		
 		return mav;

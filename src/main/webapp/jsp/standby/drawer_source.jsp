@@ -1,15 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="ko">
-<%-- 카드 서랍 속 분야별 정렬 페이지 --%>
+<%-- 카드 서랍 속 유형별 정렬 페이지 --%>
 <head>
 <!-- Basic Page Needs -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>분야별 카드 서랍 | Quration: 답을 열어 줄 그런 사람</title>
+<title>출처별 카드 서랍 | Quration: 답을 열어 줄 그런 사람</title>
 
 <!-- Bootstrap -->
 <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
@@ -29,7 +28,7 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    
 <!-- google analytics -->
 <script>
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -46,14 +45,13 @@
 		<header>
 			<jsp:include page="/jsp/include/nav_search.jsp" />
 		</header>
-		<div class="main_container marginTop70">
+		<div class="main_container marginTop60">
 			<!-- nav -->
 			<jsp:include page="/jsp/include/nav_personal.jsp" />
 			<!-- /nav -->
 
 			<div class="right_col" role="main">
 				<!-- page content -->
-
 				<div class="container">
 					<c:choose>
 						<c:when test="${ (drawerHeaders eq null) or (empty drawerHeaders) }">
@@ -76,7 +74,7 @@
 						<c:otherwise>
 							<c:forEach var="drawerHeader" items="${ drawerHeaders }" varStatus="loop">
 								<div class="row marginTop30">
-									<span class="text-primary lead">${ drawerHeader.category } <small>저장한 카드 ${ drawerHeader.cnt } 건</small></span>
+									<span class="text-primary lead">${ drawerHeader.source } <small>저장한 카드 ${ drawerHeader.cnt } 건</small></span>
 								</div>
 								<div class="row card-container mdl-grid">
 									<jsp:include page="/jsp/component/card.jsp" />
@@ -87,14 +85,12 @@
 				</div>
 				<!-- /page content -->
 			</div>
-			
 			<!-- footer -->
 			<jsp:include page="/jsp/include/footer.jsp" />
 			<!-- /footer -->
-			
 		</div>
 	</div>
-	
+
 	<!-- jQuery -->
 	<script
 		src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>

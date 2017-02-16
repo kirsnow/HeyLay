@@ -2,7 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.planb.dao.ContentDAO">
 	
-	<select id="selectContents" parameterType="int" resultType="contentsVO">
+	<select id="selectDrawerHeader" parameterType="drawerHeaderVO" resultType="drawerHeaderVO">
+		select to_char(SAV.REG_DATE, 'yyyy. mm. dd. ') as savedDate 
+		<include refid="daysAgo">
+			<property name="which_column" value="SAV.REG_DATE"/>
+			<property name="which_name" value="saved"/>
+		</include>
+		, count(SAV.NO)
+			
+		from Q_CONTENTS CON
+			<include refid="additionalJoin" />
+			<include refid="savedJoin" />
+			
+		where CON.BAN = 'N' and SAV.MEMBER_NO = #{memberNo}
+		
+		group by savedDate, savedDaysAgo
+		order by savedDate desc
+	</select>
+	
+	<select id="selectContents" parameterType="contentsVO" resultType="contentsVO">
 		select CON.NO as contentsNo
 			, CON.TITLE as title, CON.SUMMARY as summary, CON.URL as url
 			, CON.LAST_SCRAPED as scrapedDate
@@ -12,32 +30,49 @@
 			</include>
 			
 			<include refid="additionalColumns" />
-			<include refid="savedColumns" />
+			<if test="memberNo != 0 or savedNo != 0">	<!-- for Saved cards -->
+				<include refid="savedColumns" />
+			</if>
 		 
 	 	from Q_CONTENTS CON
 			<include refid="additionalJoin" />
-			<include refid="savedJoin" />
+			<if test="memberNo != 0 or savedNo != 0">	<!-- for Saved cards -->
+				<include refid="savedJoin" />
+			</if>
  			
 		<where>
  			CON.BAN = 'N'
-			and SAV.MEMBER_NO = #{memberNo}
+			<if test="contentsNo != 0">and CON.NO = #{contentsNo}</if>
+			<if test="memberNo != 0">and SAV.MEMBER_NO = #{memberNo}</if>
+			<if test="savedNo != 0">and SAV.NO = #{savedNo}</if>
+ 			<if test="sourceNo != 0">and SOU.NO = #{sourceNo}</if>
+ 			<if test="dataTypeNo != 0">and DAT.NO = #{dataTypeNo}</if>
+ 			<if test="categoryNo != 0">and CAT.NO = #{categoryNo}</if>
 		</where>
  		
  		group by CON.NO
 			<include refid="additionalGroup" />
-			<include refid="savedGroup" />
+			<if test="memberNo != 0 or savedNo != 0">	<!-- for Saved cards -->
+				<include refid="savedGroup" />
+			</if>
  		
  		order by
-			SAV.REG_DATE desc,
+ 			<if test="memberNo != 0 or savedNo != 0">	<!-- for Saved cards -->
+				SAV.REG_DATE desc,
+			</if>
+			<if test="limit != 0">						<!-- for Popular List -->
+				CON.VIEW_CNT desc,
+			</if>
 			CON.LAST_SCRAPED desc
+		<if test="limit != 0">limit #{limit}</if>				<!-- for Popular List -->
 	</select>
 	
 	<!-- SQL scriptlets -->
 	<sql id="daysAgo">
 		, case 
-		    when ${which_column} &gt; now()
+		    when ${which_column} &gt; now() at time zone 'GMT+9'
 				then '오늘' 
-		    when ${which_column} &gt; (now() - interval '1 day')
+		    when ${which_column} &gt; (now() at time zone 'GMT+9' - interval '1 day')
 				then '어제' 
 		    else to_char(${which_column}, 'YYYY. MM. DD.')
 		end as ${which_name}DaysAgo
@@ -86,10 +121,4 @@
 	</sql>
 	
 </mapper>
-
-
-
-
-
-
   

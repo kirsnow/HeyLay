@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:forEach var="card" items="${ cards }" varStatus="loop">
+<c:forEach var="card" items="${ requestScope.cards }" varStatus="loop">
 	<!-- card -->
 	<div class="card-ancestor mdl-card mdl-cell mdl-cell--4-col mdl-cell--12-col-phone mdl-shadow--3dp">
 	
@@ -14,10 +14,6 @@
 			</span>
 			<a href="${ card.sourceUrl }" class="label label-primary" target="_blank" title="원본 사이트로 이동(새 창)"> 
 				<c:out value="${ card.sourceName }" />
-			</a>
-			&nbsp;
-			<a href="${ card.url }" target="_blank" title="원본 페이지로 이동(새 창)"> 
-				<i class="fa fa-external-link" aria-hidden="true"></i>
 			</a>
 		</div>
 		
@@ -33,8 +29,7 @@
 		<div class="mdl-card__title">
 			<h5 class="card-title mdl-card__title-text drop-text-2" 
 			title="${ card.title }" data-toggle="tooltip" data-placement="bottom">
-			<a href="${ pageContext.request.contextPath }/search/contents.do?no=${ card.contentsNo }&q=${ searchResult.query }" 
-				title="상세 페이지 더 보기">${ card.title }</a></h5>
+			${ card.title }</h5>
 		</div>
 	
 		<!-- card text -->
@@ -42,6 +37,7 @@
 			<p class="card-content drop-text-5">
 				${ card.summary }
 			</p>
+			<div class="text-muted text-right">${ card.savedDaysAgo }</div>
 		</div>
 	
 		<!-- card menu (top-right) -->
@@ -57,8 +53,7 @@
 					</c:when>
 					<c:otherwise>
 						<a href="${ pageContext.request.contextPath }/login/login.do"
-							id="${ card.contentsNo }" class="saveCardBtn"
-							title="카드 담기: 로그인이 필요한 서비스입니다">
+							id="${ card.contentsNo }" class="saveCardBtn" title="카드 담기: 로그인이 필요한 서비스입니다">
 							<i class="fa fa-bookmark-o fa-2x text-muted" aria-hidden="true"></i>
 						</a>
 					</c:otherwise>
@@ -68,8 +63,9 @@
 	
 		<!-- card action buttons (bottom) -->
 		<div class="mdl-card__actions mdl-card--border">
-			<a href="${ card.url }" target="_blank" title="원본 페이지로 이동(새 창)" class="btn btn-link">
-				원본 페이지&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i>
+			<a href="${ pageContext.request.contextPath }/search/contents.do?no=${ card.contentsNo }&q=${ searchResult.query }" 
+				 class="btn btn-link" title="상세 페이지 더 보기">
+				더 보기
 			</a>
 			
 			<!-- buttons (bottom-right) -->
