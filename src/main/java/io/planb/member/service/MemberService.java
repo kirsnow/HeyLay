@@ -18,9 +18,6 @@ public interface MemberService {
 
 	public List<MemberVO> selectByNo(MemberVO member); 							//회원 정보 호출
 
-	
-	public MemberVO findPw(MemberVO member); 									//비밀번호 찾기
-
 	public void updateType(int no);												// 멤버 타입 F->P로 업데이트
 	
 	public List<DirectoryVO> selectFolder(int memberNo);						// 폴더 변경시 폴더 리스트 호출
@@ -45,6 +42,8 @@ public interface MemberService {
 
 	public int selectWithdrawContentCnt(int memberNo);							//회원 탈퇴 시 보유 컨텐츠 호출
 
-	public MemberVO selectMemberAccount(MemberVO member);						//계정 찾기
+	public String selectMemberAccount(MemberVO member);						//계정 찾기
+
+	public String selectMemberPassword(MemberVO member);						//비밀번호 찾기
 
 }

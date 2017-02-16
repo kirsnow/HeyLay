@@ -66,7 +66,7 @@
 				<div class="row ">
 					<div class="col-md-6 col-md-offset-3 marginBottom100 marginTop80 text-center font20">
 						<sub><i class="material-icons">info_outline</i></sub>
-						고객님의 계정은  <span class="primaryFont">${userAccount.email}</span>입니다.
+						고객님의 계정은  <span class="primaryFont">${userAccount}</span>입니다.
 					</div>
 				</div>
 				<div class="row">

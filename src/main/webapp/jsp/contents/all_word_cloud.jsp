@@ -48,7 +48,7 @@
 			<jsp:include page="/jsp/include/nav_search.jsp" />
 		</header>
 		
-		<div class="main_container marginTop70">
+		<div class="main_container marginTop60">
 			<!-- nav -->
 			<jsp:include page="/jsp/include/nav_personal.jsp" />
 			<!-- /nav -->
