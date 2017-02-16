@@ -239,16 +239,25 @@
 		    };
 		    jQuery(this).on('keyup input', function() { resizeTextarea(this); }).removeAttr('data-autoresize');
 		});
+		
 		function updateAd() {
 			var siteNames = [];
 			var codes = [];
+			var lefts = [];
 			for(var i = 1; i <= 3; i++) {
 				siteNames.push($('#name' + i).val());
 				codes.push($('#code' + i).val());
+				lefts.push(Math.floor($('#name' + i).offset().left));
 			}
 			
+			var list = {
+					"siteNames" : siteNames, 
+					"codes" : codes,
+					"lefts" : lefts 
+				};
+			
 			$.ajax({
-		        url:"${ pageContext.request.contextPath }/jsp/admin/member_modify_type.do",
+		        url:"${ pageContext.request.contextPath }/jsp/admin/ad_modify.do",
 		        type:'POST',
 		        data: list, 
 		        success:function(data){

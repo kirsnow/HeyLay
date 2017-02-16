@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import io.planb.contents.service.ContentService;
 import io.planb.contents.vo.ContentsVO;
 import io.planb.contents.vo.SavedHeaderVO;
+import io.planb.contents.vo.SavedVO;
 import io.planb.directory.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.vo.MemberVO;
@@ -116,9 +117,20 @@ public class ContentController {
 	
 	/* 큐레이션 */
 	@RequestMapping("/contents/curation.do")
-	public String curation(Model model) {
+	public String curation(Model model, HttpSession session) {
+		MemberVO member = (MemberVO) session.getAttribute("userVO");
+		
+		// ?泥???媛 留??蹂?肄?痢 top 3
 		List<ContentsVO> popularList = service.selectPopularList();
 		model.addAttribute("popularList", popularList);
+		
+		// ?닿? ???留???댁 ?ъ댄몄 肄?痢 以 ?泥???媛 留??蹂?肄?痢 top 3
+		List<ContentsVO> customSourceList = service.selectCustomSourceList(member.getNo());
+		model.addAttribute("customSourceList", customSourceList);
+		
+		// 愿???ㅼ? & 寃? ?ㅼ? ?대?肄?痢 以 ?泥???媛 留??蹂?肄?痢 top 3
+		List<ContentsVO> customKeywordList = service.selectCustomKeywordList(member.getNo());
+		model.addAttribute("customKeywordList", customKeywordList);
 		
 		return "contents/curation";
 	}
