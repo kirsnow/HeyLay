@@ -22,6 +22,8 @@ public class AdService {
 	}
 
 	public void manageAd(ArrayList<String> nameList, ArrayList<String> codeList, ArrayList<Integer> leftList) {
+		System.out.println("nameList:" + nameList + ".");
+		
 		List<Integer> locationList = new ArrayList<>();
 		int location = 0;
 		
@@ -43,8 +45,8 @@ public class AdService {
 			}
 			if(exist) {
 				if(ad.getSiteName().equals("")) {
-					System.out.println("ad.getSiteName():" + ad.getSiteName());
-					dao.deleteAd(location);
+					System.out.println("ad[" + i + "].getSiteName():" + ad.getSiteName());
+					dao.deleteAd(ad.getLocation());
 				}
 				else dao.updateAd(ad);
 			}

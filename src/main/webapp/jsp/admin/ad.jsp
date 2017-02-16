@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <%--
-	광고 관리 페이지
+	광고 관리 페이지 (plan b)
 	- 광고 조회, 추가, 수정
  --%>
 <head>
@@ -16,7 +16,6 @@
 <!-- Bootstrap -->
 <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css"
 	type="text/css" rel="stylesheet">
-<link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet"> 
 
 <!-- icon-font -->
 <script src="https://use.fontawesome.com/bbddce3010.js"></script>
@@ -28,108 +27,160 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 <title>광고 관리 | Quration: 답을 열어 줄 그런 사람</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+<style>
+.my-5 {
+	margin: 25px 0;
+}
+.portlet {
+	margin-bottom: 1em;
+	padding: 0.3em;
+/* 	cursor: pointer; */
+	cursor: move;
+}
+
+.portlet-header {
+	padding: 0.2em 0.3em;
+	margin-bottom: 0.5em;
+	position: relative;
+}
+
+.portlet-toggle {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	margin-top: -8px;
+}
+
+.portlet-content {
+	padding: 0.4em;
+}
+
+.portlet-placeholder {
+	border: 1px dotted black;
+	margin: 0 1em 1em 0;
+	height: 50px;
+}
+
+.adui div, p, textarea, input[type=text] {
+	border-radius: 5px;
+	vertical-align: middle;
+}
+
+.adui div, p {
+	text-align: center;
+}
+
+.adui textarea {
+	border: none;
+	width: 100%;
+	box-sizing: border-box;
+    resize: none;
+}
+
+.adui input[type=text] { 
+	width: 100%;
+	padding-left: 3%;
+}
+
+.top-nav, .bottom-footer { height: 50px; padding-top: 15px; }
+.side-bread { height: 30px; padding-top: 5px; }
+.content-result { height: 300px; padding-top: 50%; }
+.content-filter { height: 150px; padding-top: 60px;}
+</style>
 </head>
 <body class="nav-md">
 	<div class="container body">
 		<div class="main_container">
-			<!-- nav -->
-			<jsp:include page="/jsp/include/nav_admin.jsp" />
-			<!-- /nav -->
+			<header>
+				<jsp:include page="/jsp/include/nav_admin.jsp" />
+			</header>
 
 			<!-- page content -->
 			<div class="right_col" role="main">
 				<section>
-					<div id="container">
-						<div class="row marginTop60">
-							<form id="contentForm" action="${ pageContext.request.contextPath }/jsp/admin/ad_add.do" 
-									class="form-horizontal " method="post" enctype="multipart/form-data">
-								<div class="form-group">
-									<div class="col-md-6 col-md-offset-3">
-										<textarea name="code" class="form-control marginBottom" rows="4" placeholder="광고 코드" title="광고 코드 입력 폼"></textarea>
-										<div class="row">
-								           <div class="col-md-12">
-								               <div class="input-group  ">
-									                 <input type="text" name="location" class="form-control" placeholder="광고 위치" alt="광고 코드 들어갈 위치 작성 폼"/>
-									                 <span class="input-group-btn">
-									                   <button type="submit" class="btn btn-default">추가</button>
-									                 </span>
-								               </div><!-- /input-group -->
-								           </div><!-- /.col-lg-6 -->
-								        </div><!-- /.row -->
+					<div class="container">
+						<div class="row adui">
+							<div class="col-md-8 col-md-offset-2">
+							
+								<div class="row">
+									<div class="col-md-12 my-5">
+										<i class="fa fa-arrows fa-lg" aria-hidden="true"></i>
+										마우스로 드래그 해서 원하는 위치에 놓으세요.
 									</div>
 								</div>
-							</form>
-						</div>
-		
-						<div class="row  marginTop">
-							<div class="col-md-2">
-								<input type="checkbox" id="allSelectToggle"  alt="전체 선택" />
-								<label for="allCheck" class="marginRight">전체 선택</label>
-								<button type="button" id="btnDelete" class="btn btn-default">삭제</button>
-							</div>
-							<div class="pull-right ">
-								<button type="button" id="adPositionBtn" class="btn btn-default">?</button>
-							</div>
-							<div id="adPositionModal" class="modal">
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-											<h4 class="modal-title">광고 위치 보기</h4>
-										</div>
-										<div class="modal-body">
-											<p>검색 결과 캡처 한 사진이 들어갈 예정입니다.</p>
+							
+								<div class="row">
+									<div class="col-md-12">
+										<div class="nonDraggable">
+										  <p class="ui-widget-header top-nav">검색바</p>
 										</div>
 									</div>
 								</div>
+								
+								<div class="row">
+									<div class="col-md-12">
+										<div class="nonDraggable">
+										  <p class="ui-widget-header side-bread">경로</p>
+										</div>
+									</div>
+								</div>
+								
+								<div class="row">
+									<c:forEach begin="1" end="3">
+										<div class="col-md-3">
+											<div class="nonDraggable">
+											  <p class="ui-widget-header content-result">검색 결과</p>
+											</div>
+										</div>
+									</c:forEach>
+									<div class="col-md-3">
+										<div class="nonDraggable">
+										  <p class="ui-widget-header content-filter">필터</p>
+										</div>
+									</div>
+								</div>
+								
+								<div class="row">
+									<c:forEach begin="0" end="2" varStatus="loop">
+										<div class="col-md-3">
+											<div class="portlet">
+												<input type="text" class="portlet-header" placeholder="사이트 이름을 입력하세요." 
+														id="name${ loop.count }" value="${ adList[loop.index].siteName }"/>
+												<textarea data-autoresize placeholder="광고 코드를 입력하세요." id="code${ loop.count }">${ adList[loop.index].code }</textarea>	
+											</div>
+										</div>
+									</c:forEach>
+								</div>
+								
+								<div class="row">
+									<c:forEach begin="1" end="3">
+										<div class="col-md-3">
+											<div class="nonDraggable">
+											  <p class="ui-widget-header content-result">검색 결과</p>
+											</div>
+										</div>
+									</c:forEach>
+								</div>
+								
+								<div class="row">
+									<div class="col-md-12">
+										<div class="nonDraggable">
+										  <p class="ui-widget-header bottom-footer">푸터</p>
+										</div>
+									</div>
+								</div>
+								
+								<div class="row">
+									<div class="col-md-12">
+										<a href="javascript:updateAd()" class="btn btn-primary" role="button" title="입력한 광고 사이트 이름 및 코드를 적용">적용</a>
+									</div>
+								</div>
 							</div>
 						</div>
-						<hr>
-						<div class="row">
-							<div class="table-responsive">
-								<table class="table atable">
-									<thead>
-										<tr>
-											<th></th>
-											<th>광고 위치</th>
-											<th>광고 코드</th>
-											<th></th>
-										</tr>
-									</thead>
-									<tbody>
-										<c:forEach var="ad" items="${ adList }">
-											<tr>
-												<td class="vcenter"><input type="checkbox" class="no" value="${ ad.no }" alt="삭제할 광고 선택 체크 박스"/></td>
-												<td class="tcenter vcenter">${ ad.location }</td>
-												<td class="col-md-8 vcenter">${ ad.code }</td>
-												<td class="tcenter">
-													<div><button class="btn btn-default btn-xs">수정</button></div>
-													<div><button class="btn btn-default btn-xs">삭제</button></div>
-												</td>
-											</tr>
-										</c:forEach>
-									</tbody>
-								</table>
-							</div>
-						</div>
-<!-- 						<div class="row"> -->
-<!-- 							<div class="col-md-4 col-md-push-5"></div> -->
-<!-- 							<div class="col-md-5"> -->
-<!-- 								<ul class="pagination"> -->
-<!-- 									<li class="disabled"><a href="#">&laquo;</a></li> -->
-<!-- 									<li class="active"><a href="#">1</a></li> -->
-<!-- 									<li><a href="#">2</a></li> -->
-<!-- 									<li><a href="#">3</a></li> -->
-<!-- 									<li><a href="#">4</a></li> -->
-<!-- 									<li><a href="#">5</a></li> -->
-<!-- 									<li><a href="#">&raquo;</a></li> -->
-<!-- 								</ul> -->
-<!-- 							</div> -->
-<!-- 							<div class="col-md-3 col-md-offset-3"></div> -->
-<!-- 						</div> -->
 					</div>
 				</section>
-
 			</div>
 			<!-- /page content -->
 
@@ -139,23 +190,96 @@
 		</div>
 	</div>
 
+	<!-- jQuery -->
+	<%-- <script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script> --%>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<!-- jQuery -->
-<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
+	<!-- Bootstrap -->
+	<script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
 
-<!-- Custom Theme Scripts -->
-<script	src="${ pageContext.request.contextPath }/js/custom.min.js"></script>
+	<!-- Custom Theme Scripts -->
+	<script src="${ pageContext.request.contextPath }/js/custom.min.js"></script>
 
-<script>
-	$('#allSelectToggle').click(function() {
-		if($(".no:checked").length < $(".no").length) $(".no").prop('checked', true);
-		else $(".no").prop('checked', false);
-	});
-	$('#adPositionBtn').click(function() {
-		$('#adPostionModal').show();
-	});
-</script>
+	<script>
+		$(function() {
+			var css_test_idx = 10;
+// 			var quarter = parseInt($(this).width() / 40);
+// 			console.log("quarter : ", quarter);
+			
+			$(".portlet")
+					.draggable({ axis: "x" })
+					.each(function(){
+					    $(this).draggable({
+					        containment: $(this).parent().parent()
+					    });
+					})
+					.mousedown(function(){
+				        $(this).css('z-index', css_test_idx);
+				        css_test_idx++;
+				    })
+					.addClass("ui-widget ui-widget-content ui-helper-clearfix ui-corner-all")
+					.find(".portlet-header")
+					.addClass("ui-widget-header ui-corner-all")
+					.prepend("<span class='ui-icon ui-icon-minusthick portlet-toggle'></span>");
+
+			$(".portlet-toggle").on("click", function() {
+				var icon = $(this);
+				icon.toggleClass("ui-icon-minusthick ui-icon-plusthick");
+				icon.closest(".portlet").find(".portlet-content").toggle();
+			});
+			$( ".nonDraggable" ).draggable({ cancel: "p.ui-widget-header" });
+		});
+		
+		jQuery.each(jQuery('textarea[data-autoresize]'), function() {
+		    var offset = this.offsetHeight - this.clientHeight;
+		 
+		    var resizeTextarea = function(el) {
+		        jQuery(el).css('height', 'auto').css('height', el.scrollHeight + offset);
+		    };
+		    jQuery(this).on('keyup input', function() { resizeTextarea(this); }).removeAttr('data-autoresize');
+		});
+		
+		function updateAd() {
+			var siteNames = [];
+			var codes = [];
+			var lefts = [];
+			for(var i = 1; i <= 3; i++) {
+				if(($('#code' + i).val() != "") && ($('#name' + i).val() == "")) { 
+					alert('사이트 이름을 입력해 주세요.');
+					$('#name' + i).focus();
+					return false;
+				} else if(($('#name' + i).val() != "") && ($('#code' + i).val() == "")) {
+					alert('광고 코드를 입력해 주세요.');
+					$('#code' + i).focus();
+					return false;
+				}
+				siteNames.push($('#name' + i).val());
+				codes.push($('#code' + i).val());
+				lefts.push(Math.floor($('#name' + i).offset().left));
+			}
+			
+			var list = {
+					"siteNames" : siteNames, 
+					"codes" : codes,
+					"lefts" : lefts 
+				};
+			
+			$.ajax({
+		        url:"${ pageContext.request.contextPath }/jsp/admin/ad_manage.do",
+		        type:'POST',
+		        data: list, 
+		        success:function(data){
+		        	if(data == "완료")
+		            alert("완료!");
+		        	location.reload();
+		        },
+		        error:function(jqXHR, textStatus, errorThrown){
+		            alert("에러 발생 ㅅㅂ \n" + textStatus + " : " + errorThrown);
+		        }
+		    });
+		}
+	</script>
 </body>
 </html>
