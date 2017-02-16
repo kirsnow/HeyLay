@@ -52,12 +52,6 @@ public class MemberServiceImp implements MemberService {
 	}
 
 	@Override
-	public MemberVO findPw(MemberVO member) {
-		MemberVO userPw = dao.findPw(member);
-		return userPw;
-	}
-
-	@Override
 	public void withdraw(int no) {
 		dao.withdraw(no);
 	}
@@ -183,8 +177,15 @@ public class MemberServiceImp implements MemberService {
 	
 	//계정 찾기
 	@Override
-	public MemberVO selectMemberAccount(MemberVO member) {
-		MemberVO userAccount = dao.selectMemberAccount(member);
+	public String selectMemberAccount(MemberVO member) {
+		String userAccount = dao.selectMemberAccount(member);
 		return userAccount;
+	}
+	
+	//비밀번호 찾기
+	@Override
+	public String selectMemberPassword(MemberVO member) {
+		String userPassword = dao.selectMemberPassword(member);
+		return userPassword;
 	}
 }

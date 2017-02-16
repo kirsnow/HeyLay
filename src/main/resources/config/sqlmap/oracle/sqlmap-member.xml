@@ -28,13 +28,14 @@
 	</select>
 	
 	<!-- 계정 찾기 -->
-	<select id="selectMemberAccount"  parameterType="memberVO" resultType="memberVO">
+	<select id="selectMemberAccount"  parameterType="memberVO" resultType="String">
 	   select email
 	     from Q_member
 	    where last_name = #{lastName} and first_name = #{firstName} and question = #{question} and answer = #{answer}
 	</select>
 	
-	<select id="findPw"  parameterType="memberVO" resultType="memberVO">
+	<!-- 비밀번호 찾기 -->
+	<select id="selectMemberPassword"  parameterType="memberVO" resultType="String">
 	   select password
 	     from Q_member
 	    where email = #{email} and last_name = #{lastName} and first_name = #{firstName} and question = #{question} and answer = #{answer}

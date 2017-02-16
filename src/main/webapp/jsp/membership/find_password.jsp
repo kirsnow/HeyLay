@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -49,37 +49,30 @@
 			    </div>
 			 </div>
 		    <form  name="findPasswordForm" action="${pageContext.request.contextPath }/membership/findPw.do" method="post" 
-				   onsubmit="" autocomplete="off" >			    
+				   onsubmit="return checkForm()" >			    
 			    <div class="row">
                     <div class="col-md-6 col-md-offset-3 marginBottom marginTop">
-                        <div class="input-group">
-                          <input type="text" name="email" class="form-control" placeholder="계정(이메일)" alt="계정(이메일)입력 폼"/>
-                          <span class="input-group-btn">
-                            <button type="button" class="btn btn-default ">메일 인증</button>
-                          </span>
-                        </div><!-- /input-group -->
+                        <input type="text" name="email" class="form-control" placeholder="계정(이메일)" alt="계정(이메일)입력 폼"/>
                     </div><!-- /.col-lg-6 -->
                 </div><!-- /.row -->
 				<div class="row">
-						<div class="col-md-push-3 col-md-3 marginBottom marginTop">
-							<input type="text" name="firstName" class="form-control" placeholder="이름" alt="회원 가입시 작성한 이름 입력 폼"/>
-						</div>
-						<div class="col-md-push-3 col-md-3 marginBottom marginTop">
-							<input type="text" name="lastName" class="form-control" placeholder="성" alt="회원 가입시 작성한 성 입력 폼"/>		
-						</div>
+					<div class="col-md-push-3 col-md-3 marginBottom marginTop">
+						<input type="text" name="firstName" class="form-control" placeholder="이름" alt="회원 가입시 작성한 이름 입력 폼"/>
 					</div>
-				<div class="row">
-					<div class="col-md-6 col-md-offset-3 text-center marginBottom marginTop">
-						<select name="question" class="form-control" >
-							<option value="비밀번호 찾기 질문을 선택하세요" disabled selected>비밀번호 찾기 질문을 선택하세요</option>
-							<option value="첫 애완 동물 이름은 무엇인가요?">첫 애완 동물 이름은 무엇인가요? </option>
-							<option value="나의 보물 1호">나의 보물 1호 는?   </option>
-							<option value="처음 여행 간 도시 이름">처음 여행 간 도시 이름은?  </option>
-							<option value="어머니 성함">어머니 성함은? </option>
-							<option value="아버지 성함">아버지 성함은? </option>
-						</select>
+					<div class="col-md-push-3 col-md-3 marginBottom marginTop">
+						<input type="text" name="lastName" class="form-control" placeholder="성" alt="회원 가입시 작성한 성 입력 폼"/>		
 					</div>
 				</div>
+				<div class="row">
+	                  <div class="col-md-6 col-md-offset-3">
+	                     <select name="question" class="form-control " >
+	                        <option value="계정 or 비밀번호 찾기용 선택하세요" disabled selected> 계정 or 비밀번호 찾기용 질문 </option>
+	                        <c:forEach var="idenQuestion" items="${ idenQuestionList }">
+	                        	<option value="${ idenQuestion.no }"> ${ idenQuestion.question }</option>
+	                        </c:forEach>
+	                     </select>
+	                  </div> 
+	               </div>
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 text-center  marginTop marginBottom">
 						<input type="text" name="answer" class="form-control" placeholder="답변" alt="계정 찾기용 질문 답변 입력 폼"/>
@@ -99,15 +92,38 @@
     <Footer>
 		<jsp:include page="/jsp/include/footer.jsp" />
 	</Footer> 
+
 <script>
-	if("${ msg }") {
-		if('${ userPw }') 
-			location.href = "${ pageContext.request.contextPath}";
-		else {
-			alert('${ msg }');
-			location.href = "${ pageContext.request.contextPath}/membership/tellPw.do";
-		}
-	}
+function checkForm() {
+
+    var form = document.findPasswordForm;
+    if (form.email.value == '') {
+       alert('계정(메일주소)를 입력해주세요.');
+       form.email.focus();
+       return false;
+    } else if (form.firstName.value == '') {
+       alert('이름을 입력해주세요.');
+       form.firstName.focus();
+       return false;
+    } else if (form.lastName.value == '') {
+       alert('성을 입력해주세요.');
+       form.lastName.focus();
+       return false;
+    } else if (form.question.value == '') {
+        alert('질문을 선택해주세요.');
+        form.question.focus();
+        return false;
+    } else if (form.answer.value == '') {
+       alert('답변을 입력하세요');
+       form.answer.focus();
+       return false;
+    }
+    return true;
+ }  
+
+if("${ msg }" != '') {
+	alert('${ msg }');
+}
 </script>
 </body>
 </html>

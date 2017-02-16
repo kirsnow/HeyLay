@@ -53,10 +53,10 @@
 					  onsubmit="return checkForm()" autocomplete="off" >
 					<div class="row">
 						<div class="col-md-push-3 col-md-3 marginBottom">
-							<input type="text" value="신혜" name="firstName" class="form-control" placeholder="이름" alt="회원 가입시 작성한 이름 입력 폼"/>
+							<input type="text" name="firstName" class="form-control" placeholder="이름" alt="회원 가입시 작성한 이름 입력 폼"/>
 						</div>
 						<div class="col-md-push-3 col-md-3 marginBottom">
-							<input type="text"  value="성" name="lastName" class="form-control" placeholder="성" alt="회원 가입시 작성한 성 입력 폼"/>		
+							<input type="text" name="lastName" class="form-control" placeholder="성" alt="회원 가입시 작성한 성 입력 폼"/>		
 						</div>
 					</div>
 					<div class="row">
@@ -71,7 +71,7 @@
 	               </div>
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3 text-center marginTop">
-							<input type="text"  value="나" name="answer" class="form-control marginBottom" placeholder="답변" alt="계정 찾기용 질문 답변"/>
+							<input type="text"  name="answer" class="form-control marginBottom" placeholder="답변" alt="계정 찾기용 질문 답변"/>
 						</div>
 					</div>
 					<div class="row">
@@ -115,7 +115,9 @@ function checkForm() {
     return true;
  }  
  
-
+if("${ msg }" != '') {
+	alert('${ msg }');
+}
 </script>   
 </body>
 </html>

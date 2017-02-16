@@ -35,12 +35,22 @@ public class FindAccountController {
 	@RequestMapping(value = "/membership/findAccount.do", method = RequestMethod.POST)
 	   public String findAccountForm(@ModelAttribute("member") MemberVO member, Model model) {
 		
-		//System.out.println("MemberVO:" + member);
-		MemberVO userAccount = service.selectMemberAccount(member);
+		String userAccount = service.selectMemberAccount(member);
         
-		model.addAttribute("userAccount", userAccount);
-		//System.out.println("userAccount :" + userAccount);
-	
-		return "membership/tell_account";
+        if (userAccount != null) {
+            model.addAttribute("userAccount", userAccount);
+            System.out.println("userAccount :" + userAccount);
+            
+            return "membership/tell_account";
+            
+        } else {
+            model.addAttribute("msg", "입력하신 정보가 일치하지 않습니다.");
+            
+            List<IdentifyQuestionVO> idenQuestionList = service.selectIdenQuestion();
+    		model.addAttribute("idenQuestionList", idenQuestionList);
+    		
+            return "membership/find_account";
+
+        }    
 	}
 }
