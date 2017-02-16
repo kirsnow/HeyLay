@@ -14,8 +14,11 @@
     <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 	<link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
      
-    <!-- icon-font -->
+     <!-- icon-font -->
    	<script src="https://use.fontawesome.com/bbddce3010.js"></script>
+   	
+   	<!-- style for icon -->
+   	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     	
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -34,6 +37,13 @@
 		ga('create', 'UA-90558257-1', 'auto');
 		ga('send', 'pageview');
 	</script>
+	<style>
+	.primaryFont{
+		font-size: 20px;
+		font-weight: bold;
+	    color: #03A9F4;
+	}
+	</style>
 </head>
 <body>
 	<header>
@@ -51,13 +61,13 @@
 			</div>
 			<form name="lform" 
 				  action="${pageContext.request.contextPath }/login/login.do" 
-				  method="post" > 
+				  method="post"> 
 				  
 				<div class="row">
-						<div class="col-md-6 col-md-offset-3 marginBottom">
-							<input type="email" name="email" class="form-control text-center" 
-							       value="고객님의 비밀번호는 '${userPw.password}' 입니다." alt="비밀번호 전달 폼" readonly="readonly" />
-						</div>
+					<div class="col-md-6 col-md-offset-3 marginBottom100 marginTop80 text-center font20">
+						<sub><i class="material-icons">info_outline</i></sub>
+						고객님의 비밀번호는 <span class="primaryFont"> ${userPassword} </span>입니다.						
+					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 text-center marginTop">
@@ -76,15 +86,5 @@
 		<jsp:include page="/jsp/include/footer.jsp" />
 	</Footer> 
 	
-<script>
-	if("${ msg }") {
-		if('${ userPw }') 
-			location.href = "${ pageContext.request.contextPath}";
-		else {
-			alert('${ msg }');
-			location.href = "${ pageContext.request.contextPath}/membership/tellPw.do";
-		}
-	}
-</script>
 </body>
 </html>

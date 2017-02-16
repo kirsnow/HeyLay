@@ -59,7 +59,7 @@
 				<div class="panel panel-default col-md-6 col-md-offset-3  marginBottom">
 				  	<div class="panel-body text-center">
 					    <div><sub><i class="material-icons">info_outline</i></sub>
-							회원님은 현재  <span class="numberFont" id="savedContent"></span> 개의 콘텐츠를 보유하고 계십니다. 
+							회원님은 현재  <span id="savedContent"></span> 개의 콘텐츠를 보유하고 계십니다. 
 						</div>
 						<div>탈퇴하시겠습니까?</div>
 				  	</div>
@@ -89,9 +89,9 @@
 	         contentType : "application/json",
 	         success: function(result){
 	              $("#savedContent").text(result)
-	              					.attr("font-size","20px")
-	              					.attr("text-decoration","bold")
-	              					.attr("text-color","#03A9F4");
+	              					.css("font-size", "20px")
+	              					.css("color", "#03A9F4")
+	              					.css("font-weight", "bold");
 	   }});
 	</script>
 </body>

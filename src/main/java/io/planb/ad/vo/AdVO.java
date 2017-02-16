@@ -2,16 +2,18 @@ package io.planb.ad.vo;
 
 public class AdVO {
 	private int no;
-	private String location;
+	private int location;
 	private String code;
+	private String siteName;
 	
 	public AdVO() {}
 
-	public AdVO(int no, String location, String code) {
+	public AdVO(int no, int location, String code, String siteName) {
 		super();
 		this.no = no;
 		this.location = location;
 		this.code = code;
+		this.siteName = siteName;
 	}
 
 	public int getNo() {
@@ -22,11 +24,11 @@ public class AdVO {
 		this.no = no;
 	}
 
-	public String getLocation() {
+	public int getLocation() {
 		return location;
 	}
 
-	public void setLocation(String location) {
+	public void setLocation(int location) {
 		this.location = location;
 	}
 
@@ -38,8 +40,16 @@ public class AdVO {
 		this.code = code;
 	}
 
+	public String getSiteName() {
+		return siteName;
+	}
+
+	public void setSiteName(String siteName) {
+		this.siteName = siteName;
+	}
+
 	@Override
 	public String toString() {
-		return "AdVO [no=" + no + ", location=" + location + ", code=" + code + "]";
+		return "AdVO [no=" + no + ", location=" + location + ", code=" + code + ", siteName=" + siteName + "]";
 	}
 }

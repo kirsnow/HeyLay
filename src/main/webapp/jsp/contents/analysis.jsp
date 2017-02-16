@@ -39,7 +39,7 @@
 </script>
 </head>
 <body class="nav-md">
-	<div class="container body marginTop70">
+	<div class="container body marginTop60">
 		<header>
 			<jsp:include page="/jsp/include/nav_search.jsp" />
 		</header>
