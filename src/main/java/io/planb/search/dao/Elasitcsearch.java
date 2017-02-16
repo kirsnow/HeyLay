@@ -2,7 +2,10 @@ package io.planb.search.dao;
 
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.json.JSONException;
@@ -142,7 +145,7 @@ public class Elasitcsearch {
 				String url		   = document.has("url")			 ? document.getString("url")			 : null;
 				String imgUrl	   = document.has("imgurl")			 ? document.getString("imgurl")			 : null;
 				String lastScraped = document.has("lastscraped")	 ? document.getString("lastscraped")	 : null;
-				String ban		   = document.has("ban")			 ? document.getString("ban")			 : null;
+				char ban		   = document.has("ban")			 ? document.getString("ban").charAt(0)	 : null;
 				
 				String source	 = document.has("source")		 ? document.getString("source")		 : "source";
 				String sourceUrl = document.has("sourceurl")	 ? document.getString("sourceurl")	 : null;
@@ -150,7 +153,6 @@ public class Elasitcsearch {
 				String dataType	 = document.has("datatype")		 ? document.getString("datatype")	 : "dataType";
 				
 				int saveCnt		 = document.has("savecnt")	 ? document.getInt("savecnt")	 : 0;
-				int reportCnt	 = document.has("reportcnt") ? document.getInt("reportcnt")	 : 0;
 				int likeCnt		 = document.has("likecnt")	 ? document.getInt("likecnt")	 : 0;
 				int viewCnt		 = document.has("viewcnt")	 ? document.getInt("viewcnt")	 : 0;
 				
@@ -161,22 +163,29 @@ public class Elasitcsearch {
 				contentsVO.setSummary(summary);
 				contentsVO.setUrl(url);
 				contentsVO.setImgUrl(imgUrl);
-				contentsVO.setLastScraped(lastScraped);
+				
+				SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				Date scrapedDate;
+				try {
+					scrapedDate = transFormat.parse(lastScraped);
+					contentsVO.setScrapedDate(scrapedDate);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
 				
 				contentsVO.setBan(ban);
 				
 				contentsVO.setSourceName(source);
 				contentsVO.setSourceUrl(sourceUrl);
 				contentsVO.setCategoryName(category);
-				contentsVO.setDataType(dataType);
+				contentsVO.setDataTypeName(dataType);
 				
-				contentsVO.setSaveCnt(saveCnt);
-				contentsVO.setReportCnt(reportCnt);
+				contentsVO.setSavedCnt(saveCnt);
 				contentsVO.setLikeCnt(likeCnt);
 				contentsVO.setViewCnt(viewCnt);
 				
 				//Save ContentsVO to Contents List
-				if(!ban.equals("Y")) contentsList.add(contentsVO);
+				if(ban != 'Y') contentsList.add(contentsVO);
 			}
 			return contentsList;
 	  }

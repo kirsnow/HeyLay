@@ -9,13 +9,16 @@
 	<!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>계정 전달 페이지 | Quration: 답을 열어 줄 그런 사람</title>
-
+	
  	<!-- Bootstrap -->
     <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 	<link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
      
     <!-- icon-font -->
    	<script src="https://use.fontawesome.com/bbddce3010.js"></script>
+   	
+   	<!-- style for icon -->
+   	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     	
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -34,6 +37,13 @@
 		ga('create', 'UA-90558257-1', 'auto');
 		ga('send', 'pageview');
 	</script>
+	<style>
+	.primaryFont{
+	font-size: 20px;
+	font-weight: bold;
+    color: #03A9F4;
+	}
+	</style>
 </head>
 <body>
 	<header>
@@ -53,9 +63,10 @@
 				  action="${pageContext.request.contextPath }/login/login.do" 
 				  method="post" > 
 				  
-				<div class="row">
-					<div class="col-md-6 col-md-offset-3 marginBottom">
-						<input type="email" name="email" class="form-control" value="고객님의 계정은 '${userAccount.email}' 입니다." alt="계정(이메일)전달 폼" readonly="readonly" />
+				<div class="row ">
+					<div class="col-md-6 col-md-offset-3 marginBottom100 marginTop80 text-center font20">
+						<sub><i class="material-icons">info_outline</i></sub>
+						고객님의 계정은  <span class="primaryFont">${userAccount}</span>입니다.
 					</div>
 				</div>
 				<div class="row">
@@ -74,16 +85,5 @@
     <Footer>
 		<jsp:include page="/jsp/include/footer.jsp" />
 	</Footer> 
-	
-<script>
-	if("${ msg }") {
-		if('${ userVO }') 
-			location.href = "${ pageContext.request.contextPath}";
-		else {
-			alert('${ msg }');
-			location.href = "${ pageContext.request.contextPath}/membership/findAccount.do";
-		}
-	}
-</script>
 </body>
 </html>

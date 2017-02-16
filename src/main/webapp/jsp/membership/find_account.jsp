@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!DOCTYPE html >
 <html lang="ko">
 <head>
@@ -60,20 +60,18 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-6 col-md-offset-3 text-center marginBottom marginTop">
-							<select name="question" class="form-control" >
-								<option value="계정 찾기 질문을 선택하세요" disabled selected>계정 찾기 질문을 선택하세요</option>
-								<option value="첫 애완 동물 이름은 무엇인가요?">첫 애완 동물 이름은 무엇인가요? </option>
-								<option value="나의 보물 1호">나의 보물 1호 는?  </option>
-								<option value="처음 여행 간 도시 이름">처음 여행 간 도시 이름은? </option>
-								<option value="어머니 성함">어머니 성함은? </option>
-								<option value="아버지 성함">아버지 성함은? </option>
-							</select>
-						</div>
-					</div>
+	                  <div class="col-md-6 col-md-offset-3">
+	                     <select name="question" class="form-control " >
+	                        <option value="계정 or 비밀번호 찾기용 선택하세요" disabled selected> 계정 or 비밀번호 찾기용 질문 </option>
+	                        <c:forEach var="idenQuestion" items="${ idenQuestionList }">
+	                        	<option value="${ idenQuestion.no }"> ${ idenQuestion.question }</option>
+	                        </c:forEach>
+	                     </select>
+	                  </div> 
+	               </div>
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3 text-center marginTop">
-							<input type="text" name="answer" class="form-control marginBottom" placeholder="답변" alt="계정 찾기용 질문 답변"/>
+							<input type="text"  name="answer" class="form-control marginBottom" placeholder="답변" alt="계정 찾기용 질문 답변"/>
 						</div>
 					</div>
 					<div class="row">
@@ -117,13 +115,8 @@ function checkForm() {
     return true;
  }  
  
-if("${ msg }") {
-	if('${ userAccount }') 
-		location.href = "${ pageContext.request.contextPath}";
-	else {
-		alert('${ msg }');
-		location.href = "${ pageContext.request.contextPath}/membership/findAccount.do";
-	}
+if("${ msg }" != '') {
+	alert('${ msg }');
 }
 </script>   
 </body>

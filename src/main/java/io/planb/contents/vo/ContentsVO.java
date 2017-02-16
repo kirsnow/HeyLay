@@ -1,6 +1,6 @@
 package io.planb.contents.vo;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class ContentsVO {
 	

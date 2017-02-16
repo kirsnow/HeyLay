@@ -6,7 +6,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,11 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import io.planb.directory.vo.DirectoryVO;
-import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.service.MemberService;
 import io.planb.member.vo.IdentifyQuestionVO;
 import io.planb.member.vo.MemberVO;
-import io.planb.member.vo.SelectKeywordsVO;
 
 
 @Controller
@@ -43,7 +40,6 @@ public class MembershipController {
 	@RequestMapping(value="/membership/membershipForm.do", method=RequestMethod.POST)
 	public String membership(@ModelAttribute("member") MemberVO member, Model model) {
 		service.enroll(member);
-		
 		
 		model.addAttribute("memberVO", member);
 		
