@@ -53,7 +53,7 @@
 			      method="post" onsubmit="" autocomplete="off">
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 ">
-						<input type="text" name="memberNo" class="form-control" value="${ userVO.no }" />
+						<%-- <input type="text" name="memberNo" class="form-control" value="${ userVO.no }" /> --%>
 						<select name="reasonSelect" class="form-control marginBottom" >
 							<option value="탈퇴 사유를 선택해주세요" disabled selected>탈퇴 사유를 선택해주세요</option>
 							<option value="더이상 사용하지 않을 것 같습니다">더이상 사용하지 않을 것 같다</option>

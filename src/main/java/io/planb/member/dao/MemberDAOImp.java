@@ -40,11 +40,6 @@ public class MemberDAOImp implements MemberDAO {
 		return memberList;
 	}
 
-	@Override
-	public MemberVO findAccount(MemberVO member) {
-		MemberVO userAccount = sqlSessionTemplate.selectOne("io.planb.member.dao.MemberDAO.findAccount", member);
-		return userAccount;
-	}
 
 	@Override
 	public MemberVO findPw(MemberVO member) {
@@ -115,7 +110,8 @@ public class MemberDAOImp implements MemberDAO {
 		
 		return interestKeywordList;
 	}
-
+	
+	/*계정&비밀번호 찾기용 질문*/
 	@Override
 	public List<IdentifyQuestionVO> selectIdenQuestion() {
 		List<IdentifyQuestionVO> idenQuestionList = sqlSessionTemplate.selectList("io.planb.member.dao.MemberDAO.selectIdenQuestion");
@@ -136,4 +132,11 @@ public class MemberDAOImp implements MemberDAO {
 		return withdrawContentCnt;
 	}
 	
+	//계정 찾기
+	@Override
+	public MemberVO selectMemberAccount(MemberVO member) {
+		MemberVO userAccount = sqlSessionTemplate.selectOne("io.planb.member.dao.MemberDAO.selectMemberAccount", member);
+		return userAccount;
+	}
+
 }

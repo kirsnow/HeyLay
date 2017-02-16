@@ -52,12 +52,6 @@ public class MemberServiceImp implements MemberService {
 	}
 
 	@Override
-	public MemberVO findAccount(MemberVO member) {
-		MemberVO userAccount = dao.findAccount(member);
-		return userAccount;
-	}
-
-	@Override
 	public MemberVO findPw(MemberVO member) {
 		MemberVO userPw = dao.findPw(member);
 		return userPw;
@@ -160,7 +154,8 @@ public class MemberServiceImp implements MemberService {
 		List<KeywordsVO> interestKeywordList = dao.selectInterestList();
 		return interestKeywordList;
 	}
-
+	
+	/*계정&비밀번호 찾기용 질문*/
 	@Override
 	public List<IdentifyQuestionVO> selectIdenQuestion() {
 		List<IdentifyQuestionVO> idenQuestionList = dao.selectIdenQuestion();
@@ -185,5 +180,11 @@ public class MemberServiceImp implements MemberService {
 			dao.insertKeywords(keywords);
 		}
 	}
-
+	
+	//계정 찾기
+	@Override
+	public MemberVO selectMemberAccount(MemberVO member) {
+		MemberVO userAccount = dao.selectMemberAccount(member);
+		return userAccount;
+	}
 }
