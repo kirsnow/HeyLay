@@ -104,7 +104,7 @@
 </script>
 </head>
 <body class="nav-md">
-	<div class="container body marginTop70">
+	<div class="container body marginTop60">
 		<header>
 			<jsp:include page="/jsp/include/nav_search.jsp" />
 		</header>
@@ -120,14 +120,14 @@
 					<div class="container text-center">
 						<div class="row scene1">
 							<div class="div col-md-12 scene_wrapper">
-								<h3 class="marginTop70">${ userVO.lastName } ${ userVO.firstName } 님은 큐레이션을 통해,<br/>총 <span class="u_color">${ countTotalSaved }</span>개의 카드를 만났습니다.</h3>
+								<h3 class="marginTop60">${ userVO.lastName } ${ userVO.firstName } 님은 큐레이션을 통해,<br/>총 <span class="u_color">${ countTotalSaved }</span>개의 카드를 만났습니다.</h3>
 							</div>
 						</div>
 						<div class="row scene2">
 							<div class="div col-md-8 col-md-offset-2 scene_wrapper">
 								<div class="row">
 									<div class="div col-md-4">
-										<h3 class="marginTop70">어제보다는 
+										<h3 class="marginTop60">어제보다는 
 										<c:choose>
 											<c:when test="${ countTodaySaved > countYesSaved }"> <span class="u_color">${ countTodaySaved - countYesSaved }개</span> 더, </c:when>
 											<c:when test="${ countTodaySaved eq countYesSaved }"> <span class="u_color">${ countTodaySaved - countYesSaved }개</span> 같게, </c:when>
@@ -179,7 +179,7 @@
 						</div>
 						<div class="row scene4">
 							<div class="div col-md-12 scene_wrapper">
-								<h3 class="marginTop70">${ userVO.lastName } ${ userVO.firstName } 님이 사랑하는 사이트는 <span class="u_color">${ likeSourceList[0].columnName }</span>입니다.</h3>
+								<h3 class="marginTop60">${ userVO.lastName } ${ userVO.firstName } 님이 사랑하는 사이트는 <span class="u_color">${ likeSourceList[0].columnName }</span>입니다.</h3>
 								<c:forEach var="likeSource" items="${ likeSourceList }">
 									${ likeSource.columnName }
 								</c:forEach>
@@ -187,7 +187,7 @@
 						</div>
 						<div class="row scene5">
 							<div class="div col-md-12 scene_wrapper">
-								<h3 class="marginTop70">${ userVO.lastName } ${ userVO.firstName } 회원님이 담은 카드 중<br/>가장 많은 분들의 사랑을 받은 카드입니다.</h3>
+								<h3 class="marginTop60">${ userVO.lastName } ${ userVO.firstName } 회원님이 담은 카드 중<br/>가장 많은 분들의 사랑을 받은 카드입니다.</h3>
 								<c:forEach var="savedMoreSaved" items="${ savedMoreSavedList }">
 									<div>
 										<img alt="" src="${ savedMoreSaved.data }">
@@ -198,7 +198,7 @@
 						</div>
 						<div class="row scene6">
 							<div class="div col-md-12 scene_wrapper">
-								<h3 class="marginTop70">담은 카드 중 소수만이 담은,<br/>희소성이 있는 카드입니다.</h3>
+								<h3 class="marginTop60">담은 카드 중 소수만이 담은,<br/>희소성이 있는 카드입니다.</h3>
 								<c:forEach var="savedLessSaved" items="${ savedLessSavedList }">
 									<div>
 										<img alt="" src="${ savedLessSaved.data }">
@@ -209,7 +209,7 @@
 						</div>
 						<div class="row scene7">
 							<div class="div col-md-12 scene_wrapper">
-								<h3 class="marginTop70">담은 카드 중<br/>다른 회원님들로부터 좋은 평가를 받은 카드입니다.</h3>
+								<h3 class="marginTop60">담은 카드 중<br/>다른 회원님들로부터 좋은 평가를 받은 카드입니다.</h3>
 								<c:forEach var="savedLike" items="${ savedLikeList }">
 									<div>
 										<img alt="" src="${ savedLike.data }">

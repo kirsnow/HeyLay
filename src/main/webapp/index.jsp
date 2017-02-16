@@ -316,6 +316,7 @@
                             <div class="team">
                                 <img src="${ pageContext.request.contextPath }/img/team/03.jpg" class="img-responsive img-circle" alt="...">
                                 <br>
+                             
                                 <h4>Alan Podemski</h4>
                                 <p class="small">Web Designer</p>
                                 <hr>
@@ -355,7 +356,7 @@
                     <hr>
                 </div>
 
-                <div id="testimonial" class="owl-carousel owl-theme">
+                <div id="testimonial" class="owl-carousel owl-theme"> 
                   <div class="item">
                     <h3>Et iusto odio dignissimos ducimus qui blanditiis <br>praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint <br>occaecati cupiditate non provident. </h3>
                     <br>
