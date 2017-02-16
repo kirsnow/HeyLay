@@ -46,7 +46,7 @@
 				<div class="container text-center">
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2">
-							<h4 class="marginBottom30">최신 검색어 Top50</h4>
+							<h4 class="marginBottom30">나의 검색어 히스토리</h4>
 						</div>
 					</div>
 					<div class="row">
@@ -58,16 +58,22 @@
 								</div>
 							</c:when>
 							<c:otherwise>
-								<dl class="col-md-8 col-md-offset-1 font">
-									<c:forEach var="keyword" items="${ keywordList }" varStatus="loop">
-										<dt class="col-md-5 col-md-offset-4 text-left"><c:out value="${loop.count}"/>.&nbsp;&nbsp;
-									    	<a href="#" title="해당 단어 검색 결과로 가는 URL">${ keyword.keyword }</a>
-									    </dt>
-									    <dd class="col-md-3  marginBottom30">
-									    	&nbsp;&nbsp;<fmt:formatDate pattern="yyyy-MM-dd" value="${keyword.regDate}" />&nbsp;&nbsp;
-										<a href="javascript:update('${keyword.no}')"><i class="fa fa-times" aria-hidden="true"></i></a></dd> 
-									</c:forEach>
-								</dl>
+							<c:forEach var="keyword" items="${ keywordList }" varStatus="loop">
+							<div class="col-md-offset-4 col-md-7">
+								<div class="col-md-1 text-right text-muted lead" >
+									<strong><c:out value="${loop.count}"/>.</strong>&nbsp;&nbsp;
+								</div>
+								<div class="col-md-2 text-muted text-left lead" >
+									<strong><a href="#" title="해당 단어 검색 결과로 가는 URL" class="text-muted">${ keyword.keyword }</a></strong>
+								</div>
+								<div class="col-md-3 text-muted text-right">
+									<fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${keyword.regDate}" />
+								</div>
+								<div class="col-md-1 text-left">
+									<a href="javascript:update('${keyword.no}')"><i class="fa fa-times" aria-hidden="true"></i></a>
+								</div>
+							</div>
+							</c:forEach>
 								<div class="row">
 									<div class="col-md-6 col-md-offset-3 marginBottom100">
 										<small class="marginTop40"><i class="fa fa-times" aria-hidden="true"></i>버튼을 클릭하여 해당 검색어를 삭제할 수 있습니다.</small>
@@ -89,7 +95,7 @@
 
 	<script type="text/javascript">
 		function update(no) {
- 			alert(no);
+ 			// alert(no);
 			location.href = "${ pageContext.request.contextPath }/contents/update_status.do?no=" + no;
 		}
 	</script>

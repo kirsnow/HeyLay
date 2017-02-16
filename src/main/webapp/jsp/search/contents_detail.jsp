@@ -31,6 +31,16 @@
 		
 		ga('create', 'UA-90558257-1', 'auto');
 		ga('send', 'pageview');
+		
+		// <!-- 페이스북 공유 -->
+		function doMember() {
+			
+			var url = location.href;
+			alert(url);
+			
+		    // location.href = "${ pageContext.request.contextPath }/share/faceBook.do";
+		}
+		
 	</script>
 	
 </head>
@@ -68,7 +78,7 @@
 	                            	${ contents.categoryName }
 	                            </span>
 	                            <span class="label label-info">
-	                            	${ contents.dataType }
+	                            	${ contents.dataTypeName }
 	                            </span>
 	                            <a href="${ contents.sourceUrl }" class="label label-primary" target="_blank" title="원본 사이트로 이동(새 창)">
 	                            	${ contents.sourceName }
@@ -85,7 +95,7 @@
 	                    	${ contents.summary }
                     	</section>
 	                    <footer class="text-right">
-	                        <time class="text-muted">${ contents.lastScraped }</time>
+	                        <time class="text-muted">${ contents.scrapedDate }</time>
 	                    </footer>
 	                </article>
                 </div>
@@ -154,7 +164,7 @@
                     <p class="lead"><i class="fa fa-share-alt" aria-hidden="true"></i> 공유</p>
                     <ul class="list-unstyled" role="menu">
                         <li><a href="#" title="카카오톡으로 공유"><i class="fa fa-commenting fa-fw" aria-hidden="true"></i> KakaoTalk</a></li>
-                        <li><a href="#" title="페이스북으로 공유"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i> Facebook</a></li>
+                        <li><a href="javascript:facebook()" title="페이스북으로 공유"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i> Facebook</a></li>
                         <li><a href="#" title="트위터로 공유"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i> Twitter</a></li>
                         <li><a href="#" title="에버노트로 공유"><i class="fa fa-sticky-note fa-fw" aria-hidden="true"></i> Evernote</a></li>
                     </ul>

@@ -15,8 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import io.planb.contents.service.ContentService;
 import io.planb.contents.vo.ContentsVO;
-import io.planb.contents.vo.SavedHeaderVO;
-import io.planb.contents.vo.SavedVO;
+import io.planb.contents.vo.DrawerHeaderVO;
 import io.planb.directory.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.vo.MemberVO;
@@ -38,7 +37,7 @@ public class ContentController {
 		} else {
 			int memberNo = userVO.getNo();
 			
-			List<SavedHeaderVO> drawerHeaders = service.drawerDates(memberNo);
+			List<DrawerHeaderVO> drawerHeaders = service.drawerDates(memberNo);
 			List<ContentsVO> drawerCards = service.drawerCards(memberNo);
 			
 			mav.setViewName("contents/drawer_day");
@@ -60,7 +59,7 @@ public class ContentController {
 		} else {
 			int memberNo = userVO.getNo();
 			
-			List<SavedHeaderVO> drawerHeaders = service.drawerCategory(memberNo);
+			List<DrawerHeaderVO> drawerHeaders = service.drawerCategory(memberNo);
 			List<ContentsVO> drawerCards = service.drawerCards(memberNo);
 			
 			mav.setViewName("contents/drawer_category");
@@ -82,7 +81,7 @@ public class ContentController {
 		} else {
 			int memberNo = userVO.getNo();
 			
-			List<SavedHeaderVO> drawerHeaders = service.drawerSource(memberNo);
+			List<DrawerHeaderVO> drawerHeaders = service.drawerSource(memberNo);
 			List<ContentsVO> drawerCards = service.drawerCards(memberNo);
 			
 			mav.setViewName("contents/drawer_source");
@@ -104,7 +103,7 @@ public class ContentController {
 		} else {
 			int memberNo = userVO.getNo();
 			
-			List<SavedHeaderVO> drawerHeaders = service.drawerDirectory(memberNo);
+			List<DrawerHeaderVO> drawerHeaders = service.drawerDirectory(memberNo);
 			List<ContentsVO> drawerCards = service.drawerCards(memberNo);
 			
 			mav.setViewName("contents/drawer_directory");
@@ -141,7 +140,7 @@ public class ContentController {
 		List<KeywordsVO> keywordList = service.selectKeywordList(memberNo);
 		model.addAttribute("keywordList", keywordList);
 		
-		System.out.println("keywordList controller : " + keywordList);
+		// System.out.println("keywordList controller : " + keywordList);
 		
 		return "contents/my_search";
 	}

@@ -52,8 +52,9 @@
                   method="post" onsubmit="return checkForm()">   
                   <div class="row">
 	                  <div class="col-md-6 col-md-offset-3">
-						<input type="text" name="email" class="form-control "
-							   placeholder="계정 (이메일)" alt="계정(이메일)입력 폼" />
+					  	 <input type="text" name="email" id="email" class="form-control "
+							    placeholder="계정 (이메일)" alt="계정(이메일)입력 폼" />
+					     <div id="email_eq" class="if_not_valid"></div>
 					  </div>
                   </div>
                   <div class="row">
@@ -66,11 +67,13 @@
 	               </div>
 	               <div class="row">
 	                  <div class="col-md-push-3 col-md-3"> 
-	                     <input type="password" name="password" class="form-control " placeholder=" 비밀번호" alt="비밀번호 입력 폼"/>
+	                     <input id="password" type="password" name="password" class="form-control " placeholder=" 비밀번호" alt="비밀번호 입력 폼"/>
 	                  </div>
 	                  <div class="col-md-push-3 col-md-3">
-                  		 <input type="password" name="passwordcheck" class="form-control " placeholder="비밀번호 확인" alt="비밀번호 확인 입력 폼"/>   
+                  		 <input id="password_check" type="password" name="passwordcheck" class="form-control " placeholder="비밀번호 확인" alt="비밀번호 확인 입력 폼"/>   
+                  	  	 <div id="password_eq"></div>
                   	  </div>
+                  	  	
                   </div>
                   <div class="row">
 	                  <div class="col-md-6 col-md-offset-3">
@@ -143,24 +146,34 @@
 		<jsp:include page="/jsp/include/footer.jsp" />
 	</Footer> 
 	
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
    
 <script>
 $(document).ready(function() {
-   $('#id').keyup(function(){
-      var id = $('#id').val()
-      $.ajax({
-         type : "post",
-         url : "/Quration/jsp/member/idcheck.jsp",
-         data : { "id":$('#id').val() },   //아이디 체크
-         success : function(data){
-            
-            $('#id_eq').html(data); //jsp에서 member(id값 불러오기)
-            }
-         
-         });
-     });
+	$('#email').keyup(function() {
+		var id = $('#email').val();
+		$.ajax({
+			type : "post",
+			url : "${ pageContext.request.contextPath}/membership/idcheck.do",
+			data : {
+				"email" : $('#email').val()
+			}, //아이디 체크
+			success : function(data) {
+				if (data == '${ok}') {
+					$('#email_eq').html('사용 가능한 ID 입니다.')
+								  .css("font-size", "15px")
+						          .css("color", "#03A9F4")
+				} else {
+					$('#email_eq').html('이미 사용 중인 ID 입니다.')
+								  .css("font-size", "15px")
+						          .css("color", "#D32F2F")
+				}
 
-   
+			},
+
+		});
+	});
+	
       $('#password_check').keyup(function() {
          var password = $('#password').val();
          var checkword = $('#password_check').val();
@@ -188,7 +201,9 @@ $(document).ready(function() {
 
       function addDontMiss() {
          $('#password_check').addClass('not_valid');
-         $('#password_eq').html('비밀번호가 일치하지 않습니다.');
+         $('#password_eq').html('비밀번호가 일치하지 않습니다.')
+         				  .css("font-size", "15px")
+						  .css("color", "#D32F2F")
       }
       function removeDontMiss(){
          $('#password').removeClass('not_valid');
@@ -196,6 +211,7 @@ $(document).ready(function() {
          $('#password_eq').html('');
       }
    });
+
 
    function checkForm() {
 
@@ -253,7 +269,6 @@ $(document).ready(function() {
    }  
 </script>   
 
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <!-- Google reCAPTCHA API : 로봇이 아닙니다. -->
 <script src='https://www.google.com/recaptcha/api.js'></script>
 	

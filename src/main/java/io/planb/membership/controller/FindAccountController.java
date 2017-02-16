@@ -39,7 +39,7 @@ public class FindAccountController {
         
         if (userAccount != null) {
             model.addAttribute("userAccount", userAccount);
-            System.out.println("userAccount :" + userAccount);
+            //System.out.println("userAccount :" + userAccount);
             
             return "membership/tell_account";
             
