@@ -245,6 +245,15 @@
 			var codes = [];
 			var lefts = [];
 			for(var i = 1; i <= 3; i++) {
+				if(($('#code' + i).val() != "") && ($('#name' + i).val() == "")) { 
+					alert('사이트 이름을 입력해 주세요.');
+					$('#name' + i).focus();
+					return false;
+				} else if(($('#name' + i).val() != "") && ($('#code' + i).val() == "")) {
+					alert('광고 코드를 입력해 주세요.');
+					$('#code' + i).focus();
+					return false;
+				}
 				siteNames.push($('#name' + i).val());
 				codes.push($('#code' + i).val());
 				lefts.push(Math.floor($('#name' + i).offset().left));
@@ -257,7 +266,7 @@
 				};
 			
 			$.ajax({
-		        url:"${ pageContext.request.contextPath }/jsp/admin/ad_modify.do",
+		        url:"${ pageContext.request.contextPath }/jsp/admin/ad_manage.do",
 		        type:'POST',
 		        data: list, 
 		        success:function(data){
