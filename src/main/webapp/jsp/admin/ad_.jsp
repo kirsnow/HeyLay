@@ -30,13 +30,14 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
 <style>
-body {
-	min-width: 520px;
+.my-5 {
+	margin: 25px 0;
 }
-
 .portlet {
 	margin-bottom: 1em;
 	padding: 0.3em;
+/* 	cursor: pointer; */
+	cursor: move;
 }
 
 .portlet-header {
@@ -62,8 +63,13 @@ body {
 	height: 50px;
 }
 
-.adui div, p, textarea {
+.adui div, p, textarea, input[type=text] {
 	border-radius: 5px;
+	vertical-align: middle;
+}
+
+.adui div, p {
+	text-align: center;
 }
 
 .adui textarea {
@@ -73,14 +79,16 @@ body {
     resize: none;
 }
 
-.top-nav, .bottom-footer { height: 50px; }
-.side-bread{ height: 30px; }
-.content-result { height: 300px; }
-.content-filter { height: 150px; }
-</style>
-<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
-<!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+.adui input[type=text] { 
+	width: 100%;
+	padding-left: 3%;
+}
 
+.top-nav, .bottom-footer { height: 50px; padding-top: 15px; }
+.side-bread { height: 30px; padding-top: 5px; }
+.content-result { height: 300px; padding-top: 50%; }
+.content-filter { height: 150px; padding-top: 60px;}
+</style>
 </head>
 <body class="nav-md">
 	<div class="container body">
@@ -97,9 +105,16 @@ body {
 							<div class="col-md-8 col-md-offset-2">
 							
 								<div class="row">
+									<div class="col-md-12 my-5">
+										<i class="fa fa-arrows fa-lg" aria-hidden="true"></i>
+										마우스로 드래그 해서 원하는 위치에 놓으세요.
+									</div>
+								</div>
+							
+								<div class="row">
 									<div class="col-md-12">
 										<div class="nonDraggable">
-										  <p class="ui-widget-header top-nav">top navigation</p>
+										  <p class="ui-widget-header top-nav">검색바</p>
 										</div>
 									</div>
 								</div>
@@ -107,7 +122,7 @@ body {
 								<div class="row">
 									<div class="col-md-12">
 										<div class="nonDraggable">
-										  <p class="ui-widget-header side-bread">경로 Breadcrumbs</p>
+										  <p class="ui-widget-header side-bread">경로</p>
 										</div>
 									</div>
 								</div>
@@ -128,25 +143,14 @@ body {
 								</div>
 								
 								<div class="row">
-									<div class="col-md-3">
-										<div class="portlet">
-											<div class="portlet-header">광고 1</div>
-											<textarea data-autoresize><object width="300" height="25"><param name="movie" value="//www.youtube.com/v/ZQpIm9TbOW8?version=2&autohide=1&showinfo=0&rel=0&theme=light"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="//www.youtube.com/v/ZQpIm9TbOW8?version=2&autohide=1&showinfo=0&rel=0&theme=light" type="application/x-shockwave-flash" width="300" height="25" allowscriptaccess="always" allowfullscreen="true"></embed></object><br /><a href="http://youtu.be/ZQpIm9TbOW8" target="_blank">http://youtu.be/ZQpIm9TbOW8</a></textarea>
+									<c:forEach begin="1" end="3" varStatus="loop">
+										<div class="col-md-3">
+											<div class="portlet">
+												<input type="text" class="portlet-header" placeholder="사이트 이름을 입력하세요." id="name${ loop.count }" />
+												<textarea data-autoresize placeholder="광고 코드를 입력하세요." id="code${ loop.count }"></textarea>	
+											</div>
 										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="portlet">
-											<div class="portlet-header">광고 2</div>
-											<textarea data-autoresize>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</textarea>
-<!-- 											<div class="portlet-content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</div> -->
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="portlet">
-											<div class="portlet-header">광고 3</div>
-											<textarea data-autoresize>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</textarea>
-										</div>
-									</div>
+									</c:forEach>
 								</div>
 								
 								<div class="row">
@@ -166,11 +170,12 @@ body {
 										</div>
 									</div>
 								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-2 col-md-offset-5">
-								<button type="submit" class="btn btn-default">적용</button>
+								
+								<div class="row">
+									<div class="col-md-12">
+										<a href="javascript:updateAd()" class="btn btn-primary" role="button" title="입력한 광고 사이트 이름 및 코드를 적용">적용</a>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -234,6 +239,28 @@ body {
 		    };
 		    jQuery(this).on('keyup input', function() { resizeTextarea(this); }).removeAttr('data-autoresize');
 		});
+		function updateAd() {
+			var siteNames = [];
+			var codes = [];
+			for(var i = 1; i <= 3; i++) {
+				siteNames.push($('#name' + i).val());
+				codes.push($('#code' + i).val());
+			}
+			
+			$.ajax({
+		        url:"${ pageContext.request.contextPath }/jsp/admin/member_modify_type.do",
+		        type:'POST',
+		        data: list, 
+		        success:function(data){
+		        	if(data == "완료")
+		            alert("완료!");
+		        	location.reload();
+		        },
+		        error:function(jqXHR, textStatus, errorThrown){
+		            alert("에러 발생 ㅅㅂ \n" + textStatus + " : " + errorThrown);
+		        }
+		    });
+		}
 	</script>
 </body>
 </html>
