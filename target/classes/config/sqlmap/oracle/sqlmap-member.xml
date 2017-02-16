@@ -27,7 +27,8 @@
 	    where no = #{no}
 	</select>
 	
-	<select id="findAccount"  parameterType="memberVO" resultType="memberVO">
+	<!-- 계정 찾기 -->
+	<select id="selectMemberAccount"  parameterType="memberVO" resultType="memberVO">
 	   select email
 	     from Q_member
 	    where last_name = #{lastName} and first_name = #{firstName} and question = #{question} and answer = #{answer}

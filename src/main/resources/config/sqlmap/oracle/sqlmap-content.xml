@@ -30,22 +30,6 @@
 		VALUES ( NEXTVAL('q_contents_saved_no'), #{memberNo}, #{contentsNo}, #{directoryNo} )
 	</insert>
 	
-	<!-- Directory -->
-	<select id="selectNextDirNo" resultType="int">
-		SELECT NEXTVAL('q_directory_no')
-	</select>
-	
-	<insert id="insertDir" parameterType="directoryVO">
-		INSERT INTO q_directory (no, name, member_no)
-		VALUES ( #{no}, #{name}, #{memberNo} )
-	</insert>
-	
-	<select id="selectDirList" parameterType="int" resultType="directoryVO">
-		SELECT  no, name, reg_date, member_no 
-		FROM q_directory
-		WHERE member_no = #{userNo}
-	</select>
-	
 	<!-- <select id="selectByNo" parameterType="int" resultType="memberVO">
 		<include refid="selectId" />
 		WHERE no = #{ no } 

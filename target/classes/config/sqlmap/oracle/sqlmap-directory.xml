@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.planb.contents.dao.ContentDAO">
+	
+	<!-- Directory -->
+	<select id="selectNextDirNo" resultType="int">
+		SELECT NEXTVAL('q_directory_no')
+	</select>
+	
+	<insert id="insertDir" parameterType="directoryVO">
+		INSERT INTO q_directory (no, name, member_no)
+		VALUES ( #{no}, #{name}, #{memberNo} )
+	</insert>
+	
+	<update id="updateDir" parameterType="directoryVO">
+		UPDATE q_directory
+		SET name=#{ name }, reg_date=now()
+		WHERE no = #{ no } 
+	</update>
+	
+	<select id="selectDirList" parameterType="int" resultType="directoryVO">
+		SELECT  no, name, reg_date, member_no 
+		FROM q_directory
+		WHERE member_no = #{userNo}
+	</select>
+	
+	<delete id="delDir" parameterType="int">
+		DELETE FROM q_directory
+		WHERE no = #{ no }
+	</delete>
+	
+	<delete id="deleteDirs" parameterType="list">
+		DELETE FROM q_directory
+		WHERE no in
+		<foreach collection="list" item="no" separator="," open="(" close=")">
+			#{ no }	
+		</foreach>
+	</delete>
+	
+</mapper>  

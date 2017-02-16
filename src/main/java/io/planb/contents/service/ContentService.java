@@ -82,12 +82,26 @@ public class ContentService {
 		
 		return popularList;
 	}
-
-	public List<ContentsVO> selectCustomSourceList(int no) {
-		List<ContentsVO> customSourceList = dao.selectCustomSourceList(no);
-		
-		return customSourceList;
+	
+	public void updateDir(DirectoryVO dir) {
+		dao.updateDir(dir);
 	}
+
+//	public void delDir(List<Integer> noList){
+//		for(int no : noList) {
+//			dao.delDir(no);
+//		}
+//	}
+	
+	public void delDir(List<Integer> noList) {
+		dao.delDir(noList);
+	}
+
+//	public List<ContentsVO> selectCustomSourceList(int no) {
+//		List<ContentsVO> customSourceList = dao.selectCustomSourceList(no);
+//		
+//		return customSourceList;
+//	}
 
 	public List<ContentsVO> selectCustomKeywordList(int no) {
 		List<KeywordsVO> keywordList = dao.selectUserKeywordList(no);

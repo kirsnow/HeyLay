@@ -225,3 +225,13 @@
 	.nofocus:focus {
 	  outline: none;
 	}
+	
+	.primaryFont{
+	font-size: 20px;
+	font-weight: bold;
+    color: #03A9F4;
+	}
+	
+	.font20{
+   	font-size: 20px;
+   }

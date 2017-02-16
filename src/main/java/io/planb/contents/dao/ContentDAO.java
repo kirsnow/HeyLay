@@ -79,6 +79,19 @@ public class ContentDAO {
 		
 		return popularList;
 	}
+	
+	public void updateDir(DirectoryVO dir) {
+		sqlSessionTemplate.update("io.planb.contents.dao.ContentDAO.updateDir", dir);
+	}
+	
+	public void delDir(int no) {
+		sqlSessionTemplate.delete("io.planb.contents.dao.ContentDAO.delDir", no);
+	}
+
+	public void delDir(List<Integer> noList) {
+		sqlSessionTemplate.delete("io.planb.contents.dao.ContentDAO.deleteDirs", noList);
+		
+	}
 
 	public List<ContentsVO> selectCustomSourceList(int no) {
 		List<ContentsVO> customSourceList = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.selectCustomSourceList", no);
