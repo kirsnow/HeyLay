@@ -113,5 +113,10 @@
 	
 	<!-- icon-font -->
 	<script src="https://use.fontawesome.com/bbddce3010.js"></script>
+	
+	<!-- Modal -->
+	<jsp:include page="/jsp/modal/card_save.jsp" />
+	<jsp:include page="/jsp/modal/report_bug.jsp" />
+	<jsp:include page="/jsp/modal/report_spam.jsp" />
 </body>
 </html>

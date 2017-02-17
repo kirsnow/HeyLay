@@ -88,29 +88,7 @@
 				<textarea id="userInput" name="userInput" class="form-control marginTop" rows="4" maxlength="1000"
 				          placeholder="오류 화면 캡처, 오류 발생 일시, PC 정보 제공과 함께 오류 현상을 기재해 주세요."></textarea>
 				<p><small><span id="text_length">1000</span>자 입력 가능</small></p>
-				<script type="text/javascript">
-					
-					$("#userInput").on('keydown',function(event) {
-						  var input = $('#userInput'), display = $('#text_length'), count = 0, limit = 1000;
-
-						  count = input.val().length
-						  remaining = limit - count
-						  update(remaining);
-
-						  input.keyup(function(e) {
-						    count = $(this).val().length;
-						    remaining = limit - count;
-
-						    update(remaining);
-						  });
-
-						  function update(count) {
-						    var txt = count
-						    display.html(txt);
-						  }
-
-						});
-				</script>
+				
 			</div>
 		</div>	
 		<div class="row">
@@ -139,6 +117,31 @@
 	</Footer>
 	
 	<!-- JS -->
+	<!-- jQuery -->
+	<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
+	<script type="text/javascript">
+					
+					$("#userInput").on('keydown',function(event) {
+						  var input = $('#userInput'), display = $('#text_length'), count = 0, limit = 1000;
+
+						  count = input.val().length
+						  remaining = limit - count
+						  update(remaining);
+
+						  input.keyup(function(e) {
+						    count = $(this).val().length;
+						    remaining = limit - count;
+
+						    update(remaining);
+						  });
+
+						  function update(count) {
+						    var txt = count
+						    display.html(txt);
+						  }
+
+						});
+				</script>
 	<c:if test="${ msg ne null }">
 		<script>
 			$(document).ready(function() { alert("${ msg }"); });

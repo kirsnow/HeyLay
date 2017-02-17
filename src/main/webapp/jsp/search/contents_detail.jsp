@@ -242,14 +242,16 @@
 	                                <li role="presentation" class="divider"></li>
 	                            </c:if>
 	                                <li>
-	                                	<a href="${ pageContext.request.contextPath }/contact/bug.do?no=${ memo.no }&type=memo" title="오류 신고">
+	                                	<a href="#" role="button" id="${ contents.contentsNo }" class="bugReportBtn nofocus"
+							   				data-toggle="modal" data-target="#bugModal" title="오류 신고">
 		                                	<i class="fa fa-bug fa-fw" aria-hidden="true"></i>
 		                                	오류 신고
 	                                	</a>
 	                                </li>
 	                            <c:if test="${ memo.memberNo ne userVO.no }">
 	                                <li>
-	                                	<a href="${ pageContext.request.contextPath }/contact/spamMemo.do?no=${ memo.no }" title="유해물 신고">
+	                                	<a href="#" role="button" id="${ contents.contentsNo }" class="spamReportBtn nofocus"
+							   				data-toggle="modal" data-target="#spamModal" title="유해물 신고">
 	                                		<i class="fa fa-ban fa-fw" aria-hidden="true"></i>
 	                                		유해물 신고
 	                                	</a>
@@ -278,9 +280,9 @@
 
     <!-- Modal -->
 	<jsp:include page="/jsp/modal/memo_add.jsp" />
-	
-	<!-- Modal -->
 	<jsp:include page="/jsp/modal/card_save.jsp" />
+	<jsp:include page="/jsp/modal/report_bug.jsp" />
+	<jsp:include page="/jsp/modal/report_spam.jsp" />
 	
 	
 </body>

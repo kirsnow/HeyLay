@@ -67,10 +67,6 @@
 				 class="btn btn-link" title="상세 페이지 더 보기">
 				더 보기
 			</a>
-			<a href="#" role="button" id="${ card.contentsNo }" class="bugReportBtn nofocus"
-			   data-toggle="modal" data-target="#bugModal" title="오류 신고">
-				<i class="fa fa-bug fa-fw" aria-hidden="true"></i>
-			</a>
 			<!-- buttons (bottom-right) -->
 			<div class="pull-right">
 				<div id="share" class="btn-group dropup">
@@ -120,8 +116,8 @@
 							</a>
 						</li>
 						<li>
-							<a href="${ pageContext.request.contextPath }/contact/spamContents.do?no=${ card.contentsNo }"
-								title="유해물 신고">
+							<a href="#" role="button" id="${ card.contentsNo }" class="spamReportBtn nofocus"
+							   data-toggle="modal" data-target="#spamModal" title="유해물 신고">
 								<i class="fa fa-ban fa-fw" aria-hidden="true"></i>
 								유해물 신고
 							</a>

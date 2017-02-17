@@ -97,6 +97,7 @@
     <!-- Modal -->
 	<jsp:include page="/jsp/modal/card_save.jsp" />
 	<jsp:include page="/jsp/modal/report_bug.jsp" />
+	<jsp:include page="/jsp/modal/report_spam.jsp" />
     
     <script>
     <!-- google analytics -->

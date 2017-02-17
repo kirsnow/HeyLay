@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<div class="modal fade" id="saveCardModal" tabindex="-1" role="dialog" 
+<div class="modal fade" id="bugModal" tabindex="-1" role="dialog" 
 	aria-labelledby="gridSystemModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -18,13 +18,13 @@
 			<div class="modal-body">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-md-8 col-md-offset-2 marginTop">
+						<div class="col-md-10 col-md-offset-1 marginTop">
 							<input type="text" name="email" class="form-control" id="email"
 								placeholder="계정 (이메일)" alt="계정(이메일)입력 폼" value="${ userVO.email }"/>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-8 col-md-offset-2 marginTop">
+						<div class="col-md-10 col-md-offset-1 marginTop">
 							<p>정확한 장애(오류) 해결을 위해 고객님의 PC사양 정보가 필요하며, 수집된 PC사양 정보는 문제 해결
 								이외의 다른 용도로 사용하지 않습니다. PC사양조사 수동설치 시에는 웹페이지를 닫고 다시 실행하신 후에 문의를
 								입력해 주세요.
@@ -51,13 +51,13 @@
 					</div>
 
 					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
+						<div class="col-md-10 col-md-offset-1">
 							<input type="text" name="url" class="form-control"
 								placeholder="오류 발생  URL 입력" alt="오류  URL 입력 폼" />
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
+						<div class="col-md-10 col-md-offset-1">
 							<textarea id="userInput" name="userInput"
 								class="form-control marginTop userInput" rows="4" maxlength="1000"
 								placeholder="오류 화면 캡처, 오류 발생 일시, PC 정보 제공과 함께 오류 현상을 기재해 주세요."></textarea>
@@ -67,7 +67,7 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
+						<div class="col-md-10 col-md-offset-1">
 							<div class="panel panel-default">
 								<div class="panel-body">
 									<input type="file" name="attachfile"
