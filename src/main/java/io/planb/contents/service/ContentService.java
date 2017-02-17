@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import io.planb.contents.dao.ContentDAO;
 import io.planb.contents.vo.ContentsVO;
+import io.planb.drawer.service.DirectoryService;
 import io.planb.drawer.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.search.service.SearchServiceImp;
@@ -19,6 +20,9 @@ public class ContentService {
 	
 	@Autowired
 	private SearchServiceImp searchService;
+	
+	@Autowired
+	private DirectoryService dirService;
 	
 	/* Contents detail */
 	public ContentsVO getContentsByNo(int contentsNo) {
@@ -58,11 +62,6 @@ public class ContentService {
 		List<ContentsVO> drawerCards = dao.drawerCards(memberNo);
 		return drawerCards;
 	}
-	
-	public List<DirectoryVO> directoryList(int userNo) {
-		List<DirectoryVO> dirList = dao.directoryList(userNo);
-		return dirList;
-	}
 
 	public void saveCard(ContentsVO card) {
 		if(card.getDirectoryNo() < 0) {
@@ -70,37 +69,16 @@ public class ContentService {
 			newDir.setMemberNo(card.getMemberNo());
 			newDir.setName(card.getDirectoryName());
 			
-			int directoryNo = this.newDirectory(newDir);
+			int directoryNo = dirService.newDirectory(newDir);
 			card.setDirectoryNo(directoryNo);
 		}
 		dao.saveCard(card);
-	}
-
-	public int newDirectory(DirectoryVO newDir) {
-		int dirNo = dao.nextDirNo();
-		newDir.setNo(dirNo);
-		dao.newDirectory(newDir);
-		return dirNo;
 	}
 
 	public List<ContentsVO> selectPopularList() {
 		List<ContentsVO> popularList = dao.selectPopularList();
 		
 		return popularList;
-	}
-	
-	public void updateDir(DirectoryVO dir) {
-		dao.updateDir(dir);
-	}
-
-//	public void delDir(List<Integer> noList){
-//		for(int no : noList) {
-//			dao.delDir(no);
-//		}
-//	}
-	
-	public void delDir(List<Integer> noList) {
-		dao.delDir(noList);
 	}
 	
 	public List<ContentsVO> selectCustomSourceList(int no) {

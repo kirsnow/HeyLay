@@ -97,7 +97,7 @@
    		.html('<i class="fa fa-spinner fa-pulse" aria-hidden="true"></i> 담는 중');
     	
         $.ajax({
-        	url: '${ pageContext.request.contextPath }/contents/ajax/save_card.do'
+        	url: '${ pageContext.request.contextPath }/drawer/ajax/save.do'
         	, type: 'POST'
         	, data : { 
         		'contentsNo' : contentsNo

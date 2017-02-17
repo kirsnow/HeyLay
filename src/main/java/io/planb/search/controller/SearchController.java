@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import io.planb.contents.service.ContentService;
+import io.planb.drawer.service.DirectoryService;
 import io.planb.drawer.vo.DirectoryVO;
 import io.planb.member.vo.MemberVO;
 import io.planb.search.service.SearchServiceImp;
@@ -25,7 +25,7 @@ public class SearchController {
 	private SearchServiceImp service;
 	
 	@Autowired
-	private ContentService contentService;
+	private DirectoryService dirService;
 	
 	@RequestMapping(value="/result.do", method=RequestMethod.GET)
 	public ModelAndView searchResult(HttpSession session, @RequestParam(required=false) String q, @RequestParam(required=false) String ip) {
@@ -42,7 +42,7 @@ public class SearchController {
 		mav.addObject("cards", searchResult.getContents());
 		
 		if(userVO != null) {
-			List<DirectoryVO> dirList = contentService.directoryList(userNo);
+			List<DirectoryVO> dirList = dirService.directoryList(userNo);
 			mav.addObject("dirList", dirList);
 		}
 		
