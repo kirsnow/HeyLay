@@ -12,12 +12,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>카드 서랍 | Quration: 답을 열어 줄 그런 사람</title>
 
+<!-- MDL Hosted start -->
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-light_blue.min.css" />
+
 <!-- Bootstrap -->
 <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 <link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
-
-<!-- MDL Hosted start -->
-<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-light_blue.min.css" />
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

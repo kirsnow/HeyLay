@@ -21,7 +21,7 @@ public class AdController {
 	private AdService service;
 	
 	@RequestMapping("/jsp/admin/ad_list.do")
-	public String selectAdList(Model model) {
+	public String selectAdList(Model model) throws CloneNotSupportedException {
 		List<AdVO> adList = service.selectAdList();
 		model.addAttribute("adList", adList);
 		

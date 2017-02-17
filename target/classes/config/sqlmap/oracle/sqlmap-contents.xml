@@ -53,9 +53,15 @@
 	<!-- SQL scriptlets -->
 	<sql id="daysAgo">
 		, case 
-		    when ${which_column} &gt; now() at time zone 'GMT+9'
+		    when ${which_column} &gt; localtimestamp - interval '60 seconds'
+				then round( extract( second from age(localtimestamp, ${which_column}) ) )||'초 전' 
+		    when ${which_column} &gt; localtimestamp - interval '60 minutes'
+				then extract( minute from age(localtimestamp, ${which_column}) )||'분 전'
+		    when ${which_column} &gt; localtimestamp - interval '12 hour'
+				then extract( hour from age(localtimestamp, ${which_column}) )||'시간 전'
+		    when ${which_column} &gt; current_date + time '00:00'
 				then '오늘' 
-		    when ${which_column} &gt; (now() at time zone 'GMT+9' - interval '1 day')
+		    when ${which_column} &gt; localtimestamp - interval '1 day'
 				then '어제' 
 		    else to_char(${which_column}, 'YYYY. MM. DD.')
 		end as ${which_name}DaysAgo
