@@ -99,7 +99,7 @@
 	</select>
 	
 	<select id="selectCustomSourceList" parameterType="int" resultType="contentsVO">
-		SELECT CO.NO, CO.TITLE as title, CO.SUMMARY as summary, CO.URL as url
+		SELECT CO.NO contentsNo, CO.TITLE as title, CO.SUMMARY as summary, CO.URL as url
 			, CO.VIEW_CNT as viewCnt
 			, count(SPA.CONTENTS_NO) as reportCnt, count(LIK.CONTENTS_NO) as likeCnt
 			, CO.SOURCE_NO as sourceNo, SO.NAME as sourceName, SO.URL as sourceUrl, SO.LOGO_IMG as logoImg
@@ -140,7 +140,7 @@
 	</select>
 	
 	<select id="selectCustomCuration" parameterType="String" resultType="contentsVO">
-		SELECT CO.NO, CO.TITLE as title, CO.SUMMARY as summary, CO.URL as url
+		SELECT CO.NO contentsNo, CO.TITLE as title, CO.SUMMARY as summary, CO.URL as url
 			, CO.VIEW_CNT as viewCnt
 			, count(SPA.CONTENTS_NO) as reportCnt, count(LIK.CONTENTS_NO) as likeCnt
 			, CO.SOURCE_NO as sourceNo, SO.NAME as sourceName, SO.URL as sourceUrl, SO.LOGO_IMG as logoImg
