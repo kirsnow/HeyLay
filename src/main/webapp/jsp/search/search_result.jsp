@@ -18,6 +18,8 @@
     <!-- MDL Hosted start -->
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-light_blue.min.css" />
 
+    <!-- icon-font -->
+    <script src="https://use.fontawesome.com/bbddce3010.js"></script>
 </head>
 <body>
     <div class="container">
@@ -106,8 +108,6 @@
     
     <!-- Modal -->
 	<jsp:include page="/jsp/modal/card_save.jsp" />
-    <!-- icon-font -->
-    <script src="https://use.fontawesome.com/bbddce3010.js"></script>
     
     <script>
     <!-- google analytics -->
