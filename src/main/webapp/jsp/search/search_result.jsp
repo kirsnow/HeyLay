@@ -107,17 +107,17 @@
 		ga('create', 'UA-90558257-1', 'auto');
 		ga('send', 'pageview');
 		
-//     /* Facebook share API 
-//     	 https://developers.facebook.com/docs/sharing/reference/share-dialog */
+// //     /* Facebook share API 
+// //     	 https://developers.facebook.com/docs/sharing/reference/share-dialog */
     
 
-    document.getElementById('share_facebook').onclick = function() {
-		  FB.ui({
-		    method: 'share',
-		    display: 'popup',
-		    href: '{ pageContext.request.contextPath }/search/result.do',
-		  }, function(response){});
-		}
+//     document.getElementById('share_facebook').onclick = function() {
+// 		  FB.ui({
+// 		    method: 'share',
+// 		    display: 'popup',
+// 		    href: '{ pageContext.request.contextPath }/search/result.do',
+// 		  }, function(response){});
+// 		}
 	</script>
 </body>
 </html>
