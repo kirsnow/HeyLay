@@ -30,6 +30,7 @@
  			<if test="sourceNo != 0">and SOU.NO = #{sourceNo}</if>
  			<if test="dataTypeNo != 0">and DAT.NO = #{dataTypeNo}</if>
  			<if test="categoryNo != 0">and CAT.NO = #{categoryNo}</if>
+ 			<if test="keyword != null">and CON.TITLE ~* #{keyword}</if>
 		</where>
  		
  		group by CON.NO
