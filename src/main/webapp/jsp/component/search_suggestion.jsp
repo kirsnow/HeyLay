@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div class="row marginTop20">
 	<div class="col-xs-12">
-		다른 단어로 검색해보시겠어요?
+		이런 단어로 검색해보시겠어요?
 	</div>
 	<div class="col-xs-12">
 		<ul class="">
