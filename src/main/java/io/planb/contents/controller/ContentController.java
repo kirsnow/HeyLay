@@ -11,19 +11,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import io.planb.contents.service.ContentService;
 import io.planb.contents.vo.ContentsVO;
 import io.planb.drawer.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.vo.MemberVO;
+import io.planb.memo.service.MemoServiceImp;
+import io.planb.memo.vo.MemoVO;
 
 @Controller
 public class ContentController {
 
 	@Autowired
 	private ContentService service;
+	@Autowired
+	private MemoServiceImp memoService;
 	
+	/* Contents detail */
+	@RequestMapping(value="/contents.do", method=RequestMethod.GET)
+	public ModelAndView viewContents(HttpSession session, @RequestParam int no, @RequestParam(required=false) String q) {
+		
+		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
+		int userNo = userVO != null ? userVO.getNo() : 0;
+		
+		ContentsVO contents = service.getContentsDetail(no, q);
+		List<MemoVO> memoList = memoService.getMemoList(no);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("search/contents_detail");
+		mav.addObject("contents", contents);
+		mav.addObject("memoList", memoList);
+		return mav;
+	}
 	
 	/* 큐레이션 */
  	@RequestMapping("/contents/curation.do")

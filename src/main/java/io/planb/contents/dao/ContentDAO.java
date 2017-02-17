@@ -16,6 +16,17 @@ public class ContentDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
+	public ContentsVO getContents(ContentsVO vo) {
+		ContentsVO contents = sqlSessionTemplate.selectOne("io.planb.dao.ContentDAO.selectContents", vo);
+		return contents;
+	}
+	
+	public List<ContentsVO> getCardsList(ContentsVO vo) {
+		List<ContentsVO> cards = sqlSessionTemplate.selectList("io.planb.dao.ContentDAO.selectContents", vo);
+		return cards;
+	}
+	
+	
 	public List<ContentsVO> getSavedCards(ContentsVO vo) {
 		
 		List<ContentsVO> savedCards = sqlSessionTemplate.selectList("io.planb.dao.ContentDAO.selectContents", vo);
