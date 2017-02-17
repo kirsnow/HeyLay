@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import io.planb.contents.vo.ContentsVO;
+import io.planb.drawer.vo.DirectoryVO;
 import io.planb.contents.service.ContentService;
-import io.planb.directory.vo.DirectoryVO;
 import io.planb.member.vo.MemberVO;
 import io.planb.memo.service.MemoServiceImp;
 import io.planb.memo.vo.MemoVO;

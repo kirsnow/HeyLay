@@ -17,7 +17,7 @@ function doMember(memberNo) {
 					<div class="profile_info">
 						<span>Welcome<br/>${ userVO.firstName }</span>
 						<div class=" text-center">	
-						<img src="/img/team/02.jpg" alt="..." class="img-circle profile_img">			
+						<img src="${ pageContext.request.contextPath }/img/team/02.jpg" alt="..." class="img-circle profile_img">			
 						</div>
 					</div>
 				</div>	

@@ -1,4 +1,4 @@
-package io.planb.contents.service;
+package io.planb.drawer.service;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -8,15 +8,15 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import io.planb.contents.dao.ContentsDAOTest;
+import io.planb.contents.dao.ContentDAO;
 import io.planb.contents.vo.ContentsVO;
-import io.planb.contents.vo.DrawerVO;
+import io.planb.drawer.vo.DrawerVO;
 
 @Service
 public class DrawerService {
 
 	@Autowired
-	private ContentsDAOTest dao;
+	private ContentDAO dao;
 	
 	/* Saved cards */
 	public List<ContentsVO> getSavedCardsForMember(int memberNo) {

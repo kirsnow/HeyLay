@@ -11,12 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import io.planb.contents.service.ContentService;
 import io.planb.contents.vo.ContentsVO;
-import io.planb.contents.vo.DrawerHeaderVO;
-import io.planb.directory.vo.DirectoryVO;
+import io.planb.drawer.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.vo.MemberVO;
 
@@ -26,93 +24,6 @@ public class ContentController {
 	@Autowired
 	private ContentService service;
 	
-	@RequestMapping("/contents/drawer_day.do")
-	public ModelAndView selectDayList(HttpSession session) {
-		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
-		
-		ModelAndView mav = new ModelAndView();
-		
-		if(userVO == null) {
-			mav.setViewName("redirect:/login/login.do");
-		} else {
-			int memberNo = userVO.getNo();
-			
-			List<DrawerHeaderVO> drawerHeaders = service.drawerDates(memberNo);
-			List<ContentsVO> drawerCards = service.drawerCards(memberNo);
-			
-			mav.setViewName("contents/drawer_day");
-			mav.addObject("drawerHeaders", drawerHeaders);
-			mav.addObject("cards", drawerCards);
-		}
-		
-		return mav;
-	}
-	
-	@RequestMapping("/contents/drawer_category.do")
-	public ModelAndView selectCategoryList(HttpSession session) {
-		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
-		
-		ModelAndView mav = new ModelAndView();
-		
-		if(userVO == null) {
-			mav.setViewName("redirect:/login/login.do");
-		} else {
-			int memberNo = userVO.getNo();
-			
-			List<DrawerHeaderVO> drawerHeaders = service.drawerCategory(memberNo);
-			List<ContentsVO> drawerCards = service.drawerCards(memberNo);
-			
-			mav.setViewName("contents/drawer_category");
-			mav.addObject("drawerHeaders", drawerHeaders);
-			mav.addObject("cards", drawerCards);
-		}
-		
-		return mav;
-	}
-	
-	@RequestMapping("/contents/drawer_source.do")
-	public ModelAndView selectSourceList(HttpSession session) {
-		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
-		
-		ModelAndView mav = new ModelAndView();
-		
-		if(userVO == null) {
-			mav.setViewName("redirect:/login/login.do");
-		} else {
-			int memberNo = userVO.getNo();
-			
-			List<DrawerHeaderVO> drawerHeaders = service.drawerSource(memberNo);
-			List<ContentsVO> drawerCards = service.drawerCards(memberNo);
-			
-			mav.setViewName("contents/drawer_source");
-			mav.addObject("drawerHeaders", drawerHeaders);
-			mav.addObject("cards", drawerCards);
-		}
-		
-		return mav;
-	}
-	
-	@RequestMapping("/contents/drawer_directory.do")
-	public ModelAndView selectDirectoryList(HttpSession session) {
-		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
-		
-		ModelAndView mav = new ModelAndView();
-		
-		if(userVO == null) {
-			mav.setViewName("redirect:/login/login.do");
-		} else {
-			int memberNo = userVO.getNo();
-			
-			List<DrawerHeaderVO> drawerHeaders = service.drawerDirectory(memberNo);
-			List<ContentsVO> drawerCards = service.drawerCards(memberNo);
-			
-			mav.setViewName("contents/drawer_directory");
-			mav.addObject("drawerHeaders", drawerHeaders);
-			mav.addObject("cards", drawerCards);
-		}
-		
-		return mav;
-	}
 	
 	/* 큐레이션 */
  	@RequestMapping("/contents/curation.do")

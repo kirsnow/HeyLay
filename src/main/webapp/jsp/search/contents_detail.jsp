@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -146,7 +145,7 @@
                 	<p class="lead"><i class="fa fa-info-circle" aria-hidden="true"></i> 정보</p>
                 	<ul class="list-unstyled">
                 		<li><strong>${ contents.viewCnt }</strong>회 조회</li>
-                		<li><strong>${ contents.saveCnt }</strong>명이 저장함</li>
+                		<li><strong>${ contents.savedCnt }</strong>명이 저장함</li>
                 		<li><strong>${ contents.likeCnt }</strong>명이 좋아함</li>
                 	</ul>
                 </div>

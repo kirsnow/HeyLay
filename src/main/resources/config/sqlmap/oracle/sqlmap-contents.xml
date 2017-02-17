@@ -2,24 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.planb.dao.ContentDAO">
 	
-	<select id="selectDrawerHeader" parameterType="drawerHeaderVO" resultType="drawerHeaderVO">
-		select to_char(SAV.REG_DATE, 'yyyy. mm. dd. ') as savedDate 
-		<include refid="daysAgo">
-			<property name="which_column" value="SAV.REG_DATE"/>
-			<property name="which_name" value="saved"/>
-		</include>
-		, count(SAV.NO)
-			
-		from Q_CONTENTS CON
-			<include refid="additionalJoin" />
-			<include refid="savedJoin" />
-			
-		where CON.BAN = 'N' and SAV.MEMBER_NO = #{memberNo}
-		
-		group by savedDate, savedDaysAgo
-		order by savedDate desc
-	</select>
-	
 	<select id="selectContents" parameterType="contentsVO" resultType="contentsVO">
 		select CON.NO as contentsNo
 			, CON.TITLE as title, CON.SUMMARY as summary, CON.URL as url
