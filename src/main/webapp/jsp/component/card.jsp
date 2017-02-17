@@ -83,7 +83,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="#" title="페이스북으로 공유">
+							<a href="javascript:facebook('${card.contentsNo}')" title="페이스북으로 공유">
 								<i class="fa fa-facebook fa-fw" aria-hidden="true"></i> 
 								Facebook
 							</a>
@@ -133,3 +133,13 @@
 	</div>
 	<!-- /card -->
 </c:forEach>
+<script>
+	//<!-- 페이스북 공유 -->
+	function facebook(no) {
+		//alert(no);
+	    //location.href = "${ pageContext.request.contextPath }/share/faceBook.do?no=" + no;
+	    
+	    var url = "https://quration.herokuapp.com/search/contents.do?no="+no;
+	    window.open("http://www.facebook.com/sharer/sharer.php?u=" + url);
+	}
+</script>
