@@ -9,12 +9,41 @@ import io.planb.contents.dao.ContentDAO;
 import io.planb.contents.vo.ContentsVO;
 import io.planb.drawer.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
+import io.planb.search.service.SearchServiceImp;
 
 @Service
 public class ContentService {
 
 	@Autowired
 	private ContentDAO dao;
+	
+	@Autowired
+	private SearchServiceImp searchService;
+	
+	/* Contents detail */
+	public ContentsVO getContentsByNo(int contentsNo) {
+		ContentsVO vo = new ContentsVO();
+		vo.setContentsNo(contentsNo);
+		
+		ContentsVO contents = dao.getContents(vo);
+		return contents;
+	}
+	
+	public ContentsVO getContentsDetail(int contentsNo, String q) {
+		ContentsVO contents = getContentsByNo(contentsNo);
+		contents = searchService.highlighter(contents, q);
+		return contents;
+	}
+	
+	/* Cards List */
+	public List<ContentsVO> getCardsByNo(int contentsNo) {
+		ContentsVO vo = new ContentsVO();
+		vo.setContentsNo(contentsNo);
+		
+		List<ContentsVO> cards = dao.getCardsList(vo);
+		return cards;
+	}
+	
 	
 	public List<KeywordsVO> selectKeywordList(int memberNo) {
 		List<KeywordsVO> keywordList = dao.selectKeywordList(memberNo);

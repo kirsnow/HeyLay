@@ -63,7 +63,7 @@
 	
 		<!-- card action buttons (bottom) -->
 		<div class="mdl-card__actions mdl-card--border">
-			<a href="${ pageContext.request.contextPath }/search/contents.do?no=${ card.contentsNo }&q=${ searchResult.query }" 
+			<a href="${ pageContext.request.contextPath }/contents.do?no=${ card.contentsNo }&q=${ searchResult.query }" 
 				 class="btn btn-link" title="상세 페이지 더 보기">
 				더 보기
 			</a>

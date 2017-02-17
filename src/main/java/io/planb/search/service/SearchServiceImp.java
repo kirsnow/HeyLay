@@ -31,15 +31,22 @@ public class SearchServiceImp {
 		return searchResult;
 	}
 
-	public ContentsVO getContents(int contentsNo, String q) {
-		ContentsVO contents = dao.getContents(contentsNo);
-		if(q != null) {
-			String text = contents.getSummary();
-			text = text.replace(q, "<mark>" + q + "</mark>");
-			contents.setSummary(text);
+	public ContentsVO highlighter(ContentsVO contents, String q) {
+		if(q == null || q.equals("")) {
+			
+		} else {
+			String title = contents.getTitle();
+			String summary = contents.getSummary();
+			
+			title = title.replace(q, "<mark>" + q + "</mark>");
+			summary = summary.replace(q, "<mark>" + q + "</mark>");
+			
+			contents.setTitle(title);
+			contents.setSummary(summary);
 		}
 		return contents;
 	}
+	
 	
 	public List<ContentsVO> getContentsList(int contentsNo) {
 		List<ContentsVO> contentsList = dao.getContentsList(contentsNo);

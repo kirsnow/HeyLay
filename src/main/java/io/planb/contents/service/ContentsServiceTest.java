@@ -14,14 +14,25 @@ public class ContentsServiceTest {
 	@Autowired
 	private ContentDAO dao;
 	
-	/* Contents cards */
+	/* 1 Contents (by conentsNo) */
+	public ContentsVO getContentsByNo(int contentsNo) {
+		ContentsVO vo = new ContentsVO();
+		vo.setContentsNo(contentsNo);
+		
+		ContentsVO contents = dao.getContents(vo);
+		return contents;
+	}
+	
+	/* Contents cards List */
 	public List<ContentsVO> getCardsByNo(int contentsNo) {
 		ContentsVO vo = new ContentsVO();
 		vo.setContentsNo(contentsNo);
 		
-		List<ContentsVO> savedCards = dao.getSavedCards(vo);
-		return savedCards;
+		List<ContentsVO> cards = dao.getCardsList(vo);
+		return cards;
 	}
+	
+	
 	
 	public List<ContentsVO> getCardsByCategory(int categoryNo) {
 		ContentsVO vo = new ContentsVO();
