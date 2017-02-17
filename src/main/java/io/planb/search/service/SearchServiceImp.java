@@ -21,32 +21,49 @@ public class SearchServiceImp {
 		//검색 실행
 		SearchVO searchResult = dao.searchResult(q, ip);
 		
+		if(searchResult != null) {
+			//검색어 세팅
+			searchResult.setQuery(q);
+			
+			//검색결과 하이라이팅
+			for( ContentsVO contents : searchResult.getContents() ) {
+				contents = this.highlighter(contents, q);
+			}
+		}
+		
 		//검색 키워드 저장
-		SearchVO keyword = new SearchVO();
-		if(searchResult == null) keyword.setTotal(0);
-		keyword.setQuery(q);
-		keyword.setUserNo(userNo);
-		dao.saveKeyword(keyword);
+		SearchVO kewordVO = new SearchVO();
+		kewordVO.setQuery(q);
+		kewordVO.setUserNo(userNo);
+		if(searchResult != null) {
+			kewordVO.setTotal( searchResult.getTotal() );
+		} else {
+			kewordVO.setTotal(0);
+		}
+		dao.saveKeyword(kewordVO);
 		
 		return searchResult;
 	}
 
 	public ContentsVO highlighter(ContentsVO contents, String q) {
-		if(q == null || q.equals("")) {
-			
+		if(contents == null || q == null || q.equals("")) {
+			// Do nothing!
 		} else {
 			String title = contents.getTitle();
 			String summary = contents.getSummary();
 			
-			title = title.replace(q, "<mark>" + q + "</mark>");
-			summary = summary.replace(q, "<mark>" + q + "</mark>");
+			String originText = q;
+			int start = title.toLowerCase().indexOf(q.toLowerCase());
+			if(start >= 0) originText = title.substring(start, start + q.length());
+			
+			title = title.replaceAll("(?i)" + q, "<mark>" + originText + "</mark>");
+			summary = summary.replaceAll("(?i)" + q, "<mark>" + originText + "</mark>");
 			
 			contents.setTitle(title);
 			contents.setSummary(summary);
 		}
 		return contents;
 	}
-	
 	
 	public List<ContentsVO> getContentsList(int contentsNo) {
 		List<ContentsVO> contentsList = dao.getContentsList(contentsNo);

@@ -1,11 +1,7 @@
 package io.planb.search.dao;
 
 import java.io.IOException;
-import java.net.URLEncoder;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.json.JSONException;
@@ -69,20 +65,33 @@ public class Elasitcsearch {
 		
 		/* Search */
 		try {
+			/*q = URLDecoder.decode(q, "UTF-8");
+			q = URLEncoder.encode(q, "UTF-8");*/
+			q = q.replace(" ", "%20");
+			/*
 			String restAPI = "http://" + searchIP + ":9200/_all/_search?pretty=true" 
-							+ "&q=" + URLEncoder.encode(q, "UTF-8");
+							+ "&q=" + q;
 			if(searchSize > 0) restAPI += "&size=" + searchSize;
-			
+			*/
+			String restAPI = "http://" + searchIP + ":9200/contents/_search?source={"
+					+ "\"query\":{\"multi_match\":{"
+					+ 	"\"query\":\"" + q
+					+	"\",\"fields\":[\"title\",\"summary\"],\"type\":\"best_fields\"}"
+					+ "},"
+					+ "\"highlight\":{"
+					+ 	"\"fields\":{"
+					+ 		"\"title\":{},\"summary\":{}},"
+					+ 		"\"pre_tags\":[\"<mark>\"],\"post_tags\":[\"</mark>\"]"
+					+ "}"
+				+ "}&pretty=true";
+			System.out.println();
 			JsonReader jsonReader = new JsonReader();
 			JSONObject json = jsonReader.readJsonFromUrl(restAPI);
 			searchResult = parseJsonToSearchHeader(json);
-			searchResult.setQuery(q);
-			
-			/* Highlight search query ** only one word */
-			searchResult.setContents(highlighter(q, searchResult.getContents()));
 			
 		} catch(JSONException | IOException e) {
 			e.printStackTrace();
+			return null;
 		}
 
 		return searchResult;
@@ -122,11 +131,11 @@ public class Elasitcsearch {
 		if(total != 0) {
 			//Search result
 			searchResult = new SearchVO();
-			searchResult.setTotal(total);
 			searchResult.setMaxScore(hits.getDouble("max_score"));
 			
 			List<ContentsVO> contentsList = parseJsonToSearchResult(hits, total);
 			searchResult.setContents(contentsList);
+			searchResult.setTotal(contentsList.size());
 		}
 		return searchResult;
 	}
@@ -136,25 +145,31 @@ public class Elasitcsearch {
 		  List<ContentsVO> contentsList = new ArrayList<ContentsVO>();
 			
 			for(int i=0; i<total; i++) {
-				JSONObject document = hits.getJSONArray("hits").getJSONObject(i).getJSONObject("_source");
+				JSONObject results = hits.getJSONArray("hits").getJSONObject(i);
+				JSONObject document = results.getJSONObject("_source");
 				
 				//Document Contents
-				int no			   = document.has("no")				 ? document.getInt("no")				 : 1;
-				String title	   = document.has("title")			 ? document.getString("title")			 : null;
-				String summary	   = document.has("summary")		 ? document.getString("summary")		 : null;
-				String url		   = document.has("url")			 ? document.getString("url")			 : null;
-				String imgUrl	   = document.has("imgurl")			 ? document.getString("imgurl")			 : null;
-				String lastScraped = document.has("lastscraped")	 ? document.getString("lastscraped")	 : null;
-				char ban		   = document.has("ban")			 ? document.getString("ban").charAt(0)	 : null;
+				int no				  = document.has("no")				 ? document.getInt("no")				 : 1;
+				String title		  = document.has("title")			 ? document.getString("title")			 : null;
+				String summary	 	  = document.has("summary")			 ? document.getString("summary")		 : null;
+				String url			  = document.has("url")				 ? document.getString("url")			 : null;
+				String imgUrl		  = document.has("imgurl")			 ? document.getString("imgurl")			 : null;
+				String scrapedDaysAgo = document.has("scrapedDaysAgo")	 ? document.getString("scrapedDaysAgo")	 : null;
+				char ban		 	  = document.has("ban")				 ? document.getString("ban").charAt(0)	 : null;
 				
-				String source	 = document.has("source")		 ? document.getString("source")		 : "source";
-				String sourceUrl = document.has("sourceurl")	 ? document.getString("sourceurl")	 : null;
-				String category	 = document.has("category")		 ? document.getString("category")	 : "category";
-				String dataType	 = document.has("datatype")		 ? document.getString("datatype")	 : "dataType";
+				String source	 = document.has("source")	 ? document.getString("source")		 : "source";
+				String sourceUrl = document.has("sourceurl") ? document.getString("sourceurl")	 : null;
+				String category	 = document.has("category")	 ? document.getString("category")	 : "category";
+				String dataType	 = document.has("datatype")	 ? document.getString("datatype")	 : "dataType";
 				
 				int saveCnt		 = document.has("savecnt")	 ? document.getInt("savecnt")	 : 0;
 				int likeCnt		 = document.has("likecnt")	 ? document.getInt("likecnt")	 : 0;
 				int viewCnt		 = document.has("viewcnt")	 ? document.getInt("viewcnt")	 : 0;
+				
+				JSONObject highlights = results.getJSONObject("highlight");
+				String titleH	 = highlights.has("title") ? highlights.getString("title")				 : null;
+				String titleH2	 = highlights.has("title") ? highlights.getJSONArray("title").toString() : null;
+				System.out.println(title + ", " + titleH + ", " + titleH2);
 				
 				//Save search result to ContentsVO
 				ContentsVO contentsVO = new ContentsVO();
@@ -163,7 +178,7 @@ public class Elasitcsearch {
 				contentsVO.setSummary(summary);
 				contentsVO.setUrl(url);
 				contentsVO.setImgUrl(imgUrl);
-				
+				/*
 				SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				Date scrapedDate;
 				try {
@@ -172,13 +187,14 @@ public class Elasitcsearch {
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
-				
+				*/
 				contentsVO.setBan(ban);
 				
 				contentsVO.setSourceName(source);
 				contentsVO.setSourceUrl(sourceUrl);
 				contentsVO.setCategoryName(category);
 				contentsVO.setDataTypeName(dataType);
+				contentsVO.setScrapedDaysAgo(scrapedDaysAgo);
 				
 				contentsVO.setSavedCnt(saveCnt);
 				contentsVO.setLikeCnt(likeCnt);
@@ -189,7 +205,7 @@ public class Elasitcsearch {
 			}
 			return contentsList;
 	  }
-	
+	/*
 	public List<ContentsVO> highlighter(String q, List<ContentsVO> contentsList) {
 		
 		List<ContentsVO> highlighted = new ArrayList<ContentsVO>();
@@ -218,5 +234,5 @@ public class Elasitcsearch {
 			highlighted.add(contents);
 		}
 		return highlighted;
-	}
+	}*/
 }

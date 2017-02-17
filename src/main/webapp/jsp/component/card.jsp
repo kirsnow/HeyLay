@@ -37,7 +37,7 @@
 			<p class="card-content drop-text-5">
 				${ card.summary }
 			</p>
-			<div class="text-muted text-right">${ card.savedDaysAgo }</div>
+			<div class="text-muted text-right">${ card.savedDaysAgo } ${ card.scrapedDaysAgo }</div>
 		</div>
 	
 		<!-- card menu (top-right) -->
