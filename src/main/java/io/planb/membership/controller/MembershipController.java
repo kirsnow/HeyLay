@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import io.planb.directory.vo.DirectoryVO;
 import io.planb.member.service.MemberService;
 import io.planb.member.vo.IdentifyQuestionVO;
 import io.planb.member.vo.MemberVO;
@@ -69,14 +68,6 @@ public class MembershipController {
 		service.updateType(no);
 		System.out.println("controller : " + no);
 		return "redirect:/";
-	}
-	
-	@RequestMapping("/contents/folder_edit.do")
-	public String folderEdit(Model model, @RequestParam("memberNo") int memberNo) {
-		List<DirectoryVO> folderList =  service.selectFolder(memberNo);
-		model.addAttribute("folderList", folderList);
-		
-		return "contents/folder_edit";
 	}
 	
 	@ResponseBody

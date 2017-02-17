@@ -63,7 +63,7 @@
 	
 		<!-- card action buttons (bottom) -->
 		<div class="mdl-card__actions mdl-card--border">
-			<a href="${ pageContext.request.contextPath }/search/contents.do?no=${ card.contentsNo }&q=${ searchResult.query }" 
+			<a href="${ pageContext.request.contextPath }/contents.do?no=${ card.contentsNo }&q=${ searchResult.query }" 
 				 class="btn btn-link" title="상세 페이지 더 보기">
 				더 보기
 			</a>
@@ -83,7 +83,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="#" title="페이스북으로 공유">
+							<a href="javascript:facebook('${card.contentsNo}')" title="페이스북으로 공유">
 								<i class="fa fa-facebook fa-fw" aria-hidden="true"></i> 
 								Facebook
 							</a>
@@ -133,3 +133,13 @@
 	</div>
 	<!-- /card -->
 </c:forEach>
+<script>
+	//<!-- 페이스북 공유 -->
+	function facebook(no) {
+		//alert(no);
+	    //location.href = "${ pageContext.request.contextPath }/share/faceBook.do?no=" + no;
+	    
+	    var url = "https://quration.herokuapp.com/search/contents.do?no="+no;
+	    window.open("http://www.facebook.com/sharer/sharer.php?u=" + url);
+	}
+</script>

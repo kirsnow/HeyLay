@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import io.planb.contents.vo.ContentsVO;
-import io.planb.contents.vo.DrawerHeaderVO;
-import io.planb.contents.vo.SavedVO;
-import io.planb.directory.vo.DirectoryVO;
+import io.planb.drawer.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
 
 @Repository
@@ -17,6 +15,25 @@ public class ContentDAO {
 
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
+	
+	public ContentsVO getContents(ContentsVO vo) {
+		ContentsVO contents = sqlSessionTemplate.selectOne("io.planb.dao.ContentDAO.selectContents", vo);
+		return contents;
+	}
+	
+	public List<ContentsVO> getCardsList(ContentsVO vo) {
+		List<ContentsVO> cards = sqlSessionTemplate.selectList("io.planb.dao.ContentDAO.selectContents", vo);
+		return cards;
+	}
+	
+	
+	public List<ContentsVO> getSavedCards(ContentsVO vo) {
+		
+		List<ContentsVO> savedCards = sqlSessionTemplate.selectList("io.planb.dao.ContentDAO.selectContents", vo);
+		System.out.println("savedCards.size: " + savedCards.size());
+		if(savedCards.size() > 0) System.out.println("savedCard no.1: " + savedCards.get(0).toString());
+		return savedCards;
+	}
 	
 	public List<KeywordsVO> selectKeywordList(int memberNo) {
 		List<KeywordsVO> keywordList = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.selectKeywordList", memberNo);
@@ -36,26 +53,6 @@ public class ContentDAO {
 		return drawerCards;
 	}
 	
-	public List<DrawerHeaderVO> drawerDates(int memberNo) {
-		List<DrawerHeaderVO> drawerDates = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.drawerDates", memberNo);
-		return drawerDates;
-	}
-	
-	public List<DrawerHeaderVO> drawerDirectory(int memberNo) {
-		List<DrawerHeaderVO> drawerDirectory = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.drawerDirectory", memberNo);
-		return drawerDirectory;
-	}
-	
-	public List<DrawerHeaderVO> drawerCategory(int memberNo) {
-		List<DrawerHeaderVO> drawerCategory = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.drawerCategory", memberNo);
-		return drawerCategory;
-	}
-	
-	public List<DrawerHeaderVO> drawerSource(int memberNo) {
-		List<DrawerHeaderVO> drawerSource = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.drawerSource", memberNo);
-		return drawerSource;
-	}
-
 	public int nextDirNo() {
 		int nextDirNo = sqlSessionTemplate.selectOne("io.planb.contents.dao.ContentDAO.selectNextDirNo");
 		return nextDirNo;
@@ -70,7 +67,7 @@ public class ContentDAO {
 		sqlSessionTemplate.insert("io.planb.contents.dao.ContentDAO.insertDir", newDir);		
 	}
 
-	public void saveCard(SavedVO card) {
+	public void saveCard(ContentsVO card) {
 		sqlSessionTemplate.insert("io.planb.contents.dao.ContentDAO.insertCardToSave", card);
 	}
 

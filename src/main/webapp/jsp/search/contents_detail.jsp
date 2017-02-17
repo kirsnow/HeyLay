@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -9,8 +9,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>${ contents.title } | Quration: 답을 열어 줄 그런 사람</title>
-    <!-- 각 콘텐츠 제목을 title로 동적 지정 -->
+    <c:set var="pageTitle" value="${ fn:replace( fn:replace(contents.title, '<mark>', ''), '</mark>', '') }"/>
+    <title><c:out value="${ pageTitle }"/> | Quration: 답을 열어 줄 그런 사람</title>		<!-- 각 콘텐츠 제목을 title로 동적 지정 -->
+    
+    <!-- MDL Hosted start -->
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-light_blue.min.css" />
 
     <!-- Bootstrap CSS SET -->
     <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
@@ -19,8 +22,6 @@
     <!-- icon-font -->
     <script src="https://use.fontawesome.com/bbddce3010.js"></script>
     
-    <!-- MDL Hosted start -->
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-light_blue.min.css" />
     
 	<script>
     	<!-- google analytics -->
@@ -31,15 +32,6 @@
 		
 		ga('create', 'UA-90558257-1', 'auto');
 		ga('send', 'pageview');
-		
-		// <!-- 페이스북 공유 -->
-		function doMember() {
-			
-			var url = location.href;
-			alert(url);
-			
-		    // location.href = "${ pageContext.request.contextPath }/share/faceBook.do";
-		}
 		
 	</script>
 	
@@ -56,7 +48,7 @@
             <ol class="col-xs-12 breadcrumb" style="margin-top: 75px">
                 <li><a href="${ pageContext.request.contextPath }/">Home</a></li>
                 <li><a href="#">${ contents.categoryName }</a></li>
-                <li class="active">${ contents.title }</li>
+                <li class="active"><c:out value="${ pageTitle }"/></li>
             </ol>
         </div>
         <!-- /Breadcrumb -->
@@ -95,7 +87,7 @@
 	                    	${ contents.summary }
                     	</section>
 	                    <footer class="text-right">
-	                        <time class="text-muted">${ contents.scrapedDate }</time>
+	                        <time class="text-muted">${ contents.scrapedDaysAgo }</time>
 	                    </footer>
 	                </article>
                 </div>
@@ -155,7 +147,7 @@
                 	<p class="lead"><i class="fa fa-info-circle" aria-hidden="true"></i> 정보</p>
                 	<ul class="list-unstyled">
                 		<li><strong>${ contents.viewCnt }</strong>회 조회</li>
-                		<li><strong>${ contents.saveCnt }</strong>명이 저장함</li>
+                		<li><strong>${ contents.savedCnt }</strong>명이 저장함</li>
                 		<li><strong>${ contents.likeCnt }</strong>명이 좋아함</li>
                 	</ul>
                 </div>
