@@ -74,7 +74,7 @@
 								| <a href="${ pageContext.request.contextPath }/drawer.do?sort=days">Days</a>
 								| <a href="${ pageContext.request.contextPath }/drawer.do?sort=type">Type</a>
 								| <a href="${ pageContext.request.contextPath }/drawer.do?sort=source">Source</a>
-								| <a href="${ pageContext.request.contextPath }/folder.do">폴더 관리</a>
+								| <a href="${ pageContext.request.contextPath }/directory.do">폴더 관리</a>
 							</div>
 						</div>
 						<div class="row">

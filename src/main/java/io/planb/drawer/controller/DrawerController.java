@@ -6,23 +6,30 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import io.planb.drawer.service.DirectoryService;
+import io.planb.contents.service.ContentService;
+import io.planb.contents.vo.ContentsVO;
 import io.planb.drawer.service.DrawerService;
-import io.planb.drawer.vo.DirectoryVO;
 import io.planb.drawer.vo.DrawerVO;
 import io.planb.member.vo.MemberVO;
+import io.planb.memo.service.MemoServiceImp;
+import io.planb.memo.vo.MemoVO;
 
 @Controller
 public class DrawerController {
 	
 	@Autowired
 	private DrawerService service;
-	private DirectoryService dirService;
+	
+	@Autowired
+	private ContentService contentService;
+	
+	@Autowired
+	private MemoServiceImp memoService;
 	
 	@RequestMapping("/drawer.do")
 	public ModelAndView selectSavedByDays(HttpSession session, @RequestParam(required=false) String sort) {
@@ -38,17 +45,37 @@ public class DrawerController {
 			
 			List<DrawerVO> cardsByDays = service.getDrawerList(memberNo, sort);
 			
-			mav.setViewName("contents/drawer");
+			mav.setViewName("drawer/drawer");
 			mav.addObject("cardsByDays", cardsByDays);
 		}
 		return mav;
 	}
 	
-	@RequestMapping("/folder.do")
-	public String folderEdit(Model model, @RequestParam("memberNo") int memberNo) {
-		List<DirectoryVO> folderList =  dirService.selectFolder(memberNo);
-		model.addAttribute("folderList", folderList);
+	@ResponseBody
+	@RequestMapping("/drawer/ajax/save.do")
+	public String saveCard(HttpSession session
+			, @RequestParam int contentsNo, @RequestParam int dirNo
+			, @RequestParam String dirName
+			, @RequestParam(required=false) String memoMessage) {
 		
-		return "contents/folder_edit";
+		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
+		int userNo = userVO != null ? userVO.getNo() : 0;
+		
+		ContentsVO card = new ContentsVO();
+		card.setMemberNo(userNo);
+		card.setContentsNo(contentsNo);
+		card.setDirectoryNo(dirNo);
+		card.setDirectoryName(dirName);
+		contentService.saveCard(card);
+		
+		if(memoMessage != null) {
+			MemoVO memo = new MemoVO();
+			memo.setMemberNo(userNo);
+			memo.setContentsNo(contentsNo);
+			memo.setMessage(memoMessage);
+			memoService.addMemo(memo);
+		}
+		
+		return "succeed";
 	}
 }

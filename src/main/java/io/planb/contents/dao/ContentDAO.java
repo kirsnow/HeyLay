@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import io.planb.contents.vo.ContentsVO;
-import io.planb.drawer.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
 
 @Repository
@@ -26,12 +25,9 @@ public class ContentDAO {
 		return cards;
 	}
 	
-	
 	public List<ContentsVO> getSavedCards(ContentsVO vo) {
 		
-		List<ContentsVO> savedCards = sqlSessionTemplate.selectList("io.planb.dao.ContentDAO.selectContents", vo);
-		System.out.println("savedCards.size: " + savedCards.size());
-		if(savedCards.size() > 0) System.out.println("savedCard no.1: " + savedCards.get(0).toString());
+		List<ContentsVO> savedCards = this.getCardsList(vo);
 		return savedCards;
 	}
 	
@@ -53,37 +49,10 @@ public class ContentDAO {
 		return drawerCards;
 	}
 	
-	public int nextDirNo() {
-		int nextDirNo = sqlSessionTemplate.selectOne("io.planb.contents.dao.ContentDAO.selectNextDirNo");
-		return nextDirNo;
-	}
-	
-	public List<DirectoryVO> directoryList(int userNo) {
-		List<DirectoryVO> dirList = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.selectDirList", userNo);
-		return dirList;
-	}
-
-	public void newDirectory(DirectoryVO newDir) {
-		sqlSessionTemplate.insert("io.planb.contents.dao.ContentDAO.insertDir", newDir);		
-	}
-
 	public void saveCard(ContentsVO card) {
 		sqlSessionTemplate.insert("io.planb.contents.dao.ContentDAO.insertCardToSave", card);
 	}
 	
-	public void updateDir(DirectoryVO dir) {
-		sqlSessionTemplate.update("io.planb.contents.dao.ContentDAO.updateDir", dir);
-	}
-	
-	public void delDir(int no) {
-		sqlSessionTemplate.delete("io.planb.contents.dao.ContentDAO.delDir", no);
-	}
-
-	public void delDir(List<Integer> noList) {
-		sqlSessionTemplate.delete("io.planb.contents.dao.ContentDAO.deleteDirs", noList);
-		
-	}
-
 	public List<ContentsVO> selectCustomSourceList(int no) {
 		List<ContentsVO> customSourceList = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.selectCustomSourceList", no);
 		

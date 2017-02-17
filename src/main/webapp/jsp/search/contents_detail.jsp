@@ -33,6 +33,7 @@
 		ga('create', 'UA-90558257-1', 'auto');
 		ga('send', 'pageview');
 		
+		
 	</script>
 	
 </head>
@@ -101,7 +102,7 @@
 									id="${ contents.contentsNo }" page="contentsDetail" title="카드 담기">
 			                        <i class="fa fa-bookmark-o" aria-hidden="true"></i> 저장하기
 			                    </button>
-			                    <button type="button" class="btn btn-info" title="카드를 좋아합니다.">
+			                    <button type="button" class="btn btn-info likeBtn" title="카드를 좋아합니다.">
 			                        <i class="fa fa-heart-o" aria-hidden="true"></i> 좋아요
 			                    </button> 
 							</c:when>
@@ -148,9 +149,9 @@
                 <div id="info">
                 	<p class="lead"><i class="fa fa-info-circle" aria-hidden="true"></i> 정보</p>
                 	<ul class="list-unstyled">
-                		<li><strong>${ contents.viewCnt }</strong>회 조회</li>
-                		<li><strong>${ contents.savedCnt }</strong>명이 저장함</li>
-                		<li><strong>${ contents.likeCnt }</strong>명이 좋아함</li>
+                		<li><strong class="viewCnt">${ contents.viewCnt }</strong>회 조회</li>
+                		<li><strong class="savedCnt">${ contents.savedCnt }</strong>명이 저장함</li>
+                		<li><strong class="likeCnt">${ contents.likeCnt }</strong>명이 좋아함</li>
                 	</ul>
                 </div>
                 <hr/>
