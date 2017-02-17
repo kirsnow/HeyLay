@@ -1,6 +1,8 @@
-package io.planb.contents.vo;
+package io.planb.drawer.vo;
 
 import java.util.List;
+
+import io.planb.contents.vo.ContentsVO;
 
 public class DrawerVO {
 

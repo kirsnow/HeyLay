@@ -64,21 +64,7 @@
 						<div class="row">
 							<p class="lead">아직 저장한 카드가 없습니다 &#58;O</p>
 						</div>
-						<div class="row">
-							<div class="col-lg-12"></div>
-						</div>
-						<div class="row">
-							<div class="col-lg-12">
-								<ul class="">
-									<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Juliet"
-										title="Juliet 검색">Juliet 검색</a></li>
-									<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Romeo"
-										title="Romeo 검색">Romeo 검색</a></li>
-									<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Tempest"
-										title="Tempest 검색">Tempest 검색</a></li>
-								</ul>
-							</div>
-						</div>
+						<jsp:include page="/jsp/component/search_suggestion.jsp" />
 					</c:when>
 					<c:otherwise>
 						<div class="row">
@@ -88,6 +74,7 @@
 								| <a href="${ pageContext.request.contextPath }/drawer.do?sort=days">Days</a>
 								| <a href="${ pageContext.request.contextPath }/drawer.do?sort=type">Type</a>
 								| <a href="${ pageContext.request.contextPath }/drawer.do?sort=source">Source</a>
+								| <a href="${ pageContext.request.contextPath }/folder.do">폴더 관리</a>
 							</div>
 						</div>
 						<div class="row">
@@ -106,11 +93,14 @@
 				</c:choose>
             </section>
         </div>
-        <!-- /#page-content-wrapper -->
+        <!-- /#Page Content -->
 
     </div>
-    <!-- /#wrapper -->
-
+    <!-- /.container -->
+    
+	<!-- footer -->
+    <jsp:include page="/jsp/include/footer.jsp" />
+    <!-- /footer -->
 
 	<!-- jQuery -->
 	<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>

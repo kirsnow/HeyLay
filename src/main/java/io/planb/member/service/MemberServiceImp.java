@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import io.planb.leaved.vo.LeavedVO;
-import io.planb.directory.vo.DirectoryVO;
+import io.planb.drawer.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.dao.MemberDAO;
 import io.planb.member.vo.IdentifyQuestionVO;

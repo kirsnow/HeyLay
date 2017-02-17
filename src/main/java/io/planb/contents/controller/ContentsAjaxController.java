@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import io.planb.contents.service.ContentService;
-import io.planb.contents.vo.SavedVO;
+import io.planb.contents.vo.ContentsVO;
 import io.planb.member.vo.MemberVO;
 import io.planb.memo.service.MemoServiceImp;
 import io.planb.memo.vo.MemoVO;
@@ -34,7 +34,7 @@ public class ContentsAjaxController {
 		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
 		int userNo = userVO != null ? userVO.getNo() : 0;
 		
-		SavedVO card = new SavedVO();
+		ContentsVO card = new ContentsVO();
 		card.setMemberNo(userNo);
 		card.setContentsNo(contentsNo);
 		card.setDirectoryNo(dirNo);

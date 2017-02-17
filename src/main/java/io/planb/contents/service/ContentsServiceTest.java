@@ -5,14 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import io.planb.contents.dao.ContentsDAOTest;
+import io.planb.contents.dao.ContentDAO;
 import io.planb.contents.vo.ContentsVO;
 
 @Service
 public class ContentsServiceTest {
 
 	@Autowired
-	private ContentsDAOTest dao;
+	private ContentDAO dao;
 	
 	/* Contents cards */
 	public List<ContentsVO> getCardsByNo(int contentsNo) {

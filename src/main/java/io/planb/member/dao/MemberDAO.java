@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import io.planb.directory.vo.DirectoryVO;
+import io.planb.drawer.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.leaved.vo.LeavedVO;
 import io.planb.member.vo.IdentifyQuestionVO;
