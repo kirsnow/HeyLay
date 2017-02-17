@@ -27,8 +27,8 @@ public class ContentDAO {
 	public List<KeywordsVO> selectKeywordList(int memberNo) {
 		List<KeywordsVO> keywordList = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.selectKeywordList", memberNo);
 		
-		System.out.println(keywordList);
-		System.out.println("DAO : " + memberNo);
+		//System.out.println(keywordList);
+		//System.out.println("DAO : " + memberNo);
 		
 		return keywordList;
 	}

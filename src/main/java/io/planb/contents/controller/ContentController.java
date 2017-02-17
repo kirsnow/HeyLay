@@ -51,7 +51,7 @@ public class ContentController {
 		List<KeywordsVO> keywordList = service.selectKeywordList(memberNo);
 		model.addAttribute("keywordList", keywordList);
 		
-		System.out.println("keywordList controller : " + keywordList);
+		// System.out.println("keywordList controller : " + keywordList);
 		
 		return "contents/my_search";
 	}

@@ -1,6 +1,5 @@
 package io.planb.member.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -137,5 +136,12 @@ public class MemberDAOImp implements MemberDAO {
 	public String selectMemberPassword(MemberVO member) {
 		String userPassword = sqlSessionTemplate.selectOne("io.planb.member.dao.MemberDAO.selectMemberPassword", member);
 		return userPassword;
+	}
+	
+	//계정 중복 확인
+	@Override
+	public String checkEmail(String email) {
+		email = sqlSessionTemplate.selectOne("io.planb.member.dao.MemberDAO.checkEmail", email);
+	return email;
 	}
 }

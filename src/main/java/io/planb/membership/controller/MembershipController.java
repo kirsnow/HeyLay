@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import io.planb.member.service.MemberService;
 import io.planb.member.vo.IdentifyQuestionVO;
 import io.planb.member.vo.MemberVO;
+import io.planb.statics.vo.StaticsListVO;
+import io.planb.statics.vo.StaticsVO;
 
 
 @Controller
@@ -28,23 +31,36 @@ public class MembershipController {
 	private MemberService service;
 	
 	@RequestMapping(value="/membership/membership.do", method=RequestMethod.GET)
-	public String membershipForm(Model model) {
+	public String membershipForm(@ModelAttribute("member") MemberVO member, Model model) {
+		
 		List<IdentifyQuestionVO> idenQuestionList = service.selectIdenQuestion();
 		model.addAttribute("idenQuestionList", idenQuestionList);
 		
 		return "membership/membershipform";
 	}
 	
-	
 	@RequestMapping(value="/membership/membershipForm.do", method=RequestMethod.POST)
 	public String membership(@ModelAttribute("member") MemberVO member, Model model) {
-		service.enroll(member);
 		
+		service.enroll(member);
 		model.addAttribute("memberVO", member);
 		
-		return "redirect:/";
+		return "membership/membershipform";
 	}
 	
+	/*아이디 중복 확인*/
+	@ResponseBody
+	@RequestMapping(value="/membership/idcheck.do")
+	public String selectUserAccount(@RequestParam String email,HttpServletRequest request){
+		
+		email = service.checkEmail(email);
+		System.out.println("email : " + email);
+		
+		if(email == null){
+		request.setAttribute("ok", email);
+		}
+		return email;
+	}
 	
 	@RequestMapping(value="/contents/update_type.do", method=RequestMethod.POST)
 	public String updateType(Model model, @RequestParam("no") int no) {

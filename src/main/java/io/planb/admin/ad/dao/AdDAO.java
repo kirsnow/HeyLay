@@ -28,8 +28,8 @@ public class AdDAO {
 		sqlSessionTemplate.update("io.planb.admin.ad.dao.AdDAO.updateAd", ad);
 	}
 
-	public void deleteAd(int no) {
-		sqlSessionTemplate.delete("io.planb.admin.ad.dao.AdDAO.deleteAd", no);
+	public void deleteAd(int location) {
+		sqlSessionTemplate.delete("io.planb.admin.ad.dao.AdDAO.deleteAd", location);
 	}
 
 }

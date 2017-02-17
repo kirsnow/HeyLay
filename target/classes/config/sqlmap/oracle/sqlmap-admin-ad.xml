@@ -5,25 +5,26 @@
 <mapper namespace="io.planb.admin.ad.dao.AdDAO">
 	
 	<select id="selectAdList" resultType="adVO">
-		SELECT * 
+		SELECT no, location, code, site_name siteName 
 		FROM q_ad 
+		ORDER BY location 
 	</select>
 	
 	<insert id="insertAd" parameterType="adVO">
 		INSERT INTO q_ad 
-		VALUES (NEXTVAL('Q_AD_NO'), #{ location }, #{ code }) 
+		VALUES (NEXTVAL('Q_AD_NO'), #{ location }, #{ siteName },#{ code }) 
 	</insert>
 	
 	<update id="updateAd" parameterType="adVO">
 		UPDATE q_ad
-		SET location = #{ location }, 
-			code = #{ code }
-		WHERE no = #{ no } 
+		SET code = #{ code },
+			site_name = #{ siteName } 
+		WHERE location = #{ location }
 	</update>
 	
 	<delete id="deleteAd" parameterType="adVO">
 		DELETE FROM q_ad 
-		WHERE no = #{ no } 
+		WHERE location = #{ location } 
 	</delete>
 	
 </mapper>

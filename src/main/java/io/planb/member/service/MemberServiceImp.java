@@ -188,4 +188,11 @@ public class MemberServiceImp implements MemberService {
 		String userPassword = dao.selectMemberPassword(member);
 		return userPassword;
 	}
+	
+	//계정 중복 확인
+	@Override
+	public String checkEmail(String email) {
+		email = dao.checkEmail(email);
+		 return email;
+	}
 }
