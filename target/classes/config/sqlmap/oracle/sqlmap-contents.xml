@@ -64,7 +64,7 @@
 	<!-- about Contents -->
 	<sql id="additionalColumns">
 		, CON.LANGUAGE as language, CON.BAN as ban
-		, CON.VIEW_CNT as viewCnt, count(LIK.CONTENTS_NO) as likeCnt
+		, sum(VIW.COUNT) as viewCnt, count(LIK.CONTENTS_NO) as likeCnt
 		, SOU.NO as sourceNo, SOU.NAME as sourceName, SOU.URL as sourceUrl, SOU.DOMAIN as sourceDomain, SOU.LOGO_IMG as sourceImg
 		, DAT.NO as dataTypeNo, DAT.DATA_TYPE as dataTypeName, DAT.DATA_TYPE_ENG as dataTypeNameEng, DAT.FUN_NAME as dataTypeNameFun
 		, CAT.NO as categoryNo, CAT.CATEGORY as categoryName
@@ -77,10 +77,11 @@
 		inner join Q_CATEGORY CAT on CAT.NO = CON.CATEGORY_NO
 		left join Q_IMAGE IMG on IMG.CONTENTS_NO = CON.NO
 		left join Q_LIKE LIK on LIK.CONTENTS_NO = CON.NO
+		left join Q_VIEW VIW on VIW.CONTENTS_NO = CON.NO
 	</sql>
 	
 	<sql id="additionalGroup">
-		, SOU.NO, CAT.NO, DAT.NO, IMG.NO
+		, SOU.NO, CAT.NO, DAT.NO, IMG.NO, VIW.NO
 	</sql>
 	
 	<!-- about Saved Contents -->
