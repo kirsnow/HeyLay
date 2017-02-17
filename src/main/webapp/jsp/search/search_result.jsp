@@ -11,12 +11,12 @@
     <title>${ searchQuery } 검색 결과 | Quration: 답을 열어 줄 그런 사람</title>
     <!-- 검색 키워드를 title로 동적 지정 -->
 
+    <!-- MDL Hosted start -->
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-light_blue.min.css" />
+
     <!-- Bootstrap CSS SET -->
     <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
-
-    <!-- MDL Hosted start -->
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-light_blue.min.css" />
 
     <!-- icon-font -->
     <script src="https://use.fontawesome.com/bbddce3010.js"></script>
@@ -46,19 +46,7 @@
 						<p class="lead">이런, 검색 결과가 없습니다 &#58;&#40;</p>
 					</div>
 				</div>
-				<div class="row marginTop20">
-					<div class="col-xs-12">
-						다른 단어로 검색해보시겠어요?
-					</div>
-					<div class="col-xs-12">
-						<ul class="">
-							<li><a href="${ pageContext.request.contextPath }/search/result.do?q=John" title="John 검색">John</a></li>
-							<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Kim" title="Kim 검색">Kim</a></li>
-							<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Elasticsearch" title="Elasticsearch 검색">Elasticsearch</a></li>
-							<li><a href="${ pageContext.request.contextPath }/search/contents.do?no=143">view sample Contents</a></li>
-						</ul>
-					</div>
-				</div>
+				<jsp:include page="/jsp/component/search_suggestion.jsp" />
 			</c:when>
 			
 			<%-- 검색결과가 존재할 때 --%>

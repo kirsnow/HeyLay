@@ -58,6 +58,7 @@ public class ContentsVO {
 	private Date directoryDate;
 	private String directoryDaysAgo;
 	
+	private String keyword;
 	private int limit;
 	
 	
@@ -267,6 +268,14 @@ public class ContentsVO {
 		this.directoryDaysAgo = directoryDaysAgo;
 	}
 	
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 	public int getLimit() {
 		return limit;
 	}
@@ -275,19 +284,4 @@ public class ContentsVO {
 		this.limit = limit;
 	}
 
-	@Override
-	public String toString() {
-		return "ContentsVO [contentsNo=" + contentsNo + ", title=" + title + ", summary=" + summary + ", url=" + url
-				+ ", scrapedDate=" + scrapedDate + ", scrapedDaysAgo=" + scrapedDaysAgo + ", language=" + language
-				+ ", ban=" + ban + ", viewCnt=" + viewCnt + ", likeCnt=" + likeCnt + ", sourceNo=" + sourceNo
-				+ ", sourceName=" + sourceName + ", sourceUrl=" + sourceUrl + ", sourceDomain=" + sourceDomain
-				+ ", sourceImg=" + sourceImg + ", dataTypeNo=" + dataTypeNo + ", dataTypeName=" + dataTypeName
-				+ ", dataTypeNameEng=" + dataTypeNameEng + ", dataTypeNameFun=" + dataTypeNameFun + ", categoryNo="
-				+ categoryNo + ", categoryName=" + categoryName + ", imgNo=" + imgNo + ", imgUrl=" + imgUrl
-				+ ", imgAlt=" + imgAlt + ", savedNo=" + savedNo + ", savedCnt=" + savedCnt + ", savedDate=" + savedDate
-				+ ", savedDaysAgo=" + savedDaysAgo + ", memberNo=" + memberNo + ", directoryNo=" + directoryNo
-				+ ", directoryName=" + directoryName + ", directoryDate=" + directoryDate + ", directoryDaysAgo="
-				+ directoryDaysAgo + ", limit=" + limit + "]";
-	}
-	
 }
