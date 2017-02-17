@@ -84,7 +84,10 @@ public class ContentService {
 	}
 
 	public List<ContentsVO> selectPopularList() {
-		List<ContentsVO> popularList = dao.selectPopularList();
+		ContentsVO contents = new ContentsVO();
+		contents.setLimit(3);
+		
+		List<ContentsVO> popularList = dao.getCardsList(contents);
 		
 		return popularList;
 	}
@@ -117,6 +120,8 @@ public class ContentService {
 			if(i != 0) keywords += "|";
 			keywords += keywordList.get(i).getKeyword();
 		}
+		
+		ContentsVO contents = new ContentsVO();
 		
 		List<ContentsVO> customKeywordList = dao.selectCustomCuration(keywords);
 		

@@ -51,7 +51,7 @@ public class ContentController {
 	public String curation(Model model, HttpSession session) {
 		MemberVO member = (MemberVO) session.getAttribute("userVO");
 		
-		// 전체 유저가 많이 본 콘텐츠 top 3
+		// 전체 유저가 많이 본 콘텐츠 top 3 (쿼리 수정 완료)
  		List<ContentsVO> popularList = service.selectPopularList();
  		model.addAttribute("popularList", popularList);
  		
