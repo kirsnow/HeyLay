@@ -203,6 +203,32 @@
 	<script src="${ pageContext.request.contextPath }/js/custom.min.js"></script>
 
 	<script>
+// 		$(document).ready(function() {
+// 			var adList = '${ adList }';
+// 			$('.portlet').each(function(i, e) {
+// 				console.log('i : ', i);
+// 				console.log('js adList: ', adList);
+// 				console.log('js adList[i]: ', adList[i]);
+// // 				console.log('el adList: ', '${ adList[0] }');
+// 				alert('${ adList[i] }');
+// 				if('${ adList[0].location }' == (i + 1)) {
+// // 					console.log('${ adList[i].location }: ', '${ adList[i].location }');
+// 				}
+// 			});
+			
+// 			for(var i = 0; i < 3; i++) {
+// 				console.log('i : ', i);
+// 				console.log('adList: ', '${ adList[i] }');
+				
+// 				var adList = '${ adList }';
+// 				console.log('js adList: ', adList);
+				
+// 				if('${ adList[i].location }' == (i + 1)) {
+// 					console.log('${ adList[i].location }: ', '${ adList[i].location }');
+// 				}
+// 			}
+// 		});
+		
 		$(function() {
 			var css_test_idx = 10;
 // 			var quarter = parseInt($(this).width() / 40);

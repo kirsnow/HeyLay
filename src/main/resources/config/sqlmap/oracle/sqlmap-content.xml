@@ -85,7 +85,7 @@
 			, count(SPA.CONTENTS_NO) as reportCnt, count(LIK.CONTENTS_NO) as likeCnt 
 			, CO.SOURCE_NO as sourceNo, SO.NAME as sourceName, SO.URL as sourceUrl, SO.LOGO_IMG as logoImg 
 		    , CO.CATEGORY_NO as categoryNo, CA.CATEGORY as categoryName 
-		    , DAT.DATA_TYPE as dataType 
+		    , DAT.DATA_TYPE as dataTypeName 
 		FROM Q_CONTENTS CO 
 		INNER JOIN Q_CATEGORY CA on CA.NO = CO.CATEGORY_NO 
 		INNER JOIN Q_SOURCE SO on SO.NO = CO.SOURCE_NO 
@@ -99,12 +99,12 @@
 	</select>
 	
 	<select id="selectCustomSourceList" parameterType="int" resultType="contentsVO">
-		SELECT CO.NO, CO.TITLE as title, CO.SUMMARY as summary, CO.URL as url
+		SELECT CO.NO contentsNo, CO.TITLE as title, CO.SUMMARY as summary, CO.URL as url
 			, CO.VIEW_CNT as viewCnt
 			, count(SPA.CONTENTS_NO) as reportCnt, count(LIK.CONTENTS_NO) as likeCnt
 			, CO.SOURCE_NO as sourceNo, SO.NAME as sourceName, SO.URL as sourceUrl, SO.LOGO_IMG as logoImg
 		    	, CO.CATEGORY_NO as categoryNo, CA.CATEGORY as categoryName
-		    	, DAT.DATA_TYPE as dataType
+		    	, DAT.DATA_TYPE as dataTypeName
 		FROM Q_CONTENTS CO
 		INNER JOIN Q_CATEGORY CA on CA.NO = CO.CATEGORY_NO
 		INNER JOIN Q_SOURCE SO on SO.NO = CO.SOURCE_NO
@@ -140,12 +140,12 @@
 	</select>
 	
 	<select id="selectCustomCuration" parameterType="String" resultType="contentsVO">
-		SELECT CO.NO, CO.TITLE as title, CO.SUMMARY as summary, CO.URL as url
+		SELECT CO.NO contentsNo, CO.TITLE as title, CO.SUMMARY as summary, CO.URL as url
 			, CO.VIEW_CNT as viewCnt
 			, count(SPA.CONTENTS_NO) as reportCnt, count(LIK.CONTENTS_NO) as likeCnt
 			, CO.SOURCE_NO as sourceNo, SO.NAME as sourceName, SO.URL as sourceUrl, SO.LOGO_IMG as logoImg
 		    	, CO.CATEGORY_NO as categoryNo, CA.CATEGORY as categoryName
-		    	, DAT.DATA_TYPE as dataType
+		    	, DAT.DATA_TYPE as dataTypeName
 		FROM Q_CONTENTS CO
 		INNER JOIN Q_CATEGORY CA on CA.NO = CO.CATEGORY_NO
 		INNER JOIN Q_SOURCE SO on SO.NO = CO.SOURCE_NO
