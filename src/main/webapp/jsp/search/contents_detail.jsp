@@ -32,15 +32,6 @@
 		ga('create', 'UA-90558257-1', 'auto');
 		ga('send', 'pageview');
 		
-		// <!-- 페이스북 공유 -->
-		function doMember() {
-			
-			var url = location.href;
-			alert(url);
-			
-		    // location.href = "${ pageContext.request.contextPath }/share/faceBook.do";
-		}
-		
 	</script>
 	
 </head>
