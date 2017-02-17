@@ -67,7 +67,10 @@
 				 class="btn btn-link" title="상세 페이지 더 보기">
 				더 보기
 			</a>
-			
+			<a href="#" role="button" id="${ card.contentsNo }" class="bugReportBtn nofocus"
+			   data-toggle="modal" data-target="#bugModal" title="오류 신고">
+				<i class="fa fa-bug fa-fw" aria-hidden="true"></i>
+			</a>
 			<!-- buttons (bottom-right) -->
 			<div class="pull-right">
 				<div id="share" class="btn-group dropup">
@@ -89,7 +92,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="#" title="트위터로 공유">
+							<a href="javascript:twitter('${card.contentsNo}')" title="트위터로 공유">
 								<i class="fa fa-twitter fa-fw" aria-hidden="true"></i> 
 								Twitter
 							</a>
@@ -110,8 +113,8 @@
 					</a>
 					<ul class="dropdown-menu dropdown-menu-right" role="menu">
 						<li>
-							<a href="${ pageContext.request.contextPath }/contact/bug.do?no=${ card.contentsNo }&type=contents"
-								title="오류 신고">
+							<a href="#" role="button" id="${ card.contentsNo }" class="bugReportBtn nofocus"
+							   data-toggle="modal" data-target="#bugModal" title="오류 신고">
 								<i class="fa fa-bug fa-fw" aria-hidden="true"></i>
 								오류 신고
 							</a>
@@ -137,9 +140,17 @@
 	//<!-- 페이스북 공유 -->
 	function facebook(no) {
 		//alert(no);
-	    //location.href = "${ pageContext.request.contextPath }/share/faceBook.do?no=" + no;
 	    
 	    var url = "https://quration.herokuapp.com/search/contents.do?no="+no;
 	    window.open("http://www.facebook.com/sharer/sharer.php?u=" + url);
 	}
+	
+	//<!-- 트위터  공유 -->
+	function twitter(no) {
+		//alert(no);
+	    
+	    var url = "https://quration.herokuapp.com/search/contents.do?no="+no;
+	    window.open("https://twitter.com/intent/tweet?text=Quration:답을 열어 줄 그런 사람&url=" + url);
+	}
+	
 </script>
