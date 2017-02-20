@@ -105,5 +105,19 @@ public class ContentService {
 		
 		return customKeywordList;
 	}
+	
+	public void likeCntUp(ContentsVO like) {
+		dao.likeCntUp(like);
+	}
+	
+	public void likeCancel(ContentsVO like) {
+		dao.likeCancel(like);
+	}
+	
+	public int likeOrNot(ContentsVO like) {
+		int cnt = dao.likeOrNot(like);
+		
+		return cnt;
+	}
 
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -91,26 +92,28 @@ public class ContactController {
 		return "contact/contents_spam";
 	}
 	
+	@ResponseBody
 	@RequestMapping(value="/spamContents.do", method=RequestMethod.POST)
 	public String sendSpamContents(HttpSession session
-			, @RequestParam int contentsNo
-			, @RequestParam String selected
-			, @RequestParam String userInput) {
+			, @ModelAttribute ReportVO report) { 
+//			, @RequestParam int contentsNo
+//			, @RequestParam String selected
+//			, @RequestParam String userInput) {
 		
 		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
 		
-		ReportVO report = new ReportVO();
+//		ReportVO report = new ReportVO();
 		report.setEmail(userVO.getEmail());
-		report.setContentsNo(contentsNo);
-		report.setSelected(selected);
-		report.setUserInput(userInput);
+//		report.setContentsNo(contentsNo);
+//		report.setSelected(selected);
+//		report.setUserInput(userInput);
 		
 		service.sendSpamContents(report);
 		
 //		ModelAndView mav = new ModelAndView();
 //		mav.setViewName("contact/contents_spam");
 //		mav.addObject("msg", "유해 게시물 신고가 등록되었습니다.");
-		return "succeed";
+		return "suc";
 	}
 	
 	//Spam Memo
