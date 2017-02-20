@@ -15,6 +15,7 @@ import io.planb.drawer.service.DirectoryService;
 import io.planb.drawer.vo.DirectoryVO;
 import io.planb.member.vo.MemberVO;
 import io.planb.search.service.SearchServiceImp;
+import io.planb.search.vo.QueryVO;
 import io.planb.search.vo.SearchVO;
 
 @RequestMapping("/search")
@@ -33,13 +34,17 @@ public class SearchController {
 		int userNo = userVO != null ? userVO.getNo() : 0;
 		
 		SearchVO searchResult = null;
-		if(q != null) searchResult = service.searchResult(q, ip, userNo);
+		List<QueryVO> queryList = null;
+		if(q != null) {
+			searchResult = service.searchResult(q, ip, userNo);
+			queryList = service.analyzeQuery(q);
+		}
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("search/search_result");
+		mav.setViewName("search/result");
 		mav.addObject("searchQuery", q);
 		mav.addObject("searchResult", searchResult);
-		if(searchResult != null) mav.addObject("cards", searchResult.getContents());
+		mav.addObject("queryList", queryList);
 		
 		if(userVO != null) {
 			List<DirectoryVO> dirList = dirService.directoryList(userNo);
@@ -49,4 +54,14 @@ public class SearchController {
 		return mav;
 	}
 	
+	@RequestMapping(value="/query.do", method=RequestMethod.GET)
+	public ModelAndView searchQuery(@RequestParam String q) {
+		List<QueryVO> queryList = service.analyzeQuery(q);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("search/query");
+		mav.addObject("searchQuery", q);
+		mav.addObject("queryList", queryList);
+		return mav;
+	}
 }

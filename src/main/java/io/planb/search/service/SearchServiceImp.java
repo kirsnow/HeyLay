@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import io.planb.contents.vo.ContentsVO;
 import io.planb.memo.vo.MemoVO;
 import io.planb.search.dao.SearchDAOImp;
+import io.planb.search.vo.QueryVO;
 import io.planb.search.vo.SearchVO;
 
 @Service
@@ -78,6 +79,12 @@ public class SearchServiceImp {
 	public List<MemoVO> getMemo(int no) {
 		List<MemoVO> memoList = dao.getMemo(no);
 		return memoList;
+	}
+
+	public List<QueryVO> analyzeQuery(String q) {
+		List<QueryVO> queryList = dao.analyzeQuery(q);
+		
+		return queryList;
 	}
 
 }
