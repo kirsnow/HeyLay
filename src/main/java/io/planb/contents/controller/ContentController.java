@@ -15,102 +15,40 @@ import org.springframework.web.servlet.ModelAndView;
 
 import io.planb.contents.service.ContentService;
 import io.planb.contents.vo.ContentsVO;
-import io.planb.contents.vo.DrawerHeaderVO;
-import io.planb.directory.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.vo.MemberVO;
+import io.planb.memo.service.MemoServiceImp;
+import io.planb.memo.vo.MemoVO;
 
 @Controller
 public class ContentController {
 
 	@Autowired
 	private ContentService service;
+	@Autowired
+	private MemoServiceImp memoService;
 	
-	@RequestMapping("/contents/drawer_day.do")
-	public ModelAndView selectDayList(HttpSession session) {
+	/* Contents detail */
+	@RequestMapping(value="/contents.do", method=RequestMethod.GET)
+	public ModelAndView viewContents(HttpSession session, @RequestParam int no, @RequestParam(required=false) String q) {
+		
 		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
+		int userNo = userVO != null ? userVO.getNo() : 0;
+		
+		ContentsVO contents = new ContentsVO();
+		
+		contents = service.getContentsDetail(no, q);
+		List<MemoVO> memoList = memoService.getMemoList(no);
 		
 		ModelAndView mav = new ModelAndView();
-		
-		if(userVO == null) {
-			mav.setViewName("redirect:/login/login.do");
-		} else {
-			int memberNo = userVO.getNo();
-			
-			List<DrawerHeaderVO> drawerHeaders = service.drawerDates(memberNo);
-			List<ContentsVO> drawerCards = service.drawerCards(memberNo);
-			
-			mav.setViewName("contents/drawer_day");
-			mav.addObject("drawerHeaders", drawerHeaders);
-			mav.addObject("cards", drawerCards);
-		}
-		
-		return mav;
-	}
-	
-	@RequestMapping("/contents/drawer_category.do")
-	public ModelAndView selectCategoryList(HttpSession session) {
-		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
-		
-		ModelAndView mav = new ModelAndView();
-		
-		if(userVO == null) {
-			mav.setViewName("redirect:/login/login.do");
-		} else {
-			int memberNo = userVO.getNo();
-			
-			List<DrawerHeaderVO> drawerHeaders = service.drawerCategory(memberNo);
-			List<ContentsVO> drawerCards = service.drawerCards(memberNo);
-			
-			mav.setViewName("contents/drawer_category");
-			mav.addObject("drawerHeaders", drawerHeaders);
-			mav.addObject("cards", drawerCards);
-		}
-		
-		return mav;
-	}
-	
-	@RequestMapping("/contents/drawer_source.do")
-	public ModelAndView selectSourceList(HttpSession session) {
-		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
-		
-		ModelAndView mav = new ModelAndView();
-		
-		if(userVO == null) {
-			mav.setViewName("redirect:/login/login.do");
-		} else {
-			int memberNo = userVO.getNo();
-			
-			List<DrawerHeaderVO> drawerHeaders = service.drawerSource(memberNo);
-			List<ContentsVO> drawerCards = service.drawerCards(memberNo);
-			
-			mav.setViewName("contents/drawer_source");
-			mav.addObject("drawerHeaders", drawerHeaders);
-			mav.addObject("cards", drawerCards);
-		}
-		
-		return mav;
-	}
-	
-	@RequestMapping("/contents/drawer_directory.do")
-	public ModelAndView selectDirectoryList(HttpSession session) {
-		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
-		
-		ModelAndView mav = new ModelAndView();
-		
-		if(userVO == null) {
-			mav.setViewName("redirect:/login/login.do");
-		} else {
-			int memberNo = userVO.getNo();
-			
-			List<DrawerHeaderVO> drawerHeaders = service.drawerDirectory(memberNo);
-			List<ContentsVO> drawerCards = service.drawerCards(memberNo);
-			
-			mav.setViewName("contents/drawer_directory");
-			mav.addObject("drawerHeaders", drawerHeaders);
-			mav.addObject("cards", drawerCards);
-		}
-		
+		mav.setViewName("search/contents_detail");
+		mav.addObject("contents", contents);
+		mav.addObject("memoList", memoList);
+
+		contents.setMemberNo(userNo);
+		contents.setContentsNo(no);
+		int cnt = service.likeOrNot(contents);
+		mav.addObject("likeOrNot", cnt);
 		return mav;
 	}
 	
@@ -119,7 +57,7 @@ public class ContentController {
 	public String curation(Model model, HttpSession session) {
 		MemberVO member = (MemberVO) session.getAttribute("userVO");
 		
-		// 전체 유저가 많이 본 콘텐츠 top 3
+		// 전체 유저가 많이 본 콘텐츠 top 3 (쿼리 수정 완료)
  		List<ContentsVO> popularList = service.selectPopularList();
  		model.addAttribute("popularList", popularList);
  		
@@ -191,40 +129,35 @@ public class ContentController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/contents/updateDir.do", method=RequestMethod.POST)
-	public String updateDir(@RequestParam("no") int no, @RequestParam("name") String name) {
+	@RequestMapping(value="contents/likeCntUp.do", method=RequestMethod.POST)
+	public String likeCntUp(HttpSession session, @RequestParam("contentsNo") int contentsNo) {
 		
-		DirectoryVO directory = new DirectoryVO();
-		directory.setNo(no);
-		directory.setName(name);
-		
-		service.updateDir(directory);
-		
-		return "완료";
-	}
-	
-	@ResponseBody
-	@RequestMapping(value="/contents/addDir.do", method=RequestMethod.POST)
-	public String addDir(HttpSession session, @RequestParam("name") String name) {
 		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
-		int userNo = userVO != null ? userVO.getNo() : 0;
+		int memberNo = userVO.getNo();
 		
-		DirectoryVO directory = new DirectoryVO();
-		directory.setMemberNo(userNo);
-		directory.setName(name);
+		ContentsVO like = new ContentsVO();
+		like.setMemberNo(memberNo);
+		like.setContentsNo(contentsNo);
 		
-		service.newDirectory(directory);
+		service.likeCntUp(like);
 		
-		return "완료";
+		return "succeed";
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/contents/delDir.do", method=RequestMethod.POST)
-	public String delDir(HttpSession session, @RequestParam("no[]") List<Integer> noList) {
-
-		service.delDir(noList);
+	@RequestMapping(value="/contents/likeCancel.do", method=RequestMethod.POST)
+	public String likeCancel(HttpSession session, @RequestParam("contentsNo") int contentsNo) {
 		
-		return "완료";
+		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
+		int memberNo = userVO.getNo();
+		
+		ContentsVO like = new ContentsVO();
+		like.setMemberNo(memberNo);
+		like.setContentsNo(contentsNo);
+		
+		service.likeCancel(like);
+		
+		return "succeed";
 	}
 
 }

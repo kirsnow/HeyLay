@@ -54,7 +54,8 @@
 						<c:choose>
 							<c:when test="${ (keywordList eq null) or (empty keywordList) }">
 								<div class="row">
-									<p class=" marginTop80">아직 검색한 키워드가 없습니다 &#58;O</p>
+									<p class=" marginTop80">아직 검색한 키워드가 없습니다 &#58;0</p>
+									<jsp:include page="/jsp/component/search_suggestion.jsp" />
 								</div>
 							</c:when>
 							<c:otherwise>

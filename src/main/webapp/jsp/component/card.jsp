@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <c:forEach var="card" items="${ requestScope.cards }" varStatus="loop">
 	<!-- card -->
 	<div class="card-ancestor mdl-card mdl-cell mdl-cell--4-col mdl-cell--12-col-phone mdl-shadow--3dp">
@@ -37,7 +39,23 @@
 			<p class="card-content drop-text-5">
 				${ card.summary }
 			</p>
-			<div class="text-muted text-right">${ card.savedDaysAgo }</div>
+			<div class="text-muted text-right">
+				<c:choose>
+					<c:when test="${ card.savedDaysAgo ne null }">
+						<span title="<fmt:formatDate pattern="yyyy. MM. dd." value="${ card.savedDate }"/>"
+							 data-toggle="tooltip" data-placement="left">
+							 ${ card.savedDaysAgo }
+						</span>
+					</c:when>
+					<c:when test="${ (card.scrapedDaysAgo ne null) and (card.savedDaysAgo eq null) }">
+						<span title="<fmt:formatDate pattern="yyyy. MM. dd." value="${ card.scrapedDate }"/>"
+							 data-toggle="tooltip" data-placement="left">
+							 ${ card.scrapedDaysAgo }
+						</span>
+					</c:when>
+				</c:choose>
+			</div>
+			
 		</div>
 	
 		<!-- card menu (top-right) -->
@@ -63,11 +81,10 @@
 	
 		<!-- card action buttons (bottom) -->
 		<div class="mdl-card__actions mdl-card--border">
-			<a href="${ pageContext.request.contextPath }/search/contents.do?no=${ card.contentsNo }&q=${ searchResult.query }" 
+			<a href="${ pageContext.request.contextPath }/contents.do?no=${ card.contentsNo }&q=${ searchResult.query }" 
 				 class="btn btn-link" title="상세 페이지 더 보기">
 				더 보기
 			</a>
-			
 			<!-- buttons (bottom-right) -->
 			<div class="pull-right">
 				<div id="share" class="btn-group dropup">
@@ -76,30 +93,34 @@
 						<i class="fa fa-share-alt fa-lg mdl-color-text--grey-500" aria-hidden="true"></i>
 					</a>
 					<ul class="dropdown-menu dropdown-menu-right" role="menu">
+						<%-- 
 						<li>
 							<a href="#" title="카카오톡으로 공유">
 								<i class="fa fa-commenting fa-fw" aria-hidden="true"></i> 
 								KakaoTalk
 							</a>
-						</li>
+						</li> 
+						--%>
 						<li>
-							<a href="#" title="페이스북으로 공유">
+							<a href="javascript:facebook('${card.contentsNo}')" title="페이스북으로 공유">
 								<i class="fa fa-facebook fa-fw" aria-hidden="true"></i> 
 								Facebook
 							</a>
 						</li>
 						<li>
-							<a href="#" title="트위터로 공유">
+							<a href="javascript:twitter('${card.contentsNo}')" title="트위터로 공유">
 								<i class="fa fa-twitter fa-fw" aria-hidden="true"></i> 
 								Twitter
 							</a>
 						</li>
+						<%-- 
 						<li>
 							<a href="#" title="에버노트로 공유">
 								<i class="fa fa-sticky-note fa-fw" aria-hidden="true"></i> 
 								Evernote
 							</a>
-						</li>
+						</li> 
+						--%>
 					</ul>
 				</div>
 				<div id="report" class="btn-group dropup" title="신고">
@@ -110,15 +131,15 @@
 					</a>
 					<ul class="dropdown-menu dropdown-menu-right" role="menu">
 						<li>
-							<a href="${ pageContext.request.contextPath }/contact/bug.do?no=${ card.contentsNo }&type=contents"
-								title="오류 신고">
+							<a href="#" role="button" id="${ card.contentsNo }" class="bugReportBtn nofocus"
+							   data-toggle="modal" data-target="#bugModal" title="오류 신고">
 								<i class="fa fa-bug fa-fw" aria-hidden="true"></i>
 								오류 신고
 							</a>
 						</li>
 						<li>
-							<a href="${ pageContext.request.contextPath }/contact/spamContents.do?no=${ card.contentsNo }"
-								title="유해물 신고">
+							<a href="#" role="button" id="${ card.contentsNo }" class="spamReportBtn nofocus"
+							   data-toggle="modal" data-target="#spamModal" title="유해물 신고">
 								<i class="fa fa-ban fa-fw" aria-hidden="true"></i>
 								유해물 신고
 							</a>
@@ -133,3 +154,21 @@
 	</div>
 	<!-- /card -->
 </c:forEach>
+<script>
+	//<!-- 페이스북 공유 -->
+	function facebook(no) {
+		//alert(no);
+	    
+	    var url = "https://quration.herokuapp.com/contents.do?no="+no;
+	    window.open("http://www.facebook.com/sharer/sharer.php?u=" + url);
+	}
+	
+	//<!-- 트위터  공유 -->
+	function twitter(no) {
+		//alert(no);
+	    
+	    var url = "https://quration.herokuapp.com/contents.do?no="+no;
+	    window.open("https://twitter.com/intent/tweet?text=Quration:답을 열어 줄 그런 사람&url=" + url);
+	}
+	
+</script>

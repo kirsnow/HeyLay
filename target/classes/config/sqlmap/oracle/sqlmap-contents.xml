@@ -2,24 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.planb.dao.ContentDAO">
 	
-	<select id="selectDrawerHeader" parameterType="drawerHeaderVO" resultType="drawerHeaderVO">
-		select to_char(SAV.REG_DATE, 'yyyy. mm. dd. ') as savedDate 
-		<include refid="daysAgo">
-			<property name="which_column" value="SAV.REG_DATE"/>
-			<property name="which_name" value="saved"/>
-		</include>
-		, count(SAV.NO)
-			
-		from Q_CONTENTS CON
-			<include refid="additionalJoin" />
-			<include refid="savedJoin" />
-			
-		where CON.BAN = 'N' and SAV.MEMBER_NO = #{memberNo}
-		
-		group by savedDate, savedDaysAgo
-		order by savedDate desc
-	</select>
-	
 	<select id="selectContents" parameterType="contentsVO" resultType="contentsVO">
 		select CON.NO as contentsNo
 			, CON.TITLE as title, CON.SUMMARY as summary, CON.URL as url
@@ -48,6 +30,7 @@
  			<if test="sourceNo != 0">and SOU.NO = #{sourceNo}</if>
  			<if test="dataTypeNo != 0">and DAT.NO = #{dataTypeNo}</if>
  			<if test="categoryNo != 0">and CAT.NO = #{categoryNo}</if>
+ 			<if test="keyword != null">and CON.TITLE ~* #{keyword}</if>
 		</where>
  		
  		group by CON.NO
@@ -70,9 +53,15 @@
 	<!-- SQL scriptlets -->
 	<sql id="daysAgo">
 		, case 
-		    when ${which_column} &gt; now() at time zone 'GMT+9'
+		    when ${which_column} &gt; localtimestamp - interval '60 seconds'
+				then round( extract( second from age(localtimestamp, ${which_column}) ) )||'초 전' 
+		    when ${which_column} &gt; localtimestamp - interval '60 minutes'
+				then extract( minute from age(localtimestamp, ${which_column}) )||'분 전'
+		    when ${which_column} &gt; localtimestamp - interval '12 hour'
+				then extract( hour from age(localtimestamp, ${which_column}) )||'시간 전'
+		    when ${which_column} &gt; current_date + time '00:00'
 				then '오늘' 
-		    when ${which_column} &gt; (now() at time zone 'GMT+9' - interval '1 day')
+		    when ${which_column} &gt; localtimestamp - interval '1 day'
 				then '어제' 
 		    else to_char(${which_column}, 'YYYY. MM. DD.')
 		end as ${which_name}DaysAgo
@@ -81,7 +70,7 @@
 	<!-- about Contents -->
 	<sql id="additionalColumns">
 		, CON.LANGUAGE as language, CON.BAN as ban
-		, CON.VIEW_CNT as viewCnt, count(LIK.CONTENTS_NO) as likeCnt
+		, sum(VIW.COUNT) as viewCnt, count(LIK.CONTENTS_NO) as likeCnt
 		, SOU.NO as sourceNo, SOU.NAME as sourceName, SOU.URL as sourceUrl, SOU.DOMAIN as sourceDomain, SOU.LOGO_IMG as sourceImg
 		, DAT.NO as dataTypeNo, DAT.DATA_TYPE as dataTypeName, DAT.DATA_TYPE_ENG as dataTypeNameEng, DAT.FUN_NAME as dataTypeNameFun
 		, CAT.NO as categoryNo, CAT.CATEGORY as categoryName
@@ -94,10 +83,11 @@
 		inner join Q_CATEGORY CAT on CAT.NO = CON.CATEGORY_NO
 		left join Q_IMAGE IMG on IMG.CONTENTS_NO = CON.NO
 		left join Q_LIKE LIK on LIK.CONTENTS_NO = CON.NO
+		left join Q_VIEW VIW on VIW.CONTENTS_NO = CON.NO
 	</sql>
 	
 	<sql id="additionalGroup">
-		, SOU.NO, CAT.NO, DAT.NO, IMG.NO
+		, SOU.NO, CAT.NO, DAT.NO, IMG.NO, VIW.NO
 	</sql>
 	
 	<!-- about Saved Contents -->

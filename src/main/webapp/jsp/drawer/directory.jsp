@@ -62,7 +62,7 @@
 								<button type="button" class="btn btn-default addFormBtn" title="폴더 추가 버튼">추가</button>
 								<button type="button" class="btn btn-default" id="allSelectToggle" title="전체 선택 버튼">전체 선택</button>
 								<button type="button" class="btn btn-default delFormBtn" title="삭제 버튼">삭제</button>
-								<button type="button" class="btn btn-success" onclick="location.href='${ pageContext.request.contextPath }/contents/drawer_directory.do'" title="편집 종료 버튼">편집 종료</button>
+								<button type="button" class="btn btn-success" onclick="location.href='${ pageContext.request.contextPath }/drawer.do?sort=directory'" title="편집 종료 버튼">편집 종료</button>
 							</div>
 						</div>
 								<hr/>

@@ -1,4 +1,4 @@
-package io.planb.directory.vo;
+package io.planb.drawer.vo;
 
 public class DirectoryVO {
 	private int no;

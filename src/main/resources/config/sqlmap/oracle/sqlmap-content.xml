@@ -4,88 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.planb.contents.dao.ContentDAO">
 
-<!-- 	<sql id="selectId">
-		SELECT no, keyword, to_char(reg_date, 'yyyy-mm-dd') regDate, 
-				status reportCnt, MEMBER_NO as memberNo
-		FROM Q_KEYWORDS
-	</sql> -->
-
- 	<select id="selectKeywordList" parameterType="int" resultType="keywordsVO">
-		select no, keyword, reg_date as regDate
-			from q_keywords
-			where status='Y' and member_no = #{ memberNo }
-			ORDER BY regDate DESC
-			LIMIT 50
-	</select> 
-	
-	<update id="updateStatus" parameterType="keywordsVO">
-		UPDATE q_keywords
-			SET status='N'
-			WHERE no = #{ no } and member_no = #{ memberNo }
-	</update>
-	
-	<insert id="insertCardToSave" parameterType="contentsVO">
-		INSERT INTO q_contents_saved (no, member_no, contents_no, directory_no)
-		VALUES ( NEXTVAL('q_contents_saved_no'), #{memberNo}, #{contentsNo}, #{directoryNo} )
-	</insert>
-	
-	<!-- <select id="selectByNo" parameterType="int" resultType="memberVO">
-		<include refid="selectId" />
-		WHERE no = #{ no } 
-	</select>
-	
-	<select id="selectByOption" parameterType="java.lang.String" resultType="memberVO">
-		<include refid="selectId" />
-		WHERE type = #{ option } 
-		ORDER BY no DESC
-	</select>
-	
-	<select id="selectRest" resultType="memberVO">
-		<include refid="selectId" />
-		WHERE rest = 'Y' 
-		ORDER BY no DESC
-	</select>
-	
-	<select id="selectBan" resultType="memberVO">
-		<include refid="selectId" />
-		WHERE ban = 'Y' 
-		ORDER BY no DESC
-	</select>
-	
-	<update id="updateRest" parameterType="memberVO">
-		UPDATE q_member
-		SET rest = #{ rest } 
-		WHERE no = #{ no }
-	</update>
-	
-	<update id="updateBan" parameterType="memberVO">
-		UPDATE q_member
-		SET ban = #{ ban } 
-		WHERE no = #{ no }
-	</update>
-	
-	<select id="countMember" resultType="int">
-		SELECT COUNT(*) cnt 
-		FROM q_member 
-	</select>
-	
-	<select id="selectWithdraw" resultType="leavedVO">
-		SELECT member_no memberNo, reason_select reasonSelect, reason_input reasonInput, reg_date regDate 
-		FROM q_leaved 
-	</select>
-	
-	<delete id="deleteMember" parameterType="int">
-		DELETE FROM q_member 
-		WHERE no = #{ no } 
-	</delete> -->
-	
 	<select id="selectPopularList" resultType="contentsVO">
 		SELECT CO.NO contentsNo, CO.TITLE as title, CO.SUMMARY as summary, CO.URL as url 
 			, CO.VIEW_CNT as viewCnt 
 			, count(SPA.CONTENTS_NO) as reportCnt, count(LIK.CONTENTS_NO) as likeCnt 
 			, CO.SOURCE_NO as sourceNo, SO.NAME as sourceName, SO.URL as sourceUrl, SO.LOGO_IMG as logoImg 
 		    , CO.CATEGORY_NO as categoryNo, CA.CATEGORY as categoryName 
-		    , DAT.DATA_TYPE as dataType 
+		    , DAT.DATA_TYPE as dataTypeName 
 		FROM Q_CONTENTS CO 
 		INNER JOIN Q_CATEGORY CA on CA.NO = CO.CATEGORY_NO 
 		INNER JOIN Q_SOURCE SO on SO.NO = CO.SOURCE_NO 
@@ -99,12 +24,12 @@
 	</select>
 	
 	<select id="selectCustomSourceList" parameterType="int" resultType="contentsVO">
-		SELECT CO.NO, CO.TITLE as title, CO.SUMMARY as summary, CO.URL as url
+		SELECT CO.NO contentsNo, CO.TITLE as title, CO.SUMMARY as summary, CO.URL as url
 			, CO.VIEW_CNT as viewCnt
 			, count(SPA.CONTENTS_NO) as reportCnt, count(LIK.CONTENTS_NO) as likeCnt
 			, CO.SOURCE_NO as sourceNo, SO.NAME as sourceName, SO.URL as sourceUrl, SO.LOGO_IMG as logoImg
 		    	, CO.CATEGORY_NO as categoryNo, CA.CATEGORY as categoryName
-		    	, DAT.DATA_TYPE as dataType
+		    	, DAT.DATA_TYPE as dataTypeName
 		FROM Q_CONTENTS CO
 		INNER JOIN Q_CATEGORY CA on CA.NO = CO.CATEGORY_NO
 		INNER JOIN Q_SOURCE SO on SO.NO = CO.SOURCE_NO
@@ -140,12 +65,12 @@
 	</select>
 	
 	<select id="selectCustomCuration" parameterType="String" resultType="contentsVO">
-		SELECT CO.NO, CO.TITLE as title, CO.SUMMARY as summary, CO.URL as url
+		SELECT CO.NO contentsNo, CO.TITLE as title, CO.SUMMARY as summary, CO.URL as url
 			, CO.VIEW_CNT as viewCnt
 			, count(SPA.CONTENTS_NO) as reportCnt, count(LIK.CONTENTS_NO) as likeCnt
 			, CO.SOURCE_NO as sourceNo, SO.NAME as sourceName, SO.URL as sourceUrl, SO.LOGO_IMG as logoImg
 		    	, CO.CATEGORY_NO as categoryNo, CA.CATEGORY as categoryName
-		    	, DAT.DATA_TYPE as dataType
+		    	, DAT.DATA_TYPE as dataTypeName
 		FROM Q_CONTENTS CO
 		INNER JOIN Q_CATEGORY CA on CA.NO = CO.CATEGORY_NO
 		INNER JOIN Q_SOURCE SO on SO.NO = CO.SOURCE_NO
@@ -158,6 +83,23 @@
 		ORDER BY co.view_cnt DESC 
 		LIMIT 3 
 	</select>
+	
+	<insert id="likeCntUp" parameterType="contentsVO">
+		INSERT INTO Q_LIKE (NO, MEMBER_NO, CONTENTS_NO)
+		VALUES (NEXTVAL('Q_LIKE_NO'), #{memberNo}, #{contentsNo})
+	</insert>
+	
+	<delete id="likeCancel" parameterType="contentsVO">
+		DELETE FROM Q_LIKE
+		WHERE MEMBER_NO=#{memberNo} AND CONTENTS_NO=#{contentsNo}
+	</delete>
+	
+	<select id="likeOrNot" parameterType="contentsVO" resultType="int">
+		SELECT count(MEMBER_NO)
+		FROM Q_LIKE
+		WHERE CONTENTS_NO=#{contentsNo} AND MEMBER_NO=#{memberNo}
+	</select>
+	
 </mapper>
 
 

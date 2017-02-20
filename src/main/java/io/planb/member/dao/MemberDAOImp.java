@@ -7,7 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import io.planb.directory.vo.DirectoryVO;
+import io.planb.drawer.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.leaved.vo.LeavedVO;
 import io.planb.member.vo.IdentifyQuestionVO;

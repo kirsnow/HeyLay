@@ -1,6 +1,6 @@
 package io.planb.ad.vo;
 
-public class AdVO {
+public class AdVO implements Cloneable {
 	private int no;
 	private int location;
 	private String code;
@@ -51,5 +51,11 @@ public class AdVO {
 	@Override
 	public String toString() {
 		return "AdVO [no=" + no + ", location=" + location + ", code=" + code + ", siteName=" + siteName + "]";
+	}
+	
+	public Object clone() throws CloneNotSupportedException {
+		AdVO ad = (AdVO) super.clone();
+		
+		return ad;
 	}
 }

@@ -12,12 +12,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>카드 서랍 | Quration: 답을 열어 줄 그런 사람</title>
 
+<!-- MDL Hosted start -->
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-light_blue.min.css" />
+
 <!-- Bootstrap -->
 <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 <link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
-
-<!-- MDL Hosted start -->
-<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-light_blue.min.css" />
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -64,21 +64,7 @@
 						<div class="row">
 							<p class="lead">아직 저장한 카드가 없습니다 &#58;O</p>
 						</div>
-						<div class="row">
-							<div class="col-lg-12"></div>
-						</div>
-						<div class="row">
-							<div class="col-lg-12">
-								<ul class="">
-									<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Juliet"
-										title="Juliet 검색">Juliet 검색</a></li>
-									<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Romeo"
-										title="Romeo 검색">Romeo 검색</a></li>
-									<li><a href="${ pageContext.request.contextPath }/search/result.do?q=Tempest"
-										title="Tempest 검색">Tempest 검색</a></li>
-								</ul>
-							</div>
-						</div>
+						<jsp:include page="/jsp/component/search_suggestion.jsp" />
 					</c:when>
 					<c:otherwise>
 						<div class="row">
@@ -88,6 +74,7 @@
 								| <a href="${ pageContext.request.contextPath }/drawer.do?sort=days">Days</a>
 								| <a href="${ pageContext.request.contextPath }/drawer.do?sort=type">Type</a>
 								| <a href="${ pageContext.request.contextPath }/drawer.do?sort=source">Source</a>
+								| <a href="${ pageContext.request.contextPath }/directory.do">폴더 관리</a>
 							</div>
 						</div>
 						<div class="row">
@@ -106,11 +93,14 @@
 				</c:choose>
             </section>
         </div>
-        <!-- /#page-content-wrapper -->
+        <!-- /#Page Content -->
 
     </div>
-    <!-- /#wrapper -->
-
+    <!-- /.container -->
+    
+	<!-- footer -->
+    <jsp:include page="/jsp/include/footer.jsp" />
+    <!-- /footer -->
 
 	<!-- jQuery -->
 	<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
@@ -123,5 +113,10 @@
 	
 	<!-- icon-font -->
 	<script src="https://use.fontawesome.com/bbddce3010.js"></script>
+	
+	<!-- Modal -->
+	<jsp:include page="/jsp/modal/card_save.jsp" />
+	<jsp:include page="/jsp/modal/report_bug.jsp" />
+	<jsp:include page="/jsp/modal/report_spam.jsp" />
 </body>
 </html>

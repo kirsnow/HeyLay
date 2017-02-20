@@ -7,9 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import io.planb.contents.vo.ContentsVO;
-import io.planb.contents.vo.DrawerHeaderVO;
-import io.planb.contents.vo.SavedVO;
-import io.planb.directory.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
 
 @Repository
@@ -17,6 +14,22 @@ public class ContentDAO {
 
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
+	
+	public ContentsVO getContents(ContentsVO vo) {
+		ContentsVO contents = sqlSessionTemplate.selectOne("io.planb.dao.ContentDAO.selectContents", vo);
+		return contents;
+	}
+	
+	public List<ContentsVO> getCardsList(ContentsVO vo) {
+		List<ContentsVO> cards = sqlSessionTemplate.selectList("io.planb.dao.ContentDAO.selectContents", vo);
+		return cards;
+	}
+	
+	public List<ContentsVO> getSavedCards(ContentsVO vo) {
+		
+		List<ContentsVO> savedCards = this.getCardsList(vo);
+		return savedCards;
+	}
 	
 	public List<KeywordsVO> selectKeywordList(int memberNo) {
 		List<KeywordsVO> keywordList = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.selectKeywordList", memberNo);
@@ -36,63 +49,10 @@ public class ContentDAO {
 		return drawerCards;
 	}
 	
-	public List<DrawerHeaderVO> drawerDates(int memberNo) {
-		List<DrawerHeaderVO> drawerDates = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.drawerDates", memberNo);
-		return drawerDates;
-	}
-	
-	public List<DrawerHeaderVO> drawerDirectory(int memberNo) {
-		List<DrawerHeaderVO> drawerDirectory = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.drawerDirectory", memberNo);
-		return drawerDirectory;
-	}
-	
-	public List<DrawerHeaderVO> drawerCategory(int memberNo) {
-		List<DrawerHeaderVO> drawerCategory = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.drawerCategory", memberNo);
-		return drawerCategory;
-	}
-	
-	public List<DrawerHeaderVO> drawerSource(int memberNo) {
-		List<DrawerHeaderVO> drawerSource = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.drawerSource", memberNo);
-		return drawerSource;
-	}
-
-	public int nextDirNo() {
-		int nextDirNo = sqlSessionTemplate.selectOne("io.planb.contents.dao.ContentDAO.selectNextDirNo");
-		return nextDirNo;
-	}
-	
-	public List<DirectoryVO> directoryList(int userNo) {
-		List<DirectoryVO> dirList = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.selectDirList", userNo);
-		return dirList;
-	}
-
-	public void newDirectory(DirectoryVO newDir) {
-		sqlSessionTemplate.insert("io.planb.contents.dao.ContentDAO.insertDir", newDir);		
-	}
-
-	public void saveCard(SavedVO card) {
+	public void saveCard(ContentsVO card) {
 		sqlSessionTemplate.insert("io.planb.contents.dao.ContentDAO.insertCardToSave", card);
 	}
-
-	public List<ContentsVO> selectPopularList() {
-		List<ContentsVO> popularList = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.selectPopularList");
-		
-		return popularList;
-	}
 	
-	public void updateDir(DirectoryVO dir) {
-		sqlSessionTemplate.update("io.planb.contents.dao.ContentDAO.updateDir", dir);
-	}
-	
-	public void delDir(int no) {
-		sqlSessionTemplate.delete("io.planb.contents.dao.ContentDAO.delDir", no);
-	}
-
-	public void delDir(List<Integer> noList) {
-		sqlSessionTemplate.delete("io.planb.contents.dao.ContentDAO.deleteDirs", noList);
-		
-	}
-
 	public List<ContentsVO> selectCustomSourceList(int no) {
 		List<ContentsVO> customSourceList = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.selectCustomSourceList", no);
 		
@@ -109,6 +69,20 @@ public class ContentDAO {
 		List<ContentsVO> customKeywordList = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.selectCustomCuration", keywords);
 		
 		return customKeywordList;
+	}
+	
+	public void likeCntUp(ContentsVO like) {
+		sqlSessionTemplate.insert("io.planb.contents.dao.ContentDAO.likeCntUp", like);
+	}
+	
+	public void likeCancel(ContentsVO like) {
+		sqlSessionTemplate.insert("io.planb.contents.dao.ContentDAO.likeCancel", like);
+	}
+	
+	public int likeOrNot(ContentsVO like) {
+		int cnt = sqlSessionTemplate.selectOne("io.planb.contents.dao.ContentDAO.likeOrNot", like);
+	
+		return cnt;
 	}
 
 }

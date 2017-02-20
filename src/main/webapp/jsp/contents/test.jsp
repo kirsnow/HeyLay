@@ -1,64 +1,113 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script type="text/javascript">
-$(function () {
-    //Loop through all Labels with class 'editable'.
-    $(".editable").each(function () {
-        //Reference the Label.
-        var label = $(this);
- 
-        //Add a TextBox next to the Label.
-        label.after("<input type = 'text' style = 'display:none' />");
- 
-        //Reference the TextBox.
-        var textbox = $(this).next();
- 
-        //Set the name attribute of the TextBox.
-        textbox[0].name = this.id.replace("lbl", "txt");
- 
-        //Assign the value of Label to TextBox.
-        textbox.val(label.html());
- 
-        //When Label is clicked, hide Label and show TextBox.
-        
-        
-        $('#button1').click( function() {
-    	    
-    	    if( $(this).html() == '수정' ) {
-    	      $(this).html('확인');
-    	      label.hide();
-    	      label.next().show();
-    	    }
-    	    else {
-    	      $(this).html('수정');
-    	      textbox.hide();
-    	      textbox.prev().html(textbox.val());
-    	      textbox.prev().show();
-    	    }
-    	    
-    	  });
-    });
-});
+<!-- Bootstrap CSS SET -->
+<link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+<link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
 
-</script>
+<!-- icon-font -->
+<script src="https://use.fontawesome.com/bbddce3010.js"></script>
+<title>Insert title here</title>
+<!-- Bootstrap JS SET -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
 </head>
 <body>
-<table border="0" cellpadding="0" cellspacing="0">
-<tr>
-    <td>
-        Name:&nbsp;
-    </td>
-    <td>
-        <span id="lblName" class="editable">Mudassar</span>
-    </td>
-</tr>
-</table>
-<button id='button1'>수정</button>
+<a href="#" role="button" id="${ card.contentsNo }" class="saveCardBtn nofocus"
+	data-toggle="modal" data-target="#myModal"
+	title="카드 담기"> 
+	<i class="fa fa-bug fa-2x text-muted" aria-hidden="true"></i>
+</a>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
+	aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title text-muted" id="gridSystemModalLabel">
+					<i class="fa fa-bug fa-fw" aria-hidden="true"></i>
+					신고합니다 <small>오류 신고</small>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 marginTop">
+							<input type="text" name="email" class="form-control" id="email"
+								placeholder="계정 (이메일)" alt="계정(이메일)입력 폼" value="${ userVO.email }"/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 marginTop">
+							<p>정확한 장애(오류) 해결을 위해 고객님의 PC사양 정보가 필요하며, 수집된 PC사양 정보는 문제 해결
+								이외의 다른 용도로 사용하지 않습니다. PC사양조사 수동설치 시에는 웹페이지를 닫고 다시 실행하신 후에 문의를
+								입력해 주세요.
+							<p>
+							<div class="well">
+								<dl class="dl-horizontal">
+									<dt>Browser</dt>
+									<dd class="agtInfo">agent</dd>
+									<dt>OS</dt>
+									<dd class="osInfo">osInfo</dd>
+								</dl>
+								<input type="hidden" name="browser"
+									value=""
+									readonly="readonly" /> <input type="hidden" name="os"
+									value="" readonly="readonly" />
+								<div class="input-group pull-right">
+									<label for="pcInfoAgree">PC 사양 제공에 동의합니다.</label> <input
+										type="checkbox" name="pcInfoAgree" id="pcInfoAgree" class=""
+										alt="PC사양 제공 동의 체크박스(필수)" />
+								</div>
+								<div class="row"></div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2">
+							<input type="text" name="url" class="form-control"
+								placeholder="오류 발생  URL 입력" alt="오류  URL 입력 폼" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2">
+							<textarea id="userInput" name="userInput"
+								class="form-control marginTop userInput" rows="4" maxlength="1000"
+								placeholder="오류 화면 캡처, 오류 발생 일시, PC 정보 제공과 함께 오류 현상을 기재해 주세요."></textarea>
+							<p>
+								<small><span id="text_length">1000</span>자 입력 가능</small>
+							</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2">
+							<div class="panel panel-default">
+								<div class="panel-body">
+									<input type="file" name="attachfile"
+										alt="오류 사항에 관한 파일을 첨부하는 버튼" id="attachfile"
+										aria-describedby="attachment" /> <small id="attachment"
+										class="help-block">5MB 이하 파일을 첨부하실 수 있습니다.</small>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary">작성완료</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 </body>
 </html>

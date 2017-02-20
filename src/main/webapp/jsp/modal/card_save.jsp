@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="modal fade" id="saveCardModal" tabindex="-1" role="dialog"
@@ -97,7 +97,7 @@
    		.html('<i class="fa fa-spinner fa-pulse" aria-hidden="true"></i> 담는 중');
     	
         $.ajax({
-        	url: '${ pageContext.request.contextPath }/contents/ajax/save_card.do'
+        	url: '${ pageContext.request.contextPath }/drawer/ajax/save.do'
         	, type: 'POST'
         	, data : { 
         		'contentsNo' : contentsNo
@@ -107,6 +107,7 @@
 		    }, success: function(data) {
 		    	console.log('카드 담기 성공');
 		    	
+		    	$('.saveCancelBtn').attr('hidden',false);
 		    	/* Success button */
 		    	$('button#putCard').removeClass('btn-warning').addClass('btn-success')
    	    		.html('<i class="fa fa-check" aria-hidden="true"></i> 완료');

@@ -1674,8 +1674,8 @@ small,
 
 mark,
 .mark {
-    background-color: #fcf8e3;
-    padding: .2em
+    background-color: rgba(64, 196, 255, 0.3);
+    padding: .05em .2em
 }
 
 .text-left {
