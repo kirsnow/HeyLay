@@ -53,7 +53,7 @@
         	<c:otherwise>
         		<div class="row">
 					<div class="col-xs-12 lead">
-						<c:out value="${ searchResult.query }" /> 검색결과 ${ searchResult.total }건 :P
+						<mark><c:out value="${ searchResult.query }" /></mark> 검색결과 ${ searchResult.total }건 :P
 					</div>
 				</div>
 				<div class="row">
