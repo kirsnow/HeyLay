@@ -55,10 +55,10 @@ public class MembershipController {
 	public String selectUserAccount(@RequestParam String email,HttpServletRequest request){
 		
 		email = service.checkEmail(email);
-		System.out.println("email : " + email);
+		//System.out.println("email : " + email);
 		
 		if(email == null){
-		request.setAttribute("ok", email);
+		request.setAttribute("use", email);
 		}
 		return email;
 	}
