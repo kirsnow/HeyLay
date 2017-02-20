@@ -10,8 +10,8 @@
     <title>Quration: 답을 열어 줄 그런 사람</title>
     
     <!-- Bootstrap CSS SET -->
-    <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet"  href="https://fonts.googleapis.com/icon?family=Material+Icons">  
+    <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 	<link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
 	 	
     <script src="${ pageContext.request.contextPath }/js/jquery.1.11.1.js"></script>
