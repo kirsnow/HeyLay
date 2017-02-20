@@ -15,6 +15,11 @@
 		width : 1000px;
 		height : 600px;
 	}
+	
+	.circleLoading{
+		 font-size:60px;
+		 color : gray;
+	}
 </style>
 <!-- Bootstrap -->
 <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css"
@@ -68,6 +73,10 @@
 							</div> 
 			            </c:when>
 			       		<c:otherwise> 
+			       			<div class="circleLoading marginTop80">
+								<p class="font20">Loading...</p>
+				       			<i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+							</div>
 							<div class="row">
 								<div class="col-md-8 col-md-offset-2">
 					            	<svg id="word-cloud"></svg>
@@ -107,6 +116,12 @@
 	
 	<!-- for word Cloud js -->
 	<script>
+	
+	   //로딩 중 아이콘 1.6초후 삭제
+		setTimeout(function(){
+			$('.circleLoading').remove();
+		},1600); 
+	   
 	 	var width = 850,
 			height = 600;
      	
