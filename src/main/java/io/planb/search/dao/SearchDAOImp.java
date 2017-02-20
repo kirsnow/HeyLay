@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import io.planb.contents.vo.ContentsVO;
 import io.planb.memo.vo.MemoVO;
+import io.planb.search.vo.QueryVO;
 import io.planb.search.vo.SearchVO;
 
 @Repository
@@ -22,7 +23,11 @@ public class SearchDAOImp {
 		SearchVO searchResult = es.searchURI(q, ip);
 		return searchResult;
 	}
-	
+	public List<QueryVO> analyzeQuery(String q) {
+		Elasitcsearch es = new Elasitcsearch();
+		List<QueryVO> queryList = es.analyzeQuery(q);
+		return queryList;
+	}
 	public void saveKeyword(SearchVO searchResult) {
 		sqlSessionTemplate.insert("io.planb.serach.dao.SearchDAO.insertKeyword", searchResult);
 	}

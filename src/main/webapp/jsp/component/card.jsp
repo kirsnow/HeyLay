@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <c:forEach var="card" items="${ requestScope.cards }" varStatus="loop">
+<c:set var="plainTitle" value="${ fn:replace( fn:replace(card.title, '<mark>', ''), '</mark>', '') }"/>
 	<!-- card -->
 	<div class="card-ancestor mdl-card mdl-cell mdl-cell--4-col mdl-cell--12-col-phone mdl-shadow--3dp">
 	
@@ -30,7 +31,7 @@
 		<!-- card title -->
 		<div class="mdl-card__title">
 			<h5 class="card-title mdl-card__title-text drop-text-2" 
-			title="${ card.title }" data-toggle="tooltip" data-placement="bottom">
+			title="<c:out value="${ plainTitle }" />" data-toggle="tooltip" data-placement="bottom">
 			${ card.title }</h5>
 		</div>
 	

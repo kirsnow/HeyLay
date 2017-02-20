@@ -9,8 +9,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <c:set var="pageTitle" value="${ fn:replace( fn:replace(contents.title, '<mark>', ''), '</mark>', '') }"/>
-    <title><c:out value="${ pageTitle }"/> | Quration: 답을 열어 줄 그런 사람</title>		<!-- 각 콘텐츠 제목을 title로 동적 지정 -->
+    <c:set var="plainTitle" value="${ fn:replace( fn:replace(contents.title, '<mark>', ''), '</mark>', '') }"/>
+    <title><c:out value="${ plainTitle }"/> | Quration: 답을 열어 줄 그런 사람</title>		<!-- 각 콘텐츠 제목을 title로 동적 지정 -->
     
     <!-- MDL Hosted start -->
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-light_blue.min.css" />
@@ -49,7 +49,7 @@
             <ol class="col-xs-12 breadcrumb" style="margin-top: 75px">
                 <li><a href="${ pageContext.request.contextPath }/">Home</a></li>
                 <li><a href="#">${ contents.categoryName }</a></li>
-                <li class="active"><c:out value="${ pageTitle }"/></li>
+                <li class="active"><c:out value="${ plainTitle }"/></li>
             </ol>
         </div>
         <!-- /Breadcrumb -->
