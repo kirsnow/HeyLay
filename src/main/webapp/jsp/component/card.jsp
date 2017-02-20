@@ -159,7 +159,7 @@
 	function facebook(no) {
 		//alert(no);
 	    
-	    var url = "https://quration.herokuapp.com/search/contents.do?no="+no;
+	    var url = "https://quration.herokuapp.com/contents.do?no="+no;
 	    window.open("http://www.facebook.com/sharer/sharer.php?u=" + url);
 	}
 	
@@ -167,7 +167,7 @@
 	function twitter(no) {
 		//alert(no);
 	    
-	    var url = "https://quration.herokuapp.com/search/contents.do?no="+no;
+	    var url = "https://quration.herokuapp.com/contents.do?no="+no;
 	    window.open("https://twitter.com/intent/tweet?text=Quration:답을 열어 줄 그런 사람&url=" + url);
 	}
 	

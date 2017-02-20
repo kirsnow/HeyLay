@@ -35,9 +35,7 @@ public class ContactDAOImp {
 	}
 
 	public void sendSpamMemo(ReportVO reportVO) {
-		int no = reportVO.getMemoNo();
 		sqlSessionTemplate.insert("io.planb.contact.dao.contactDAO.sendSpamMemo", reportVO);
-		sqlSessionTemplate.update("io.planb.contact.dao.contactDAO.reportCntUp2Memo", no);
 	}
 
 	public void sendBugReportAttach(BugAttachVO bugAttach) {

@@ -107,6 +107,7 @@
 		    }, success: function(data) {
 		    	console.log('카드 담기 성공');
 		    	
+		    	$('.saveCancelBtn').attr('hidden',false);
 		    	/* Success button */
 		    	$('button#putCard').removeClass('btn-warning').addClass('btn-success')
    	    		.html('<i class="fa fa-check" aria-hidden="true"></i> 완료');

@@ -87,7 +87,6 @@
 			alert("신고 내용을 선택해 주세요.");
 		} else {
 			
-
 			$(this).attr('disabled', 'disabled').removeClass('btn-primary').addClass('btn-warning')
 	   		.html('<i class="fa fa-spinner fa-pulse" aria-hidden="true"></i> 담는 중');
 	    	
@@ -97,25 +96,21 @@
 	        	, data : { 
 	        		'contentsNo' : contentsNo
 	        		, 'selected': selected
-	        		, 'userInput' : selected
+	        		, 'userInput' : userInput
 			    }, success: function(data) {
-			    	console.log('spam 성공');
 			    	
-			    	/* Success button */
-			    	$('button#spamOk').removeClass('btn-warning').addClass('btn-success')
-	   	    		.html('<i class="fa fa-check" aria-hidden="true"></i> 완료');
-	            	
-			    	/* modal close */
-	            	$('#spamModal').modal('hide');
-	            	
-	            	/* modal UI reset */
-	            	$('button#spamOk').removeAttr('disabled', 'disabled').removeClass('btn-warning btn-success btn-danger').addClass('btn-primary')
-	      			.html('담기');
-//	             	$('input#dirName').val('나의 첫 폴더').attr('readonly', 'readonly');
-//	             	$('#memoMessage').val('');
-	            	
-	            	/* page UI reset */
-	            	spamReportBtn.html('<i class="fa fa-bookmark fa-lg" aria-hidden="true"></i>');
+			    	if(data == "suc") {
+				    	console.log('spam 성공');
+				    	
+				    	/* Success button */
+				    	$('button#spamOk').removeClass('btn-warning').addClass('btn-success')
+		   	    		.html('<i class="fa fa-check" aria-hidden="true"></i> 완료');
+		            	
+				    	/* modal close */
+		            	$('#spamModal').modal('hide');
+		            	
+		            	
+			    	}
 	            	
 			    }, error : function(request,status,error) {
 	        		alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
