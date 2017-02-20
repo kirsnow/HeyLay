@@ -26,9 +26,9 @@ public class SearchServiceImp {
 			searchResult.setQuery(q);
 			
 			//검색결과 하이라이팅
-			for( ContentsVO contents : searchResult.getContents() ) {
+			/*for( ContentsVO contents : searchResult.getContents() ) {
 				contents = this.highlighter(contents, q);
-			}
+			}*/
 		}
 		
 		//검색 키워드 저장
