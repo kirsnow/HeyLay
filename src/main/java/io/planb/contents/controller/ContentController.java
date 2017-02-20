@@ -2,6 +2,7 @@ package io.planb.contents.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,12 +31,21 @@ public class ContentController {
 	
 	/* Contents detail */
 	@RequestMapping(value="/contents.do", method=RequestMethod.GET)
-	public ModelAndView viewContents(HttpSession session, @RequestParam int no, @RequestParam(required=false) String q) {
+	public ModelAndView viewContents(HttpServletRequest request, HttpSession session, @RequestParam int no, @RequestParam(required=false) String q) {
 		
 		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
 		int userNo = userVO != null ? userVO.getNo() : 0;
 		
 		ContentsVO contents = new ContentsVO();
+		contents.setMemberNo(userNo);
+		contents.setContentsNo(no);
+		
+		String url = request.getRequestURL().toString();
+		String referrer = request.getHeader("Referer");
+		
+		if (url != referrer) {
+			service.viewCnt(contents);
+		}
 		
 		contents = service.getContentsDetail(no, q);
 		List<MemoVO> memoList = memoService.getMemoList(no);
@@ -44,11 +54,10 @@ public class ContentController {
 		mav.setViewName("search/contents_detail");
 		mav.addObject("contents", contents);
 		mav.addObject("memoList", memoList);
-
-		contents.setMemberNo(userNo);
-		contents.setContentsNo(no);
-		int cnt = service.likeOrNot(contents);
-		mav.addObject("likeOrNot", cnt);
+		
+		int likeCnt = service.likeOrNot(contents);
+		mav.addObject("likeOrNot", likeCnt);
+		
 		return mav;
 	}
 	

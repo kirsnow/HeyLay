@@ -41,7 +41,7 @@
 	
       <!-- Membership Section -->
        <section id="membership">
-          <div class="container marginTop60">
+          <div class="container marginTop60 minHeight">
           	<div class="row">
                <div class="page-header text-center col-md-6 col-md-offset-3">
                    <h1>회원 가입</h1>
@@ -49,12 +49,13 @@
          	</div>
             <form name="membershipForm" class="formBottom15" 
                   action="${pageContext.request.contextPath }/membership/membershipForm.do" 
-                  method="post" onsubmit="return checkForm()">   
+                  method="post" onsubmit="return checkForm()" autocomplete="off">   
                   <div class="row">
-	                  <div class="col-md-6 col-md-offset-3">
-					  	 <input type="text" name="email" id="email" class="form-control "
+	                  <div id="has-error-email" class="col-md-6 col-md-offset-3">
+					  	 <input type="email" name="email" id="email" class="form-control "
 							    placeholder="계정 (이메일)" alt="계정(이메일)입력 폼" />
-					     <div id="email_eq" class="if_not_valid"></div>
+					     <div id="email_eq"></div>
+						 <small class="text-muted">첫 글자는 숫자 또는 영문자로 입력해주세요. ex) quration@quration.com </small>
 					  </div>
                   </div>
                   <div class="row">
@@ -66,19 +67,23 @@
 	                  </div> 
 	               </div>
 	               <div class="row">
-	                  <div class="col-md-push-3 col-md-3"> 
+	                  <div  id="has-error" class="col-md-push-3 col-md-3"> 
 	                     <input id="password" type="password" name="password" class="form-control " placeholder=" 비밀번호" alt="비밀번호 입력 폼"/>
+						 <div><small class="text-muted">숫자, 영문자 조합으로 8~15자리를 사용하세요.</small></div>	                 
 	                  </div>
-	                  <div class="col-md-push-3 col-md-3">
-                  		 <input id="password_check" type="password" name="passwordcheck" class="form-control " placeholder="비밀번호 확인" alt="비밀번호 확인 입력 폼"/>   
-                  	  	 <div id="password_eq"></div>
+	                 
+	                  <div id="has-error-check" class="col-md-push-3 col-md-3">
+                  		 <input id="password_check" type="password" name="passwordcheck" class="form-control" placeholder="비밀번호 확인" alt="비밀번호 확인 입력 폼"/>   
                   	  </div>
-                  	  	
                   </div>
+                  <span class="col-md-6 col-md-offset-3">
+                  	  <span id="password_eq"></span>
+                  	  <span id="regPasssword"></span>
+                  </span>
                   <div class="row">
 	                  <div class="col-md-6 col-md-offset-3">
 	                     <input type="date"  name="birth" class="form-control " alt="생년월일 선택 폼">           
-                  	  	 <div><small>&nbsp;&nbsp;생년월일을 선택해 주세요.</small></div>
+                  	  	 <div><small class="text-muted">생년월일을 선택해 주세요.</small></div>
                   	   </div>
                   </div>
                   <div class="row">
@@ -132,7 +137,7 @@
                   
                   <!--   <div class="g-recaptcha margin_20" data-sitekey="6LfzNwsUAAAAAPZRhilzRNbGeVIgr2FsbDdZ8S1r"></div> 로봇이 아닙니다 잠시 주석처리 -->
                   <div class="row"> 
-	                  <div class="col-md-6 col-md-offset-3 text-center ">
+	                  <div class="col-md-6 col-md-offset-3 text-center marginBottom100">
 	                     <button type="submit" class="btn btn-primary marginRight" >회원 가입</button>
 	                     <button type="reset" class="btn">초기화</button>
 	                  </div>
@@ -150,29 +155,48 @@
    
 <script>
 $(document).ready(function() {
-	$('#email').keyup(function() {
-		var id = $('#email').val();
-		$.ajax({
-			type : "post",
-			url : "${ pageContext.request.contextPath}/membership/idcheck.do",
-			data : {
-				"email" : $('#email').val()
-			}, //아이디 체크
-			success : function(data) {
-				if (data == '${ok}') {
-					$('#email_eq').html('사용 가능한 ID 입니다.')
-								  .css("font-size", "15px")
-						          .css("color", "#03A9F4")
-				} else {
-					$('#email_eq').html('이미 사용 중인 ID 입니다.')
-								  .css("font-size", "15px")
-						          .css("color", "#D32F2F")
-				}
+	$('#email').focusout(function() {
+		var email = $('#email').val();
+		
+	    var regEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i; 
+	         
+         if ( !regEmail.test( $('#email').val()) ) {  
+        	 addInvolve();
+         } else {
+        	 removeDontMiss();
+        	 
+        	 $.ajax({
+     			type : "post",
+     			url : "${ pageContext.request.contextPath}/membership/idcheck.do",
+     			data : {
+     				"email" : $('#email').val()
+     			}, //아이디 체크
+     			success : function(data) {
+     				if (data == '${ok}') {
+     					$('#has-error-email').removeClass('has-error').addClass('has-success');
+     					$('#email_eq').text('사용 가능한 ID입니다.').removeClass('text-danger').addClass('text-success');
+     				} else {
+     					$('#has-error-email').removeClass('has-success').addClass('has-error');
+     					$('#email_eq').text('이미 사용 중인 ID 입니다.').removeClass('text-success').addClass('text-danger');
+     				}
 
-			},
-
-		});
+     			},
+     		});
+         }
+		 
+	     function addInvolve() {
+	    	$('#has-error-email').removeClass('has-success').addClass('has-error');
+	        $('#email_eq').text('@를 포함하여 이메일 양식에 맞게 작성해주세요.').removeClass('text-success').addClass('text-danger');
+							  
+	     } 
+	     
+	     function removeDontMiss(){
+	        $('#has-error').removeClass('has-error');
+	        $('#has-error-check').removeClass('has-error');
+	        $('#email_eq').text('');
+	     }
 	});
+	
 	
       $('#password_check').keyup(function() {
          var password = $('#password').val();
@@ -191,28 +215,73 @@ $(document).ready(function() {
 
          if (checkword.length != 0) {
             if (checkword != password) {
-               $('#password').addClass('not_valid');
+               $('#has-error').addClass('has-error');
                addDontMiss();
             } else {
-            removeDontMiss();
+               removeDontMiss();
             }
          }
       });
 
       function addDontMiss() {
-         $('#password_check').addClass('not_valid');
-         $('#password_eq').html('비밀번호가 일치하지 않습니다.')
-         				  .css("font-size", "15px")
-						  .css("color", "#D32F2F")
+         $('#has-error-check').addClass('has-error');
+         $('#password_eq').text('비밀번호가 일치하지 않습니다.').addClass('text-danger');
+         				
       }
       function removeDontMiss(){
-         $('#password').removeClass('not_valid');
-         $('#password_check').removeClass('not_valid');
-         $('#password_eq').html('');
+         $('#has-error').removeClass('has-error');
+         $('#has-error-check').removeClass('has-error');
+         $('#password_eq').text('');
       }
-   });
+      
+      
+      $('#passsword').keyup(function() {
+  	    var passsword = $('#passsword').val();
+  	    
+  	    //특수문자, 영문(대소문자) , 숫자 포함 형태의 8~15자리 이내의 암호
+  	     var regPasssword = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/ ;
+  	    
+  	       if ( !regPasssword.test( $('#passsword').val()) ) {  
+  	    	   addHasError();
+  	       } else {
+  	    	   removeHasError();
+  	       }
+  	    });
+  	    
+  	    $('#password_check').keyup(function() {
+  	    var password_check = $('#password_check').val();
+  	    
+  	    //특수문자, 영문(대소문자) , 숫자 포함 형태의 8~15자리 이내의 암호
+  	     var regPasssword = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/ ;
+  	    
+  	       if ( !regPasssword.test( $('#password_check').val()) ) {  
+  	    	   addHasError2();
+  	       } else {
+  	    	   removeHasError2();
+  	       }
+  	    });
+  	     
+  	     function addHasError() {
+  		    	$('#passsword').addClass('has-error');
+  		        $('#regPasssword').text('특수문자 ,문자,숫자 포함 형태의 8~15자리 이내의 암호를 작성해주세요.').addClass('text-danger');
+  		     } 
+  		     
+  	     function addHasError2() {
+  		    	$('#password_check').addClass('has-error');
+  		        $('#regPasssword').text('특수문자 ,문자,숫자 포함 형태의 8~15자리 이내의 암호를 작성해주세요.').addClass('text-danger');
+  		     } 
+  		     
+  	     function removeHasError(){
+  		        $('#passsword').removeClass('has-error');
+  		        $('#regPasssword').text('');
+  		     }
+  	     function removeHasError2(){
+  		        $('#password_check').removeClass('has-error');
+  		        $('#regPasssword').text('');
+  		     }
+  	     });
 
-
+	
    function checkForm() {
 
       var form = document.membershipForm;

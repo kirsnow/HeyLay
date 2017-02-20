@@ -51,8 +51,9 @@
 		    <form  name="findPasswordForm" action="${pageContext.request.contextPath }/membership/findPw.do" method="post" 
 				   onsubmit="return checkForm()" >			    
 			    <div class="row">
-                    <div class="col-md-6 col-md-offset-3 marginBottom marginTop">
-                        <input type="text" name="email" class="form-control" placeholder="계정(이메일)" alt="계정(이메일)입력 폼"/>
+                    <div class="col-md-6 col-md-offset-3 marginTop" id="error">
+                        <input id="findpwEmail" type="email" name="email" class="form-control" placeholder="계정(이메일)" alt="계정(이메일)입력 폼"/>
+                        <div id="emailChk"></div>
                     </div><!-- /.col-lg-6 -->
                 </div><!-- /.row -->
 				<div class="row">
@@ -92,8 +93,33 @@
     <Footer>
 		<jsp:include page="/jsp/include/footer.jsp" />
 	</Footer> 
+	
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <script>
+$(document).ready(function() {
+	$('#findpwEmail').focusout(function() {
+		var email = $('#findpwEmail').val();
+	    var regEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i; 
+        
+	    if ( !regEmail.test( $('#findpwEmail').val()) ) {  
+        	 addInvolve();
+         } else {
+        	 removeDontMiss();
+         }
+	    
+         function addInvolve() {
+ 	    	$('#error').addClass('has-error');
+ 	        $('#emailChk').text('@를 포함하여 이메일 양식에 맞게 작성해주세요.').addClass('text-danger');
+ 	     } 
+ 	     
+ 	     function removeDontMiss(){
+ 	        $('#error').removeClass('has-error');
+ 	        $('#emailChk').text('');
+ 	     }
+	});
+});
+	
 function checkForm() {
 
     var form = document.findPasswordForm;

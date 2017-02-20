@@ -76,13 +76,26 @@ public class ContentDAO {
 	}
 	
 	public void likeCancel(ContentsVO like) {
-		sqlSessionTemplate.insert("io.planb.contents.dao.ContentDAO.likeCancel", like);
+		sqlSessionTemplate.delete("io.planb.contents.dao.ContentDAO.likeCancel", like);
 	}
 	
 	public int likeOrNot(ContentsVO like) {
 		int cnt = sqlSessionTemplate.selectOne("io.planb.contents.dao.ContentDAO.likeOrNot", like);
 	
 		return cnt;
+	}
+	
+	public int selectView(ContentsVO view) {
+		int cnt = sqlSessionTemplate.selectOne("io.planb.contents.dao.ContentDAO.selectView", view);
+		return cnt;
+	}
+	
+	public void insertView(ContentsVO view) {
+		sqlSessionTemplate.insert("io.planb.contents.dao.ContentDAO.insertView", view);
+	}
+	
+	public void updateView(ContentsVO view) {
+		sqlSessionTemplate.insert("io.planb.contents.dao.ContentDAO.updateView", view);
 	}
 
 }
