@@ -33,6 +33,15 @@ public class ContentService {
 		return contents;
 	}
 	
+	public void viewCnt(ContentsVO view) {
+		int cnt = dao.selectView(view);
+		if(cnt == 0) {
+			dao.insertView(view);
+		} else {
+			dao.updateView(view);
+		}
+	}
+	
 	public ContentsVO getContentsDetail(int contentsNo, String q) {
 		ContentsVO contents = getContentsByNo(contentsNo);
 		contents = searchService.highlighter(contents, q);
@@ -118,6 +127,19 @@ public class ContentService {
 		int cnt = dao.likeOrNot(like);
 		
 		return cnt;
+	}
+	
+	public int selectView(ContentsVO view) {
+		int cnt = dao.selectView(view);
+		return cnt;
+	}
+	
+	public void insertView(ContentsVO view) {
+		dao.insertView(view);
+	}
+	
+	public void updateView(ContentsVO view) {
+		dao.updateView(view);
 	}
 
 }
