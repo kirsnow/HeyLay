@@ -97,14 +97,46 @@
 	                <div role="toolbar" class="col-xs-12 text-right">
 						<c:choose>
 							<c:when test="${ (userVO ne null) and (not empty userVO) }">
-								<button type="button" class="btn btn-info saveCardBtn" 
-									data-toggle="modal" data-target="#saveCardModal" 
-									id="${ contents.contentsNo }" page="contentsDetail" title="카드 담기">
-			                        <i class="fa fa-bookmark-o" aria-hidden="true"></i> 저장하기
-			                    </button>
-			                    <button type="button" class="btn btn-info likeBtn" title="카드를 좋아합니다.">
-			                        <i class="fa fa-heart-o" aria-hidden="true"></i> 좋아요
-			                    </button> 
+								<c:choose>
+									<c:when test="${ likeOrNot == 0 }">
+										<button type="button" class="btn btn-info saveCardBtn" 
+											data-toggle="modal" data-target="#saveCardModal" 
+											id="${ contents.contentsNo }" title="카드 담기">
+					                        <i class="fa fa-bookmark-o" aria-hidden="true"></i> 저장하기
+					                    </button>
+					                    <button type="button" class="btn btn-info saveCancelBtn" 
+					                    		hidden="true" id="${ contents.contentsNo }" title="카드 빼기">
+					                        <i class="fa fa-bookmark" aria-hidden="true"></i> 카드빼기
+					                    </button>
+					                    <button type="button" class="btn btn-info likeBtn" 
+					                    		title="카드를 좋아합니다." id="${ contents.contentsNo }">
+					                        <i class="fa fa-heart-o" aria-hidden="true"></i> 좋아요
+					                    </button>
+					                    <button type="button" hidden="true" class="btn btn-info likeCancelBtn" 
+					                    		title="좋아요를 취소합니다." id="${ contents.contentsNo }">
+					                        <i class="fa fa-heart" aria-hidden="true"></i> 좋아요 취소
+					                    </button> 
+									</c:when>
+									<c:otherwise>
+										<button type="button" class="btn btn-info saveCardBtn" 
+											data-toggle="modal" data-target="#saveCardModal" 
+											id="${ contents.contentsNo }" title="카드 담기">
+					                        <i class="fa fa-bookmark-o" aria-hidden="true"></i> 저장하기
+					                    </button>
+					                    <button type="button" class="btn btn-info saveCancelBtn" 
+					                    		hidden="true" id="${ contents.contentsNo }" title="카드 빼기">
+					                        <i class="fa fa-bookmark" aria-hidden="true"></i> 카드빼기
+					                    </button>
+					                    <button type="button" hidden="true" class="btn btn-info likeBtn" 
+					                    		title="카드를 좋아합니다." id="${ contents.contentsNo }">
+					                        <i class="fa fa-heart-o" aria-hidden="true"></i> 좋아요
+					                    </button>
+					                    <button type="button" class="btn btn-info likeCancelBtn" 
+					                    		title="좋아요를 취소합니다." id="${ contents.contentsNo }">
+					                        <i class="fa fa-heart" aria-hidden="true"></i> 좋아요 취소
+					                    </button> 
+									</c:otherwise>
+								</c:choose>
 							</c:when>
 							<c:otherwise>
 								<button type="button" class="btn btn-info" onclick="location.href='${ pageContext.request.contextPath }/login/login.do'"
@@ -112,13 +144,14 @@
 			                        <i class="fa fa-bookmark-o" aria-hidden="true"></i> 저장하기
 			                    </button>
 			                    <button type="button" class="btn btn-info" onclick="location.href='${ pageContext.request.contextPath }/login/login.do'" 
-			                    	title="좋아요: 로그인이 필요한 서비스입니다">
+			                    		title="좋아요: 로그인이 필요한 서비스입니다">
 			                        <i class="fa fa-heart-o" aria-hidden="true"></i> 좋아요
 			                    </button> 
 							</c:otherwise>
 						</c:choose>
 	                    <div id="report" class="btn-group" title="신고">
-	                        <a href="#" role="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="외부 서비스로 공유">
+	                        <a href="#" role="button" class="btn btn-default dropdown-toggle" 
+	                        	data-toggle="dropdown" aria-expanded="false" title="오류 및 유해물 신고">
 	                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Report
 	                            <span class="caret"></span>
 	                        </a>
@@ -132,7 +165,8 @@
 		                            </a>
 	                            </li>
 	                            <li>
-		                            <a href="${ pageContext.request.contextPath }/contact/spamContents.do?no=${ contents.contentsNo }" title="유해물 신고">
+		                            <a href="#" role="button" id="${ contents.contentsNo }" class="spamReportBtn nofocus"
+							   				data-toggle="modal" data-target="#spamModal" title="유해물 신고">
 		                            	<i class="fa fa-ban fa-fw" aria-hidden="true"></i>
 		                            	유해물 신고
 		                            </a>
@@ -159,8 +193,16 @@
                     <p class="lead"><i class="fa fa-share-alt" aria-hidden="true"></i> 공유</p>
                     <ul class="list-unstyled" role="menu">
                         <li><a href="#" title="카카오톡으로 공유"><i class="fa fa-commenting fa-fw" aria-hidden="true"></i> KakaoTalk</a></li>
-                        <li><a href="javascript:facebook()" title="페이스북으로 공유"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i> Facebook</a></li>
-                        <li><a href="#" title="트위터로 공유"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i> Twitter</a></li>
+                        <li>
+                        	<a href="javascript:facebook('${contents.contentsNo}')" title="페이스북으로 공유">
+								<i class="fa fa-facebook fa-fw" aria-hidden="true"></i> Facebook
+							</a>
+						</li>
+                        <li>
+                        	<a href="javascript:twitter('${contents.contentsNo}')" title="트위터로 공유">
+								<i class="fa fa-twitter fa-fw" aria-hidden="true"></i> Twitter
+							</a>
+						</li>
                         <li><a href="#" title="에버노트로 공유"><i class="fa fa-sticky-note fa-fw" aria-hidden="true"></i> Evernote</a></li>
                     </ul>
                 </div>
@@ -242,14 +284,16 @@
 	                                <li role="presentation" class="divider"></li>
 	                            </c:if>
 	                                <li>
-	                                	<a href="${ pageContext.request.contextPath }/contact/bug.do?no=${ memo.no }&type=memo" title="오류 신고">
+	                                	<a href="#" role="button" id="${ memo.no }" class="bugReportBtn nofocus"
+							   				data-toggle="modal" data-target="#bugModal" title="오류 신고">
 		                                	<i class="fa fa-bug fa-fw" aria-hidden="true"></i>
 		                                	오류 신고
 	                                	</a>
 	                                </li>
 	                            <c:if test="${ memo.memberNo ne userVO.no }">
 	                                <li>
-	                                	<a href="${ pageContext.request.contextPath }/contact/spamMemo.do?no=${ memo.no }" title="유해물 신고">
+	                                	<a href="#" role="button" id="${ memo.no }" class="spamReportBtn nofocus"
+							   				data-toggle="modal" data-target="#spamModal" title="유해물 신고">
 	                                		<i class="fa fa-ban fa-fw" aria-hidden="true"></i>
 	                                		유해물 신고
 	                                	</a>
@@ -278,11 +322,90 @@
 
     <!-- Modal -->
 	<jsp:include page="/jsp/modal/memo_add.jsp" />
-	
-	<!-- Modal -->
 	<jsp:include page="/jsp/modal/card_save.jsp" />
+	<jsp:include page="/jsp/modal/report_bug.jsp" />
+	<jsp:include page="/jsp/modal/report_spam.jsp" />
 	
-	
+	<script>
+		//<!-- 페이스북 공유 -->
+		function facebook(no) {
+			//alert(no);
+		    
+		    var url = "https://quration.herokuapp.com/contents.do?no="+no;
+		    window.open("http://www.facebook.com/sharer/sharer.php?u=" + url);
+		}
+		
+		//<!-- 트위터  공유 -->
+		function twitter(no) {
+			//alert(no);
+		    
+		    var url = "https://quration.herokuapp.com/contents.do?no="+no;
+		    window.open("https://twitter.com/intent/tweet?text=Quration:답을 열어 줄 그런 사람&url=" + url);
+		}
+		
+		var contentsNo;
+		var likeBtn;
+		var likeCancelBtn;
+
+		$('.likeBtn').click( function() { 
+			
+			likeBtn = $(this);
+			likeCancelBtn = $('.likeCancelBtn');
+			contentsNo = $(this).attr("id");
+			
+			$(this).prop('disabled', true).removeClass('btn-info').addClass('btn-warning')
+	   		.html('<i class="fa fa-spinner fa-pulse" aria-hidden="true"></i>');
+			
+			$.ajax({
+		           url:"${ pageContext.request.contextPath }/contents/likeCntUp.do",
+		           type:'POST',
+		           data: {"contentsNo" : contentsNo},
+		           success:function(data){
+		              	console.log("I like it!");
+
+						window.location.reload(true);
+
+						likeCancelBtn.attr('hidden',false);
+
+						/* Success button */
+						likeBtn.prop('disabled', false).removeClass('btn-warning').addClass('btn-info')
+							.attr('hidden', true);
+		           		
+		           },
+		           error:function(jqXHR, textStatus, errorThrown){
+		               alert("냥냥펀치 \n" + textStatus + " : " + errorThrown);
+		           }
+			    });
+		});
+		
+		$('.likeCancelBtn').click( function() { 
+			
+			contentsNo = $(this).attr("id");
+			
+			$(this).prop('disabled', true).removeClass('btn-info').addClass('btn-warning')
+	   		.html('<i class="fa fa-spinner fa-pulse" aria-hidden="true"></i>');
+			
+			$.ajax({
+				url:"${ pageContext.request.contextPath }/contents/likeCancel.do",
+		           type:'POST',
+		           data: {"contentsNo" : contentsNo},
+		           success:function(data){
+			        	console.log("Like Cancel!");
+
+						window.location.reload(true);
+
+						/* Success button */
+						$('.likeCancelBtn').prop('disabled', false).removeClass('btn-warning').addClass('btn-info')
+						.attr('hidden',true).html('<i class="fa fa-heart" aria-hidden="true"></i> 좋아요 취소');
+
+						likeBtn.attr('hidden',false).html('<i class="fa fa-heart-o" aria-hidden="true"></i> 좋아요');
+		           },
+		           error:function(jqXHR, textStatus, errorThrown){
+		               alert("냥냥펀치 \n" + textStatus + " : " + errorThrown);
+		           }
+			    });
+		});
+	</script>
 </body>
 
 </html>

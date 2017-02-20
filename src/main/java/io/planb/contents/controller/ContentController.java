@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import io.planb.contents.service.ContentService;
@@ -34,13 +35,20 @@ public class ContentController {
 		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
 		int userNo = userVO != null ? userVO.getNo() : 0;
 		
-		ContentsVO contents = service.getContentsDetail(no, q);
+		ContentsVO contents = new ContentsVO();
+		
+		contents = service.getContentsDetail(no, q);
 		List<MemoVO> memoList = memoService.getMemoList(no);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("search/contents_detail");
 		mav.addObject("contents", contents);
 		mav.addObject("memoList", memoList);
+
+		contents.setMemberNo(userNo);
+		contents.setContentsNo(no);
+		int cnt = service.likeOrNot(contents);
+		mav.addObject("likeOrNot", cnt);
 		return mav;
 	}
 	
@@ -118,6 +126,38 @@ public class ContentController {
 	public String cardEnroll(Model model) {
 		
 		return "contents/card_enrollform_modal";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="contents/likeCntUp.do", method=RequestMethod.POST)
+	public String likeCntUp(HttpSession session, @RequestParam("contentsNo") int contentsNo) {
+		
+		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
+		int memberNo = userVO.getNo();
+		
+		ContentsVO like = new ContentsVO();
+		like.setMemberNo(memberNo);
+		like.setContentsNo(contentsNo);
+		
+		service.likeCntUp(like);
+		
+		return "succeed";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/contents/likeCancel.do", method=RequestMethod.POST)
+	public String likeCancel(HttpSession session, @RequestParam("contentsNo") int contentsNo) {
+		
+		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
+		int memberNo = userVO.getNo();
+		
+		ContentsVO like = new ContentsVO();
+		like.setMemberNo(memberNo);
+		like.setContentsNo(contentsNo);
+		
+		service.likeCancel(like);
+		
+		return "succeed";
 	}
 
 }

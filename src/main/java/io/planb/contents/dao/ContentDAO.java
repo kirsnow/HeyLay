@@ -70,5 +70,19 @@ public class ContentDAO {
 		
 		return customKeywordList;
 	}
+	
+	public void likeCntUp(ContentsVO like) {
+		sqlSessionTemplate.insert("io.planb.contents.dao.ContentDAO.likeCntUp", like);
+	}
+	
+	public void likeCancel(ContentsVO like) {
+		sqlSessionTemplate.insert("io.planb.contents.dao.ContentDAO.likeCancel", like);
+	}
+	
+	public int likeOrNot(ContentsVO like) {
+		int cnt = sqlSessionTemplate.selectOne("io.planb.contents.dao.ContentDAO.likeOrNot", like);
+	
+		return cnt;
+	}
 
 }

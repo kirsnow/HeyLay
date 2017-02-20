@@ -2,6 +2,7 @@ package io.planb.contact.controller;
 
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,12 +10,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import eu.bitwalker.useragentutils.UserAgent;
 import io.planb.contact.service.ContactServiceImp;
 import io.planb.contact.vo.ReportVO;
+import io.planb.contents.vo.ContentsVO;
+import io.planb.drawer.vo.DirectoryVO;
+import io.planb.member.vo.MemberVO;
 import io.planb.question.vo.QuestionVO;
 
 @RequestMapping("/contact")
@@ -83,17 +88,32 @@ public class ContactController {
 	//Spam Contents
 	@RequestMapping(value="/spamContents.do", method=RequestMethod.GET)
 	public String writeSpamContents() {
+		
 		return "contact/contents_spam";
 	}
 	
+	@ResponseBody
 	@RequestMapping(value="/spamContents.do", method=RequestMethod.POST)
-	public ModelAndView sendSpamContents(ReportVO reportVO) {
-		service.sendSpamContents(reportVO);
+	public String sendSpamContents(HttpSession session
+			, @ModelAttribute ReportVO report) { 
+//			, @RequestParam int contentsNo
+//			, @RequestParam String selected
+//			, @RequestParam String userInput) {
 		
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("contact/contents_spam");
-		mav.addObject("msg", "유해 게시물 신고가 등록되었습니다.");
-		return mav;
+		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
+		
+//		ReportVO report = new ReportVO();
+		report.setEmail(userVO.getEmail());
+//		report.setContentsNo(contentsNo);
+//		report.setSelected(selected);
+//		report.setUserInput(userInput);
+		
+		service.sendSpamContents(report);
+		
+//		ModelAndView mav = new ModelAndView();
+//		mav.setViewName("contact/contents_spam");
+//		mav.addObject("msg", "유해 게시물 신고가 등록되었습니다.");
+		return "suc";
 	}
 	
 	//Spam Memo
