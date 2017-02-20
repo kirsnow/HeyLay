@@ -186,10 +186,14 @@
 	
 	<!-- 회원 전체의 조회수가 높은 콘텐츠 가로형 막대 그래프  -->
 	<select id="selectAllCntContents" parameterType="int" resultType="staticsVO">
-      SELECT title as columnName, view_cnt as data, round((view_cnt / sum(view_cnt) over ())*100,2) as cnt
-      FROM q_contents
-      ORDER BY cnt DESC
-      limit 5
+		 SELECT con.title as columnName , viw.count as cnt, round(100.0*(viw.count/viw.sum), 1) as data
+		 FROM (SELECT contents_no, sum(count) OVER w as count, sum(count) OVER()
+		 FROM q_view
+		 WINDOW w AS (PARTITION BY contents_no ORDER BY contents_no aSC)) as VIW
+		 INNER JOIN q_contents as CON on con.no = viw.contents_no
+		 where viw.count > 0
+		 GROUP BY viw.contents_no, viw.count, viw.sum, con.title
+		 
 	</select>
 	
 	<!-- 신규 가입 유저 수 확인 --> 
@@ -225,14 +229,14 @@
 	
 	<!-- 회원 전체의 조회수가 높은 사이트  -->
 	<select id="selectCiteContents" parameterType="int" resultType="staticsVO">
-		SELECT qs.name as columnName, SUM(qc.view_cnt) as cnt
+		SELECT qs.name as columnName , SUM(qv.count) as cnt
 		FROM q_source qs
-		INNER JOIN q_contents as qc on qc.source_no = qs.no
-		where view_cnt > 0
+        INNER JOIN q_contents as qc on qc.source_no = qs.no
+		INNER JOIN q_view as qv on qv.contents_no = qc.no
+		where qv.count > 0
 		GROUP BY name
 		ORDER BY cnt DESC
 		Limit 5
 	</select>
-	
 	
 </mapper>

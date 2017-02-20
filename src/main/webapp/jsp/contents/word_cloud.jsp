@@ -72,7 +72,7 @@
 							 </div> 
 			            </c:when>
 			       		<c:otherwise> 
-			       			<div class="circleLoading marginTop80">
+			       			<div class="circleLoading marginTop180 marginBottom100">
 								<p class="font20">Loading...</p>
 				       			<i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
 							</div>

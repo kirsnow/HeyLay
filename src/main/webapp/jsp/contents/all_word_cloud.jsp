@@ -73,7 +73,7 @@
 							</div> 
 			            </c:when>
 			       		<c:otherwise> 
-			       			<div class="circleLoading marginTop80">
+			       			<div class="circleLoading marginTop180 marginBottom100">
 								<p class="font20">Loading...</p>
 				       			<i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
 							</div>
@@ -82,7 +82,7 @@
 					            	<svg id="word-cloud"></svg>
 					            </div>
 						    </div> 
-						    <small>많이 검색된 검색어일수록 크게 보여집니다.</small>
+						    <small class="marginTop60">많이 검색된 검색어일수록 크게 보여집니다.</small>
 						</c:otherwise>
 					</c:choose> 
 		        </div>
@@ -120,7 +120,7 @@
 	   //로딩 중 아이콘 1.6초후 삭제
 		setTimeout(function(){
 			$('.circleLoading').remove();
-		},1600); 
+		},2000); 
 	   
 	 	var width = 850,
 			height = 600;
@@ -158,12 +158,12 @@
 	
 		    d3.layout.cloud().size([width, height])
 		      .words(leaders)
-		      .padding(10)
+		      .padding(8)
 		      //세로 괄호 지정해주는 부분
 		      .rotate(function() { return ~~ Math.random(); })
 		      //.rotate(function() { return ~~(Math.random() * 10) * 90; })
 		      .font("Impact")
-		      .fontSize(function(d) { return leaderScale(d.size*3); })
+		      .fontSize(function(d) { return leaderScale(d.size*1.5); })
 		      .on("end", draw) 
 		      .start(); 
 		   

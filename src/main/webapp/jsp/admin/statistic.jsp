@@ -252,7 +252,7 @@
   			 })
             .duration(200)
             .attr("width", function(d, i) { // 넓이를 지정. 두 번째의 파라미터에 함수를 지정
-               return dataSet[i].value * 10; // 데이터 값을 그대로 넓이로 반환
+               return dataSet[i].value * 5; // 데이터 값을 그대로 넓이로 반환
             })
 		  
             .attr("height", h) // 높이를 지정
@@ -284,6 +284,8 @@
             })
          }
       });
+   
+  
 
    /* 회원 전체의 조회수가 높은 사이트 */
    $.ajax({
