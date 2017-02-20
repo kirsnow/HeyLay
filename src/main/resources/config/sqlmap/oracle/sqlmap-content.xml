@@ -100,6 +100,23 @@
 		WHERE CONTENTS_NO=#{contentsNo} AND MEMBER_NO=#{memberNo}
 	</select>
 	
+	<insert id="insertView" parameterType="contentsVO">
+		INSERT INTO Q_VIEW (NO, MEMBER_NO, CONTENTS_NO, COUNT)
+		VALUES (NEXTVAL('Q_VIEW_NO'),  #{memberNo}, #{contentsNo}, 1)
+	</insert>
+	
+	<update id="updateView" parameterType="contentsVO">
+		UPDATE Q_VIEW
+  		SET COUNT = COUNT + 1 
+  		WHERE CONTENTS_NO=#{contentsNo} AND MEMBER_NO=#{memberNo}
+	</update>
+	
+	<select id="selectView" parameterType="contentsVO" resultType="int">
+		SELECT count(*)
+		FROM Q_VIEW
+		WHERE CONTENTS_NO=#{contentsNo} AND MEMBER_NO=#{memberNo}
+	</select>
+	
 </mapper>
 
 
