@@ -193,7 +193,7 @@ $(document).ready(function() {
 	     function removeDontMiss(){
 	        $('#has-error').removeClass('has-error');
 	        $('#has-error-check').removeClass('has-error');
-	        $('#email_include').text('');
+	        $('#email_eq').text('');
 	     }
 	});
 	

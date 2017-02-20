@@ -43,11 +43,8 @@
   <body>
     <!-- Home Section -->
     <div id="home">
-        <div class="container text-center ">
-            <!-- Navigation -->
-            <h1 class="text-muted">Quration</h1>
-            <div class="row">
-	        	<div class="col-md-14">
+    	 <div class="row text-left ">
+	        	<div class="col-md-12 marginLeft30">
 					<c:choose>
 						<c:when test="${ not empty userVO }"> 
 							<div class="dropdown">
@@ -85,6 +82,10 @@
 					</c:choose> 
 				</div>
 			</div>
+        <div class="container text-center ">
+            <!-- Navigation -->
+            <h1 class="text-muted">Quration</h1>
+           
             <div class="content">
                 <h4>
                 		We've got the special power

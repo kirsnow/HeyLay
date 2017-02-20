@@ -58,7 +58,7 @@
 				<div class="container text-center">
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2">
-							<h4>한 눈에 보는 내 검색어 워드 클라우드</h4>
+							<h4><b>한 눈에 보는 내 검색어 워드 크라우드</b></h4>
 						</div>
 					</div>
 					<c:choose>
@@ -138,10 +138,10 @@
 	
 		    d3.layout.cloud().size([width, height])
 		      .words(leaders)
-		      .padding(0)
-		      .rotate(function() { return ~~(Math.random() * 10) * 90; })
+		      .padding(10)
+		      .rotate(function() { return ~~Math.random(); })
 		      .font("Impact")
-		      .fontSize(function(d) { return leaderScale(d.size); })
+		      .fontSize(function(d) { return leaderScale(d.size)*2; })
 		      .on("end", draw) 
 		      .start(); 
 		   
@@ -158,7 +158,7 @@
 		      .selectAll("text")
 		        .data(words)
 		      .enter().append("text")
-		        .style("font-size", function(d) { return d.size + "px"; })
+		        .style("font-size", function(d) { return (d.size*1) + "px"; })
 		        .style("font-family", "Impact")
 		        .style("fill", function(d, i) { return fill(i); })
 		        .attr("text-anchor", "middle")

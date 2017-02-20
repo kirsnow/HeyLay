@@ -9,19 +9,19 @@ public class SearchVO {
 	private int userNo;
 	private int total;
 	private double maxScore;
-	private List<ContentsVO> contents;
+	private List<ContentsVO> cards;
 	
 	public SearchVO() {
 		super();
 	}
 	
-	public SearchVO(String query, int userNo, int total, double maxScore, List<ContentsVO> contents) {
+	public SearchVO(String query, int userNo, int total, double maxScore, List<ContentsVO> cards) {
 		super();
 		this.query = query;
 		this.userNo = userNo;
 		this.total = total;
 		this.maxScore = maxScore;
-		this.contents = contents;
+		this.cards = cards;
 	}
 
 	public String getQuery() {
@@ -48,17 +48,17 @@ public class SearchVO {
 	public void setMaxScore(double maxScore) {
 		this.maxScore = maxScore;
 	}
-	public List<ContentsVO> getContents() {
-		return contents;
+	public List<ContentsVO> getCards() {
+		return cards;
 	}
-	public void setContents(List<ContentsVO> contents) {
-		this.contents = contents;
+	public void setCards(List<ContentsVO> contents) {
+		this.cards = contents;
 	}
 
 	@Override
 	public String toString() {
 		return "SearchVO [query=" + query + ", userNo=" + userNo + ", total=" + total + ", maxScore=" + maxScore
-				+ ", contents=" + contents + "]";
+				+ ", cards=" + cards + "]";
 	}
 
 }

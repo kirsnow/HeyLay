@@ -53,11 +53,20 @@
         	<c:otherwise>
         		<div class="row">
 					<div class="col-xs-12 lead">
-						<mark><c:out value="${ searchResult.query }" /></mark> 검색결과 ${ searchResult.total }건 :P
+						<a href="${ pageContext.request.contextPath }/search/query.do?q=${ searchResult.query }">
+						<mark><c:out value="${ searchResult.query }" /></mark></a> 검색결과 ${ searchResult.total }건
+					</div>
+					<div class="col-xs-12 lead">
+						<c:forEach var="query" items="${ queryList }" varStatus="loop">
+							<button class="btn ${ query.btnClass }" type="button" disabled="disabled">
+								${ query.token } <span class="badge">${ query.type }</span>
+							</button>
+						</c:forEach>
 					</div>
 				</div>
 				<div class="row">
 					<section class="col-xs-12 col-md-9 card-container mdl-grid">
+						<c:set var="cards" value="${ searchResult.cards }" scope="request" />
 						<jsp:include page="/jsp/component/card.jsp" />
 					</section>
 
