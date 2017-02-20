@@ -143,7 +143,7 @@ public class ContentController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="contents/likeCntUp.do", method=RequestMethod.POST)
+	@RequestMapping(value="/contents/likeCntUp.do", method=RequestMethod.POST)
 	public String likeCntUp(HttpSession session, @RequestParam("contentsNo") int contentsNo) {
 		
 		MemberVO userVO = (MemberVO) session.getAttribute("userVO");

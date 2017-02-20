@@ -15,7 +15,7 @@ public class ContentsVO {
 	private String scrapedDaysAgo;
 	
 	private String language;
-	private char ban;
+	private String ban;
 	
 	/* additional informations */
 	private int viewCnt;		// Q_CONTENTS
@@ -108,10 +108,10 @@ public class ContentsVO {
 	public void setLanguage(String language) {
 		this.language = language;
 	}
-	public char getBan() {
+	public String getBan() {
 		return ban;
 	}
-	public void setBan(char ban) {
+	public void setBan(String ban) {
 		this.ban = ban;
 	}
 	public int getViewCnt() {

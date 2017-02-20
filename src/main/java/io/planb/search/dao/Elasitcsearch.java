@@ -170,7 +170,7 @@ public class Elasitcsearch {
 				String title		  = document.has("title")		 ? document.getString("title")			 : null;
 				String url			  = document.has("url")			 ? document.getString("url")			 : null;
 				String imgUrl		  = document.has("imgurl")		 ? document.getString("imgurl")			 : null;
-				char ban		 	  = document.has("ban")			 ? document.getString("ban").charAt(0)	 : null;
+				String ban		 	  = document.has("ban")			 ? document.getString("ban")	 : null;
 				
 				String sourceUrl = document.has("sourceurl") ? document.getString("sourceurl")	 : null;
 				String dataType	 = document.has("datatype")	 ? document.getString("datatype")	 : "dataType";
@@ -221,7 +221,7 @@ public class Elasitcsearch {
 			}
 			
 			//Save ContentsVO to Contents List
-			if(contentsVO.getBan() == 'N') contentsList.add(contentsVO);
+			if(contentsVO.getBan() == "N") contentsList.add(contentsVO);
 		}
 		return contentsList;
 	}

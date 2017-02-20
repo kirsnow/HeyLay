@@ -5,7 +5,7 @@
 	<select id="selectContents" parameterType="contentsVO" resultType="contentsVO">
 		select CON.NO as contentsNo
 			, CON.TITLE as title, CON.SUMMARY as summary, CON.URL as url
-			, CON.LAST_SCRAPED as scrapedDate
+			, CON.LAST_SCRAPED as scrapedDate, CON.BAN as BAN
 			<include refid="daysAgo">
 				<property name="which_column" value="CON.LAST_SCRAPED"/>
 				<property name="which_name" value="scraped"/>
@@ -23,8 +23,7 @@
 			</if>
  			
 		<where>
- 			CON.BAN = 'N'
-			<if test="contentsNo != 0">and CON.NO = #{contentsNo}</if>
+			<if test="contentsNo != 0"> and CON.NO = #{contentsNo}</if>
 			<if test="memberNo != 0">and SAV.MEMBER_NO = #{memberNo}</if>
 			<if test="savedNo != 0">and SAV.NO = #{savedNo}</if>
  			<if test="sourceNo != 0">and SOU.NO = #{sourceNo}</if>
