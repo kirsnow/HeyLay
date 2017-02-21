@@ -57,14 +57,14 @@
   </head>
   <body>
     <!-- Home Section -->
-    <div id="home">
+    <div id="1">
     	 <div class="row text-left ">
 	        	<div class="col-md-12 marginLeft30">
 					<c:choose>
 						<c:when test="${ not empty userVO }"> 
 							<div class="dropdown">
 								<span class="marginRight">
-									<a href="${ pageContext.request.contextPath }/drawer.do" class="" title="내카드">내 카드</a>
+									<a href="${ pageContext.request.contextPath }/drawer.do" class="" title="내카드">큐레이션</a>
 								</span>
 								
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" title="회원 정보 메뉴 열기">

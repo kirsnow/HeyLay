@@ -62,7 +62,7 @@
 				<!-- page content -->
 				<div class="container text-center">
 					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
+						<div class="col-md-8 col-md-offset-2 marginBottom30">
 							<h4><b>인기 검색어</b></h4>
 						</div>
 					</div>
@@ -73,10 +73,10 @@
 							</div> 
 			            </c:when>
 			       		<c:otherwise> 
-			       			<div class="circleLoading marginTop180 marginBottom100">
+			       			<!-- <div class="circleLoading marginTop180 marginBottom100">
 								<p class="font20">Loading...</p>
 				       			<i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
-							</div>
+							</div> -->
 							<div class="row">
 								<div class="col-md-8 col-md-offset-2">
 					            	<svg id="word-cloud"></svg>
@@ -118,9 +118,9 @@
 	<script>
 	
 	   //로딩 중 아이콘 1.6초후 삭제
-		setTimeout(function(){
+		/* setTimeout(function(){
 			$('.circleLoading').remove();
-		},2000); 
+		},2000);  */
 	   
 	 	var width = 850,
 			height = 600;

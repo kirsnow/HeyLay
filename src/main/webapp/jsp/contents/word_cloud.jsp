@@ -15,6 +15,7 @@
 		width : 1000px;
 		height : 600px;
 	}
+	
 	.circleLoading{
 		 font-size:60px;
 		 color : gray;
@@ -72,16 +73,16 @@
 							 </div> 
 			            </c:when>
 			       		<c:otherwise> 
-			       			<div class="circleLoading marginTop180 marginBottom100">
+			       			<!-- <div class="circleLoading marginTop180 marginBottom100">
 								<p class="font20">Loading...</p>
 				       			<i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
-							</div>
+							</div> -->
 							<div class="row">
 								<div class="col-md-8 col-md-offset-2">
 					            	<svg id="word-cloud"></svg>
 					            </div>
 						    </div> 
-						    <small>많이 검색된 검색어일수록 크게 보여집니다.</small>
+						    <small class="marginTop60">많이 검색된 검색어일수록 크게 보여집니다.</small>
 						</c:otherwise>
 					</c:choose> 
 		        </div>
@@ -96,8 +97,13 @@
 	
 	
 	<!-- for word Cloud d3.js library -->
-    <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
     <script type="text/javascript" src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js"></script> 
+    
+    <%-- <script type="text/javascript" src="${ pageContext.request.contextPath }/js/d3.v3.min.js"></script>
+    <script type="text/javascript" src="${ pageContext.request.contextPath }/js/d3.layout.cloud.js"></script> --%>
+    
+    <%--  <script type="text/javascript" src="${ pageContext.request.contextPath }/js/wordCloud.js"></script> --%>
     
     <!-- jQuery -->
 	<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
@@ -110,9 +116,9 @@
 	<!-- for word Cloud js -->
 	<script>
 	    //로딩 중 아이콘 1.6초후 삭제
-		setTimeout(function(){
+	/* 	setTimeout(function(){
 			$('.circleLoading').remove();
-		},1600); 
+		},1600);  */
 	
      	var width = 850,
 			height = 600;
@@ -150,10 +156,12 @@
 	
 		    d3.layout.cloud().size([width, height])
 		      .words(leaders)
-		      .padding(10)
-		      .rotate(function() { return ~~Math.random(); })
+		      .padding(8)
+		      //세로 괄호 지정해주는 부분
+		      .rotate(function() { return ~~ Math.random(); })
+		      //.rotate(function() { return ~~(Math.random() * 10) * 90; })
 		      .font("Impact")
-		      .fontSize(function(d) { return leaderScale(d.size)*1; })
+		      .fontSize(function(d) { return leaderScale(d.size*1.5); })
 		      .on("end", draw) 
 		      .start(); 
 		   
