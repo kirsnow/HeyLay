@@ -62,7 +62,7 @@
 				<!-- page content -->
 				<div class="container text-center">
 					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
+						<div class="col-md-8 col-md-offset-2 marginBottom30">
 							<h4><b>인기 검색어</b></h4>
 						</div>
 					</div>
@@ -118,9 +118,9 @@
 	<script>
 	
 	   //로딩 중 아이콘 1.6초후 삭제
-		setTimeout(function(){
+		/* setTimeout(function(){
 			$('.circleLoading').remove();
-		},2000); 
+		},2000);  */
 	   
 	 	var width = 850,
 			height = 600;
