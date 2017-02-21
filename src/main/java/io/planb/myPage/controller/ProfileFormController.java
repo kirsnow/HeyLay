@@ -40,19 +40,22 @@ public class ProfileFormController {
 		
 		/* 회원정보 수정 */ 
 		@RequestMapping(value="/update.do", method=RequestMethod.POST)
-		public ModelAndView newPassword(@ModelAttribute MemberVO member, HttpSession session, Model model) {
+		public ModelAndView newPassword(@RequestParam("attachfile") MultipartFile multipartFile, @ModelAttribute MemberVO member, 
+				HttpSession session, Model model) {
 				                  		  
-			
 			MemberVO userVO = (MemberVO) session.getAttribute("userVO");
 			member.setNo(userVO.getNo());
-			member.setQuestion(userVO.getQuestion());
-			member.setAnswer(userVO.getAnswer());
 		
-			service.mypageUpdate(member);
+			String saveFileName = service.mypageUpdate(multipartFile, member);
+			
+//			System.out.println(multipartFile + ":" + member);
 			
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("myPage/profile_form");
 			mav.addObject("userVO",member);
+			
+			userVO.setProfileImg(saveFileName);
+			session.setAttribute("userVO", userVO);
 			
 			return mav;	
 		}

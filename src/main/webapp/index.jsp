@@ -68,7 +68,9 @@
 								</span>
 								
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" title="회원 정보 메뉴 열기">
-									<i class="fa fa-user-circle-o fa-2x fa-lg" aria-hidden="true"></i><span class="caret"></span>
+									<img id="blah" src="/Quration/upload/${userVO.profileImg}" 
+										alt="your image" class="img-circle profile_img" style="width: 30px; height: 30px;"/>
+									<span class="caret"></span>
 								</a>	
 							
 								<ul class="dropdown-menu list-unstyled" role="menu">
