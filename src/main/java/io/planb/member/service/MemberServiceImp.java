@@ -70,7 +70,7 @@ public class MemberServiceImp implements MemberService {
 	public String mypageUpdate(MultipartFile multipartFile, MemberVO member) {
 
 		// 실행되는 웹어플리케이션의 실제 경로 가져오기
-		String uploadDir = servletContext.getRealPath("/upload/");
+		String uploadDir = "D:/Lecture/git/heylay/src/main/webapp/upload";
 		// System.out.println("uploadDir : " + uploadDir);
 
 		// ModelAndView mav = new ModelAndView("file/uploadResult");

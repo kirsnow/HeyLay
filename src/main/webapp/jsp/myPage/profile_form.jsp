@@ -16,8 +16,11 @@
 <link href="${ pageContext.request.contextPath }/css/ssh.css"
 	type="text/css" rel="stylesheet">
 
-<script src="${ pageContext.request.contextPath }/js/h5utils.js"></script>
-
+<!-- jQuery -->
+<script
+	src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
+	<!-- Bootstrap -->
+<script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
 <!-- icon-font -->
 <script src="https://use.fontawesome.com/bbddce3010.js"></script>
 
@@ -229,8 +232,6 @@
 		}
 	</script>
 
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-
 	<script>
 		console.log('${userVO.gender}');
 		if ('${userVO.gender}' == 'M') {
@@ -274,7 +275,5 @@
 
 	<!-- Google reCAPTCHA API : 로봇이 아닙니다. -->
 	<script src='https://www.google.com/recaptcha/api.js'></script>
-	<script
-		src="${ pageContext.request.contextPath }/js/prettify.packed.js"></script>
 </body>
 </html>
