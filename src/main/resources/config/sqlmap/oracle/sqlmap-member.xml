@@ -7,7 +7,7 @@
 	<select id="login" parameterType="memberVO" resultType="memberVO">
 	    SELECT	* 
 		FROM 	(SELECT no, email, password, last_name as lastName, first_name as firstName, type, birth, gender, 
-		   				email_receive as emailReceive, country, city, question, answer
+		   				email_receive as emailReceive, country, city, question, answer, profile_img as profileImg
 				 FROM Q_member
 				 WHERE email = #{ email }) mm, 
 				(SELECT COUNT(*) selectKeywords 
@@ -73,7 +73,7 @@
 		update Q_member
 	 	set last_name = #{lastName} , first_name = #{firstName}, 
 	    		gender = #{gender} ,email_receive = #{emailReceive}, 
-	    		country = #{country}, city = #{city}
+	    		country = #{country}, city = #{city}, profile_img = #{profileImg}
 	 	where no = #{no} and password= #{password}
 	</update> 
 	

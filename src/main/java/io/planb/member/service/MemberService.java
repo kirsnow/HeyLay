@@ -3,6 +3,9 @@ package io.planb.member.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import org.springframework.web.multipart.MultipartFile;
+
 import io.planb.leaved.vo.LeavedVO;
 import io.planb.drawer.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
@@ -32,7 +35,7 @@ public interface MemberService {
 
 	public void changePw(MemberVO member);										//비밀번호 변경
 
-	public void mypageUpdate(MemberVO member);									//회원 정보 수정 및 파일 업로드
+	public String mypageUpdate(MultipartFile multipartFile, MemberVO member);									//회원 정보 수정 및 파일 업로드
 
 	public List<KeywordsVO> selectInterestList();								//관심 키워드 선택지 호출
 

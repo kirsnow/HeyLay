@@ -67,15 +67,17 @@ public class MemberServiceImp implements MemberService {
 	}
 
 	@Override
-	public void mypageUpdate(MemberVO member) {
+	public String mypageUpdate(MultipartFile multipartFile, MemberVO member) {
 
-		/*// 실행되는 웹어플리케이션의 실제 경로 가져오기
+		// 실행되는 웹어플리케이션의 실제 경로 가져오기
 		String uploadDir = servletContext.getRealPath("/upload/");
 		// System.out.println("uploadDir : " + uploadDir);
 
 		// ModelAndView mav = new ModelAndView("file/uploadResult");
 
 		// System.out.println("OwnerServiceImp id : " + owner.getId());
+		
+		String saveFileName = "";
 
 		if (!multipartFile.isEmpty()) {
 
@@ -99,7 +101,7 @@ public class MemberServiceImp implements MemberService {
 				// System.out.println("파일 사이즈 : " + fileSize);
 
 				// 고유한 파일명 만들기
-				String saveFileName = "quration-" + UUID.randomUUID().toString() + ext;
+				saveFileName = "quration-" + UUID.randomUUID().toString() + ext;
 				// System.out.println("저장할 파일명 : " + saveFileName);
 
 				// 임시저장된 파일을 원하는 경로에 저장
@@ -111,12 +113,14 @@ public class MemberServiceImp implements MemberService {
 
 				member.setProfileImg(saveFileName);
 
-				// System.out.println("Service notice : " + notice);
+//				System.out.println("saveFileName : " + saveFileName);
 				// System.out.println("Service noticeAttach : " + noticeAttach);
-*/
+
 				dao.mypageUpdate(member);
-		/*	}
-		}*/
+				
+			}
+		}
+		return saveFileName;
 	}
 
 	@Override
