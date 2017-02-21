@@ -40,6 +40,20 @@
 	  ga('create', 'UA-90558257-1', 'auto');
 	  ga('send', 'pageview');
 	</script>
+	
+	<style>
+	a.up-btn span.fa.fa-angle-up{
+	font-size: 26px;
+	border: 1px solid #039BE5;
+	border-radius: 2px;
+	padding: 7px 5px;
+	position: relative;
+	cursor: pointer;
+	color: #039BE5;
+	margin-top: 30px;
+	}
+	
+	</style>
   </head>
   <body>
     <!-- Home Section -->
@@ -174,6 +188,9 @@
             <a href="#about-us" class="down-btn page-scroll">
                 <span class="fa fa-angle-down"></span>
             </a>
+            <a href="#home" class="up-btn page-scroll">
+                <span class="fa fa-angle-up"></span>
+            </a>
         </div>
     </div>
 
@@ -199,7 +216,7 @@
                 </div>
             </div>
             <div class="space"></div>
-            <div class="row">
+            <div class="row text-center">
                 <div class="col-md-12 col-sm-10">
                     <div class="row">
                         <div class="col-md-3 col-sm-3">
@@ -241,11 +258,15 @@
                                 <h4>Jo Eunryang</h4>
                                 <p class="small">Developer</p>
                                 <hr>
+	
                             </div>
                         </div>
-
                     </div>
+                    <a href="#services" class="up-btn page-scroll">
+		                <span class="fa fa-angle-up"></span>
+		            </a>
                 </div>
+                
             </div>
         </div>
     </div>
