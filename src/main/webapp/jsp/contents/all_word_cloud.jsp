@@ -63,7 +63,7 @@
 				<div class="container text-center">
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2">
-							<h4><b>한 눈에 보는 인기 검색어 워드 클라우드</b></h4>
+							<h4><b>인기 검색어</b></h4>
 						</div>
 					</div>
 					<c:choose>

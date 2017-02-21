@@ -64,6 +64,14 @@
 		AND search_result > 0 
 	</select>
 	
+	<select id="selectKeywordList" parameterType="int" resultType="keywordsVO">
+		  select no, keyword, reg_date as regDate
+			from q_keywords
+			where status='Y' and member_no = #{ memberNo }
+			ORDER BY regDate DESC
+			LIMIT 50
+	</select> 
+	
 	<select id="selectCustomCuration" parameterType="String" resultType="contentsVO">
 		SELECT CO.NO contentsNo, CO.TITLE as title, CO.SUMMARY as summary, CO.URL as url
 			, CO.VIEW_CNT as viewCnt

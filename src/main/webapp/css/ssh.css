@@ -132,6 +132,10 @@
     	font-size: 20px;
     }
     
+    .grayfont{
+    	color : gray;
+    }
+    
     .ajaxFont{
     	font-size: 10px;
     	color: red;
