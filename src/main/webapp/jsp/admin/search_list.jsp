@@ -47,7 +47,7 @@ L5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 
 				<div class="container text-center">
 					<div class="row marginBottom">
-						<h4 class="col-md-6 col-md-offset-3">유저 검색어 Top 50</h4>
+						<h4 class="col-md-6 col-md-offset-3"><b>유저 검색어 랭킹</b></h4>
 					</div>
 					<div class="row">
 						<c:choose>
@@ -60,7 +60,7 @@ L5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 								<dl>
 								<c:forEach var="keyword" items="${ allKeywordList }" varStatus="loop">
 									<dt class="col-md-6 col-md-offset-4 text-left"><c:out value="${loop.count}"/>.&nbsp;&nbsp;${ keyword.keyword }</dt>
-									<dd class="col-md-1 col-md-pull-3">${ keyword.cnt }번&nbsp;&nbsp;검색됨</dd>
+									<dd class="col-md-2 col-md-pull-3">${ keyword.cnt }번&nbsp;&nbsp;검색됨</dd>
 									<hr class="col-md-6 col-md-offset-3 "/>
 								</c:forEach>
 								</dl>

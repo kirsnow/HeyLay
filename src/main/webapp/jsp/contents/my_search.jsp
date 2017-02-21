@@ -46,7 +46,7 @@
 				<div class="container text-center">
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2">
-							<h4 class="marginBottom30">나의 검색어 히스토리</h4>
+							<h4 class="marginBottom30"><b>내 검색어 히스토리</b></h4>
 						</div>
 					</div>
 					<div class="row">
