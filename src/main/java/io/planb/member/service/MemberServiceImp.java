@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import io.planb.leaved.vo.LeavedVO;
+import io.planb.contents.dao.ContentDAO;
 import io.planb.drawer.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.dao.MemberDAO;
@@ -25,6 +26,8 @@ public class MemberServiceImp implements MemberService {
 
 	@Autowired
 	private MemberDAO dao;
+	@Autowired
+	private ContentDAO conDao;
 
 	@Autowired
 	private ServletContext servletContext;
@@ -52,8 +55,16 @@ public class MemberServiceImp implements MemberService {
 	}
 
 	@Override
-	public void withdraw(int no) {
-		dao.withdraw(no);
+	public void withdraw(MemberVO member) {
+		int no = member.getNo();
+		System.out.println(no);
+		conDao.leavedKeyword(no);
+		conDao.leavedLike(no);
+		conDao.leavedSave(no);
+		conDao.leavedView(no);
+		conDao.leavedDir(no);
+		
+		dao.withdraw(member);
 	}
 
 	@Override
@@ -70,7 +81,7 @@ public class MemberServiceImp implements MemberService {
 	public String mypageUpdate(MultipartFile multipartFile, MemberVO member) {
 
 		// 실행되는 웹어플리케이션의 실제 경로 가져오기
-		String uploadDir = "D:/Lecture/git/heylay/src/main/webapp/upload";
+		String uploadDir = servletContext.getRealPath("/upload/");
 		// System.out.println("uploadDir : " + uploadDir);
 
 		// ModelAndView mav = new ModelAndView("file/uploadResult");

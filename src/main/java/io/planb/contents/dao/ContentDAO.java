@@ -97,5 +97,25 @@ public class ContentDAO {
 	public void updateView(ContentsVO view) {
 		sqlSessionTemplate.insert("io.planb.contents.dao.ContentDAO.updateView", view);
 	}
+	
+	public void leavedKeyword(int memberNo) {
+		sqlSessionTemplate.update("io.planb.contents.dao.ContentDAO.leavedKeyword", memberNo);
+	}
+	
+	public void leavedLike(int memberNo) {
+		sqlSessionTemplate.update("io.planb.contents.dao.ContentDAO.leavedLike", memberNo);
+	}
+	
+	public void leavedView(int memberNo) {
+		sqlSessionTemplate.update("io.planb.contents.dao.ContentDAO.leavedView", memberNo);
+	}
+	
+	public void leavedSave(int memberNo) {
+		sqlSessionTemplate.update("io.planb.contents.dao.ContentDAO.leavedSave", memberNo);
+	}
+	
+	public void leavedDir(int memberNo) {
+		sqlSessionTemplate.update("io.planb.contents.dao.ContentDAO.leavedDir", memberNo);
+	}
 
 }
