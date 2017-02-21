@@ -186,7 +186,8 @@
 	<Footer>
 		<jsp:include page="/jsp/include/footer.jsp" />
 	</Footer>
-
+	
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script>
 		function checkForm() {
 
