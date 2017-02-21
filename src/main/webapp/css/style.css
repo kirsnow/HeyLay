@@ -71,7 +71,7 @@ a:focus{
 	padding-top: 60px;
 	color: #ffffff;
 }
-#home a.down-btn span.fa.fa-angle-down {
+#home a.down-btn span.fa.fa-angle-down{
 	font-size: 26px;
 	border: 1px solid #039BE5;
 	border-radius: 2px;
