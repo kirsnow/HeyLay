@@ -67,9 +67,19 @@
 					<c:choose>
 						<c:when test="${ not empty userVO }"> 
 							<div class="dropdown marginTop20 marginRight30">
-								<span class="marginRight">
-									<a href="${ pageContext.request.contextPath }/drawer.do" class="" title="내카드">큐레이션</a>
-								</span>
+								<c:choose>
+									<c:when test="${ userVO.type eq 'A'}">
+										<span class="marginRight">
+											<a href="${ pageContext.request.contextPath }/jsp/admin/member_list.do"> 
+											<i class="fa fa-user-secret fa-fw" aria-hidden="true"></i> 관리자 페이지</a>
+										</span>
+									</c:when>
+									<c:otherwise>
+										<span class="marginRight">
+											<a href="${ pageContext.request.contextPath }/drawer.do" class="" title="내카드">큐레이션</a>
+										</span>
+									</c:otherwise>
+								</c:choose>
 								
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" title="회원 정보 메뉴 열기">
 									<img id="blah" src="/Quration/upload/${userVO.profileImg}" 
@@ -84,11 +94,6 @@
 									<li><a href="${ pageContext.request.contextPath }/myPage/original_password.do"> <i class="fa fa-lock fa-fw"
 											aria-hidden="true"></i> 비밀번호 변경
 									</a></li>
-									<c:if test="${ userVO.type eq 'A'}">
-										<li><a href="${ pageContext.request.contextPath }/jsp/admin/member_list.do"> 
-											<i class="fa fa-user-secret fa-fw" aria-hidden="true"></i> 관리자 페이지
-										</a></li>
-									</c:if>
 									<li class="divider"></li>
 									<li><a href="${ pageContext.request.contextPath }/login/logout.do"> <i class="fa fa-sign-out fa-fw"
 											aria-hidden="true"></i> 로그아웃</a>

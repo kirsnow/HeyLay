@@ -66,14 +66,11 @@ public class DrawerController {
 		card.setContentsNo(contentsNo);
 		card.setDirectoryNo(dirNo);
 		card.setDirectoryName(dirName);
-		contentService.saveCard(card);
 		
-		if(memoMessage != null) {
-			MemoVO memo = new MemoVO();
-			memo.setMemberNo(userNo);
-			memo.setContentsNo(contentsNo);
-			memo.setMessage(memoMessage);
-			memoService.addMemo(memo);
+		service.saveCard(card);
+		System.out.println("memoMessage: " + memoMessage);
+		if(memoMessage != null && !memoMessage.equals("")) {
+			MemoVO added = memoService.addMemo(userNo, contentsNo, memoMessage);
 		}
 		
 		return "succeed";
