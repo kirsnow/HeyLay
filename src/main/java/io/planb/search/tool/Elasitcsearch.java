@@ -1,4 +1,4 @@
-package io.planb.search.dao;
+package io.planb.search.tool;
 
 import java.io.IOException;
 import java.net.URLDecoder;
@@ -11,7 +11,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import io.planb.contents.vo.ContentsVO;
-import io.planb.search.vo.QueryVO;
 import io.planb.search.vo.SearchVO;
 import io.planb.tools.JsonReader;
 
@@ -190,8 +189,6 @@ public class Elasitcsearch {
 				contentsVO.setCategoryName(category);
 				contentsVO.setDataTypeName(dataType);
 				contentsVO.setScrapedDaysAgo(lastscraped);
-				
-				
 			}
 			
 			JSONObject highlights = results.has("highlight") ? results.getJSONObject("highlight") : null;
@@ -219,65 +216,10 @@ public class Elasitcsearch {
 					contentsVO.setSummary(summary);
 				}
 			}
-			
 			//Save ContentsVO to Contents List
-			if(contentsVO.getBan() == "N") contentsList.add(contentsVO);
+			if(contentsVO.getBan().equals("N")) contentsList.add(contentsVO);
 		}
 		return contentsList;
 	}
 
-	public List<QueryVO> analyzeQuery(String q) {
-		List<QueryVO> queryList = null;
-		
-		try {
-			q = URLDecoder.decode(q, "UTF-8");
-			q = URLEncoder.encode(q, "UTF-8");
-			String restAPI = "http://" + searchIP + ":9200/contents/_analyze?analyzer=korean&pretty=pretty&text=" + q;
-			
-			JsonReader jsonReader = new JsonReader();
-			JSONObject json = jsonReader.readJsonFromUrl(restAPI);
-			
-			if(json != null) {
-				queryList = new ArrayList<QueryVO>();
-				
-				JSONArray tokens = json.getJSONArray("tokens");
-				
-				for(int i=0; i<tokens.length(); i++) {
-					QueryVO query = new QueryVO();
-					JSONObject tokenObj = tokens.getJSONObject(i);
-					String token = tokenObj.has("token") ? tokenObj.getString("token") : null;
-					token = token.substring(0, token.indexOf('/'));
-					String type = tokenObj.has("type") ? tokenObj.getString("type") : null;
-					int start = tokenObj.has("start_offset") ? tokenObj.getInt("start_offset") : 0;
-					int end = tokenObj.has("end_offset") ? tokenObj.getInt("end_offset") : 0;
-					int position = tokenObj.has("position") ? tokenObj.getInt("position") : 0;
-					String btnClass = this.getBtnClassStyle(type);
-					
-					query.setToken(token);
-					query.setType(type);
-					query.setBtnClass(btnClass);
-					query.setStart(start);
-					query.setEnd(end);
-					query.setPosition(position);
-					
-					queryList.add(query);
-				}
-			}
-			
-		} catch (JSONException | IOException e) {
-			e.printStackTrace();
-			return null;
-		}
-		return queryList;
-	}
-	
-
-	public String getBtnClassStyle(String type) {
-		switch(type) {
-		case "N": return "btn-noun";
-		case "V": return "btn-verb";
-		case "EOJ": return "btn-eoj";
-		default: return "btn-default";
-		}
-	}
 }
