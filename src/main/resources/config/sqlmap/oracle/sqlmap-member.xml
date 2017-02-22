@@ -137,4 +137,10 @@
 		FROM q_contents_saved
 		WHERE member_no = #{ memberNo } 
 	</select>
+	
+	<select id="selectType" parameterType="int" resultType="String">
+		SELECT TYPE
+		FROM Q_MEMBER
+		WHERE no = #{ no }
+	</select>
 </mapper>

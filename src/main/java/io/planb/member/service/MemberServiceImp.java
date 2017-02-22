@@ -210,4 +210,10 @@ public class MemberServiceImp implements MemberService {
 		email = dao.checkEmail(email);
 		 return email;
 	}
+
+	@Override
+	public String selectType(int no) {
+		String type = dao.selectType(no);
+		return type;
+	}
 }

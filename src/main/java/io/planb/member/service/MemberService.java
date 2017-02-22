@@ -50,5 +50,7 @@ public interface MemberService {
 	public String selectMemberPassword(MemberVO member);						//비밀번호 찾기
 
 	public String checkEmail(String email);										//계정 중복 확인
+	
+	public String selectType(int no);
 
 }

@@ -144,4 +144,10 @@ public class MemberDAOImp implements MemberDAO {
 		email = sqlSessionTemplate.selectOne("io.planb.member.dao.MemberDAO.checkEmail", email);
 	return email;
 	}
+
+	@Override
+	public String selectType(int no) {
+		String type = sqlSessionTemplate.selectOne("io.planb.member.dao.MemberDAO.selectType", no);
+		return type;
+	}
 }

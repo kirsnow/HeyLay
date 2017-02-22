@@ -70,10 +70,15 @@ public class MembershipController {
 	}
 	
 	@RequestMapping(value="/contents/update_type.do", method=RequestMethod.POST)
-	public String updateType(Model model, @RequestParam("no") int no) {
+	public String updateType(HttpSession session, @RequestParam("no") int no) {
+		
+		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
 		
 		service.updateType(no);
-		System.out.println("controller : " + no);
+		String type = service.selectType(no);
+		
+		userVO.setType(type);
+		session.setAttribute("userVO", userVO);
 		return "redirect:/";
 	}
 	

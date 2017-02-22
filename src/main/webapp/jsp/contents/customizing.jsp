@@ -26,17 +26,32 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+<!-- jQuery -->
+	<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
+	<!-- Bootstrap -->
+	<script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
 
+	<!-- Custom Theme Scripts -->
+	<script src="${ pageContext.request.contextPath }/js/custom.min.js"></script>
 <!-- google analytics -->
 <script>
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	
+	(function(i, s, o, g, r, a, m) {
+		i['GoogleAnalyticsObject'] = r;
+		i[r] = i[r] || function() {
+			(i[r].q = i[r].q || []).push(arguments)
+		}, i[r].l = 1 * new Date();
+		a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore(a, m)
+	})(window, document, 'script',
+			'https://www.google-analytics.com/analytics.js', 'ga');
+
 	ga('create', 'UA-90558257-1', 'auto');
 	ga('send', 'pageview');
 </script>
+
 </head>
 <style>
 #freemium {
@@ -46,6 +61,7 @@
 #premium {
 	background-color: #BDBDBD;
 }
+
 .underline {
 	text-decoration: line-through;
 }
@@ -66,14 +82,16 @@
 
 				<div class="container">
 
-					<div class="row"> 
-						<div class="page-header text-center col-md-6 col-md-offset-3 marginBottom">
+					<div class="row">
+						<div
+							class="page-header text-center col-md-6 col-md-offset-3 marginBottom">
 							<h1>회원별 커스터마이징</h1>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-4 col-md-offset-2">
-							<h4 class="optionTitle page-header text-center">Quration Plus option</h4>
+							<h4 class="optionTitle page-header text-center">Quration
+								Plus option</h4>
 							<div class="well well-lg paddingleft70" id="freemium">
 								<p>1. 카드 검색</p>
 								<p>2. 카드 저장</p>
@@ -84,14 +102,16 @@
 								<p class="underline">7. 이중 잠금(자체 잠금)</p>
 								<p class="underline">8. 고급 통계</p>
 								<p class="underline">9. 광고 없음</p>
-								<hr/>
-									<h4>무료</h4>
-								<hr/>
+								<hr />
+								<h4>무료</h4>
+								<hr />
 							</div>
 						</div>
 						<div class="col-md-4">
-							<h4 class="optionTitle page-header text-center">Quration premium option</h4>
-							<div class="col-md-push-1 well well-lg paddingleft70" id="premium">
+							<h4 class="optionTitle page-header text-center">Quration
+								premium option</h4>
+							<div class="col-md-push-1 well well-lg paddingleft70"
+								id="premium">
 								<p>1. 카드 검색</p>
 								<p>2. 카드 저장</p>
 								<p>3. 카테고리 관리</p>
@@ -101,9 +121,9 @@
 								<p>7. 이중 잠금(자체 잠금)</p>
 								<p>8. 고급 통계</p>
 								<p>8. 광고 없음</p>
-								<hr/>
-									<h4>₩30,000 /년</h4>
-								<hr/>
+								<hr />
+								<h4>₩30,000 /년</h4>
+								<hr />
 							</div>
 						</div>
 					</div>
@@ -114,7 +134,7 @@
 							<h4>나만의 커스터 마이징을 시작해보세요~</h4>
 						</div>
 						<div class="row text-center">
-							<a href="${ pageContext.request.contextPath }/contents/upgrade.do" class="btn btn-primary">커스터 마이징 시작하기</a>
+							<a href="javascript:doAction()" class="btn btn-primary type" id="${ userVO.type }">커스터 마이징 시작하기</a>
 						</div>
 					</div>
 				</div>
@@ -128,13 +148,20 @@
 		</div>
 	</div>
 
-
-	<!-- jQuery -->
-	<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
-	<!-- Bootstrap -->
-	<script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
-
-	<!-- Custom Theme Scripts -->
-	<script src="${ pageContext.request.contextPath }/js/custom.min.js"></script>
+	<script type="text/javascript">
+		function doAction() {
+			var type = $('.type').attr("id");
+			
+			if(type == 'F') {
+				location.href = "${ pageContext.request.contextPath }/contents/upgrade.do";
+			} else if (type == 'P') {
+				alert("이미 프리미엄 회원입니다.");
+			} else if (type == 'A') {
+				alert("관리자 회원은 프리미엄 타입으로 변경 불가능 합니다.");
+			} else {
+				alert("정상적인 경로로 로그인하시고 다시 실행해 주시기 바랍니다.");
+			}
+		}
+	</script>
 </body>
 </html>
