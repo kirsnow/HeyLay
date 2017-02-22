@@ -104,7 +104,7 @@
                   <div class="col-md-12">
                      <div class="col-md-4 panel border10px">
                         <h4 class="text-center marginBottom30 grayfont"><b>회원 전체의 조회수가 높은 사이트</b></h4>
-                        <svg class="col-md-10 marginBottom col-md-offset-3" id="myGraph4"></svg>
+                        <svg class="col-md-14 marginBottom col-md-offset-3" id="myGraph4"></svg>
                      </div>
                      <div class="col-md-8 panel border10px ">
                         <h4 class="text-center marginBottom30 grayfont"><b>회원 전체의 조회수가 높은 콘텐츠</b></h4>
