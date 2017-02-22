@@ -241,6 +241,7 @@
    }
    
    /* Morpheme analysis */
+
    /* btn-noun */
    .btn-noun {
 	    color: #FFFFFF;
@@ -307,3 +308,9 @@
 	    background-color: #FFFFFF
 	}
 	
+   .text-noun { color: #00BCD4 }
+   .text-verb { color: #8BC34A }
+   .text-eoj  { color: #009688 }
+   .text-adverb { color: #3F51B5 }
+   .text-anyfix { color: #673AB7 }
+
