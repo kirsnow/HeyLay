@@ -129,8 +129,13 @@
 						<!-- /input-group -->
 					</div>
 				</form>
-                <hr>
-                <div id="recommandKeyword"></div>
+                <div id="recommandKeyword" class="marginTop20 font20">
+                	추천 검색어<span class="marginLeft marginRight">:</span> 
+                	       <span class="spanPadding" >Java</span>  
+                	       <span class="spanPadding">ElasticSearch</span>  
+                	       <span >Python</span>
+                </div>
+                
             </div>
             <div class="content">
 	            <a href="#services" class="down-btn page-scroll ">
