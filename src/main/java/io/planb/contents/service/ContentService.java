@@ -45,6 +45,14 @@ public class ContentService {
 	public ContentsVO getContentsDetail(int contentsNo, String q) {
 		ContentsVO contents = getContentsByNo(contentsNo);
 		contents = searchService.highlighter(contents, q);
+		
+		if(contents != null) {
+			//이전, 이후 콘텐츠 번호 추출
+			int prevContentsNo = dao.getPrevContentsNo(contentsNo);
+			int nextContentsNo = dao.getNextContentsNo(contentsNo);
+			if(prevContentsNo > 0) contents.setPrevContentsNo(prevContentsNo);
+			if(nextContentsNo > 0) contents.setNextContentsNo(nextContentsNo);
+		}
 		return contents;
 	}
 	

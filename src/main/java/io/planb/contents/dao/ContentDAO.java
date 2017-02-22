@@ -31,6 +31,30 @@ public class ContentDAO {
 		return savedCards;
 	}
 	
+	public int getPrevContentsNo(int contentsNo) {
+		int prevContentsNo = 0;
+		try {
+			prevContentsNo = sqlSessionTemplate.selectOne("io.planb.dao.ContentDAO.selectPrevContents", contentsNo);
+		} catch(NullPointerException np) {
+			prevContentsNo = -1;
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return prevContentsNo;
+	}
+	
+	public int getNextContentsNo(int contentsNo) {
+		int nextContentsNo = 0;
+		try {
+			nextContentsNo = sqlSessionTemplate.selectOne("io.planb.dao.ContentDAO.selectNextContents", contentsNo);
+		} catch(NullPointerException np) {
+			nextContentsNo = -1;
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return nextContentsNo;
+	}
+	
 	public List<KeywordsVO> selectKeywordList(int memberNo) {
 		List<KeywordsVO> keywordList = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.selectKeywordList", memberNo);
 		

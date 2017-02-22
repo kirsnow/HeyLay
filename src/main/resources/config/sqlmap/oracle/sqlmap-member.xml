@@ -49,10 +49,10 @@
 	</select>
 
 	<update id="withdraw" parameterType="memberVO" >
-		update Q_member
+		update Q_members
 		set email =#{no}, password =' ', last_name =' ' , first_name  =' ', 
 		    birth =null, gender =null ,email_receive =null, country =null, 
-		    city =null, question =#{question}, answer  =' ', type=' ', rest =null, ban = null,
+		    city =null, question =#{question}, answer  =' ', type='X', rest =null, ban = null,
 	       	reg_date = null, last_date =null, profile_img = null, report_cnt = null
 		where no= #{no}
 	</update>
