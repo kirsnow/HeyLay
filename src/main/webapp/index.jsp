@@ -53,9 +53,9 @@
    color: #ffffff;
 }
 
-    .btn-border-main {
+/*     .btn-border-main {
     border: 1px solid #FFFFFF;
-}
+} */
 
   </style>
   </head>
@@ -100,7 +100,7 @@
 						<div class="row marginRight30">
 							<div class="marginTop20">
 							    <div class="pull-right ">
-									<span><a href="${ pageContext.request.contextPath }/membership/membership.do" class="marginRight"> 회원가입</a>  </span>
+									<span><a href="${ pageContext.request.contextPath }/membership/agreement.do" class="marginRight"> 회원가입</a>  </span>
 									<span><a href="${ pageContext.request.contextPath }/login/login.do" class=""> 로그인</a>  </span>
 							    </div>
 						    </div>
@@ -130,6 +130,7 @@
 					</div>
 				</form>
                 <hr>
+                <div></div>
             </div>
             <div class="content">
 	            <a href="#services" class="down-btn page-scroll ">

@@ -265,7 +265,7 @@
 
 [부 칙] 
 
-이 약관은 2017년 03월 20일부터 시행합니다.
+이 약관은 2017년 03월 06일부터 시행합니다.
 
             </textarea>
             <div class="marginTop marginBottom">
@@ -409,7 +409,7 @@ Quration 내의 개별 서비스 이용, 이벤트 응모 및 경품 신청 과�
 상호: 큐레이션 주식회사
 주소: 서울 서초구 서초대로74길 33 비트빌 3층
 전화번호: 02-3486-3456
-이메일 주소: quration@quration.com
+이메일 주소: quration@quration.io
 
 부칙
 제1조 시행일
@@ -418,13 +418,13 @@ Quration 내의 개별 서비스 이용, 이벤트 응모 및 경품 신청 과�
 회사는 다음과 같이 위치정보 관리책임자를 지정하여 이용자들이 서비스 이용과정에서 발생한 민원사항 처리를 비롯하여 개인위치정보 주체의 권리 보호를 위해 힘쓰고 있습니다.
 위치정보 관리책임자 : (개인)정보보호 담당 부서 임원(개인정보 보호책임자 겸직)
 전화번호 : 02-3486-3456
-이메일 주소 : privacy@quration.com             
+이메일 주소 : privacy@quration.io            
             </textarea>
         </section>	
         <div class="row">
             <div class="col-md-6 col-md-offset-3 text-center marginTop marginBottom">
-                <a href="#" class="btn btn-primary marginRight" title="회원가입 페이지 이동 링크" role="button">동의</a>
-                <a href="#" class="btn btn-default" title="홈 화면 이동 링크" role="button">홈으로</a>
+                <a href="${ pageContext.request.contextPath }/membership/membership.do" class="btn btn-primary marginRight" title="회원가입 페이지 이동 링크" role="button">동의</a>
+                <a href="${pageContext.request.contextPath}/" class="btn btn-default" title="홈 화면 이동 링크" role="button">홈으로</a>
             </div>
         </div>
     </div> 
