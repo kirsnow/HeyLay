@@ -13,16 +13,16 @@
    		margin-right: 15px;
    	}
    
+   	.marginRight30{
+   		margin-right: 30px;
+   	}
+   	
    	.marginLeft {
    		margin-left: 10px;
    	}
 
    	.marginLeft30 {
    		margin-left: 30px;
-   	}
-   	
-   	.marginRight30{
-   		margin-right: 30px;
    	}
    	
 	.paddingleft30{
@@ -306,3 +306,4 @@
 	    color: #8BC34A;
 	    background-color: #FFFFFF
 	}
+	

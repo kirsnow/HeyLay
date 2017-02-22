@@ -48,20 +48,25 @@
    background-position: center;
    background-repeat: no-repeat;
    background-attachment: fixed;
-   height: 650px;
+   height: 710px;
    max-height: 710px;
    color: #ffffff;
 }
+
+    .btn-border-main {
+    border: 1px solid #FFFFFF;
+}
+
   </style>
   </head>
   <body>
     <!-- Home Section -->
     <div id="main">
-    	 <div class="row text-left">
-	        	<div class="col-md-12 marginLeft30">
+    	 <div class="row text-right">
+	        	<div class="col-md-12">
 					<c:choose>
 						<c:when test="${ not empty userVO }"> 
-							<div class="dropdown">
+							<div class="dropdown marginTop20 marginRight30">
 								<span class="marginRight">
 									<a href="${ pageContext.request.contextPath }/drawer.do" class="" title="내카드">큐레이션</a>
 								</span>
@@ -72,7 +77,7 @@
 									<span class="caret"></span>
 								</a>	
 							
-								<ul class="dropdown-menu list-unstyled" role="menu">
+								<ul class="dropdown-menu list-unstyled pull-right" role="menu">
 									<li><a href="${ pageContext.request.contextPath }/myPage/mypage.do"> <i class="fa fa-vcard-o fa-fw"
 											aria-hidden="true"></i> 회원 정보 수정
 									</a></li>
@@ -93,10 +98,10 @@
 						</c:when>
 						<c:otherwise> 
 						<div class="row marginRight30">
-							<div class="col-md-11 marginTop20">
-							    <div class="pull-right">
-									<span><a href="${ pageContext.request.contextPath }/membership/membership.do" class="btn btn-primary"> 회원가입</a>  </span>
-									<span><a href="${ pageContext.request.contextPath }/login/login.do" class="btn btn-default"> 로그인</a>  </span>
+							<div class="marginTop20">
+							    <div class="pull-right ">
+									<span><a href="${ pageContext.request.contextPath }/membership/membership.do" class="marginRight"> 회원가입</a>  </span>
+									<span><a href="${ pageContext.request.contextPath }/login/login.do" class=""> 로그인</a>  </span>
 							    </div>
 						    </div>
 						</div>
@@ -108,16 +113,29 @@
             <!-- Navigation -->
             <h1 class="text-muted">Quration</h1>
             
-            <div class="content">
+            <div class="content row">
+	            <form class="form-inline" action="${pageContext.request.contextPath }/search/result.do" method="get" role="search">
+					<div class="form-group row">
+						<div class="input-group col-md-12">
+							<div>
+								<input type="search"  style="background-color:transparent" size="60" name="q" class="form-control input-lg" alt="검색어 입력" value="${ searchQuery }" placeholder="검색어 입력"/> 
+								<span>
+									<button type="submit" class="btn btn-primary input-lg btn-border-main" title="검색 실행">
+										<i class="fa fa-search fa-2x fa-fw" aria-hidden="true"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+						<!-- /input-group -->
+					</div>
+				</form>
                 <hr>
-                <div class="header-text btn">
-                    <h1 style="color: white"><a href="${ pageContext.request.contextPath }/search/result.do?q=bloter"><span id="head-title">Bloter</span></a></h1>
-                </div>
             </div>
-            
-            <a href="#services" class="down-btn page-scroll">
-                <span class="fa fa-angle-down"></span>
-            </a>
+            <div class="content">
+	            <a href="#services" class="down-btn page-scroll ">
+	                <span class="fa fa-angle-down"></span>
+	            </a>
+	       </div>
         </div>
     </div>
 
