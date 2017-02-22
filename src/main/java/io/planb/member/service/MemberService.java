@@ -29,19 +29,19 @@ public interface MemberService {
 	
 	public void updateName(Map<Integer, String> params);						// 폴더 이름 변경
 
-	public void withdraw(MemberVO member); 												//회원 탈퇴
+	public void withdraw(MemberVO member); 									    //회원 탈퇴
 
 	public void withdrawReason(LeavedVO leaved);								//회원 탈퇴 사유 입력
 
 	public void changePw(MemberVO member);										//비밀번호 변경
 
-	public String mypageUpdate(MultipartFile multipartFile, MemberVO member);									//회원 정보 수정 및 파일 업로드
+	public String mypageUpdate(MultipartFile multipartFile, MemberVO member);	//회원 정보 수정 및 파일 업로드
 
 	public List<KeywordsVO> selectInterestList();								//관심 키워드 선택지 호출
 
-	public List<IdentifyQuestionVO> selectIdenQuestion();
+	public List<IdentifyQuestionVO> selectIdenQuestion();                       //비밀번호,아이디 찾기용 질문 호출
 
-	public void insertKeywords(ArrayList<String> list, int no);
+	public void insertKeywords(ArrayList<String> list, int no);                 //
 
 	public int selectWithdrawContentCnt(int memberNo);							//회원 탈퇴 시 보유 컨텐츠 호출
 
@@ -52,5 +52,7 @@ public interface MemberService {
 	public String checkEmail(String email);										//계정 중복 확인
 	
 	public String selectType(int no);
+
+	public String selectRecommandList();                                        //회원 검색어 추천 키워드 호출
 
 }

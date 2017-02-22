@@ -51,8 +51,14 @@ public interface MemberDAO {
 
 	public String selectMemberPassword(MemberVO member);    //비밀번호 찾기
 
+<<<<<<< HEAD
 	public String checkEmail(String email);		                //계정 중복 확인
 	
 	public String selectType(int no);
+=======
+	public String checkEmail(String email);                 //계정 중복 확인
+
+	public String selectRecommandList();;		            //가입 or 로그인 후 검색 이전 키워드 추천   
+>>>>>>> b624377d0bf8078550feab27f1bcd3d3c45f3d77
 
 }

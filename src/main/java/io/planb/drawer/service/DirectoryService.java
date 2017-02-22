@@ -24,7 +24,12 @@ public class DirectoryService {
 		return dirList;
 	}
 	
-	public int newDirectory(DirectoryVO newDir) {
+	public int newDirectory(int memberNo, String dirName) {
+		
+		DirectoryVO newDir = new DirectoryVO();
+		newDir.setMemberNo(memberNo);
+		newDir.setName(dirName);
+		
 		int dirNo = dao.nextDirNo();
 		newDir.setNo(dirNo);
 		dao.newDirectory(newDir);

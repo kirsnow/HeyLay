@@ -42,6 +42,7 @@
 	</script>
 	
   <style>
+
     #main{
    background-image: url('img/galaxy4.jpg');
    background-size: cover;
@@ -52,10 +53,9 @@
    max-height: 710px;
    color: #ffffff;
 }
-
-/*     .btn-border-main {
+   .btn-border-main {
     border: 1px solid #FFFFFF;
-} */
+} 
 
   </style>
   </head>
@@ -134,8 +134,13 @@
 						<!-- /input-group -->
 					</div>
 				</form>
-                <hr>
-                <div></div>
+                <div id="recommandKeyword" class="marginTop20 font20">
+                	추천 검색어<span class="marginLeft marginRight">:</span> 
+                	       <span class="spanPadding" >Java</span>  
+                	       <span class="spanPadding">ElasticSearch</span>  
+                	       <span >Python</span>
+                </div>
+                
             </div>
             <div class="content">
 	            <a href="#services" class="down-btn page-scroll ">
@@ -225,7 +230,7 @@
     <!-- Call-to-Action Section -->
     <div id="cta">
         <div class="container text-center">
-           <!--  <a href="#" class="btn go-to-btn">Check our shop</a> -->
+           <a href="${ pageContext.request.contextPath }/contact/qna.do"  class="btn go-to-btn">Contact Us</a> 
         </div>
     </div>
 
@@ -352,6 +357,19 @@
             startDelay: 100
           });
       });
+      
+      //가입 or 로그인 후 검색 이전 키워드 추천용 ajax
+      $(document).ready(function() { 
+      $.ajax({
+          url: "${ pageContext.request.contextPath }/index/recommandKeywordList.do",
+          type : 'get',
+          contentType : "application/json",
+          success: function(result){
+               $("#recommandKeyword").text(result);
+               console.log(result);
+               
+    	}});
+     });
     </script>
     
   </body>

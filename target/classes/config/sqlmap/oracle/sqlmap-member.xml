@@ -138,9 +138,18 @@
 		WHERE member_no = #{ memberNo } 
 	</select>
 	
+<<<<<<< HEAD
 	<select id="selectType" parameterType="int" resultType="String">
 		SELECT TYPE
 		FROM Q_MEMBER
 		WHERE no = #{ no }
+=======
+	<!-- 가입 or 로그인 후 검색 이전 키워드 추천 -->
+		<select id="selectRecommandList" resultType="String">
+		SELECT keyword
+			FROM Q_select_keywords
+		where member_no = 4
+		group by keyword
+>>>>>>> b624377d0bf8078550feab27f1bcd3d3c45f3d77
 	</select>
 </mapper>

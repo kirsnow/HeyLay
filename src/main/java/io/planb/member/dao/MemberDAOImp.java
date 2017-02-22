@@ -144,10 +144,20 @@ public class MemberDAOImp implements MemberDAO {
 		email = sqlSessionTemplate.selectOne("io.planb.member.dao.MemberDAO.checkEmail", email);
 	return email;
 	}
+<<<<<<< HEAD
 
 	@Override
 	public String selectType(int no) {
 		String type = sqlSessionTemplate.selectOne("io.planb.member.dao.MemberDAO.selectType", no);
 		return type;
+=======
+   
+	//가입 or 로그인 후 검색 이전 키워드 추천
+	@Override
+	public String selectRecommandList() {
+		String recommandList = sqlSessionTemplate.selectOne("io.planb.member.dao.MemberDAO.selectRecommandList");
+		
+		return recommandList;
+>>>>>>> b624377d0bf8078550feab27f1bcd3d3c45f3d77
 	}
 }

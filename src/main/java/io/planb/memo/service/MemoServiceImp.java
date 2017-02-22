@@ -14,7 +14,13 @@ public class MemoServiceImp {
 	@Autowired
 	private MemoDAOImp dao;
 	
-	public MemoVO addMemo(MemoVO memo) {
+	public MemoVO addMemo(int memberNo, int contentsNo, String memoMessage) {
+		
+		MemoVO memo = new MemoVO();
+		memo.setMemberNo(memberNo);
+		memo.setContentsNo(contentsNo);
+		memo.setMessage(memoMessage);
+		
 		//다음 memoNo 추출
 		int nextMemoNo = dao.getNextMemoNo();
 		memo.setNo(nextMemoNo);

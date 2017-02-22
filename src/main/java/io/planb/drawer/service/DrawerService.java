@@ -10,20 +10,27 @@ import org.springframework.stereotype.Service;
 
 import io.planb.contents.dao.ContentDAO;
 import io.planb.contents.vo.ContentsVO;
+import io.planb.drawer.dao.DrawerDAO;
 import io.planb.drawer.vo.DrawerVO;
 
 @Service
 public class DrawerService {
 
 	@Autowired
-	private ContentDAO dao;
+	private DrawerDAO dao;
+	
+	@Autowired
+	private ContentDAO contentDAO;
+	
+	@Autowired
+	private DirectoryService dirService;
 	
 	/* Saved cards */
 	public List<ContentsVO> getSavedCardsForMember(int memberNo) {
 		ContentsVO vo = new ContentsVO();
 		vo.setMemberNo(memberNo);
 		
-		List<ContentsVO> savedCards = dao.getSavedCards(vo);
+		List<ContentsVO> savedCards = contentDAO.getSavedCards(vo);
 		return savedCards;
 	}
 	
@@ -74,6 +81,14 @@ public class DrawerService {
 			drawerList.add(drawer);
 		}
 		return drawerList;
+	}
+	
+	public void saveCard(ContentsVO card) {
+		if(card.getDirectoryNo() < 0) {
+			int directoryNo = dirService.newDirectory(card.getMemberNo(), card.getDirectoryName());
+			card.setDirectoryNo(directoryNo);
+		}
+		dao.saveCard(card);
 	}
 	
 }
