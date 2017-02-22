@@ -48,7 +48,7 @@ public class ProfileFormController {
 		
 			String saveFileName = service.mypageUpdate(multipartFile, member);
 			
-//			System.out.println(multipartFile + ":" + member);
+			//System.out.println(multipartFile + ":" + member);
 			
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("myPage/profile_form");

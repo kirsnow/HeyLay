@@ -13,16 +13,16 @@
    		margin-right: 15px;
    	}
    
+   	.marginRight30{
+   		margin-right: 30px;
+   	}
+   	
    	.marginLeft {
    		margin-left: 10px;
    	}
 
    	.marginLeft30 {
    		margin-left: 30px;
-   	}
-   	
-   	.marginRight30{
-   		margin-right: 30px;
    	}
    	
 	.paddingleft30{
@@ -35,11 +35,12 @@
 	
 	.paddingleft50{
    		padding-left: 50px;
-	}
-	
-	.paddingleft70{
-   		padding-left: 70px;
-	}
+        margin-bottom: 10px; 
+    }
+    
+    .paddingleft70{
+           padding-left: 70px;
+    }
     
     .marginBottom{
         margin-bottom: 10px; 
@@ -240,6 +241,7 @@
    }
    
    /* Morpheme analysis */
+
    /* btn-noun */
    .btn-noun {
 	    color: #FFFFFF;
@@ -305,3 +307,10 @@
 	    color: #8BC34A;
 	    background-color: #FFFFFF
 	}
+	
+   .text-noun { color: #00BCD4 }
+   .text-verb { color: #8BC34A }
+   .text-eoj  { color: #009688 }
+   .text-adverb { color: #3F51B5 }
+   .text-anyfix { color: #673AB7 }
+

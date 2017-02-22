@@ -43,6 +43,9 @@ public class ContentsVO {
 	private String imgUrl;
 	private String imgAlt;
 	
+	//near-contents
+	private int prevContentsNo;
+	private int nextContentsNo;
 	
 	/* about Saved contents */
 	// Q_CONTENTS_SAVED
@@ -210,7 +213,19 @@ public class ContentsVO {
 	public void setImgAlt(String imgAlt) {
 		this.imgAlt = imgAlt;
 	}
-	
+	public int getPrevContentsNo() {
+		return prevContentsNo;
+	}
+	public void setPrevContentsNo(int prevContentsNo) {
+		this.prevContentsNo = prevContentsNo;
+	}
+	public int getNextContentsNo() {
+		return nextContentsNo;
+	}
+	public void setNextContentsNo(int nextContentsNo) {
+		this.nextContentsNo = nextContentsNo;
+	}
+
 	public int getMemberNo() {
 		return memberNo;
 	}

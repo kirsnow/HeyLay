@@ -4,7 +4,7 @@ public class QueryVO {
 
 	private String token;
 	private String type;
-	private String btnClass;
+	private String style;
 	private int start;
 	private int end;
 	private int position;
@@ -21,11 +21,11 @@ public class QueryVO {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public String getBtnClass() {
-		return btnClass;
+	public String getStyle() {
+		return style;
 	}
-	public void setBtnClass(String btnClass) {
-		this.btnClass = btnClass;
+	public void setStyle(String btnClass) {
+		this.style = btnClass;
 	}
 	public int getStart() {
 		return start;

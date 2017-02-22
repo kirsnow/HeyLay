@@ -54,37 +54,48 @@ hr{
 	width: 50px;
 	border-color: #039BE5;
 }
-a {color: #222222}
+a {color: #FAFAFA;}
 a:hover,
 a:focus{
 	color: #039BE5;
 	text-decoration: none;
 }
-#home{
-	background: url(../img/bg3
-	.jpg);
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	height: auto;
-	min-height: 710px;	
-	padding-top: 60px;
-	color: #ffffff;
+   a.up-btn span.fa.fa-angle-up{
+   font-size: 26px;
+   border: 1px solid #039BE5;
+   border-radius: 2px;
+   padding: 7px 5px;
+   position: relative;
+   cursor: pointer;
+   color: #03A9F4;
+   margin-top: 30px;
+   }
+
+    #main{
+   background-image: url('img/galaxy4.jpg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   height: auto;
+   max-height: 710px;
+   color: #ffffff;
 }
-#home a.down-btn span.fa.fa-angle-down{
-	font-size: 26px;
-	border: 1px solid #039BE5;
-	border-radius: 2px;
-	padding: 7px 5px;
-	position: relative;
-	margin-top: 100px;
-	color: #ffffff;
-	cursor: pointer;
+   #main a.down-btn span.fa.fa-angle-down{
+   font-size: 26px;
+   border: 1px solid #039BE5;
+   border-radius: 2px;
+   padding: 7px 5px;
+   position: relative;
+   color: #ffffff;
+   cursor: pointer;
 }
+
+
 .content{
-	padding-top: 16%;
+	padding-top: 15%;
 }
+
 .header-text.btn{
 	border: 1px solid #ffffff;
 	border-radius: 0;
@@ -212,7 +223,7 @@ background-color: transparent;
 
 #meet-us,
 #services,
-#works,
+#quration,
 #about-us{
 	padding: 60px 0;
 }
@@ -373,7 +384,7 @@ a.btn.read-more-btn{
 }
 a.btn.read-more-btn:hover{
 	background: #222222;
-	color: #ffffff;
+	color: #FAFAFA;
 }
 
 a.btn.send-btn{
@@ -561,30 +572,28 @@ margin-bottom: 30px;
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { 
     color:    #222222;
     font-family: 'Lato', sans-serif;
-    font-size: 13px;
+     font-size: 20px;
     letter-spacing: 1px;
-    font-style: italic;
 }
 input:-moz-placeholder, textarea:-moz-placeholder { 
     color:    #222222;
     font-family: 'Lato', sans-serif;
-    font-size: 13px;
+     font-size: 20px;
     letter-spacing: 1px;
-    font-style: italic;
 }
 input::-moz-placeholder, textarea::-moz-placeholder { 
     color:    #222222;
     font-family: 'Lato', sans-serif;
-    font-size: 13px;
+     font-size: 20px;
     letter-spacing: 1px;
-    font-style: italic;
+   
 }
 input:-ms-input-placeholder, textarea:-ms-input-placeholder { 
     color:    #222222;
     font-family: 'Lato', sans-serif;
-    font-size: 13px;
+    font-size: 20px;
     letter-spacing: 1px;
-    font-style: italic;
+   
 }
 
 nav#footer{

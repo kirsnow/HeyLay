@@ -3,17 +3,11 @@
 <mapper namespace="io.planb.dao.ContentDAO">
 	
 	<select id="selectContents" parameterType="contentsVO" resultType="contentsVO">
-		select CON.NO as contentsNo
-			, CON.TITLE as title, CON.SUMMARY as summary, CON.URL as url
-			, CON.LAST_SCRAPED as scrapedDate, CON.BAN as BAN
-			<include refid="daysAgo">
-				<property name="which_column" value="CON.LAST_SCRAPED"/>
-				<property name="which_name" value="scraped"/>
-			</include>
-			
-			<include refid="additionalColumns" />
+		select 
+			<include refid="basicColumns" />
+			, <include refid="additionalColumns" />
 			<if test="memberNo != 0 or savedNo != 0">	<!-- for Saved cards -->
-				<include refid="savedColumns" />
+				, <include refid="savedColumns" />
 			</if>
 		 
 	 	from Q_CONTENTS CON
@@ -49,6 +43,20 @@
 		<if test="limit != 0">limit #{limit}</if>				<!-- for Popular List -->
 	</select>
 	
+	<select id="selectPrevContents" parameterType="int" resultType="int">
+		select NO as contentsNo
+		from Q_CONTENTS
+		where BAN = 'N' and NO &lt; #{contentsNo}
+		order by NO desc limit 1
+	</select>
+	
+	<select id="selectNextContents" parameterType="int" resultType="int">
+		select NO as contentsNo
+		from Q_CONTENTS
+		where BAN = 'N' and NO &gt; #{contentsNo}
+		order by NO asc limit 1
+	</select>
+	
 	<!-- SQL scriptlets -->
 	<sql id="daysAgo">
 		, case 
@@ -67,8 +75,18 @@
 	</sql>
 	
 	<!-- about Contents -->
+	<sql id="basicColumns">
+		CON.NO as contentsNo
+		, CON.TITLE as title, CON.SUMMARY as summary, CON.URL as url
+		, CON.LAST_SCRAPED as scrapedDate, CON.BAN as BAN
+		<include refid="daysAgo">
+			<property name="which_column" value="CON.LAST_SCRAPED"/>
+			<property name="which_name" value="scraped"/>
+		</include>
+	</sql>
+	
 	<sql id="additionalColumns">
-		, CON.LANGUAGE as language, CON.BAN as ban
+		CON.LANGUAGE as language, CON.BAN as ban
 		, sum(VIW.COUNT) as viewCnt, count(LIK.CONTENTS_NO) as likeCnt
 		, SOU.NO as sourceNo, SOU.NAME as sourceName, SOU.URL as sourceUrl, SOU.DOMAIN as sourceDomain, SOU.LOGO_IMG as sourceImg
 		, DAT.NO as dataTypeNo, DAT.DATA_TYPE as dataTypeName, DAT.DATA_TYPE_ENG as dataTypeNameEng, DAT.FUN_NAME as dataTypeNameFun
@@ -91,7 +109,7 @@
 	
 	<!-- about Saved Contents -->
  	<sql id="savedColumns">
-		, SAV.NO as savedNo, count(SAV.CONTENTS_NO) as savedCnt
+		SAV.NO as savedNo, count(SAV.CONTENTS_NO) as savedCnt
 		, SAV.REG_DATE as savedDate
 		<include refid="daysAgo">
 			<property name="which_column" value="SAV.REG_DATE"/>
