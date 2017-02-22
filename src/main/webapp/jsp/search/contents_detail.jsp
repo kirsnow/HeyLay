@@ -10,10 +10,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<c:set var="plainTitle"
-	value="${ fn:replace( fn:replace(contents.title, '<mark>', ''), '</mark>', '') }" />
-<title><c:out value="${ plainTitle }" /> | Quration: 답을 열어 줄 그런
-	사람</title>
+<c:set var="plainTitle" value="${ fn:replace( fn:replace(contents.title, '<mark>', ''), '</mark>', '') }" />
+<title><c:out value="${ plainTitle }" /> | Quration: 답을 열어 줄 그런 사람</title>
 <!-- 각 콘텐츠 제목을 title로 동적 지정 -->
 
 <!-- MDL Hosted start -->
@@ -107,10 +105,17 @@
 						<header>
 							<c:if test="${ contents.ban == \"N\" }">
 								<div class="pull-right">
-									<a href="${ contents.url }" target="_blank"
-										title="원본 페이지로 이동(새 창)"> <i class="fa fa-external-link"
-										aria-hidden="true"></i> 원본 보기
+									<a href="${ contents.url }" target="_blank" title="원본 페이지로 이동(새 창)">
+										<i class="fa fa-external-link"aria-hidden="true"></i> 원본 보기
 									</a>
+									<c:if test="${ contents.prevContentsNo > 0 }">
+										| <a href="${ pageContext.request.contextPath }/contents.do?no=${ contents.prevContentsNo }"><i class="fa fa-angle-left fa-lg" aria-hidden="true"></i>
+										이전 글</a>
+									</c:if>
+									<c:if test="${ contents.nextContentsNo > 0 }">
+										| <a href="${ pageContext.request.contextPath }/contents.do?no=${ contents.nextContentsNo }">다음 글
+										<i class="fa fa-angle-right fa-lg" aria-hidden="true"></i></a>
+									</c:if>
 								</div>
 							</c:if>
 							<div class="card-labels">
@@ -121,15 +126,13 @@
 								</a>
 							</div>
 							<h2 class="card-title marginBottom30">
-								<%-- <c:out value="${ contents.title }" /> --%>
 								${ contents.title }
 							</h2>
 						</header>
 
-						<section class="card-content text-justify marginBottom">
-							<%-- <c:out value="${ contents.summary }" /> --%>
+						<p class="card-content text-justify marginBottom">
 							${ contents.summary }
-						</section>
+						</p>
 						<footer class="text-right">
 							<time class="text-muted">${ contents.scrapedDaysAgo }</time>
 						</footer>
