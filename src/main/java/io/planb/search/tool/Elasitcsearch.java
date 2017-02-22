@@ -27,7 +27,7 @@ public class Elasitcsearch {
      */
 	private final int searchSize = 100;
 	private final String ipAmazon = "35.166.249.194";
-	private final String ipBit = "192.168.1.64";
+	private final String ipBit = "192.168.1.21";
 	private String searchIP = ipBit;
 
 	/**
