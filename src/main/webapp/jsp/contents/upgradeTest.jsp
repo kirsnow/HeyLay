@@ -54,73 +54,29 @@
 
 			<div class="right_col" role="main">
 				<!-- page content -->
-					<form id="upgradeForm" class="formBottom15 marginTop60"
-                  		  action="${ pageContext.request.contextPath }/contents/update_type.do?no=${userVO.no}" method="post">
-                  		
-                  		<div class="text-center">
-							<div class="row">
-								<h4 class="text-primary">Quration Premium Service Pay</h4>	
-							</div>
-							<div class="row radio">
-							  <label>
-							    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-							    ₩3,300/월
-							  </label>
-							</div>
-							<div class="row radio">
-							  <label>
-							    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-							    ₩30,000/년
-							  </label>
-							</div>
-							<div class="row text-center">
-								<button type="submit" class="btn btn-primary btn-lg">프리미엄 구매</button>
-							</div>	
+					<div class="col-md-push-2 col-md-8">
+					<form id="upgradeForm"
+                  		  action="${ pageContext.request.contextPath }/contents/update_type.do?no=${userVO.no}" 
+                  		  method="post">
+					<div class="marginTop80 row">
+						<div class="col-md-4"> 
+							<input type="text" class="form-control" id="name" placeholder="이름">
 						</div>
-                  	
-                  		  
-					<div class="row">
-						<div class=" col-md-4 col-md-offset-4">
-							<input type="text" class="form-control" name="name" id="name" placeholder="이름">
+							<i class="fa fa-cc-visa fa-2x" aria-hidden="true"></i>
+							<i class="fa fa-cc-mastercard fa-2x" aria-hidden="true"></i>
+							<i class="fa fa-cc-paypal fa-2x" aria-hidden="true"></i>
+					</div>
+						<div class="row">
+							<div class="col-md-4">
+								<input type="text" class="form-control" id="cardNum" placeholder="신용카드 번호">
+							</div>
+							<div class="col-md-2">
+								<input type="text" class="form-control" id="expiration" placeholder="MM/YY">
+							</div>
+							<div class="col-md-2">
+								<input type="text" class="form-control" id="cvv" placeholder="CVV">
+							</div>
 						</div>
-					</div>	
-				
-					 <div class="row">
-	                  	<div class="col-md-4 col-md-offset-4 ">
-		                  <div class="form-control ">
-		                     <span class="spanPadding verticalCenter">카드종류</span>
-		                     <span class="verticalCenter pull-right marginRight15">
-		                      	 <input type="radio" name="card" id="visa" value="visa" alt="비자카드 라디오박스"/>  
-		                      		 <label><i class="fa fa-cc-visa fa-2x" aria-hidden="true"></i></label> 
-		                       	 <input type="radio" name="card" id="master" value="master" alt="마스터카드 라디오박스"/>  
-		                       	 	<label><i class="fa fa-cc-mastercard fa-2x" aria-hidden="true"></i></label>
-		                         <input type="radio" name="card" id="paypal" value="paypal" alt="페이팔 카드 라디오박스"/>  
-		                         	<label><i class="fa fa-cc-paypal fa-2x" aria-hidden="true"></i></label>
-			                     </span>
-		                     </div>
-		                  </div>
-	                  </div>
-						
-					  <div class="row">
-						 <div class="col-md-4 col-md-offset-4 ">
-							<input type="text" class="form-control" name="cardNum" id="cardNum" placeholder="카드번호">
-						 </div>
-					  </div> 
-					  <div class="row">
-						 <div class="col-md-2 col-md-offset-4 ">
-							<input type="text" class="form-control" name="month" id="month" placeholder="MM">
-						 </div>
-						 <div class="col-md-2 ">
-							<input type="text" class="form-control" name="year" id="year" placeholder="YY">
-						 </div>
-					  </div>
-					  <div class="row">
-						<div class=" col-md-4 col-md-offset-4">
-							<input type="text" class="form-control" name="cvc" id="cvc" placeholder="CVC">
-						</div>
-					</div>	
-					  
-					  
 						<div class="row">
 							<div class="col-md-5">
 								<select onchange="if (this.value) window.location.href = this.value;" id="select" class="form-control">
@@ -216,8 +172,29 @@
 							<div class="col-md-3">
 								<input type="text" class="form-control" id="post" placeholder="우편번호">
 							</div>
+						<div class="panel-footer text-center">
+							<div class="row">
+								<h4 class="text-primary">Quration Premium</h4>	
+							</div>
+							<div class="row radio">
+							  <label>
+							    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+							    ₩3,300/월
+							  </label>
+							</div>
+							<div class="row radio">
+							  <label>
+							    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+							    ₩30,000/년
+							  </label>
+							</div>
+							<div class="row text-center">
+								<button type="submit" class="btn btn-primary btn-lg">프리미엄 구매</button>
+							</div>	
+						</div>
 					</div>
 					</form>
+					</div>
 				<!-- /page content -->
 			</div>
 
@@ -226,7 +203,7 @@
 			<!-- /footer -->
 		</div>
 	</div>
-	
+
 	<script type="text/javascript">
 	jQuery( function($) { 
 		$('#upgradeForm').submit(function() {
