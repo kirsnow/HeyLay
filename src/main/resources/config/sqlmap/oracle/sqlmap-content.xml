@@ -125,6 +125,35 @@
 		WHERE CONTENTS_NO=#{contentsNo} AND MEMBER_NO=#{memberNo}
 	</select>
 	
+	<update id="leavedKeyword" parameterType="int">
+		UPDATE Q_KEYWORDS
+  		SET MEMBER_NO=0
+  		WHERE MEMBER_NO=#{memberNo}
+	</update>
+	
+	<update id="leavedLike" parameterType="int">
+		UPDATE Q_LIKE
+  		SET MEMBER_NO=0
+  		WHERE MEMBER_NO=#{memberNo}
+	</update>
+	
+	<update id="leavedView" parameterType="int">
+		UPDATE Q_VIEW
+  		SET MEMBER_NO=0
+  		WHERE MEMBER_NO=#{memberNo}
+	</update>
+	
+	<update id="leavedSave" parameterType="int">
+		UPDATE Q_CONTENTS_SAVED
+  		SET MEMBER_NO=0
+  		WHERE MEMBER_NO=#{memberNo}
+	</update>
+	
+	<delete id="leavedDir" parameterType="int">
+		DELETE FROM q_directory
+		WHERE MEMBER_NO=#{memberNo}
+	</delete>
+	
 </mapper>
 
 

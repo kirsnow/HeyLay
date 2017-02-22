@@ -29,7 +29,7 @@ public interface MemberService {
 	
 	public void updateName(Map<Integer, String> params);						// 폴더 이름 변경
 
-	public void withdraw(int no); 												//회원 탈퇴
+	public void withdraw(MemberVO member); 												//회원 탈퇴
 
 	public void withdrawReason(LeavedVO leaved);								//회원 탈퇴 사유 입력
 

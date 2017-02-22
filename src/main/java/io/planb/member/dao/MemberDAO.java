@@ -19,7 +19,7 @@ public interface MemberDAO {
 
 	public List<MemberVO> selectByNo(MemberVO member); 		//회원정보 호출
 
-	public void withdraw(int no);							//회원 탈퇴
+	public void withdraw(MemberVO member);							//회원 탈퇴
 	
 	public void updateType(int no);							// 멤버 타입 F->P로 업데이트
 	

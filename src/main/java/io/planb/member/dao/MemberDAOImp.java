@@ -40,8 +40,8 @@ public class MemberDAOImp implements MemberDAO {
 	}
 
 	@Override
-	public void withdraw(int no) {
-		sqlSessionTemplate.update("io.planb.member.dao.MemberDAO.withdraw", no);	
+	public void withdraw(MemberVO member) {
+		sqlSessionTemplate.update("io.planb.member.dao.MemberDAO.withdraw", member);	
 	}
 	
 	@Override
