@@ -99,5 +99,17 @@ public class MembershipController {
 		return "redirect:/";
 	}
 	
+	/*가입 or 로그인 후 검색 이전 키워드 추천*/
+	@ResponseBody
+	@RequestMapping("/index/recommandKeywordList.do")
+	public String selectRecommandList(Model model) {
+		
+		String recommandList = service.selectRecommandList();
+		System.out.println("controller recommandList : " + recommandList);
+		model.addAttribute(recommandList);
+		
+		return recommandList;
+	}
+	
 }
 

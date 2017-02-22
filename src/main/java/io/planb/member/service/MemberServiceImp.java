@@ -210,4 +210,12 @@ public class MemberServiceImp implements MemberService {
 		email = dao.checkEmail(email);
 		 return email;
 	}
+	
+	//가입 or 로그인 후 검색 이전 키워드 추천
+	@Override
+	public String selectRecommandList() {
+		String recommandList = dao.selectRecommandList();
+		
+		return recommandList;
+	}
 }
