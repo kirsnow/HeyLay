@@ -163,6 +163,7 @@ public class StaticsService {
 		return serachToday;
 	}
 	
+	/*오늘의 인기 키워드 */
 	public String selectPopularKeyword() {
 		String popularKeyword = dao.selectPopularKeyword();
 		

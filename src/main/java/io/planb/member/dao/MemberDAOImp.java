@@ -144,4 +144,12 @@ public class MemberDAOImp implements MemberDAO {
 		email = sqlSessionTemplate.selectOne("io.planb.member.dao.MemberDAO.checkEmail", email);
 	return email;
 	}
+   
+	//가입 or 로그인 후 검색 이전 키워드 추천
+	@Override
+	public String selectRecommandList() {
+		String recommandList = sqlSessionTemplate.selectOne("io.planb.member.dao.MemberDAO.selectRecommandList");
+		
+		return recommandList;
+	}
 }
