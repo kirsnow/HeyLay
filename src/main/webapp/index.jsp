@@ -134,7 +134,7 @@
 						<!-- /input-group -->
 					</div>
 				</form>
-                <div id="recommandKeyword" class="marginTop20 font20">
+                <div id="recommandKeyword" class="col-md-6 col-md-offset-3 marginTop20 font20 grayfont">
                 	추천 검색어<span class="marginLeft marginRight">:</span> 
                 	       <span class="spanPadding" >Java</span>  
                 	       <span class="spanPadding">ElasticSearch</span>  
