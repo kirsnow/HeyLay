@@ -60,31 +60,40 @@ a:focus{
 	color: #039BE5;
 	text-decoration: none;
 }
-#home{
-	background: url(../img/bg3
-	.jpg);
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	height: auto;
-	min-height: 710px;	
-	padding-top: 60px;
-	color: #ffffff;
+   a.up-btn span.fa.fa-angle-up{
+   font-size: 26px;
+   border: 1px solid #039BE5;
+   border-radius: 2px;
+   padding: 7px 5px;
+   position: relative;
+   cursor: pointer;
+   color: #03A9F4;
+   margin-top: 30px;
+   }
+
+    #main{
+   background-image: url('img/galaxy4.jpg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   height: auto;
+   max-height: 710px;
+   color: #ffffff;
 }
-#home a.down-btn span.fa.fa-angle-down{
-	font-size: 26px;
-	border: 1px solid #039BE5;
-	border-radius: 2px;
-	padding: 7px 5px;
-	position: relative;
-	margin-top: 100px;
-	color: #ffffff;
-	cursor: pointer;
+   #main a.down-btn span.fa.fa-angle-down{
+   font-size: 26px;
+   border: 1px solid #039BE5;
+   border-radius: 2px;
+   padding: 7px 5px;
+   position: relative;
+   color: #03A9F4;
+   cursor: pointer;
 }
 .content{
-	padding-top: 16%;
+	padding-top: 5%;
 }
+
 .header-text.btn{
 	border: 1px solid #ffffff;
 	border-radius: 0;
@@ -212,7 +221,7 @@ background-color: transparent;
 
 #meet-us,
 #services,
-#works,
+#quration,
 #about-us{
 	padding: 60px 0;
 }

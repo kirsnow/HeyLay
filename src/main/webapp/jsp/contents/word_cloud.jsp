@@ -100,11 +100,6 @@
     <script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
     <script type="text/javascript" src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js"></script> 
     
-    <%-- <script type="text/javascript" src="${ pageContext.request.contextPath }/js/d3.v3.min.js"></script>
-    <script type="text/javascript" src="${ pageContext.request.contextPath }/js/d3.layout.cloud.js"></script> --%>
-    
-    <%--  <script type="text/javascript" src="${ pageContext.request.contextPath }/js/wordCloud.js"></script> --%>
-    
     <!-- jQuery -->
 	<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
 	<!-- Bootstrap -->

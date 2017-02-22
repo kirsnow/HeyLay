@@ -41,24 +41,23 @@
 	  ga('send', 'pageview');
 	</script>
 	
-	<style>
-	a.up-btn span.fa.fa-angle-up{
-	font-size: 26px;
-	border: 1px solid #039BE5;
-	border-radius: 2px;
-	padding: 7px 5px;
-	position: relative;
-	cursor: pointer;
-	color: #039BE5;
-	margin-top: 30px;
-	}
-	
-	</style>
+  <style>
+    #main{
+   background-image: url('img/galaxy4.jpg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   height: 650px;
+   max-height: 710px;
+   color: #ffffff;
+}
+  </style>
   </head>
   <body>
     <!-- Home Section -->
-    <div id="1">
-    	 <div class="row text-left ">
+    <div id="main">
+    	 <div class="row text-left">
 	        	<div class="col-md-12 marginLeft30">
 					<c:choose>
 						<c:when test="${ not empty userVO }"> 
@@ -93,26 +92,29 @@
 							</div>
 						</c:when>
 						<c:otherwise> 
-							<span><a href="${ pageContext.request.contextPath }/membership/membership.do" class=""> 회원가입</a>  </span>
-							<span><a href="${ pageContext.request.contextPath }/login/login.do" class=""> 로그인</a>  </span>
+						<div class="row marginRight30">
+							<div class="col-md-11 marginTop20">
+							    <div class="pull-right">
+									<span><a href="${ pageContext.request.contextPath }/membership/membership.do" class="btn btn-primary"> 회원가입</a>  </span>
+									<span><a href="${ pageContext.request.contextPath }/login/login.do" class="btn btn-default"> 로그인</a>  </span>
+							    </div>
+						    </div>
+						</div>
 						</c:otherwise>
 					</c:choose> 
 				</div>
 			</div>
-        <div class="container text-center ">
+        <div id="quration" class="container text-center">
             <!-- Navigation -->
             <h1 class="text-muted">Quration</h1>
-           
+            
             <div class="content">
-                <h4>
-                		We've got the special power
-                </h4>
                 <hr>
                 <div class="header-text btn">
                     <h1 style="color: white"><a href="${ pageContext.request.contextPath }/search/result.do?q=bloter"><span id="head-title">Bloter</span></a></h1>
                 </div>
             </div>
-
+            
             <a href="#services" class="down-btn page-scroll">
                 <span class="fa fa-angle-down"></span>
             </a>
@@ -190,7 +192,7 @@
             <a href="#about-us" class="down-btn page-scroll">
                 <span class="fa fa-angle-down"></span>
             </a>
-            <a href="#home" class="up-btn page-scroll">
+            <a href="#main" class="up-btn page-scroll">
                 <span class="fa fa-angle-up"></span>
             </a>
         </div>
