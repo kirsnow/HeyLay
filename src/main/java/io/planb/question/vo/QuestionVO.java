@@ -1,5 +1,7 @@
 package io.planb.question.vo;
 
+import java.sql.Date;
+
 public class QuestionVO {
 	private int no;
 	private String email;
@@ -7,11 +9,11 @@ public class QuestionVO {
 	private String userInput;
 	private String qType;
 	private String answer;
-	private String regDate;
+	private Date regDate;
 	
 	public QuestionVO() {}
 
-	public QuestionVO(int no, String email, String title, String userInput, String qType, String answer, String regDate) {
+	public QuestionVO(int no, String email, String title, String userInput, String qType, String answer, Date regDate) {
 		super();
 		this.no = no;
 		this.email = email;
@@ -70,11 +72,11 @@ public class QuestionVO {
 		this.answer = answer;
 	}
 
-	public String getRegDate() {
+	public Date getRegDate() {
 		return regDate;
 	}
 
-	public void setRegDate(String regDate) {
+	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
 

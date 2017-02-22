@@ -49,7 +49,7 @@
         <!-- /Breadcrumb -->
         
 		<section class="row">
-			<div class="col-md-2">
+			<div class="col-md-2 col-md-offset-2">
 				<h4 class="paddingleft30">둘러보기</h4>
 				<ul>
 					<li><a href="${ pageContext.request.contextPath }/list/category.do" title="주제 분야 페이지로 이동">주제 분야</a></li>
@@ -65,7 +65,7 @@
 					<li><a href="${ pageContext.request.contextPath }/contact/qna.do" title="Q&A 페이지로 이동">Q &amp; A</a></li>
 					<li><a href="${ pageContext.request.contextPath }/contact/bug.do">오류 신고</a></li>
 					<li><a href="${ pageContext.request.contextPath }/contact/spamContents.do">유해 게시물 신고</a></li>
-					<li><a href="${ pageContext.request.contextPath }/contact/spamMemo.do">유해 게시글 신고</a></li>
+					<li><a href="${ pageContext.request.contextPath }/contact/spamMemo.do">유해 메모 신고</a></li>
 					<li><a href="#" title="서비스 이용 약관 페이지로 이동">서비스 이용 약관</a></li>
 					<li><a href="#" title="개인정보 처리 방침 페이지로 이동">개인정보 처리 방침</a></li>
 				</ul>
@@ -83,54 +83,13 @@
 				</ul>
 			</div>
 			<div class="col-md-2">
-				<h4 class="paddingleft30">내 카드</h4>
+				<h4 class="paddingleft30">Quration Service</h4>
 				<ul>
 					<li><a href="#" title="개인 통계 페이지로 이동">개인 통계</a></li>
 					<li><a href="#" title="검색 키워드 보기 페이지로 이동">검색 키워드 보기</a></li>
 					<li><a href="#" title="내 카드 관리 페이지로 이동">내 카드 관리</a></li>
-					<li><button type="button" class="btn btn-info" id="myBtn">Open Modal</button></li>
 				</ul>
 			</div>
-
-			  <!-- Modal -->
-			  <div class="modal fade" id="myModal" role="dialog">
-			    <div class="modal-dialog">
-			    
-			      <!-- Modal content-->
-			      <div class="modal-content">
-			        <div class="modal-header">
-			          <button type="button" class="close" data-dismiss="modal">&times;</button>
-			          <h4 class="modal-title">Modal Header</h4>
-			        </div>
-			        <div class="modal-body">
-			          <p>Some text in the modal.</p>
-			        </div>
-			        <div class="modal-footer">
-			          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			        </div>
-			      </div>
-			      
-			    </div>
-			  </div>
-			<!-- 관리자box는 관리자 로그인 시에만 표시되어야 함 -->
-			<div class="col-md-2">
-				<h4 class="paddingleft30">관리자</h4>
-				<ul>
-					<li><a href="#" title="공지사항 관리 페이지로 이동">공지사항 관리</a></li>
-					<li><a href="#" title="Q&A 관리 페이지로 이동">Q &amp; A 관리</a></li>
-					<li><a href="#" title="자주 묻는 질문 관리 페이지로 이동">자주 묻는 질문 관리</a></li>
-
-               <li><a href="#" title="광고 관리 페이지로 이동">광고 관리</a></li>
-               <li><a href="#" title="콘텐츠 소스 관리 페이지로 이동">콘텐츠 소스 관리</a></li>
-
-               <li><a href="#" title="오류 신고 관리 페이지로 이동">오류 신고 관리</a></li>
-               <li><a href="#" title="유해 게시물 관리 페이지로 이동">유해 게시물 관리</a></li>
-
-               <li><a href="#" title="통계 조회 페이지로 이동">통계 조회</a></li>
-               <li><a href="#" title="회원 관리 페이지로 이동">회원 관리</a></li>
-               <li><a href="#" title="회원 탈퇴 사유 조회 페이지로 이동">회원 탈퇴 사유 조회</a></li>
-            </ul>
-         </div>
       </section>
    </div>
    <!-- /container -->
