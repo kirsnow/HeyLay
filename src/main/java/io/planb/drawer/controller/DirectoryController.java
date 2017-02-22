@@ -57,11 +57,7 @@ public class DirectoryController {
 		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
 		int userNo = userVO != null ? userVO.getNo() : 0;
 		
-		DirectoryVO directory = new DirectoryVO();
-		directory.setMemberNo(userNo);
-		directory.setName(name);
-		
-		service.newDirectory(directory);
+		service.newDirectory(userNo, name);
 		
 		return "완료";
 	}

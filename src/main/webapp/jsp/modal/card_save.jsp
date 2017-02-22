@@ -1,5 +1,9 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:if test="${ (not empty dirList) or (dirList ne null) }">
+	<c:set var="dir1stNo" value="${ dirList[0].no }" />
+	<c:set var="dir1stName" value="${ dirList[0].name }" />
+</c:if>
 
 <div class="modal fade" id="saveCardModal" tabindex="-1" role="dialog"
 	aria-labelledby="myModalLabel" aria-hidden="true">
@@ -18,23 +22,23 @@
 				<section>
 					<div class="cardInfo">Labels</div>
 					<dl>
-						<dt class="cardInfo marginTop drop-text-1">Title</dt>
-						<dd class="cardInfo marginTop drop-text-3">undefined</dd>
+						<dt class="cardInfo marginTop20 drop-text-1">Title</dt>
+						<dd class="marginTop"><p class="cardInfo drop-text-3">undefined</p></dd>
 					</dl>
 				</section>
 				<textarea id="memoMessage" class="form-control marginTop" rows="3" placeholder="메모 쓰기..."></textarea>
 			</div>
+			
 			<div class="modal-footer">
 				<div class="input-group" role="group">
-					<input type="text" class="form-control" id="dirName" readonly="readonly" aria-label="..." value="나의 첫 폴더" placeholder="새 폴더 이름...">
+					<input type="text" class="form-control" id="dirName" readonly="readonly" aria-label="..." value="${ dir1stName }" placeholder="새 폴더 이름...">
 					<div class="input-group-btn">
-						<div class="btn-group" role="group">
-							<button type="button" class="btn btn-default dropdown-toggle"
-								data-toggle="dropdown" aria-expanded="false">
+						<div class="btn-group dropup" role="group">
+							<button type="button" class="btn btn-default form-control dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 								<span class="caret"></span>
 							</button>
-							<ul class="dropdown-menu" role="menu">
-								<c:if test="${ (empty dirList) or (dirList ne null) }">
+							<ul class="dropdown-menu dropdown-menu-right" role="menu">
+								<c:if test="${ (not empty dirList) or (dirList ne null) }">
 									<c:forEach var="dir" items="${ dirList }" varStatus="loop">
 										<li role="presentation"><a role="menuitem" tabindex="-1" href="#" id="${ dir.no }" class="dirList">${ dir.name }</a></li>
 									</c:forEach>
@@ -43,12 +47,13 @@
 								<li role="presentation"><a role="menuitem" tabindex="-1" href="#" id="-1" class="newDirectory" >+ 새 폴더</a></li>
 							</ul>
 						</div>
-						<button type="button" id="putCard" class="btn btn-primary">
-							담기
-						</button>
+						<div class="btn-group" role="group">
+							<button type="button" id="putCard" class="btn btn-primary form-control">담기</button>
+						</div>
 					</div>
 				</div>
 			</div>
+			
 		</div>
 	</div>
 </div>
@@ -56,7 +61,7 @@
 
 	var saveCardBtn;
 	var contentsNo;
-	var dirNo = 1;
+	var dirNo = ${ dir1stNo };
 	
 	/* modal set cardInfo */
 	$('.saveCardBtn').on('click', function() {
@@ -71,7 +76,7 @@
 		
 		$('div#saveCardModal div.cardInfo').html(labels);
 		$('div#saveCardModal dt.cardInfo').text(title);
-		$('div#saveCardModal dd.cardInfo').text(summary + '...');
+		$('div#saveCardModal dd p.cardInfo').text(summary + '...');
 	})
 	
 	/* modal autofocus */
@@ -81,6 +86,7 @@
 
 	/* modal select directory */
 	$('a.dirList').on('click', function() {
+		console.log( 'memoMessage: ' + $('#memoMessage').val() );
 		$('input#dirName').val( $(this).text() ).attr('readonly', 'readonly');
 		dirNo = $(this).attr('id');
 	});

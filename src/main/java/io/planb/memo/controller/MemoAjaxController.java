@@ -27,12 +27,7 @@ public class MemoAjaxController {
 		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
 		int userNo = userVO != null ? userVO.getNo() : 0;
 		
-		MemoVO memo = new MemoVO();
-		memo.setMemberNo(userNo);
-		memo.setContentsNo(contentsNo);
-		memo.setMessage(memoMessage);
-		
-		MemoVO added = service.addMemo(memo);
+		MemoVO added = service.addMemo(userNo, contentsNo, memoMessage);
 		
 		return added;
 	}

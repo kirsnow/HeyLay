@@ -16,6 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import io.planb.contents.service.ContentService;
 import io.planb.contents.vo.ContentsVO;
+import io.planb.drawer.service.DirectoryService;
+import io.planb.drawer.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.vo.MemberVO;
 import io.planb.memo.service.MemoServiceImp;
@@ -28,6 +30,8 @@ public class ContentController {
 	private ContentService service;
 	@Autowired
 	private MemoServiceImp memoService;
+	@Autowired
+	private DirectoryService dirService;
 	
 	/* Contents detail */
 	@RequestMapping(value="/contents.do", method=RequestMethod.GET)
@@ -40,16 +44,24 @@ public class ContentController {
 		contents.setMemberNo(userNo);
 		contents.setContentsNo(no);
 		
+		// 콘텐츠 내용
 		contents = service.getContentsDetail(no, q);
+		// 콘텐츠 메모 목록
 		List<MemoVO> memoList = memoService.getMemoList(no);
+		// 콘텐츠 좋아요 수
+		int likeCnt = service.likeOrNot(contents);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("search/contents_detail");
 		mav.addObject("contents", contents);
 		mav.addObject("memoList", memoList);
-		
-		int likeCnt = service.likeOrNot(contents);
 		mav.addObject("likeOrNot", likeCnt);
+		
+		// 내 카드 서랍 목록 (로그인 시)
+		if(userVO != null) {
+			List<DirectoryVO> dirList = dirService.directoryList(userNo);
+			mav.addObject("dirList", dirList);
+		}
 		
 		return mav;
 	}
