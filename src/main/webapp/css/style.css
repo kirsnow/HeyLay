@@ -54,7 +54,7 @@ hr{
 	width: 50px;
 	border-color: #039BE5;
 }
-a {color: #222222}
+a {color: #FAFAFA;}
 a:hover,
 a:focus{
 	color: #039BE5;
@@ -87,11 +87,13 @@ a:focus{
    border-radius: 2px;
    padding: 7px 5px;
    position: relative;
-   color: #03A9F4;
+   color: #ffffff;
    cursor: pointer;
 }
+
+
 .content{
-	padding-top: 5%;
+	padding-top: 15%;
 }
 
 .header-text.btn{
@@ -382,7 +384,7 @@ a.btn.read-more-btn{
 }
 a.btn.read-more-btn:hover{
 	background: #222222;
-	color: #ffffff;
+	color: #FAFAFA;
 }
 
 a.btn.send-btn{
@@ -570,30 +572,28 @@ margin-bottom: 30px;
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { 
     color:    #222222;
     font-family: 'Lato', sans-serif;
-    font-size: 13px;
+     font-size: 20px;
     letter-spacing: 1px;
-    font-style: italic;
 }
 input:-moz-placeholder, textarea:-moz-placeholder { 
     color:    #222222;
     font-family: 'Lato', sans-serif;
-    font-size: 13px;
+     font-size: 20px;
     letter-spacing: 1px;
-    font-style: italic;
 }
 input::-moz-placeholder, textarea::-moz-placeholder { 
     color:    #222222;
     font-family: 'Lato', sans-serif;
-    font-size: 13px;
+     font-size: 20px;
     letter-spacing: 1px;
-    font-style: italic;
+   
 }
 input:-ms-input-placeholder, textarea:-ms-input-placeholder { 
     color:    #222222;
     font-family: 'Lato', sans-serif;
-    font-size: 13px;
+    font-size: 20px;
     letter-spacing: 1px;
-    font-style: italic;
+   
 }
 
 nav#footer{

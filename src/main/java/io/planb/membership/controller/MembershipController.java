@@ -30,6 +30,13 @@ public class MembershipController {
 	@Autowired
 	private MemberService service;
 	
+	
+	@RequestMapping(value="/membership/agreement.do")
+	public String agreement() {
+		
+		return "membership/agreement";
+	}
+	
 	@RequestMapping(value="/membership/membership.do", method=RequestMethod.GET)
 	public String membershipForm(@ModelAttribute("member") MemberVO member, Model model) {
 		
