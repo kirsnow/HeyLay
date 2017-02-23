@@ -23,13 +23,12 @@ public class MemoAjaxController {
 	
 	@ResponseBody
 	@RequestMapping(value="/addMemo.do", method=RequestMethod.POST)
-	public MemoVO addMemo(HttpSession session, @RequestParam int contentsNo, @RequestParam String memoMessage) {
+	public String addMemo(HttpSession session, @RequestParam int contentsNo, @RequestParam String memoMessage) {
 		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
 		int userNo = userVO != null ? userVO.getNo() : 0;
 		
-		MemoVO added = service.addMemo(userNo, contentsNo, memoMessage);
-		
-		return added;
+		String memoHtmlTag = service.addMemoAjax(userNo, contentsNo, memoMessage);
+		return memoHtmlTag;
 	}
 	
 	@ResponseBody

@@ -1,7 +1,7 @@
 package io.planb.member.service;
 
-import java.util.ArrayList;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -9,13 +9,15 @@ import java.util.UUID;
 import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import io.planb.leaved.vo.LeavedVO;
 import io.planb.contents.dao.ContentDAO;
 import io.planb.drawer.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
+import io.planb.leaved.vo.LeavedVO;
 import io.planb.member.dao.MemberDAO;
 import io.planb.member.vo.IdentifyQuestionVO;
 import io.planb.member.vo.MemberVO;
@@ -217,11 +219,13 @@ public class MemberServiceImp implements MemberService {
 		return type;
 	}
 
-	// 가입 or 로그인 후 검색 이전 키워드 추천
 	@Override
-	public String selectRecommandList() {
-		String recommandList = dao.selectRecommandList();
-
-		return recommandList;
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		MemberVO member = new MemberVO();
+		member.setEmail(username);
+		
+		MemberVO userVO = dao.login(member);
+		
+		return userVO;
 	}
 }

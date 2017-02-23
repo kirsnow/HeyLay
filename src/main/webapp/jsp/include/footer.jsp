@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!-- custom css -->
-<link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
 
 <footer class="container-fluid page-footer page-footer-dkgrey">
     <div class="row">

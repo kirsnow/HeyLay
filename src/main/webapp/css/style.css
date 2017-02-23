@@ -2,13 +2,15 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic);
 
 
-body, html{
+html, body{
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale;
   overflow-y: auto;
   overflow-x: hidden;
+  margin :0;
 /*  font-family: 'Montserrat', sans-serif;*/
 }
+
 @media (min-width: 1200px){
 	.container {
 		width: 960px;
@@ -612,3 +614,28 @@ nav#footer{
 }
 #footer a:hover{
 	color: #039BE5;}
+	
+.font20{
+   	font-size: 20px;
+   }
+   
+.marginRight30{
+	margin-right: 30px;
+}
+
+.marginTop20{
+    margin-top: 20px;
+} 
+
+.grayfont{
+	color : gray;
+}
+
+.spanPadding {
+	padding-right: 20px;
+}
+
+.marginRight {
+	margin-right: 10px;
+}
+

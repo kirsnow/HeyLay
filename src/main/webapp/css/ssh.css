@@ -318,4 +318,8 @@
   	 vertical-align: middle;
    }
 	
-
+	html,body{height:100%}
+	body{margin:0}
+	.body{min-height:82.5%}
+	.sectionContent{padding-bottom:1.9em}
+	.footer{margin-top:-1.9em;height:1.9em}	

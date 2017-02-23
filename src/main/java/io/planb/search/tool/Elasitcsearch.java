@@ -78,7 +78,7 @@ public class Elasitcsearch {
 				if(searchSize > 0) restAPI += "&size=" + searchSize;
 			*/
 			
-			/*  */
+			/* 검색: 하이라이트 필드 추가 */
 			String restAPI = "http://" + searchIP + ":9200/contents/_search?source={"
 					+ "\"query\":{\"multi_match\":{"
 					+ 	"\"query\":\"" + q
