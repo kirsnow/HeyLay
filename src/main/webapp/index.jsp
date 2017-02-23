@@ -13,12 +13,6 @@
     <link rel="stylesheet"  href="https://fonts.googleapis.com/icon?family=Material+Icons">  
     <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 	<link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
-	 	
-    <script src="${ pageContext.request.contextPath }/js/jquery.1.11.1.js"></script>
-    <script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
-    <!-- icon-font -->
-    <script src="https://use.fontawesome.com/bbddce3010.js"></script>
-    
     
     <!-- CSS for index (<HEAD>와 </HEAD> 사이) -->
     <link href="${ pageContext.request.contextPath }/css/style.css" rel="stylesheet" type="text/css">
@@ -30,16 +24,6 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     
-    <!-- google analytics -->
-    <script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	
-	  ga('create', 'UA-90558257-1', 'auto');
-	  ga('send', 'pageview');
-	</script>
 	
   <style>
 
@@ -70,19 +54,19 @@
 							<div class="dropdown marginTop20 marginRight30">
 								<c:choose>
 									<c:when test="${ userVO.type eq 'A'}">
-										<span class="marginRight">
+										<li>
 											<a href="${ pageContext.request.contextPath }/jsp/admin/member_list.do"> 
 											<i class="fa fa-user-secret fa-fw" aria-hidden="true"></i> 관리자 페이지</a>
-										</span>
+										</li>
 									</c:when>
 									<c:otherwise>
 										<span class="marginRight">
-											<a href="${ pageContext.request.contextPath }/drawer.do" class="" title="내카드">
-											<i class="fa fa-hdd-o" aria-hidden="true"></i> 내 카드</a>
+											<a href="${ pageContext.request.contextPath }/drawer.do" title="내카드">
+												<i class="fa fa-hdd-o" aria-hidden="true"></i> 내 카드
+											</a>
 										</span>
 									</c:otherwise>
 								</c:choose>
-								
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" title="회원 정보 메뉴 열기">
 									<img id="blah" src="/Quration/upload/${userVO.profileImg}" 
 										alt="your image" class="img-circle profile_img" style="width: 30px; height: 30px;"/>
@@ -96,9 +80,16 @@
 									<li><a href="${ pageContext.request.contextPath }/myPage/original_password.do"> <i class="fa fa-lock fa-fw"
 											aria-hidden="true"></i> 비밀번호 변경
 									</a></li>
+									<c:if test="${ userVO.type eq 'A'}">
+										<li><a
+											href="${ pageContext.request.contextPath }/jsp/admin/member_list.do">
+												<i class="fa fa-user-secret fa-fw" aria-hidden="true"></i>
+												관리자 페이지
+										</a></li>
+									</c:if>
 									<li class="divider"></li>
-									<li><a href="${ pageContext.request.contextPath }/login/logout.do"> <i class="fa fa-sign-out fa-fw"
-											aria-hidden="true"></i> 로그아웃</a>
+									<li><a href="${ pageContext.request.contextPath }/login/logout.do"> 
+									   <i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> 로그아웃</a>
 									</li>
 								</ul>
 							</div>
@@ -142,6 +133,7 @@
                 	       <span class="spanPadding" ><a href="search/result.do?q=java">Java</a></span>  
                 	       <span ><a href="search/result.do?q=python">Python</a></span>
                 </div>
+                
             </div>
             <div class="content">
 	            <a href="#services" class="down-btn page-scroll ">
@@ -342,7 +334,20 @@
     <!-- footer -->
 	<jsp:include page="/jsp/include/footer.jsp" />
 	<!-- /footer -->
-
+	
+	<jsp:include page="/jsp/include/commonJs.jsp" />
+	
+    <!-- google analytics -->
+    <script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-90558257-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+	
     <!-- Javascripts (necessary for Bootstrap's JavaScript plugins)
     ================================================== -->
     <script type="text/javascript" src="${ pageContext.request.contextPath }/js/main.js"></script>
@@ -374,6 +379,7 @@
     	}});
      });
     </script>
+    
     
   </body>
 </html>
