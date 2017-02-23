@@ -35,7 +35,7 @@
     
     <!-- Heroku / Localhost + ProgreSQL start
     -->
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource" >
+    <!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource" >
  		<property name="driverClass" value="org.postgresql.Driver" />
  		<property name="url" value="jdbc:postgresql://ec2-23-21-224-199.compute-1.amazonaws.com:5432/d4k49e3tapgsar?sslmode=require&amp;user=yptxwahiogkkjr&amp;password=aad5becb20b2450e706d01d68b8ff62de2234c6e0fc2ef52db0fd332ae3161cd" />
  		<property name="username" value="yptxwahiogkkjr" />
@@ -50,7 +50,7 @@
     
     <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate" >
     	<constructor-arg ref="sqlSessionFactory" />
-    </bean>
+    </bean> -->
     
     <!-- File Upload 를 위한 세팅 -->
     <!-- commons-fileupload, io 를 maven 세팅 필요 -->
@@ -96,6 +96,7 @@
 	</mvc:annotation-driven>
 
 	<mvc:default-servlet-handler />
+			
 	<mvc:view-resolvers>
 		<mvc:jsp prefix="/jsp/" suffix=".jsp" />
 	</mvc:view-resolvers>

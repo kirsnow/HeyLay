@@ -2,20 +2,21 @@ package io.planb.login.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.service.MemberService;
 import io.planb.member.vo.MemberVO;
 
-@SessionAttributes("userVO")
+//@SessionAttributes("userVO")
 @Controller
 public class LoginController {
 
@@ -23,7 +24,12 @@ public class LoginController {
 	private MemberService service;
 	
 	@RequestMapping(value="/login/login.do", method=RequestMethod.GET)
-	public String loginForm() {
+	public String loginForm(HttpServletRequest request) {
+		
+		String referrer = request.getHeader("Referer");
+	    request.getSession().setAttribute("prevPage", referrer);
+	    
+//	    System.out.println("referrer: " + referrer);
 		
 		return "login/login";
 	}
@@ -51,6 +57,16 @@ public class LoginController {
 		} else model.addAttribute("msg", "이메일을 인식할 수 없습니다. 다시 시도하세요.");
 		
 		return "login/login";
+	}
+	
+	@RequestMapping("/login/interest.do")
+	public String interest(Model model) {
+//		System.out.println("interest controller");
+		
+		List<KeywordsVO> interestKeywordList = service.selectInterestList();
+		model.addAttribute("interestKeywordList", interestKeywordList);
+		
+		return "membership/interest";
 	}
 	
     @RequestMapping("/login/logout.do")

@@ -81,8 +81,8 @@
 											aria-hidden="true"></i> 비밀번호 변경
 									</a></li>
 									<li class="divider"></li>
-									<li><a href="${ pageContext.request.contextPath }/login/logout.do"> <i class="fa fa-sign-out fa-fw"
-											aria-hidden="true"></i> 로그아웃</a>
+									<li><a href="<c:url value="/j_spring_security_logout" />"> 
+									   <i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> 로그아웃</a>
 									</li>
 								</ul>
 							</div>
@@ -92,7 +92,7 @@
 							<div class="marginTop20">
 							    <div class="pull-right ">
 									<span><a href="${ pageContext.request.contextPath }/membership/agreement.do" class="marginRight"> 회원가입</a>  </span>
-									<span><a href="${ pageContext.request.contextPath }/login/login.do" class=""> 로그인</a>  </span>
+									<span><a href="<c:url value="/login/login.do" />" class=""> 로그인</a>  </span>
 							    </div>
 						    </div>
 						</div>

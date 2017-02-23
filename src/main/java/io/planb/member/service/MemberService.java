@@ -4,15 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.multipart.MultipartFile;
 
-import io.planb.leaved.vo.LeavedVO;
 import io.planb.drawer.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
+import io.planb.leaved.vo.LeavedVO;
 import io.planb.member.vo.IdentifyQuestionVO;
 import io.planb.member.vo.MemberVO;
 
-public interface MemberService {
+public interface MemberService extends UserDetailsService{
 	
 	/*회원 관련 부분*/
 	public MemberVO login(MemberVO member); 									//로그인
@@ -53,5 +55,7 @@ public interface MemberService {
 	
 	public String selectType(int no);
 	
+
+	public UserDetails loadUserByUsername(String name);
 
 }

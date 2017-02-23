@@ -67,14 +67,14 @@
 									</a></li>
 								</c:if>
 								<li class="divider"></li>
-								<li><a href="${ pageContext.request.contextPath }/login/logout.do">
+								<li><a href="<c:url value="/j_spring_security_logout" />">
 									<i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> 로그아웃
 								</a></li>
 							</ul>
 					</c:when>
 					<c:otherwise>
 						<li><a
-							href="${ pageContext.request.contextPath }/login/login.do"
+							href="<c:url value="/login/login.do" />"
 							role="button" aria-expanded="false" title="로그인"> <i
 								class="fa fa-sign-in" aria-hidden="true"></i> 로그인
 						</a></li>

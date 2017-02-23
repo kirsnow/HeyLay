@@ -35,6 +35,7 @@
 		        </div>
 			</div>
 			<form name="lform" action="${pageContext.request.contextPath }/login/login.do" method="post" > 
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				  
 				<div class="row">
 				  	<div class="col-md-6 col-md-offset-3 marginBottom marginTop">
