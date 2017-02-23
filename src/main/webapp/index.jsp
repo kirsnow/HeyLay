@@ -57,6 +57,7 @@
     border: 1px solid #FFFFFF;
 } 
 
+
   </style>
   </head>
   <body>
@@ -140,7 +141,6 @@
                 	       <span class="spanPadding" ><a href="search/result.do?q=java">Java</a></span>  
                 	       <span ><a href="search/result.do?q=python">Python</a></span>
                 </div>
-                
             </div>
             <div class="content">
 	            <a href="#services" class="down-btn page-scroll ">
@@ -218,12 +218,14 @@
                     </div>
                 </div>
             </div>
-            <a href="#about-us" class="down-btn page-scroll">
-                <span class="fa fa-angle-down"></span>
-            </a>
-            <a href="#main" class="up-btn page-scroll">
-                <span class="fa fa-angle-up"></span>
-            </a>
+            <div class="marginTop30">
+	            <a href="#about-us" class="down-btn page-scroll">
+	                <span class="fa fa-angle-down"></span>
+	            </a>
+	            <a href="#main" class="up-btn page-scroll">
+	                <span class="fa fa-angle-up"></span>
+	            </a>
+            </div>
         </div>
     </div>
 
