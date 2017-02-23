@@ -50,6 +50,8 @@ public interface MemberService {
 	public String selectMemberPassword(MemberVO member);						//비밀번호 찾기
 
 	public String checkEmail(String email);										//계정 중복 확인
+	
+	public String selectType(int no);
 
 	public String selectRecommandList();                                        //회원 검색어 추천 키워드 호출
 

@@ -57,6 +57,7 @@
     border: 1px solid #FFFFFF;
 } 
 
+
   </style>
   </head>
   <body>
@@ -67,9 +68,20 @@
 					<c:choose>
 						<c:when test="${ not empty userVO }"> 
 							<div class="dropdown marginTop20 marginRight30">
-								<span class="marginRight">
-									<a href="${ pageContext.request.contextPath }/drawer.do" class="" title="내카드">큐레이션</a>
-								</span>
+								<c:choose>
+									<c:when test="${ userVO.type eq 'A'}">
+										<span class="marginRight">
+											<a href="${ pageContext.request.contextPath }/jsp/admin/member_list.do"> 
+											<i class="fa fa-user-secret fa-fw" aria-hidden="true"></i> 관리자 페이지</a>
+										</span>
+									</c:when>
+									<c:otherwise>
+										<span class="marginRight">
+											<a href="${ pageContext.request.contextPath }/drawer.do" class="" title="내카드">
+											<i class="fa fa-hdd-o" aria-hidden="true"></i> 내 카드</a>
+										</span>
+									</c:otherwise>
+								</c:choose>
 								
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" title="회원 정보 메뉴 열기">
 									<img id="blah" src="/Quration/upload/${userVO.profileImg}" 
@@ -84,11 +96,6 @@
 									<li><a href="${ pageContext.request.contextPath }/myPage/original_password.do"> <i class="fa fa-lock fa-fw"
 											aria-hidden="true"></i> 비밀번호 변경
 									</a></li>
-									<c:if test="${ userVO.type eq 'A'}">
-										<li><a href="${ pageContext.request.contextPath }/jsp/admin/member_list.do"> 
-											<i class="fa fa-user-secret fa-fw" aria-hidden="true"></i> 관리자 페이지
-										</a></li>
-									</c:if>
 									<li class="divider"></li>
 									<li><a href="${ pageContext.request.contextPath }/login/logout.do"> <i class="fa fa-sign-out fa-fw"
 											aria-hidden="true"></i> 로그아웃</a>
@@ -129,13 +136,12 @@
 						<!-- /input-group -->
 					</div>
 				</form>
-                <div id="recommandKeyword" class="marginTop20 font20">
+                <div id="recommandKeyword" class="col-md-6 col-md-offset-3 marginTop20 font20 grayfont">
                 	추천 검색어<span class="marginLeft marginRight">:</span> 
-                	       <span class="spanPadding" >Java</span>  
-                	       <span class="spanPadding">ElasticSearch</span>  
-                	       <span >Python</span>
+                	       <span class="spanPadding"><a href="search/result.do?q=인공지능">인공지능</a></span>  
+                	       <span class="spanPadding" ><a href="search/result.do?q=java">Java</a></span>  
+                	       <span ><a href="search/result.do?q=python">Python</a></span>
                 </div>
-                
             </div>
             <div class="content">
 	            <a href="#services" class="down-btn page-scroll ">
@@ -213,12 +219,14 @@
                     </div>
                 </div>
             </div>
-            <a href="#about-us" class="down-btn page-scroll">
-                <span class="fa fa-angle-down"></span>
-            </a>
-            <a href="#main" class="up-btn page-scroll">
-                <span class="fa fa-angle-up"></span>
-            </a>
+            <div class="marginTop30">
+	            <a href="#about-us" class="down-btn page-scroll">
+	                <span class="fa fa-angle-down"></span>
+	            </a>
+	            <a href="#main" class="up-btn page-scroll">
+	                <span class="fa fa-angle-up"></span>
+	            </a>
+            </div>
         </div>
     </div>
 

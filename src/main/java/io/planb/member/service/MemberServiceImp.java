@@ -42,7 +42,7 @@ public class MemberServiceImp implements MemberService {
 	public void enroll(MemberVO member) {
 		int nextMeberNo = dao.getNextMemberNo();
 		member.setNo(nextMeberNo);
-		
+
 		dao.enroll(member);
 
 		dao.firstFolder(nextMeberNo);
@@ -63,7 +63,7 @@ public class MemberServiceImp implements MemberService {
 		conDao.leavedSave(no);
 		conDao.leavedView(no);
 		conDao.leavedDir(no);
-		
+
 		dao.withdraw(member);
 	}
 
@@ -87,7 +87,7 @@ public class MemberServiceImp implements MemberService {
 		// ModelAndView mav = new ModelAndView("file/uploadResult");
 
 		// System.out.println("OwnerServiceImp id : " + owner.getId());
-		
+
 		String saveFileName = "";
 
 		if (!multipartFile.isEmpty()) {
@@ -124,11 +124,11 @@ public class MemberServiceImp implements MemberService {
 
 				member.setProfileImg(saveFileName);
 
-//				System.out.println("saveFileName : " + saveFileName);
+				// System.out.println("saveFileName : " + saveFileName);
 				// System.out.println("Service noticeAttach : " + noticeAttach);
 
 				dao.mypageUpdate(member);
-				
+
 			}
 		}
 		return saveFileName;
@@ -156,23 +156,23 @@ public class MemberServiceImp implements MemberService {
 		dao.updateName(params);
 
 	}
-    
-	/*관심 키워드 선택지 호출*/
+
+	/* 관심 키워드 선택지 호출 */
 	@Override
 	public List<KeywordsVO> selectInterestList() {
 		List<KeywordsVO> interestKeywordList = dao.selectInterestList();
 		return interestKeywordList;
 	}
-	
-	/*계정&비밀번호 찾기용 질문*/
+
+	/* 계정&비밀번호 찾기용 질문 */
 	@Override
 	public List<IdentifyQuestionVO> selectIdenQuestion() {
 		List<IdentifyQuestionVO> idenQuestionList = dao.selectIdenQuestion();
-		
+
 		return idenQuestionList;
 	}
-	
-	//회원 탈퇴 시 보유 컨텐츠 호출
+
+	// 회원 탈퇴 시 보유 컨텐츠 호출
 	@Override
 	public int selectWithdrawContentCnt(int memberNo) {
 		int withdrawContentCnt = dao.selectWithdrawContentCnt(memberNo);
@@ -181,41 +181,47 @@ public class MemberServiceImp implements MemberService {
 
 	@Override
 	public void insertKeywords(ArrayList<String> list, int no) {
-		for(String keyword : list) {
+		for (String keyword : list) {
 			SelectKeywordsVO keywords = new SelectKeywordsVO();
 			keywords.setMemberNo(no);
 			keywords.setKeyword(keyword);
-			
+
 			dao.insertKeywords(keywords);
 		}
 	}
-	
-	//계정 찾기
+
+	// 계정 찾기
 	@Override
 	public String selectMemberAccount(MemberVO member) {
 		String userAccount = dao.selectMemberAccount(member);
 		return userAccount;
 	}
-	
-	//비밀번호 찾기
+
+	// 비밀번호 찾기
 	@Override
 	public String selectMemberPassword(MemberVO member) {
 		String userPassword = dao.selectMemberPassword(member);
 		return userPassword;
 	}
-	
-	//계정 중복 확인
+
+	// 계정 중복 확인
 	@Override
 	public String checkEmail(String email) {
 		email = dao.checkEmail(email);
-		 return email;
+		return email;
 	}
-	
-	//가입 or 로그인 후 검색 이전 키워드 추천
+
+	@Override
+	public String selectType(int no) {
+		String type = dao.selectType(no);
+		return type;
+	}
+
+	// 가입 or 로그인 후 검색 이전 키워드 추천
 	@Override
 	public String selectRecommandList() {
 		String recommandList = dao.selectRecommandList();
-		
+
 		return recommandList;
 	}
 }
