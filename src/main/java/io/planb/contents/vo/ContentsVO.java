@@ -309,42 +309,20 @@ public class ContentsVO {
 		this.personalVieCnt = personalVieCnt;
 	}
 
-<<<<<<< HEAD
 	public int getCount() {
 		return count;
 	}
 
 	public void setCount(int count) {
 		this.count = count;
-=======
+	}
+	
 	public int getReportCnt() {
 		return reportCnt;
 	}
 
 	public void setReportCnt(int reportCnt) {
 		this.reportCnt = reportCnt;
->>>>>>> 824cf0683f24e9c048b8e61815bdfce4c73a0f4c
-	}
-
-	@Override
-	public String toString() {
-		return "ContentsVO [contentsNo=" + contentsNo + ", title=" + title + ", summary=" + summary + ", url=" + url
-				+ ", scrapedDate=" + scrapedDate + ", scrapedDaysAgo=" + scrapedDaysAgo + ", language=" + language
-				+ ", ban=" + ban + ", viewCnt=" + viewCnt + ", likeCnt=" + likeCnt + ", sourceNo=" + sourceNo
-				+ ", sourceName=" + sourceName + ", sourceUrl=" + sourceUrl + ", sourceDomain=" + sourceDomain
-				+ ", sourceImg=" + sourceImg + ", dataTypeNo=" + dataTypeNo + ", dataTypeName=" + dataTypeName
-				+ ", dataTypeNameEng=" + dataTypeNameEng + ", dataTypeNameFun=" + dataTypeNameFun + ", categoryNo="
-				+ categoryNo + ", categoryName=" + categoryName + ", imgNo=" + imgNo + ", imgUrl=" + imgUrl
-				+ ", imgAlt=" + imgAlt + ", prevContentsNo=" + prevContentsNo + ", nextContentsNo=" + nextContentsNo
-				+ ", memberNo=" + memberNo + ", savedNo=" + savedNo + ", savedCnt=" + savedCnt + ", savedDate="
-				+ savedDate + ", savedDaysAgo=" + savedDaysAgo + ", directoryNo=" + directoryNo + ", directoryName="
-				+ directoryName + ", directoryDate=" + directoryDate + ", directoryDaysAgo=" + directoryDaysAgo
-<<<<<<< HEAD
-				+ ", keyword=" + keyword + ", limit=" + limit + ", personalVieCnt=" + personalVieCnt + ", count="
-				+ count + "]";
-=======
-				+ ", keyword=" + keyword + ", limit=" + limit + ", reportCnt=" + reportCnt + ", personalVieCnt=" + personalVieCnt + "]";
->>>>>>> 824cf0683f24e9c048b8e61815bdfce4c73a0f4c
 	}
 
 }
