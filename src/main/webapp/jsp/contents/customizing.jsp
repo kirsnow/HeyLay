@@ -83,59 +83,59 @@
 				<div class="container">
 
 					<div class="row">
-						<div
-							class="page-header text-center col-md-6 col-md-offset-3 marginBottom">
-							<h1>회원별 커스터마이징</h1>
+						<div class="page-header text-center col-md-6 col-md-offset-3 marginBottom">
+							<h4><b>회원별 커스터마이징</b></h4>
 						</div>
 					</div>
-					<div class="row">
+					<div class="row marginTop">
 						<div class="col-md-4 col-md-offset-2">
-							<h4 class="optionTitle page-header text-center">Quration
-								Plus option</h4>
-							<div class="well well-lg paddingleft70" id="freemium">
-								<p>1. 카드 검색</p>
-								<p>2. 카드 저장</p>
-								<p>3. 카테고리 관리</p>
-								<p>4. 기본 통계</p>
-								<p>5. 카드 추천 서비스</p>
-								<p class="underline">6. 메모 공개 비공개 기능</p>
-								<p class="underline">7. 이중 잠금(자체 잠금)</p>
-								<p class="underline">8. 고급 통계</p>
-								<p class="underline">9. 광고 없음</p>
-								<hr />
-								<h4>무료</h4>
-								<hr />
+							<h4 class="optionTitle text-center"><b>Quration Plus option</b></h4>
+							<div class="panel marginTop20">
+								<div class="panel-body paddingleft70 " name="freemium">
+									<p>1. 카드 검색</p>
+									<p>2. 카드 저장</p>
+									<p>3. 카테고리 관리</p>
+									<p>4. 기본 통계</p>
+									<p>5. 카드 추천 서비스</p>
+									<p class="underline">6. 메모 공개 비공개 기능</p>
+									<p class="underline">7. 이중 잠금(자체 잠금)</p>
+									<p class="underline">8. 고급 통계</p>
+									<p class="underline">9. 광고 없음</p>
+								</div>
+							</div>
+							<div class="border2px">	
+								<h4 class="text-center"><b>무료</b></h4>
 							</div>
 						</div>
 						<div class="col-md-4">
-							<h4 class="optionTitle page-header text-center">Quration
-								premium option</h4>
-							<div class="col-md-push-1 well well-lg paddingleft70"
-								id="premium">
-								<p>1. 카드 검색</p>
-								<p>2. 카드 저장</p>
-								<p>3. 카테고리 관리</p>
-								<p>4. 기본 통계</p>
-								<p>5. 카드 추천 서비스</p>
-								<p>6. 메모 공개 비공개 기능</p>
-								<p>7. 이중 잠금(자체 잠금)</p>
-								<p>8. 고급 통계</p>
-								<p>8. 광고 없음</p>
-								<hr />
-								<h4>₩30,000 /년</h4>
-								<hr />
+							<h4 class=" text-center text-primary"><b>Quration premium option</b></h4>
+							<div class="panel marginTop20">
+								<div class="col-md-push-1 panel-body paddingleft70 " name="premium">
+									<p>1. 카드 검색</p>
+									<p>2. 카드 저장</p>
+									<p>3. 카테고리 관리</p>
+									<p>4. 기본 통계</p>
+									<p>5. 카드 추천 서비스</p>
+									<p>6. 메모 공개 비공개 기능</p>
+									<p>7. 이중 잠금(자체 잠금)</p>
+									<p>8. 고급 통계</p>
+									<p>8. 광고 없음</p>
+								</div>
+							</div>
+							<div class="border2px">	
+								<h4 class="text-center text-primary">
+									<b>
+									<span class="marginRight">₩3,300 Month(월) </span>
+									<span>₩30,000 Year(년)</span>
+									</b>
+								</h4>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-offset-2 col-md-8 well well-lg">
-						<div class="row text-center">
-							<h4>나만의 커스터 마이징을 시작해보세요~</h4>
-						</div>
-						<div class="row text-center">
-							<a href="javascript:doAction()" class="btn btn-primary type" id="${ userVO.type }">커스터 마이징 시작하기</a>
-						</div>
+					<div class="col-md-offset-2 col-md-8 marginTop40 marginBottom100 text-center">
+						<a href="javascript:doAction()" class="btn btn-primary type" id="${ userVO.type }">결제 페이지 이동</a>
 					</div>
 				</div>
 
@@ -163,5 +163,12 @@
 			}
 		}
 	</script>
+	
+	<script src="paypal-button.min.js?merchant=YOUR_MERCHANT_ID"
+    		data-button="buynow"
+    		data-name="My product"
+    		data-amount="1.00"
+   		 	async
+	></script>
 </body>
 </html>

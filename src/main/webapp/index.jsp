@@ -57,6 +57,7 @@
     border: 1px solid #FFFFFF;
 } 
 
+
   </style>
   </head>
   <body>
@@ -137,11 +138,10 @@
 				</form>
                 <div id="recommandKeyword" class="col-md-6 col-md-offset-3 marginTop20 font20 grayfont">
                 	추천 검색어<span class="marginLeft marginRight">:</span> 
-                	       <span class="spanPadding" >Java</span>  
-                	       <span class="spanPadding">ElasticSearch</span>  
-                	       <span >Python</span>
+                	       <span class="spanPadding"><a href="search/result.do?q=인공지능">인공지능</a></span>  
+                	       <span class="spanPadding" ><a href="search/result.do?q=java">Java</a></span>  
+                	       <span ><a href="search/result.do?q=python">Python</a></span>
                 </div>
-                
             </div>
             <div class="content">
 	            <a href="#services" class="down-btn page-scroll ">
@@ -219,12 +219,14 @@
                     </div>
                 </div>
             </div>
-            <a href="#about-us" class="down-btn page-scroll">
-                <span class="fa fa-angle-down"></span>
-            </a>
-            <a href="#main" class="up-btn page-scroll">
-                <span class="fa fa-angle-up"></span>
-            </a>
+            <div class="marginTop30">
+	            <a href="#about-us" class="down-btn page-scroll">
+	                <span class="fa fa-angle-down"></span>
+	            </a>
+	            <a href="#main" class="up-btn page-scroll">
+	                <span class="fa fa-angle-up"></span>
+	            </a>
+            </div>
         </div>
     </div>
 
