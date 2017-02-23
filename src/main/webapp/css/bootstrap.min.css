@@ -1656,7 +1656,7 @@ p {
 
 .lead {
     margin-bottom: 21px;
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 300;
     line-height: 1.4
 }
@@ -3211,8 +3211,14 @@ output {
 .form-control[disabled],
 .form-control[readonly],
 fieldset[disabled] .form-control {
-    background-color: #eeeeee;
     opacity: 1
+}
+
+input.form-control[disabled],
+input.form-control[readonly],
+fieldset[disabled] .form-control {
+    opacity: 1;
+    background-color: #eee;
 }
 
 .form-control[disabled],
@@ -7114,12 +7120,13 @@ button.close {
     bottom: 0;
     left: 0;
     /* z-index: 1040; */
-    background-color: #000000
+    background-color: #000000;
 }
 
 .modal-backdrop.fade {
     opacity: 0;
-    filter: alpha(opacity=0)
+    filter: alpha(opacity=0);
+    height: 0px !important;
 }
 
 .modal-backdrop.in {

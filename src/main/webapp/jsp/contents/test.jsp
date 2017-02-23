@@ -1,113 +1,102 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!-- Bootstrap CSS SET -->
-<link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
-<link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
-
-<!-- icon-font -->
-<script src="https://use.fontawesome.com/bbddce3010.js"></script>
-<title>Insert title here</title>
-<!-- Bootstrap JS SET -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
+<meta charset=utf-8>
+<meta name="viewport" content="width=620">
+<title>HTML5 Demo: File API (simple)</title>
+<link rel="stylesheet" href="css/html5demos.css">
+<script src="js/h5utils.js"></script>
 </head>
 <body>
-<a href="#" role="button" id="${ card.contentsNo }" class="saveCardBtn nofocus"
-	data-toggle="modal" data-target="#myModal"
-	title="카드 담기"> 
-	<i class="fa fa-bug fa-2x text-muted" aria-hidden="true"></i>
-</a>
-
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
-	aria-labelledby="gridSystemModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"
-					aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<h4 class="modal-title text-muted" id="gridSystemModalLabel">
-					<i class="fa fa-bug fa-fw" aria-hidden="true"></i>
-					신고합니다 <small>오류 신고</small>
-				</h4>
-			</div>
-			<div class="modal-body">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-md-8 col-md-offset-2 marginTop">
-							<input type="text" name="email" class="form-control" id="email"
-								placeholder="계정 (이메일)" alt="계정(이메일)입력 폼" value="${ userVO.email }"/>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-8 col-md-offset-2 marginTop">
-							<p>정확한 장애(오류) 해결을 위해 고객님의 PC사양 정보가 필요하며, 수집된 PC사양 정보는 문제 해결
-								이외의 다른 용도로 사용하지 않습니다. PC사양조사 수동설치 시에는 웹페이지를 닫고 다시 실행하신 후에 문의를
-								입력해 주세요.
-							<p>
-							<div class="well">
-								<dl class="dl-horizontal">
-									<dt>Browser</dt>
-									<dd class="agtInfo">agent</dd>
-									<dt>OS</dt>
-									<dd class="osInfo">osInfo</dd>
-								</dl>
-								<input type="hidden" name="browser"
-									value=""
-									readonly="readonly" /> <input type="hidden" name="os"
-									value="" readonly="readonly" />
-								<div class="input-group pull-right">
-									<label for="pcInfoAgree">PC 사양 제공에 동의합니다.</label> <input
-										type="checkbox" name="pcInfoAgree" id="pcInfoAgree" class=""
-										alt="PC사양 제공 동의 체크박스(필수)" />
-								</div>
-								<div class="row"></div>
-							</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
-							<input type="text" name="url" class="form-control"
-								placeholder="오류 발생  URL 입력" alt="오류  URL 입력 폼" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
-							<textarea id="userInput" name="userInput"
-								class="form-control marginTop userInput" rows="4" maxlength="1000"
-								placeholder="오류 화면 캡처, 오류 발생 일시, PC 정보 제공과 함께 오류 현상을 기재해 주세요."></textarea>
-							<p>
-								<small><span id="text_length">1000</span>자 입력 가능</small>
-							</p>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
-							<div class="panel panel-default">
-								<div class="panel-body">
-									<input type="file" name="attachfile"
-										alt="오류 사항에 관한 파일을 첨부하는 버튼" id="attachfile"
-										aria-describedby="attachment" /> <small id="attachment"
-										class="help-block">5MB 이하 파일을 첨부하실 수 있습니다.</small>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-primary">작성완료</button>
+	<section id="wrapper">
+		<div id="carbonads-container">
+			<div class="carbonad">
+				<div id="azcarbon"></div>
+				<script type="text/javascript">
+					var z = document.createElement("script");
+					z.type = "text/javascript";
+					z.async = true;
+					z.src = "http://engine.carbonads.com/z/14060/azcarbon_2_1_0_VERT";
+					var s = document.getElementsByTagName("script")[0];
+					s.parentNode.insertBefore(z, s);
+				</script>
 			</div>
 		</div>
-	</div>
-</div>
+		<header>
+			<h1>File API (simple)</h1>
+		</header>
 
+		<article>
+			<p id="status">File API & FileReader API not supported</p>
+			<p>
+				<input type=file>
+			</p>
+			<p>Select an image from your machine to read the contents of the
+				file without using a server</p>
+			<div id="holder"></div>
+		</article>
+		<script>
+			var upload = document.getElementsByTagName('input')[0], holder = document
+					.getElementById('holder'), state = document
+					.getElementById('status');
+
+			if (typeof window.FileReader === 'undefined') {
+				state.className = 'fail';
+			} else {
+				state.className = 'success';
+				state.innerHTML = 'File API & FileReader available';
+			}
+
+			upload.onchange = function(e) {
+				e.preventDefault();
+
+				var file = upload.files[0], reader = new FileReader();
+				reader.onload = function(event) {
+					var img = new Image();
+					img.src = event.target.result;
+					// note: no onload required since we've got the dataurl...I think! :)
+					if (img.width > 560) { // holder width
+						img.width = 560;
+					}
+					holder.innerHTML = '';
+					holder.appendChild(img);
+				};
+				reader.readAsDataURL(file);
+
+				return false;
+			};
+		</script>
+		<a id="html5badge" href="http://www.w3.org/html/logo/"> <img
+			src="http://www.w3.org/html/logo/badge/html5-badge-h-connectivity-device-graphics-multimedia-performance-semantics-storage.png"
+			width="325" height="64"
+			alt="HTML5 Powered with Connectivity / Realtime, Device Access, Graphics, 3D & Effects, Multimedia, Performance & Integration, Semantics, and Offline & Storage"
+			title="HTML5 Powered with Connectivity / Realtime, Device Access, Graphics, 3D & Effects, Multimedia, Performance & Integration, Semantics, and Offline & Storage">
+		</a>
+		<footer>
+			<a href="/">HTML5 demos</a>/<a id="built"
+				href="http://twitter.com/rem">@rem built this</a>/<a
+				href="#view-source">view source</a>
+		</footer>
+	</section>
+	<a href="http://github.com/remy/html5demos"><img
+		style="position: absolute; top: 0; left: 0; border: 0;"
+		src="http://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"
+		alt="Fork me on GitHub" /></a>
+	<script src="js/prettify.packed.js"></script>
+	<script>
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl."
+				: "http://www.");
+		document
+				.write(unescape("%3Cscript src='"
+						+ gaJsHost
+						+ "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script>
+		try {
+			var pageTracker = _gat._getTracker("UA-1656750-18");
+			pageTracker._trackPageview();
+		} catch (err) {
+		}
+	</script>
 </body>
 </html>

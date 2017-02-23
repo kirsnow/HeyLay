@@ -7,7 +7,7 @@
 	<select id="login" parameterType="memberVO" resultType="memberVO">
 	    SELECT	* 
 		FROM 	(SELECT no, email, password, last_name as lastName, first_name as firstName, type, birth, gender, 
-		   				email_receive as emailReceive, country, city, question, answer
+		   				email_receive as emailReceive, country, city, question, answer, profile_img as profileImg
 				 FROM Q_member
 				 WHERE email = #{ email }) mm, 
 				(SELECT COUNT(*) selectKeywords 
@@ -48,11 +48,11 @@
 	    where email = #{email} and last_name = #{lastName} and first_name = #{firstName} and question = #{question} and answer = #{answer}
 	</select>
 
-	<update id="withdraw" parameterType="int" >
-		update Q_member
-		set email =#{no}, password  =' ', last_name =' ' , first_name  =' ', 
-		    birth  =null, gender  =null ,email_receive  =null, country  =null, 
-		    city  =null, question  =' ', answer  =' ', type=' ', rest =null, ban = null,
+	<update id="withdraw" parameterType="memberVO" >
+		update Q_members
+		set email =#{no}, password =' ', last_name =' ' , first_name  =' ', 
+		    birth =null, gender =null ,email_receive =null, country =null, 
+		    city =null, question =#{question}, answer  =' ', type='X', rest =null, ban = null,
 	       	reg_date = null, last_date =null, profile_img = null, report_cnt = null
 		where no= #{no}
 	</update>
@@ -73,7 +73,7 @@
 		update Q_member
 	 	set last_name = #{lastName} , first_name = #{firstName}, 
 	    		gender = #{gender} ,email_receive = #{emailReceive}, 
-	    		country = #{country}, city = #{city}
+	    		country = #{country}, city = #{city}, profile_img = #{profileImg}
 	 	where no = #{no} and password= #{password}
 	</update> 
 	
@@ -136,5 +136,19 @@
 		SELECT count(member_no)
 		FROM q_contents_saved
 		WHERE member_no = #{ memberNo } 
+	</select>
+	
+	<select id="selectType" parameterType="int" resultType="String">
+		SELECT TYPE
+		FROM Q_MEMBER
+		WHERE no = #{ no }
+	</select>
+	
+	<!-- 가입 or 로그인 후 검색 이전 키워드 추천 -->
+	<select id="selectRecommandList" resultType="String">
+	SELECT keyword
+		FROM Q_select_keywords
+	where member_no = 4
+	group by keyword
 	</select>
 </mapper>

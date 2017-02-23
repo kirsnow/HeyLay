@@ -30,6 +30,13 @@ public class MembershipController {
 	@Autowired
 	private MemberService service;
 	
+	
+	@RequestMapping(value="/membership/agreement.do")
+	public String agreement() {
+		
+		return "membership/agreement";
+	}
+	
 	@RequestMapping(value="/membership/membership.do", method=RequestMethod.GET)
 	public String membershipForm(@ModelAttribute("member") MemberVO member, Model model) {
 		
@@ -63,10 +70,15 @@ public class MembershipController {
 	}
 	
 	@RequestMapping(value="/contents/update_type.do", method=RequestMethod.POST)
-	public String updateType(Model model, @RequestParam("no") int no) {
+	public String updateType(HttpSession session, @RequestParam("no") int no) {
+		
+		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
 		
 		service.updateType(no);
-		System.out.println("controller : " + no);
+		String type = service.selectType(no);
+		
+		userVO.setType(type);
+		session.setAttribute("userVO", userVO);
 		return "redirect:/";
 	}
 	
@@ -90,6 +102,18 @@ public class MembershipController {
 		service.insertKeywords(list, member.getNo());
 		
 		return "redirect:/";
+	}
+	
+	/*가입 or 로그인 후 검색 이전 키워드 추천*/
+	@ResponseBody
+	@RequestMapping("/index/recommandKeywordList.do")
+	public String selectRecommandList(Model model) {
+		
+		String recommandList = service.selectRecommandList();
+		System.out.println("controller recommandList : " + recommandList);
+		model.addAttribute(recommandList);
+		
+		return recommandList;
 	}
 	
 }

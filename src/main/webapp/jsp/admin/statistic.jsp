@@ -103,23 +103,23 @@
                <div class="row">
                   <div class="col-md-12">
                      <div class="col-md-4 panel border10px">
-                        <h4 class="text-center marginBottom30">회원 전체의 조회수가 높은 사이트</h4>
-                        <svg class="col-md-10 marginBottom col-md-offset-3" id="myGraph4"></svg>
+                        <h4 class="text-center marginBottom30 grayfont"><b>회원 전체의 조회수가 높은 사이트</b></h4>
+                        <svg class="col-md-14 marginBottom col-md-offset-3" id="myGraph4"></svg>
                      </div>
                      <div class="col-md-8 panel border10px ">
-                        <h4 class="text-center marginBottom30 ">회원 전체의 조회수가 높은 콘텐츠</h4>
-                        <svg class="col-md-10 marginBottom" id="myGraph3"></svg>
+                        <h4 class="text-center marginBottom30 grayfont"><b>회원 전체의 조회수가 높은 콘텐츠</b></h4>
+                        <svg class="col-md-11 marginBottom" id="myGraph3"></svg>
                      </div>
                   </div>
                </div>
                <div class="row">
                   <div class="col-md-12">
                      <div class="col-md-4 panel border10px">
-                        <h4 class="text-center marginBottom30 ">회원 전체 자주 담은 사이트 타입</h4>
+                        <h4 class="text-center marginBottom30 grayfont"><b>회원 전체 자주 담은 사이트 타입</b></h4>
                         <svg class="marginBottom col-md-offset-3" id="myGraph2"></svg>
                      </div>
                      <div class="col-md-4 panel border10px">
-                        <h4 class="text-center marginBottom30">회원 전체 자주 담은 사이트</h4>
+                        <h4 class="text-center marginBottom30 grayfont"><b>회원 전체 자주 담은 사이트</b></h4>
                         <svg class="c marginBottom col-md-offset-3" id="myGraph"></svg>
                      </div>
                      <div class="col-md-4  marginTop40 marginTop60">
@@ -212,7 +212,7 @@
             "contentStaticsList" : '${ staticsVO.columnName}'
          },
          success : function(json) {
-            var w = 600;
+            var w = 800;
             var h = 30;
             var barElements;
 
@@ -252,11 +252,11 @@
   			 })
             .duration(200)
             .attr("width", function(d, i) { // 넓이를 지정. 두 번째의 파라미터에 함수를 지정
-               return dataSet[i].value * 10; // 데이터 값을 그대로 넓이로 반환
+               return dataSet[i].viewCnt * 5; // 데이터 값을 그대로 넓이로 반환
             })
 		  
             .attr("height", h) // 높이를 지정
-            .attr("x", 300) // X 좌표를 0으로 함
+            .attr("x", 450) // X 좌표를 0으로 함
             .attr("y", function(d, i) { // Y 좌표를 지정함
                return i * 40 // 표시 순서에 20을 곱해 위치를 계산
            
@@ -268,9 +268,10 @@
             .append("text") // text 요소 추가
             .attr("y", function(d, i) { // X 좌표를 지정
                return i * 40 + 20; // 막대그래프의 표시 간격을 맞춤
-            }).attr("x", 120) // Y 좌표를 지정
+            }).attr("x", 40) // Y 좌표를 지정
             .text(function(d, i) { // 데이터 표시
                return dataSet[i].label;
+            
             })
 
             //view_cnt를 그래프에 넣기  
@@ -278,12 +279,14 @@
             .append("text") // text 요소 추가
             .attr("y", function(d, i) { // X 좌표를 지정
                return i * 40 + 20; // 막대그래프의 표시 간격을 맞춤
-            }).attr("x", 310) // Y 좌표를 지정
+            }).attr("x", 460) // Y 좌표를 지정
             .text(function(d, i) { // 데이터 표시
-               return dataSet[i].viewCnt;
+               return dataSet[i].value;
             })
          }
       });
+   
+  
 
    /* 회원 전체의 조회수가 높은 사이트 */
    $.ajax({

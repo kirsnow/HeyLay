@@ -62,8 +62,8 @@
 				<!-- page content -->
 				<div class="container text-center">
 					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
-							<h4><b>한 눈에 보는 인기 검색어 워드 클라우드</b></h4>
+						<div class="col-md-8 col-md-offset-2 marginBottom30">
+							<h4><b>인기 검색어</b></h4>
 						</div>
 					</div>
 					<c:choose>
@@ -73,16 +73,16 @@
 							</div> 
 			            </c:when>
 			       		<c:otherwise> 
-			       			<div class="circleLoading marginTop80">
+			       			<!-- <div class="circleLoading marginTop180 marginBottom100">
 								<p class="font20">Loading...</p>
 				       			<i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
-							</div>
+							</div> -->
 							<div class="row">
 								<div class="col-md-8 col-md-offset-2">
 					            	<svg id="word-cloud"></svg>
 					            </div>
 						    </div> 
-						    <small>많이 검색된 검색어일수록 크게 보여집니다.</small>
+						    <small class="marginTop60">많이 검색된 검색어일수록 크게 보여집니다.</small>
 						</c:otherwise>
 					</c:choose> 
 		        </div>
@@ -100,11 +100,6 @@
     <script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
     <script type="text/javascript" src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js"></script> 
     
-    <%-- <script type="text/javascript" src="${ pageContext.request.contextPath }/js/d3.v3.min.js"></script>
-    <script type="text/javascript" src="${ pageContext.request.contextPath }/js/d3.layout.cloud.js"></script> --%>
-    
-   <%--  <script type="text/javascript" src="${ pageContext.request.contextPath }/js/wordCloud.js"></script> --%>
-    
     <!-- jQuery -->
 	<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
 	<!-- Bootstrap -->
@@ -118,9 +113,9 @@
 	<script>
 	
 	   //로딩 중 아이콘 1.6초후 삭제
-		setTimeout(function(){
+		/* setTimeout(function(){
 			$('.circleLoading').remove();
-		},1600); 
+		},2000);  */
 	   
 	 	var width = 850,
 			height = 600;
@@ -158,12 +153,12 @@
 	
 		    d3.layout.cloud().size([width, height])
 		      .words(leaders)
-		      .padding(10)
+		      .padding(8)
 		      //세로 괄호 지정해주는 부분
 		      .rotate(function() { return ~~ Math.random(); })
 		      //.rotate(function() { return ~~(Math.random() * 10) * 90; })
 		      .font("Impact")
-		      .fontSize(function(d) { return leaderScale(d.size*3); })
+		      .fontSize(function(d) { return leaderScale(d.size*1.5); })
 		      .on("end", draw) 
 		      .start(); 
 		   

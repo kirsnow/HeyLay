@@ -11,6 +11,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+<<<<<<< HEAD
+=======
+import io.planb.leaved.vo.LeavedVO;
+import io.planb.contents.dao.ContentDAO;
+>>>>>>> 3e4dfa178f93facd31bb44781b8b0ffe994b940e
 import io.planb.drawer.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.leaved.vo.LeavedVO;
@@ -24,6 +29,8 @@ public class MemberServiceImp implements MemberService {
 
 	@Autowired
 	private MemberDAO dao;
+	@Autowired
+	private ContentDAO conDao;
 
 	@Autowired
 	private ServletContext servletContext;
@@ -38,7 +45,7 @@ public class MemberServiceImp implements MemberService {
 	public void enroll(MemberVO member) {
 		int nextMeberNo = dao.getNextMemberNo();
 		member.setNo(nextMeberNo);
-		
+
 		dao.enroll(member);
 
 		dao.firstFolder(nextMeberNo);
@@ -51,8 +58,16 @@ public class MemberServiceImp implements MemberService {
 	}
 
 	@Override
-	public void withdraw(int no) {
-		dao.withdraw(no);
+	public void withdraw(MemberVO member) {
+		int no = member.getNo();
+		System.out.println(no);
+		conDao.leavedKeyword(no);
+		conDao.leavedLike(no);
+		conDao.leavedSave(no);
+		conDao.leavedView(no);
+		conDao.leavedDir(no);
+
+		dao.withdraw(member);
 	}
 
 	@Override
@@ -66,15 +81,17 @@ public class MemberServiceImp implements MemberService {
 	}
 
 	@Override
-	public void mypageUpdate(MemberVO member) {
+	public String mypageUpdate(MultipartFile multipartFile, MemberVO member) {
 
-		/*// 실행되는 웹어플리케이션의 실제 경로 가져오기
+		// 실행되는 웹어플리케이션의 실제 경로 가져오기
 		String uploadDir = servletContext.getRealPath("/upload/");
 		// System.out.println("uploadDir : " + uploadDir);
 
 		// ModelAndView mav = new ModelAndView("file/uploadResult");
 
 		// System.out.println("OwnerServiceImp id : " + owner.getId());
+
+		String saveFileName = "";
 
 		if (!multipartFile.isEmpty()) {
 
@@ -98,7 +115,7 @@ public class MemberServiceImp implements MemberService {
 				// System.out.println("파일 사이즈 : " + fileSize);
 
 				// 고유한 파일명 만들기
-				String saveFileName = "quration-" + UUID.randomUUID().toString() + ext;
+				saveFileName = "quration-" + UUID.randomUUID().toString() + ext;
 				// System.out.println("저장할 파일명 : " + saveFileName);
 
 				// 임시저장된 파일을 원하는 경로에 저장
@@ -110,12 +127,14 @@ public class MemberServiceImp implements MemberService {
 
 				member.setProfileImg(saveFileName);
 
-				// System.out.println("Service notice : " + notice);
+				// System.out.println("saveFileName : " + saveFileName);
 				// System.out.println("Service noticeAttach : " + noticeAttach);
-*/
+
 				dao.mypageUpdate(member);
-		/*	}
-		}*/
+
+			}
+		}
+		return saveFileName;
 	}
 
 	@Override
@@ -140,23 +159,23 @@ public class MemberServiceImp implements MemberService {
 		dao.updateName(params);
 
 	}
-    
-	/*관심 키워드 선택지 호출*/
+
+	/* 관심 키워드 선택지 호출 */
 	@Override
 	public List<KeywordsVO> selectInterestList() {
 		List<KeywordsVO> interestKeywordList = dao.selectInterestList();
 		return interestKeywordList;
 	}
-	
-	/*계정&비밀번호 찾기용 질문*/
+
+	/* 계정&비밀번호 찾기용 질문 */
 	@Override
 	public List<IdentifyQuestionVO> selectIdenQuestion() {
 		List<IdentifyQuestionVO> idenQuestionList = dao.selectIdenQuestion();
-		
+
 		return idenQuestionList;
 	}
-	
-	//회원 탈퇴 시 보유 컨텐츠 호출
+
+	// 회원 탈퇴 시 보유 컨텐츠 호출
 	@Override
 	public int selectWithdrawContentCnt(int memberNo) {
 		int withdrawContentCnt = dao.selectWithdrawContentCnt(memberNo);
@@ -165,34 +184,48 @@ public class MemberServiceImp implements MemberService {
 
 	@Override
 	public void insertKeywords(ArrayList<String> list, int no) {
-		for(String keyword : list) {
+		for (String keyword : list) {
 			SelectKeywordsVO keywords = new SelectKeywordsVO();
 			keywords.setMemberNo(no);
 			keywords.setKeyword(keyword);
-			
+
 			dao.insertKeywords(keywords);
 		}
 	}
-	
-	//계정 찾기
+
+	// 계정 찾기
 	@Override
 	public String selectMemberAccount(MemberVO member) {
 		String userAccount = dao.selectMemberAccount(member);
 		return userAccount;
 	}
-	
-	//비밀번호 찾기
+
+	// 비밀번호 찾기
 	@Override
 	public String selectMemberPassword(MemberVO member) {
 		String userPassword = dao.selectMemberPassword(member);
 		return userPassword;
 	}
-	
-	//계정 중복 확인
+
+	// 계정 중복 확인
 	@Override
 	public String checkEmail(String email) {
 		email = dao.checkEmail(email);
-		 return email;
+		return email;
+	}
+
+	@Override
+	public String selectType(int no) {
+		String type = dao.selectType(no);
+		return type;
+	}
+
+	// 가입 or 로그인 후 검색 이전 키워드 추천
+	@Override
+	public String selectRecommandList() {
+		String recommandList = dao.selectRecommandList();
+
+		return recommandList;
 	}
 
 	@Override

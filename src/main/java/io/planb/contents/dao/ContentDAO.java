@@ -31,6 +31,30 @@ public class ContentDAO {
 		return savedCards;
 	}
 	
+	public int getPrevContentsNo(int contentsNo) {
+		int prevContentsNo = 0;
+		try {
+			prevContentsNo = sqlSessionTemplate.selectOne("io.planb.dao.ContentDAO.selectPrevContents", contentsNo);
+		} catch(NullPointerException np) {
+			prevContentsNo = -1;
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return prevContentsNo;
+	}
+	
+	public int getNextContentsNo(int contentsNo) {
+		int nextContentsNo = 0;
+		try {
+			nextContentsNo = sqlSessionTemplate.selectOne("io.planb.dao.ContentDAO.selectNextContents", contentsNo);
+		} catch(NullPointerException np) {
+			nextContentsNo = -1;
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return nextContentsNo;
+	}
+	
 	public List<KeywordsVO> selectKeywordList(int memberNo) {
 		List<KeywordsVO> keywordList = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.selectKeywordList", memberNo);
 		
@@ -81,12 +105,13 @@ public class ContentDAO {
 	
 	public int likeOrNot(ContentsVO like) {
 		int cnt = sqlSessionTemplate.selectOne("io.planb.contents.dao.ContentDAO.likeOrNot", like);
-	
 		return cnt;
 	}
 	
 	public int selectView(ContentsVO view) {
+		
 		int cnt = sqlSessionTemplate.selectOne("io.planb.contents.dao.ContentDAO.selectView", view);
+		
 		return cnt;
 	}
 	
@@ -96,6 +121,31 @@ public class ContentDAO {
 	
 	public void updateView(ContentsVO view) {
 		sqlSessionTemplate.insert("io.planb.contents.dao.ContentDAO.updateView", view);
+	}
+	
+	public void leavedKeyword(int memberNo) {
+		sqlSessionTemplate.update("io.planb.contents.dao.ContentDAO.leavedKeyword", memberNo);
+	}
+	
+	public void leavedLike(int memberNo) {
+		sqlSessionTemplate.update("io.planb.contents.dao.ContentDAO.leavedLike", memberNo);
+	}
+	
+	public void leavedView(int memberNo) {
+		sqlSessionTemplate.update("io.planb.contents.dao.ContentDAO.leavedView", memberNo);
+	}
+	
+	public void leavedSave(int memberNo) {
+		sqlSessionTemplate.update("io.planb.contents.dao.ContentDAO.leavedSave", memberNo);
+	}
+	
+	public void leavedDir(int memberNo) {
+		sqlSessionTemplate.update("io.planb.contents.dao.ContentDAO.leavedDir", memberNo);
+	}
+	
+	public int selectLikeCnt(int contentsNo) {
+		int cnt = sqlSessionTemplate.update("io.planb.contents.dao.ContentDAO.selectLikeCnt", contentsNo);
+		return cnt;
 	}
 
 }

@@ -33,121 +33,127 @@
 		ga('create', 'UA-90558257-1', 'auto');
 		ga('send', 'pageview');
 	</script>
+	<style>
+		html,body{height:100%}
+		body{margin:0}
+		.body{min-height:100%}
+		.sectionContent{padding-bottom:2em}
+		.footer{margin-top:-2;height:2em}
+	</style>
 </head>
 <body>
    	<header>
 		<jsp:include page="/jsp/include/nav_search.jsp" />
 	</header> 
 	
+	<div class="body">
       <!-- Membership Section -->
-       <section id="membership">
-          <div class="container marginTop60 minHeight">
-          	<div class="row">
-               <div class="page-header text-center col-md-6 col-md-offset-3">
-                   <h1>회원 가입</h1>
-               </div>
-         	</div>
-            <form name="membershipForm" class="formBottom15" 
-                  action="${pageContext.request.contextPath }/membership/membershipForm.do" 
-                  method="post" onsubmit="return checkForm()" autocomplete="off">   
-                  <div class="row">
-	                  <div id="has-error-email" class="col-md-6 col-md-offset-3">
-					  	 <input type="email" name="email" id="email" class="form-control "
-							    placeholder="계정 (이메일)" alt="계정(이메일)입력 폼" />
-					     <div id="email_eq"></div>
-						 <small class="text-muted">첫 글자는 숫자 또는 영문자로 입력해주세요. ex) quration@quration.com </small>
-					  </div>
-                  </div>
-                  <div class="row">
-	                  <div class="col-md-push-3 col-md-3">
-	                     <input type="text" name="firstName" class="form-control " placeholder="이름" alt="이름 입력 폼"/>   
-	                  </div>
-	                  <div class="col-md-3 col-md-push-3">
-	                     <input type="text" name="lastName" class="form-control " placeholder="성" alt="성 입력 폼"/>         
-	                  </div> 
+	       <section class="container marginTop60 sectionContent">
+	       	<div class="row">
+	            <div class="page-header text-center col-md-6 col-md-offset-3">
+	                <h1>회원 가입</h1>
+	            </div>
+	      	</div>
+	         <form name="membershipForm" class="formBottom15" 
+	               action="${pageContext.request.contextPath }/membership/membershipForm.do" 
+	               method="post" onsubmit="return checkForm()" autocomplete="off">   
+	               <div class="row">
+	                <div id="has-error-email" class="col-md-6 col-md-offset-3">
+			  	 <input type="email" name="email" id="email" class="form-control "
+					    placeholder="계정 (이메일)" alt="계정(이메일)입력 폼" />
+			     <div id="email_eq"></div>
+				 <small class="text-muted">첫 글자는 숫자 또는 영문자로 입력해주세요. ex) quration@quration.com </small>
+			  </div>
 	               </div>
 	               <div class="row">
-	                  <div  id="has-error" class="col-md-push-3 col-md-3"> 
-	                     <input id="password" type="password" name="password" class="form-control " placeholder=" 비밀번호" alt="비밀번호 입력 폼"/>
-						 <div><small class="text-muted">숫자, 영문자 조합으로 8~15자리를 사용하세요.</small></div>	                 
-	                  </div>
-	                 
-	                  <div id="has-error-check" class="col-md-push-3 col-md-3">
-                  		 <input id="password_check" type="password" name="passwordcheck" class="form-control" placeholder="비밀번호 확인" alt="비밀번호 확인 입력 폼"/>   
-                  	  </div>
-                  </div>
-                  <span class="col-md-6 col-md-offset-3">
-                  	  <span id="password_eq"></span>
-                  	  <span id="regPasssword"></span>
-                  </span>
-                  <div class="row">
-	                  <div class="col-md-6 col-md-offset-3">
-	                     <input type="date"  name="birth" class="form-control " alt="생년월일 선택 폼">           
-                  	  	 <div><small class="text-muted">생년월일을 선택해 주세요.</small></div>
-                  	   </div>
-                  </div>
-                  <div class="row">
-                  	<div class="col-md-6 col-md-offset-3">
-	                  <div class="form-control ">
-	                     <span class="spanPadding">성별을 표시해 주세요.</span>
-	                     <span>
-	                      	 <input type="radio" name="gender" id="genderMen" value="M" alt="성별 선택 라디오 박스 (남)"/>  <label for="genderMen">남</label>  
-	                       	 <input type="radio" name="gender" id="genderWomen" value="F" alt="성별 선택 라디오 박스 (여)"/>  <label for="genderWomen">여</label> 
-	                         <input type="radio" name="gender" id="genderEtc" value="O" alt="성별 선택 라디오 박스 (기타)"/>  <label for="genderEtc">기타</label> 
-	                     </span>
-	                     </div>
-	                  </div>
-                  </div>
-                  <div class="row">
-                 	 <div class="col-md-6 col-md-offset-3">
-	                  <div class="form-control ">
-	                     <span class="spanPadding">메일 수신여부를 선택해주세요.</span>
-	                     <span>
-				           <input type="radio" name="emailReceive" id="yes" value="Y" alt="메일 수신여부 선택 라디오 박스(네)"/> 
-				           <label for="yes"> 네  </label> 
-				           <input type="radio" name="emailReceive" id="no" value="N" alt="메일 수신여부 선택 라디오 박스(아니오)"/>
-				           <label for="no"> 아니오   </label>
-				         </span>
-	                  	 </div>
-	                  </div>
-                  </div>
-                  <div class="row">
-	                  <div class="col-md-push-3 col-md-3">
-	                     <input type="text" name="country" placeholder="국가" class="form-control " alt="거주 국가 입력 폼"/>
-	                  </div>
-	                  <div class="col-md-push-3 col-md-3">
-	                     <input type="text" name="city" placeholder="도시" class="form-control " alt="거주 도시 입력 폼"/>
-	                  </div>
-                  </div>
-                  <div class="row">
-	                  <div class="col-md-6 col-md-offset-3">
-	                     <select name="question" class="form-control " >
-	                        <option value="계정 or 비밀번호 찾기용 선택하세요" disabled selected> 계정 or 비밀번호 찾기용 질문 </option>
-	                        <c:forEach var="idenQuestion" items="${ idenQuestionList }">
-	                        	<option value="${ idenQuestion.no }"> ${ idenQuestion.question }</option>
-	                        </c:forEach>
-	                     </select>
-	                  </div> 
+	                <div class="col-md-push-3 col-md-3">
+	                   <input type="text" name="firstName" class="form-control " placeholder="이름" alt="이름 입력 폼"/>   
+	                </div>
+	                <div class="col-md-3 col-md-push-3">
+	                   <input type="text" name="lastName" class="form-control " placeholder="성" alt="성 입력 폼"/>         
+	                </div> 
+	             </div>
+	             <div class="row">
+	                <div  id="has-error" class="col-md-push-3 col-md-3"> 
+	                   <input id="password" type="password" name="password" class="form-control " placeholder=" 비밀번호" alt="비밀번호 입력 폼"/>
+				 <div><small class="text-muted">숫자, 영문자 조합으로 8~15자리를 사용하세요.</small></div>	                 
+	                </div>
+	               
+	                <div id="has-error-check" class="col-md-push-3 col-md-3">
+	               		 <input id="password_check" type="password" name="passwordcheck" class="form-control" placeholder="비밀번호 확인" alt="비밀번호 확인 입력 폼"/>   
+	               	  </div>
+	               </div>
+	               <span class="col-md-6 col-md-offset-3">
+	               	  <span id="password_eq"></span>
+	               	  <span id="regPasssword"></span>
+	               </span>
+	               <div class="row">
+	                <div class="col-md-6 col-md-offset-3">
+	                   <input type="date"  name="birth" class="form-control " alt="생년월일 선택 폼">           
+	               	  	 <div><small class="text-muted">생년월일을 선택해 주세요.</small></div>
+	               	   </div>
 	               </div>
 	               <div class="row">
-	                  <div class="col-md-6 col-md-offset-3 ">   
-	                     <input type="text" name="answer" placeholder="답변" class="form-control " alt="아이디 or 비밀번호 찾기용 답변 입력 폼"/>
-	                  </div>
+	               	<div class="col-md-6 col-md-offset-3">
+	                <div class="form-control ">
+	                   <span class="spanPadding">성별을 표시해 주세요.</span>
+	                   <span>
+	                    	 <input type="radio" name="gender" id="genderMen" value="M" alt="성별 선택 라디오 박스 (남)"/>  <label for="genderMen">남</label>  
+	                     	 <input type="radio" name="gender" id="genderWomen" value="F" alt="성별 선택 라디오 박스 (여)"/>  <label for="genderWomen">여</label> 
+	                       <input type="radio" name="gender" id="genderEtc" value="O" alt="성별 선택 라디오 박스 (기타)"/>  <label for="genderEtc">기타</label> 
+	                   </span>
+	                   </div>
+	                </div>
 	               </div>
-                  
-                  <!--   <div class="g-recaptcha margin_20" data-sitekey="6LfzNwsUAAAAAPZRhilzRNbGeVIgr2FsbDdZ8S1r"></div> 로봇이 아닙니다 잠시 주석처리 -->
-                  <div class="row"> 
-	                  <div class="col-md-6 col-md-offset-3 text-center marginBottom100">
-	                     <button type="submit" class="btn btn-primary marginRight" >회원 가입</button>
-	                     <button type="reset" class="btn">초기화</button>
-	                  </div>
-	               </div>                  
-          		</form>
- 		  	</div> 
-       	</section>
-
+	               <div class="row">
+	              	 <div class="col-md-6 col-md-offset-3">
+	                <div class="form-control ">
+	                   <span class="spanPadding">메일 수신여부를 선택해주세요.</span>
+	                   <span>
+		           <input type="radio" name="emailReceive" id="yes" value="Y" alt="메일 수신여부 선택 라디오 박스(네)"/> 
+		           <label for="yes"> 네  </label> 
+		           <input type="radio" name="emailReceive" id="no" value="N" alt="메일 수신여부 선택 라디오 박스(아니오)"/>
+		           <label for="no"> 아니오   </label>
+		         </span>
+	                	 </div>
+	                </div>
+	               </div>
+	               <div class="row">
+	                <div class="col-md-push-3 col-md-3">
+	                   <input type="text" name="country" placeholder="국가" class="form-control " alt="거주 국가 입력 폼"/>
+	                </div>
+	                <div class="col-md-push-3 col-md-3">
+	                   <input type="text" name="city" placeholder="도시" class="form-control " alt="거주 도시 입력 폼"/>
+	                </div>
+	               </div>
+	               <div class="row">
+	                <div class="col-md-6 col-md-offset-3">
+	                   <select name="question" class="form-control " >
+	                      <option value="계정 or 비밀번호 찾기용 선택하세요" disabled selected> 계정 or 비밀번호 찾기용 질문 </option>
+	                      <c:forEach var="idenQuestion" items="${ idenQuestionList }">
+	                      	<option value="${ idenQuestion.no }"> ${ idenQuestion.question }</option>
+	                      </c:forEach>
+	                   </select>
+	                </div> 
+	             </div>
+	             <div class="row">
+	                <div class="col-md-6 col-md-offset-3 ">   
+	                   <input type="text" name="answer" placeholder="답변" class="form-control " alt="아이디 or 비밀번호 찾기용 답변 입력 폼"/>
+	                </div>
+	             </div>
+	               
+	               <!--   <div class="g-recaptcha margin_20" data-sitekey="6LfzNwsUAAAAAPZRhilzRNbGeVIgr2FsbDdZ8S1r"></div> 로봇이 아닙니다 잠시 주석처리 -->
+	               <div class="row"> 
+	                <div class="col-md-6 col-md-offset-3 text-center marginBottom100">
+	                   <button type="submit" class="btn btn-primary marginRight" >회원 가입</button>
+	                   <button type="reset" class="btn">초기화</button>
+	                </div>
+	             </div>                  
+	       		</form>
+	  	</section> 
+	</div>
     <!-- Footer -->
-    <Footer>
+    <Footer class="footer">
 		<jsp:include page="/jsp/include/footer.jsp" />
 	</Footer> 
 	
@@ -325,7 +331,7 @@ $(document).ready(function() {
          alert('도시를 입력해주세요.');
          form.city.focus();
          return false;
-      } else if (form.question.value == '') {
+      } else if (form.question.options[0].selected) {
          alert('질문을 선택해주세요.');
          form.question.focus();
          return false;
@@ -336,6 +342,46 @@ $(document).ready(function() {
       }
       return true;
    }  
+   
+   
+   
+	jQuery( function($) { 
+		$('#upgradeForm').submit(function() {
+			if ($('.name').val() == "") {
+				alert('카드 소지자 이름을 입력하세요');
+				$('.name').focus();
+				return false;
+			} else if ($('#cardNum').val() == '') {
+				alert('신용카드 번호를 입력하세요.');
+				$('#cardNum').focus();
+				return false;
+			} else if ($('.card').val() == '') {
+				alert('카드 종류를 선택해주세요.');
+				$('.card').focus();
+				return false;
+			} else if ($('.month').val() == '') {
+				alert('카드 만료일 (월)을 정확하게 입력하세요');
+				$('.month').focus();
+				return false;
+			} else if ($('.year').val() == '') {
+				alert('카드 만료일 (년)을 정확하게 입력하세요');
+				$('.year').focus();
+				return false;
+			} else if ($('.cvc').val() == '') {
+				alert('카드 cvc값을 입력하세요. 카드 뒷면에 마지막 3개 혹은 4개 번호입니다.');
+				$('.cvc').focus();
+				return false;
+			} else if ($('.select option').index($('.select:selected')) == 0) {
+				alert('신용카드 발행국가를 다시 선택해주세요');
+				$('.select').focus();
+				return false;
+			}
+				return true;
+			}
+		});
+	});
+   
+   
 </script>   
 
 <!-- Google reCAPTCHA API : 로봇이 아닙니다. -->

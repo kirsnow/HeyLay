@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import io.planb.contents.dao.ContentDAO;
 import io.planb.contents.vo.ContentsVO;
 import io.planb.drawer.service.DirectoryService;
-import io.planb.drawer.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.search.service.SearchServiceImp;
 
@@ -29,6 +28,12 @@ public class ContentService {
 		ContentsVO vo = new ContentsVO();
 		vo.setContentsNo(contentsNo);
 		
+		if(dao.selectView(vo) == 0) {
+			dao.insertView(vo);
+		} else {
+			dao.updateView(vo);
+		}
+		
 		ContentsVO contents = dao.getContents(vo);
 		return contents;
 	}
@@ -45,6 +50,14 @@ public class ContentService {
 	public ContentsVO getContentsDetail(int contentsNo, String q) {
 		ContentsVO contents = getContentsByNo(contentsNo);
 		contents = searchService.highlighter(contents, q);
+		
+		if(contents != null) {
+			//이전, 이후 콘텐츠 번호 추출
+			int prevContentsNo = dao.getPrevContentsNo(contentsNo);
+			int nextContentsNo = dao.getNextContentsNo(contentsNo);
+			if(prevContentsNo > 0) contents.setPrevContentsNo(prevContentsNo);
+			if(nextContentsNo > 0) contents.setNextContentsNo(nextContentsNo);
+		}
 		return contents;
 	}
 	
@@ -70,18 +83,6 @@ public class ContentService {
 	public List<ContentsVO> drawerCards(int memberNo) {
 		List<ContentsVO> drawerCards = dao.drawerCards(memberNo);
 		return drawerCards;
-	}
-
-	public void saveCard(ContentsVO card) {
-		if(card.getDirectoryNo() < 0) {
-			DirectoryVO newDir = new DirectoryVO();
-			newDir.setMemberNo(card.getMemberNo());
-			newDir.setName(card.getDirectoryName());
-			
-			int directoryNo = dirService.newDirectory(newDir);
-			card.setDirectoryNo(directoryNo);
-		}
-		dao.saveCard(card);
 	}
 
 	public List<ContentsVO> selectPopularList() {
@@ -125,6 +126,12 @@ public class ContentService {
 	
 	public int likeOrNot(ContentsVO like) {
 		int cnt = dao.likeOrNot(like);
+		
+		return cnt;
+	}
+	
+	public int selectLikeCnt(int contentsNo) {
+		int cnt = dao.selectLikeCnt(contentsNo);
 		
 		return cnt;
 	}

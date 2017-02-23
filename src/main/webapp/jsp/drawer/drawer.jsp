@@ -62,6 +62,16 @@
                 <c:choose>
 					<c:when test="${ (cardsByDays eq null) or (empty cardsByDays) }">
 						<div class="row">
+							<div class="col-xs-12">
+								Sort: 
+								<a href="${ pageContext.request.contextPath }/drawer.do?sort=directory">Directory</a>
+								| <a href="${ pageContext.request.contextPath }/drawer.do?sort=days">Days</a>
+								| <a href="${ pageContext.request.contextPath }/drawer.do?sort=type">Type</a>
+								| <a href="${ pageContext.request.contextPath }/drawer.do?sort=source">Source</a>
+								| <a href="${ pageContext.request.contextPath }/directory.do">폴더 관리</a>
+							</div>
+						</div>
+						<div class="row">
 							<p class="lead">아직 저장한 카드가 없습니다 &#58;O</p>
 						</div>
 						<jsp:include page="/jsp/component/search_suggestion.jsp" />

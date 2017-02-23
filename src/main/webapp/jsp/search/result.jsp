@@ -52,26 +52,20 @@
 			<%-- 검색결과가 존재할 때 --%>
         	<c:otherwise>
         		<div class="row">
-					<div class="col-xs-12 lead">
-						<a href="${ pageContext.request.contextPath }/search/query.do?q=${ searchResult.query }">
-						<mark><c:out value="${ searchResult.query }" /></mark></a> 검색결과 ${ searchResult.total }건
+        			<div class="col-xs-12 lead">
+						<c:out value="${ searchResult.query }" />
+						<small><span class="text-primary">${ searchResult.total }</span>건</small>
 					</div>
-					<div class="col-xs-12 lead">
+					<div class="col-xs-12 text-muted">
+						<i class="fa fa-book marginLeft" aria-hidden="true"></i>
 						<c:forEach var="query" items="${ queryList }" varStatus="loop">
-							<button class="btn ${ query.btnClass }" type="button" disabled="disabled">
-								${ query.token } <span class="badge">${ query.type }</span>
-							</button>
+							<span class="query marginRight">${ query.token }<small><sup class="${ query.style }">${ query.type }</sup></small></span>
 						</c:forEach>
 					</div>
-				</div>
+        		</div>
 				<div class="row">
-					<section class="col-xs-12 col-md-9 card-container mdl-grid">
-						<c:set var="cards" value="${ searchResult.cards }" scope="request" />
-						<jsp:include page="/jsp/component/card.jsp" />
-					</section>
-
 					<!-- Search result filter -->
-					<aside class="col-xs-12 col-md-3">
+					<aside class="col-xs-12 col-md-3 col-md-push-9">
 						<div class="well marginTop20">
 							<p class="lead">필터</p>
 							<ul class="fa-ul">
@@ -85,7 +79,12 @@
 						</div>
 					</aside>
 					<!-- /Search result filter -->
-
+					
+					<section class="col-xs-12 col-md-9 col-md-pull-3 card-container mdl-grid">
+						<c:set var="cards" value="${ searchResult.cards }" scope="request" />
+						<jsp:include page="/jsp/component/card.jsp" />
+					</section>
+					
 				</div>
 			</c:otherwise>
         </c:choose>

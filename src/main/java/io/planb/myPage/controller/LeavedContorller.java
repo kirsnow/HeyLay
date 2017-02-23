@@ -57,9 +57,14 @@ public class LeavedContorller {
 	/* 회원 탈퇴  및 사유 입력*/
 	@RequestMapping("/withdraw.do")
 	public String withdrawQuestion(LeavedVO leaved, HttpSession session) {
-		System.out.println("leaved: " + leaved);
+		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
+		int userNo = userVO != null ? userVO.getNo() : 0;
+		
+		leaved.setMemberNo(userNo);
 		service.withdrawReason(leaved);
-		service.withdraw(leaved.getMemberNo());
+		System.out.println("leaved: " + leaved);
+		
+		service.withdraw(userVO);
 		
 		session.invalidate();
 		return "redirect:/";

@@ -19,7 +19,7 @@ public interface MemberDAO {
 
 	public List<MemberVO> selectByNo(MemberVO member); 		//회원정보 호출
 
-	public void withdraw(int no);							//회원 탈퇴
+	public void withdraw(MemberVO member);							//회원 탈퇴
 	
 	public void updateType(int no);							// 멤버 타입 F->P로 업데이트
 	
@@ -51,6 +51,10 @@ public interface MemberDAO {
 
 	public String selectMemberPassword(MemberVO member);    //비밀번호 찾기
 
-	public String checkEmail(String email);;		                //계정 중복 확인
+	public String checkEmail(String email);		                //계정 중복 확인
+	
+	public String selectType(int no);
+
+	public String selectRecommandList();		            //가입 or 로그인 후 검색 이전 키워드 추천   
 
 }

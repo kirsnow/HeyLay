@@ -13,11 +13,6 @@
     <link rel="stylesheet"  href="https://fonts.googleapis.com/icon?family=Material+Icons">  
     <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 	<link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
-	 	
-    <script src="${ pageContext.request.contextPath }/js/jquery.1.11.1.js"></script>
-    <script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
-    <!-- icon-font -->
-    <script src="https://use.fontawesome.com/bbddce3010.js"></script>
     
     <!-- CSS for index (<HEAD>와 </HEAD> 사이) -->
     <link href="${ pageContext.request.contextPath }/css/style.css" rel="stylesheet" type="text/css">
@@ -29,34 +24,56 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     
-    <!-- google analytics -->
-    <script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 	
-	  ga('create', 'UA-90558257-1', 'auto');
-	  ga('send', 'pageview');
-	</script>
+  <style>
+
+    #main{
+   background-image: url('img/galaxy4.jpg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   height: 710px;
+   max-height: 710px;
+   color: #ffffff;
+}
+   .btn-border-main {
+    border: 1px solid #FFFFFF;
+} 
+
+
+  </style>
   </head>
   <body>
     <!-- Home Section -->
-    <div id="home">
-    	 <div class="row text-left ">
-	        	<div class="col-md-12 marginLeft30">
+    <div id="main">
+    	 <div class="row text-right">
+	        	<div class="col-md-12">
 					<c:choose>
 						<c:when test="${ not empty userVO }"> 
-							<div class="dropdown">
-								<span class="marginRight">
-									<a href="${ pageContext.request.contextPath }/drawer.do" class="" title="내카드">내 카드</a>
-								</span>
-								
+							<div class="dropdown marginTop20 marginRight30">
+								<c:choose>
+									<c:when test="${ userVO.type eq 'A'}">
+										<li>
+											<a href="${ pageContext.request.contextPath }/jsp/admin/member_list.do"> 
+											<i class="fa fa-user-secret fa-fw" aria-hidden="true"></i> 관리자 페이지</a>
+										</li>
+									</c:when>
+									<c:otherwise>
+										<span class="marginRight">
+											<a href="${ pageContext.request.contextPath }/drawer.do" title="내카드">
+												<i class="fa fa-hdd-o" aria-hidden="true"></i> 내 카드
+											</a>
+										</span>
+									</c:otherwise>
+								</c:choose>
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" title="회원 정보 메뉴 열기">
-									<i class="fa fa-user-circle-o fa-2x fa-lg" aria-hidden="true"></i><span class="caret"></span>
+									<img id="blah" src="/Quration/upload/${userVO.profileImg}" 
+										alt="your image" class="img-circle profile_img" style="width: 30px; height: 30px;"/>
+									<span class="caret"></span>
 								</a>	
 							
-								<ul class="dropdown-menu list-unstyled" role="menu">
+								<ul class="dropdown-menu list-unstyled pull-right" role="menu">
 									<li><a href="${ pageContext.request.contextPath }/myPage/mypage.do"> <i class="fa fa-vcard-o fa-fw"
 											aria-hidden="true"></i> 회원 정보 수정
 									</a></li>
@@ -64,46 +81,70 @@
 											aria-hidden="true"></i> 비밀번호 변경
 									</a></li>
 									<c:if test="${ userVO.type eq 'A'}">
-										<li><a href="${ pageContext.request.contextPath }/jsp/admin/member_list.do"> 
-											<i class="fa fa-user-secret fa-fw" aria-hidden="true"></i> 관리자 페이지
+										<li><a
+											href="${ pageContext.request.contextPath }/jsp/admin/member_list.do">
+												<i class="fa fa-user-secret fa-fw" aria-hidden="true"></i>
+												관리자 페이지
 										</a></li>
 									</c:if>
 									<li class="divider"></li>
-									<li><a href="${ pageContext.request.contextPath }/login/logout.do"> <i class="fa fa-sign-out fa-fw"
-											aria-hidden="true"></i> 로그아웃</a>
+									<li><a href="${ pageContext.request.contextPath }/login/logout.do"> 
+									   <i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> 로그아웃</a>
 									</li>
 								</ul>
 							</div>
 						</c:when>
 						<c:otherwise> 
-							<span><a href="${ pageContext.request.contextPath }/membership/membership.do" class=""> 회원가입</a>  </span>
-							<span><a href="${ pageContext.request.contextPath }/login/login.do" class=""> 로그인</a>  </span>
+						<div class="row marginRight30">
+							<div class="marginTop20">
+							    <div class="pull-right ">
+									<span><a href="${ pageContext.request.contextPath }/membership/agreement.do" class="marginRight"> 회원가입</a>  </span>
+									<span><a href="${ pageContext.request.contextPath }/login/login.do" class=""> 로그인</a>  </span>
+							    </div>
+						    </div>
+						</div>
 						</c:otherwise>
 					</c:choose> 
 				</div>
 			</div>
-        <div class="container text-center ">
+        <div id="quration" class="container text-center">
             <!-- Navigation -->
             <h1 class="text-muted">Quration</h1>
-           
-            <div class="content">
-                <h4>
-                		We've got the special power
-                </h4>
-                <hr>
-                <div class="header-text btn">
-                    <h1 style="color: white"><a href="${ pageContext.request.contextPath }/search/result.do?q=bloter"><span id="head-title">Bloter</span></a></h1>
+            
+            <div class="content row">
+	            <form class="form-inline" action="${pageContext.request.contextPath }/search/result.do" method="get" role="search">
+					<div class="form-group row">
+						<div class="input-group col-md-12">
+							<div>
+								<input type="search"  style="background-color:transparent" size="60" name="q" class="form-control input-lg" alt="검색어 입력" value="${ searchQuery }" placeholder="검색어 입력"/> 
+								<span>
+									<button type="submit" class="btn btn-primary input-lg btn-border-main" title="검색 실행">
+										<i class="fa fa-search fa-2x fa-fw" aria-hidden="true"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+						<!-- /input-group -->
+					</div>
+				</form>
+                <div id="recommandKeyword" class="col-md-6 col-md-offset-3 marginTop20 font20 grayfont">
+                	추천 검색어<span class="marginLeft marginRight">:</span> 
+                	       <span class="spanPadding"><a href="search/result.do?q=인공지능">인공지능</a></span>  
+                	       <span class="spanPadding" ><a href="search/result.do?q=java">Java</a></span>  
+                	       <span ><a href="search/result.do?q=python">Python</a></span>
                 </div>
+                
             </div>
-
-            <a href="#meet-us" class="down-btn page-scroll">
-                <span class="fa fa-angle-down"></span>
-            </a>
+            <div class="content">
+	            <a href="#services" class="down-btn page-scroll ">
+	                <span class="fa fa-angle-down"></span>
+	            </a>
+	       </div>
         </div>
     </div>
 
     <!-- Meet Us Section -->
-    <div id="meet-us">
+  <!--   <div id="meet-us">
         <div class="container">
             <div class="row text-center">
                 <div class="col-md-8 col-md-offset-2">
@@ -118,18 +159,7 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Overview Video Section -->
-    <div id="overview-video">
-        <div class="overlay">
-            <div class="container">
-                <a href="#">
-                    <span class="fa fa-play"></span>
-                </a>
-            </div>
-        </div>
-    </div>
+    </div> -->
 
     <!-- Services Section -->
     <div id="services">
@@ -140,7 +170,7 @@
                         <h2>Services</h2>
                         <hr>
                     </div>
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+                    <p class="grayfont"> 저희 Qurtion은 검색 콘텐츠 큐레이션 및  웹 레퍼런스 관리 서비스입니다.</p>
                 </div>
             </div>
 
@@ -149,207 +179,128 @@
             <div class="row">
                 <div class="col-md-4 col-sm-4">
                     <div class="service">
-                        <span class="fa fa-book fa-3x"></span>
-                        <h4>Branding</h4>
-                        <p class="text-justify">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis. abcdefghijklmn.</p>
+                        <span class="fa fa-search fa-3x"></span>
+                        <h4>Search</h4>
+                        <p class="text-justify">
+                       <span class="text-primary"><b>검색 </b></span>기능을  통해  원하는  내용을  다양한 플랫폼을 통해  정보를 찾을  수  있게  자료를  제공합니다.
+                                                    뿐만아니라, 저희 서비스 속 큐레이션 기능이 더해져 검색  정확도와  검색  속도가  상승하여  사용자가  느끼는  검색  품질이  향상됩니다.                   
+                        
+                        </p>
                     </div>
                 </div>
 
                 <div class="col-md-4 col-sm-4">
                     <div class="service">
-                        <span class="fa fa-bicycle fa-3x"></span>
-                        <h4>Web Devepment</h4>
-                        <p class="text-justify">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Accusamus et. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis </p>
+                        <span class="fa fa-file-text-o fa-3x"></span>
+                        <h4>Curation</h4>
+                        <p class="text-justify">
+                        <span class="text-primary"><b>큐레이션</b></span>은  무수하게  쏟아져  나오는  자료 중에서  의미  있는  자료를  선별해  주는  것을  말합니다.
+                                                        저희  서비스에서는  사용자가  선택한  관심  키워드와  콘텐츠  검색, 저장, 좋아요  수를  조합하여  추천  서비스를  제공합니다.
+                        </p>
                     </div>
                 </div>
 
                 <div class="col-md-4 col-sm-4">
                     <div class="service">
-                        <span class="fa fa-plug fa-3x"></span>
-                        <h4>App Design</h4>
-                        <p class="text-justify">Nulla vitae elit libero, a pharetra augue. At vero eos et accusamus et iusto odio dignissimos ducimus. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. </p>
+                        <span class="fa fa-bookmark fa-3x"></span>
+                        <h4>Web reference</h4>
+                        <p class="text-justify">
+                        <span class="text-primary"><b>웹 레퍼런스</b></span>기능 은 사용자가 찾은 컨텐 츠 중 마음에 드는 콘텐츠를 즐겨찾기처럼 저장하고 메모를 남길 수 있는기능입니다.
+                                                       콘텐츠를 가상의 서랍에 넣어두는 ‘내 서랍’ 기능을 사용하면, 언제 어디서나 콘텐츠를 다시 볼 수 있습니다.
+                        </p>
                     </div>
                 </div>
             </div>
-            <a href="#works" class="down-btn page-scroll">
-                <span class="fa fa-angle-down"></span>
-            </a>
+            <div class="marginTop30">
+	            <a href="#about-us" class="down-btn page-scroll">
+	                <span class="fa fa-angle-down"></span>
+	            </a>
+	            <a href="#main" class="up-btn page-scroll">
+	                <span class="fa fa-angle-up"></span>
+	            </a>
+            </div>
         </div>
     </div>
 
     <!-- Call-to-Action Section -->
     <div id="cta">
         <div class="container text-center">
-            <a href="#" class="btn go-to-btn">Check our shop</a>
+           <a href="${ pageContext.request.contextPath }/contact/qna.do"  class="btn go-to-btn">Contact Us</a> 
         </div>
     </div>
 
-    <!-- Portfolio Section -->
-    <div id="works">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="section-title">
-                        <h2>Our Latest Projects</h2>
-                        <hr>
-                    </div>
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
-                </div>
-            </div>
-            <div class="space"></div>
-        </div>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-3 col-sm-6 nopadding">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-	                        <div class="hover-text">
-	                            <h5>Logo Design</h5>
-	                            <p class="lead">Client Seal</p>
-	                            <div class="hline"></div>
-	                        </div>
-	                        <img src="${ pageContext.request.contextPath }/img/portfolio/01.jpg" class="img-responsive" alt="...">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 nopadding">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-	                        <div class="hover-text">
-	                            <h5>Stationery</h5>
-	                            <p class="lead">Design Project</p>
-	                            <div class="hline"></div>
-	                        </div>
-	                        <img src="${ pageContext.request.contextPath }/img/portfolio/02.jpg" class="img-responsive" alt="...">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 nopadding">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-	                        <div class="hover-text">
-	                            <h5>Branding</h5>
-	                            <p class="lead">Metalbrand</p>
-	                            <div class="hline"></div>
-	                        </div>
-                            <img src="${ pageContext.request.contextPath }/img/portfolio/03.jpg" class="img-responsive" alt="...">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 nopadding">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-                            <div class="hover-text">
-                                <h5>Business Card</h5>
-                                <p class="lead">Clothing Line</p>
-                                <div class="hline"></div>
-                            </div>
-                            <img src="${ pageContext.request.contextPath }/img/portfolio/04.jpg" class="img-responsive" alt="...">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="space"></div>
-        <div class="text-center">
-            <a href="#" class="btn read-more-btn">Check on Dribbble</a>
-            <br>
-            <a href="#about-us" class="down-btn page-scroll"><span class="fa fa-angle-down"></span></a>
-        </div>
-    </div>
 
-    <!-- Clients Section -->
-    <div id="clients">
-        <div class="overlay">
-            <div class="container text-center">
-                <div class="section-title">
-                    <h2>Our Partners</h2>
-                    <hr>
-                </div>
-
-                <ul class="clients">
-                    <li><a href="#"><img src="${ pageContext.request.contextPath }/img/clients/01.png" class="img-responsive" alt="..."></a></li>
-                    <li><a href="#"><img src="${ pageContext.request.contextPath }/img/clients/02.png" class="img-responsive" alt="..."></a></li>
-                    <li><a href="#"><img src="${ pageContext.request.contextPath }/img/clients/03.png" class="img-responsive" alt="..."></a></li>
-                    <li><a href="#"><img src="${ pageContext.request.contextPath }/img/clients/04.png" class="img-responsive" alt="..."></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
 
     <!-- About Us Section -->
     <div id="about-us">
         <div class="container">
             <div class="row text-center">
-                <div class="col-md-8 col-md-offset-2">
+                <div class="col-md-14">
                     <div class="section-title">
                         <h2>About Us</h2>
                         <hr>
                     </div>
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+                    <p class="grayfont"> Question&nbsp;&nbsp;+&nbsp;&nbsp;Curation = Qurtion&nbsp;&nbsp;</p>
                 </div>
             </div>
             <div class="space"></div>
-            <div class="row">
-                <div class="col-md-10 col-sm-10">
+            <div class="row text-center">
+                <div class="col-md-12 col-sm-10">
                     <div class="row">
-                        <div class="col-md-4 col-sm-4">
+                        <div class="col-md-3 col-sm-3">
                             <div class="team">
-                                <img src="${ pageContext.request.contextPath }/img/team/02.jpg" class="img-responsive img-circle" alt="...">
+                                <img src="${ pageContext.request.contextPath }/img/evee.png"" class="img-responsive img-circle" alt="...">
                                 <br>
-                                <h4>Lian Gwapa</h4>
-                                <p class="small">CEO/Founder</p>
+                                <h4>Kim Jeongkyung</h4>
+                                <p class="small">Team Leader / Developer</p>
                                 <hr>
                             </div>
                         </div>
 
-                        <div class="col-md-4 col-sm-4">
+                        <div class="col-md-3 col-sm-3">
                             <div class="team">
-                                <img src="${ pageContext.request.contextPath }/img/team/04.jpg" class="img-responsive img-circle" alt="...">
+                                <img src="${ pageContext.request.contextPath }/img/purin.png" class="img-responsive img-circle" alt="...">
                                 <br>
-                                <h4>Jenn Pereira</h4>
-                                <p class="small">Web Coder</p>
+                                <h4>Shin Hanui</h4>
+                                <p class="small">Developer</p>
                                 <hr>
                             </div>
                         </div>
 
-                        <div class="col-md-4 col-sm-4">
+                        <div class="col-md-3 col-sm-3">
                             <div class="team">
-                                <img src="${ pageContext.request.contextPath }/img/team/03.jpg" class="img-responsive img-circle" alt="...">
+                                <img src="${ pageContext.request.contextPath }/img/paeri23.png" class="img-responsive img-circle" alt="...">
                                 <br>
                              
-                                <h4>Alan Podemski</h4>
-                                <p class="small">Web Designer</p>
+                                <h4>Sung Shinhye</h4>
+                                <p class="small">Developer</p>
                                 <hr>
                             </div>
                         </div>
-
+                        
+                         <div class="col-md-3 col-sm-3">
+                            <div class="team">
+                                <img src="${ pageContext.request.contextPath }/img/mue.png" class="img-responsive img-circle" alt="...">
+                                <br>
+                             
+                                <h4>Jo Eunryang</h4>
+                                <p class="small">Developer</p>
+                                <hr>
+	
+                            </div>
+                        </div>
                     </div>
+                    <a href="#services" class="up-btn page-scroll">
+		                <span class="fa fa-angle-up"></span>
+		            </a>
                 </div>
-
-                <div class="col-md-2 col-sm-2">
-                    <div class="team hire">
-                        <h4>We Are Hiring!</h4>
-                        <hr>
-                        <div class="space"></div>
-                        <a href="#">
-                            <span class="fa fa-paper-plane-o fa-2x"></span>
-                        </a>
-                    </div>
-                </div>
+                
             </div>
-
-            <div class="text-center">
-                <a href="#contact" class="page-scroll down-btn">
-                    <span class="fa fa-angle-down"></span>
-                </a>
-            </div>
-
         </div>
     </div>
 
     <!-- Testimonial Section -->
-    <div id="testimonials">
+     <!--<div id="testimonials">
         <div class="overlay">
             <div class="container">
                 <div class="section-title">
@@ -378,12 +329,25 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     
     <!-- footer -->
 	<jsp:include page="/jsp/include/footer.jsp" />
 	<!-- /footer -->
-
+	
+	<jsp:include page="/jsp/include/commonJs.jsp" />
+	
+    <!-- google analytics -->
+    <script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-90558257-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+	
     <!-- Javascripts (necessary for Bootstrap's JavaScript plugins)
     ================================================== -->
     <script type="text/javascript" src="${ pageContext.request.contextPath }/js/main.js"></script>
@@ -401,7 +365,21 @@
             startDelay: 100
           });
       });
+      
+      //가입 or 로그인 후 검색 이전 키워드 추천용 ajax
+      $(document).ready(function() { 
+      $.ajax({
+          url: "${ pageContext.request.contextPath }/index/recommandKeywordList.do",
+          type : 'get',
+          contentType : "application/json",
+          success: function(result){
+               $("#recommandKeyword").text(result);
+               console.log(result);
+               
+    	}});
+     });
     </script>
+    
     
   </body>
 </html>

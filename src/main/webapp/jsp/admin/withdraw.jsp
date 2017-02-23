@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="ko">
 <%--
@@ -66,12 +68,13 @@
 									</thead>
 									<tbody>
 										<c:forEach var="withdraw" items="${ withdrawList }">
+										<c:set var="withdraw.regDate" value="<%=new java.util.Date()%>" />
 											<tr>
 												<td><input type="checkbox" class="no" value="${ withdraw.memberNo }" alt="삭제할 탈퇴 사유 선택 체크박스" /></td>
 												<td>${ withdraw.memberNo }</td>
 												<td>${ withdraw.reasonSelect }</td>
 												<td>${ withdraw.reasonInput }</td>
-												<td>${ withdraw.regDate }</td>
+												<td><fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${withdraw.regDate}" /></td>
 											</tr>
 										</c:forEach>
 									</tbody>

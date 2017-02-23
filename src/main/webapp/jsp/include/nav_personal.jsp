@@ -17,7 +17,8 @@ function doMember(memberNo) {
 					<div class="profile_info">
 						<span>Welcome<br/>${ userVO.firstName }</span>
 						<div class=" text-center">	
-						<img src="${ pageContext.request.contextPath }/img/team/02.jpg" alt="..." class="img-circle profile_img">			
+							<img id="blah" src="/Quration/upload/${userVO.profileImg}" 
+								alt="your image" class="img-circle profile_img" style="width: 80px; height: 80px;"/>			
 						</div>
 					</div>
 				</div>	
@@ -48,9 +49,9 @@ function doMember(memberNo) {
 					<li><a title="카드 분석 카테고리 보기"><i class="fa fa-bar-chart-o"></i>
 							카드 분석 <span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
-							<li><a href="${ pageContext.request.contextPath }/wordCloud.do" title="워크 클라우드 링크">내 검색어 워드 크라우드</a></li>
-						    <li><a href="javascript:doMember('${userVO.no}')" title="내가 검색한 검색어 링크">최신 검색어 다시보기</a></li>
-							<li><a href="${ pageContext.request.contextPath }/AllUserWordCloud.do" title="전체 유저 검색어를 기반으로한 워크 클라우드 링크">전체 유저 검색어</a></li>
+							<li><a href="${ pageContext.request.contextPath }/wordCloud.do" title="한 눈에 보는 내 검색어 링크">한 눈에 보는 내 검색어 </a></li>
+						    <li><a href="javascript:doMember('${userVO.no}')" title="내가 검색한 검색어 링크">내 검색어 히스토리</a></li>
+							<li><a href="${ pageContext.request.contextPath }/AllUserWordCloud.do" title="전체 유저 검색어를 기반으로한 워크 클라우드 링크">인기 검색어</a></li>
 <%-- 							<li><a href="${ pageContext.request.contextPath }/contents/analysis.do" title="내가 검색하고 저장한 통계 분석 링크">통계 분석</a></li> --%>
 							<li><a href="${ pageContext.request.contextPath }/contents/stats.do" title="내가 검색하고 저장한 통계 분석 페이지 링크">이용 통계</a></li>
 						</ul></li>
