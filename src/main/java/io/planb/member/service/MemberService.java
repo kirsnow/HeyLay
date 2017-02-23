@@ -55,7 +55,6 @@ public interface MemberService extends UserDetailsService{
 	
 	public String selectType(int no);
 	
-
 	public UserDetails loadUserByUsername(String name);
 
 }
