@@ -20,6 +20,7 @@ public class ContentsVO {
 	/* additional informations */
 	private int viewCnt;		// Q_CONTENTS
 	private int likeCnt;		// Q_LIKE
+	private int reportCnt;		// Q_CONTENTS_SPAM
 	
 	// Q_SOURCE
 	private int sourceNo;
@@ -308,12 +309,21 @@ public class ContentsVO {
 		this.personalVieCnt = personalVieCnt;
 	}
 
+<<<<<<< HEAD
 	public int getCount() {
 		return count;
 	}
 
 	public void setCount(int count) {
 		this.count = count;
+=======
+	public int getReportCnt() {
+		return reportCnt;
+	}
+
+	public void setReportCnt(int reportCnt) {
+		this.reportCnt = reportCnt;
+>>>>>>> 824cf0683f24e9c048b8e61815bdfce4c73a0f4c
 	}
 
 	@Override
@@ -329,8 +339,12 @@ public class ContentsVO {
 				+ ", memberNo=" + memberNo + ", savedNo=" + savedNo + ", savedCnt=" + savedCnt + ", savedDate="
 				+ savedDate + ", savedDaysAgo=" + savedDaysAgo + ", directoryNo=" + directoryNo + ", directoryName="
 				+ directoryName + ", directoryDate=" + directoryDate + ", directoryDaysAgo=" + directoryDaysAgo
+<<<<<<< HEAD
 				+ ", keyword=" + keyword + ", limit=" + limit + ", personalVieCnt=" + personalVieCnt + ", count="
 				+ count + "]";
+=======
+				+ ", keyword=" + keyword + ", limit=" + limit + ", reportCnt=" + reportCnt + ", personalVieCnt=" + personalVieCnt + "]";
+>>>>>>> 824cf0683f24e9c048b8e61815bdfce4c73a0f4c
 	}
 
 }
