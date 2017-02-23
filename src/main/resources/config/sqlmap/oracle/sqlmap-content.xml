@@ -149,7 +149,7 @@
 	</update>
 
 	<select id="selectView" parameterType="contentsVO" resultType="int">
-		SELECT count
+		SELECT count(*)
 		FROM Q_VIEW
 		WHERE MEMBER_NO=#{memberNo} AND CONTENTS_NO=#{contentsNo}
 	</select>
@@ -175,7 +175,7 @@
 	<update id="leavedSave" parameterType="int">
 		UPDATE Q_CONTENTS_SAVED
 		SET MEMBER_NO=0
-		WHERE MEM
+		WHERE MEMBER_NO=#{memberNo}
 	</update>
 
 	<delete id="leavedDir" parameterType="int">
@@ -189,7 +189,11 @@
 		WHERE CONTENTS_NO=#{contentsNo}
 	</select>
 	
-	<select id=""></select>
+	<select id="selectViewList" parameterType="int" resultType="contentsVO">
+		SELECT contents_no, count
+		FROM Q_VIEW
+		WHERE MEMBER_NO=#{memberNo}
+	</select>
 
 </mapper>
 

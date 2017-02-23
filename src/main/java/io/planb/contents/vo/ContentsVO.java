@@ -64,6 +64,7 @@ public class ContentsVO {
 	private String keyword;
 	private int limit;
 	private int personalVieCnt;
+	private int count;
 	
 	public ContentsVO() {
 		super();
@@ -307,6 +308,14 @@ public class ContentsVO {
 		this.personalVieCnt = personalVieCnt;
 	}
 
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
 	@Override
 	public String toString() {
 		return "ContentsVO [contentsNo=" + contentsNo + ", title=" + title + ", summary=" + summary + ", url=" + url
@@ -320,9 +329,8 @@ public class ContentsVO {
 				+ ", memberNo=" + memberNo + ", savedNo=" + savedNo + ", savedCnt=" + savedCnt + ", savedDate="
 				+ savedDate + ", savedDaysAgo=" + savedDaysAgo + ", directoryNo=" + directoryNo + ", directoryName="
 				+ directoryName + ", directoryDate=" + directoryDate + ", directoryDaysAgo=" + directoryDaysAgo
-				+ ", keyword=" + keyword + ", limit=" + limit + ", personalVieCnt=" + personalVieCnt + "]";
+				+ ", keyword=" + keyword + ", limit=" + limit + ", personalVieCnt=" + personalVieCnt + ", count="
+				+ count + "]";
 	}
 
-	
-	
 }

@@ -113,12 +113,12 @@ public class ContentDAO {
 		return cnt;
 	}
 	
-//	public List<ContentsVO> selectView(int memberNo) {
-//		
-//		List<ContentsVO> cntList = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.selectView", memberNo);
-//		
-//		return cntList;
-//	}
+	public List<ContentsVO> selectViewList(int memberNo) {
+		
+		List<ContentsVO> cntList = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.selectViewList", memberNo);
+		
+		return cntList;
+	}
 	
 	public void insertView(ContentsVO view) {
 		sqlSessionTemplate.insert("io.planb.contents.dao.ContentDAO.insertView", view);
