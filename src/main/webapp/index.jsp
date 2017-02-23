@@ -76,7 +76,8 @@
 									</c:when>
 									<c:otherwise>
 										<span class="marginRight">
-											<a href="${ pageContext.request.contextPath }/drawer.do" class="" title="내카드">큐레이션</a>
+											<a href="${ pageContext.request.contextPath }/drawer.do" class="" title="내카드">
+											<i class="fa fa-hdd-o" aria-hidden="true"></i> 내 카드</a>
 										</span>
 									</c:otherwise>
 								</c:choose>

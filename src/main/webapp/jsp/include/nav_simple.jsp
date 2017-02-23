@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!-- Bootstrap SET -->
@@ -33,13 +34,16 @@
 					</c:when>
 					<c:otherwise>
 						<li><a href="${ pageContext.request.contextPath }/drawer.do"
-							class="" title="내카드">큐레이션</a></li>
+							class="" title="내카드">
+							<i class="fa fa-hdd-o" aria-hidden="true"></i> 내 카드</a></li>
 					</c:otherwise>
 				</c:choose>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-expanded="false"
-					title="회원 정보 메뉴 열기"> <i class="fa fa-user-circle-o fa-2x fa-lg"
-						aria-hidden="true"></i> <span class="caret"></span>
+					title="회원 정보 메뉴 열기"> <img id="blah"
+						src="/Quration/upload/${userVO.profileImg}" alt="your image"
+						class="img-circle profile_img" style="width: 30px; height: 30px;" />
+						<span class="caret"></span>
 				</a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="#"> <i class="fa fa-vcard-o fa-fw"

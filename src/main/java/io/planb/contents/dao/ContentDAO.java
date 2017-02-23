@@ -105,12 +105,13 @@ public class ContentDAO {
 	
 	public int likeOrNot(ContentsVO like) {
 		int cnt = sqlSessionTemplate.selectOne("io.planb.contents.dao.ContentDAO.likeOrNot", like);
-	
 		return cnt;
 	}
 	
 	public int selectView(ContentsVO view) {
+		
 		int cnt = sqlSessionTemplate.selectOne("io.planb.contents.dao.ContentDAO.selectView", view);
+		
 		return cnt;
 	}
 	
@@ -140,6 +141,11 @@ public class ContentDAO {
 	
 	public void leavedDir(int memberNo) {
 		sqlSessionTemplate.update("io.planb.contents.dao.ContentDAO.leavedDir", memberNo);
+	}
+	
+	public int selectLikeCnt(int contentsNo) {
+		int cnt = sqlSessionTemplate.update("io.planb.contents.dao.ContentDAO.selectLikeCnt", contentsNo);
+		return cnt;
 	}
 
 }

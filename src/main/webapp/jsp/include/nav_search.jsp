@@ -38,13 +38,14 @@
 							<c:otherwise>
 								<li><a
 									href="${ pageContext.request.contextPath }/drawer.do" class=""
-									title="내카드">큐레이션</a></li>
+									title="내카드">
+									<i class="fa fa-hdd-o" aria-hidden="true"></i> 내 카드</a></li>
 							</c:otherwise>
 						</c:choose>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-expanded="false"
-							title="회원 정보 메뉴 열기"> <i
-								class="fa fa-user-circle-o fa-2x fa-lg" aria-hidden="true"></i><span
+							title="회원 정보 메뉴 열기"> <img id="blah" src="/Quration/upload/${userVO.profileImg}" 
+										alt="your image" class="img-circle profile_img" style="width: 30px; height: 30px;"/><span
 								class="caret"></span>
 						</a>
 

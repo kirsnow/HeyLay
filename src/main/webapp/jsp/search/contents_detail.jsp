@@ -143,43 +143,31 @@
 					<div role="toolbar" class="col-xs-12 text-right">
 						<c:choose>
 							<c:when test="${ (userVO ne null) and (not empty userVO) }">
+								<button type="button" class="btn btn-info saveCardBtn"
+									data-toggle="modal" data-target="#saveCardModal"
+									id="${ contents.contentsNo }" title="카드 담기">
+									<i class="fa fa-bookmark-o" aria-hidden="true"></i> 저장하기
+								</button>
+								<button type="button" class="btn btn-info saveCancelBtn"
+									hidden="true" id="${ contents.contentsNo }" title="카드 빼기">
+									<i class="fa fa-bookmark" aria-hidden="true"></i> 카드빼기
+								</button>
 								<c:choose>
-									<c:when test="${ likeOrNot == 0 }">
-										<button type="button" class="btn btn-info saveCardBtn"
-											data-toggle="modal" data-target="#saveCardModal"
-											id="${ contents.contentsNo }" title="카드 담기">
-											<i class="fa fa-bookmark-o" aria-hidden="true"></i> 저장하기
-										</button>
-										<button type="button" class="btn btn-info saveCancelBtn"
-											hidden="true" id="${ contents.contentsNo }" title="카드 빼기">
-											<i class="fa fa-bookmark" aria-hidden="true"></i> 카드빼기
-										</button>
-										<button type="button" class="btn btn-info likeBtn"
-											title="카드를 좋아합니다." id="${ contents.contentsNo }">
+									<c:when test="${ likeOrNot != 0 }">
+										<button type="button" hidden="true" class="btn btn-info likeBtn" title="카드를 좋아합니다."
+												id="${ contents.contentsNo }">
 											<i class="fa fa-heart-o" aria-hidden="true"></i> 좋아요
 										</button>
-										<button type="button" hidden="true"
-											class="btn btn-info likeCancelBtn" title="좋아요를 취소합니다."
+										<button type="button" class="btn btn-info likeCancelBtn" title="좋아요를 취소합니다." 
 											id="${ contents.contentsNo }">
 											<i class="fa fa-heart" aria-hidden="true"></i> 좋아요 취소
 										</button>
 									</c:when>
 									<c:otherwise>
-										<button type="button" class="btn btn-info saveCardBtn"
-											data-toggle="modal" data-target="#saveCardModal"
-											id="${ contents.contentsNo }" title="카드 담기">
-											<i class="fa fa-bookmark-o" aria-hidden="true"></i> 저장하기
-										</button>
-										<button type="button" class="btn btn-info saveCancelBtn"
-											hidden="true" id="${ contents.contentsNo }" title="카드 빼기">
-											<i class="fa fa-bookmark" aria-hidden="true"></i> 카드빼기
-										</button>
-										<button type="button" hidden="true"
-											class="btn btn-info likeBtn" title="카드를 좋아합니다."
-											id="${ contents.contentsNo }">
+										<button type="button" class="btn btn-info likeBtn" title="카드를 좋아합니다." id="${ contents.contentsNo }">
 											<i class="fa fa-heart-o" aria-hidden="true"></i> 좋아요
 										</button>
-										<button type="button" class="btn btn-info likeCancelBtn"
+										<button type="button" hidden="true" class="btn btn-info likeCancelBtn" 
 											title="좋아요를 취소합니다." id="${ contents.contentsNo }">
 											<i class="fa fa-heart" aria-hidden="true"></i> 좋아요 취소
 										</button>

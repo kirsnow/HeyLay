@@ -28,6 +28,12 @@ public class ContentService {
 		ContentsVO vo = new ContentsVO();
 		vo.setContentsNo(contentsNo);
 		
+		if(dao.selectView(vo) == 0) {
+			dao.insertView(vo);
+		} else {
+			dao.updateView(vo);
+		}
+		
 		ContentsVO contents = dao.getContents(vo);
 		return contents;
 	}
@@ -120,6 +126,12 @@ public class ContentService {
 	
 	public int likeOrNot(ContentsVO like) {
 		int cnt = dao.likeOrNot(like);
+		
+		return cnt;
+	}
+	
+	public int selectLikeCnt(int contentsNo) {
+		int cnt = dao.selectLikeCnt(contentsNo);
 		
 		return cnt;
 	}

@@ -100,27 +100,33 @@
 			<div class="col-md-3">
 				<h4 class="paddingleft30">회원</h4>
 				<ul>
-					<li><a
-						href="${ pageContext.request.contextPath }/membership/membership.do"
-						title="회원 가입 페이지로 이동">회원 가입</a></li>
-					<li><a
-						href="${ pageContext.request.contextPath }/login/login.do"
-						title="로그인 페이지로 이동">로그인</a></li>
-					<li><a
-						href="${ pageContext.request.contextPath }/membership/findAccount.do"
-						title="아이디 찾기 페이지로 이동">아이디 찾기</a></li>
-					<li><a
-						href="${ pageContext.request.contextPath }/membership/findPw.do"
-						title="비밀번호 찾기 페이지로 이동">비밀번호 찾기</a></li>
-					<li><a
-						href="${ pageContext.request.contextPath }/myPage/mypage.do"
-						title="회원 정보 확인/수정 페이지로 이동">회원 정보 확인/수정</a></li>
-					<li><a
-						href="${ pageContext.request.contextPath }/contents/customizing.do"
-						title="Freemium 서비스 페이지로 이동">Freemium 서비스</a></li>
-					<li><a
-						href="${ pageContext.request.contextPath }/myPage/leavedQuestion.do"
-						title="회원 탈퇴 페이지로 이동">회원 탈퇴</a></li>
+					<c:choose>
+						<c:when test="${ not empty userVO }"> 
+							<li><a
+								href="${ pageContext.request.contextPath }/myPage/mypage.do"
+								title="회원 정보 확인/수정 페이지로 이동">회원 정보 확인/수정</a></li>
+							<li><a
+								href="${ pageContext.request.contextPath }/contents/customizing.do"
+								title="Freemium 서비스 페이지로 이동">Freemium 서비스</a></li>
+							<li><a
+								href="${ pageContext.request.contextPath }/myPage/leavedQuestion.do"
+								title="회원 탈퇴 페이지로 이동">회원 탈퇴</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a
+								href="${ pageContext.request.contextPath }/membership/membership.do"
+								title="회원 가입 페이지로 이동">회원 가입</a></li>
+							<li><a
+								href="${ pageContext.request.contextPath }/login/login.do"
+								title="로그인 페이지로 이동">로그인</a></li>
+							<li><a
+								href="${ pageContext.request.contextPath }/membership/findAccount.do"
+								title="아이디 찾기 페이지로 이동">아이디 찾기</a></li>
+							<li><a
+								href="${ pageContext.request.contextPath }/membership/findPw.do"
+								title="비밀번호 찾기 페이지로 이동">비밀번호 찾기</a></li>
+						</c:otherwise>
+					</c:choose>
 				</ul>
 			</div>
 			<div class="col-md-3">

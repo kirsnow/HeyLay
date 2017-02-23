@@ -299,4 +299,21 @@ public class ContentsVO {
 		this.limit = limit;
 	}
 
+	@Override
+	public String toString() {
+		return "ContentsVO [contentsNo=" + contentsNo + ", title=" + title + ", summary=" + summary + ", url=" + url
+				+ ", scrapedDate=" + scrapedDate + ", scrapedDaysAgo=" + scrapedDaysAgo + ", language=" + language
+				+ ", ban=" + ban + ", viewCnt=" + viewCnt + ", likeCnt=" + likeCnt + ", sourceNo=" + sourceNo
+				+ ", sourceName=" + sourceName + ", sourceUrl=" + sourceUrl + ", sourceDomain=" + sourceDomain
+				+ ", sourceImg=" + sourceImg + ", dataTypeNo=" + dataTypeNo + ", dataTypeName=" + dataTypeName
+				+ ", dataTypeNameEng=" + dataTypeNameEng + ", dataTypeNameFun=" + dataTypeNameFun + ", categoryNo="
+				+ categoryNo + ", categoryName=" + categoryName + ", imgNo=" + imgNo + ", imgUrl=" + imgUrl
+				+ ", imgAlt=" + imgAlt + ", prevContentsNo=" + prevContentsNo + ", nextContentsNo=" + nextContentsNo
+				+ ", memberNo=" + memberNo + ", savedNo=" + savedNo + ", savedCnt=" + savedCnt + ", savedDate="
+				+ savedDate + ", savedDaysAgo=" + savedDaysAgo + ", directoryNo=" + directoryNo + ", directoryName="
+				+ directoryName + ", directoryDate=" + directoryDate + ", directoryDaysAgo=" + directoryDaysAgo
+				+ ", keyword=" + keyword + ", limit=" + limit + "]";
+	}
+
+	
 }

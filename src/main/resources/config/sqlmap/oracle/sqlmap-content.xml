@@ -5,155 +5,185 @@
 <mapper namespace="io.planb.contents.dao.ContentDAO">
 
 	<select id="selectPopularList" resultType="contentsVO">
-		SELECT CO.NO contentsNo, CO.TITLE as title, CO.SUMMARY as summary, CO.URL as url 
-			, CO.VIEW_CNT as viewCnt 
-			, count(SPA.CONTENTS_NO) as reportCnt, count(LIK.CONTENTS_NO) as likeCnt 
-			, CO.SOURCE_NO as sourceNo, SO.NAME as sourceName, SO.URL as sourceUrl, SO.LOGO_IMG as logoImg 
-		    , CO.CATEGORY_NO as categoryNo, CA.CATEGORY as categoryName 
-		    , DAT.DATA_TYPE as dataTypeName 
-		FROM Q_CONTENTS CO 
-		INNER JOIN Q_CATEGORY CA on CA.NO = CO.CATEGORY_NO 
-		INNER JOIN Q_SOURCE SO on SO.NO = CO.SOURCE_NO 
-		INNER JOIN Q_DATA_TYPE DAT on DAT.NO = SO.DATA_TYPE 
-		LEFT JOIN Q_CONTENTS_SPAM SPA on SPA.CONTENTS_NO = CO.NO 
-		LEFT JOIN Q_LIKE LIK on LIK.CONTENTS_NO = CO.NO 
-		WHERE co.ban = 'N' 
-		GROUP BY CO.NO, CA.NO, SO.NO, DAT.NO 
-		ORDER BY co.view_cnt DESC, co.last_scraped DESC 
-		LIMIT 3 
-	</select>
-	
-	<select id="selectCustomSourceList" parameterType="int" resultType="contentsVO">
-		SELECT CO.NO contentsNo, CO.TITLE as title, CO.SUMMARY as summary, CO.URL as url
-			, CO.VIEW_CNT as viewCnt
-			, count(SPA.CONTENTS_NO) as reportCnt, count(LIK.CONTENTS_NO) as likeCnt
-			, CO.SOURCE_NO as sourceNo, SO.NAME as sourceName, SO.URL as sourceUrl, SO.LOGO_IMG as logoImg
-		    	, CO.CATEGORY_NO as categoryNo, CA.CATEGORY as categoryName
-		    	, DAT.DATA_TYPE as dataTypeName
+		SELECT CO.NO
+		contentsNo, CO.TITLE as title, CO.SUMMARY as summary, CO.URL as url
+		, CO.VIEW_CNT as viewCnt
+		, count(SPA.CONTENTS_NO) as reportCnt, count(LIK.CONTENTS_NO) as
+		likeCnt
+		, CO.SOURCE_NO as sourceNo, SO.NAME as sourceName, SO.URL as sourceUrl,
+		SO.LOGO_IMG as logoImg
+		, CO.CATEGORY_NO as categoryNo, CA.CATEGORY as categoryName
+		, DAT.DATA_TYPE as dataTypeName
 		FROM Q_CONTENTS CO
 		INNER JOIN Q_CATEGORY CA on CA.NO = CO.CATEGORY_NO
 		INNER JOIN Q_SOURCE SO on SO.NO = CO.SOURCE_NO
 		INNER JOIN Q_DATA_TYPE DAT on DAT.NO = SO.DATA_TYPE
 		LEFT JOIN Q_CONTENTS_SPAM SPA on SPA.CONTENTS_NO = CO.NO
 		LEFT JOIN Q_LIKE LIK on LIK.CONTENTS_NO = CO.NO
-		WHERE co.source_no = (SELECT cr.source_no 
-		FROM q_contents cr 
-		INNER JOIN q_contents_saved cs ON cs.contents_no = cr.no 
-		INNER JOIN q_member mm ON mm.no = cs.member_no 
-		INNER JOIN q_source ss ON ss.no = cr.source_no 
-		WHERE mm.no = #{ no } 
-		AND cr.ban = 'N' 
-		AND ss.data_type > 0 
-		GROUP BY cr.source_no 
-		ORDER BY COUNT(cr.source_no) DESC 
-		LIMIT 1 ) 
-		AND co.ban = 'N' 
-		GROUP BY CO.NO, CA.NO, SO.NO, DAT.NO 
-		ORDER BY co.view_cnt DESC 
-		LIMIT 3 
+		WHERE co.ban = 'N'
+		GROUP BY CO.NO, CA.NO, SO.NO, DAT.NO
+		ORDER BY co.view_cnt DESC, co.last_scraped DESC
+		LIMIT 3
 	</select>
-	
-	<select id="selectUserKeywordList" parameterType="int" resultType="keywordsVO">
-		SELECT LOWER(keyword) keyword
-		FROM q_select_keywords sk 
-		WHERE member_no = #{ no } 
-		UNION DISTINCT 
-		SELECT LOWER(keyword) keyword
-		FROM q_keywords 
-		WHERE member_no = #{ no } 
-		AND search_result > 0 
+
+	<select id="selectCustomSourceList" parameterType="int"
+		resultType="contentsVO">
+		SELECT CO.NO contentsNo, CO.TITLE as title, CO.SUMMARY as
+		summary, CO.URL as url
+		, CO.VIEW_CNT as viewCnt
+		, count(SPA.CONTENTS_NO) as reportCnt, count(LIK.CONTENTS_NO) as
+		likeCnt
+		, CO.SOURCE_NO as sourceNo, SO.NAME as sourceName, SO.URL as sourceUrl,
+		SO.LOGO_IMG as logoImg
+		, CO.CATEGORY_NO as categoryNo, CA.CATEGORY as categoryName
+		, DAT.DATA_TYPE as dataTypeName
+		FROM Q_CONTENTS CO
+		INNER JOIN Q_CATEGORY
+		CA on CA.NO = CO.CATEGORY_NO
+		INNER JOIN Q_SOURCE SO on SO.NO =
+		CO.SOURCE_NO
+		INNER JOIN Q_DATA_TYPE DAT on DAT.NO = SO.DATA_TYPE
+		LEFT
+		JOIN Q_CONTENTS_SPAM SPA on SPA.CONTENTS_NO = CO.NO
+		LEFT JOIN Q_LIKE
+		LIK on LIK.CONTENTS_NO = CO.NO
+		WHERE co.source_no = (SELECT
+		cr.source_no
+		FROM q_contents cr
+		INNER JOIN q_contents_saved cs ON cs.contents_no = cr.no
+		INNER JOIN q_member mm ON mm.no = cs.member_no
+		INNER JOIN q_source ss ON ss.no = cr.source_no
+		WHERE mm.no = #{ no }
+		AND cr.ban = 'N'
+		AND ss.data_type > 0
+		GROUP BY cr.source_no
+		ORDER BY COUNT(cr.source_no) DESC
+		LIMIT 1 )
+		AND co.ban = 'N'
+		GROUP BY CO.NO, CA.NO, SO.NO, DAT.NO
+		ORDER BY co.view_cnt DESC
+		LIMIT 3
 	</select>
-	
+
+	<select id="selectUserKeywordList" parameterType="int"
+		resultType="keywordsVO">
+		SELECT LOWER(keyword) keyword
+		FROM q_select_keywords sk
+		WHERE member_no = #{ no }
+		UNION DISTINCT
+		SELECT LOWER(keyword) keyword
+		FROM q_keywords
+		WHERE member_no = #{ no }
+		AND search_result > 0
+	</select>
+
 	<select id="selectKeywordList" parameterType="int" resultType="keywordsVO">
-		  select no, keyword, reg_date as regDate
-			from q_keywords
-			where status='Y' and member_no = #{ memberNo }
-			ORDER BY regDate DESC
-			LIMIT 50
-	</select> 
-	
-	<select id="selectCustomCuration" parameterType="String" resultType="contentsVO">
-		SELECT CO.NO contentsNo, CO.TITLE as title, CO.SUMMARY as summary, CO.URL as url
-			, CO.VIEW_CNT as viewCnt
-			, count(SPA.CONTENTS_NO) as reportCnt, count(LIK.CONTENTS_NO) as likeCnt
-			, CO.SOURCE_NO as sourceNo, SO.NAME as sourceName, SO.URL as sourceUrl, SO.LOGO_IMG as logoImg
-		    	, CO.CATEGORY_NO as categoryNo, CA.CATEGORY as categoryName
-		    	, DAT.DATA_TYPE as dataTypeName
-		FROM Q_CONTENTS CO
-		INNER JOIN Q_CATEGORY CA on CA.NO = CO.CATEGORY_NO
-		INNER JOIN Q_SOURCE SO on SO.NO = CO.SOURCE_NO
-		INNER JOIN Q_DATA_TYPE DAT on DAT.NO = SO.DATA_TYPE
-		LEFT JOIN Q_CONTENTS_SPAM SPA on SPA.CONTENTS_NO = CO.NO
-		LEFT JOIN Q_LIKE LIK on LIK.CONTENTS_NO = CO.NO
-		WHERE co.title ~* #{ keywords } 
-		AND co.ban = 'N' 
-		GROUP BY CO.NO, CA.NO, SO.NO, DAT.NO 
-		ORDER BY co.view_cnt DESC 
-		LIMIT 3 
+		select no, keyword, reg_date as regDate
+		from q_keywords
+		where status='Y' and member_no = #{ memberNo }
+		ORDER BY regDate DESC
+		LIMIT 50
 	</select>
-	
+
+	<select id="selectCustomCuration" parameterType="String"
+		resultType="contentsVO">
+		SELECT CO.NO contentsNo, CO.TITLE as title, CO.SUMMARY as
+		summary, CO.URL as url
+		, CO.VIEW_CNT as viewCnt
+		, count(SPA.CONTENTS_NO) as reportCnt, count(LIK.CONTENTS_NO) as
+		likeCnt
+		, CO.SOURCE_NO as sourceNo, SO.NAME as sourceName, SO.URL as sourceUrl,
+		SO.LOGO_IMG as logoImg
+		, CO.CATEGORY_NO as categoryNo, CA.CATEGORY as categoryName
+		, DAT.DATA_TYPE as dataTypeName
+		FROM Q_CONTENTS CO
+		INNER JOIN Q_CATEGORY
+		CA on CA.NO = CO.CATEGORY_NO
+		INNER JOIN Q_SOURCE SO on SO.NO =
+		CO.SOURCE_NO
+		INNER JOIN Q_DATA_TYPE DAT on DAT.NO = SO.DATA_TYPE
+		LEFT
+		JOIN Q_CONTENTS_SPAM SPA on SPA.CONTENTS_NO = CO.NO
+		LEFT JOIN Q_LIKE
+		LIK on LIK.CONTENTS_NO = CO.NO
+		WHERE co.title ~* #{ keywords }
+		AND co.ban = 'N'
+		GROUP BY CO.NO, CA.NO, SO.NO, DAT.NO
+		ORDER BY co.view_cnt DESC
+		LIMIT 3
+	</select>
+
 	<insert id="likeCntUp" parameterType="contentsVO">
-		INSERT INTO Q_LIKE (NO, MEMBER_NO, CONTENTS_NO)
-		VALUES (NEXTVAL('Q_LIKE_NO'), #{memberNo}, #{contentsNo})
+		INSERT INTO Q_LIKE (NO,
+		MEMBER_NO, CONTENTS_NO)
+		VALUES (NEXTVAL('Q_LIKE_NO'), #{memberNo},
+		#{contentsNo})
 	</insert>
-	
+
 	<delete id="likeCancel" parameterType="contentsVO">
 		DELETE FROM Q_LIKE
-		WHERE MEMBER_NO=#{memberNo} AND CONTENTS_NO=#{contentsNo}
+		WHERE
+		MEMBER_NO=#{memberNo} AND CONTENTS_NO=#{contentsNo}
 	</delete>
-	
+
 	<select id="likeOrNot" parameterType="contentsVO" resultType="int">
 		SELECT count(MEMBER_NO)
 		FROM Q_LIKE
 		WHERE CONTENTS_NO=#{contentsNo} AND MEMBER_NO=#{memberNo}
 	</select>
-	
+
+	<select id="selectLikeCnt" parameterType="int" resultType="int">
+		SELECT count(NO)
+		FROM Q_LIKE
+		WHERE CONTENTS_NO=#{contentsNo}
+	</select>
+
 	<insert id="insertView" parameterType="contentsVO">
 		INSERT INTO Q_VIEW (NO, MEMBER_NO, CONTENTS_NO, COUNT)
-		VALUES (NEXTVAL('Q_VIEW_NO'),  #{memberNo}, #{contentsNo}, 1)
+		VALUES (NEXTVAL('Q_VIEW_NO'), #{memberNo}, #{contentsNo}, 1)
 	</insert>
-	
+
 	<update id="updateView" parameterType="contentsVO">
 		UPDATE Q_VIEW
-  		SET COUNT = COUNT + 1 
-  		WHERE CONTENTS_NO=#{contentsNo} AND MEMBER_NO=#{memberNo}
+		SET COUNT = COUNT + 1
+		WHERE CONTENTS_NO=#{contentsNo} AND MEMBER_NO=#{memberNo}
 	</update>
-	
+
 	<select id="selectView" parameterType="contentsVO" resultType="int">
 		SELECT count(*)
 		FROM Q_VIEW
 		WHERE CONTENTS_NO=#{contentsNo} AND MEMBER_NO=#{memberNo}
 	</select>
-	
+
 	<update id="leavedKeyword" parameterType="int">
 		UPDATE Q_KEYWORDS
-  		SET MEMBER_NO=0
-  		WHERE MEMBER_NO=#{memberNo}
+		SET MEMBER_NO=0
+		WHERE MEMBER_NO=#{memberNo}
 	</update>
-	
+
 	<update id="leavedLike" parameterType="int">
 		UPDATE Q_LIKE
-  		SET MEMBER_NO=0
-  		WHERE MEMBER_NO=#{memberNo}
+		SET MEMBER_NO=0
+		WHERE MEMBER_NO=#{memberNo}
 	</update>
-	
+
 	<update id="leavedView" parameterType="int">
 		UPDATE Q_VIEW
-  		SET MEMBER_NO=0
-  		WHERE MEMBER_NO=#{memberNo}
+		SET MEMBER_NO=0
+		WHERE MEMBER_NO=#{memberNo}
 	</update>
-	
+
 	<update id="leavedSave" parameterType="int">
 		UPDATE Q_CONTENTS_SAVED
-  		SET MEMBER_NO=0
-  		WHERE MEMBER_NO=#{memberNo}
+		SET MEMBER_NO=0
+		WHERE MEMBER_NO=#{memberNo}
 	</update>
-	
+
 	<delete id="leavedDir" parameterType="int">
 		DELETE FROM q_directory
 		WHERE MEMBER_NO=#{memberNo}
 	</delete>
-	
+
 </mapper>
 
 
