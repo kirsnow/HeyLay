@@ -1,6 +1,14 @@
 package io.planb.member.vo;
 
-public class MemberVO {
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+public class MemberVO implements UserDetails {
 	private int no;
 	private String email;
 	private String password;
@@ -22,13 +30,14 @@ public class MemberVO {
 	private int reportCnt;
 	private String beforePassword;
 	private int selectKeywords;
+	private String authority;
 	
 	public MemberVO() {}
 
 	public MemberVO(int no, String email, String password, String firstName, String lastName, String birth,
 			String gender, String emailReceive, String country, String city, int question, String answer, String type,
 			String rest, String ban, String regDate, String lastDate, String profileImg, int reportCnt,
-			String beforePassword, int selectKeywords) {
+			String beforePassword, int selectKeywords, String authority) {
 		super();
 		this.no = no;
 		this.email = email;
@@ -51,6 +60,7 @@ public class MemberVO {
 		this.reportCnt = reportCnt;
 		this.beforePassword = beforePassword;
 		this.selectKeywords = selectKeywords;
+		this.authority = authority;
 	}
 
 	public int getNo() {
@@ -221,6 +231,14 @@ public class MemberVO {
 		this.selectKeywords = selectKeywords;
 	}
 
+	public String getAuthority() {
+		return "ROLE_ADMIN";
+	}
+
+	public void setAuthority(String authority) {
+		this.authority = authority;
+	}
+
 	@Override
 	public String toString() {
 		return "MemberVO [no=" + no + ", email=" + email + ", password=" + password + ", firstName=" + firstName
@@ -228,7 +246,40 @@ public class MemberVO {
 				+ emailReceive + ", country=" + country + ", city=" + city + ", question=" + question + ", answer="
 				+ answer + ", type=" + type + ", rest=" + rest + ", ban=" + ban + ", regDate=" + regDate + ", lastDate="
 				+ lastDate + ", profileImg=" + profileImg + ", reportCnt=" + reportCnt + ", beforePassword="
-				+ beforePassword + ", selectKeywords=" + selectKeywords + "]";
+				+ beforePassword + ", selectKeywords=" + selectKeywords + ", authority=" + authority + "]";
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		List<GrantedAuthority> authorities = new ArrayList<>();
+		authorities.add(new SimpleGrantedAuthority(getAuthority()));
+		
+		return authorities;
+	}
+
+	@Override
+	public String getUsername() {
+		return email;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
 	}
 
 }

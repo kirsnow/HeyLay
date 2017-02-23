@@ -3,13 +3,17 @@ package io.planb.member.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import io.planb.leaved.vo.LeavedVO;
+
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+
 import io.planb.drawer.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
+import io.planb.leaved.vo.LeavedVO;
 import io.planb.member.vo.IdentifyQuestionVO;
 import io.planb.member.vo.MemberVO;
 
-public interface MemberService {
+public interface MemberService extends UserDetailsService{
 	
 	/*회원 관련 부분*/
 	public MemberVO login(MemberVO member); 									//로그인
@@ -47,5 +51,7 @@ public interface MemberService {
 	public String selectMemberPassword(MemberVO member);						//비밀번호 찾기
 
 	public String checkEmail(String email);										//계정 중복 확인
+
+	public UserDetails loadUserByUsername(String name);
 
 }
