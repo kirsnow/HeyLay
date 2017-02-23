@@ -40,10 +40,10 @@
 				<section>
 					<div id="container">
 						<div class="row marginTop40">
-							<div class="col-md-2">총 유해 게시물 건수 ${ spamCnt } 개</div>
+							<div class="col-md-2">총 신고 건수 ${ spamCnt } 개</div>
 							<div class="col-md-8 col-md-push-2"></div>
 							<div class="col-md-2">
-								<select class="form-control" id="selectType" onchange="">
+								<select class="form-control" id="viewTypeList">
 									<option value="C">콘텐츠</option>
 									<option value="M">메모</option>
 								</select>
@@ -58,7 +58,10 @@
 								<label>전체 선택</label>
 							</div>
 							<div class="col-md-2">
-								<button type="button" id="btnDelete" class="btn btn-default">삭제</button>
+								<a href="javascript:updateBan()" class="btn btn-default"
+										role="button" title="선택한 신고 게시물 차단">차단</a>
+								<a href="javascript:deleteReport()" class="btn btn-default"
+									role="button" title="선택한 신고 게시물 삭제">삭제</a>
 							</div>
 						</div>
 						<div class="row">
@@ -77,9 +80,9 @@
 									<tbody>
 										<c:forEach var="spam" items="${ spamList }">
 											<tr>
-												<td><input type="checkbox" id="no" class="no" value="${ spam.no }" alt="삭제할 스팸 목록 선택 체크박스" /></td>
-												<td><a id="linkSpamReport" href="http://www.google.uk.co" title="해당 페이지로 가는 링크">
-														${ pageContext.request.contextPath }/jsp/contents/____.do</a></td>
+												<td><input type="checkbox" id="no" class="no" value="${ spam.no }" alt="스팸 목록 선택 체크박스" /></td>
+												<td><a href="javascript:linkSpamReport(${ spam.no })" title="해당 페이지로 가는 링크">
+														https://www.quration.herokuapp.com/spam_detail.do?no=${ spam.no }</a></td>
 												<td>${ spam.email }</td>
 												<td>${ spam.reported }</td>
 												<td>${ spam.selected }</td>
@@ -131,8 +134,80 @@
 		if($(".no:checked").length < $(".no").length) $(".no").prop('checked', true);
 		else $(".no").prop('checked', false);
 	});
-	$("#linkSpamReport").attr("href", "${ pageContext.request.contextPath }/jsp/admin/spam_detail.do?no=" + $('#no').val()
-			+ "&type=" + "$('#selectType option:selected').val()")
+
+	$(document).ready(function() {
+		$('#viewTypeList').val('${ type }').attr("selected", "selected");
+	});
+	
+	function linkSpamReport(no) {
+		var option = $('#viewTypeList option:selected').val();
+		location.href = "${ pageContext.request.contextPath }/jsp/admin/spam_detail.do?no=" + no + "&type=" + option;
+	}
+	
+	$('#viewTypeList').change(function() {
+		var option = $('#viewTypeList option:selected').val();
+		location.href = "${ pageContext.request.contextPath }/jsp/admin/spam_list.do?type=" + option;
+	});
+	
+	function checkedValue() {
+		var checkboxValues = [];
+		$('.no:checked').each(function() {
+			checkboxValues.push($(this).val());
+	    });
+		
+		return checkboxValues;
+	}
+	
+	function updateBan() {
+		var checkboxValues = checkedValue();
+		
+		var selectedValue = $('#viewTypeList option:selected').val();
+		
+		var list = {
+			"checkboxValues" : checkboxValues, 
+			"selectedValue" : selectedValue 
+		};
+
+		$.ajax({
+	        url:"${ pageContext.request.contextPath }/jsp/admin/spam_modify_ban.do",
+	        type:'POST',
+	        data: list, 
+	        success:function(data){
+	        	if(data == "완료")
+	            alert("완료!");
+	        	location.reload();
+	        },
+	        error:function(jqXHR, textStatus, errorThrown){
+	            alert("에러 발생 ㅅㅂ \n" + textStatus + " : " + errorThrown);
+	        }
+	    });
+	}
+	
+	function deleteReport() {
+		var checkboxValues = checkedValue();
+		
+		var selectedValue = $('#viewTypeList option:selected').val();
+		
+		var list = {
+			"checkboxValues" : checkboxValues, 
+			"selectedValue" : selectedValue 
+		};
+
+		$.ajax({
+	        url:"${ pageContext.request.contextPath }/jsp/admin/spam_delete.do",
+	        type:'POST',
+	        data: list, 
+	        success:function(data){
+	        	if(data == "완료")
+	            alert("완료!");
+	        	location.reload();
+	        },
+	        error:function(jqXHR, textStatus, errorThrown){
+	            alert("에러 발생 ㅅㅂ \n" + textStatus + " : " + errorThrown);
+	        }
+	    });
+	}
+	
 </script>
 </body>
 </html>

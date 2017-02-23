@@ -4,6 +4,7 @@ public class ContentsSpamVO {
 	private int no;
 	private String email;
 	private int contentsNo;
+	private int memoNo;
 	private String selected;
 	private String userInput;
 	private String regDate;
@@ -13,11 +14,12 @@ public class ContentsSpamVO {
 	
 	public ContentsSpamVO() {}
 
-	public ContentsSpamVO(int no, String email, int contentsNo, String selected, String userInput, String regDate, int reportCnt, String type, String reported) {
+	public ContentsSpamVO(int no, String email, int contentsNo, int memoNo, String selected, String userInput, String regDate, int reportCnt, String type, String reported) {
 		super();
 		this.no = no;
 		this.email = email;
 		this.contentsNo = contentsNo;
+		this.memoNo = memoNo;
 		this.selected = selected;
 		this.userInput = userInput;
 		this.regDate = regDate;
@@ -48,6 +50,14 @@ public class ContentsSpamVO {
 
 	public void setContentsNo(int contentsNo) {
 		this.contentsNo = contentsNo;
+	}
+
+	public int getMemoNo() {
+		return memoNo;
+	}
+
+	public void setMemoNo(int memoNo) {
+		this.memoNo = memoNo;
 	}
 
 	public String getSelected() {
@@ -100,7 +110,7 @@ public class ContentsSpamVO {
 
 	@Override
 	public String toString() {
-		return "ContentsSpamVO [no=" + no + ", email=" + email + ", contentsNo=" + contentsNo + ", selected="
+		return "ContentsSpamVO [no=" + no + ", email=" + email + ", contentsNo=" + contentsNo + ", memoNo=" + memoNo + ", selected="
 				+ selected + ", userInput=" + userInput + ", regDate=" + regDate + "reportCnt=" + reportCnt 
 				+ ", type=" + type + "reported=" + reported + "]";
 	}

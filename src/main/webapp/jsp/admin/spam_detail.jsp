@@ -26,7 +26,7 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-<title>스팸 상세 | Quration: 답을 열어 줄 그런 사람</title>
+<title>스팸 신고 상세 | Quration: 답을 열어 줄 그런 사람</title>
 </head>
 <body class="nav-md">
 	<div class="container body">
@@ -39,13 +39,13 @@
 			<div class="right_col" role="main">
 				<section>
 					<div class="container">
-						<div class="row">
+						<div class="row marginTop40">
 							<div class="col-md-4">
 								<button type="button" id="btnReply" onclick="" class="btn btn-md-default">답변</button>
 								<button type="button" id="btnDelete" onclick="" class="btn btn-md-default">삭제</button>
 							</div>
 							<div class="pull-right">
-								<a href="${ pageContext.request.contextPath }/jsp/admin/spam_list.jsp" title="목록으로 돌아가는 링크">목록</a>
+								<a href="${ pageContext.request.contextPath }/jsp/admin/spam_list.do" title="목록으로 돌아가는 링크">목록</a>
 							</div>
 						</div>
 						<div class="row">
@@ -54,8 +54,10 @@
 									<div class="row">
 										<div class="col-md-3">${ spam.email }</div>
 										<div class="col-md-2">${ spam.regDate }</div>
-										<div class="pull-right">
-											<a href="#" target="_blank" title="해당 페이지로 가는 링크">http://www.quration.com/jsp/content/lala.jsp</a>
+										<div class="col-md-3 col-md-offset-4">
+											<a href="${ pageContext.request.contextPath }/contents.do?no=${ spam.contentsNo }&q=${ searchResult.query }" target="_blank" title="해당 페이지로 가는 링크">
+												https://www.quration.herokuapp.com/contents.do?no=${ spam.contentsNo }
+											</a>
 										</div>
 									</div>
 									<div class="row">

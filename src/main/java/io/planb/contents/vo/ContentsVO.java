@@ -20,6 +20,7 @@ public class ContentsVO {
 	/* additional informations */
 	private int viewCnt;		// Q_CONTENTS
 	private int likeCnt;		// Q_LIKE
+	private int reportCnt;		// Q_CONTENTS_SPAM
 	
 	// Q_SOURCE
 	private int sourceNo;
@@ -299,6 +300,14 @@ public class ContentsVO {
 		this.limit = limit;
 	}
 
+	public int getReportCnt() {
+		return reportCnt;
+	}
+
+	public void setReportCnt(int reportCnt) {
+		this.reportCnt = reportCnt;
+	}
+
 	@Override
 	public String toString() {
 		return "ContentsVO [contentsNo=" + contentsNo + ", title=" + title + ", summary=" + summary + ", url=" + url
@@ -312,7 +321,7 @@ public class ContentsVO {
 				+ ", memberNo=" + memberNo + ", savedNo=" + savedNo + ", savedCnt=" + savedCnt + ", savedDate="
 				+ savedDate + ", savedDaysAgo=" + savedDaysAgo + ", directoryNo=" + directoryNo + ", directoryName="
 				+ directoryName + ", directoryDate=" + directoryDate + ", directoryDaysAgo=" + directoryDaysAgo
-				+ ", keyword=" + keyword + ", limit=" + limit + "]";
+				+ ", keyword=" + keyword + ", limit=" + limit + ", reportCnt=" + reportCnt + "]";
 	}
 
 	

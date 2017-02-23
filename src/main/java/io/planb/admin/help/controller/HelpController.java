@@ -158,13 +158,29 @@ public class HelpController {
 		int spamCnt = service.countContentsSpam(type);
 		model.addAttribute("spamCnt", spamCnt);
 		
-		return "admin/spam_content_list";
+		model.addAttribute("option", type);
+		
+		return "admin/spam_list";
 	}
 	
-	/* 유해 콘텐츠, 메모 신고 삭제 (C: 콘텐츠 / M: 메모) */
+	/* 유해 신고 콘텐츠, 메모 차단 (여러 개) */
+	@RequestMapping("/jsp/admin/spam_modify_ban.do")
+	public String updateContentsSpamBan(@RequestParam(value="checkboxValues[]") List<Integer> param, @RequestParam(value="selectedValue") String type) {
+		ArrayList<Integer> list = new ArrayList<>();
+        list.addAll(param);
+		
+		service.updateContentsSpamBan(list, type);
+
+		return "완료";
+	}
+	
+	/* 유해 콘텐츠, 메모 신고 삭제 (여러 개) */
 	@RequestMapping("/jsp/admin/spam_delete.do")
-	public String deleteContentsSpam(@RequestParam("no") int no, @RequestParam("type") String type) {
-		service.deleteContentsSpam(no, type);
+	public String deleteContentsSpam(@RequestParam(value="checkboxValues[]") List<Integer> param, @RequestParam(value="selectedValue") String type) {
+		ArrayList<Integer> list = new ArrayList<>();
+        list.addAll(param);
+        
+		service.deleteContentsSpam(list, type);
 
 		return "admin/spam_content_list";
 	}
@@ -189,6 +205,8 @@ public class HelpController {
 		
 		int spamCnt = service.countSpam(type);
 		model.addAttribute("spamCnt", spamCnt);
+		
+		model.addAttribute("option", type);
 		
 		return "admin/spam_content_list";
 	}
