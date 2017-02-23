@@ -57,9 +57,9 @@
 						<small><span class="text-primary">${ searchResult.total }</span>건</small>
 					</div>
 					<div class="col-xs-12 text-muted">
-						<i class="fa fa-book" aria-hidden="true"></i>
+						<i class="fa fa-book marginLeft" aria-hidden="true"></i>
 						<c:forEach var="query" items="${ queryList }" varStatus="loop">
-							${ query.token }<small><sup class="${ query.style }">${ query.type }</sup></small>
+							<span class="query marginRight">${ query.token }<small><sup class="${ query.style }">${ query.type }</sup></small></span>
 						</c:forEach>
 					</div>
         		</div>

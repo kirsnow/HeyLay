@@ -98,11 +98,8 @@
 						<header>
 							<c:if test="${ contents.ban == \"N\" }">
 								<div class="pull-right">
-									<a href="${ contents.url }" target="_blank" title="원본 페이지로 이동(새 창)">
-										<i class="fa fa-external-link"aria-hidden="true"></i> 원본 보기
-									</a>
 									<c:if test="${ contents.prevContentsNo > 0 }">
-										| <a href="${ pageContext.request.contextPath }/contents.do?no=${ contents.prevContentsNo }"><i class="fa fa-angle-left fa-lg" aria-hidden="true"></i>
+										<a href="${ pageContext.request.contextPath }/contents.do?no=${ contents.prevContentsNo }"><i class="fa fa-angle-left fa-lg" aria-hidden="true"></i>
 										이전 글</a>
 									</c:if>
 									<c:if test="${ contents.nextContentsNo > 0 }">
@@ -211,12 +208,12 @@
 						<i class="fa fa-info-circle" aria-hidden="true"></i> 정보
 					</p>
 					<ul class="list-unstyled">
-						<li><strong class="viewCnt">${ contents.viewCnt }</strong>회
-							조회</li>
-						<li><strong class="savedCnt">${ contents.savedCnt }</strong>명이
-							저장함</li>
-						<li><strong class="likeCnt">${ contents.likeCnt }</strong>명이
-							좋아함</li>
+						<li><strong class="viewCnt">${ contents.viewCnt }</strong>회 조회</li>
+						<li><strong class="savedCnt">${ contents.savedCnt }</strong>명이 저장함</li>
+						<li><strong class="likeCnt">${ contents.likeCnt }</strong>명이 좋아함</li>
+						<li><a href="${ contents.url }" target="_blank" title="원본 페이지로 이동(새 창)">
+								<i class="fa fa-external-link"aria-hidden="true"></i> 원본 보기
+							</a></li>
 					</ul>
 				</div>
 				<hr />
