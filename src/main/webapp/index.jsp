@@ -88,7 +88,7 @@
 										</a></li>
 									</c:if>
 									<li class="divider"></li>
-									<li><a href="<c:url value="/j_spring_security_logout"></c:url>"> 
+									<li><a href="<c:url value="/j_spring_security_logout" />"> 
 									   <i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> 로그아웃</a>
 									</li>
 								</ul>
@@ -99,7 +99,7 @@
 							<div class="marginTop20">
 							    <div class="pull-right ">
 									<span><a href="${ pageContext.request.contextPath }/membership/agreement.do" class="marginRight"> 회원가입</a>  </span>
-									<span><a href="<c:url value="/login/login.do"></c:url>" class=""> 로그인</a>  </span>
+									<span><a href="<c:url value="/login/login.do" />" class=""> 로그인</a>  </span>
 							    </div>
 						    </div>
 						</div>

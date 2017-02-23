@@ -232,7 +232,7 @@ public class MemberVO implements UserDetails {
 	}
 
 	public String getAuthority() {
-		return "ROLE_ADMIN";
+		return authority;
 	}
 
 	public void setAuthority(String authority) {

@@ -36,7 +36,7 @@
 </head>
 <body>	
 	<header>
-		<jsp:include page="/jsp/include/nav_simple.jsp" />
+		<jsp:include page="/jsp/include/nav_search.jsp" />
 	</header>
 
 	<!-- 탈퇴 사유 입력  Section -->
