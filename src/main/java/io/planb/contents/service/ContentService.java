@@ -137,10 +137,19 @@ public class ContentService {
 		return cnt;
 	}
 	
-	public int selectView(ContentsVO view) {
-		int cnt = dao.selectView(view);
-		return cnt;
-	}
+//	public List<ContentsVO> selectView(int memberNo) {
+//		List<ContentsVO> cntList = dao.selectView(memberNo);
+//		
+//		int contentsNo = 0;
+//		
+//		for(ContentsVO contents : cntList) {
+//			if(contentsNo == contents.getContentsNo()) {
+//				
+//			}
+//		}
+//		
+//		return cntList;
+//	}
 	
 	public void insertView(ContentsVO view) {
 		dao.insertView(view);

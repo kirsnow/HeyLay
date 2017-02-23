@@ -108,12 +108,17 @@ public class ContentDAO {
 		return cnt;
 	}
 	
-	public int selectView(ContentsVO view) {
-		
-		int cnt = sqlSessionTemplate.selectOne("io.planb.contents.dao.ContentDAO.selectView", view);
-		
+	public int selectView(ContentsVO contents) {
+		int cnt = sqlSessionTemplate.selectOne("io.planb.contents.dao.ContentDAO.selectView", contents);
 		return cnt;
 	}
+	
+//	public List<ContentsVO> selectView(int memberNo) {
+//		
+//		List<ContentsVO> cntList = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.selectView", memberNo);
+//		
+//		return cntList;
+//	}
 	
 	public void insertView(ContentsVO view) {
 		sqlSessionTemplate.insert("io.planb.contents.dao.ContentDAO.insertView", view);

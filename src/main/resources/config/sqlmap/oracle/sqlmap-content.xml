@@ -151,7 +151,7 @@
 	<select id="selectView" parameterType="contentsVO" resultType="int">
 		SELECT count
 		FROM Q_VIEW
-		WHERE CONTENTS_NO=#{contentsNo} AND MEMBER_NO=#{memberNo}
+		WHERE MEMBER_NO=#{memberNo} AND CONTENTS_NO=#{contentsNo}
 	</select>
 
 	<update id="leavedKeyword" parameterType="int">
