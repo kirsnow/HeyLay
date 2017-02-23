@@ -4,15 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-<<<<<<< HEAD
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-
-=======
 import org.springframework.web.multipart.MultipartFile;
 
-import io.planb.leaved.vo.LeavedVO;
->>>>>>> 3e4dfa178f93facd31bb44781b8b0ffe994b940e
 import io.planb.drawer.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.leaved.vo.LeavedVO;

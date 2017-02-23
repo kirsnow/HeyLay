@@ -40,7 +40,8 @@
     					password-parameter="password"
     					authentication-success-handler-ref="customSuccessHandler" />
 <!--     	<sec:logout logout-success-url="/" logout-url="/login/logout.do" /> -->
-		<sec:logout logout-url="/j_spring_security_logout"/>
+		<sec:logout logout-url="/j_spring_security_logout"
+					logout-success-url="/" />
 		<sec:csrf disabled="true"/>
     </sec:http>
     

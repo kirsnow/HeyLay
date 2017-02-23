@@ -1,8 +1,10 @@
 package io.planb.member.service;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.ServletContext;
 
@@ -10,12 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
-<<<<<<< HEAD
-=======
-import io.planb.leaved.vo.LeavedVO;
 import io.planb.contents.dao.ContentDAO;
->>>>>>> 3e4dfa178f93facd31bb44781b8b0ffe994b940e
 import io.planb.drawer.vo.DirectoryVO;
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.leaved.vo.LeavedVO;
