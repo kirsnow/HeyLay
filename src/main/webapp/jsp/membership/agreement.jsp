@@ -9,12 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>약관 동의 | Quration: 답을 열어 줄 그런 사람</title>
 	
-	 <!-- Bootstrap -->
-    <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
-	<link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
-    
-    <!-- icon-font -->
-   	<script src="https://use.fontawesome.com/bbddce3010.js"></script>
+	<jsp:include page="/jsp/include/css.jsp" />
    	
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -23,23 +18,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     
-    <!-- google analytics -->
-	<script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-		
-		ga('create', 'UA-90558257-1', 'auto');
-		ga('send', 'pageview');
-	</script>
-	<style>
-		html,body{height:100%}
-		body{margin:0}
-		.body{min-height:100%}
-		.sectionContent{padding-bottom:2em}
-		.footer{margin-top:-2;height:2em}
-	</style>
+  
 </head>
 <body>
 	<header>
@@ -428,7 +407,7 @@
 	            </textarea>
 	        </section>	
 	        <div class="row">
-	            <div class="col-md-6 col-md-offset-3 text-center marginTop marginBottom">
+	            <div class="col-md-6 col-md-offset-3 text-center marginTop marginBottom100 ,">
 	                <a href="${ pageContext.request.contextPath }/membership/membership.do" class="btn btn-primary marginRight" title="회원가입 페이지 이동 링크" role="button">동의</a>
 	                <a href="${pageContext.request.contextPath}/" class="btn btn-default" title="홈 화면 이동 링크" role="button">홈으로</a>
 	            </div>
@@ -440,5 +419,19 @@
     <Footer class="footer">
 		<jsp:include page="/jsp/include/footer.jsp" />
 	</Footer> 
+	
+	<!-- 공통 js -->
+	<jsp:include page="/jsp/include/commonJs.jsp" />
+	
+	  <!-- google analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-90558257-1', 'auto');
+		ga('send', 'pageview');
+	</script>
 </body>
 </html>

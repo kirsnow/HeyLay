@@ -52,7 +52,7 @@ public class MembershipController {
 		service.enroll(member);
 		model.addAttribute("memberVO", member);
 		
-		return "membership/membershipform";
+		return "login/login";
 	}
 	
 	/*아이디 중복 확인*/

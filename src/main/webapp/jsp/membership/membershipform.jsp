@@ -9,13 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>회원가입 폼 | Quration: 답을 열어 줄 그런 사람</title>
 	
-	<!-- Bootstrap -->
-    <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
-	<link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
+	<!-- 공통css  -->
+ 	<jsp:include page="/jsp/include/css.jsp" />
      
-    <!-- icon-font -->
-   	<script src="https://use.fontawesome.com/bbddce3010.js"></script>
-   	
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -23,23 +19,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     
-    <!-- google analytics -->
-	<script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-		
-		ga('create', 'UA-90558257-1', 'auto');
-		ga('send', 'pageview');
-	</script>
-	<style>
-		html,body{height:100%}
-		body{margin:0}
-		.body{min-height:100%}
-		.sectionContent{padding-bottom:2em}
-		.footer{margin-top:-2;height:2em}
-	</style>
+
 </head>
 <body>
    	<header>
@@ -144,9 +124,9 @@
 	               
 	               <!--   <div class="g-recaptcha margin_20" data-sitekey="6LfzNwsUAAAAAPZRhilzRNbGeVIgr2FsbDdZ8S1r"></div> 로봇이 아닙니다 잠시 주석처리 -->
 	               <div class="row"> 
-	                <div class="col-md-6 col-md-offset-3 text-center marginBottom100">
-	                   <button type="submit" class="btn btn-primary marginRight" >회원 가입</button>
-	                   <button type="reset" class="btn">초기화</button>
+	                <div class="col-md-6 col-md-offset-3 text-center ">
+	                   <button type="submit" class="btn btn-primary marginRight marginBottom100" >회원 가입</button>
+	                   <button type="reset" class="btn marginBottom100">초기화</button>
 	                </div>
 	             </div>                  
 	       		</form>
@@ -157,7 +137,8 @@
 		<jsp:include page="/jsp/include/footer.jsp" />
 	</Footer> 
 	
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<!-- 공통 js -->
+	<jsp:include page="/jsp/include/commonJs.jsp" />
    
 <script>
 $(document).ready(function() {
@@ -343,46 +324,18 @@ $(document).ready(function() {
       return true;
    }  
    
+   </script>
    
-   
-	jQuery( function($) { 
-		$('#upgradeForm').submit(function() {
-			if ($('.name').val() == "") {
-				alert('카드 소지자 이름을 입력하세요');
-				$('.name').focus();
-				return false;
-			} else if ($('#cardNum').val() == '') {
-				alert('신용카드 번호를 입력하세요.');
-				$('#cardNum').focus();
-				return false;
-			} else if ($('.card').val() == '') {
-				alert('카드 종류를 선택해주세요.');
-				$('.card').focus();
-				return false;
-			} else if ($('.month').val() == '') {
-				alert('카드 만료일 (월)을 정확하게 입력하세요');
-				$('.month').focus();
-				return false;
-			} else if ($('.year').val() == '') {
-				alert('카드 만료일 (년)을 정확하게 입력하세요');
-				$('.year').focus();
-				return false;
-			} else if ($('.cvc').val() == '') {
-				alert('카드 cvc값을 입력하세요. 카드 뒷면에 마지막 3개 혹은 4개 번호입니다.');
-				$('.cvc').focus();
-				return false;
-			} else if ($('.select option').index($('.select:selected')) == 0) {
-				alert('신용카드 발행국가를 다시 선택해주세요');
-				$('.select').focus();
-				return false;
-			}
-				return true;
-			}
-		});
-	});
-   
-   
-</script>   
+ 	<!-- google analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-90558257-1', 'auto');
+		ga('send', 'pageview');
+	</script>
 
 <!-- Google reCAPTCHA API : 로봇이 아닙니다. -->
 <script src='https://www.google.com/recaptcha/api.js'></script>

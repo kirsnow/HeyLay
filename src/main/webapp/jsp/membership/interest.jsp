@@ -81,9 +81,8 @@
 		<jsp:include page="/jsp/include/footer.jsp" />
 	</Footer> 
 
-	<!-- jQuery -->
-	<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
-    <script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
+	<!-- 공통 js -->
+	<jsp:include page="/jsp/include/commonJs.jsp" />
     	
 <script>
 	function setSeywords() {
