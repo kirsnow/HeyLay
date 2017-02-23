@@ -3214,6 +3214,13 @@ fieldset[disabled] .form-control {
     opacity: 1
 }
 
+input.form-control[disabled],
+input.form-control[readonly],
+fieldset[disabled] .form-control {
+    opacity: 1;
+    background-color: #eee;
+}
+
 .form-control[disabled],
 fieldset[disabled] .form-control {
     cursor: not-allowed
