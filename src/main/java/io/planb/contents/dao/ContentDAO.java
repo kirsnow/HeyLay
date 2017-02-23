@@ -147,5 +147,11 @@ public class ContentDAO {
 		int cnt = sqlSessionTemplate.update("io.planb.contents.dao.ContentDAO.selectLikeCnt", contentsNo);
 		return cnt;
 	}
+	
+	public int selectSavedCnt(int contentsNo) {
+		int cnt = sqlSessionTemplate.selectOne("io.planb.contents.dao.ContentDAO.selectSavedCnt", contentsNo);
+		
+		return cnt;
+	}
 
 }

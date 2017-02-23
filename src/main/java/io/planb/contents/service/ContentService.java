@@ -35,6 +35,7 @@ public class ContentService {
 		}
 		
 		ContentsVO contents = dao.getContents(vo);
+		
 		return contents;
 	}
 	
@@ -147,6 +148,11 @@ public class ContentService {
 	
 	public void updateView(ContentsVO view) {
 		dao.updateView(view);
+	}
+	
+	public int selectSavedCnt(int contentsNo) {
+		int cnt = dao.selectSavedCnt(contentsNo);
+		return cnt;
 	}
 
 }

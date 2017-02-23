@@ -218,12 +218,9 @@
 						<i class="fa fa-info-circle" aria-hidden="true"></i> 정보
 					</p>
 					<ul class="list-unstyled">
-						<li><strong class="viewCnt">${ contents.viewCnt }</strong>회
-							조회</li>
-						<li><strong class="savedCnt">${ contents.savedCnt }</strong>명이
-							저장함</li>
-						<li><strong class="likeCnt">${ contents.likeCnt }</strong>명이
-							좋아함</li>
+						<li><strong class="viewCnt">${ contents.viewCnt }</strong>회 조회</li>
+						<li><strong class="savedCnt">${ contents.savedCnt }</strong>명이 저장함</li>
+						<li><strong class="likeCnt">${ contents.likeCnt }</strong>명이 좋아함</li>
 					</ul>
 				</div>
 				<hr />

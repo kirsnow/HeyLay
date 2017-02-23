@@ -85,8 +85,7 @@
 		LIMIT 50
 	</select>
 
-	<select id="selectCustomCuration" parameterType="String"
-		resultType="contentsVO">
+	<select id="selectCustomCuration" parameterType="String" resultType="contentsVO">
 		SELECT CO.NO contentsNo, CO.TITLE as title, CO.SUMMARY as
 		summary, CO.URL as url
 		, CO.VIEW_CNT as viewCnt
@@ -150,7 +149,7 @@
 	</update>
 
 	<select id="selectView" parameterType="contentsVO" resultType="int">
-		SELECT count(*)
+		SELECT count
 		FROM Q_VIEW
 		WHERE CONTENTS_NO=#{contentsNo} AND MEMBER_NO=#{memberNo}
 	</select>
@@ -176,13 +175,19 @@
 	<update id="leavedSave" parameterType="int">
 		UPDATE Q_CONTENTS_SAVED
 		SET MEMBER_NO=0
-		WHERE MEMBER_NO=#{memberNo}
+		WHERE MEM
 	</update>
 
 	<delete id="leavedDir" parameterType="int">
 		DELETE FROM q_directory
 		WHERE MEMBER_NO=#{memberNo}
 	</delete>
+	
+	<select id="selectSavedCnt" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM Q_CONTENTS_SAVED
+		WHERE CONTENTS_NO=#{contentsNo}
+	</select>
 
 </mapper>
 

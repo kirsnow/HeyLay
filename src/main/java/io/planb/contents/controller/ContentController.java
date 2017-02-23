@@ -55,7 +55,9 @@ public class ContentController {
 		contents = service.getContentsDetail(no, q);
 		// 콘텐츠 메모 목록
 		List<MemoVO> memoList = memoService.getMemoList(no);
-
+		
+		int savedCnt = service.selectSavedCnt(no);
+		contents.setSavedCnt(savedCnt);
 		
 		mav.setViewName("search/contents_detail");
 		mav.addObject("contents", contents);
