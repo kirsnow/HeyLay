@@ -188,6 +188,8 @@
 		FROM Q_CONTENTS_SAVED
 		WHERE CONTENTS_NO=#{contentsNo}
 	</select>
+	
+	<select id=""></select>
 
 </mapper>
 
