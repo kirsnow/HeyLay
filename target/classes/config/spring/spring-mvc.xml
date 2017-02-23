@@ -48,7 +48,6 @@
     	<property name="mapperLocations" value="classpath:config/sqlmap/oracle/*.xml" />
     </bean>
     
-    
     <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate" >
     	<constructor-arg ref="sqlSessionFactory" />
     </bean>
@@ -83,7 +82,19 @@
 	<!-- jackson json library/ -->
 	
 	<context:component-scan base-package="io.planb" />
-    <mvc:annotation-driven />
+    <mvc:annotation-driven>
+	    <mvc:message-converters>
+	        <!-- @ResponseBody로 String 전송 시, 한글 UTF-8 처리 -->
+	        <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+	            <property name="supportedMediaTypes">
+	                <list>
+	                    <value>text/html;charset=UTF-8</value>
+	                </list>
+	            </property>
+	        </bean>
+	    </mvc:message-converters>
+	</mvc:annotation-driven>
+
 	<mvc:default-servlet-handler />
 	<mvc:view-resolvers>
 		<mvc:jsp prefix="/jsp/" suffix=".jsp" />
