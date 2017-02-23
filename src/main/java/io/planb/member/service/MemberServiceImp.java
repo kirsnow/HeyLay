@@ -219,14 +219,6 @@ public class MemberServiceImp implements MemberService {
 		return type;
 	}
 
-	// 가입 or 로그인 후 검색 이전 키워드 추천
-	@Override
-	public String selectRecommandList() {
-		String recommandList = dao.selectRecommandList();
-
-		return recommandList;
-	}
-
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		MemberVO member = new MemberVO();

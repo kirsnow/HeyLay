@@ -9,7 +9,8 @@
 	<!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>로그인 | Quration: 답을 열어 줄 그런 사람</title>
-
+	
+	<!-- 공통css  -->
  	<jsp:include page="/jsp/include/css.jsp" />
     	
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -68,6 +69,7 @@
 		<jsp:include page="/jsp/include/footer.jsp" />
 	</Footer> 
 	
+	<!-- 공통 js -->
 	<jsp:include page="/jsp/include/commonJs.jsp" />
 	
  	<!-- google analytics -->

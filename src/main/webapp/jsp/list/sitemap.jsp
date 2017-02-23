@@ -54,7 +54,7 @@
 			<section class="row">
 				<div class="col-md-3">
 					<h4 class="paddingleft30">둘러보기</h4>
-					<ul>
+					<ul class="list-unstyled marginLeft30">
 						<li><a
 							href="${ pageContext.request.contextPath }/list/category.do"
 							title="주제 분야 페이지로 이동">주제 분야</a></li>
@@ -65,7 +65,7 @@
 				</div>
 				<div class="col-md-3">
 					<h4 class="paddingleft30">사이트</h4>
-					<ul>
+					<ul class="list-unstyled marginLeft30">
 						<li><a href="#" title="사이트 소개 페이지로 이동">사이트 소개</a></li>
 						<li><a
 							href="${ pageContext.request.contextPath }/notice/list.do"
@@ -91,7 +91,7 @@
 				</div>
 				<div class="col-md-3">
 					<h4 class="paddingleft30">회원</h4>
-					<ul>
+					<ul class="list-unstyled marginLeft30">
 						<c:choose>
 							<c:when test="${ not empty userVO }"> 
 								<li><a
@@ -123,7 +123,7 @@
 				</div>
 				<div class="col-md-3">
 					<h4 class="paddingleft30">Quration Service</h4>
-					<ul>
+					<ul class="list-unstyled marginLeft30">
 						<li><a href="${ pageContext.request.contextPath }/contents/stats.do"
 							title="개인 통계 페이지로 이동">개인 통계</a></li>
 						<li><a href="javascript:doMember('${userVO.no}')"
