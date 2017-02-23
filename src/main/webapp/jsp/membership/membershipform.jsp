@@ -325,7 +325,7 @@ $(document).ready(function() {
          alert('도시를 입력해주세요.');
          form.city.focus();
          return false;
-      } else if (form.question.value == '') {
+      } else if (form.question.options[0].selected) {
          alert('질문을 선택해주세요.');
          form.question.focus();
          return false;
@@ -336,6 +336,46 @@ $(document).ready(function() {
       }
       return true;
    }  
+   
+   
+   
+	jQuery( function($) { 
+		$('#upgradeForm').submit(function() {
+			if ($('.name').val() == "") {
+				alert('카드 소지자 이름을 입력하세요');
+				$('.name').focus();
+				return false;
+			} else if ($('#cardNum').val() == '') {
+				alert('신용카드 번호를 입력하세요.');
+				$('#cardNum').focus();
+				return false;
+			} else if ($('.card').val() == '') {
+				alert('카드 종류를 선택해주세요.');
+				$('.card').focus();
+				return false;
+			} else if ($('.month').val() == '') {
+				alert('카드 만료일 (월)을 정확하게 입력하세요');
+				$('.month').focus();
+				return false;
+			} else if ($('.year').val() == '') {
+				alert('카드 만료일 (년)을 정확하게 입력하세요');
+				$('.year').focus();
+				return false;
+			} else if ($('.cvc').val() == '') {
+				alert('카드 cvc값을 입력하세요. 카드 뒷면에 마지막 3개 혹은 4개 번호입니다.');
+				$('.cvc').focus();
+				return false;
+			} else if ($('.select option').index($('.select:selected')) == 0) {
+				alert('신용카드 발행국가를 다시 선택해주세요');
+				$('.select').focus();
+				return false;
+			}
+				return true;
+			}
+		});
+	});
+   
+   
 </script>   
 
 <!-- Google reCAPTCHA API : 로봇이 아닙니다. -->

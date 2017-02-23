@@ -40,6 +40,13 @@
 	ga('create', 'UA-90558257-1', 'auto');
 	ga('send', 'pageview');
 </script>
+<style>
+label, input[type="radio"] {
+  margin-top: -4px;
+  vertical-align: middle;
+}
+
+</style>
 </head>
 <body class="nav-md">
 	<div class="container body">
@@ -54,31 +61,39 @@
 
 			<div class="right_col" role="main">
 				<!-- page content -->
-					<form id="upgradeForm" class="formBottom15 marginTop60"
+					<form name="upgradeForm" class="formBottom15 marginTop60" onsubmit="return checkForm()"
                   		  action="${ pageContext.request.contextPath }/contents/update_type.do?no=${userVO.no}" method="post">
                   		
                   		<div class="text-center">
 							<div class="row">
-								<h4 class="text-primary">Quration Premium Service</h4>	
+								<h4 class="text-primary"><b>Quration Premium Service</b></h4>	
 							</div>
-							<div class="row radio">
-							  <label class="marginRight15" >
-							    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked >
-							    ₩3,300 Month(월)
-							  </label>
-							  <label>
-							    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-							    ₩30,000 Year(년)
-							  </label>
+							<div class="row grayfont col-md-4 col-md-offset-4" style="height:30px"> 
+						    	<label class="marginRight15" >
+						    		<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked >
+						   			 ₩3,300 Month(월)
+						  		</label>
+						  		<label>
+							    	<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+							   		 ₩30,000 Year(년)
+						  		</label>
 							</div>
 						</div>
-                  	
                   		  
 					<div class="row">
 						<div class=" col-md-4 col-md-offset-4">
 							<input type="text" class="form-control" name="name" id="name" placeholder="이름">
 						</div>
 					</div>	
+				
+				    <div class="row">
+						 <div class="col-md-4 col-md-offset-4 ">
+							<input type="text" name="cardNum" id="cardNum" class="form-control" placeholder="카드번호">
+							<div id="regCardNum"></div>
+							<div><small class="grayfont marginLeft">[Visa]<span class="marginLeft">4로 시작하는 12 or 16자리 </span></small></div>
+							<div><small class="grayfont marginLeft">[MasterCard]<span class="marginLeft">51~55로 시작하는 16자리</span></small></div>
+						 </div>
+					 </div>
 				
 					 <div class="row">
 	                  	<div class="col-md-4 col-md-offset-4 ">
@@ -97,11 +112,6 @@
 	                  </div>
 						
 					  <div class="row">
-						 <div class="col-md-4 col-md-offset-4 ">
-							<input type="text" class="form-control" name="cardNum" id="cardNum" placeholder="카드번호">
-						 </div>
-					  </div> 
-					  <div class="row">
 						 <div class="col-md-2 col-md-offset-4 ">
 							<input type="text" class="form-control" name="month" id="month" placeholder="MM">
 						 </div>
@@ -118,7 +128,7 @@
 					<div class="row">
 						<div class="col-md-4 col-md-offset-4">
 							<select onchange="if (this.value) window.location.href = this.value;" name="select" id="select" class="form-control">
-								<option value="#">신용카드 발행 국가</option>
+								<option value="" disabled selected>신용카드 발행 국가</option>
 								<option value="#">가나</option>
 								<option value="#">가봉</option>
 								<option value="#">과테말라</option>
@@ -220,39 +230,6 @@
 			<!-- /footer -->
 		</div>
 	</div>
-	
-	<script type="text/javascript">
-	jQuery( function($) { 
-		$('#upgradeForm').submit(function() {
-			if ($('#name').val() == "") {
-				alert('카드 소지자 이름을 입력하세요');
-				$('#name').focus();
-				return false;
-			} else if ($('#cardNum').val() == '') {
-				alert('신용카드 번호를 입력하세요.');
-				$('#cardNum').focus();
-				return false;
-			} else if ($('#expiration').val() == '') {
-				alert('카드 만료 날짜를 정확하게 입력하세요');
-				$('#expiration').focus();
-				return false;
-			} else if ($('#cvv').val() == '') {
-				alert('카드 cvv값을 입력하세요. 카드 뒷면에 마지막 3개 혹은 4개 번호입니다.');
-				$('#cvv').focus();
-				return false;
-			} else if ($('#select option').index($('#select:selected')) == 0) {
-				alert('신용카드 발행국가를 다시 선택해주세요');
-				$('#select').focus();
-				return false;
-			} else if ($('#post').val() == '') {
-				alert('우편번호를 입력해주세요');
-				$('#post').focus();
-				return false;
-			}
-		});
-	});
-	</script>
-	
 	<!-- jQuery -->
 	<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
 	<!-- Bootstrap -->
@@ -260,5 +237,71 @@
 
 	<!-- Custom Theme Scripts -->
 	<script src="${ pageContext.request.contextPath }/js/custom.min.js"></script>
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$('#cardNum').focusout(function() {
+			
+		var cardNum = $('#cardNum').val();
+		
+		var regCardNum =/^(4[0-9]{12}(?:[0-9]{3})?)|(5[1-5][0-9]{14})$/;
+
+		
+		 if ( !regCardNum.test( $('#cardNum').val()) ) {  
+        	 msg();
+         } else {
+        	 removeMsg();
+         }
+			 
+		     function msg() {
+			    	$('#cardNum').addClass('has-error');
+			        $('#regCardNum').text('유효하지 않은 카드번호 입니다.').addClass('text-danger');
+			 } 
+		     
+		     function removeMsg(){
+		        $('#has-error').removeClass('has-error');
+		        $('#has-error-check').removeClass('has-error');
+		        $('#regCardNum').text('');
+		     }
+		});
+	});
+	
+	
+	function checkForm() {
+		
+	var form = document.upgradeForm;
+	
+	 if (form.name.value == '') {
+		alert('이름을 입력하세요');
+		form.name.focus();
+		return false;
+	 } else if (form.cardNum.value == '') {
+		alert('신용카드 번호를 입력하세요.');
+		form.cardNum.focus();
+		return false;
+	 } else if (form.card.checked == false) {
+		alert('카드 종류를 선택해주세요.');
+		form.card.focus();
+		return false;
+	 } else if (form.month.value == '') {
+		alert('카드 만료일 (월)을 정확하게 입력하세요');
+		form.month.focus();
+		return false;
+	 } else if (form.year.value == '') {
+		alert('카드 만료일 (년)을 정확하게 입력하세요');
+		form.year.focus();
+		return false;
+	 } else if (form.cvc.value == '') {
+		alert('카드 cvc값을 입력하세요. 카드 뒷면에 마지막 3개 혹은 4개 번호입니다.');
+		form.cvc.focus();
+		return false;
+	} else if (form.select.options[0].selected) {
+		alert('신용카드 발행국가를 다시 선택해주세요');
+		form.select.focus();
+		return false;
+	}
+		return true;
+	}
+	</script>
 </body>
 </html>
