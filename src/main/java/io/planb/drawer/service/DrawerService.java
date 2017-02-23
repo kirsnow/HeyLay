@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import io.planb.contents.dao.ContentDAO;
+import io.planb.contents.service.ContentService;
 import io.planb.contents.vo.ContentsVO;
 import io.planb.drawer.dao.DrawerDAO;
 import io.planb.drawer.vo.DrawerVO;
@@ -25,10 +26,16 @@ public class DrawerService {
 	@Autowired
 	private DirectoryService dirService;
 	
+	@Autowired
+	private ContentService conService;
+	
 	/* Saved cards */
 	public List<ContentsVO> getSavedCardsForMember(int memberNo) {
 		ContentsVO vo = new ContentsVO();
 		vo.setMemberNo(memberNo);
+		
+		int viewCnt = conService.selectView(vo);
+		vo.setPersonalVieCnt(viewCnt);
 		
 		List<ContentsVO> savedCards = contentDAO.getSavedCards(vo);
 		return savedCards;

@@ -63,7 +63,7 @@ public class ContentsVO {
 	
 	private String keyword;
 	private int limit;
-	
+	private int personalVieCnt;
 	
 	public ContentsVO() {
 		super();
@@ -298,6 +298,14 @@ public class ContentsVO {
 	public void setLimit(int limit) {
 		this.limit = limit;
 	}
+	
+	public int getPersonalVieCnt() {
+		return personalVieCnt;
+	}
+
+	public void setPersonalVieCnt(int personalVieCnt) {
+		this.personalVieCnt = personalVieCnt;
+	}
 
 	@Override
 	public String toString() {
@@ -312,8 +320,9 @@ public class ContentsVO {
 				+ ", memberNo=" + memberNo + ", savedNo=" + savedNo + ", savedCnt=" + savedCnt + ", savedDate="
 				+ savedDate + ", savedDaysAgo=" + savedDaysAgo + ", directoryNo=" + directoryNo + ", directoryName="
 				+ directoryName + ", directoryDate=" + directoryDate + ", directoryDaysAgo=" + directoryDaysAgo
-				+ ", keyword=" + keyword + ", limit=" + limit + "]";
+				+ ", keyword=" + keyword + ", limit=" + limit + ", personalVieCnt=" + personalVieCnt + "]";
 	}
 
+	
 	
 }
