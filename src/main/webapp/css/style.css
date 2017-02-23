@@ -614,3 +614,28 @@ nav#footer{
 }
 #footer a:hover{
 	color: #039BE5;}
+	
+.font20{
+   	font-size: 20px;
+   }
+   
+.marginRight30{
+	margin-right: 30px;
+}
+
+.marginTop20{
+    margin-top: 20px;
+} 
+
+.grayfont{
+	color : gray;
+}
+
+.spanPadding {
+	padding-right: 20px;
+}
+
+.marginRight {
+	margin-right: 10px;
+}
+

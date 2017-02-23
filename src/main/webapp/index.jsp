@@ -9,10 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Quration: 답을 열어 줄 그런 사람</title>
     
+    <script src="${ pageContext.request.contextPath }/js/jquery-3.1.1.min.js"></script>
+	 	
     <!-- Bootstrap CSS SET -->
-    <link rel="stylesheet"  href="https://fonts.googleapis.com/icon?family=Material+Icons">  
     <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
-	<link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
     
     <!-- CSS for index (<HEAD>와 </HEAD> 사이) -->
     <link href="${ pageContext.request.contextPath }/css/style.css" rel="stylesheet" type="text/css">
@@ -24,7 +24,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     
-	
+   
   <style>
 
     #main{
@@ -54,19 +54,19 @@
 							<div class="dropdown marginTop20 marginRight30">
 								<c:choose>
 									<c:when test="${ userVO.type eq 'A'}">
-										<li>
+										<span class="marginRight">
 											<a href="${ pageContext.request.contextPath }/jsp/admin/member_list.do"> 
 											<i class="fa fa-user-secret fa-fw" aria-hidden="true"></i> 관리자 페이지</a>
-										</li>
+										</span>
 									</c:when>
 									<c:otherwise>
 										<span class="marginRight">
-											<a href="${ pageContext.request.contextPath }/drawer.do" title="내카드">
-												<i class="fa fa-hdd-o" aria-hidden="true"></i> 내 카드
-											</a>
+											<a href="${ pageContext.request.contextPath }/drawer.do" class="" title="내카드">
+											<i class="fa fa-hdd-o" aria-hidden="true"></i> 내 카드</a></a>
 										</span>
 									</c:otherwise>
 								</c:choose>
+								
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" title="회원 정보 메뉴 열기">
 									<img id="blah" src="/Quration/upload/${userVO.profileImg}" 
 										alt="your image" class="img-circle profile_img" style="width: 30px; height: 30px;"/>
@@ -80,16 +80,9 @@
 									<li><a href="${ pageContext.request.contextPath }/myPage/original_password.do"> <i class="fa fa-lock fa-fw"
 											aria-hidden="true"></i> 비밀번호 변경
 									</a></li>
-									<c:if test="${ userVO.type eq 'A'}">
-										<li><a
-											href="${ pageContext.request.contextPath }/jsp/admin/member_list.do">
-												<i class="fa fa-user-secret fa-fw" aria-hidden="true"></i>
-												관리자 페이지
-										</a></li>
-									</c:if>
 									<li class="divider"></li>
-									<li><a href="${ pageContext.request.contextPath }/login/logout.do"> 
-									   <i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> 로그아웃</a>
+									<li><a href="${ pageContext.request.contextPath }/login/logout.do"> <i class="fa fa-sign-out fa-fw"
+											aria-hidden="true"></i> 로그아웃</a>
 									</li>
 								</ul>
 							</div>
@@ -143,24 +136,7 @@
         </div>
     </div>
 
-    <!-- Meet Us Section -->
-  <!--   <div id="meet-us">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="section-title">
-                        <h2>Meet Us</h2>
-                        <hr>
-                    </div>
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
-                    <a href="#services" class="down-btn page-scroll">
-                        <span class="fa fa-angle-down"></span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
+ 
     <!-- Services Section -->
     <div id="services">
         <div class="container text-center">
@@ -211,13 +187,13 @@
                     </div>
                 </div>
             </div>
-            <div class="marginTop30">
-	            <a href="#about-us" class="down-btn page-scroll">
-	                <span class="fa fa-angle-down"></span>
-	            </a>
-	            <a href="#main" class="up-btn page-scroll">
-	                <span class="fa fa-angle-up"></span>
-	            </a>
+            <div>
+            <a href="#about-us" class="down-btn page-scroll">
+                <span class="fa fa-angle-down"></span>
+            </a>
+            <a href="#main" class="up-btn page-scroll">
+                <span class="fa fa-angle-up"></span>
+            </a>
             </div>
         </div>
     </div>
@@ -299,45 +275,28 @@
         </div>
     </div>
 
-    <!-- Testimonial Section -->
-     <!--<div id="testimonials">
-        <div class="overlay">
-            <div class="container">
-                <div class="section-title">
-                    <h2>What my Clients Say...</h2>
-                    <hr>
-                </div>
-
-                <div id="testimonial" class="owl-carousel owl-theme"> 
-                  <div class="item">
-                    <h3>Et iusto odio dignissimos ducimus qui blanditiis <br>praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint <br>occaecati cupiditate non provident. </h3>
-                    <br>
-                    <h6>LJ, Abc Company</h6>
-                  </div>
-
-                  <div class="item">
-                    <h3>Fusce dapibus, tellus ac cursus commodo, tortor<br> mauris condimentum. Duis mollis, est non commodo luctus, nisi erat </h3>
-                    <br>
-                    <h6>Kai, Web Geekster</h6>
-                  </div>
-
-                  <div class="item">
-                    <h3>Cras justo odio, dapibus ac facilisis in, egestas <br>eget quam. Donec id elit non mi porta gravida at eget metus.</h3>
-                    <br>
-                    <h6>Jenn, Coders' Playground</h6>
-                  </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    
+   
     <!-- footer -->
 	<jsp:include page="/jsp/include/footer.jsp" />
 	<!-- /footer -->
 	
-	<jsp:include page="/jsp/include/commonJs.jsp" />
-	
-    <!-- google analytics -->
+	<script src="${ pageContext.request.contextPath }/js/jquery-3.1.1.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
+	 	
+    <!-- Javascripts (necessary for Bootstrap's JavaScript plugins)
+    ================================================== -->
+    <script type="text/javascript" src="${ pageContext.request.contextPath }/js/main.js"></script>
+    <script type="text/javascript" src="${ pageContext.request.contextPath }/js/jasny-bootstrap.min.js"></script>
+    
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script type="text/javascript" src="${ pageContext.request.contextPath }/js/SmoothScroll.js"></script>
+    <script type="text/javascript" src="${ pageContext.request.contextPath }/js/typed.js"></script>
+    
+    
+    <!-- icon-font -->
+    <script src="https://use.fontawesome.com/bbddce3010.js"></script>
+    
+     <!-- google analytics -->
     <script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -348,14 +307,6 @@
 	  ga('send', 'pageview');
 	</script>
 	
-    <!-- Javascripts (necessary for Bootstrap's JavaScript plugins)
-    ================================================== -->
-    <script type="text/javascript" src="${ pageContext.request.contextPath }/js/main.js"></script>
-    <script type="text/javascript" src="${ pageContext.request.contextPath }/js/jasny-bootstrap.min.js"></script>
-    
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script type="text/javascript" src="${ pageContext.request.contextPath }/js/SmoothScroll.js"></script>
-    <script type="text/javascript" src="${ pageContext.request.contextPath }/js/typed.js"></script>
     <script>
       $(function(){
           $("#head-title").typed({
@@ -367,7 +318,7 @@
       });
       
       //가입 or 로그인 후 검색 이전 키워드 추천용 ajax
-      $(document).ready(function() { 
+     /*  $(document).ready(function() { 
       $.ajax({
           url: "${ pageContext.request.contextPath }/index/recommandKeywordList.do",
           type : 'get',
@@ -377,9 +328,8 @@
                console.log(result);
                
     	}});
-     });
+     }); */
     </script>
-    
     
   </body>
 </html>

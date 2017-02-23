@@ -55,6 +55,4 @@ public interface MemberDAO {
 	
 	public String selectType(int no);
 
-	public String selectRecommandList();		            //가입 or 로그인 후 검색 이전 키워드 추천   
-
 }

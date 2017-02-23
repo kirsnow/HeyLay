@@ -38,7 +38,7 @@ function main() {
 	Testimonial Slider
 	=============================================== */ 
 
-	$(document).ready(function() {
+	/*$(document).ready(function() {
 	 
 	  $("#testimonial").owlCarousel({
 	 
@@ -57,7 +57,7 @@ function main() {
 	 
 	  });
 	 
-	});
+	});*/
  
 
  
