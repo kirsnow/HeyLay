@@ -15,9 +15,9 @@ import io.planb.tools.JsonReader;
 
 public class Tokenizer {
 
-	private final String ipAmazon = "35.166.249.194";
+	private final String ipAmazon = "54.200.58.22";
 	private final String ipBit = "192.168.1.21";
-	private String searchIP = ipBit;
+	private String searchIP = ipAmazon;
 	
 	public List<QueryVO> analyzeQuery(String q) {
 		List<QueryVO> queryList = null;
