@@ -35,7 +35,7 @@
 			<jsp:include page="/jsp/include/nav_search.jsp" />
 		</header>
 		
-		<div class="main_container marginTop60">
+				<div class="main_container marginTop60">
 			<!-- nav -->
 				<jsp:include page="/jsp/include/nav_personal.jsp" /> 
 			<!-- /nav -->
@@ -46,7 +46,10 @@
 				<div class="container text-center">
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2">
-							<h4 class="marginBottom30"><b>내 검색어 히스토리</b></h4>
+							<h4 class="marginBottom"><b>내 검색어 히스토리</b></h4>
+							<p class="marginBottom">
+								<small><i class="fa fa-times" aria-hidden="true"></i>버튼을 클릭하여 해당 검색어를 삭제할 수 있습니다.</small>
+							</p>
 						</div>
 					</div>
 					<div class="row">
@@ -77,7 +80,7 @@
 							</c:forEach>
 								<div class="row">
 									<div class="col-md-6 col-md-offset-3 marginBottom100">
-										<small class="marginTop40"><i class="fa fa-times" aria-hidden="true"></i>버튼을 클릭하여 해당 검색어를 삭제할 수 있습니다.</small>
+										
 									</div>
 								</div>
 							</c:otherwise>
