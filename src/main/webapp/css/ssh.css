@@ -54,6 +54,7 @@
 		margin-bottom: 100px;
 	}
 	
+	
     .marginTop{
         margin-top: 10px;
     }
@@ -174,6 +175,10 @@
   	
   	.minHeight{
   		height: 800px;
+  	}
+  	
+  	.minHeight700{
+  		height: 700px;
   	}
   	
   	.formBottom15 > div > div {
@@ -336,12 +341,17 @@
 	margin-bottom: 15px;
 }
 
-		#word-cloud{
-		width : 1000px;
-		height : 600px;
+	#word-cloud{
+	width : 1000px;
+	height : 600px;
 	}
 	
 	.circleLoading{
 		 font-size:60px;
 		 color : gray;
+	}
+	
+	label, input[type="radio"] {
+	  margin-top: -4px;
+	  vertical-align: middle;
 	}

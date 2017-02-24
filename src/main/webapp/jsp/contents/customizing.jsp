@@ -11,85 +11,57 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>커스터마이징| Quration: 답을 열어 줄 그런 사람</title>
 
-<!-- Bootstrap -->
-<link href="${ pageContext.request.contextPath }/css/bootstrap.min.css"
-	type="text/css" rel="stylesheet">
-<link href="${ pageContext.request.contextPath }/css/ssh.css"
-	type="text/css" rel="stylesheet">
-
-<!-- icon-font -->
-<script src="https://use.fontawesome.com/bbddce3010.js"></script>
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
+	<!-- 공통css  -->
+ 	<jsp:include page="/jsp/include/css.jsp" />
+    	
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     
-<!-- jQuery -->
-	<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
-	<!-- Bootstrap -->
-	<script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
-
 	<!-- Custom Theme Scripts -->
 	<script src="${ pageContext.request.contextPath }/js/custom.min.js"></script>
-<!-- google analytics -->
-<script>
-	(function(i, s, o, g, r, a, m) {
-		i['GoogleAnalyticsObject'] = r;
-		i[r] = i[r] || function() {
-			(i[r].q = i[r].q || []).push(arguments)
-		}, i[r].l = 1 * new Date();
-		a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-		a.async = 1;
-		a.src = g;
-		m.parentNode.insertBefore(a, m)
-	})(window, document, 'script',
-			'https://www.google-analytics.com/analytics.js', 'ga');
-
-	ga('create', 'UA-90558257-1', 'auto');
-	ga('send', 'pageview');
-</script>
+ 	
+ 	<!-- google analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-90558257-1', 'auto');
+		ga('send', 'pageview');
+	</script>
 
 </head>
-<style>
-#freemium {
-	background-color: #EEEEEE;
-}
-
-#premium {
-	background-color: #BDBDBD;
-}
-
-.underline {
-	text-decoration: line-through;
-}
-</style>
 </head>
 <body class="nav-md">
 	<div class="container body">
 		<header>
 			<jsp:include page="/jsp/include/nav_search.jsp" />
 		</header>
-		<div class="main_container marginTop60">
+		<div class="main_container marginTop30">
 			<!-- nav -->
 			<jsp:include page="/jsp/include/nav_personal.jsp" />
 			<!-- /nav -->
 
 			<div class="right_col" role="main">
+				
+			<div class="body">
 				<!-- page content -->
-
-				<div class="container">
-
+				<div class="container sectionContent">
 					<div class="row">
-						<div class="page-header text-center col-md-6 col-md-offset-3 marginBottom">
+						<div class="text-center col-md-6 col-md-offset-3 marginBottom marginTop60">
 							<h4><b>회원별 커스터마이징</b></h4>
 						</div>
 					</div>
 					<div class="row marginTop">
 						<div class="col-md-4 col-md-offset-2">
-							<h4 class="optionTitle text-center"><b>Quration Plus option</b></h4>
+							<div class="border2px">	
+								<h4 class="optionTitle text-center grayfont"><b>Quration Plus option</b></h4>
+							</div>
 							<div class="panel marginTop20">
 								<div class="panel-body paddingleft70 " name="freemium">
 									<p>1. 카드 검색</p>
@@ -104,11 +76,13 @@
 								</div>
 							</div>
 							<div class="border2px">	
-								<h4 class="text-center"><b>무료</b></h4>
+								<h4 class="text-center grayfont"><b>무료</b></h4>
 							</div>
 						</div>
 						<div class="col-md-4">
-							<h4 class=" text-center text-primary"><b>Quration premium option</b></h4>
+							<div class="border2px">	
+								<h4 class=" text-center text-primary"><b>Quration Premium option</b></h4>
+							</div>
 							<div class="panel marginTop20">
 								<div class="col-md-push-1 panel-body paddingleft70 " name="premium">
 									<p>1. 카드 검색</p>
@@ -140,11 +114,16 @@
 				</div>
 
 				<!-- /page content -->
+				</div>
 			</div>
 
-			<!-- footer -->
-			<jsp:include page="/jsp/include/footer.jsp" />
-			<!-- /footer -->
+	<!-- Footer -->
+    <Footer class="footer">
+		<jsp:include page="/jsp/include/footer.jsp" />
+	</Footer> 
+
+	<!-- 공통 js -->
+	<jsp:include page="/jsp/include/commonJs.jsp" />
 		</div>
 	</div>
 
