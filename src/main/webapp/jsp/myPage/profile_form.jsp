@@ -111,7 +111,7 @@
 						<section id="form1" runat="server">
 							<c:choose>
 								<c:when test="${ (userVO.profileImg eq null) or (empty userVO.profileImg) }">
-									<img id="blah" src="${ pageContext.request.contextPath }/img/defaultImage.png" 
+									<img id="blah" src="${ pageContext.request.contextPath }/img/purin.png" 
 											alt="your image"  style="width: 250px; height: 250px;"/>
 								</c:when>
 								<c:otherwise>
