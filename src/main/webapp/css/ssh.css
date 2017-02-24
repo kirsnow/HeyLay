@@ -133,12 +133,16 @@
     	font-size: 20px;
     }
     
+     .font15{
+    	font-size: 15spx;
+    }
+    
     .grayfont{
     	color : gray;
     }
     
     .ajaxFont{
-    	font-size: 10px;
+    	font-size: 15px;
     	color: red;
     }
     
@@ -326,3 +330,8 @@
 	.sectionContent{padding-bottom:1.9em}
 	.footer{height:1.9em}	
 	
+	
+	/* profile_form.jsp  */
+	#forBottoom>div {
+	margin-bottom: 15px;
+}

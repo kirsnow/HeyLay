@@ -9,13 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>회원 탈퇴 | Quration: 답을 열어 줄 그런 사람</title>
 	
-	<!-- Bootstrap -->
-    <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
-	<link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
-  
-    <!-- icon-font -->
-   	<script src="https://use.fontawesome.com/bbddce3010.js"></script>
-   	
+	<!-- 공통css  -->
+ 	<jsp:include page="/jsp/include/css.jsp" />
+    	
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -33,6 +29,7 @@
 		ga('create', 'UA-90558257-1', 'auto');
 		ga('send', 'pageview');
 	</script>
+	
 </head>
 <body>	
 	<header>
@@ -40,8 +37,8 @@
 	</header>
 
 	<!-- 탈퇴 사유 입력  Section -->
-	<section id="newPassword">
-	 	<div class="container marginTop60 minHeight">
+	<section id="leavedReasonForm" class="body">
+	 	<div class="container marginTop60 sectionContent">
 	 		<!-- include myPage -->
 	 		<jsp:include page="/jsp/include/my_page.jsp" />
 	 		<div class="row">
@@ -50,16 +47,17 @@
 				</div>
 			</div>
 			<form name="withdrawForm" action="${pageContext.request.contextPath }/myPage/withdraw.do" 
-			      method="post" onsubmit="" autocomplete="off">
+			      method="post" onsubmit="return checkForm()" autocomplete="off">
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 ">
 						<%-- <input type="text" name="memberNo" class="form-control" value="${ userVO.no }" /> --%>
 						<select name="reasonSelect" class="form-control marginBottom" >
 							<option value="탈퇴 사유를 선택해주세요" disabled selected>탈퇴 사유를 선택해주세요</option>
-							<option value="더이상 사용하지 않을 것 같습니다">더이상 사용하지 않을 것 같다</option>
-							<option value="일부 유료서비스 부분이 싫다">일부 유료서비스 부분이 싫다   </option>
-							<option value="사용하다가 불편함을 느꼈다">사용하다가 불편함을 느꼈다 </option>
-							<option value="생각만큼 편리하지 않다">생각만큼 편리하지 않다 </option>
+							<option value="더이상 사용하지 않을 것 같습니다">더이상 사용하지 않을 것 같다.</option>
+							<option value="일부 유료서비스 부분이 싫다">일부 유료서비스 부분이 싫다. </option>
+							<option value="사용하다가 불편함을 느꼈다">사용하다가 불편함을 느꼈다. </option>
+							<option value="생각만큼 편리하지 않다">생각만큼 편리하지 않다.</option>
+							<option value="직접입력">직접입력 </option>
 						</select>
 					</div>
 				</div>
@@ -84,8 +82,31 @@
 	</section>
 	
 	<!-- Footer -->
-    <Footer>
+    <Footer class="footer">
 		<jsp:include page="/jsp/include/footer.jsp" />
-	</Footer>
+	</Footer> 
+	
+	<!-- 공통 js -->
+	<jsp:include page="/jsp/include/commonJs.jsp" />
+	
+	<script>
+	 function checkForm() {
+
+	      var form = document.leavedReasonForm;
+	      if (form.reasonSelect.options[0].selected) {
+	         alert('탈퇴 사유를 선택해주세요.');
+	         form.reasonSelect.focus();
+	         return false;
+	      } else if (form.reasonSelect.options[5].selected) {
+		     
+	    	  return false;
+	      } else if (form.reasonInput.value == '') {
+	         alert('탈퇴 사유를 작성해주세요.');
+	         form.reasonInput.focus();
+	         return false;
+	      }
+	      return true;
+	 }
+	</script>
 </body>
 </html>

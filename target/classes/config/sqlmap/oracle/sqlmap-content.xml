@@ -175,7 +175,7 @@
 	<update id="leavedSave" parameterType="int">
 		UPDATE Q_CONTENTS_SAVED
 		SET MEMBER_NO=0
-		WHERE MEM
+		WHERE MEMBER_NO=#{memberNo}
 	</update>
 
 	<delete id="leavedDir" parameterType="int">
