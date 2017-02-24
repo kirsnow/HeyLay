@@ -10,38 +10,17 @@
 <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>개인통계-워드클라우드 | Quration: 답을 열어 줄 그런 사람</title>
-<style>
-	#word-cloud{
-		width : 1000px;
-		height : 600px;
-	}
+
+	<!-- 공통css  -->
+ 	<jsp:include page="/jsp/include/css.jsp" />
 	
-	.circleLoading{
-		 font-size:60px;
-		 color : gray;
-	}
-</style>
-<!-- Bootstrap -->
-<link href="${ pageContext.request.contextPath }/css/bootstrap.min.css"
-	type="text/css" rel="stylesheet">
-<link href="${ pageContext.request.contextPath }/css/ssh.css"
-	type="text/css" rel="stylesheet">
+	<!-- 공통 js -->
+	<jsp:include page="/jsp/include/commonJs.jsp" />
+	
 
-<script
-	src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<!-- icon-font -->
-<script src="https://use.fontawesome.com/bbddce3010.js"></script>
-
-<!-- MDL Hosted start -->
-<link rel="stylesheet"
-	href="https://code.getmdl.io/1.3.0/material.grey-light_blue.min.css" />
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
@@ -53,7 +32,7 @@
 			<jsp:include page="/jsp/include/nav_search.jsp" />
 		</header>
 		
-		<div class="main_container marginTop60">
+		<div class="main_container marginTop60 sectionContent">
 			<!-- nav -->
 			<jsp:include page="/jsp/include/nav_personal.jsp" />
 			<!-- /nav -->
@@ -63,14 +42,14 @@
 				<div class="container text-center">
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2 marginBottom30">
-							<h4><b>한 눈에 보는 내 검색어</b></h4>
+							<h3><b>한 눈에 보는 내 검색어</b></h3>
 							<small>많이 검색된 검색어일수록 크게 보여집니다.</small>
 						</div>
 					</div>
 					<c:choose>
 						<c:when test="${ (wordCloudList eq null) or (empty wordCloudList ) }">
 							 <div class="row">
-								<div class="marginTop60">검색어가 없습니다. 검색 후 사용해 주세요 &#58;O</div>
+								<div class="marginTop180 minHeight font20 text-primary">검색어가 없습니다. 검색 후 사용해 주세요 &#58;O</div>
 							 </div> 
 			            </c:when>
 			       		<c:otherwise> 
@@ -88,9 +67,10 @@
 		        </div>
 		        <!-- /page content -->
 			</div>
-			<!-- footer -->
-			<jsp:include page="/jsp/include/footer.jsp" />
-			<!-- /footer -->
+			<!-- Footer -->
+		    <Footer class="footer">
+				<jsp:include page="/jsp/include/footer.jsp" />
+			</Footer> 
 			
 			</div>
 		</div>
@@ -102,8 +82,6 @@
     
     <!-- jQuery -->
 	<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
-	<!-- Bootstrap -->
-	<script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
 
 	<!-- Custom Theme Scripts -->
 	<script src="${ pageContext.request.contextPath }/js/custom.min.js"></script>

@@ -177,6 +177,10 @@
   		height: 800px;
   	}
   	
+  	.minHeight500{
+  		margin-bottom: 800px;
+  	}
+  	
   	.minHeight700{
   		height: 700px;
   	}

@@ -35,7 +35,7 @@
 	
 </head>
 <body class="nav-md">
-	<div class="container body">
+	<div class="container body ">
 
 		<header>
 			<jsp:include page="/jsp/include/nav_search.jsp" />
@@ -49,7 +49,7 @@
         <!-- Page Content -->
         <div class="right_col" role="main">
         	<div class="body">
-	            <section class="container sectionContent">
+	            <section class="container sectionContent minHeight">
 	                <c:choose>
 						<c:when test="${ (cardsByDays eq null) or (empty cardsByDays) }">
 							<div class="row">

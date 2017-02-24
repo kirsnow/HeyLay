@@ -5,7 +5,7 @@
 	</div>
 	
 		<div class="col-xs-12">
-			<ul class="list-unstyled marginTop20 font20">
+			<ul class="list-unstyled marginTop20 font20 marginBottom100">
 				<li class="marginTop"><a href="${ pageContext.request.contextPath }/search/result.do?q=Bloter" title="Bloter 검색">Bloter</a></li>
 				<li class="marginTop"><a href="${ pageContext.request.contextPath }/search/result.do?q=에듀 테크" title="에듀 테크 검색">에듀 테크</a></li>
 				<li class="marginTop"><a href="${ pageContext.request.contextPath }/search/result.do?q=인공지능" title="인공지능 검색">인공지능</a></li>
