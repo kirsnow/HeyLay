@@ -38,7 +38,7 @@
 
 	<!-- 탈퇴 재문의  Section -->
 	<section id="withdrawQuestion" class="body">
-	 	<div class="container marginTop60 sectionContent">
+	 	<div class="container marginTop60 sectionContent minHeight300">
 	 	
 	 		<!-- include myPage -->
 	 		<jsp:include page="/jsp/include/my_page.jsp" />

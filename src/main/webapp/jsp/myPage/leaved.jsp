@@ -38,7 +38,7 @@
 
 	<!-- 탈퇴 사유 입력  Section -->
 	<section id="leavedReasonForm" class="body">
-	 	<div class="container marginTop60 sectionContent">
+	 	<div class="container marginTop60 sectionContent minHeight300">
 	 		<!-- include myPage -->
 	 		<jsp:include page="/jsp/include/my_page.jsp" />
 	 		<div class="row">
