@@ -165,12 +165,12 @@ public class ContentService {
 		List<KeywordsVO> keywordList = dao.selectUserKeywordList(no);
 		String keywords = "";
 		
+		if(keywordList.isEmpty()) return null;
+		
 		for(int i = 0, j = keywordList.size(); i < j; i++) {
 			if(i != 0) keywords += "|";
 			keywords += keywordList.get(i).getKeyword();
 		}
-		
-		ContentsVO contents = new ContentsVO();
 		
 		List<ContentsVO> customKeywordList = dao.selectCustomCuration(keywords);
 		
@@ -202,10 +202,17 @@ public class ContentService {
 		return cnt;
 	}
 	
-	public int selectView(ContentsVO view) {
-		int cnt = dao.selectView(view);
-		return cnt;
-	}
+//	public ContentsVO selectViewList(int memberNo, int contentsNo) {
+//		List<ContentsVO> cntList = dao.selectViewList(memberNo);
+//		
+//		for(ContentsVO contents : cntList) {
+//			for(cntList : contents.getContentsNo()) {
+//				
+//			}
+//		}
+//		
+//		return contents;
+//	}
 	
 	public void insertView(ContentsVO view) {
 		dao.insertView(view);
@@ -213,6 +220,11 @@ public class ContentService {
 	
 	public void updateView(ContentsVO view) {
 		dao.updateView(view);
+	}
+	
+	public int selectSavedCnt(int contentsNo) {
+		int cnt = dao.selectSavedCnt(contentsNo);
+		return cnt;
 	}
 
 }

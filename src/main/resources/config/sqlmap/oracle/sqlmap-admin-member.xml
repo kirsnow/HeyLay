@@ -12,7 +12,7 @@
 
 	<select id="selectMemberList" resultType="memberVO">
 		<include refid="selectId" />
-		WHERE type != 'A' 
+		WHERE type !~ 'A|X' 
 		ORDER BY no DESC
 	</select>
 	

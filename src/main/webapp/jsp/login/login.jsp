@@ -9,13 +9,9 @@
 	<!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>로그인 | Quration: 답을 열어 줄 그런 사람</title>
-
- 	<!-- Bootstrap -->
-    <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
-	<link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
-     
-    <!-- icon-font -->
-   	<script src="https://use.fontawesome.com/bbddce3010.js"></script>
+	
+	<!-- 공통css  -->
+ 	<jsp:include page="/jsp/include/css.jsp" />
     	
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -34,6 +30,7 @@
 		ga('create', 'UA-90558257-1', 'auto');
 		ga('send', 'pageview');
 	</script>
+
 </head>
 <body>
 	<header>
@@ -41,14 +38,15 @@
 	</header> 
 	
 	<!-- Login section  -->
-	<section id="login">
-		 <div class="container marginTop60 minHeight">
+	<section class="body">
+		 <div class="container marginTop60 sectionContent">
 			<div class="row">
 				<div class="page-header text-center col-md-6 col-md-offset-3">
 		             <h1>로그인</h1>
 		        </div>
 			</div>
 			<form name="lform" action="${pageContext.request.contextPath }/login/login.do" method="post" > 
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				  
 				<div class="row">
 				  	<div class="col-md-6 col-md-offset-3 marginBottom marginTop">
@@ -77,19 +75,23 @@
 	</section>
 	
 	<!-- Footer -->
-    <Footer>
+    <Footer class="footer">
 		<jsp:include page="/jsp/include/footer.jsp" />
 	</Footer> 
 	
-<script>
-	if("${ msg }") {
-		if('${ userVO }') 
-			location.href = "${ pageContext.request.contextPath}";
-		else {
-			alert('${ msg }');
-			location.href = "${ pageContext.request.contextPath}/login/login.do";
+	<!-- 공통 js -->
+	<jsp:include page="/jsp/include/commonJs.jsp" />
+	
+	
+	<script>
+		if("${ msg }") {
+			if('${ userVO }') 
+				location.href = "${ pageContext.request.contextPath}";
+			else {
+				alert('${ msg }');
+				location.href = "${ pageContext.request.contextPath}/login/login.do";
+			}
 		}
-	}
-</script>
+	</script>
 </body>
 </html>

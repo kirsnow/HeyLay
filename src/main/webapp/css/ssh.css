@@ -54,6 +54,7 @@
 		margin-bottom: 100px;
 	}
 	
+	
     .marginTop{
         margin-top: 10px;
     }
@@ -133,12 +134,16 @@
     	font-size: 20px;
     }
     
+     .font15{
+    	font-size: 15spx;
+    }
+    
     .grayfont{
     	color : gray;
     }
     
     .ajaxFont{
-    	font-size: 10px;
+    	font-size: 15px;
     	color: red;
     }
     
@@ -170,6 +175,14 @@
   	
   	.minHeight{
   		height: 800px;
+  	}
+  	
+  	.minHeight500{
+  		margin-bottom: 800px;
+  	}
+  	
+  	.minHeight700{
+  		height: 700px;
   	}
   	
   	.formBottom15 > div > div {
@@ -317,6 +330,7 @@
    .verticalCenter{
   	 vertical-align: middle;
    }
+<<<<<<< HEAD
    
    a.saveCardBtn,
    a.saveCancelBtn {
@@ -334,3 +348,34 @@
    a.saveCancelBtn {
 	color: #03A9F4;
    }
+=======
+	
+	html,body{height:100%}
+	body{margin:0}
+	.body{
+		min-height:82.5%;
+	}
+	.sectionContent{padding-bottom:1.9em}
+	.footer{height:1.9em}	
+	
+	
+	/* profile_form.jsp  */
+	#forBottoom>div {
+	margin-bottom: 15px;
+}
+
+	#word-cloud{
+	width : 1000px;
+	height : 600px;
+	}
+	
+	.circleLoading{
+		 font-size:60px;
+		 color : gray;
+	}
+	
+	label, input[type="radio"] {
+	  margin-top: -4px;
+	  vertical-align: middle;
+	}
+>>>>>>> a6f74aa9443acac57d08ef2126922c3b2afa8a0d

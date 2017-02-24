@@ -45,6 +45,6 @@ public class ChangePasswordController {
 			
 			service.changePw(member);
 			
-			return "myPage/change_password";	
+			return "myPage/profile_form";	
 		}
 	}

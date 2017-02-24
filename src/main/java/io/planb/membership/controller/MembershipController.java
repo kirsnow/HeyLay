@@ -52,7 +52,7 @@ public class MembershipController {
 		service.enroll(member);
 		model.addAttribute("memberVO", member);
 		
-		return "membership/membershipform";
+		return "login/login";
 	}
 	
 	/*아이디 중복 확인*/
@@ -105,7 +105,7 @@ public class MembershipController {
 	}
 	
 	/*가입 or 로그인 후 검색 이전 키워드 추천*/
-	@ResponseBody
+	/*@ResponseBody
 	@RequestMapping("/index/recommandKeywordList.do")
 	public String selectRecommandList(Model model) {
 		
@@ -114,7 +114,7 @@ public class MembershipController {
 		model.addAttribute(recommandList);
 		
 		return recommandList;
-	}
+	}*/
 	
 }
 

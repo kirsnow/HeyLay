@@ -10,15 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>계정 전달 페이지 | Quration: 답을 열어 줄 그런 사람</title>
 	
- 	<!-- Bootstrap -->
-    <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
-	<link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
-     
-    <!-- icon-font -->
-   	<script src="https://use.fontawesome.com/bbddce3010.js"></script>
-   	
-   	<!-- style for icon -->
-   	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<!-- 공통css  -->
+ 	<jsp:include page="/jsp/include/css.jsp" />
     	
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -26,7 +19,7 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    
 	<!-- google analytics -->
 	<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -37,53 +30,52 @@
 		ga('create', 'UA-90558257-1', 'auto');
 		ga('send', 'pageview');
 	</script>
-	<style>
-	.primaryFont{
-	font-size: 20px;
-	font-weight: bold;
-    color: #03A9F4;
-	}
-	</style>
 </head>
 <body>
 	<header>
 		<jsp:include page="/jsp/include/nav_search.jsp" />
 	</header> 
 	
-	<!-- Login section  -->
-	<section id="login">
-		 <div class="container marginTop60 minHeight">
-			<div class="row">
-				<div class="page-header text-center col-md-6 col-md-offset-3">
-		             <h1>계정 (E-mail) 찾기</h1>
-		             <small>고객님의 정보와 일치하는 계정 정보 입니다.</small>
-		        </div>
-			</div>
-			<form name="lform" 
-				  action="${pageContext.request.contextPath }/login/login.do" 
-				  method="post" > 
-				  
-				<div class="row ">
-					<div class="col-md-6 col-md-offset-3 marginBottom100 marginTop80 text-center font20">
-						<sub><i class="material-icons">info_outline</i></sub>
-						고객님의 계정은  <span class="primaryFont">${userAccount}</span>입니다.
-					</div>
-				</div>
+	<div class="body">
+		<!-- Login section  -->
+		<section id="login" class="sectionContent">
+			 <div class="container marginTop60">
 				<div class="row">
-					<div class="col-md-6 col-md-offset-3 text-center marginTop">
-						<a href="${pageContext.request.contextPath }/login/login.do" 
-						   class="btn btn-primary marginRight" title="로그인 페이지 이동 링크" role="button">로그인</a>
-						<a href="${pageContext.request.contextPath }/membership/findPw.do" 
-						   class="btn btn-default" title="비밀번호찾기 이동 링크" role="button">비밀번호 찾기</a>
-					</div>
+					<div class="page-header text-center col-md-6 col-md-offset-3">
+			             <h1>계정 (E-mail) 찾기</h1>
+			             <small>고객님의 정보와 일치하는 계정 정보 입니다.</small>
+			        </div>
 				</div>
-			</form> 
-		</div>
-	</section>
+				<form name="lform" 
+					  action="${pageContext.request.contextPath }/login/login.do" 
+					  method="post" > 
+					  
+					<div class="row ">
+						<div class="col-md-6 col-md-offset-3 marginBottom100 marginTop80 text-center font20">
+							<sub><i class="fa fa-info fa-2x fa-fw" aria-hidden="true"></i></sub>
+							고객님의 계정은  <span class="primaryFont">${userAccount}</span>입니다.
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 text-center marginTop">
+							<a href="${pageContext.request.contextPath }/login/login.do" 
+							   class="btn btn-primary marginRight" title="로그인 페이지 이동 링크" role="button">로그인</a>
+							<a href="${pageContext.request.contextPath }/membership/findPw.do" 
+							   class="btn btn-default" title="비밀번호찾기 이동 링크" role="button">비밀번호 찾기</a>
+						</div>
+					</div>
+				</form> 
+			</div>
+		</section>
+	</div>
 	
 	<!-- Footer -->
-    <Footer>
+    <Footer class="footer">
 		<jsp:include page="/jsp/include/footer.jsp" />
 	</Footer> 
+	
+	<!-- 공통 js -->
+	<jsp:include page="/jsp/include/commonJs.jsp" />
+	
 </body>
 </html>

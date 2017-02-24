@@ -20,6 +20,7 @@ public class ContentsVO {
 	/* additional informations */
 	private int viewCnt;		// Q_CONTENTS
 	private int likeCnt;		// Q_LIKE
+	private int reportCnt;		// Q_CONTENTS_SPAM
 	
 	// Q_SOURCE
 	private int sourceNo;
@@ -66,6 +67,8 @@ public class ContentsVO {
 	
 	private boolean isSaved;
 	private boolean isLiked;
+	private int personalVieCnt;
+	private int count;
 	
 	public ContentsVO() {
 		super();
@@ -309,4 +312,28 @@ public class ContentsVO {
 		this.isLiked = isLiked;
 	}
 	
+	public int getPersonalVieCnt() {
+		return personalVieCnt;
+	}
+
+	public void setPersonalVieCnt(int personalVieCnt) {
+		this.personalVieCnt = personalVieCnt;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+	
+	public int getReportCnt() {
+		return reportCnt;
+	}
+
+	public void setReportCnt(int reportCnt) {
+		this.reportCnt = reportCnt;
+	}
+
 }

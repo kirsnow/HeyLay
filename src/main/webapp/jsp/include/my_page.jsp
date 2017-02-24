@@ -10,12 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>마이페이지 | Quration: 답을 열어줄 그런 사람</title>
 	
-	 <!-- Bootstrap -->
-    <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
-	<link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
-     
-    <!-- icon-font -->
-   	<script src="https://use.fontawesome.com/bbddce3010.js"></script>
+	<jsp:include page="/jsp/include/css.jsp" />
    	
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

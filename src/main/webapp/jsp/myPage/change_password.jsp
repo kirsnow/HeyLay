@@ -9,21 +9,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>비밀번호 변경 | Quration: 답을 열어 줄 그런 사람</title>
 	
-	<!-- Bootstrap -->
-    <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
-	<link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
-     
-    <!-- icon-font -->
-   	<script src="https://use.fontawesome.com/bbddce3010.js"></script>
-   	
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+	<!-- 공통css  -->
+ 	<jsp:include page="/jsp/include/css.jsp" />
     
-	<!-- google analytics -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->	
+	
+    <!-- google analytics -->
 	<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -40,8 +36,8 @@
 	</header>
 	
 	<!-- 비밀번호 변경 section -->
-	<section id="changePassword">
-	 	<div class="container marginTop60 minHeight">
+	<section id="changePassword" class="body">
+	 	<div class="container marginTop60 sectionContent">
 	 		<!-- include myPage -->
 	 		<jsp:include page="/jsp/include/my_page.jsp" />
 	 		<div class="row">
@@ -90,107 +86,110 @@
 		</div>
 	</section>
 	
-    <!-- Footer -->
-    <Footer>
+   <!-- Footer -->
+    <Footer class="footer">
 		<jsp:include page="/jsp/include/footer.jsp" />
 	</Footer> 
-
-<script>
-
-	$(document).ready(function() {
-
-		$('#pwcheck').keyup(function() {
-			var pwcheck = $('#pwcheck').val();
-			var pwcheck_eq = '${userVO.password}';
-			console.log(pwcheck_eq);
-
-			if (pwcheck_eq != pwcheck.substr(0, pwcheck.length)) {
-				notMatchPw();
-			} else {
-				matchPw();
+	
+	<!-- 공통 js -->
+	<jsp:include page="/jsp/include/commonJs.jsp" />
+	
+	<script>
+	
+		$(document).ready(function() {
+	
+			$('#pwcheck').keyup(function() {
+				var pwcheck = $('#pwcheck').val();
+				var pwcheck_eq = '${userVO.password}';
+				console.log(pwcheck_eq);
+	
+				if (pwcheck_eq != pwcheck.substr(0, pwcheck.length)) {
+					notMatchPw();
+				} else {
+					matchPw();
+				}
+			});
+	
+			function notMatchPw() {
+				$('pwcheck_eq').addClass('not_valid');
+				$('#pwcheck_eq').html('입력하신 비밀번호가 일치하지 않습니다.');
 			}
-		});
-
-		function notMatchPw() {
-			$('pwcheck_eq').addClass('not_valid');
-			$('#pwcheck_eq').html('입력하신 비밀번호가 일치하지 않습니다.');
-		}
-
-		function matchPw() {
-			$('#pwcheck').removeClass('not_valid');
-			$('#pwcheck_eq').html('');
-		}
-
-		/* 새 비밀번호와 새비밀번호 확인 비교 부분  */
-		$('#password_check').keyup(function() {
-			var password = $('#password').val();
-			var checkword = $('#password_check').val();
-
-			if (checkword != password.substr(0, checkword.length)) {
-				notMatchPw2();
-			} else {
-				matchPw2();
+	
+			function matchPw() {
+				$('#pwcheck').removeClass('not_valid');
+				$('#pwcheck_eq').html('');
 			}
-		});
-
-		$('#password').keyup(function() {
-			var password = $('#password').val();
-			var checkword = $('#password_check').val();
-
-			if (checkword.length != 0) {
-				if (checkword != password) {
-					$('#password').addClass('not_valid');
+	
+			/* 새 비밀번호와 새비밀번호 확인 비교 부분  */
+			$('#password_check').keyup(function() {
+				var password = $('#password').val();
+				var checkword = $('#password_check').val();
+	
+				if (checkword != password.substr(0, checkword.length)) {
 					notMatchPw2();
 				} else {
 					matchPw2();
 				}
+			});
+	
+			$('#password').keyup(function() {
+				var password = $('#password').val();
+				var checkword = $('#password_check').val();
+	
+				if (checkword.length != 0) {
+					if (checkword != password) {
+						$('#password').addClass('not_valid');
+						notMatchPw2();
+					} else {
+						matchPw2();
+					}
+				}
+			});
+	
+			function notMatchPw2() {
+				$('#password_check').addClass('not_valid');
+				$('#password_eq').html('비밀번호가 일치하지 않습니다.');
+			}
+			function matchPw2() {
+				$('#password').removeClass('not_valid');
+				$('#password_check').removeClass('not_valid');
+				$('#password_eq').html('');
 			}
 		});
-
-		function notMatchPw2() {
-			$('#password_check').addClass('not_valid');
-			$('#password_eq').html('비밀번호가 일치하지 않습니다.');
-		}
-		function matchPw2() {
-			$('#password').removeClass('not_valid');
-			$('#password_check').removeClass('not_valid');
-			$('#password_eq').html('');
-		}
-	});
-
-	/* alert창 띄우는 script */
-
-	function changePassword() {
-
-		var changePw = document.changePasswordForm;
-		if (changePw.beforePassword.value == '') {
-			changePw.beforePassword.focus();
-			return false;
-
-		} else if (changePw.password.value == '') {
-			alert('신규 비밀번호 확인을 입력하세요');
-			changePw.password.focus();
-			return false;
-
-		} else if (changePw.newPasswordCheck.value == '') {
-			alert('신규 비밀번호 확인을 입력하세요');
-			changePw.newPasswordCheck.focus();
-			return false;
-
-		}
-		return true;
-	}
-
-/* 	
-	if("${ msg }") {
-		if('${ userVO.password }' == '#beforePassword') 
-			alert('${ msg }');
-		else {
-			alert('${ msg2 }');
-		}
-	} */
 	
+		/* alert창 띄우는 script */
 	
-</script>
+		function changePassword() {
+	
+			var changePw = document.changePasswordForm;
+			if (changePw.beforePassword.value == '') {
+				changePw.beforePassword.focus();
+				return false;
+	
+			} else if (changePw.password.value == '') {
+				alert('신규 비밀번호 확인을 입력하세요');
+				changePw.password.focus();
+				return false;
+	
+			} else if (changePw.newPasswordCheck.value == '') {
+				alert('신규 비밀번호 확인을 입력하세요');
+				changePw.newPasswordCheck.focus();
+				return false;
+	
+			}
+			return true;
+		}
+	
+	/* 	
+		if("${ msg }") {
+			if('${ userVO.password }' == '#beforePassword') 
+				alert('${ msg }');
+			else {
+				alert('${ msg2 }');
+			}
+		} */
+		
+		
+	</script>
 </body>
 </html>

@@ -43,18 +43,21 @@
 			</p>
 			<div class="text-muted text-right">
 				<c:choose>
+					<c:when test="${ (userVO ne null) and (not empty userVO) }">
+						<span>이 카드를 ${ card.personalVieCnt }번 방문했습니다.</span>
+					</c:when>
 					<c:when test="${ card.savedDaysAgo ne null }">
 						<span title="<fmt:formatDate pattern="yyyy. MM. dd." value="${ card.savedDate }"/>"
 							 data-toggle="tooltip" data-placement="left">
 							 ${ card.savedDaysAgo }
 						</span>
 					</c:when>
-					<c:when test="${ (card.scrapedDaysAgo ne null) and (card.savedDaysAgo eq null) }">
+					<%-- <c:when test="${ (card.scrapedDaysAgo ne null) and (card.savedDaysAgo eq null) }">
 						<span title="<fmt:formatDate pattern="yyyy. MM. dd." value="${ card.scrapedDate }"/>"
 							 data-toggle="tooltip" data-placement="left">
 							 ${ card.scrapedDaysAgo }
 						</span>
-					</c:when>
+					</c:when> --%>
 				</c:choose>
 			</div>
 			

@@ -48,8 +48,6 @@ public class ContentController {
 		// 콘텐츠 내용
 		contents = service.getContentsDetail(no, q, userNo);
 		
-		
-		
 		// 콘텐츠 메모 목록
 		List<MemoVO> memoList = memoService.getMemoList(no);
 		

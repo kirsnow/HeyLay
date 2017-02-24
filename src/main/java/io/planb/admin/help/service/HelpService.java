@@ -13,8 +13,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import io.planb.admin.help.dao.HelpDAO;
 import io.planb.answer.vo.AnswerVO;
+import io.planb.contents.vo.ContentsVO;
 import io.planb.contentsSpam.vo.ContentsSpamVO;
 import io.planb.faq.vo.FaqVO;
+import io.planb.member.vo.MemberVO;
 import io.planb.notice.vo.NoticeVO;
 import io.planb.noticeAttach.vo.NoticeAttachVO;
 import io.planb.question.vo.QuestionVO;
@@ -214,14 +216,16 @@ public class HelpService {
 	}
 
 
-	public void deleteContentsSpam(int no, String type) {
-		switch(type) {
-			case "C":
-				dao.deleteContentsSpam(no);
-				break;
-			case "M":
-				dao.deleteMemoSpam(no);
-				break;
+	public void deleteContentsSpam(ArrayList<Integer> list, String type) {
+		for(Integer no : list) {
+			switch(type) {
+				case "C":
+					dao.deleteContentsSpam(no);
+					break;
+				case "M":
+					dao.deleteMemoSpam(no);
+					break;
+			}
 		}
 	}
 
@@ -278,5 +282,20 @@ public class HelpService {
 	
 	public void deleteQna(int no) {
 		dao.deleteQna(no);
+	}
+
+	public void updateContentsSpamBan(ArrayList<Integer> list, String type) {
+		for(Integer no : list) {
+			
+			switch(type) {
+			case "C":
+				dao.updateContentsSpamContentsBan(no);
+				break;
+			case "M":
+				dao.updateContentsSpamMemoBan(no);
+				break;
+			}
+			
+		}
 	}
 }

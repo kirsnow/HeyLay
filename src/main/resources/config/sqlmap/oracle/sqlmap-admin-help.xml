@@ -5,7 +5,7 @@
 <mapper namespace="io.planb.admin.help.dao.HelpDAO">
 
 	<select id="selectQuestionList" resultType="questionVO">
-		SELECT no, email, title, q_type qType, answer, reg_date regDate 
+		SELECT no, email, title, q_type qType, answer, to_char(reg_date, 'yyyy-mm-dd HH:MI:SS') regDate 
 		FROM q_question 
 		ORDER BY no 
 	</select>
@@ -16,13 +16,13 @@
 	</select>
 	
 	<select id="selectQuestionDetail" parameterType="int" resultType="questionVO">
-		SELECT no, email, title, user_input userInput, q_type qType, answer, reg_date regDate 
+		SELECT no, email, title, user_input userInput, q_type qType, answer, to_char(reg_date, 'yyyy-mm-dd HH:MI:SS') regDate 
 		FROM q_question 
 		WHERE no = #{ no }
 	</select>
 	
 	<select id="selectAnswerDetail" parameterType="int" resultType="answerVO">
-		SELECT answer, reg_date regDate
+		SELECT answer, to_char(reg_date, 'yyyy-mm-dd HH:MI:SS') regDate
 		FROM q_answer 
 		WHERE question_no = #{ no } 
 	</select>
@@ -83,17 +83,19 @@
 	</delete>
 	
 	<select id="selectNoticeDetail" parameterType="int" resultType="noticeVO">
-		SELECT no, title, contents, notice_type noticeType, view_cnt viewCnt, reg_date regDate 
+		SELECT no, title, contents, notice_type noticeType, view_cnt viewCnt, to_char(s.reg_date, 'yyyy-mm-dd HH:MI:SS') regDate 
 		FROM q_notice
 		WHERE no = #{ no } 
 	</select>
 	
 	<select id="seleteContentsSpamList" resultType="contentsSpamVO">
-		SELECT s.no, s.email, s.selected, COUNT (s.no) reportCnt, q.name reported, s.reg_date regDate
+		SELECT s.no, s.email, s.selected, COUNT (s.no) reportCnt, q.name reported, 'C' AS type, 
+				to_char(s.reg_date, 'yyyy-mm-dd HH:MI:SS') regDate
 		FROM q_contents_spam s
 		INNER JOIN q_contents c ON c.no = s.contents_no 
 		INNER JOIN q_source q ON q.no = c.source_no 
 		GROUP BY s.no, c.no, q.no 
+		ORDER BY regDate 
 	</select>
 	
 	<select id="countContentsSpam" resultType="int">
@@ -107,11 +109,13 @@
 	</delete>
 	
 	<select id="seleteMemoSpamList" resultType="contentsSpamVO">
-		SELECT s.no, s.email, s.selected, COUNT (s.no) reportCnt, q.email reported, s.reg_date regDate
+		SELECT s.no, s.email, s.selected, COUNT (s.no) reportCnt, q.email reported, 'M' AS type, 
+				to_char(s.reg_date, 'yyyy-mm-dd HH:MI:SS') regDate
 		FROM q_memo_spam s 
 		INNER JOIN q_memo m ON m.no = s.memo_no 
 		INNER JOIN q_member q ON q.no = m.member_no 
 		GROUP BY s.no, m.no, q.no 
+		ORDER BY regDate 
 	</select>
 	
 	<select id="countMemoSpam" resultType="int">
@@ -125,7 +129,9 @@
 	</delete>
 	
 	<select id="selectContentsSpamDetail" parameterType="int" resultType="contentsSpamVO">
-		SELECT s.no, s.email, s.selected, s.user_input userInput, COUNT (s.no) reportCnt, q.name reported, s.reg_date regDate
+		SELECT s.no, s.email, s.selected, s.user_input userInput, COUNT (s.no) reportCnt, q.name reported, 'C' AS type, 
+				s.contents_no contentsNo, 
+				to_char(s.reg_date, 'yyyy-mm-dd HH:MI:SS') regDate 
 		FROM q_contents_spam s 
 		INNER JOIN q_contents c ON c.no = s.contents_no 
 		INNER JOIN q_source q ON q.no = c.source_no 
@@ -134,7 +140,9 @@
 	</select>
 	
 	<select id="selectMemoSpamDetail" parameterType="int" resultType="contentsSpamVO">
-		SELECT s.no, s.email, s.selected, s.user_input userInput, COUNT (s.no) reportCnt, q.email reported, s.reg_date regDate
+		SELECT s.no, s.email, s.selected, s.user_input userInput, COUNT (s.no) reportCnt, q.email reported, 'M' AS type, 
+				m.contents_no contentsNo,  s.memo_no, 
+				to_char(s.reg_date, 'yyyy-mm-dd HH:MI:SS') regDate 
 		FROM q_memo_spam s 
 		INNER JOIN q_memo m ON m.no = s.memo_no 
 		INNER JOIN q_member q ON q.no = m.member_no 
@@ -143,11 +151,13 @@
 	</select>
 	
 	<select id="seleteSpamContentList" resultType="contentsSpamVO">
-		SELECT c.no, COUNT (cs.no) reportCnt, s.name email
+		SELECT c.no contentsNo, COUNT (cs.no) reportCnt, s.name email
 		FROM q_contents c 
-		INNER JOIN q_contents_spam cs ON cs.contents_no = c.no 
+		LEFT JOIN q_contents_spam cs ON cs.contents_no = c.no 
 		INNER JOIN q_source s ON s.no = c.source_no 
+		WHERE c.ban = 'Y' 
 		GROUP BY c.no, s.no, cs.no 
+		ORDER BY c.no 
 	</select>
 	
 	<select id="seleteSpamMemoList" resultType="contentsSpamVO">
@@ -159,19 +169,30 @@
 	</select>
 	
 	<select id="countSpamContent" resultType="int">
-		SELECT COUNT (*) cnt 
-		FROM q_contents_spam 
+		SELECT COUNT (*) cnt  
+		FROM q_contents 
+		WHERE ban = 'Y' 
 	</select>
 	
 	<select id="countSpamMemo" resultType="int">
 		SELECT COUNT (*) cnt 
-		FROM q_memo_spam 
+		FROM q_memo
+		WHERE ban = 'Y' 
 	</select>
 	
+	<update id="updateContentsSpamContentsBan" parameterType="int">
+		UPDATE q_contents 
+		SET ban = 'Y' 
+		WHERE no = #{ no } 
+	</update>
+	
+	<update id="updateContentsSpamMemoBan" parameterType="int">
+		UPDATE q_memo  
+		SET ban = 'Y' 
+		WHERE no = #{ no } 
+	</update>
+	
 </mapper>
-
-
-
 
 
 

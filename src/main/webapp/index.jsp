@@ -8,28 +8,7 @@
     <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Quration: 답을 열어 줄 그런 사람</title>
-    
-    <!-- Bootstrap CSS SET -->
-    <link rel="stylesheet"  href="https://fonts.googleapis.com/icon?family=Material+Icons">  
-    <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
-	<link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
-	 	
-    <script src="${ pageContext.request.contextPath }/js/jquery.1.11.1.js"></script>
-    <script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
-    <!-- icon-font -->
-    <script src="https://use.fontawesome.com/bbddce3010.js"></script>
-    
-    
-    <!-- CSS for index (<HEAD>와 </HEAD> 사이) -->
-    <link href="${ pageContext.request.contextPath }/css/style.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    
+   
     <!-- google analytics -->
     <script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -40,7 +19,24 @@
 	  ga('create', 'UA-90558257-1', 'auto');
 	  ga('send', 'pageview');
 	</script>
-	
+    
+    <script src="${ pageContext.request.contextPath }/js/jquery-3.1.1.min.js"></script>
+	 	
+    <!-- Bootstrap CSS SET -->
+    <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    
+    <!-- CSS for index (<HEAD>와 </HEAD> 사이) -->
+    <link href="${ pageContext.request.contextPath }/css/style.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+   
   <style>
 
     #main{
@@ -78,7 +74,7 @@
 									<c:otherwise>
 										<span class="marginRight">
 											<a href="${ pageContext.request.contextPath }/drawer.do" class="" title="내카드">
-											<i class="fa fa-hdd-o" aria-hidden="true"></i> 내 카드</a>
+											<i class="fa fa-hdd-o" aria-hidden="true"></i> 내 카드</a></a>
 										</span>
 									</c:otherwise>
 								</c:choose>
@@ -97,8 +93,8 @@
 											aria-hidden="true"></i> 비밀번호 변경
 									</a></li>
 									<li class="divider"></li>
-									<li><a href="${ pageContext.request.contextPath }/login/logout.do"> <i class="fa fa-sign-out fa-fw"
-											aria-hidden="true"></i> 로그아웃</a>
+									<li><a href="<c:url value="/j_spring_security_logout" />"> 
+									   <i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> 로그아웃</a>
 									</li>
 								</ul>
 							</div>
@@ -108,7 +104,7 @@
 							<div class="marginTop20">
 							    <div class="pull-right ">
 									<span><a href="${ pageContext.request.contextPath }/membership/agreement.do" class="marginRight"> 회원가입</a>  </span>
-									<span><a href="${ pageContext.request.contextPath }/login/login.do" class=""> 로그인</a>  </span>
+									<span><a href="<c:url value="/login/login.do" />" class=""> 로그인</a>  </span>
 							    </div>
 						    </div>
 						</div>
@@ -142,6 +138,7 @@
                 	       <span class="spanPadding" ><a href="search/result.do?q=java">Java</a></span>  
                 	       <span ><a href="search/result.do?q=python">Python</a></span>
                 </div>
+                
             </div>
             <div class="content">
 	            <a href="#services" class="down-btn page-scroll ">
@@ -151,24 +148,7 @@
         </div>
     </div>
 
-    <!-- Meet Us Section -->
-  <!--   <div id="meet-us">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="section-title">
-                        <h2>Meet Us</h2>
-                        <hr>
-                    </div>
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
-                    <a href="#services" class="down-btn page-scroll">
-                        <span class="fa fa-angle-down"></span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
+ 
     <!-- Services Section -->
     <div id="services">
         <div class="container text-center">
@@ -219,13 +199,13 @@
                     </div>
                 </div>
             </div>
-            <div class="marginTop30">
-	            <a href="#about-us" class="down-btn page-scroll">
-	                <span class="fa fa-angle-down"></span>
-	            </a>
-	            <a href="#main" class="up-btn page-scroll">
-	                <span class="fa fa-angle-up"></span>
-	            </a>
+            <div>
+            <a href="#about-us" class="down-btn page-scroll">
+                <span class="fa fa-angle-down"></span>
+            </a>
+            <a href="#main" class="up-btn page-scroll">
+                <span class="fa fa-angle-up"></span>
+            </a>
             </div>
         </div>
     </div>
@@ -307,42 +287,14 @@
         </div>
     </div>
 
-    <!-- Testimonial Section -->
-     <!--<div id="testimonials">
-        <div class="overlay">
-            <div class="container">
-                <div class="section-title">
-                    <h2>What my Clients Say...</h2>
-                    <hr>
-                </div>
-
-                <div id="testimonial" class="owl-carousel owl-theme"> 
-                  <div class="item">
-                    <h3>Et iusto odio dignissimos ducimus qui blanditiis <br>praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint <br>occaecati cupiditate non provident. </h3>
-                    <br>
-                    <h6>LJ, Abc Company</h6>
-                  </div>
-
-                  <div class="item">
-                    <h3>Fusce dapibus, tellus ac cursus commodo, tortor<br> mauris condimentum. Duis mollis, est non commodo luctus, nisi erat </h3>
-                    <br>
-                    <h6>Kai, Web Geekster</h6>
-                  </div>
-
-                  <div class="item">
-                    <h3>Cras justo odio, dapibus ac facilisis in, egestas <br>eget quam. Donec id elit non mi porta gravida at eget metus.</h3>
-                    <br>
-                    <h6>Jenn, Coders' Playground</h6>
-                  </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    
+   
     <!-- footer -->
 	<jsp:include page="/jsp/include/footer.jsp" />
 	<!-- /footer -->
-
+	
+	<script src="${ pageContext.request.contextPath }/js/jquery-3.1.1.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
+	 	
     <!-- Javascripts (necessary for Bootstrap's JavaScript plugins)
     ================================================== -->
     <script type="text/javascript" src="${ pageContext.request.contextPath }/js/main.js"></script>
@@ -351,6 +303,11 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script type="text/javascript" src="${ pageContext.request.contextPath }/js/SmoothScroll.js"></script>
     <script type="text/javascript" src="${ pageContext.request.contextPath }/js/typed.js"></script>
+    
+    
+    <!-- icon-font -->
+    <script src="https://use.fontawesome.com/bbddce3010.js"></script>
+    
     <script>
       $(function(){
           $("#head-title").typed({
@@ -362,7 +319,7 @@
       });
       
       //가입 or 로그인 후 검색 이전 키워드 추천용 ajax
-      $(document).ready(function() { 
+     /*  $(document).ready(function() { 
       $.ajax({
           url: "${ pageContext.request.contextPath }/index/recommandKeywordList.do",
           type : 'get',
@@ -372,7 +329,7 @@
                console.log(result);
                
     	}});
-     });
+     }); */
     </script>
     
   </body>
