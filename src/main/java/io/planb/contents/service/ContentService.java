@@ -110,8 +110,6 @@ public class ContentService {
 			keywords += keywordList.get(i).getKeyword();
 		}
 		
-		ContentsVO contents = new ContentsVO();
-		
 		List<ContentsVO> customKeywordList = dao.selectCustomCuration(keywords);
 		
 		return customKeywordList;
