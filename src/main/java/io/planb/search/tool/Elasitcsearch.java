@@ -43,7 +43,7 @@ public class Elasitcsearch {
 		
 		/* IP setup */
 		if(ip == null) {
-			searchIP = ipBit;
+			searchIP = ipAmazon;
 		} else {
 			ip = ip.toLowerCase();
 			
