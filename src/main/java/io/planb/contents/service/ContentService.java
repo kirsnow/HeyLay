@@ -105,6 +105,8 @@ public class ContentService {
 		List<KeywordsVO> keywordList = dao.selectUserKeywordList(no);
 		String keywords = "";
 		
+		if(keywordList.isEmpty()) return null;
+		
 		for(int i = 0, j = keywordList.size(); i < j; i++) {
 			if(i != 0) keywords += "|";
 			keywords += keywordList.get(i).getKeyword();
