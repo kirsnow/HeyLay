@@ -66,7 +66,7 @@
 				<div class="col-md-3">
 					<h4 class="paddingleft30">사이트</h4>
 					<ul class="list-unstyled marginLeft30">
-						<li><a href="#" title="사이트 소개 페이지로 이동">사이트 소개</a></li>
+						<li><a href="${ pageContext.request.contextPath }/#services" title="사이트 소개 페이지로 이동">사이트 소개</a></li>
 						<li><a
 							href="${ pageContext.request.contextPath }/notice/list.do"
 							title="공지사항 페이지로 이동">공지사항</a></li>
@@ -85,8 +85,8 @@
 						<li><a
 							href="${ pageContext.request.contextPath }/contact/spamMemo.do">유해
 								메모 신고</a></li>
-						<li><a href="#" title="서비스 이용 약관 페이지로 이동">서비스 이용 약관</a></li>
-						<li><a href="#" title="개인정보 처리 방침 페이지로 이동">개인정보 처리 방침</a></li>
+						<li><a href="${ pageContext.request.contextPath }/membership/agreement.do"  title="서비스 이용 약관 페이지로 이동">서비스 이용 약관</a></li>
+						<li><a href="${ pageContext.request.contextPath }/membership/agreement.do"  title="개인정보 처리 방침 페이지로 이동">개인정보 처리 방침</a></li>
 					</ul>
 				</div>
 				<div class="col-md-3">
@@ -106,7 +106,7 @@
 							</c:when>
 							<c:otherwise>
 								<li><a
-									href="${ pageContext.request.contextPath }/membership/membership.do"
+									href="${ pageContext.request.contextPath }/membership/agreement.do""
 									title="회원 가입 페이지로 이동">회원 가입</a></li>
 								<li><a
 									href="${ pageContext.request.contextPath }/login/login.do"

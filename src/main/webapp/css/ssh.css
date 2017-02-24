@@ -177,8 +177,12 @@
   		height: 800px;
   	}
   	
-  	.minHeight500{
+  	.minHeight800{
   		margin-bottom: 800px;
+  	}
+  	
+  	.minHeight300{
+  		margin-bottom: 300px;
   	}
   	
   	.minHeight700{
