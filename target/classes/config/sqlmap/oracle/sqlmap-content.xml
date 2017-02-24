@@ -175,7 +175,12 @@
 		FROM Q_VIEW
 		WHERE MEMBER_NO=#{memberNo}
 	</select>
-
+	
+	<update id="updateStatus" parameterType="int">
+  		UPDATE Q_KEYWORDS
+  		SET STATUS='N'
+  			WHERE no = #{ no } 
+  	</update>
 </mapper>
 
 

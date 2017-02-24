@@ -335,3 +335,13 @@
 	#forBottoom>div {
 	margin-bottom: 15px;
 }
+
+		#word-cloud{
+		width : 1000px;
+		height : 600px;
+	}
+	
+	.circleLoading{
+		 font-size:60px;
+		 color : gray;
+	}

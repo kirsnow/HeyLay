@@ -64,12 +64,13 @@
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2 marginBottom30">
 							<h4><b>한 눈에 보는 내 검색어</b></h4>
+							<small>많이 검색된 검색어일수록 크게 보여집니다.</small>
 						</div>
 					</div>
 					<c:choose>
 						<c:when test="${ (wordCloudList eq null) or (empty wordCloudList ) }">
 							 <div class="row">
-								<div >검색어가 없습니다. 검색 후 사용해 주세요 &#58;O</div>
+								<div class="marginTop60">검색어가 없습니다. 검색 후 사용해 주세요 &#58;O</div>
 							 </div> 
 			            </c:when>
 			       		<c:otherwise> 
@@ -78,11 +79,10 @@
 				       			<i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
 							</div> -->
 							<div class="row">
-								<div class="col-md-8 col-md-offset-2">
+								<div class="col-md-8 col-md-offset-2 marginBottom100">
 					            	<svg id="word-cloud"></svg>
 					            </div>
 						    </div> 
-						    <small class="marginTop60">많이 검색된 검색어일수록 크게 보여집니다.</small>
 						</c:otherwise>
 					</c:choose> 
 		        </div>
