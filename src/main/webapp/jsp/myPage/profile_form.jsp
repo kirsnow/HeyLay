@@ -115,7 +115,7 @@
 											alt="your image"  style="width: 250px; height: 250px;"/>
 								</c:when>
 								<c:otherwise>
-									<img id="blah" src="/Quration/upload/${userVO.profileImg}" 
+									<img id="blah" src="${ pageContext.request.contextPath }/img/purin.png" 
 											alt="your image"  style="width: 250px; height: 250px;"/>
 								</c:otherwise>
 							</c:choose>
