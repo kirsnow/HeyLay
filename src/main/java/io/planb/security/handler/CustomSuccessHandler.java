@@ -35,15 +35,16 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
 				redirectStrategy.sendRedirect(request, response, "/login/interest.do");
 				
 			} else {
-				String redirectUrl = (String) session.getAttribute("prevPage");
-//				System.out.println("redirectUrl: " + redirectUrl);
-				
-	            if (redirectUrl != null) {
-	                session.removeAttribute("prevPage");
-	                redirectStrategy.sendRedirect(request, response, redirectUrl);
-	            } else {
-	            	redirectStrategy.sendRedirect(request, response, "/");
-	            }
+//				String redirectUrl = (String) session.getAttribute("prevPage");
+////				System.out.println("redirectUrl: " + redirectUrl);
+//				
+//				
+//	            if (redirectUrl != null && ( ! redirectUrl.equals("/login/login.do")) ) {
+//	            	String saveUrl = redirectUrl;
+//	                session.removeAttribute("prevPage");
+//	                redirectStrategy.sendRedirect(request, response, saveUrl);
+//	            } else {
+	            	redirectStrategy.sendRedirect(request, response, "/contents/curation.do");
 			}
 		}
 		

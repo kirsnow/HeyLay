@@ -37,7 +37,7 @@
 				SAV.REG_DATE desc,
 			</if>
 			<if test="limit != 0">						<!-- for Popular List -->
-				CON.VIEW_CNT desc,
+				viewCnt desc,
 			</if>
 			CON.LAST_SCRAPED desc
 		<if test="limit != 0">limit #{limit}</if>				<!-- for Popular List -->
