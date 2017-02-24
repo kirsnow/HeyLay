@@ -41,7 +41,6 @@ public class Elasitcsearch {
 	public SearchVO searchURI(String q, String ip) {
 		SearchVO searchResult = null;
 		
-		
 		/* IP setup */
 		if(ip == null) {
 			searchIP = ipBit;
@@ -119,8 +118,6 @@ public class Elasitcsearch {
 		
 		return searchResult;
 	}
-
-	
 	
 	/**
 	 * Elasticsearch JSON parser
