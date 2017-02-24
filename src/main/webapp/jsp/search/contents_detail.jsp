@@ -130,53 +130,65 @@
 				</div>
 
 				<div class="row marginBottom30">
-					<div role="toolbar" class="col-xs-12 text-right">
+					<div role="toolbar" class="toolbar col-xs-12 text-right">
+						<%-- saveCardBtn --%>
 						<c:choose>
 							<c:when test="${ (userVO ne null) and (not empty userVO) }">
-								<button type="button" class="btn btn-info saveCardBtn"
-									data-toggle="modal" data-target="#saveCardModal"
-									id="${ contents.contentsNo }" title="카드 담기">
-									<i class="fa fa-bookmark-o" aria-hidden="true"></i> 저장하기
-								</button>
-								<button type="button" class="btn btn-info saveCancelBtn"
-									hidden="true" id="${ contents.contentsNo }" title="카드 빼기">
-									<i class="fa fa-bookmark" aria-hidden="true"></i> 카드빼기
-								</button>
-								<c:choose>
-									<c:when test="${ likeOrNot != 0 }">
-										<button type="button" hidden="true" class="btn btn-info likeBtn" title="카드를 좋아합니다."
-												id="${ contents.contentsNo }">
-											<i class="fa fa-heart-o" aria-hidden="true"></i> 좋아요
-										</button>
-										<button type="button" class="btn btn-info likeCancelBtn" title="좋아요를 취소합니다." 
-											id="${ contents.contentsNo }">
-											<i class="fa fa-heart" aria-hidden="true"></i> 좋아요 취소
-										</button>
-									</c:when>
-									<c:otherwise>
-										<button type="button" class="btn btn-info likeBtn" title="카드를 좋아합니다." id="${ contents.contentsNo }">
-											<i class="fa fa-heart-o" aria-hidden="true"></i> 좋아요
-										</button>
-										<button type="button" hidden="true" class="btn btn-info likeCancelBtn" 
-											title="좋아요를 취소합니다." id="${ contents.contentsNo }">
-											<i class="fa fa-heart" aria-hidden="true"></i> 좋아요 취소
-										</button>
-									</c:otherwise>
-								</c:choose>
+								<c:if test="${ contents.isSaved }">
+									<%-- 로그인 + 카드 저장 --%>
+									<button type="button" id="${ contents.contentsNo }"
+										title="카드 담기 취소" class="btn btn-default saveCancelBtn">
+										<i class="fa fa-bookmark-o" aria-hidden="true"></i> 담기 취소
+									</button>
+								</c:if>
+								
+								<c:if test="${ not contents.isSaved }">
+									<%-- 로그인 + 카드 미저장 --%>
+									<button type="button" id="${ contents.contentsNo }"
+										title="카드 담기" class="btn btn-primary saveCardBtn" data-toggle="modal" data-target="#saveCardModal">
+										<i class="fa fa-bookmark" aria-hidden="true"></i> 카드 담기
+									</button>
+								</c:if>
 							</c:when>
+							
 							<c:otherwise>
-								<button type="button" class="btn btn-info"
-									onclick="location.href='${ pageContext.request.contextPath }/login/login.do'"
-									title="카드 담기: 로그인이 필요한 서비스입니다">
-									<i class="fa fa-bookmark-o" aria-hidden="true"></i> 저장하기
-								</button>
-								<button type="button" class="btn btn-info"
-									onclick="location.href='${ pageContext.request.contextPath }/login/login.do'"
-									title="좋아요: 로그인이 필요한 서비스입니다">
-									<i class="fa fa-heart-o" aria-hidden="true"></i> 좋아요
+								<%-- 비로그인 --%>
+								<button type="button" id="${ contents.contentsNo }" onclick="location.href='${ pageContext.request.contextPath }/login/login.do'"
+									title="카드 담기: 로그인이 필요한 서비스입니다" class="btn btn-primary saveCardBtn">
+									<i class="fa fa-bookmark" aria-hidden="true"></i> 카드 담기
 								</button>
 							</c:otherwise>
 						</c:choose>
+						
+						<%-- likeBtn --%>
+						<c:choose>
+							<c:when test="${ (userVO ne null) and (not empty userVO) }">
+								<c:if test="${ contents.isLiked }">
+									<%-- 로그인 + 카드 저장 --%>
+									<button type="button" id="${ contents.contentsNo }"
+										title="좋아요 취소" class="btn btn-default likeCancelBtn">
+										<i class="fa fa-heart-o" aria-hidden="true"></i> 좋아요 취소
+									</button>
+								</c:if>
+								<c:if test="${ not contents.isLiked }">
+									<%-- 로그인 + 카드 미저장 --%>
+									<button type="button" id="${ contents.contentsNo }"
+										title="좋아요" class="btn btn-primary likeBtn" data-toggle="modal" data-target="#saveCardModal">
+										<i class="fa fa-heart" aria-hidden="true"></i> 좋아요
+									</button>
+								</c:if>
+							</c:when>
+							
+							<c:otherwise>
+								<%-- 비로그인 --%>
+								<button type="button" id="${ contents.contentsNo }" onclick="location.href='${ pageContext.request.contextPath }/login/login.do'"
+									title="좋아요: 로그인이 필요한 서비스입니다" class="btn btn-primary likeBtn">
+									<i class="fa fa-heart" aria-hidden="true"></i> 좋아요
+								</button>
+							</c:otherwise>
+						</c:choose>
+						
+						<%-- spam/bug report Btn --%>
 						<div id="report" class="btn-group" title="신고">
 							<a href="#" role="button" class="btn btn-default dropdown-toggle"
 								data-toggle="dropdown" aria-expanded="false" title="오류 및 유해물 신고">
@@ -196,7 +208,8 @@
 								</a></li>
 							</ul>
 						</div>
-					</div>
+						
+					</div> <!-- /div.toolbar -->
 				</div>
 			</section>
 			<!-- /main information of contents -->
@@ -223,13 +236,11 @@
 					</p>
 					<ul class="list-unstyled" role="menu">
 						<!-- <li><a href="#" title="카카오톡으로 공유"><i class="fa fa-commenting fa-fw" aria-hidden="true"></i> KakaoTalk</a></li> -->
-						<li><a href="javascript:facebook('${contents.contentsNo}')"
-							title="페이스북으로 공유"> <i class="fa fa-facebook fa-fw"
-								aria-hidden="true"></i> Facebook
+						<li><a href="javascript:facebook('${contents.contentsNo}')" title="페이스북으로 공유">
+							<i class="fa fa-facebook fa-fw" aria-hidden="true"></i> Facebook
 						</a></li>
-						<li><a href="javascript:twitter('${contents.contentsNo}')"
-							title="트위터로 공유"> <i class="fa fa-twitter fa-fw"
-								aria-hidden="true"></i> Twitter
+						<li><a href="javascript:twitter('${contents.contentsNo}')" title="트위터로 공유">
+							<i class="fa fa-twitter fa-fw" aria-hidden="true"></i> Twitter
 						</a></li>
 						<!-- <li><a href="#" title="에버노트로 공유"><i class="fa fa-sticky-note fa-fw" aria-hidden="true"></i> Evernote</a></li> -->
 					</ul>
@@ -247,7 +258,7 @@
 			<%-- 메모가 없을 때 --%>
 			<c:if test="${ (memoList eq null) or (empty memoList) }">
 				<div class="col-xs-12">
-					<p class="lead text-muted">첫 메모를 남겨보세요 &#58;&#41;</p>
+					<p id="no-memo" class="lead text-muted">첫 메모를 남겨보세요 &#58;&#41;</p>
 				</div>
 			</c:if>
 

@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.planb.dao.ContentDAO">
 	
+	<!-- 일반적인 카드 목록을 추출한다 -->
 	<select id="selectContents" parameterType="contentsVO" resultType="contentsVO">
 		select 
 			<include refid="basicColumns" />
@@ -104,7 +105,7 @@
 	</sql>
 	
 	<sql id="additionalGroup">
-		, SOU.NO, CAT.NO, DAT.NO, IMG.NO, VIW.NO
+		, SOU.NO, CAT.NO, DAT.NO, IMG.NO
 	</sql>
 	
 	<!-- about Saved Contents -->
@@ -126,6 +127,38 @@
  	<sql id="savedGroup">
 		, SAV.NO, DIR.NO
 	</sql>
+	
+	<!-- 특정 회원이 저장한 콘텐츠 번호 목록을 추출한다 -->
+	<select id="selectSavedContentsNo" parameterType="int" resultType="int">
+		SELECT contents_no
+		FROM q_contents_saved
+		WHERE member_no = #{no}
+		ORDER BY contents_no ASC
+	</select>
+	
+	<!-- 특정 회원이 좋아한 콘텐츠 번호 목록을 추출한다 -->
+	<select id="selectLikedContentsNo" parameterType="int" resultType="int">
+		SELECT contents_no
+		FROM q_like
+		WHERE member_no = #{no}
+		ORDER BY contents_no ASC
+	</select>
+	
+	<!-- 특정 콘텐츠를 저장한 횟수를 추출한다 (전체 회원 대상) -->
+	<select id="selectSavedCnt" parameterType="int" resultType="int">
+		SELECT count(no)
+		FROM q_contents_saved
+		WHERE contents_no = #{no}
+		GROUP BY contents_no;
+	</select>
+	
+	<!-- 특정 콘텐츠를 좋아한 횟수를 추출한다 (전체 회원 대상) -->
+	<select id="selectLikedCnt" parameterType="int" resultType="int">
+		SELECT count(no)
+		FROM q_like
+		WHERE contents_no = #{no}
+		GROUP BY contents_no;
+	</select>
 	
 </mapper>
   

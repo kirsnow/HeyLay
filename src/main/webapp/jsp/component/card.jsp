@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page trimDirectiveWhitespaces="true" %>
 <c:forEach var="card" items="${ requestScope.cards }" varStatus="loop">
 <c:set var="plainTitle" value="${ fn:replace( fn:replace(card.title, '<mark>', ''), '</mark>', '') }"/>
 	<!-- card -->
@@ -30,8 +31,8 @@
 		
 		<!-- card title -->
 		<div class="mdl-card__title">
-			<h5 class="card-title mdl-card__title-text drop-text-2" 
-			title="<c:out value="${ plainTitle }" />" data-toggle="tooltip" data-placement="bottom">
+			<h5 class="card-title mdl-card__title-text drop-text-2" title="<c:out value="${ plainTitle }" />" 
+				data-toggle="tooltip" data-placement="bottom">
 			${ card.title }</h5>
 		</div>
 	
@@ -63,18 +64,25 @@
 		<div class="mdl-card__menu">
 			<div id="save" class="btn-group dropdown pull-right">
 				<c:choose>
+					<%-- 비로그인 --%>
 					<c:when test="${ (userVO ne null) and (not empty userVO) }">
-						<a href="#" role="button" id="${ card.contentsNo }" class="saveCardBtn nofocus"
-							data-toggle="modal" data-target="#saveCardModal"
-							title="카드 담기"> 
-							<i class="fa fa-bookmark-o fa-2x text-muted" aria-hidden="true"></i>
-						</a>
+							<%-- 로그인 + 카드 저장 --%>
+							<c:if test="${ card.isSaved }">
+								<a id="${ card.contentsNo }" title="카드 담기 취소" class="saveCancelBtn nofocus" href="#">
+								<i class="fa fa-bookmark fa-3x" aria-hidden="true"></i></a>
+							</c:if>
+							<%-- 로그인 + 카드 미저장 --%>
+							<c:if test="${ not card.isSaved }">
+								<a id="${ card.contentsNo }" 
+									title="카드 담기" class="saveCardBtn nofocus" data-toggle="modal" data-target="#saveCardModal" href="#">
+								<i class="fa fa-bookmark fa-3x" aria-hidden="true"></i></a>
+							</c:if>
 					</c:when>
+					<%-- 로그인 + 카드 미저장 --%>
 					<c:otherwise>
-						<a href="${ pageContext.request.contextPath }/login/login.do"
-							id="${ card.contentsNo }" class="saveCardBtn" title="카드 담기: 로그인이 필요한 서비스입니다">
-							<i class="fa fa-bookmark-o fa-2x text-muted" aria-hidden="true"></i>
-						</a>
+						<a id="${ card.contentsNo }" href="${ pageContext.request.contextPath }/login/login.do"
+							title="카드 담기: 로그인이 필요한 서비스입니다" class="saveCardBtn">
+						<i class="fa fa-bookmark fa-3x" aria-hidden="true"></i></a>
 					</c:otherwise>
 				</c:choose>
 			</div>

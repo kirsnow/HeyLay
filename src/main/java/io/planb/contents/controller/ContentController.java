@@ -45,28 +45,29 @@ public class ContentController {
 		contents.setMemberNo(userNo);
 		contents.setContentsNo(no);
 
-		// 콘텐츠 좋아요 수
-		int likeCnt = service.likeOrNot(contents);
-		
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("likeOrNot", likeCnt);
-		
 		// 콘텐츠 내용
-		contents = service.getContentsDetail(no, q);
+		contents = service.getContentsDetail(no, q, userNo);
+		
+		
+		
 		// 콘텐츠 메모 목록
 		List<MemoVO> memoList = memoService.getMemoList(no);
-
 		
+		ModelAndView mav = new ModelAndView();
+		if (userVO != null) {
+			// 내 카드 서랍 목록 (로그인 시)
+			List<DirectoryVO> dirList = dirService.directoryList(userNo);
+			mav.addObject("dirList", dirList);
+			// 회원 저장 여부 체크
+			contents = service.isThisSaved(userNo, contents);
+			// 회원 좋아요 여부 체크
+			contents = service.isThisLiked(userNo, contents);
+		}
+
 		mav.setViewName("search/contents_detail");
 		mav.addObject("contents", contents);
 		mav.addObject("memoList", memoList);
 		
-		// 내 카드 서랍 목록 (로그인 시)
-		if (userVO != null) {
-			List<DirectoryVO> dirList = dirService.directoryList(userNo);
-			mav.addObject("dirList", dirList);
-		}
-
 		return mav;
 	}
 

@@ -317,5 +317,20 @@
    .verticalCenter{
   	 vertical-align: middle;
    }
-	
-
+   
+   a.saveCardBtn,
+   a.saveCancelBtn {
+	position: relative;
+	top: -21px;
+	right: -5px;
+   }
+   
+   a.saveCardBtn,
+   a.saveCancelBtn:hover {
+	color: #ccc;
+   }
+   
+   a.saveCardBtn:hover,
+   a.saveCancelBtn {
+	color: #03A9F4;
+   }
