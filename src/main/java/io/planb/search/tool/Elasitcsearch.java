@@ -26,7 +26,7 @@ public class Elasitcsearch {
      * 미지정 시, 상위 10건이 표시된다.
      */
 	private final int searchSize = 100;
-	private final String ipAmazon = "54.200.58.22";
+	private final String ipAmazon = "52.34.4.162";
 	private final String ipBit = "192.168.1.21";
 	private String searchIP = ipAmazon;
 
