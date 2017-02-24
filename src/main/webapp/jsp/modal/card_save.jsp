@@ -144,7 +144,9 @@
             	$('#memoMessage').val('');
             	
             	// page UI reset
-            	saveCardBtn.html('<i class="fa fa-bookmark fa-lg" aria-hidden="true"></i>');
+            	saveCardBtn.removeClass('saveCardBtn').addClass('saveCancelBtn');
+            	$('button.saveCancelBtn').removeClass('btn-primary').addClass('btn-default')
+            		.html('<i class="fa fa-bookmark-o" aria-hidden="true"></i> 담기 취소');
             	
 		    }, error : function() {
         		console.log('카드 담기 오류');

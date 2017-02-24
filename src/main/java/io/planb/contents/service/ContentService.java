@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import io.planb.contents.dao.ContentDAO;
 import io.planb.contents.vo.ContentsVO;
-import io.planb.drawer.service.DirectoryService;
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.search.service.SearchServiceImp;
 
@@ -20,39 +19,13 @@ public class ContentService {
 	@Autowired
 	private SearchServiceImp searchService;
 	
-	@Autowired
-	private DirectoryService dirService;
-	
 	/* Contents detail */
-	public ContentsVO getContentsByNo(int contentsNo) {
-		ContentsVO vo = new ContentsVO();
-		vo.setContentsNo(contentsNo);
-		
-		if(dao.selectView(vo) == 0) {
-			dao.insertView(vo);
-		} else {
-			dao.updateView(vo);
-		}
-		
-		ContentsVO contents = dao.getContents(vo);
-		
-		return contents;
-	}
-	
-	public void viewCnt(ContentsVO view) {
-		int cnt = dao.selectView(view);
-		if(cnt == 0) {
-			dao.insertView(view);
-		} else {
-			dao.updateView(view);
-		}
-	}
-	
-	public ContentsVO getContentsDetail(int contentsNo, String q) {
+	public ContentsVO getContentsDetail(int contentsNo, String q, int memberNo) {
 		ContentsVO contents = getContentsByNo(contentsNo);
 		contents = searchService.highlighter(contents, q);
 		
 		if(contents != null) {
+			
 			//이전, 이후 콘텐츠 번호 추출
 			int prevContentsNo = dao.getPrevContentsNo(contentsNo);
 			int nextContentsNo = dao.getNextContentsNo(contentsNo);
@@ -71,6 +44,96 @@ public class ContentService {
 		return cards;
 	}
 	
+	public ContentsVO getContentsByNo(int contentsNo) {
+		ContentsVO vo = new ContentsVO();
+		vo.setContentsNo(contentsNo);
+		
+		if(dao.selectView(vo) == 0) {
+			dao.insertView(vo);
+		} else {
+			dao.updateView(vo);
+		}
+		
+		ContentsVO contents = dao.getContents(vo);
+		if(contents != null) {
+			// 저장된 횟수 추출
+			int savedCnt = dao.getSavedCnt(contentsNo);
+			contents.setSavedCnt(savedCnt);
+		}
+		
+		return contents;
+	}
+	
+	public void viewCnt(ContentsVO view) {
+		int cnt = dao.selectView(view);
+		if(cnt == 0) {
+			dao.insertView(view);
+		} else {
+			dao.updateView(view);
+		}
+	}
+	
+	public ContentsVO isThisSaved(int memberNo, ContentsVO card) {
+		//해당 회원이 저장한 콘텐츠 번호 목록 추출
+		List<Integer> savedList = dao.getSavedContentsNo(memberNo);
+		System.out.println("savedList: " + savedList);
+		card.setIsSaved(false);
+		//저장한 콘텐츠 여부 확인
+		for(int savedNo : savedList) {
+			if(savedNo == card.getContentsNo()) {
+				card.setIsSaved(true);
+				break;
+			}
+		}
+		System.out.println(card.getContentsNo() + " == " + card.getIsSaved());
+		return card;
+	}
+	
+	public List<ContentsVO> isThisSaved(int memberNo, List<ContentsVO> cardList) {
+		//해당 회원이 저장한 콘텐츠 번호 목록 추출
+		List<Integer> savedList = dao.getSavedContentsNo(memberNo);
+		
+		//저장한 콘텐츠 여부 확인: 저장한 콘텐츠는 savedCnt를 1로, 저장하지 않은 콘텐츠는 savedCnt를 0으로 설정한다.
+		for(ContentsVO card : cardList) {
+			card.setIsSaved(false);
+			for(int savedNo : savedList) {
+				if(savedNo == card.getContentsNo()) {
+					card.setIsSaved(true);	
+					break;
+				}
+			}
+		}
+		return cardList;
+	}
+
+	public ContentsVO isThisLiked(int memberNo, ContentsVO card) {
+		//해당 회원이 저장한 콘텐츠 번호 목록 추출
+		List<Integer> likedList = dao.getLikedContentsNo(memberNo);
+		
+		card.setIsLiked(false);
+		//저장한 콘텐츠 여부 확인
+		for(int likedNo : likedList) {
+			if(likedNo == card.getContentsNo()) card.setIsLiked(true); break;
+		}
+		return card;
+	}
+
+	public List<ContentsVO> isThisLiked(int memberNo, List<ContentsVO> cardList) {
+		//해당 회원이 저장한 콘텐츠 번호 목록 추출
+		List<Integer> likedList = dao.getLikedContentsNo(memberNo);
+		
+		//저장한 콘텐츠 여부 확인: 저장한 콘텐츠는 savedCnt를 1로, 저장하지 않은 콘텐츠는 savedCnt를 0으로 설정한다.
+		for(int likedNo : likedList) {
+			for(ContentsVO card : cardList) {
+				card.setIsLiked(false);
+				if(likedNo == card.getContentsNo()) {
+					card.setIsLiked(true);
+					break;
+				}
+			}
+		}
+		return cardList;
+	}
 	
 	public List<KeywordsVO> selectKeywordList(int memberNo) {
 		List<KeywordsVO> keywordList = dao.selectKeywordList(memberNo);
@@ -125,10 +188,15 @@ public class ContentService {
 		dao.likeCancel(like);
 	}
 	
-	public int likeOrNot(ContentsVO like) {
-		int cnt = dao.likeOrNot(like);
+	public ContentsVO likeOrNot(ContentsVO contents) {
+		int isLiked = dao.likeOrNot(contents);
+		if(isLiked > 0) {
+			contents.setIsLiked(true);
+		} else {
+			contents.setIsLiked(false);
+		}
 		
-		return cnt;
+		return contents;
 	}
 	
 	public int selectLikeCnt(int contentsNo) {

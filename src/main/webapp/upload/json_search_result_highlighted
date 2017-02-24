@@ -1,0 +1,1578 @@
+{
+  "took" : 147,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 5,
+    "successful" : 5,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 57,
+    "max_score" : 8.402165,
+    "hits" : [
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "114",
+        "_score" : 8.402165,
+        "_source" : {
+          "summary" : "C++는 AT&T 벨 연구소의 비야네 스트롭스트룹이 1983년 발표하여 발전한 프로그래밍 언어이다. C 언어의 문법을 대부분 사용할 수 있으며, 객체지향성이 더해진 C 언어의 확장형이라고 생각할 수도 있다. 원래 이름은 C with Classes였으나, 증가 연산자를 도입하면서 1984년에 C++로 이름이 변경되었다.[1]   C 언어에 객체지향 프로그래밍",
+          "no" : 114,
+          "source" : "Wikipedia",
+          "title" : "C++",
+          "url" : "https://ko.wikipedia.org/wiki/C++",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.884Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "C++는 AT&T 벨 연구소의 비야네 스트롭스트룹이 1983년 발표하여 발전한 <mark>프로그래밍</mark> <mark>언어</mark>이다. C <mark>언어</mark>의 문법을 대부분 <mark>사용</mark>할 수 있으며, 객체지향성이 더해진 C <mark>언어</mark>",
+            "의 확장형이라고 생각할 수도 있다. 원래 이름은 C with Classes였으나, 증가 연산자를 도입하면서 1984년에 C++로 이름이 변경되었다.[1]   C <mark>언어</mark>에 객체지향 <mark>프로그래밍</mark>"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "133",
+        "_score" : 8.27397,
+        "_source" : {
+          "summary" : "R 프로그래밍 언어(줄여서 R)는 통계 계산과 그래픽을 위한 프로그래밍 언어이자 소프트웨어 환경이다. 뉴질랜드 오클랜드 대학의 로버트 젠틀맨(Robert Gentleman)과 로스 이하카(Ross Ihaka)에 의해 시작되어 현재는 R 코어 팀이 개발하고 있다. R은 GPL 하에 배포되는 S 프로그래밍 언어의 구현으로 GNU S라고도 한다. R은 통계 소프",
+          "no" : 133,
+          "source" : "Wikipedia",
+          "title" : "R (프로그래밍 언어)",
+          "url" : "https://ko.wikipedia.org/wiki/R_(프로그래밍_언어)",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.889Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "R <mark>프로그래밍</mark> <mark>언어</mark>(줄여서 R)는 통계 계산과 그래픽을 위한 <mark>프로그래밍</mark> <mark>언어</mark>이자 소프트웨어 환경이다. 뉴질랜드 오클랜드 대학의 로버트 젠틀맨(Robert Gentleman",
+            ")과 로스 이하카(Ross Ihaka)에 의해 시작되어 현재는 R 코어 팀이 개발하고 있다. R은 GPL 하에 배포되는 S <mark>프로그래밍</mark> <mark>언어</mark>의 구현으로 GNU S라고도 한다. R은 통계 소프"
+          ],
+          "title" : [
+            "R (<mark>프로그래밍</mark> <mark>언어</mark>)"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "134",
+        "_score" : 7.235095,
+        "_source" : {
+          "summary" : "스칼라(Scala)는 객체 지향 프로그래밍 언어와 함수형 프로그래밍의 요소가 결합된 다중패러다임 프로그래밍 언어이다. 스칼라의 이름은 <skah-lah>라고 발음하며 'Scalable Language'에서 따왔다. 적은 양의 코드로도 방대한 규모의 시스템을 작성할 수 있다는 특징이 있다.[2] 자바의 자바 가상 머신 에서 실행 할 수 있으며 자바의 API도",
+          "no" : 134,
+          "source" : "Wikipedia",
+          "title" : "스칼라 (프로그래밍 언어)",
+          "url" : "https://ko.wikipedia.org/wiki/스칼라_(프로그래밍_언어)",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.889Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "스칼라(Scala)는 객체 지향 <mark>프로그래밍</mark> <mark>언어</mark>와 함수형 <mark>프로그래밍</mark>의 요소가 결합된 다중패러다임 <mark>프로그래밍</mark> <mark>언어</mark>이다. 스칼라의 이름은 <skah-lah>라고 발음"
+          ],
+          "title" : [
+            "스칼라 (<mark>프로그래밍</mark> <mark>언어</mark>)"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "122",
+        "_score" : 7.0860624,
+        "_source" : {
+          "summary" : "파이썬[1](Python)은 1991년[2] 프로그래머인 귀도 반 로섬(Guido van Rossum)[3]이 발표한 고급 프로그래밍 언어로, 플랫폼 독립적이며 인터프리터식, 객체지향적, 동적 타이핑(dynamically typed) 대화형 언어이다. 파이썬이라는 이름은 귀도가 좋아하는 코미디 〈Monty Python's Flying Circus〉에서 따온",
+          "no" : 122,
+          "source" : "Wikipedia",
+          "title" : "파이썬",
+          "url" : "https://ko.wikipedia.org/wiki/파이썬",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.886Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "파이썬[1](Python)은 1991년[2] 프로그래머인 귀도 반 로섬(Guido van Rossum)[3]이 발표한 고급 <mark>프로그래밍</mark> <mark>언어</mark>로, 플랫폼 독립적이며 인터프리터식",
+            ", 객체지향적, 동적 타이핑(dynamically typed) 대화형 <mark>언어</mark>이다. 파이썬이라는 이름은 귀도가 좋아하는 코미디 〈Monty Python's Flying Circus〉에서 따온"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "131",
+        "_score" : 6.4354568,
+        "_source" : {
+          "summary" : "D는 디지털 마르스의 월터 브라이트가 설계한 객체 지향 명령형 프로그래밍 언어이다. D는 C++의 후손으로 만들어졌으며, C++의 복잡도를 줄이면서 몇몇 기능을 추가하여 설계되었다. C++의 후손으로 제시된 다른 언어에는 Java와 C# 등이 있다.   다음 예제는 콘솔에 명령행 인자를 출력한다. 현재의 대부분의 D 구현체는 효율적인 실행을 위해 기계어로 ",
+          "no" : 131,
+          "source" : "Wikipedia",
+          "title" : "D (프로그래밍 언어)",
+          "url" : "https://ko.wikipedia.org/wiki/D_(프로그래밍_언어)",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.888Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "D는 디지털 마르스의 월터 브라이트가 설계한 객체 지향 명령형 <mark>프로그래밍</mark> <mark>언어</mark>이다. D는 C++의 후손으로 만들어졌으며, C++의 복잡도를 줄이면서 몇몇 기능을 추가하여 설계",
+            "되었다. C++의 후손으로 제시된 다른 <mark>언어</mark>에는 Java와 C# 등이 있다.   다음 예제는 콘솔에 명령행 인자를 출력한다. 현재의 대부분의 D 구현체는 효율적인 실행을 위해 기계어로 "
+          ],
+          "title" : [
+            "D (<mark>프로그래밍</mark> <mark>언어</mark>)"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "112",
+        "_score" : 6.240828,
+        "_source" : {
+          "summary" : "리스프(Lisp, LISP) 혹은 리습은 프로그래밍 언어의 계열로서, 오랜 역사와 독특하게 괄호를 사용하는 문법으로 유명하다. 1958년에 초안이 작성된 이 언어는 현재 널리 사용되는 포트란에 이어 두 번째로 오래된 고급 프로그래밍 언어이다. 리스프는 포트란처럼 초반에 많은 변화를 겪어야 했으며 수많은 변종들이 존재한다. 오늘날 가장 널리 알려진 일반 리스",
+          "no" : 112,
+          "source" : "Wikipedia",
+          "title" : "리스프",
+          "url" : "https://ko.wikipedia.org/wiki/리스프",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.881Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "리스프(Lisp, LISP) 혹은 리습은 <mark>프로그래밍</mark> <mark>언어</mark>의 계열로서, 오랜 역사와 독특하게 괄호를 <mark>사용</mark>하는 문법으로 유명하다. 1958년에 초안이 작성된 이 <mark>언어</mark>",
+            "는 현재 널리 <mark>사용</mark>되는 포트란에 이어 두 번째로 오래된 고급 <mark>프로그래밍</mark> <mark>언어</mark>이다. 리스프는 포트란처럼 초반에 많은 변화를 겪어야 했으며 수많은 변종들이 존재한다. 오늘날 가장 널리 알려진 일반 리스"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "128",
+        "_score" : 6.1954613,
+        "_source" : {
+          "summary" : "프로그래밍 언어는 컴퓨터 시스템을 구동시키는 소프트웨어를 작성하기 위한 언어이다. 고급 언어일수록 사람이 사용하는 언어에 가깝다. 일반적으로 말할 때에는 프로그래밍 언어를 지원하는 소프트웨어, 곧 소프트웨어를 작성하기 위한 소프트웨어를 가리키는 때가 많고, 이때에는 프로그래밍 언어와 소프트웨어를 구분하지 않고 소프트웨어를 프로그래밍 언어로 보기도 한다.[출",
+          "no" : 128,
+          "source" : "Wikipedia",
+          "title" : "프로그래밍 언어",
+          "url" : "https://ko.wikipedia.org/wiki/프로그래밍_언어",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.888Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "<mark>프로그래밍</mark> <mark>언어</mark>는 컴퓨터 시스템을 구동시키는 소프트웨어를 작성하기 위한 <mark>언어</mark>이다. 고급 <mark>언어</mark>일수록 사람이 <mark>사용</mark>하는 <mark>언어</mark>에 가깝다. 일반적으로 말할 때에는 <mark>프로그래밍</mark> <mark>언어</mark>를 지원",
+            "하는 소프트웨어, 곧 소프트웨어를 작성하기 위한 소프트웨어를 가리키는 때가 많고, 이때에는 <mark>프로그래밍</mark> <mark>언어</mark>와 소프트웨어를 구분하지 않고 소프트웨어를 <mark>프로그래밍</mark> <mark>언어</mark>로 보기도 한다.[출"
+          ],
+          "title" : [
+            "<mark>프로그래밍</mark> <mark>언어</mark>"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "138",
+        "_score" : 5.920635,
+        "_source" : {
+          "summary" : "파스칼(Pascal)은 1980년대와 1990년대 초반에 걸쳐 널리 사용된 프로그래밍 언어로, 당대의 가장 인기있는 교육용 언어 중 하나였으며, 현재까지도 폭넓은 분야에서 사용되고 있다. 파스칼은 1969년에 스위스 ETH 취리히의 컴퓨터 과학자 니클라우스 비르트가 개발하였다. 발표 당시에는 아주 기본적인 컴퓨터 언어의 요소만을 가지고 있었으므로 시스템을 ",
+          "no" : 138,
+          "source" : "Wikipedia",
+          "title" : "파스칼 (프로그래밍 언어)",
+          "url" : "https://ko.wikipedia.org/wiki/파스칼_(프로그래밍_언어)",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.891Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "파스칼(Pascal)은 1980년대와 1990년대 초반에 걸쳐 널리 <mark>사용</mark>된 <mark>프로그래밍</mark> <mark>언어</mark>로, 당대의 가장 인기있는 교육용 <mark>언어</mark> 중 하나였으며, 현재까지도 폭넓은 분야에서 <mark>사용</mark>",
+            "되고 있다. 파스칼은 1969년에 스위스 ETH 취리히의 컴퓨터 과학자 니클라우스 비르트가 개발하였다. 발표 당시에는 아주 기본적인 컴퓨터 <mark>언어</mark>의 요소만을 가지고 있었으므로 시스템을 "
+          ],
+          "title" : [
+            "파스칼 (<mark>프로그래밍</mark> <mark>언어</mark>)"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "142",
+        "_score" : 5.182909,
+        "_source" : {
+          "summary" : "F#(에프 샤프)는 마이크로소프트가 닷넷 프레임워크의 부분으로 개발한 프로그래밍 언어이다. 주로 크로스 플랫폼 CLI 언어로 많이 쓰이고, 자바스크립트 및 GPU 코드 생성에도 사용할 수 있다. F#은 F# 소프트웨어 파운데이션, 마이크로소프트 및 기타 공개 지원을 통해 개발되었고, 기본적인 구조는 OCaml 언어와 비슷하다.   함수형 프로그래밍의 \"He",
+          "no" : 142,
+          "source" : "Wikipedia",
+          "title" : "F 샤프",
+          "url" : "https://ko.wikipedia.org/wiki/F_샤프",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.892Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "에도 <mark>사용</mark>할 수 있다. F#은 F# 소프트웨어 파운데이션, 마이크로소프트 및 기타 공개 지원을 통해 개발되었고, 기본적인 구조는 OCaml <mark>언어</mark>와 비슷하다.   함수형 <mark>프로그래밍</mark>의 \"He",
+            "F#(에프 샤프)는 마이크로소프트가 닷넷 프레임워크의 부분으로 개발한 <mark>프로그래밍</mark> <mark>언어</mark>이다. 주로 크로스 플랫폼 CLI <mark>언어</mark>로 많이 쓰이고, 자바스크립트 및 GPU 코드 생성"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "101",
+        "_score" : 5.0966916,
+        "_source" : {
+          "summary" : "루비(Ruby)는 마츠모토 유키히로(松本行弘 (まつもとゆきひろ))가 개발한 동적 객체 지향 스크립트 프로그래밍 언어이다. 루비는 순수 객체 지향 언어이다. 루비에서의 정수나 문자열 등을 포함한 데이터 형식 등 모든 것이 객체이다. 기능에는 클래스 정의, 가비지 컬렉션, 강력한 정규 표현식 처리, 다중 스레드, 예외 처리, 반복, 클로저, Mixin, 연산자",
+          "no" : 101,
+          "source" : "Wikipedia",
+          "title" : "루비 (프로그래밍 언어)",
+          "url" : "https://ko.wikipedia.org/wiki/루비_(프로그래밍_언어)",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.878Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "루비(Ruby)는 마츠모토 유키히로(松本行弘 (まつもとゆきひろ))가 개발한 동적 객체 지향 스크립트 <mark>프로그래밍</mark> <mark>언어</mark>이다. 루비는 순수 객체 지향 <mark>언어</mark>이다. 루비에서의 정수나 문자"
+          ],
+          "title" : [
+            "루비 (<mark>프로그래밍</mark> <mark>언어</mark>)"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "136",
+        "_score" : 5.0966916,
+        "_source" : {
+          "summary" : "4세대 프로그래밍 언어(4th-Generation Propramming Language: 4GL)란 순차형 언어 이후의 프로그래밍 언어들을 가리키는 말이다. 4세대라고 부르는 이유는, 기계어를 1세대, 어셈블리 언어를 2세대, 순차형 언어를 3세대라 보기 때문이다. FORTRAN나 COBOL 등의 순차형 언어보다 높은 기능의 프로그램 언어를 일반적으로 가리",
+          "no" : 136,
+          "source" : "Wikipedia",
+          "title" : "4세대 프로그래밍 언어",
+          "url" : "https://ko.wikipedia.org/wiki/4세대_프로그래밍_언어",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.889Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "4세대 <mark>프로그래밍</mark> <mark>언어</mark>(4th-Generation Propramming Language: 4GL)란 순차형 <mark>언어</mark> 이후의 <mark>프로그래밍</mark> <mark>언어</mark>들을 가리키는 말이다. 4세대라고 부르",
+            "는 이유는, 기계어를 1세대, 어셈블리 <mark>언어</mark>를 2세대, 순차형 <mark>언어</mark>를 3세대라 보기 때문이다. FORTRAN나 COBOL 등의 순차형 <mark>언어</mark>보다 높은 기능의 프로그램 <mark>언어</mark>를 일반적으로 가리"
+          ],
+          "title" : [
+            "4세대 <mark>프로그래밍</mark> <mark>언어</mark>"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "111",
+        "_score" : 5.0056605,
+        "_source" : {
+          "summary" : "그루비(Groovy)는 자바에 파이썬, 루비, 스몰토크등의 특징을 더한 동적 객체 지향 프로그래밍 언어이다.   2002년 영국 출신의 프로그래머인 제임스 스트라칸에 의해 창시되었으며 현재 아파치 사용 허가서 2.0 아래에 소스와 바이너리가 배포, 공개되어 있다. 2012년 6월 2일 2.0버전이 출시되었다. 그루비의 창시자 제임스 스트라칸은 그루비의 가장",
+          "no" : 111,
+          "source" : "Wikipedia",
+          "title" : "그루비",
+          "url" : "https://ko.wikipedia.org/wiki/그루비",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.881Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "그루비(Groovy)는 자바에 파이썬, 루비, 스몰토크등의 특징을 더한 동적 객체 지향 <mark>프로그래밍</mark> <mark>언어</mark>이다.   2002년 영국 출신의 프로그래머인 제임스 스트라칸에 의해 창시",
+            "되었으며 현재 아파치 <mark>사용</mark> 허가서 2.0 아래에 소스와 바이너리가 배포, 공개되어 있다. 2012년 6월 2일 2.0버전이 출시되었다. 그루비의 창시자 제임스 스트라칸은 그루비의 가장"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "117",
+        "_score" : 4.6341496,
+        "_source" : {
+          "summary" : "어셈블리어(영어: Assembly language)는 기계어와 일대일 대응이 되는 컴퓨터 프로그래밍의 저급 언어이다. 컴퓨터 구조에 따라 사용하는 기계어가 달라지며, 따라서 기계어에 대응되어 만들어지는 어셈블리어도 각각 다르게 된다. 컴퓨터 CPU마다 지원하는 오퍼레이션의 타입과 개수는 제각각이며, 레지스터의 크기와 개수, 저장된 데이터 형의 표현도 각기 ",
+          "no" : 117,
+          "source" : "Wikipedia",
+          "title" : "어셈블리어",
+          "url" : "https://ko.wikipedia.org/wiki/어셈블리어",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.885Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "어셈블리어(영어: Assembly language)는 기계어와 일대일 대응이 되는 컴퓨터 <mark>프로그래밍</mark>의 저급 <mark>언어</mark>이다. 컴퓨터 구조에 따라 <mark>사용</mark>하는 기계어가 달라지며, 따라서 기계"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "121",
+        "_score" : 4.2076397,
+        "_source" : {
+          "summary" : "난해한 프로그래밍 언어(esoteric programming language, esolang)는 몇몇 해커들 사이에서, 컴퓨터 프로그래밍 언어의 한계를 테스트하기 위해서, 혹은 어떤 개념의 증명으로서, 혹은 장난으로 설계된 프로그래밍 언어이며, 실용적인 프로그래밍에 적용하기 위한 의도로 만들어진 언어가 아니다. 최초의 난해한 프로그래밍 언어는 제임스 라이온",
+          "no" : 121,
+          "source" : "Wikipedia",
+          "title" : "난해한 프로그래밍 언어",
+          "url" : "https://ko.wikipedia.org/wiki/난해한_프로그래밍_언어",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.886Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "서, 혹은 어떤 개념의 증명으로서, 혹은 장난으로 설계된 <mark>프로그래밍</mark> <mark>언어</mark>이며, 실용적인 <mark>프로그래밍</mark>에 적용하기 위한 의도로 만들어진 <mark>언어가</mark> 아니다. 최초의 난해한 <mark>프로그래밍</mark> <mark>언어</mark>는 제임스 라이온",
+            "난해한 <mark>프로그래밍</mark> <mark>언어</mark>(esoteric programming language, esolang)는 몇몇 해커들 사이에서, 컴퓨터 <mark>프로그래밍</mark> <mark>언어</mark>의 한계를 테스트하기 위해"
+          ],
+          "title" : [
+            "난해한 <mark>프로그래밍</mark> <mark>언어</mark>"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "110",
+        "_score" : 4.097775,
+        "_source" : {
+          "summary" : "프로그래밍 언어는 기계(또는 컴퓨터)를 제어하기 위해서 사용된다. 프로그래밍 언어도 자연어와 같이 의미를 정의하기 위해서 구문적, 의미적인 규칙을 사용한다. 현재 수천 개의 프로그램 언어[1]가 있고, 매년 새로운 것들이 생겨나고 있다. 대부분의 언어는 많은 사람들이 사용하는 일반적인 언어로 발전하지 못했다. 많은 전문 프로그래머들은 몇십개의 다른 언어를 ",
+          "no" : 110,
+          "source" : "Wikipedia",
+          "title" : "프로그래밍 언어의 비교",
+          "url" : "https://ko.wikipedia.org/wiki/프로그래밍_언어의_비교",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.881Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "<mark>프로그래밍</mark> <mark>언어</mark>는 기계(또는 컴퓨터)를 제어하기 위해서 <mark>사용</mark>된다. <mark>프로그래밍</mark> <mark>언어</mark>도 자연어와 같이 의미를 정의하기 위해서 구문적, 의미적인 규칙을 <mark>사용</mark>한다. 현재 수천 개",
+            "의 프로그램 <mark>언어</mark>[1]가 있고, 매년 새로운 것들이 생겨나고 있다. 대부분의 <mark>언어</mark>는 많은 사람들이 <mark>사용</mark>하는 일반적인 <mark>언어</mark>로 발전하지 못했다. 많은 전문 프로그래머들은 몇십개의 다른 <mark>언어</mark>를 "
+          ],
+          "title" : [
+            "<mark>프로그래밍</mark> <mark>언어</mark>의 비교"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "125",
+        "_score" : 3.9448366,
+        "_source" : {
+          "summary" : "다음은 알파벳순 프로그래밍 언어 목록이다.   ",
+          "no" : 125,
+          "source" : "Wikipedia",
+          "title" : "프로그래밍 언어 목록",
+          "url" : "https://ko.wikipedia.org/wiki/프로그래밍_언어_목록",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.887Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "다음은 알파벳순 <mark>프로그래밍</mark> <mark>언어</mark> 목록이다.   "
+          ],
+          "title" : [
+            "<mark>프로그래밍</mark> <mark>언어</mark> 목록"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "126",
+        "_score" : 3.7990808,
+        "_source" : {
+          "summary" : "저급 프로그래밍 언어란 컴퓨터가 이해하기 쉽게 작성된 프로그래밍 언어로, 일반적으로 기계어와 어셈블리어를 일컫는다. 실행속도가 매우 빠르지만 배우기가 어려우며 유지보수가 힘든 것이 단점이다. 현재는 특수한 경우가 아니면 사용되지 않는다. 저급언어와 반대되는 것으로 고급 프로그래밍 언어가 있다.   기계어는 특별한 변환 과정 없이 컴퓨터가 직접 처리할 수 있",
+          "no" : 126,
+          "source" : "Wikipedia",
+          "title" : "저급 프로그래밍 언어",
+          "url" : "https://ko.wikipedia.org/wiki/저급_프로그래밍_언어",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.887Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "이 단점이다. 현재는 특수한 경우가 아니면 <mark>사용</mark>되지 않는다. 저급<mark>언어</mark>와 반대되는 것으로 고급 <mark>프로그래밍</mark> <mark>언어가</mark> 있다.   기계어는 특별한 변환 과정 없이 컴퓨터가 직접 처리할 수 있",
+            "저급 <mark>프로그래밍</mark> <mark>언어</mark>란 컴퓨터가 이해하기 쉽게 작성된 <mark>프로그래밍</mark> <mark>언어</mark>로, 일반적으로 기계어와 어셈블리어를 일컫는다. 실행속도가 매우 빠르지만 배우기가 어려우며 유지보수가 힘든 것"
+          ],
+          "title" : [
+            "저급 <mark>프로그래밍</mark> <mark>언어</mark>"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "144",
+        "_score" : 3.4727347,
+        "_source" : {
+          "summary" : "C는 1972년 켄 톰슨과 데니스 리치가 벨 연구소에서 일할 당시 새로 개발된 유닉스 운영 체제에서 사용하기 위해 개발한 프로그래밍 언어이다. 켄 톰슨은 BCPL언어를 필요에 맞추어 개조해서 \"B\"언어(언어를 개발한 벨 연구소의 B를 따서)라 명명했고, 데니스 리치가 이것을 개선하여 C 언어가 탄생했다. 유닉스 시스템의 바탕 프로그램은 모두 C로 작성되었고",
+          "no" : 144,
+          "source" : "Wikipedia",
+          "title" : "C (프로그래밍 언어)",
+          "url" : "https://ko.wikipedia.org/wiki/C_(프로그래밍_언어)",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.893Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "C는 1972년 켄 톰슨과 데니스 리치가 벨 연구소에서 일할 당시 새로 개발된 유닉스 운영 체제에서 <mark>사용</mark>하기 위해 개발한 <mark>프로그래밍</mark> <mark>언어</mark>이다. 켄 톰슨은 BCPL<mark>언어</mark>를 필요",
+            "에 맞추어 개조해서 \"B\"<mark>언어</mark>(<mark>언어</mark>를 개발한 벨 연구소의 B를 따서)라 명명했고, 데니스 리치가 이것을 개선하여 C <mark>언어가</mark> 탄생했다. 유닉스 시스템의 바탕 프로그램은 모두 C로 작성되었고"
+          ],
+          "title" : [
+            "C (<mark>프로그래밍</mark> <mark>언어</mark>)"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "98",
+        "_score" : 3.41877,
+        "_source" : {
+          "summary" : "코볼(COBOL, COmmon Business-Oriented Language, 사무 지향 보통 언어)은 사무용으로 설계된, 영어와 같은 컴퓨터 프로그래밍 언어이다. 절차적, 명령형 언어이고, 2002년부터는 객체 지향 언어이다.[5] 코볼은 주로 비즈니스, 금융, 회사/정부 관리 시스템에 주로 사용된다. 1997년 가트너 그룹은 총 200,000,000,",
+          "no" : 98,
+          "source" : "Wikipedia",
+          "title" : "코볼",
+          "url" : "https://ko.wikipedia.org/wiki/코볼",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.878Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "코볼(COBOL, COmmon Business-Oriented Language, 사무 지향 보통 <mark>언어</mark>)은 사무용으로 설계된, 영어와 같은 컴퓨터 <mark>프로그래밍</mark> <mark>언어</mark>이다. 절차",
+            "적, 명령형 <mark>언어</mark>이고, 2002년부터는 객체 지향 <mark>언어</mark>이다.[5] 코볼은 주로 비즈니스, 금융, 회사/정부 관리 시스템에 주로 <mark>사용</mark>된다. 1997년 가트너 그룹은 총 200,000,000,"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "97",
+        "_score" : 3.3883097,
+        "_source" : {
+          "summary" : "베이식(BASIC: Beginner's All-purpose Symbolic Instruction Code, 문화어: 베이씨크)은 프로그래밍 언어의 하나이다. 절차형 언어로 1964년 다트머스 대학교의 존 케메니(John Kemeny)와 토머스 커츠(Thomas Kurtz)가 개발했다. 교육용으로 개발되어 언어의 문법이 쉬우며, 다트머스의 최초 제품 이래로",
+          "no" : 97,
+          "source" : "Wikipedia",
+          "title" : "베이직",
+          "url" : "https://ko.wikipedia.org/wiki/베이직",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.877Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "베이식(BASIC: Beginner's All-purpose Symbolic Instruction Code, 문화어: 베이씨크)은 <mark>프로그래밍</mark> <mark>언어</mark>의 하나이다. 절차형 <mark>언어</mark>",
+            "로 1964년 다트머스 대학교의 존 케메니(John Kemeny)와 토머스 커츠(Thomas Kurtz)가 개발했다. 교육용으로 개발되어 <mark>언어</mark>의 문법이 쉬우며, 다트머스의 최초 제품 이래로"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "102",
+        "_score" : 3.0060122,
+        "_source" : {
+          "summary" : "셈틀 또는 컴퓨터(영어: computer, 문화어: 콤퓨터)는 수식이나 논리적 언어로 표현된 계산을 수행하거나 작업을 통제하는 기계다. 사전에서 찾을 수 있는 위와 같은 정의는 정확하지만 가리키는 범위가 너무 넓어 이전의 컴퓨터와 현재의 컴퓨터 그리고 미래의 컴퓨터를 정확하게 설명하기는 어렵다. 더 의미있는 질문은 '컴퓨터의 종류에는 어떤 것들이 있는가?'",
+          "no" : 102,
+          "source" : "Wikipedia",
+          "title" : "컴퓨터",
+          "url" : "https://ko.wikipedia.org/wiki/컴퓨터",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.879Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "셈틀 또는 컴퓨터(영어: computer, 문화어: 콤퓨터)는 수식이나 논리적 <mark>언어</mark>로 표현된 계산을 수행하거나 작업을 통제하는 기계다. 사전에서 찾을 수 있는 위와 같은 정의"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "107",
+        "_score" : 2.927812,
+        "_source" : {
+          "summary" : "C#(시 샤프)는 마이크로소프트에서 개발한 객체 지향 프로그래밍 언어로, 닷넷 프레임워크의 한 부분으로 만들었으며 나중에 ECMA (ECMA-334)와 ISO (ISO/IEC/23270)의 표준으로 자리잡았다. C++와 자바와 비슷한 문법을 가지고 있다.   출력 결과 C#은 닷넷 프로그램이 동작하는 닷넷 플랫폼을 가장 직접적으로 반영하고, 또한 닷넷 플랫",
+          "no" : 107,
+          "source" : "Wikipedia",
+          "title" : "C 샤프",
+          "url" : "https://ko.wikipedia.org/wiki/C_샤프",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.880Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "C#(시 샤프)는 마이크로소프트에서 개발한 객체 지향 <mark>프로그래밍</mark> <mark>언어</mark>로, 닷넷 프레임워크의 한 부분으로 만들었으며 나중에 ECMA (ECMA-334)와 ISO (ISO/IEC"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "132",
+        "_score" : 2.8239133,
+        "_source" : {
+          "summary" : "고급 프로그래밍 언어란 사람이 이해하기 쉽게 작성된 프로그래밍 언어로서, 저급 프로그래밍 언어보다 가독성이 높고 다루기 간단하다는 장점이 있다. 컴파일러나 인터프리터에 의해 저급 프로그래밍 언어로 번역되어 실행된다. C 언어, 자바, 베이직 등 대부분의 프로그래밍 언어들은 고급언어에 속한다. 추상화의 정도는 얼마나 프로그래밍 언어가 높은 수준인지를 정의한다",
+          "no" : 132,
+          "source" : "Wikipedia",
+          "title" : "고급 프로그래밍 언어",
+          "url" : "https://ko.wikipedia.org/wiki/고급_프로그래밍_언어",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.889Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            " <mark>프로그래밍</mark> <mark>언어</mark>로 번역되어 실행된다. C <mark>언어</mark>, 자바, 베이직 등 대부분의 <mark>프로그래밍</mark> <mark>언어</mark>들은 고급<mark>언어</mark>에 속한다. 추상화의 정도는 얼마나 <mark>프로그래밍</mark> <mark>언어가</mark> 높은 수준인지를 정의한다",
+            "고급 <mark>프로그래밍</mark> <mark>언어</mark>란 사람이 이해하기 쉽게 작성된 <mark>프로그래밍</mark> <mark>언어</mark>로서, 저급 <mark>프로그래밍</mark> <mark>언어</mark>보다 가독성이 높고 다루기 간단하다는 장점이 있다. 컴파일러나 인터프리터에 의해 저급"
+          ],
+          "title" : [
+            "고급 <mark>프로그래밍</mark> <mark>언어</mark>"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "129",
+        "_score" : 2.7686756,
+        "_source" : {
+          "summary" : "이 문서는 프로그래밍 언어의 역사의 주요 발전에 대하여 논한다. 더 자세한 연표의 경우 프로그래밍 언어의 연표를 참조할 것.   초기의 프로그래밍 언어는 현대의 컴퓨터에서 거슬러 올라간다. 초기에 언어는 부호였다. 1801년에 발명된 자카드식 문직기는 자동으로 장식 패턴을 발생시킬 목적으로 천공 카드의 구멍을 이용하여 문직기의 팔의 이동을 표현하였다. 18",
+          "no" : 129,
+          "source" : "Wikipedia",
+          "title" : "프로그래밍 언어의 역사",
+          "url" : "https://ko.wikipedia.org/wiki/프로그래밍_언어의_역사",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.888Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "이 문서는 <mark>프로그래밍</mark> <mark>언어</mark>의 역사의 주요 발전에 대하여 논한다. 더 자세한 연표의 경우 <mark>프로그래밍</mark> <mark>언어</mark>의 연표를 참조할 것.   초기의 <mark>프로그래밍</mark> <mark>언어</mark>는 현대의 컴퓨터에서 거슬러",
+            " 올라간다. 초기에 <mark>언어</mark>는 부호였다. 1801년에 발명된 자카드식 문직기는 자동으로 장식 패턴을 발생시킬 목적으로 천공 카드의 구멍을 이용하여 문직기의 팔의 이동을 표현하였다. 18"
+          ],
+          "title" : [
+            "<mark>프로그래밍</mark> <mark>언어</mark>의 역사"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "130",
+        "_score" : 2.7686756,
+        "_source" : {
+          "summary" : "3세대 언어(third generation language)는 프로그래밍 언어로, 영어와 유사하다. 3세대 언어는 프로그래머로 하여금 하드웨어가 프로그램을 어떻게 실행시키느냐 하는 것 보다는 문제자체에 초점을 맞추고 집중할 수 있도록 하였기 때문에 문제지향(problem-oriented)의 언어라고 한다. 또한 3세대 언어는 프로그래머가 현안 문제를 해결하",
+          "no" : 130,
+          "source" : "Wikipedia",
+          "title" : "3세대 프로그래밍 언어",
+          "url" : "https://ko.wikipedia.org/wiki/3세대_프로그래밍_언어",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.888Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "3세대 <mark>언어</mark>(third generation language)는 <mark>프로그래밍</mark> <mark>언어</mark>로, 영어와 유사하다. 3세대 <mark>언어</mark>는 프로그래머로 하여금 하드웨어가 프로그램을 어떻게 실행시키느냐 하",
+            "는 것 보다는 문제자체에 초점을 맞추고 집중할 수 있도록 하였기 때문에 문제지향(problem-oriented)의 <mark>언어</mark>라고 한다. 또한 3세대 <mark>언어</mark>는 프로그래머가 현안 문제를 해결하"
+          ],
+          "title" : [
+            "3세대 <mark>프로그래밍</mark> <mark>언어</mark>"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "143",
+        "_score" : 2.7686756,
+        "_source" : {
+          "summary" : "자바(영어: Java, 문화어: 쟈바)는 썬 마이크로시스템즈의 제임스 고슬링(James Gosling)과 다른 연구원들이 개발한 객체 지향적 프로그래밍 언어이며, 썬 마이크로시스템즈에서 무료로 제공하고 있다. 1991년 그린 프로젝트(Green Project)라는 이름으로 시작해 1995년에 발표했다. 처음에는 가전제품 내에 탑재해 동작하는 프로그램을 위해",
+          "no" : 143,
+          "source" : "Wikipedia",
+          "title" : "자바 (프로그래밍 언어)",
+          "url" : "https://ko.wikipedia.org/wiki/자바_(프로그래밍_언어)",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.893Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "자바(영어: Java, 문화어: 쟈바)는 썬 마이크로시스템즈의 제임스 고슬링(James Gosling)과 다른 연구원들이 개발한 객체 지향적 <mark>프로그래밍</mark> <mark>언어</mark>이며, 썬 마이크"
+          ],
+          "title" : [
+            "자바 (<mark>프로그래밍</mark> <mark>언어</mark>)"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "145",
+        "_score" : 2.7686756,
+        "_source" : {
+          "summary" : "스위프트(Swift)는 애플의 iOS와 OS X를 위한 프로그래밍 언어로 2014년 6월 2일 애플 세계 개발자 회의(WWDC)에서 처음 소개되었다.[2]. 기존의 애플 운영체제용 언어인 오브젝티브-C와 함께 공존할 목적으로 만들어졌다. 오브젝티브-C와 마찬가지로 LLVM으로 빌드되고 같은 런타임을 공유한다. 클로저, 다중 리턴 타입, 네임스페이스, 제네릭",
+          "no" : 145,
+          "source" : "Wikipedia",
+          "title" : "스위프트 (프로그래밍 언어)",
+          "url" : "https://ko.wikipedia.org/wiki/스위프트_(프로그래밍_언어)",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.894Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "스위프트(Swift)는 애플의 iOS와 OS X를 위한 <mark>프로그래밍</mark> <mark>언어</mark>로 2014년 6월 2일 애플 세계 개발자 회의(WWDC)에서 처음 소개되었다.[2]. 기존의 애플 운영체제",
+            "용 <mark>언어</mark>인 오브젝티브-C와 함께 공존할 목적으로 만들어졌다. 오브젝티브-C와 마찬가지로 LLVM으로 빌드되고 같은 런타임을 공유한다. 클로저, 다중 리턴 타입, 네임스페이스, 제네릭"
+          ],
+          "title" : [
+            "스위프트 (<mark>프로그래밍</mark> <mark>언어</mark>)"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "127",
+        "_score" : 2.5836024,
+        "_source" : {
+          "summary" : "컴파일러(compiler, 순화 용어: 해석기, 번역기)는 특정 프로그래밍 언어로 쓰여 있는 문서를 다른 프로그래밍 언어로 옮기는 프로그램을 말한다. 원래의 문서를 소스 코드 혹은 원시 코드라고 부르고, 출력된 문서를 목적 코드라고 부른다. 목적 코드는 주로 다른 프로그램이나 하드웨어가 처리하기에 용이한 형태로 출력되지만 사람이 읽을 수 있는 문서 파일이나",
+          "no" : 127,
+          "source" : "Wikipedia",
+          "title" : "컴파일러",
+          "url" : "https://ko.wikipedia.org/wiki/컴파일",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.888Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "컴파일러(compiler, 순화 용어: 해석기, 번역기)는 특정 <mark>프로그래밍</mark> <mark>언어</mark>로 쓰여 있는 문서를 다른 <mark>프로그래밍</mark> <mark>언어</mark>로 옮기는 프로그램을 말한다. 원래의 문서를 소스 코드"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "105",
+        "_score" : 2.4606721,
+        "_source" : {
+          "summary" : "occam은 커뮤니케이팅 시퀜셜 프로세스의 프로세스 계산으로 기반한 프로그래밍 언어다.[1] 이 프로그래밍 언어는 영국의 옛 반도체 회사 인모스(Inmos)의 프로그래머들이 만들었다. occam은 파스칼과 같이 명령형과 절차적으로 작동하는 파라다임을 가지고 있다.",
+          "no" : 105,
+          "source" : "Wikipedia",
+          "title" : "occam",
+          "url" : "https://ko.wikipedia.org/wiki/Occam",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.880Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "occam은 커뮤니케이팅 시퀜셜 프로세스의 프로세스 계산으로 기반한 <mark>프로그래밍</mark> <mark>언어</mark>다.[1] 이 <mark>프로그래밍</mark> <mark>언어</mark>는 영국의 옛 반도체 회사 인모스(Inmos)의 프로그래머들이 만들었다. occam은 파스칼과 같이 명령형과 절차적으로 작동하는 파라다임을 가지고 있다."
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "article",
+        "_id" : "228",
+        "_score" : 2.3569982,
+        "_source" : {
+          "summary" : "영국의 노동당, 보수당, 자유민주당이 합심해 온라인 여성혐오 대처에 나섰습니다. 인터넷상에서 여성에 대한 폭력이 광범위하게 자행되고 있다는 연구 결과 발표에 따른 일입니다. 노동당 소속의 의원 이베트 쿠퍼(Yvette Cooper)를 필두로 모인 삼당의 전·현직 의원들은 문제에 대한 국가적인 토론을 독려하고 방안을 모색하기 위해 “인터넷 되찾기(Reclaim the Internet)” 캠페인을 시작한다고 밝혔습니다. 캠페인 출범 발표와 함께 공개한 연구는 지난 4월 말부터 3주간 영국 트위터에서 “헤픈 년(slut)”과 “창녀(whore)”라는 단어의 사용을 모니터했습니다. 총 1만 개의 공격적이고 여성 혐오적인 트윗에 6,500명의 사용자가 타겟이 되었다는 것이 밝혀졌습니다. 다른 국가들로 모니터링을 확대하자, 무려 20만 개의 공격적인 트윗이 8만 명을 향했음이 드러났습니다. “가해자”의 절반 이상이 여성이었습니다. 가디언의 자체 조사에서도 공격적인 댓글을 가장 많이 받는 필진 10명 가운데 8명이 여성이었고, 나머지 2명은 흑인 남성이었음이 드러난 바 있습니다. 캠페인 측은 우선 온라인 포럼을 열고, 개인과 단체, 기업, 노조, 경찰, 피해자, IT 기업 등 각계각층의 의견을 받기로 했습니다. 쿠퍼 의원은 1970년대의 “밤거리 되찾기” 운동에서 영감을 얻어 이번 캠페인을 생각해냈다고 밝혔습니다. 당시 여성들이 밤거리의 폭력과 추행에 대한 대책을 요구했던 것처럼, 이제는 거리나 마찬가지로 생활 공간이 되어버린 인터넷에서도 같은 운동이 필요하다는 것입니다. 쿠퍼 의원은 인터넷 상의 폭력, 괴롭힘, 여성혐오, 인종주의, 동성애 혐오 등이 특정 사용자들의 자유로운 의사 표현을 억압할 수 있다면서, 인터넷이라는 공간을 함께 사용하는 시민으로서 모두에게 인터넷을 안전한 곳으로 만들 책임이 있다고 말했습니다. 온라인 포럼에서는 크게 다섯 가지 사안에 대한 의견을 받습니다. 경찰과 검찰의 역할, 기업과 단체의 역할, 소셜미디어 플랫폼(페이스북, 트위터 등)의 책임, 트롤 대처 및 피해자 보호에 있어 개인들의 역할, 다음 세대의 역할과 이들에 대한 교육입니다.",
+          "no" : 228,
+          "source" : "뉴스페퍼민트",
+          "title" : "영국의회가 소셜미디어상의 여성혐오 퇴치에 나섰습니다",
+          "url" : "http://newspeppermint.com/2016/05/30/social-media-misogyny-uk/",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "http://newspeppermint.com/",
+          "@timestamp" : "2017-02-22T19:00:01.313Z",
+          "datatype" : "기사",
+          "@version" : "1",
+          "lastscraped" : "2017. 02. 21.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "(whore)”라는 단어의 <mark>사용</mark>을 모니터했습니다. 총 1만 개의 공격적이고 여성 혐오적인 트윗에 6,500명의 <mark>사용</mark>자가 타겟이 되었다는 것이 밝혀졌습니다. 다른 국가들로 모니터링",
+            "혐오, 인종주의, 동성애 혐오 등이 특정 <mark>사용</mark>자들의 자유로운 의사 표현을 억압할 수 있다면서, 인터넷이라는 공간을 함께 <mark>사용</mark>하는 시민으로서 모두에게 인터넷을 안전한 곳으로 만들 책임"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "119",
+        "_score" : 2.3529034,
+        "_source" : {
+          "summary" : "포트란(Fortran)은 1954년 IBM 704에서 과학적인 계산을 하기 위해 시작된 컴퓨터 프로그램 언어이다. FORTRAN은 수식(Formular) 변환기(Translator)의 약자이다.(IBM Mathematical Formula Translating System에서 유래.) 포트란은 알골과 함께 과학 계산용으로 주로 사용되는 언어이며, 당시 7명",
+          "no" : 119,
+          "source" : "Wikipedia",
+          "title" : "포트란",
+          "url" : "https://ko.wikipedia.org/wiki/포트란",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.885Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "기(Translator)의 약자이다.(IBM Mathematical Formula Translating System에서 유래.) 포트란은 알골과 함께 과학 계산용으로 주로 <mark>사용</mark>되는 <mark>언어</mark>이며, 당시 7명",
+            "포트란(Fortran)은 1954년 IBM 704에서 과학적인 계산을 하기 위해 시작된 컴퓨터 프로그램 <mark>언어</mark>이다. FORTRAN은 수식(Formular) 변환"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "120",
+        "_score" : 2.3103566,
+        "_source" : {
+          "summary" : "펄(Perl)은 래리 월이 만든 인터프리터 방식의 프로그래밍 언어 혹은 그 인터프리터 소프트웨어를 가리킨다. 펄은 고급 언어, 범용 언어, 인터프리터 언어, 동적 언어 범주에 속한다. 이 계열의 언어에는 펄 5와 펄 6가 있다.[3] 래리 월이 1987년 펄을 처음 만든 후, 펄은 많은 변화를 겪었다. 펄 6은 2000년부터 펄을 다시 설계하면서 개발되기 ",
+          "no" : 120,
+          "source" : "Wikipedia",
+          "title" : "펄",
+          "url" : "https://ko.wikipedia.org/wiki/펄",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.885Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "펄(Perl)은 래리 월이 만든 인터프리터 방식의 <mark>프로그래밍</mark> <mark>언어</mark> 혹은 그 인터프리터 소프트웨어를 가리킨다. 펄은 고급 <mark>언어</mark>, 범용 <mark>언어</mark>, 인터프리터 <mark>언어</mark>, 동적 <mark>언어</mark> 범주",
+            "에 속한다. 이 계열의 <mark>언어</mark>에는 펄 5와 펄 6가 있다.[3] 래리 월이 1987년 펄을 처음 만든 후, 펄은 많은 변화를 겪었다. 펄 6은 2000년부터 펄을 다시 설계하면서 개발되기 "
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "article",
+        "_id" : "217",
+        "_score" : 2.304353,
+        "_source" : {
+          "summary" : "핀터레스트(Pinterest)의 인터페이스는 간단합니다. 특정 주제와 관련된 버튼을 누르면 그 주제 안에 담겨 있던 이미지들이 화면 전체에 분할돼 나타납니다. 이 중 어떤 이미지도 보드(board)라고 알려진 사용자 자신만의 공간에 더할 수 있습니다. 다른 사용자들은 이렇게 만들어진 보드를 검색할 수 있고 자신들이 좋아하는 이미지를 모아서 또 새로운 보드를 만들 수 있습니다. 핀터레스트는 대부분의 유명 테크 기업들과 달리 캘리포니아에 사는 테크를 사랑하는 남자들에게서 인기를 끌면서 시작되지 않았습니다. 간단한 저녁 식사를 만드는 것부터 결혼까지 모든 것을 계획할 수 있는 사이트를 만들고 싶었던, 캘리포니아에서 멀리 떨어진 곳에 거주하던 젊은 여성들이 모여들면서 인기를 얻게 되었죠. 핀터레스트는 현재 사람들이 어떤 물건을 구매하거나 만들기 전에 찾아보는 사이트로 알려져 있습니다. 핀터레스트 관계자들은 핀터레스트를 사용자들이 자신들의 미래를 계획하는 장소라고 홍보하지만, 핀터레스트는 동시에 한 곳에서 흥미로운 주제에 관한 다양한 이미지를 볼 수 있는 곳이기도 합니다. 결혼 준비부터 육아, 남자 셔츠, 새끼 고양이에 이르기까지 다양한 주제들이 있습니다. 어떤 보드는 그냥 감정을 나타내는 단어인 “기념비적인(monumental)”, “귀여운(cute)”, 혹은 “모험을 즐기는(adventurous)”과 같은 주제 아래 다양한 이미지를 선보이고 있습니다. 핀터레스트의 엄청난 인기에도 불구하고 핀터레스트는 비슷한 시기에 성장한 다른 테크 기업인 인스타그램, 우버, 혹은 드롭박스와 같은 수준의 관심이나 찬사를 받지는 못했습니다. 핀터레스트는 구글이나 페이스북과는 달리 기술로 무장한 기업처럼 여겨지지 않았습니다. 어떤 사람들은 핀터레스트가 새로운 지평을 열 만한 아이디어가 아니라 그냥 디지털 스크랩북이라고 말합니다. 하지만 인터넷 기업들이 가치 있는 이유 중 큰 부분이 바로 이들이 가지고 있는 소비자에 대한 데이터 때문입니다. 그런 면에서 본다면 핀터레스트는 정말로 흥미로운 데이터를 소유하고 있습니다.",
+          "no" : 217,
+          "source" : "뉴스페퍼민트",
+          "title" : "핀터레스트(Pinterest)는 구글 검색의 경쟁자로 떠오를 수 있을까?",
+          "url" : "http://newspeppermint.com/2014/08/05/canpinterestcompetewithgooglesearch/",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "http://newspeppermint.com/",
+          "@timestamp" : "2017-02-22T19:00:01.305Z",
+          "datatype" : "기사",
+          "@version" : "1",
+          "lastscraped" : "2017. 02. 21.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "도 보드(board)라고 알려진 <mark>사용</mark>자 자신만의 공간에 더할 수 있습니다. 다른 <mark>사용</mark>자들은 이렇게 만들어진 보드를 검색할 수 있고 자신들이 좋아하는 이미지를 모아서 또 새로운 보드",
+            "들이 어떤 물건을 구매하거나 만들기 전에 찾아보는 사이트로 알려져 있습니다. 핀터레스트 관계자들은 핀터레스트를 <mark>사용</mark>자들이 자신들의 미래를 계획하는 장소라고 홍보하지만, 핀터레스트는"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "103",
+        "_score" : 2.303359,
+        "_source" : {
+          "summary" : "엠바카데로 델파이(Embarcadero Delphi Delphi, (이전 이름: 코드기어 델파이, 인프라이즈 델파이, 볼랜드 델파이))는 마이크로소프트 윈도 응용 프로그램을 위한 통합 개발 환경(고속 개발 도구)이며 원래는 볼랜드가 개발하였으나 지금은 엠바카데로사에서 소유하여 개발하고 있다. 오브젝트 파스칼 프로그래밍 언어로부터 파생된 언어인 델파이를 이용",
+          "no" : 103,
+          "source" : "Wikipedia",
+          "title" : "델파이",
+          "url" : "https://ko.wikipedia.org/wiki/델파이",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.879Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            " 통합 개발 환경(고속 개발 도구)이며 원래는 볼랜드가 개발하였으나 지금은 엠바카데로사에서 소유하여 개발하고 있다. 오브젝트 파스칼 <mark>프로그래밍</mark> <mark>언어</mark>로부터 파생된 <mark>언어</mark>인 델파이를 이용"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "137",
+        "_score" : 2.303359,
+        "_source" : {
+          "summary" : "소스 코드(source code) 또는 원시 코드란 컴퓨터 프로그램을 (사람이 읽을 수 있는) 프로그래밍 언어로 기술한 글을 말한다. 한 개, 또는 여러 개의 텍스트 파일로 구성되어 있다. 현대 소프트웨어 개발에서 기계어는 극히 일부 영역에서만 쓰이며, 대부분 고급 언어로 된 소스 코드를 컴파일하여 개발한다. 소프트웨어와 이에 동반하는 소스 코드는 일반적으",
+          "no" : 137,
+          "source" : "Wikipedia",
+          "title" : "소스 코드",
+          "url" : "https://ko.wikipedia.org/wiki/소스_코드",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.890Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "소스 코드(source code) 또는 원시 코드란 컴퓨터 프로그램을 (사람이 읽을 수 있는) <mark>프로그래밍</mark> <mark>언어</mark>로 기술한 글을 말한다. 한 개, 또는 여러 개의 텍스트 파일로 구성",
+            "되어 있다. 현대 소프트웨어 개발에서 기계어는 극히 일부 영역에서만 쓰이며, 대부분 고급 <mark>언어</mark>로 된 소스 코드를 컴파일하여 개발한다. 소프트웨어와 이에 동반하는 소스 코드는 일반적으"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "116",
+        "_score" : 2.2068794,
+        "_source" : {
+          "summary" : "구문 강조(構文強調, syntax highlighting)는 문자열(특히 소스 코드)을 형식의 틀에 따라 여러 가지 색과 글꼴로 다르게 보여 주는 문서 편집기의 기능이다. 이러한 기능은 프로그래밍 언어나 마크업 언어와 같은 구조화 언어로 프로그램을 짜기 쉽게 해 주며, 구문 오류와 구조가 눈에 더 잘 들어오게 만든다. 일부 편집기들은 또한 구문 강조 외에 ",
+          "no" : 116,
+          "source" : "Wikipedia",
+          "title" : "구문 강조",
+          "url" : "https://ko.wikipedia.org/wiki/구문_강조",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.884Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            " 기능은 <mark>프로그래밍</mark> <mark>언어</mark>나 마크업 <mark>언어</mark>와 같은 구조화 <mark>언어</mark>로 프로그램을 짜기 쉽게 해 주며, 구문 오류와 구조가 눈에 더 잘 들어오게 만든다. 일부 편집기들은 또한 구문 강조 외에 "
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "article",
+        "_id" : "221",
+        "_score" : 2.1841474,
+        "_source" : {
+          "summary" : "구글이 인간의 신경망을 본뜬 딥러닝을 적용해 지금까지 우리가 알던 번역기와는 차원이 다른 인공지능 번역기를 선보였습니다. 지난달 14일 새로운 구글 번역기를 집중적으로 분석한 뉴욕타임스의 기사 “The Great A.I. Awakening”을 소개합니다. 6부 보기 —– 4. 고양이 얼굴 인식에 관한 논문 한 살배기 아이가 세상을 배워가는 방식을 기계에 적용해 머신러닝을 훈련한 지 불과 1~2년 만에 구글 브레인은 구글 내 연구지원 부서 x 랩에서 나와 더 큰 연구 기관으로 소속을 옮긴다. (x 랩은 아이디어를 구체적인 프로젝트로 전환하는 초기 단계 연구를 지원하는 내부 부서) 여전히 팀원은 열 명이 채 되지 않고 목표한 결과물이 정확히 어떤 모습일지조차 아직 명확한 그림을 그려놓지 않은 상태였다. 하지만 이때도 구글 브레인은 이미 앞으로 개발 과정에서 어떤 일이 닥칠지, 어떤 부분을 준비하고 보완해야 할지를 예측하고 이에 대비하며 앞으로 나아갔다. (구글 X의 팀장은 초기 연구지원에 드는 x 랩의 모든 비용을 치르고도 남을 수익을 구글 브레인이 올리고 떠났다는 말을 한 적이 있다) 사람의 마음이 처음에는 무엇이 공인지 분간해내는 것만으로 만족하지만, 이내 그 공이 갖고 싶어진다. 이들이 목표로 삼은 다음 분석 대상은 바로 언어였다. 언어를 연구하기 시작한 뒤 나온 첫 번째 결실이 바로 캣 페이퍼라 알려진 고양이 얼굴 인식에 관한 연구 논문이다. 구글 브레인은 이 캣 페이퍼 덕분에 상당히 유명해졌다. 캣 페이퍼가 보여주고자 한 성과를 간단히 정리하면, 10억 개 넘는 연결 고리를 지닌 인공 신경망이 분류되지 않은 미가공 데이터를 관찰하고 스스로 분석해 인간이 사용하는 고차원적인 개념에 맞춰 정리하는 것이었다. 연결 고리(시냅스) 10억 개는 당시까지 연구 논문에 인용된 그 어떤 인공 신경망의 연결 고리 수보다 최소 100배나 많은 것이었지만, 실제 인간의 뇌에 있는 시냅스 수보다는 여전히 작은 숫자였다. 뇌 연구자들은 신경망에 유튜브 동영상을 갈무리한 정지화면 사진 수백만 장을 보여주었다.",
+          "no" : 221,
+          "source" : "뉴스페퍼민트",
+          "title" : "차원이 다른 구글 번역기의 도래 (7)",
+          "url" : "http://newspeppermint.com/2017/01/16/ai-awakening7/",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "http://newspeppermint.com/",
+          "@timestamp" : "2017-02-22T19:00:01.307Z",
+          "datatype" : "기사",
+          "@version" : "1",
+          "lastscraped" : "2017. 02. 21.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "하지만, 이내 그 공이 갖고 싶어진다. 이들이 목표로 삼은 다음 분석 대상은 바로 <mark>언어</mark>였다. <mark>언어</mark>를 연구하기 시작한 뒤 나온 첫 번째 결실이 바로 캣 페이퍼라 알려진 고양이 얼굴 인식에 관한",
+            "되지 않은 미가공 데이터를 관찰하고 스스로 분석해 인간이 <mark>사용</mark>하는 고차원적인 개념에 맞춰 정리하는 것이었다. 연결 고리(시냅스) 10억 개는 당시까지 연구 논문에 인용된 그 어떤 인공"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "135",
+        "_score" : 2.1167765,
+        "_source" : {
+          "summary" : "기계어(機械語)는 CPU가 직접 해독하고 실행할 수 있는 비트 단위로 쓰인 컴퓨터 언어를 통틀어 일컫는다. 기계어는 프로그램을 나타내는 가장 낮은 단계의 개념이다. 기계어는 어셈블리어와 1 : 1로 쓰일 수 있다. 다시 말해 컴퓨터 프로그래밍에서 기계어는 대부분 어셈블리어를 거쳐 짜여지게 된다. 어셈블리어가 아직 만들어지기 전에는 기계어를 직접 입력하여 프",
+          "no" : 135,
+          "source" : "Wikipedia",
+          "title" : "기계어",
+          "url" : "https://ko.wikipedia.org/wiki/기계어",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.889Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "기계어(機械語)는 CPU가 직접 해독하고 실행할 수 있는 비트 단위로 쓰인 컴퓨터 <mark>언어</mark>를 통틀어 일컫는다. 기계어는 프로그램을 나타내는 가장 낮은 단계의 개념이다. 기계어는 어셈",
+            "블리어와 1 : 1로 쓰일 수 있다. 다시 말해 컴퓨터 <mark>프로그래밍</mark>에서 기계어는 대부분 어셈블리어를 거쳐 짜여지게 된다. 어셈블리어가 아직 만들어지기 전에는 기계어를 직접 입력하여 프"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "124",
+        "_score" : 2.0778484,
+        "_source" : {
+          "summary" : "천공 카드(穿孔-, punched card)는 데이터를 표현하기 위해 규칙에 따라 직사각형 모양의 구멍을 뚫어 사용하는 종이 카드로서 초기의 저장매체이다. 천공 위치에 구멍을 뚫거나 뚫지 않음으로서 하나의 비트를 나타날 수 있다. 초기의 디지털 컴퓨터는 천공 카드를 키펀치 기기에 대한 오프라인 자료 기입을 취하는 컴퓨터 프로그램과 데이터를 위한 주된 매개체",
+          "no" : 124,
+          "source" : "Wikipedia",
+          "title" : "천공 카드",
+          "url" : "https://ko.wikipedia.org/wiki/천공_카드",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.887Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "천공 카드(穿孔-, punched card)는 데이터를 표현하기 위해 규칙에 따라 직사각형 모양의 구멍을 뚫어 <mark>사용</mark>하는 종이 카드로서 초기의 저장매체이다. 천공 위치에 구멍을 뚫"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "123",
+        "_score" : 1.9213437,
+        "_source" : {
+          "summary" : "자료형(資料形) 또는 데이터 타입(영어: data type)은 컴퓨터 과학과 프로그래밍 언어에서 실수치, 정수, 불린 자료형 따위의 여러 종류의 데이터를 식별하는 분류로서, 더 나아가 해당 자료형에 대한 가능한 값, 해당 자료형에서 수행을 마칠 수 있는 명령들, 데이터의 의미, 해당 자료형의 값을 저장하는 방식을 결정한다.[1][2]   자료형은 컴퓨터 기",
+          "no" : 123,
+          "source" : "Wikipedia",
+          "title" : "자료형",
+          "url" : "https://ko.wikipedia.org/wiki/자료형",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.886Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "자료형(資料形) 또는 데이터 타입(영어: data type)은 컴퓨터 과학과 <mark>프로그래밍</mark> <mark>언어</mark>에서 실수치, 정수, 불린 자료형 따위의 여러 종류의 데이터를 식별하는 분류"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "dictionary",
+        "_id" : "99",
+        "_score" : 1.4281397,
+        "_source" : {
+          "summary" : "유닉스(Unix)는 교육 및 연구 기관에서 즐겨 사용되는 범용 다중 사용자 방식의 시분할 운영 체제이다.[1] 1970년대 초반 벨 연구소 직원인 켄 톰슨, 데니스 리치, 더글러스 매클로리 등이 처음 개발하였다. 오늘날의 유닉스 시스템은 AT&T를 비롯한 여러 회사들과 버클리대학(UC Berkeley) 등 비영리 단체들이 개발한 다양한 버전들이 있다. 유닉",
+          "no" : 99,
+          "source" : "Wikipedia",
+          "title" : "유닉스",
+          "url" : "https://ko.wikipedia.org/wiki/유닉스",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://ko.wikipedia.org/",
+          "@timestamp" : "2017-02-20T19:00:00.878Z",
+          "datatype" : "사전",
+          "@version" : "1",
+          "lastscraped" : "2017. 01. 24.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "유닉스(Unix)는 교육 및 연구 기관에서 즐겨 <mark>사용</mark>되는 범용 다중 <mark>사용</mark>자 방식의 시분할 운영 체제이다.[1] 1970년대 초반 벨 연구소 직원인 켄 톰슨, 데니스 리치"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "article",
+        "_id" : "177",
+        "_score" : 1.4017024,
+        "_source" : {
+          "summary" : "넥스트저널리즘스쿨 학생들이 이세돌 9단과의 바둑대결에서 파죽지세로 몰아붙이고 있는 인공지능 ‘알파고’를 설계한 데미스 허사비스를 지난 3월10일 서울 포시즌스 호텔에서 만났다. 허사비스는 대국 결과에 만족한 듯 자주 웃음을 지으며 1시간동안 인터뷰에 응했다. 넥스트저널리즘스쿨은 <블로터>·<한겨레21>·구글코리아가 미래 언론인에게 디지털 미디어로 가는 길을 소개하기 위해 지난 1월 연 아카데미다. 이 기사는 제2기 넥스트저널리즘스쿨 수강생인 김혜인·이민경 씨가 작성했다. 기사는 블로터와 한겨레21에 공동 게재했다. <편집자주> 데미스 허사비스(demis_hassabis) 구글 딥마인드 CEO. 태초에 인공지능에 대한 시도는 많았으나 연산능력 그 이상을 넘어서지 못하였느니라. 데이터 응용력에 지체 현상이 나타났고 빅데이터를 심히 버거워하니라. 이에 인공지능에 대한 기술이 해박한 허사비스가 등장하니 ‘딥러닝’을 꺼내어 알고리즘계에 큰 빛을 비추니라. 허사비스가 살펴보시기에 ‘학습 알고리즘’을 적용할 게임엔 무엇이 존재하느냐 묻더니 ‘직관적인 알고리즘’을 사용하는 바둑에 눈길이 머무르시니라. 대상을 바둑으로 정하니라. 허사비스가 가라사대 우리의 신경망을 따라 우리의 모양대로 우리가 알파고를 만들고…. 어라? 바둑판을 엎을 위험이 있어 다시. 우리의 신경망을 따라 우리의 지능과 가장 비슷하게 알파고를 만들고 세상에 나타나게 하시니라. 제 1국. 알파고는 기계답게 정직했을 뿐이다 세계 최강의 바둑기사 이세돌 9단을 꺾은 알파고. 그 알파고의 창조주 딥마인드의 최고경영자(CEO) 데미스 허사비스를 3월10일 서울 광화문 포시즌호텔에서 만났다. 전날 끝난 제 1국 승리에 대한 소감을 묻자 그는 웃으며 “꽤 지치는데요”라고 첫마디를 꺼냈다. 자식의 프로 데뷔를 긴장 속에 지켜본 부모의 마음이 느껴졌다. 첫 경기가 치러지기 전 대다수 프로바둑기사들은 이세돌 9단의 우위를 단언했다. 그러나 불과 몇 시간 새, 인터넷 공간에는 알파고의 승리와 더불어 인간들의 탄식이 여기저기서 터져 나왔다",
+          "no" : 177,
+          "source" : "Bloter",
+          "title" : "‘알파고’의 창조주, 데미스 허사비스를 만나다",
+          "url" : "https://www.bloter.net/archives/251758",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://www.bloter.net/",
+          "@timestamp" : "2017-02-22T19:00:01.277Z",
+          "datatype" : "기사",
+          "@version" : "1",
+          "lastscraped" : "2017. 02. 08.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            " 알고리즘’을 적용할 게임엔 무엇이 존재하느냐 묻더니 ‘직관적인 알고리즘’을 <mark>사용</mark>하는 바둑에 눈길이 머무르시니라. 대상을 바둑으로 정하니라. 허사비스가 가라사대 우리의 신경망을 따라"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "article",
+        "_id" : "182",
+        "_score" : 1.4017024,
+        "_source" : {
+          "summary" : "구글코리아와 <미디어오늘>이 글로벌 에디터스 네트워크(GEN)의 글로벌 미디어 해커톤 대회인 ‘GEN 에디터스 랩’의 한국 예선, ‘서울 에디터스 랩’을 오는 3월 31일부터 4월 1일까지 양일간 서울 강남구 대치동 구글 캠퍼스 서울에서 개최한다고 2월2일 밝혔다. GEN 홈페이지 화면 갈무리 올해로 5회째를 맞는 ‘GEN 에디터스 랩’은 언론 비영리단체 GEN과 미국의 <뉴욕타임스>, 영국의 <가디언>, <BBC>, 스페인의 <엘빠이스> 등의 언론사들이 함께하는 글로벌 미디어 해커톤 대회다. 해킹과 마라톤의 합성어인 ‘해커톤’은 제한된 시간 안에 주어진 주제로 아이디어를 기획하고 이를 구현하는 개발자 대회다. 이번에 개최되는 ‘서울 에디터스 랩’은 ‘GEN 에디터스 랩’의 첫 한국 지역 예선이다. 미디어 전략가들이 모여 최신 뉴미디어 트렌드 및 콘텐츠 혁신을 논의하는 국내 최초의 국제 규모 미디어 해커톤 대회다. 올해 ‘서울 에디터스 랩’의 주제는 ‘선거와 정치’로, 1박 2일 동안 선거 관련 데이터 저널리즘이나 정치 참여 플랫폼, 공약 아카이빙 등 다양한 아이디어를 개발하고 미디어 서비스의 프로토타입을 제작해 발표하게 된다. 참가 등록은 2월 1일부터 28일까지 ‘서울 에디터스 랩’ 홈페이지에서 무료로 가능하다. 기자, 개발자, 디자이너가 3인 1조로 구성된 팀 가운데 최소 1명이 언론사 또는 콘텐츠 관련 기업/스타트업 소속이어야 한다. 참가팀은 최대 30팀이 선정될 예정이며, 각 출전팀은 대회 기간 동안 국내 전문가들의 특강 및 워크숍을 통해 뉴미디어 트렌드를 파악하고, 미디어 전문가들에게서 멘토링을 받게 된다. ‘서울 에디터스 랩’의 우승팀은 해커톤 둘째 날인 4월 1일 오후 구글 및 <미디어오늘>에서 구성된 심사위원단의 최종 심사를 거쳐 발표된다. 심사 기준은 콘텐츠 품질(혁신성), 디자인(사용자 친화성 및 창의성), 개발(완성도 및 기술 전문성), 운영(확장성 및 실행 가능성) 등 네 가지다. 이번 예선 대회 우승팀 3명은 오는 6월 오스트리아 빈에서 개최되는 ‘GEN 서밋’에 초청돼 ‘GEN 에디터스 랩’ 결선에 출전할 수 있다",
+          "no" : 182,
+          "source" : "Bloter",
+          "title" : "구글코리아-미디어오늘, 미디어 해커톤 ‘서울 에디터스 랩’ 개최",
+          "url" : "https://www.bloter.net/archives/271477",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://www.bloter.net/",
+          "@timestamp" : "2017-02-22T19:00:01.280Z",
+          "datatype" : "기사",
+          "@version" : "1",
+          "lastscraped" : "2017. 02. 08.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "(혁신성), 디자인(<mark>사용</mark>자 친화성 및 창의성), 개발(완성도 및 기술 전문성), 운영(확장성 및 실행 가능성) 등 네 가지다. 이번 예선 대회 우승팀 3명은 오는 6월 오스트리아 빈에서 개최되는 ‘GEN 서밋’에 초청돼 ‘GEN 에디터스 랩’ 결선에 출전할 수 있다"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "article",
+        "_id" : "166",
+        "_score" : 1.37158,
+        "_source" : {
+          "summary" : "배달 앱 ‘배달의민족’이 간편결제 서비스 ‘배민페이’를 출시했다고 2월7일 밝혔다. 앱 내 음식 주문 결제를 더욱 간편하게 만들기 위해서다. 사진=배달의민족 배민페이는 배달의민족을 통해 ‘바로결제’ 주문 시 미리 등록해 놓은 카드로 비밀번호 6자리만 입력하면 곧바로 결제가 완료되는 방식이다. 본인 인증은 최초 1회만 해 놓으면 되며, 결제용 카드는 여러 장 중복 등록 가능하다. 배민페이를 사용하면 일단 배달 앱 바깥에서 실행해야 하는 별도의 간편결제 앱을 거칠 필요가 없다. 배달의민족은 “하나의 계정으로 1개의 기기에서만 사용할 수 있도록 설정했기 때문에 보안 측면에서도 안전하다”라고 강조했다. 배민페이 출시와 함께 곧바로 등록해서 사용할 수 있는 카드는 신한카드, 하나카드, 현대카드, BC카드 등이다. 이른 시일 내에 다른 카드도 추가할 예정이다. 사진=배달의민족 사진=배달의민족  윤현준 배달의민족 최고운영책임자는 “배민페이는 신속하고 간편하게 즐기는 배달 음식에 날개를 달아주는 서비스”라며 “배달의민족은 메뉴를 고르는 순간부터 결제를 마치고 음식을 먹기까지 모든 과정에서 고객의 편리함을 극대화하기 위한 다양한 노력을 앞으로도 지속해 나갈 것”이라고 말했다.",
+          "no" : 166,
+          "source" : "Bloter",
+          "title" : "배달의민족, 간편결제 서비스 ‘배민페이’ 출시",
+          "url" : "https://www.bloter.net/archives/271636",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://www.bloter.net/",
+          "@timestamp" : "2017-02-22T19:00:01.271Z",
+          "datatype" : "기사",
+          "@version" : "1",
+          "lastscraped" : "2017. 02. 08.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "는 여러 장 중복 등록 가능하다. 배민페이를 <mark>사용</mark>하면 일단 배달 앱 바깥에서 실행해야 하는 별도의 간편결제 앱을 거칠 필요가 없다. 배달의민족은 “하나의 계정으로 1개의 기기에서만 <mark>사용</mark>",
+            "할 수 있도록 설정했기 때문에 보안 측면에서도 안전하다”라고 강조했다. 배민페이 출시와 함께 곧바로 등록해서 <mark>사용</mark>할 수 있는 카드는 신한카드, 하나카드, 현대카드, BC카드 등"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "article",
+        "_id" : "204",
+        "_score" : 1.2422372,
+        "_source" : {
+          "summary" : "인터넷은 훌륭한 도구입니다. 하지만 인터넷 때문에 우리는 스스로 생각하지 않고 그저 인터넷에게만 점점 더 답을 의지하게 바뀌고 있는 것은 아닐까요? 사람들은 인터넷을 다양한 용도로 사용합니다. 어떤 이들은 쇼핑을 하기 위해, 어떤 이들은 뉴스를 읽기 위해, 어떤 이들은 소셜 미디어를 위해 사용하며 인터넷으로 도박을 하는 이들도 있습니다. 문제는 사람들이 원하는 것이 무엇이든, 인터넷을 통해 이를 얻는다는 것입니다. 이런 특정한 기술에의 전적인 의존이 결국 우리로 하여금 스스로 그 문제를 생각하고 풀려는 노력을 하지 않게 만드는 것은 아닐까요? 여기에는 두 가지 서로 다른 의견이 있습니다. 실제로 인터넷이 우리와 아이들을 덜 생각하게 만들고, 문제를 스스로 풀려는 노력을 하지 않게 만든다고 주장하는 여러 전문가들이 있습니다. 그러나 다른 한편에서는 인터넷을 사용하는 것이 우리 뇌의 생각을 방해하는 것은 아니라고 주장합니다. 이들은 결국 우리 뇌가 인터넷을 통해 읽은 모든 것들을 스스로 처리해야 하기 때문이라고 말합니다. 한편, 어떤 이들은 인터넷이 우리 뇌에 너무 많은 정보를 주어 과부하 상태를 만든다고 걱정하지만, 실제로 그럴 가능성은 적습니다. 우리 뇌는 항상 정보를 처리하고 있으며, 어떤 정보가 중요하고 어떤 정보를 잊어도 되는지를 판단하는 것 역시 그 처리 과정의 일부입니다. 또 다른 이들은 인터넷에서는 너무 많은 일들이 동시에 일어나기 때문에 우리의 집중력에 나쁜 영향을 미치지 않을지 묻습니다. 그러나 솔직히 말해 인터넷은 우리의 일상에 존재하는 수많은 방해물 중 한 가지일 뿐입니다. 인터넷이 확실하게 인간에게 미친 영향 중에는 우리로 하여금 다른 이들과 훨씬 더 쉽게 사회적 관계를 만들수 있게 해주었다는 것이 있습니다. 소셜 미디어와 채팅 사이트는 다른 방, 다른 도시, 다른 국가에 있는 이들이 그저 버튼 하나만 눌러 서로 소통할 수 있게 만들었습니다. (트렌드인테크) 원문 보기",
+          "no" : 204,
+          "source" : "뉴스페퍼민트",
+          "title" : "인터넷이 뇌를 못쓰게 만든다? “어리석은 뇌(The Idiot Brain)”에서 발췌",
+          "url" : "http://newspeppermint.com/2016/11/17/m-internet/",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "http://newspeppermint.com/",
+          "@timestamp" : "2017-02-22T19:00:01.291Z",
+          "datatype" : "기사",
+          "@version" : "1",
+          "lastscraped" : "2017. 02. 21.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "로 <mark>사용</mark>합니다. 어떤 이들은 쇼핑을 하기 위해, 어떤 이들은 뉴스를 읽기 위해, 어떤 이들은 소셜 미디어를 위해 <mark>사용</mark>하며 인터넷으로 도박을 하는 이들도 있습니다. 문제는 사람",
+            "하는 여러 전문가들이 있습니다. 그러나 다른 한편에서는 인터넷을 <mark>사용</mark>하는 것이 우리 뇌의 생각을 방해하는 것은 아니라고 주장합니다. 이들은 결국 우리 뇌가 인터넷을 통해 읽은 모든 것"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "article",
+        "_id" : "206",
+        "_score" : 1.2422372,
+        "_source" : {
+          "summary" : "미국과 같이 경찰이 총을 소지하고 사용하는 것이 일상인 곳도 있지만, 그렇지 않은 나라도 많습니다. 이 글에서 소개할 다섯 국가에서는 경찰이 아주 특수한 경우에만 무장을 하지만, 그럼에도 불구하고 역할을 충실하게 해내고 있죠. 아이슬랜드: 아이슬란드에서는 2013년 나라 역사상 처음으로 경찰의 총에 맞아 사람이 죽는 사태가 발생했습니다. 30만 인구의 3분의 1이 사냥 용도로 총기를 소지하고 있지만, 범죄율은 매우 낮습니다. 나라가 작고, 단일민족으로 이루어져 있으며, 이웃 간 긴밀하게 관계를 맺고 있기 때문이라는 것이 사회학자들의 설명입니다. 조지아 주립대 소속의 한 범죄학자는 아이슬랜드 정계와 경찰 조직 내 높은 여성의 위상, 탄탄한 복지 제도 역시 무장 경찰 없이도 치안이 잘 유지되는 비결이라고 설명합니다. 아일랜드: 아일랜드는 한 술 더 떠 총기 사용법을 모르는 경찰도 많습니다. 총기를 사용할 수 있는 경찰은 전체의 20-25%에 불과합니다. 그럼에도 불구하고 아일랜드의 범죄율은 미국보다 훨씬 낮죠. 영국: 2012년, 경관 두 명이 총에 맞아 사망했을 때 마저 영국의 고위 경찰 간부는 “슬프게도 우리는 미국 등 여러 나라의 경험에서 경찰이 무장을 한다고 해서 총에 맞아 죽을 확률이 반드시 낮아지는 것은 아니라는 사실을 잘 알고 있다”고 말했습니다. 경찰이 순찰을 돌 때 총기를 소지하지 않는 것은 영국의 오랜 전통입니다. 경찰은 시민들이 쉽게 다가설 수 있는 존재여야 한다고 생각하기 때문입니다. 2004년 조사에 따르면 영국 경찰의 82%가 통상적인 업무 수행 시 무장을 하고 싶지 않다고 답했습니다. 이때문인지 2013년 미국에서 경찰에 의한 “정당 살인”이 461건이나 일어났지만, 영국에서는 단 한 건도 없었습니다. 뉴질랜드: 뉴질랜드의 상황도 비슷합니다. 뉴질랜드 전역에서 늘 총기를 소지하는 경찰은 수십 명 뿐입니다. 오클랜드기술대학에서는 경찰이 무장하지 않는 편이 오히려 더 안전하다는 연구 결과가 나오기도 했죠. 경찰이 무장을 하면 경찰과 범죄자 사이에 “군비 경쟁”이 촉발되고, 이는 곧 총기로 인한 사망자 수가 늘어난다는 것입니다.",
+          "no" : 206,
+          "source" : "뉴스페퍼민트",
+          "title" : "경찰이 무장하지 않아도 잘 돌아가는 사회",
+          "url" : "http://newspeppermint.com/2015/02/25/countries-with-unarmed-police/",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "http://newspeppermint.com/",
+          "@timestamp" : "2017-02-22T19:00:01.295Z",
+          "datatype" : "기사",
+          "@version" : "1",
+          "lastscraped" : "2017. 02. 21.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "미국과 같이 경찰이 총을 소지하고 <mark>사용</mark>하는 것이 일상인 곳도 있지만, 그렇지 않은 나라도 많습니다. 이 글에서 소개할 다섯 국가에서는 경찰이 아주 특수한 경우에만 무장을 하",
+            "합니다. 아일랜드: 아일랜드는 한 술 더 떠 총기 <mark>사용</mark>법을 모르는 경찰도 많습니다. 총기를 <mark>사용</mark>할 수 있는 경찰은 전체의 20-25%에 불과합니다. 그럼에도 불구하고 아일랜드"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "article",
+        "_id" : "198",
+        "_score" : 0.765898,
+        "_source" : {
+          "summary" : "20세의 프랑스인 뤼카 볼리바르(Lucas Bolivard)는 일상 속에서 인종주의를 경험하고 있습니다. 그의 피부색은 검습니다. 그는 6개월 동안 24차례의 경찰 검문을 받았습니다. 그가 자신의 권리를 주장할 때마다 그는 수시간 동안 경찰서에 갇혀야 했습니다. 그는 이제 자신이 나고 자란 프랑스에 실망했다고 합니다. 그의 이야기입니다.   저는 20세이고 프랑스인입니다. 저는 프랑스 서부의 라로셸(La Rochelle)에서 태어났고, 18세까지 그곳에서 자랐으며, 지금은 릴(Lille)에서 공부하고 있습니다. 저는 언제나 비교적 좋은 환경에서 자랐으며, 사립학교도 경험했습니다. 저는 20세이고 피부색이 어두운 프랑스인입니다. 사실 이 마지막 요소는 피상적인 신체적 세부사항에 지나지 않아야 하지만 실제 현실에서는 이것이 제 삶을 망치고 있습니다. 6개월 동안 24차례의 불심검문 지난 2월 이후로 저는 총 24차례 경찰 검문을 받았습니다. 거의 일주일에 한 번 꼴이었습니다. 이것이 전부가 아닙니다. 지난 1년 동안 저는 지하철 안이나 바캉스날 기차역에서 제 존재가 불러오는 불안을 실감하고 있습니다. 그리고 여러 사건들이 있었습니다. 상황은 계속 악화되고 있습니다. 상황이 나빴던 것은 어제 오늘의 일이 아닙니다. 제 초등학교 시절부터 저는 인종차별을 계속 경험했습니다. 저는 아직도 다른 아이들이 색이 묻어나는지 보려고 제 피부를 문지르던 일이 생각납니다. 그 이후에도 고교 시절, 제가 속해 있던 라로셸의 한 기관에서 만장일치로 국민전선을 지지하던 일도 있었습니다(600명의 학생 중 백인이 아닌 학생은 저 혼자였습니다). 그들은 명백히 제 존재를 무시한 것이죠. 또 맨발의 노예 사진에 대해 설명하던 한 역사 선생님도 생각납니다. “여러분이 보시는 바와 같이 검둥이들(les nègres)은 맨발입니다. 그들은 그런 관습이 있었습니다.” 저는 그렇게 말할 수는 없다고 강하게 항변했습니다. 적어도 그 단어는 사용하면 안 된다고 했습니다. 그러나 선생님은 제 항변이 무례하다고 판단하고 저를 교실에서 내쫓았습니다.",
+          "no" : 198,
+          "source" : "뉴스페퍼민트",
+          "title" : "매주 한 차례 이상 불심검문을 받는 한 프랑스인",
+          "url" : "http://newspeppermint.com/2016/08/10/controle_au_facies_dun_francais/",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "http://newspeppermint.com/",
+          "@timestamp" : "2017-02-22T19:00:01.285Z",
+          "datatype" : "기사",
+          "@version" : "1",
+          "lastscraped" : "2017. 02. 21.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            ")은 맨발입니다. 그들은 그런 관습이 있었습니다.” 저는 그렇게 말할 수는 없다고 강하게 항변했습니다. 적어도 그 단어는 <mark>사용</mark>하면 안 된다고 했습니다. 그러나 선생님은 제 항변이 무례하다고 판단하고 저를 교실에서 내쫓았습니다."
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "article",
+        "_id" : "199",
+        "_score" : 0.765898,
+        "_source" : {
+          "summary" : "중국 정부는 최근 중국 서버를 이용하는 네티즌들이 구글이 제공하는 쥐메일 서비스를 이용하지 못하도록 제재를 강화했습니다. 이전에는 아웃룩이나 애플메일을 통해 쥐메일 서비스를 이용할 수 있었지만 이마저도 막아버린 겁니다. 쥐메일을 사용하기가 이전보다 훨씬 더 까다로워진 이용자들이 택할 수 있는 가장 합리적인 대안은 중국 회사가 운영하는 이메일 서비스로 갈아타는 겁니다. 이는 중국 정부가 궁극적으로 유도하는 것으로 미국 회사에 대한 인터넷 의존도를 낮추는 건 중국 정부의 인터넷 정책의 근간 중의 하나입니다. (별다른 확증은 없지만) 북한 정부가 소니를 조직적으로 해킹했다는 의혹을 산 뒤에 온 나라의 전산망이 먹통이 됐습니다. 인터넷 주권(technological sovereignty)은 올 한해 화두가 될 것이 틀림없습니다. 러시아 정부도 지난 여름 비슷한 법안을 마련하고 인터넷 주권 지키기에 힘을 기울이고 있습니다. 러시아 국민들, 네티즌들에 관한 데이터를 저장하는 인터넷 회사는 반드시 서버를 러시아 영토 내에 두고 운영해야 한다는 법안인데, 이 법안의 영향으로 구글은 모스크바에서 서버를 운영하던 자회사를 철수시켰습니다. 러시아는 또한 최근 페이스북에 반정부 인사인 나발니(Alexey Navalny)를 지지하는 시위를 알리는 페이지를 차단했습니다. 중국이나 러시아 정부가 인터넷 주권을 지키려는 목적 아래 행동에 나서면 이는 정보를 통제하고 검열을 강화해 민주주의를 억압하는 것으로 비춰집니다. 특히 미국 언론에서는 이를 그렇게 다룹니다. 하지만 브라질 정부가 미국 회사들로 하여금 브라질의 인터넷 정보 데이터를 브라질에 저장하도록 요구했을 때 이 또한 지나친 인터넷 통제이자 정부의 불필요한 시장 개입이라고 비판을 받았습니다. 하지만 중국, 러시아, 브라질 정부의 행동은 어떤 관점에서 보면 정보를 통제하고 검열하겠다는 것이 아니라 미국의 지나친 영향력의 그늘에서 벗어나려는 시도일 수 있습니다. 미국이 늘 주창해 온 가치 중립적이고 세계적인 단일 인터넷망이 오히려 허구에 가깝고 실은 미국 주도의 세계화의 다른 이름에 불과한 것이라면 중국, 러시아, 브라질 정부의 시도는 인터넷 주권을 지키고자 하는 주권 국가의 정당한 대응이라고 봐야 할 것입니다.",
+          "no" : 199,
+          "source" : "뉴스페퍼민트",
+          "title" : "미국 주도의 세계화와 ‘인터넷 자유’의 잣대",
+          "url" : "http://newspeppermint.com/2015/01/07/internetfreedom/",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "http://newspeppermint.com/",
+          "@timestamp" : "2017-02-22T19:00:01.285Z",
+          "datatype" : "기사",
+          "@version" : "1",
+          "lastscraped" : "2017. 02. 21.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "할 수 있었지만 이마저도 막아버린 겁니다. 쥐메일을 <mark>사용</mark>하기가 이전보다 훨씬 더 까다로워진 이용자들이 택할 수 있는 가장 합리적인 대안은 중국 회사가 운영하는 이메일 서비스"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "article",
+        "_id" : "210",
+        "_score" : 0.765898,
+        "_source" : {
+          "summary" : "영국의 영화배우 베네딕트 컴버배치는 최근 방송 인터뷰에서 “유색인종(colored people)”이라는 표현을 써서 여론의 집중 포화를 받았습니다. 하지만 제대로 된 사과는 모든 것을 되돌릴 수 있죠. 그가 발표한 사과 성명을 조목조목 뜯어보면, 컴버배치는 이 사실을 잘 알고 있는 듯 합니다. 컴버배치는 사과문에서 “부적절한 옛 용어를 사용한 것을 진심으로 사과한다”며, “내가 바보같은 행동을 한데는 변명의 여지가 없으며, 특히 영화 업계의 인종 간 불평등 문제를 이야기하면서 이런 단어를 썼다는 점을 특히 부끄럽게 생각한다”고 말했습니다. 제대로 된 사과는 다음과 같은 요소를 담고 있어야 합니다. 우선 왜 자신의 행동이 잘못되었는지를 인식하고 있음을 담아야 하고, 그것이 어떤 사람들에게 어떤 식으로 영향을 미쳤는지를 이야기해야 하죠. 마지막으로는 앞으로는 그러지 않겠다는 다짐을 담아야 합니다. 컴버배치의 경우와 달리, 사과답지 않은 사과로 명성을 얻은 유명 인사는 수도 없이 많습니다. 많은 이들이 형식 상으로는 사과를 하면서도 물의를 일으킨 자신의 행동보다는 그 행동을 공격한 사람들에게 화살을 돌린다거나, 변명으로 자신의 행동을 설명하려 하죠. “내 말이 누군가에게 상처를 줬다면”, “누군가가 불편했다면” 하는 식으로 사과에 조건절을 달아 은근히 상처받거나 불편했던 사람들을 민감한 부류로 몰아가는 경우도 많습니다. 컴버배치가 “이번 사태로 인해 누군가의 마음을 상하게 하는 단어, 부정확한 단어를 써서는 안된다는 점이 부각되기를 바란다”고 말한 것은 다소 거만한 오지랖처럼 들리기도 하지만 현실을 둘러보면 꼭 그렇지도 않습니다. “유색(colored)”라는 단어는 얼마 전까지만 해도 널리 쓰였고, 여전히 많은 이들이 이 용어가 어떤 인종주의적 뿌리를 갖는지, “유색인종”에게 이 말이 어떤 느낌으로 와닿는지를 크게 의식하지 못합니다. 이번 사태에서 또 다른 좋은 점을 찾아보자면, 우리 모두 진보가 얼마나 지저분한 과정인지를 알게 되었다는 겁니다. 문제의 발언을 한 인터뷰에서 컴버배치는 백인 아닌 배우들이 배역을 찾기가 힘든 현실에 대해 이야기하고 있었죠.",
+          "no" : 210,
+          "source" : "뉴스페퍼민트",
+          "title" : "컴버배치 실언 사태에서 배우는 제대로 된 사과법",
+          "url" : "http://newspeppermint.com/2015/01/29/how-to-apologize-cumberbatch/",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "http://newspeppermint.com/",
+          "@timestamp" : "2017-02-22T19:00:01.302Z",
+          "datatype" : "기사",
+          "@version" : "1",
+          "lastscraped" : "2017. 02. 21.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "는 모든 것을 되돌릴 수 있죠. 그가 발표한 사과 성명을 조목조목 뜯어보면, 컴버배치는 이 사실을 잘 알고 있는 듯 합니다. 컴버배치는 사과문에서 “부적절한 옛 용어를 <mark>사용</mark>한 것을 진심"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "article",
+        "_id" : "172",
+        "_score" : 0.7491973,
+        "_source" : {
+          "summary" : "클래스팅이 교육 전용 태블릿 ‘클래스팅 러닝카드 탭’을 출시한다고 1월9일 밝혔다. 이번에 출시한 클래스팅 러닝카드 탭은 삼성전자 갤럭시탭A 10.1 32GB를 교육용으로 변환해 개발됐다. 클래스팅과 러닝카드를 편리하게 이용할 수 있으며 교사나 학부모가 원하는 앱만 이용할 수 있는 키즈모드 앱이 기본 탑재돼 있다. 러닝카드는 교사 출신 대표와 카이스트 석·박사 출신 연구진이 미국국립교육평가연구소와 함께 개발한 인공지능 기술이 탑재돼 학생 개개인의 학습 진도, 학습 성향, 수준, 만족도 등 데이터에 맞추어 콘텐츠를 추천해주는 서비스다. 클래스팅은 보도자료를 통해 “러닝카드로 개별 맞춤학습이 어려운 교실에서도 효율적인 공부를 할 수 있다”라며 “수업이나 자습 보조도구로 활용을 할 수 있을 것”이라고 설명했다. 현재 클래스팅 러닝카드 탭에서 제공되는 콘텐츠는 초등학교 3학년부터 중학교 3학년 과목을 지원하고 있으며 EBS, 대교, 비상, 미래엔, YBM, 윤선생, 천재교육, 금성출판사, 푸르넷, 교학사, 지학사, 와이즈캠프, 정철영어TV, 노리 등 20여 교육 브랜드의 외부 콘텐츠도 포함돼 있다. 출시 기념으로 10만원 상당의 EBS와 교학사의 1년치 문제집을 같이 제공하고 있으며 3개 이상 단체 구입시 할인 혜택도 주어진다. ▲사진:클래스팅 제공 조현구 클래스팅 대표는 “다른 학습용 태블릿과 달리 클래스팅 러닝카드 탭은 매달 콘텐츠와 사용성이 업데이트돼 부가적으로 구매할 필요 없이 항상 최신 학습 콘텐츠를 이용할 수 있다”라고 밝혔다. 제품 구입은 러닝카드 홈페이지 혹은 클래스팅 공식 네이버 스토어팜에서 가능하다.",
+          "no" : 172,
+          "source" : "Bloter",
+          "title" : "클래스팅, 교육 전용 태블릿 출시",
+          "url" : "https://www.bloter.net/archives/270302",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://www.bloter.net/",
+          "@timestamp" : "2017-02-22T19:00:01.275Z",
+          "datatype" : "기사",
+          "@version" : "1",
+          "lastscraped" : "2017. 02. 08.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "와 <mark>사용</mark>성이 업데이트돼 부가적으로 구매할 필요 없이 항상 최신 학습 콘텐츠를 이용할 수 있다”라고 밝혔다. 제품 구입은 러닝카드 홈페이지 혹은 클래스팅 공식 네이버 스토어팜에서 가능하다."
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "article",
+        "_id" : "223",
+        "_score" : 0.747347,
+        "_source" : {
+          "summary" : "미국 뉴욕에서 젊은 경찰 한 명이 무기를 소지하고 있지 않은 흑인을 총으로 쏘았습니다. 아시아계 미국인인 경찰에게 (백인 경찰들과는 달리) 유죄가 선고되자, 오랫동안 정치적인 문제에서 침묵을 지켜온 아시아계 미국인들이 거리로 나섰습니다. 한국계 미국인인 언론인 제이 카스피안 강은 뉴욕타임스 매거진에 기고한 글을 통해 아직은 이런 문제를 다루는 데 서툰 아시아계 미국인 사회가 이번 일을 계기로 정치적 언어를 가다듬고 이런 문제를 더욱 깊이 논의해야 한다고 지적했습니다. 아래 링크를 통해 뉴욕타임스 기사를 한글로 읽으실 수 있습니다. 한글로 읽기 Read in English: How Should Asian-Americans Feel About the Peter Liang Protests?  ",
+          "no" : 223,
+          "source" : "뉴스페퍼민트",
+          "title" : "[뉴욕타임스] 아시아계 미국인들은 피터 량 유죄판결 반대 시위를 어떻게 바라보아야 할까?",
+          "url" : "http://newspeppermint.com/2016/03/04/nyt_peterliang/",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "http://newspeppermint.com/",
+          "@timestamp" : "2017-02-22T19:00:01.307Z",
+          "datatype" : "기사",
+          "@version" : "1",
+          "lastscraped" : "2017. 02. 21.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            " 아시아계 미국인 사회가 이번 일을 계기로 정치적 <mark>언어</mark>를 가다듬고 이런 문제를 더욱 깊이 논의해야 한다고 지적했습니다. 아래 링크를 통해 뉴욕타임스 기사를 한글로 읽으실 수 있"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "article",
+        "_id" : "170",
+        "_score" : 0.69233954,
+        "_source" : {
+          "summary" : "에듀테크 스타트업 서큘러스가 ‘로봇 체험 교실’ 참가자를 모집한다고 2월8일 밝혔다. 서큘러스의 로봇 체험 교실은 미래창조과학부가 주최하고 한국과학창의재단이 지원하는 ‘메이커 스페이스 연계 교육 프로그램 운영 시범사업’의 일환으로 진행된다. 초등학교 3학년 이상이면... 온라인 학습계획 멘토링 서비스 ‘도아줌’을 운영하는 도움팩토리가 온라인교육 스타트업 용감한컴퍼니와 ‘공동 마케팅 및 사업 확장을 위한 업무협약’을 체결했다고 2월8일 밝혔다. 두 기업은 이번 협약을 통해 서로 시너지를 낼 수 있는... 에듀테크 스타트업 비트루브가 KT인베스트먼트, IBK캐피탈, 에버그린투자파트너스로부터 총 12억원의 후속 투자를 유치했다고 2월7일 밝혔다. 비트루브는 지난해 2월 케이큐브벤처스에서 8억원의 초기 투자를 유치한 데 이어 중소기업청 민간투자주도형 기술창업프로그램(TIPS) 선정에 따른 정부출연금을 포함해... 모바일, 기술기반, 게임 전문 투자사 케이큐브벤처스가 소프트웨어(SW) 교육 전문 기업 코드스쿼드에 4억원을 투자했다고 2월6일 밝혔다. 코드스쿼드는 디지털 산업 환경에 필요한 SW 전문 인력을 양성하는 교육 서비스 기업이다. 네이버의 비영리 SW... 구글이 안드로이드 공식 인증 시험을 2월1일 공개했다. 아직 영어로만 시험을 볼 수 있지만, 온라인에서 누구나 응시할 수 있다. 안드로이드 공식 인증 시험은 2016년 구글 개발자 행사 '구글I/O'에서 공개됐다. 이 시험은... 스웨덴 가구 업체 이케아가 '오픈소스 소파'라는 새로운 실험 결과물을 공개했다고 <월스트리트>가 보도했다. 엄밀히 말하면 가구를 사용자 입맛에 맞게 조립할 수 있는 소파이지만, 개념자체는 다양한 사람들이 모여 좋은 아이디어를 찾고 공유하는... 구글이 iOS용 '크롬' 앱을 오픈소스 기술로 1월31일 공개했다. 크롬은 구글의 오픈소스 웹 기술 '크로미엄' 프로젝트를 기반으로 만든 웹브라우저다. 과거 구글은 애플이 만든 오픈소스 웹브라우저 엔진 '웹킷'을 활용해 크롬을 만들었으나 2013년부터",
+          "no" : 170,
+          "source" : "Bloter",
+          "title" : "에듀테크 스타트업 서큘러스, 로봇 체험 교실 참가 학생 모집",
+          "url" : "https://www.bloter.net/archives/author/jihyun",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://www.bloter.net/",
+          "@timestamp" : "2017-02-22T19:00:01.273Z",
+          "datatype" : "기사",
+          "@version" : "1",
+          "lastscraped" : "2017. 02. 08.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "를 <mark>사용</mark>자 입맛에 맞게 조립할 수 있는 소파이지만, 개념자체는 다양한 사람들이 모여 좋은 아이디어를 찾고 공유하는... 구글이 iOS용 '크롬' 앱을 오픈소스 기술로 1월31일 공개"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "article",
+        "_id" : "175",
+        "_score" : 0.69233954,
+        "_source" : {
+          "summary" : "세계 최대 사이버보안 행사인 ‘RSA컨퍼런스2017’(이하 RSAC)에 국내 기업이 대거 참가해 한국의 사이버보안 기술을 글로벌 시장에 알린다. RSAC는 미국 샌프란시스코 모스콘센터에서 2월13일(현지시간) 개막한다. 올해 예상되는 참관객 수는 4만5천명으로 25주년 기념 행사였던 지난해보다... 사이버침해를 당한 기업의 매출과 고객이 줄어들고 새로운 비즈니스 기회마저 잃은 것으로 나타났다. 시스코코리아가 2월7일 공개한 ‘시스코 2017 연례 사이버보안 보고서’에 따르면, 2016년 한 해 동안 사이버침해를 겪은 기업의 29%는 매출이 하락한 것으로... 프린터가 해킹이 됐다는 영문 메시지가 출력되는 사이버공격이 등장했다. 이스트시큐리티는 별다른 인쇄 명령을 하지 않아도 연결된 프린터를 통해 해킹됐다는 영문 메시지가 자동으로 출력되는 사이버공격 피해 사례가 국내에서 속속 보고되고 있어 각별한... 증강현실(AR) 모바일 게임 ‘포켓몬고’가 인기를 끌면서 GPS 조작, 자동 사냥 등 게임 변칙을 지원하는 불법·악성 프로그램이 활개를 치고 있다. 검증되지 않은 프로그램을 사용해 편하게 게임을 즐기려다 자칫 개인정보를 유출하거나 악성코드에... 국내 첫 인공지능(AI) 안티바이러스(백신)가 공개됐다. 머신러닝 기반의 AI 백신 ‘맥스’를 개발한 세인트시큐리티가 백신 주축의 엔드포인트 보안 시장에 도전장을 내밀었다. 설 명절 연휴를 하루 앞둔 1월26일, 세인트시큐리티는 자체 개발한 AI 백신... 지난해 10월 미국 동부 지역 인터넷 마비 사태를 일으킨 디도스(DDoS) 공격의 근원으로 지목된 ‘미라이(Mirai)’ 악성코드가 국내 상륙했다. 이스트시큐리티는 1월25일, ‘미라이’ 악성파일이 국내에서도 다수 발견돼 기업 전산 담당자 등 관련 분야 관리자들의 주의가 필요하다고 당부했다.... 금융보안원이 블록체인 플랫폼을 구축한다. 블록체인 기반 금융 서비스 도입과 활성화를 지원하고 테스트베드 역할도 수행할 방침이다. 금융권에서 빅데이터와 클라우드, 사물인터넷(IoT), 인공지능(AI)같은 신기술을 적극 활용하면서도 신규 서비스 안전성을 확보할 수 있도록 하는",
+          "no" : 175,
+          "source" : "Bloter",
+          "title" : "RSAC에서 MWC까지…세계시장 두드리는 국내 보안업체들",
+          "url" : "https://www.bloter.net/archives/author/yjlee",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://www.bloter.net/",
+          "@timestamp" : "2017-02-22T19:00:01.277Z",
+          "datatype" : "기사",
+          "@version" : "1",
+          "lastscraped" : "2017. 02. 08.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            " 등 게임 변칙을 지원하는 불법·악성 프로그램이 활개를 치고 있다. 검증되지 않은 프로그램을 <mark>사용</mark>해 편하게 게임을 즐기려다 자칫 개인정보를 유출하거나 악성코드에... 국내 첫 인공"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "article",
+        "_id" : "178",
+        "_score" : 0.69233954,
+        "_source" : {
+          "summary" : "구글코리아가 구글의 자선 활동을 담당하고 있는 구글닷오아르지를 통해 ‘디지털 미디어 캠퍼스’ 프로그램을 지원한다고 2월7일 밝혔다. 중학생들의 디지털 미디어 정보의 올바른 판단을 돕고, 다양한 디지털 미디어 도구 활용 능력을 키워주기 위해서다. 사진=구글코리아 ‘디지털 미디어 캠퍼스’ 프로그램은 한국과학문화교육단체연합이 개발했다. 2017년 중학교 자유학기제를 통해 총 16주에 걸쳐 32시간의 학생 대상 교육과 2시간의 학부모 대상 교육으로 구성된다. 효과적인 교육 프로그램 개발을 위해 지난 9월부터 4개월간의 시범 운영을 마쳤으며, 올 새학기부터 120개 중학교에서 정규 프로그램으로 진행될 예정이다. ‘디지털 미디어 캠퍼스’ 교육 프로그램의 학생 대상 커리큘럼에는 ▲인터넷 신문, SNS, 동영상 등 다양한 디지털 미디어 정보들을 비판적으로 사고하고 판단할 수 있는 능력인 ‘디지털 미디어 리터러시’ 기르기 ▲게임 중독, SNS 중독 등 디지털 미디어로 인한 중독을 건강하게 극복하는 방법 ▲인터넷 빅데이터 분석, 동영상 편집, 인포그래픽 제작 등 디지털 미디어 도구를 현명하게 활용하는 방법 ▲AR/VR과 인공지능 직접 체험하기 등이 포함되어 있다. 효율적인 교육을 위해 태블릿, 에그, 틸트브러쉬 등 장비도 지원한다. 재클린 풀러 구글닷오아르지 총괄은 “구글은 더 많은 한국 학생들이 그들의 ‘디지털 리터러시’ 능력을 확장해나갈 수 있도록 돕고 싶다”라며, “학생들이 이번 프로그램을 통해 기술이 제공하는 무한한 가능성에 대한 영감을 얻고, 그로 인해 미래를 열어갈 기술을 개발할 수 있는 계기가 되길 바란다”라고 말했다. 2016년 4분기에 시범 운영된 바 있는 ‘디지털 미디어 캠퍼스’ 프로그램은 2017년부터 중학교 자유학기제 16차시 커리큘럼으로 지원된다. 지원을 희망하는 중학교는 (사)한국과학문화교육단체연합으로 전화 접수하면 된다. 컴퓨터실 사용 가능 여부 및 강사 배정 일정에 따라 지원학교가 선정된다. 올해는 수도권 지역에 위치한 120개 중학교를 대상으로 ‘디지털 미디어 캠퍼스’ 프로그램을 진행하며 순차적으로 전국에 있는 중학교로 확대해 나갈 계획이다",
+          "no" : 178,
+          "source" : "Bloter",
+          "title" : "구글, 중학교 대상 ‘디지털 미디어 교육’ 지원",
+          "url" : "https://www.bloter.net/archives/271621",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://www.bloter.net/",
+          "@timestamp" : "2017-02-22T19:00:01.278Z",
+          "datatype" : "기사",
+          "@version" : "1",
+          "lastscraped" : "2017. 02. 08.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            ")한국과학문화교육단체연합으로 전화 접수하면 된다. 컴퓨터실 <mark>사용</mark> 가능 여부 및 강사 배정 일정에 따라 지원학교가 선정된다. 올해는 수도권 지역에 위치한 120개 중학교를 대상"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "article",
+        "_id" : "180",
+        "_score" : 0.69233954,
+        "_source" : {
+          "summary" : "국내 첫 인공지능(AI) 안티바이러스(백신)가 공개됐다. 머신러닝 기반의 AI 백신 ‘맥스’를 개발한 세인트시큐리티가 백신 주축의 엔드포인트 보안 시장에 도전장을 내밀었다. 설 명절 연휴를 하루 앞둔 1월26일, 세인트시큐리티는 자체 개발한 AI 백신 ‘맥스’ 공개 베타테스트를 시작했다. ‘멀웨어스닷컴’ 웹사이트를 통해 공개된 맥스는 연휴 기간임에도 베타 서비스 시작 5일 만에 다운로드 수가 1만건을 훌쩍 넘어섰다. 새로운 국산 AI 백신 등장에 보안 기술에 관심을 가진 많은 사용자들이 높은 관심을 나타내고 있다. 국내 기업이 개발한 AI 백신은 맥스가 처음이다. 신·변종 악성코드가 홍수를 이루면서 알려지지 않은 악성코드 위협에 대응하기 위해 패턴 없는 AI 기반 차세대 백신이나 AI 엔진을 백신에 추가한 제품이 글로벌 시장에 속속 등장하고 있다. 신생기업은 물론, 시만텍이나 카스퍼스키랩같은 유명 글로벌 백신업체들도 AI 기술을 백신 제품에 적극 활용하고 있는 추세다. ‘맥스’는 지난 2003년 설립된 세인트시큐리티가 지난 10여 년 간 축적해온 보안 기술 개발 경험과 지난 2014년부터 운영해온 클라우드 기반 악성코드 자동 분석 플랫폼인 ‘멀웨어스닷컴’ 운영 역량이 집약돼 탄생한 제품이다. 세인트시큐리티는 김기홍 대표가 대학생 시절 창업한 보안 전문기업이다. 김기홍 대표는 AI 백신 개발 배경으로 “맥스는 멀웨어스닷컴의 데이터 경쟁력을 높이고 우수성을 입증하기 위해 만든 머신러닝 세트가 발전하며 제품화됐다”라고 밝혔다. 김 대표는 “해외에서 개발된 다양한 AI 백신들과 비교해 뒤처지지 않는 성능을 확인했다”라면서 “해외 보안 제품 평가기관의 테스트 결과 최고 점수를 받았다”며 자부심을 나타냈다. ‘멀웨어스닷컴’ 위협정보로 머신러닝 엔진 학습 맥스의 머신러닝 엔진은 멀웨어스닷컴이 확보하고 있는 방대한 위협 정보를 바탕으로 학습됐다. 또 계속해서 향상되고 있다. 학습은 바이러스, 웜, 스파이웨어, 랜섬웨어, 파밍, 피싱 등 악성코드를 종류별로 분류해 진행됐으며 이들과 유사한 정보를 스스로 식별할 수 있도록 구현했다",
+          "no" : 180,
+          "source" : "Bloter",
+          "title" : "세인트시큐리티, 국내 첫 AI 백신 ‘맥스’ 공개 베타 시작",
+          "url" : "https://www.bloter.net/archives/271469",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "https://www.bloter.net/",
+          "@timestamp" : "2017-02-22T19:00:01.279Z",
+          "datatype" : "기사",
+          "@version" : "1",
+          "lastscraped" : "2017. 02. 08.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            " 서비스 시작 5일 만에 다운로드 수가 1만건을 훌쩍 넘어섰다. 새로운 국산 AI 백신 등장에 보안 기술에 관심을 가진 많은 <mark>사용</mark>자들이 높은 관심을 나타내고 있다. 국내 기업"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "article",
+        "_id" : "220",
+        "_score" : 0.4926654,
+        "_source" : {
+          "summary" : "*옮긴이: 아래 번역/요약한 기사는 한국에서 발행되는 영어 신문 코리아헤럴드에 실린 기사입니다. 외신 기사를 소개한다는 뉴스페퍼민트의 취지에 꼭 맞지는 않지만, 언어 장벽을 없애 다양한 읽을거리와 생각할 거리를 제공한다는 취지에 맞는 것으로 판단해 소개합니다. —– 최근 23세 여성이 조현병 병력을 지닌 남성에게 살해당한 사건으로 인해 한국에서는 여성혐오와 정신질환에 대한 논쟁에 불이 붙었습니다. 용의자로 체포된 34세 남성은 과거에 여성들이 자신을 무시했기 때문에 범죄를 저질렀다고 말했으며, 용의자와 피해 여성은 사건 발생 전까지 한 번도 마주친 적이 없는 사이였습니다. 경찰은 용의자에게 정신병력이 있는 만큼 이번 사건을 여성혐오 범죄로 구분 지어서는 안 된다고 발표했지만, 온라인상에서는 의견이 분분합니다. 정신과 전문의인 서천석 박사는 페이스북에 올린 글을 통해 정신질환이 환자가 속해있는 사회정치적 환경의 결과물인 경우가 많다며, 권위주의 정권이 통치하던 1960년대에 국가 정보기관의 감시를 받고 있다고 생각한 편집증 환자가 많았던 것을 예로 들었습니다. 용의자의 여성혐오적 언사가 망상 때문이었다 해도 그러한 망상에는 사회적 맥락이 있으며, 여성혐오 현상이 존재하지 않았다면 그런 망상 대신 다른 망상을 가졌을 것이라는 지적이었습니다. 한국에서 정신질환은 오랫동안 터부시되는 주제였고, 정신병력을 낙인처럼 여기는 사회 분위기 역시 여전합니다. 한국보건의료연구원의 2015년 보고서에 따르면, 한국인의 5.6%(약 200만 명)가 살면서 최소한 한 번은 우울증을 겪는다고 합니다. 그러나 작년 기준, 우울증 치료를 받은 사람은 29만 명에 지나지 않았고, 지속적으로 치료를 받는 사람은 15만 명에 그쳤습니다. 한국인들이 정신과 치료를 꺼리는 경향과 상관없이, 정신질환과 폭력 범죄 간에는 큰 연관이 없다는 연구 결과도 있습니다. 2014년 미국심리학회(American Psychological Association)는 심각한 정신질환을 앓고 있는 범죄자 143명을 대상으로 연구한 결과, 정신질환의 증상과 직접적인 관계가 있는 범행은 7.",
+          "no" : 220,
+          "source" : "뉴스페퍼민트",
+          "title" : "강남역 살인 사건, 여성혐오와 정신질환에 대한 논의에 불을 붙이다",
+          "url" : "http://newspeppermint.com/2016/05/22/gangnam-murder/",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "http://newspeppermint.com/",
+          "@timestamp" : "2017-02-22T19:00:01.306Z",
+          "datatype" : "기사",
+          "@version" : "1",
+          "lastscraped" : "2017. 02. 21.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            "*옮긴이: 아래 번역/요약한 기사는 한국에서 발행되는 영어 신문 코리아헤럴드에 실린 기사입니다. 외신 기사를 소개한다는 뉴스페퍼민트의 취지에 꼭 맞지는 않지만, <mark>언어</mark> 장벽을 없애"
+          ]
+        }
+      },
+      {
+        "_index" : "contents",
+        "_type" : "article",
+        "_id" : "208",
+        "_score" : 0.4870344,
+        "_source" : {
+          "summary" : "미국 공화당의 대선주자 도널드 트럼프는 미국이 “멕시코의 쓰레기장”이 되어가고 있다고 목소리를 높이면서, 지난주 샌프란시스코에서 32세 백인 여성을 살해한 혐의를 받고 있는 불법 이민자 후안 프란치스코 로페스 산체스의 예를 들었습니다. 산체스가 불법 이민자건, 합법 이민자건 이민자 전체를 대표하는 인물이 아니라는 점은 굳이 언급할 필요도 없어 보입니다. 그러나 트럼프의 발언이 미국 사회에 공포 분위기를 조성하는 데 어느 정도 성공한 만큼, 그의 주장이 얼마나 근거 없는 주장인지 구체적으로 따져봐야 할 것 같습니다. 지난 30년간, 대도시를 포함한 미국 전역의 범죄율은 감소세를 보이고 있습니다. 같은 기간 미국인 가운데 이민자 출신이 차지하는 비율, 심지어는 불법 이민자가 전체 인구에서 차지하는 비율이 높아졌음에도 말이죠. 물론 이를 두고 이민자가 많아진 것이 범죄율 감소에 기여했다고 말할 수는 없습니다. 다만 노스웨스턴대학의 경제학자 조르그 스펜쿡이 말했듯이 이민자와 폭력 범죄 사이에는 어떠한 상관관계도 없습니다. 하버드대학의 사회학자 로버트 샘슨은 한 걸음 더 아나가 1990년대 이민의 증가와 언어 다양성의 증대로 90년대 말부터 2000년대 중반에 이르는 기간 동안 살인 범죄의 감소가 예견되었다고 주장합니다. 그는 시카고에서 8년간 범죄를 연구한 결과,  멕시코계 이민자들이 같은 사회경제적 지위에 있는 같은 또래의 미국 출생 백인 및 흑인보다 덜 폭력적이었다는 사실을 밝혔냈습니다. 실제로 멕시코 접경 지역 엘 파소는 인구 50만 이상의 미국 도시 가운데서 살인 범죄율이 가장 낮습니다. 수많은 이민자들이 몰려드는 샌디에고, 샌안토니오, 피닉스도 평화로운 도시로 꼽힙니다. 이런 양상은 수형자 비율에서도 드러납니다. 미국에서 태어난 백인이 감옥에 갈 확률은 이민자의 두 배에 달합니다. 미국에서 태어난 흑인이 투옥될 확률은 훨씬 더 높고요. 물론 이민에 반대하는 사람들은 이민자의 아들과 손자들 사이에서 수형자 비율이 크게 높아진다는 사실을 지적할 겁니다. 통계를 살펴보면, 멕시코계 이민자의 아들이나 손자가 감옥에 갈 확률은 미국에서 태어난 백인(히스패닉계 제외)의 두 배 정도고, 미국에서 태어난 흑인의 절반 정도입니다.",
+          "no" : 208,
+          "source" : "뉴스페퍼민트",
+          "title" : "멕시코계 이민자들이 정말로 폭력 범죄를 많이 일으킬까?",
+          "url" : "http://newspeppermint.com/2015/07/14/us-immigration-and-crimes/",
+          "ban" : "N",
+          "tags" : [ ],
+          "sourceurl" : "http://newspeppermint.com/",
+          "@timestamp" : "2017-02-22T19:00:01.299Z",
+          "datatype" : "기사",
+          "@version" : "1",
+          "lastscraped" : "2017. 02. 21.",
+          "category" : "IT"
+        },
+        "highlight" : {
+          "summary" : [
+            " 사이에는 어떠한 상관관계도 없습니다. 하버드대학의 사회학자 로버트 샘슨은 한 걸음 더 아나가 1990년대 이민의 증가와 <mark>언어</mark> 다양성의 증대로 90년대 말부터 2000년대 중반에 이르"
+          ]
+        }
+      }
+    ]
+  }
+}

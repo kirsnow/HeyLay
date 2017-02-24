@@ -40,7 +40,7 @@
 
 		<c:choose>
 			<%-- 검색결과가 없을 때 --%>
-        	<c:when test="${ (empty searchResult) or (searchResult eq null) }">
+        	<c:when test="${ (searchResult eq null) or (empty searchResult) }">
 				<div class="row">
 					<div class="col-xs-12">
 						<p class="lead">이런, 검색 결과가 없습니다 &#58;&#40;</p>
@@ -58,7 +58,7 @@
 					</div>
 					<div class="col-xs-12 text-muted">
 						<i class="fa fa-book marginLeft" aria-hidden="true"></i>
-						<c:forEach var="query" items="${ queryList }" varStatus="loop">
+						<c:forEach var="query" items="${ searchResult.queryList }" varStatus="loop">
 							<span class="query marginRight">${ query.token }<small><sup class="${ query.style }">${ query.type }</sup></small></span>
 						</c:forEach>
 					</div>

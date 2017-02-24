@@ -26,9 +26,9 @@ public class Elasitcsearch {
      * 미지정 시, 상위 10건이 표시된다.
      */
 	private final int searchSize = 100;
-	private final String ipAmazon = "35.166.249.194";
+	private final String ipAmazon = "54.200.58.22";
 	private final String ipBit = "192.168.1.21";
-	private String searchIP = ipBit;
+	private String searchIP = ipAmazon;
 
 	/**
 	 * Elasticsearch URI Search
@@ -40,7 +40,6 @@ public class Elasitcsearch {
 	 */
 	public SearchVO searchURI(String q, String ip) {
 		SearchVO searchResult = null;
-		
 		
 		/* IP setup */
 		if(ip == null) {
@@ -91,7 +90,6 @@ public class Elasitcsearch {
 					+ "}"
 					+ "}&pretty=true";
 			
-			
 			System.out.println("restAPI: " + restAPI);
 			JsonReader jsonReader = new JsonReader();
 			JSONObject json = jsonReader.readJsonFromUrl(restAPI);
@@ -120,8 +118,6 @@ public class Elasitcsearch {
 		
 		return searchResult;
 	}
-
-	
 	
 	/**
 	 * Elasticsearch JSON parser
