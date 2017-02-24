@@ -151,4 +151,12 @@ public class HelpDAO {
 	public void deleteQna(int no) {
 		sqlSessionTemplate.delete("io.planb.admin.help.dao.HelpDAO.deleteQna", no);
 	}
+
+	public void updateContentsSpamContentsBan(Integer no) {
+		sqlSessionTemplate.update("io.planb.admin.help.dao.HelpDAO.updateContentsSpamContentsBan", no);
+	}
+
+	public void updateContentsSpamMemoBan(Integer no) {
+		sqlSessionTemplate.update("io.planb.admin.help.dao.HelpDAO.updateContentsSpamMemoBan", no);
+	}
 }

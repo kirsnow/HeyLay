@@ -54,12 +54,12 @@
 	            </div> 
 	            <div>
 	                <label for="chk_all" class="thFont">전체 약관 동의</label>
-	                <input type="checkbox" name="chk_all" id="chk_all"  class=" pull-right marginTop20" alt="이용약관  전체 동의 체크박스"/>     
+	                <input type="checkbox" name="chk_all" id="allSelectToggle" class=" pull-right marginTop20" alt="이용약관  전체 동의 체크박스"/>     
 	            </div>
 	            <hr class="marginTop marginBottom">
 	            <div class="marginBottom">
 	                <label for="chk_qurationAgree">큐레이션 이용약관 동의&nbsp;&nbsp;(필수)</label> 
-	                <input type="checkbox" name="chk_qurationAgree" id="chk_qurationAgree" class="pull-right" alt="큐레이션 이용약관 동의 체크박스(필수)"/> 
+	                <input type="checkbox" name="chk_qurationAgree" id="chk_qurationAgree" class="pull-right agree" alt="큐레이션 이용약관 동의 체크박스(필수)"/> 
 	            </div>
 	            <textarea name="qurationAgreement" class="form-control" rows="4" >
 	서비스약관
@@ -265,7 +265,7 @@
 	            <div class="marginTop marginBottom">
 	                <label for="chk_personalInfoAgree">개인정보 수집 및 이용에 대한 안내&nbsp;&nbsp;(필수)</label>  
 	                <input type="checkbox" name="chk_personalInfoAgree" id="chk_personalInfoAgree" 
-	                       class="pull-right" alt="개인정보 수집 및 이용약관 동의 체크박스(필수)">
+	                       class="pull-right agree" alt="개인정보 수집 및 이용약관 동의 체크박스(필수)">
 	            </div>
 	            <textarea name="personalInfoAgreement" class="form-control " rows="4" >
 	개인정보수집       
@@ -332,7 +332,7 @@
 	            <div class="marginTop marginBottom">
 	                <label for="chk_locationAgree">위치정보 이용약관 동의&nbsp;&nbsp;(선택)</label>  
 	                <input type="checkbox" name="chk_locationAgree" id="chk_locationAgree" 
-	                       class="pull-right" alt="위치정보 이용약관 동의 체크박스(선택)"/>
+	                       class="pull-right agree" alt="위치정보 이용약관 동의 체크박스(선택)"/>
 	            </div>
 	            <textarea name="locationAgreement" class="marginBottom30 form-control" rows="4" >
 	위치정보 이용약관에 동의하시면, 위치를 활용한 광고 정보 수신 등을 포함하는 큐레이션 위치기반 서비스를 이용할 수 있습니다.
@@ -428,6 +428,15 @@
     <Footer class="footer">
 		<jsp:include page="/jsp/include/footer.jsp" />
 	</Footer> 
+
+<!-- jQuery -->
+<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
+<script>
+	$('#allSelectToggle').click(function() {
+		if($(".agree:checked").length < $(".agree").length) $(".agree").prop('checked', true);
+		else $(".agree").prop('checked', false);
+	});
+</script>
 	
 	<!-- 공통 js -->
 	<jsp:include page="/jsp/include/commonJs.jsp" />

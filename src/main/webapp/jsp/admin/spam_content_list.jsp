@@ -40,10 +40,10 @@
 				<section>
 					<div id="container">
 						<div class="row marginTop40">
-							<div class="col-md-2">총 신고 건수 ${ spamCnt } 개</div>
+							<div class="col-md-2">총 유해 게시물 개수 ${ spamCnt } 개</div>
 							<div class="col-md-8 col-md-push-2"></div>
 							<div class="col-md-2">
-								<select class="form-control" id="viewGradeList" onchange="">
+								<select class="form-control" id="viewTypeList">
 									<option value="C" selected="selected">콘텐츠</option>
 									<option value="M">메모</option>
 								</select>
@@ -58,7 +58,6 @@
 								<label>전체 선택</label>
 							</div>
 							<div class="col-md-2">
-								<button type="button" id="btnBlock" class="btn btn-default">차단</button>
 								<button type="button" id="btnDelete" class="btn btn-default">삭제</button>
 							</div>
 						</div>
@@ -77,8 +76,11 @@
 										<c:forEach var="spam" items="${ spamList }">
 											<tr>
 												<td><input type="checkbox" class="no" value="${ spam.no }" alt="차단 및 삭제할 콘텐츠 선택 체크박스" /></td>
-												<td><a href="#" title="해당 페이지로 가는 링크">
-														${ pageContext.request.contextPath }/jsp/contents/____.do</a></td>
+												<td>
+													<a href="${ pageContext.request.contextPath }/contents.do?no=${ spam.contentsNo }&q=${ searchResult.query }" target="_blank" title="해당 페이지로 가는 링크">
+														https://www.quration.herokuapp.com/contents.do?no=${ spam.contentsNo }
+											</a>
+												</td>
 												<td>${ spam.email }</td>
 												<td>${ spam.reportCnt }</td>
 											</tr>
@@ -127,6 +129,15 @@
 	$('#allSelectToggle').click(function() {
 		if($(".no:checked").length < $(".no").length) $(".no").prop('checked', true);
 		else $(".no").prop('checked', false);
+	});
+	
+	$(document).ready(function() {
+		$('#viewTypeList').val('${ option }').attr("selected", "selected");
+	});
+	
+	$('#viewTypeList').change(function() {
+		var option = $('#viewTypeList option:selected').val();
+		location.href = "${ pageContext.request.contextPath }/jsp/admin/spam_content_list.do?type=" + option;
 	});
 </script>
 </body>

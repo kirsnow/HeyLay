@@ -34,7 +34,9 @@ public class DrawerService {
 		ContentsVO vo = new ContentsVO();
 		vo.setMemberNo(memberNo);
 		
-		
+//		int viewCnt = conService.selectView(vo);
+//		vo.setPersonalVieCnt(viewCnt);
+    
 		List<ContentsVO> savedCards = contentDAO.getSavedCards(vo);
 		return savedCards;
 	}
