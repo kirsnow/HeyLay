@@ -325,4 +325,5 @@ public class ContentsVO {
 		this.reportCnt = reportCnt;
 	}
 
+	
 }
