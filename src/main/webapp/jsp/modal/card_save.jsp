@@ -112,7 +112,7 @@
    		.html('<i class="fa fa-spinner fa-pulse" aria-hidden="true"></i> 담는 중');
     	
         $.ajax({
-        	url: '${ pageContext.request.contextPath }/drawer/ajax/save.do'
+        	url: '${ pageContext.request.contextPath }/drawer/ajax/saveCard.do'
         	, method: 'POST'
         	, data : { 
         		'contentsNo' : contentsNo
@@ -144,7 +144,9 @@
             	$('#memoMessage').val('');
             	
             	// page UI reset
-            	saveCardBtn.html('<i class="fa fa-bookmark fa-lg" aria-hidden="true"></i>');
+            	saveCardBtn.removeClass('saveCardBtn').addClass('saveCancelBtn');
+            	$('button.saveCancelBtn').removeClass('btn-primary').addClass('btn-default')
+            		.html('<i class="fa fa-bookmark-o" aria-hidden="true"></i> 담기 취소');
             	
 		    }, error : function() {
         		console.log('카드 담기 오류');
@@ -154,4 +156,27 @@
    	    			.html('<i class="fa fa-exclamation-circle" aria-hidden="true"></i> 오류');
        	}});
     });
+	
+    $('.saveCancelBtn').on('click', function() {
+    	
+    	$(this).attr('disabled', 'disabled').removeClass('btn-primary').addClass('btn-warning')
+   		.html('<i class="fa fa-spinner fa-pulse" aria-hidden="true"></i> 취소 중');
+    	
+    	$.ajax({
+        	url: '${ pageContext.request.contextPath }/drawer/ajax/delCard.do'
+        	, method: 'POST'
+        	, data : { 
+        		'contentsNo' : contentsNo
+		    }, success: function(memo) {
+		    	console.log('카드 담기 취소 성공');
+		    	
+		    	// page UI reset
+            	saveCardBtn.removeClass('saveCancelBtn').addClass('saveCardBtn');
+            	$('button.saveCardBtn').removeClass('btn-default').addClass('btn-primary')
+            		.html('<i class="fa fa-bookmark" aria-hidden="true"></i> 카드 담기');
+            	
+		    }, error : function() {
+        		console.log('카드 담기 취소 오류');
+		    }});
+	});
 </script>

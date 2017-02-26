@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import io.planb.contents.service.ContentService;
 import io.planb.contents.vo.ContentsVO;
 import io.planb.memo.vo.MemoVO;
 import io.planb.search.dao.SearchDAOImp;
@@ -17,33 +18,44 @@ public class SearchServiceImp {
 	@Autowired
 	private SearchDAOImp dao;
 	
-	public SearchVO searchResult(String q, String ip, int userNo) {
+	@Autowired
+	private ContentService conService;
+	
+	public SearchVO searchResult(String q, String ip, int memberNo) {
 		
 		//검색 실행
 		SearchVO searchResult = dao.searchResult(q, ip);
 		
+		//검색결과가 있는 경우
 		if(searchResult != null) {
 			//검색어 세팅
 			searchResult.setQuery(q);
 			
-			//검색결과 하이라이팅
-			/*for( ContentsVO contents : searchResult.getContents() ) {
-				contents = this.highlighter(contents, q);
-			}*/
+			List<QueryVO> queryList = this.analyzeQuery(q);
+			searchResult.setQueryList(queryList);
+			
+			List<ContentsVO> cardList = conService.isThisSaved(memberNo, searchResult.getCards());
+			searchResult.setCards(cardList);
 		}
 		
 		//검색 키워드 저장
+		this.saveKeywords(q, searchResult, memberNo);
+		
+		return searchResult;
+	}
+	
+	public void saveKeywords(String q, SearchVO searchResult, int memberNo) {
 		SearchVO kewordVO = new SearchVO();
 		kewordVO.setQuery(q);
-		kewordVO.setUserNo(userNo);
+		kewordVO.setUserNo(memberNo);
+		
 		if(searchResult != null) {
 			kewordVO.setTotal( searchResult.getTotal() );
 		} else {
 			kewordVO.setTotal(0);
 		}
-		dao.saveKeyword(kewordVO);
 		
-		return searchResult;
+		dao.saveKeyword(kewordVO);
 	}
 
 	public ContentsVO highlighter(ContentsVO contents, String q) {

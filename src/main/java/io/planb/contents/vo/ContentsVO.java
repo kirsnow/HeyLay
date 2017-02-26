@@ -64,6 +64,9 @@ public class ContentsVO {
 	
 	private String keyword;
 	private int limit;
+	
+	private boolean isSaved;
+	private boolean isLiked;
 	private int personalVieCnt;
 	private int count;
 	
@@ -284,21 +287,29 @@ public class ContentsVO {
 	public void setDirectoryDaysAgo(String directoryDaysAgo) {
 		this.directoryDaysAgo = directoryDaysAgo;
 	}
-	
 	public String getKeyword() {
 		return keyword;
 	}
-
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
 	}
-
 	public int getLimit() {
 		return limit;
 	}
-
 	public void setLimit(int limit) {
 		this.limit = limit;
+	}
+	public boolean getIsSaved() {
+		return isSaved;
+	}
+	public void setIsSaved(boolean isSaved) {
+		this.isSaved = isSaved;
+	}
+	public boolean getIsLiked() {
+		return isLiked;
+	}
+	public void setIsLiked(boolean isLiked) {
+		this.isLiked = isLiked;
 	}
 	
 	public int getPersonalVieCnt() {

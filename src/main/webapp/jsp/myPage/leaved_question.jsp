@@ -9,18 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>회원 탈퇴 페이지 | Quration: 답을 열어 줄 그런 사람</title>
 	
-	<!-- Bootstrap -->
-    <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
-	<link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
-     
-    <!-- icon-font -->
-   	<script src="https://use.fontawesome.com/bbddce3010.js"></script>
-   	
-   	<!-- style for icon -->
-   	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-   	
-	<!-- HTML5 shim and Respond.js for IE8
-	 support of HTML5 elements and media queries -->
+	<!-- 공통css  -->
+ 	<jsp:include page="/jsp/include/css.jsp" />
+    	
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -37,16 +29,16 @@
 		ga('create', 'UA-90558257-1', 'auto');
 		ga('send', 'pageview');
 	</script>
+    
 </head>
 <body>
-	
 	<header>
 		<jsp:include page="/jsp/include/nav_search.jsp" />
 	</header>
 
 	<!-- 탈퇴 재문의  Section -->
-	<section id="withdrawQuestion">
-	 	<div class="container marginTop60 minHeight">
+	<section id="withdrawQuestion" class="body">
+	 	<div class="container marginTop60 sectionContent minHeight300">
 	 	
 	 		<!-- include myPage -->
 	 		<jsp:include page="/jsp/include/my_page.jsp" />
@@ -58,10 +50,10 @@
 			<div class="row">
 				<div class="panel panel-default col-md-6 col-md-offset-3  marginBottom">
 				  	<div class="panel-body text-center">
-					    <div><sub><i class="material-icons">info_outline</i></sub>
+					    <sub><i class="fa fa-info fa-2x fa-fw" aria-hidden="true"></i></sub>
 							회원님은 현재  <span id="savedContent"></span> 개의 콘텐츠를 보유하고 계십니다. 
 						</div>
-						<div>탈퇴하시겠습니까?</div>
+						<div class="text-center marginBottom">탈퇴하시겠습니까?</div>
 				  	</div>
 				</div>
 			</div>
@@ -77,9 +69,13 @@
 	</section>
 	
 	<!-- Footer -->
-    <Footer>
+    <Footer class="footer">
 		<jsp:include page="/jsp/include/footer.jsp" />
-	</Footer>
+	</Footer> 
+	
+	<!-- 공통 js -->
+	<jsp:include page="/jsp/include/commonJs.jsp" />
+	
 	
 	<script>
 	   /*오늘 저장된 컨텐츠  */

@@ -17,7 +17,7 @@ function doMember(memberNo) {
 					<div class="profile_info">
 						<span>Welcome<br/>${ userVO.firstName }</span>
 						<div class=" text-center">	
-							<img id="blah" src="/Quration/upload/${userVO.profileImg}" 
+							<img id="blah" src="${ pageContext.request.contextPath }/img/purin.png" 
 								alt="your image" class="img-circle profile_img" style="width: 80px; height: 80px;"/>			
 						</div>
 					</div>

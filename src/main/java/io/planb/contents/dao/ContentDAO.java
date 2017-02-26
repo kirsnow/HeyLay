@@ -26,9 +26,42 @@ public class ContentDAO {
 	}
 	
 	public List<ContentsVO> getSavedCards(ContentsVO vo) {
-		
 		List<ContentsVO> savedCards = this.getCardsList(vo);
 		return savedCards;
+	}
+	
+	public List<Integer> getSavedContentsNo(int memberNo) {
+		List<Integer> savedList = sqlSessionTemplate.selectList("io.planb.dao.ContentDAO.selectSavedContentsNo", memberNo);
+		return savedList;
+	}
+	
+	public List<Integer> getLikedContentsNo(int memberNo) {
+		List<Integer> likedList = sqlSessionTemplate.selectList("io.planb.dao.ContentDAO.selectLikedContentsNo", memberNo);
+		return likedList;
+	}
+	
+	public int getSavedCnt(int contentsNo) {
+		int savedCount = 0;
+		try{
+			savedCount = sqlSessionTemplate.selectOne("io.planb.dao.ContentDAO.selectSavedCnt", contentsNo);
+		} catch(NullPointerException np) {
+			savedCount = 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return savedCount;
+	}
+	
+	public int getLikedCnt(int contentsNo) {
+		int likedCount = 0;
+		try{
+			likedCount = sqlSessionTemplate.selectOne("io.planb.dao.ContentDAO.selectLikedCnt", contentsNo);
+		} catch(NullPointerException np) {
+			likedCount = 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return likedCount;
 	}
 	
 	public int getPrevContentsNo(int contentsNo) {
@@ -158,5 +191,5 @@ public class ContentDAO {
 		
 		return cnt;
 	}
-
+	
 }

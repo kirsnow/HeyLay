@@ -1,0 +1,39 @@
+{
+  "tokens" : [
+    {
+      "token" : "프로그래밍/N",
+      "start_offset" : 3,
+      "end_offset" : 8,
+      "type" : "N",
+      "position" : 0
+    },
+    {
+      "token" : "언어/N",
+      "start_offset" : 9,
+      "end_offset" : 11,
+      "type" : "N",
+      "position" : 1
+    },
+    {
+      "token" : "언어가/EOJ",
+      "start_offset" : 9,
+      "end_offset" : 12,
+      "type" : "EOJ",
+      "position" : 1
+    },
+    {
+      "token" : "사용/N",
+      "start_offset" : 19,
+      "end_offset" : 21,
+      "type" : "N",
+      "position" : 2
+    },
+    {
+      "token" : "사용되나요/EOJ",
+      "start_offset" : 19,
+      "end_offset" : 24,
+      "type" : "EOJ",
+      "position" : 2
+    }
+  ]
+}

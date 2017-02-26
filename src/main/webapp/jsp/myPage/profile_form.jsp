@@ -9,61 +9,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>회원정보 확인 및 수정 | Quration: 답을 열어 줄 그런 사람</title>
 
-
-<!-- Bootstrap -->
-<link href="${ pageContext.request.contextPath }/css/bootstrap.min.css"
-	type="text/css" rel="stylesheet">
-<link href="${ pageContext.request.contextPath }/css/ssh.css"
-	type="text/css" rel="stylesheet">
-
-<!-- jQuery -->
-<script
-	src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
-	<!-- Bootstrap -->
-<script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
-<!-- icon-font -->
-<script src="https://use.fontawesome.com/bbddce3010.js"></script>
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
+	<!-- 공통css  -->
+ 	<jsp:include page="/jsp/include/css.jsp" />
+    	
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-<!-- google analytics -->
-<script>
-	(function(i, s, o, g, r, a, m) {
-		i['GoogleAnalyticsObject'] = r;
-		i[r] = i[r] || function() {
-			(i[r].q = i[r].q || []).push(arguments)
-		}, i[r].l = 1 * new Date();
-		a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-		a.async = 1;
-		a.src = g;
-		m.parentNode.insertBefore(a, m)
-	})(window, document, 'script',
-			'https://www.google-analytics.com/analytics.js', 'ga');
-
-	ga('create', 'UA-90558257-1', 'auto');
-	ga('send', 'pageview');
-</script>
-<style>
-#forBottoom>div {
-	margin-bottom: 15px;
-}
-</style>
-
+    
+    <!-- google analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-90558257-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	
 </head>
 <body>
-
 	<header>
 		<jsp:include page="/jsp/include/nav_search.jsp" />
 	</header>
 
 	<!-- 회원정보 확인 및 수정 Section -->
-	<section id="membership">
-		<div class="container marginTop60">
+	<section id="membership" class="body">
+		<div class="container marginTop60 sectionContent">
 			<!-- include myPage -->
 			<jsp:include page="/jsp/include/my_page.jsp" />
 
@@ -136,11 +111,11 @@
 						<section id="form1" runat="server">
 							<c:choose>
 								<c:when test="${ (userVO.profileImg eq null) or (empty userVO.profileImg) }">
-									<img id="blah" src="${ pageContext.request.contextPath }/img/defaultImage.png" 
+									<img id="blah" src="${ pageContext.request.contextPath }/img/purin.png" 
 											alt="your image"  style="width: 250px; height: 250px;"/>
 								</c:when>
 								<c:otherwise>
-									<img id="blah" src="/Quration/upload/${userVO.profileImg}" 
+									<img id="blah" src="${ pageContext.request.contextPath }/img/purin.png" 
 											alt="your image"  style="width: 250px; height: 250px;"/>
 								</c:otherwise>
 							</c:choose>
@@ -183,11 +158,13 @@
 	</section>
 
 	<!-- Footer -->
-	<Footer>
+    <Footer class="footer">
 		<jsp:include page="/jsp/include/footer.jsp" />
-	</Footer>
+	</Footer> 
 	
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<!-- 공통 js -->
+	<jsp:include page="/jsp/include/commonJs.jsp" />
+	
 	<script>
 		function checkForm() {
 

@@ -12,25 +12,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>사이트맵 | Quration: 답을 열어 줄 그런 사람</title>
 
-<jsp:include page="/jsp/include/css.jsp" />
-    	
-<!-- google analytics -->
-<script>
-	(function(i, s, o, g, r, a, m) {
-		i['GoogleAnalyticsObject'] = r;
-		i[r] = i[r] || function() {
-			(i[r].q = i[r].q || []).push(arguments)
-		}, i[r].l = 1 * new Date();
-		a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-		a.async = 1;
-		a.src = g;
-		m.parentNode.insertBefore(a, m)
-	})(window, document, 'script',
-			'https://www.google-analytics.com/analytics.js', 'ga');
-
-	ga('create', 'UA-90558257-1', 'auto');
-	ga('send', 'pageview');
-</script>
+	<jsp:include page="/jsp/include/css.jsp" />
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <!-- google analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-90558257-1', 'auto');
+		ga('send', 'pageview');
+	</script>
 </head>
 <body>
 	<header>
@@ -66,7 +66,7 @@
 				<div class="col-md-3">
 					<h4 class="paddingleft30">사이트</h4>
 					<ul class="list-unstyled marginLeft30">
-						<li><a href="#" title="사이트 소개 페이지로 이동">사이트 소개</a></li>
+						<li><a href="${ pageContext.request.contextPath }/#services" title="사이트 소개 페이지로 이동">사이트 소개</a></li>
 						<li><a
 							href="${ pageContext.request.contextPath }/notice/list.do"
 							title="공지사항 페이지로 이동">공지사항</a></li>
@@ -85,8 +85,8 @@
 						<li><a
 							href="${ pageContext.request.contextPath }/contact/spamMemo.do">유해
 								메모 신고</a></li>
-						<li><a href="#" title="서비스 이용 약관 페이지로 이동">서비스 이용 약관</a></li>
-						<li><a href="#" title="개인정보 처리 방침 페이지로 이동">개인정보 처리 방침</a></li>
+						<li><a href="${ pageContext.request.contextPath }/membership/agreement.do"  title="서비스 이용 약관 페이지로 이동">서비스 이용 약관</a></li>
+						<li><a href="${ pageContext.request.contextPath }/membership/agreement.do"  title="개인정보 처리 방침 페이지로 이동">개인정보 처리 방침</a></li>
 					</ul>
 				</div>
 				<div class="col-md-3">
@@ -106,7 +106,7 @@
 							</c:when>
 							<c:otherwise>
 								<li><a
-									href="${ pageContext.request.contextPath }/membership/membership.do"
+									href="${ pageContext.request.contextPath }/membership/agreement.do""
 									title="회원 가입 페이지로 이동">회원 가입</a></li>
 								<li><a
 									href="${ pageContext.request.contextPath }/login/login.do"
