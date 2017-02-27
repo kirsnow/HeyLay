@@ -154,11 +154,6 @@ public class ContentController {
 
 		service.likeCntUp(like);
 
-		// int likeCnt = service.selectLikeCnt(contentsNo);
-		//
-		// like.setLikeCnt(likeCnt);
-		// System.out.println(likeCnt);
-
 		return "succeed";
 	}
 

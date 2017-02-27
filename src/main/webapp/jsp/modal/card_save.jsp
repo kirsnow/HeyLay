@@ -149,7 +149,9 @@
 		    	$('li .savedCnt').text(savedCnt + 1);
             	
 		    	// add memo (content_detail.jsp)
-		    	if(result.length > 0) $('#addMemo').after(memo).fadeIn("slow"); 
+		    	if(result.length > 0) { 
+		    		$('#addMemo').after(memo).fadeIn("slow", function() {}); 
+		    	}
 		    	
 		    }, error : function(result) {
         		console.log('카드 담기 오류');

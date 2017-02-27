@@ -126,13 +126,15 @@ public class ContentService {
 	}
 
 	public ContentsVO isThisLiked(int memberNo, ContentsVO card) {
-		//해당 회원이 저장한 콘텐츠 번호 목록 추출
+		//해당 회원이 좋아한 콘텐츠 번호 목록 추출
 		List<Integer> likedList = dao.getLikedContentsNo(memberNo);
-		
 		card.setIsLiked(false);
-		//저장한 콘텐츠 여부 확인
+		//좋아한 콘텐츠 여부 확인
 		for(int likedNo : likedList) {
-			if(likedNo == card.getContentsNo()) card.setIsLiked(true); break;
+			if(likedNo == card.getContentsNo()) {
+				card.setIsLiked(true);
+				break;
+			}
 		}
 		return card;
 	}

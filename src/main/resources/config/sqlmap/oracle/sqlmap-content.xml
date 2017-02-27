@@ -102,8 +102,7 @@
 
 	<delete id="likeCancel" parameterType="contentsVO">
 		DELETE FROM Q_LIKE
-		WHERE
-		MEMBER_NO=#{memberNo} AND CONTENTS_NO=#{contentsNo}
+		WHERE MEMBER_NO=#{memberNo} AND CONTENTS_NO=#{contentsNo}
 	</delete>
 
 	<select id="likeOrNot" parameterType="contentsVO" resultType="int">
