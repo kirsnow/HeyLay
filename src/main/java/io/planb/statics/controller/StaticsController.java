@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import io.planb.contents.vo.ContentsVO;
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.member.vo.MemberVO;
 import io.planb.statics.service.StaticsService;
@@ -48,23 +49,23 @@ public class StaticsController {
 		model.addAttribute("countBeforeYesSaved", countBeforeYesSaved);
 		
 		/* 월 평균 저장 개수 */
-		int sumSavedMonth = service.sumSavedMonth(no);
-		model.addAttribute("sumSavedMonth", sumSavedMonth);
+		int averageSavedMonth = service.sumSavedMonth(no);
+		model.addAttribute("averageSavedMonth", averageSavedMonth);
 		
-		/* 제일 좋아요 많이 누른 사이트 10 */
+		/* 제일 좋아요 많이 누른 사이트 3 */
 		List<StaticsVO> likeSourceList = service.selectLikeSource(no);
 		model.addAttribute("likeSourceList", likeSourceList);
 		
-		/* 내가 담은 카드들 중 다른 사람들이 많이 담은 카드 10 */
-		List<StaticsVO> savedMoreSavedList = service.selectSavedMoreSaved(no);
+		/* 내가 담은 카드들 중 다른 사람들이 많이 담은 카드 3 */
+		List<ContentsVO> savedMoreSavedList = service.selectSavedMoreSaved(no);
 		model.addAttribute("savedMoreSavedList", savedMoreSavedList);
 		
-		/* 내가 담은 카드들 중 다른 사람들은 안 담은 카드 10 */
-		List<StaticsVO> savedLessSavedList = service.selectSavedLessSaved(no);
+		/* 내가 담은 카드들 중 다른 사람들은 안 담은 카드 3 */
+		List<ContentsVO> savedLessSavedList = service.selectSavedLessSaved(no);
 		model.addAttribute("savedLessSavedList", savedLessSavedList);
 		
 		/* 내가 담은 카드들 중 다른 사람들이 좋아요 많이 누른 카드 10 */
-		List<StaticsVO> savedLikeList = service.selectSavedLike(no);
+		List<ContentsVO> savedLikeList = service.selectSavedLike(no);
 		model.addAttribute("savedLikeList", savedLikeList);
 		
 		return "contents/stats";
@@ -78,58 +79,6 @@ public class StaticsController {
 		int no = member.getNo();
 		
 		List<StaticsVO> staticsList = service.selectSavedMonth(no);
-		
-		return new StaticsListVO(staticsList);
-	}
-	
-	/* 내가 많이 담은 사이트 */
-	@ResponseBody
-	@RequestMapping("/statics/savedSource.do")
-	public StaticsListVO selectSavedSource(HttpSession session, Model model) {
-		MemberVO member = (MemberVO) session.getAttribute("userVO");
-		int no = member.getNo();
-		
-//		System.out.println("controller no : " + no);
-		
-		List<StaticsVO> staticsList = service.selectSavedSource(no);
-		
-//		System.out.println("controller staticsList : " + staticsList);
-		
-		return new StaticsListVO(staticsList);
-	} 
-	
-	/* 내가 많이 담은 사이트 타입 */
-	@ResponseBody
-	@RequestMapping("/statics/savedSourceType.do")
-	public StaticsListVO selectSavedSourceType(HttpSession session, Model model) {
-		MemberVO member = (MemberVO) session.getAttribute("userVO");
-		int no = member.getNo();
-		
-		List<StaticsVO> staticsList = service.selectSavedSourceType(no);
-		
-		return new StaticsListVO(staticsList);
-	}
-	
-	/* 내가 좋아하는 콘텐츠가 많은 사이트 */
-	@ResponseBody
-	@RequestMapping("/statics/likeSource.do")
-	public StaticsListVO selectLikeSource(HttpSession session, Model model) {
-		MemberVO member = (MemberVO) session.getAttribute("userVO");
-		int no = member.getNo();
-		
-		List<StaticsVO> staticsList = service.selectLikeSource(no);
-		
-		return new StaticsListVO(staticsList);
-	}
-	
-	/* 내가 좋아하는 콘텐츠가 많은 사이트 유형 */
-	@ResponseBody
-	@RequestMapping("/statics/likeSourceType.do")
-	public StaticsListVO selectLikeSourceType(HttpSession session, Model model) {
-		MemberVO member = (MemberVO) session.getAttribute("userVO");
-		int no = member.getNo();
-		
-		List<StaticsVO> staticsList = service.selectLikeSourceType(no);
 		
 		return new StaticsListVO(staticsList);
 	}

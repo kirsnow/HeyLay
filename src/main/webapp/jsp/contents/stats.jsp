@@ -162,7 +162,6 @@
 							<div class="div col-md-12 scene_wrapper">
 								<div class="row">
 									<div class="div col-md-12">
-										<fmt:parseNumber var="averageSavedMonth" integerOnly="true" value="${ sumSavedMonth / 12 }" />
 										<h3><span class="scene_n4">월 평균 저장 카드 개수</span><br/>${ averageSavedMonth }개</h3>
 									</div>
 								</div>
@@ -188,34 +187,46 @@
 						<div class="row scene5">
 							<div class="div col-md-12 scene_wrapper">
 								<h3 class="marginTop60">${ userVO.lastName } ${ userVO.firstName } 회원님이 담은 카드 중<br/>가장 많은 분들의 사랑을 받은 카드입니다.</h3>
-								<c:forEach var="savedMoreSaved" items="${ savedMoreSavedList }">
-									<div>
-										<img alt="" src="${ savedMoreSaved.data }">
-										${ savedMoreSaved.columnName }
-									</div>
-								</c:forEach>
+<%-- 								<c:forEach var="savedMoreSaved" items="${ savedMoreSavedList }"> --%>
+<!-- 									<div> -->
+<%-- 										<img alt="" src="${ savedMoreSaved.data }"> --%>
+<%-- 										${ savedMoreSaved.columnName } --%>
+<!-- 									</div> -->
+<%-- 								</c:forEach> --%>
+								<c:set var="cards" value="${ savedMoreSavedList }" scope="request" />
+								<section class="col-xs-12 card-container mdl-grid">
+									<jsp:include page="/jsp/component/card.jsp"/>
+								</section>
 							</div>
 						</div>
 						<div class="row scene6">
 							<div class="div col-md-12 scene_wrapper">
 								<h3 class="marginTop60">담은 카드 중 소수만이 담은,<br/>희소성이 있는 카드입니다.</h3>
-								<c:forEach var="savedLessSaved" items="${ savedLessSavedList }">
-									<div>
-										<img alt="" src="${ savedLessSaved.data }">
-										${ savedLessSaved.columnName }
-									</div>
-								</c:forEach>
+<%-- 								<c:forEach var="savedLessSaved" items="${ savedLessSavedList }"> --%>
+<!-- 									<div> -->
+<%-- 										<img alt="" src="${ savedLessSaved.data }"> --%>
+<%-- 										${ savedLessSaved.columnName } --%>
+<!-- 									</div> -->
+<%-- 								</c:forEach> --%>
+								<c:set var="cards" value="${ savedLessSavedList }" scope="request" />
+								<section class="col-xs-12 card-container mdl-grid">
+									<jsp:include page="/jsp/component/card.jsp"/>
+								</section>
 							</div>
 						</div>
 						<div class="row scene7">
 							<div class="div col-md-12 scene_wrapper">
 								<h3 class="marginTop60">담은 카드 중<br/>다른 회원님들로부터 좋은 평가를 받은 카드입니다.</h3>
-								<c:forEach var="savedLike" items="${ savedLikeList }">
-									<div>
-										<img alt="" src="${ savedLike.data }">
-										${ savedLike.columnName }
-									</div>
-								</c:forEach>
+<%-- 								<c:forEach var="savedLike" items="${ savedLikeList }"> --%>
+<!-- 									<div> -->
+<%-- 										<img alt="" src="${ savedLike.data }"> --%>
+<%-- 										${ savedLike.columnName } --%>
+<!-- 									</div> -->
+<%-- 								</c:forEach> --%>
+								<c:set var="cards" value="${ savedLikeList }" scope="request" />
+								<section class="col-xs-12 card-container mdl-grid">
+									<jsp:include page="/jsp/component/card.jsp"/>
+								</section>
 							</div>
 						</div>
 						<div class="row scene8">
