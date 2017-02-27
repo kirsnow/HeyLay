@@ -51,8 +51,14 @@
 				  method="post" onsubmit="" autocomplete="off">
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3">
-						<input type="text" name="email" placeholder="계정(이메일)" 
-						       class="form-control"  alt="계정(이메일)입력 폼">
+						<c:choose>
+							<c:when test="${ empty userVO }"> 
+								<input type="text" name="email" placeholder="계정(이메일)" class="form-control"  alt="계정(이메일)입력 폼">
+						    </c:when>  
+					    	<c:otherwise> 
+								<input type="text" name="email" class="form-control"  alt="계정(이메일)입력 폼" value="${userVO.email}">
+							</c:otherwise>
+						</c:choose> 
 						<hr>
 					</div>				
 				</div>

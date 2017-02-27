@@ -113,26 +113,18 @@
     	
         $.ajax({
         	url: '${ pageContext.request.contextPath }/drawer/ajax/saveCard.do'
-        	, method: 'POST'
+        	, type: 'POST'
         	, data : { 
         		'contentsNo' : contentsNo
         		, 'dirNo' : dirNo
         		, 'dirName': $('input#dirName').val()
         		, 'memoMessage' : $('#memoMessage').val()
-		    }, success: function(memo) {
+		    }, success: function(result) {
 		    	console.log('카드 담기 성공');
 		    	
-		    	$('.saveCancelBtn').attr('hidden',false);
 		    	// Success button
 		    	$('button#putCard').removeClass('btn-warning').addClass('btn-success')
    	    			.html('<i class="fa fa-check" aria-hidden="true"></i> 완료');
-		    	
-		    	// add memo (content_detail.jsp)
-		    	if(memo.length > 0) $('#addMemo').after(memo).fadeIn("slow", function() {}); 
-		    	
-		    	// add savedCnt (content_detail.jsp)
-		    	var savedCnt = $('li .savedCnt').text()*1;
-		    	$('li .savedCnt').text(savedCnt + 1);
             	
 		    	// modal close
             	$('#saveCardModal').modal('hide');
@@ -143,40 +135,67 @@
             	$('input#dirName').val('나의 첫 폴더').attr('readonly', 'readonly');
             	$('#memoMessage').val('');
             	
-            	// page UI reset
-            	saveCardBtn.removeClass('saveCardBtn').addClass('saveCancelBtn');
-            	$('button.saveCancelBtn').removeClass('btn-primary').addClass('btn-default')
-            		.html('<i class="fa fa-bookmark-o" aria-hidden="true"></i> 담기 취소');
             	
-		    }, error : function() {
+            	// page UI
+		    	// add memo (content_detail.jsp)
+		    	if(result.length > 0) $('#addMemo').after(memo).fadeIn("slow", function() {}); 
+		    	
+		    	// add savedCnt (content_detail.jsp)
+		    	var savedCnt = $('li .savedCnt').text()*1;
+		    	$('li .savedCnt').text(savedCnt + 1);
+		    	
+		    	// change Btn (in cards list)
+            	$('a#' + contentsNo + '.saveCardBtn').hide();
+            	$('a#' + contentsNo + '.saveCancelBtn').show();
+		    	
+            	// change Btn (content_detail.jsp)
+            	$('button.saveCardBtn').hide();
+            	$('button.saveCancelBtn').show();
+            	
+		    }, error : function(result) {
         		console.log('카드 담기 오류');
         		
         		// Error button
         		$('button#putCard').removeClass('btn-warning').addClass('btn-danger')
    	    			.html('<i class="fa fa-exclamation-circle" aria-hidden="true"></i> 오류');
+        		
+        		// Error Alert
+        		alert(result);
        	}});
     });
 	
     $('.saveCancelBtn').on('click', function() {
-    	
-    	$(this).attr('disabled', 'disabled').removeClass('btn-primary').addClass('btn-warning')
-   		.html('<i class="fa fa-spinner fa-pulse" aria-hidden="true"></i> 취소 중');
+    	contentsNo = $(this).attr('id');
+    	$('button.saveCancelBtn').attr('disabled', 'disabled').removeClass('btn-default').addClass('btn-warning')
+   			.html('<i class="fa fa-spinner fa-pulse" aria-hidden="true"></i> 담기 취소');
     	
     	$.ajax({
         	url: '${ pageContext.request.contextPath }/drawer/ajax/delCard.do'
-        	, method: 'POST'
+        	, type: 'POST'
         	, data : { 
         		'contentsNo' : contentsNo
-		    }, success: function(memo) {
+		    }, success: function(result) {
 		    	console.log('카드 담기 취소 성공');
 		    	
 		    	// page UI reset
-            	saveCardBtn.removeClass('saveCancelBtn').addClass('saveCardBtn');
-            	$('button.saveCardBtn').removeClass('btn-default').addClass('btn-primary')
-            		.html('<i class="fa fa-bookmark" aria-hidden="true"></i> 카드 담기');
+		    	// minus savedCnt (content_detail.jsp)
+		    	var savedCnt = $('li .savedCnt').text()*1;
+		    	$('li .savedCnt').text(savedCnt - 1);
+		    	
+		    	// change Btn (in cards list)
+            	$('a#' + contentsNo + '.saveCancelBtn').hide();
+            	$('a#' + contentsNo + '.saveCardBtn').show();
+		    	
+            	// change Btn (content_detail.jsp)
+            	$('button.saveCancelBtn').hide().removeAttr('disabled').removeClass('btn-warning').addClass('btn-default')
+            		.html('<i class="fa fa-bookmark-o" aria-hidden="true"></i> 담기 취소');
+            	$('button.saveCardBtn').show();
             	
-		    }, error : function() {
+		    }, error : function(result) {
         		console.log('카드 담기 취소 오류');
+        		
+        		// Error Alert
+        		alert(result);
 		    }});
 	});
 </script>
