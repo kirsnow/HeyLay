@@ -74,7 +74,7 @@
 									<c:otherwise>
 										<span class="marginRight">
 											<a href="${ pageContext.request.contextPath }/drawer.do" class="" title="내카드">
-											<i class="fa fa-address-card-o" aria-hidden="true"></i> 내 카드</a></a>
+											<i class="fa fa-address-card-o" aria-hidden="true"></i> 내 카드</a>
 										</span>
 									</c:otherwise>
 								</c:choose>
@@ -88,9 +88,6 @@
 								<ul class="dropdown-menu list-unstyled pull-right" role="menu">
 									<li><a href="${ pageContext.request.contextPath }/myPage/mypage.do"> 
 										<i class="fa fa-address-book" aria-hidden="true"></i> 회원 정보 수정
-									</a></li>
-									<li><a href="${ pageContext.request.contextPath }/myPage/original_password.do"> <i class="fa fa-lock fa-fw"
-											aria-hidden="true"></i> 비밀번호 변경
 									</a></li>
 									<li class="divider"></li>
 									<li><a href="<c:url value="/j_spring_security_logout" />"> 

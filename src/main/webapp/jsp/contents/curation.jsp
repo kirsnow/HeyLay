@@ -13,14 +13,11 @@
 <title>카드 추천 | Quration: 답을 열어 줄 그런 사람</title>
 
 <!-- Bootstrap -->
-<link href="${ pageContext.request.contextPath }/css/bootstrap.min.css"
-	type="text/css" rel="stylesheet">
-<link href="${ pageContext.request.contextPath }/css/ssh.css"
-	type="text/css" rel="stylesheet">
-<script
-	src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+<link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
+<!-- Bootstrap JS SET -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
 
 <!-- icon-font -->
 <script src="https://use.fontawesome.com/bbddce3010.js"></script>
