@@ -14,30 +14,27 @@
 	<title><c:out value="${ plainTitle }" /> | Quration: 답을 열어 줄 그런 사람</title>
 	<!-- 각 콘텐츠 제목을 title로 동적 지정 -->
 	
-	<!-- MDL Hosted start -->
-	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-light_blue.min.css" />
-	
-	<!-- Bootstrap CSS SET -->
-	<link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
-	<link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
-	
+	<!-- 공통css  -->
+ 	<jsp:include page="/jsp/include/css.jsp" />
+    	
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <!-- google analytics -->
 	<script>
-	<!-- google analytics -->
-		(function(i, s, o, g, r, a, m) {
-			i['GoogleAnalyticsObject'] = r;
-			i[r] = i[r] || function() {
-				(i[r].q = i[r].q || []).push(arguments)
-			}, i[r].l = 1 * new Date();
-			a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-			a.async = 1;
-			a.src = g;
-			m.parentNode.insertBefore(a, m)
-		})(window, document, 'script',
-				'https://www.google-analytics.com/analytics.js', 'ga');
-	
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
 		ga('create', 'UA-90558257-1', 'auto');
 		ga('send', 'pageview');
 	</script>
+	
 	<style type="text/css">
 		.modal-backdrop fade in {
 			height: 0px !important; 
@@ -161,21 +158,6 @@
 						<%-- likeBtn --%>
 						<c:choose>
 							<c:when test="${ (userVO ne null) and (not empty userVO) }">
-<<<<<<< HEAD
-								<c:if test="${ contents.isLiked }">
-									<%-- 로그인 + 카드 저장 --%>
-									<button type="button" id="${ contents.contentsNo }"
-										title="좋아요 취소" class="btn btn-default likeCancelBtn">
-										<i class="fa fa-heart-o" aria-hidden="true"></i> 좋아요 취소
-									</button>
-								</c:if>
-								<c:if test="${ not contents.isLiked }">
-									<%-- 로그인 + 카드 미저장 --%>
-									<button type="button" id="${ contents.contentsNo }" title="좋아요" class="btn btn-primary likeBtn">
-										<i class="fa fa-heart" aria-hidden="true"></i> 좋아요
-									</button>
-								</c:if>
-=======
 								<%-- 카드 좋아요 버튼 --%>
 								<button type="button" id="${ contents.contentsNo }" 
 									<c:if test="${ contents.isLiked }">style="display:none"</c:if>
@@ -188,9 +170,7 @@
 									title="좋아요 취소" class="btn btn-default likeCancelBtn">
 									<i class="fa fa-heart-o" aria-hidden="true"></i> 좋아요 취소
 								</button>
->>>>>>> 73f1fd215d5fbab68a07872ffb03095f31997a10
 							</c:when>
-							
 							<c:otherwise>
 								<%-- 비로그인 --%>
 								<button type="button" id="${ contents.contentsNo }" onclick="location.href='${ pageContext.request.contextPath }/login/login.do'"
@@ -355,14 +335,9 @@
 	<jsp:include page="/jsp/include/footer.jsp" />
 	<!-- /footer -->
 
-	<!-- Bootstrap JS SET -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
+	<!-- 공통 js -->
+	<jsp:include page="/jsp/include/commonJs.jsp" />
 	
-	<!-- icon-font -->
-	<script src="https://use.fontawesome.com/bbddce3010.js"></script>
-	
-
 	<!-- Modal -->
 	<jsp:include page="/jsp/modal/memo_add.jsp" />
 	<jsp:include page="/jsp/modal/card_save.jsp" />
@@ -405,21 +380,6 @@
 		           data: {"contentsNo" : contentsNo},
 		           success:function(data){
 		              	console.log("I like it!");
-
-<<<<<<< HEAD
-// 						window.location.reload(true);
-
-						likeCancelBtn.attr('hidden',false);
-
-						/* Success button */
-						likeBtn.prop('disabled', false).removeClass('btn-warning').addClass('btn-info')
-							.attr('hidden', true);
-		           		
-						$('.likeCnt').html(likeCnt+=1);
-		           },
-		           error:function(jqXHR, textStatus, errorThrown){
-		               alert("오류 \n" + textStatus + " : " + errorThrown);
-=======
 		             // page UI
 		             // add likedCnt (content_detail.jsp)
 				    	var likedCnt = $('li .likedCnt').text()*1;
@@ -434,7 +394,6 @@
 		           error:function(jqXHR, textStatus, errorThrown){
 		        	   $('button.likeBtn').removeClass('btn-warning').addClass('btn-danger')
 	   	    			.html('<i class="fa fa-exclamation-circle" aria-hidden="true"></i> 오류');
->>>>>>> 73f1fd215d5fbab68a07872ffb03095f31997a10
 		           }
 			    });
 		});
@@ -444,28 +403,12 @@
 			contentsNo = $(this).attr("id");
 			
 			$(this).prop('disabled', true).removeClass('btn-info').addClass('btn-warning')
-	   		.html('<i class="fa fa-spinner fa-pulse" aria-hidden="true"></i> 좋아요 취소');
+	   		.html('<i class="fa fa-spinner fa-pulse" aria-hidden="true"></i>좋아요 취소');
 			
 			$.ajax({
-				url:"${ pageContext.request.contextPath }/contents/likeCancel.do",
-		           type:'POST',
+				url:"${ pageContext.request.contextPath }/contents/likeCancel.do", 
+				type:'POST',
 		           data: {"contentsNo" : contentsNo},
-<<<<<<< HEAD
-		           success:function(data){
-			        	console.log("Like Cancel!");
-
-// 						window.location.reload(true);
-
-						/* Success button */
-						$('.likeCancelBtn').prop('disabled', false).removeClass('btn-warning').addClass('btn-info')
-						.attr('hidden',true).html('<i class="fa fa-heart" aria-hidden="true"></i> 좋아요 취소');
-
-						likeBtn.attr('hidden',false).html('<i class="fa fa-heart-o" aria-hidden="true"></i> 좋아요');
-						$('.likeCnt').html(likeCnt-=1);
-		           },
-		           error:function(jqXHR, textStatus, errorThrown){
-		               alert("오류\n" + textStatus + " : " + errorThrown);
-=======
 		           success: function(data){
 			        	console.log("Like canceled!");
 
@@ -475,14 +418,12 @@
 					    	$('li .likedCnt').text(likedCnt - 1);
 			             
 			             // change Btn (content_detail.jsp)
-		              	$('button.likeCancelBtn').hide().prop('disabled', false).removeClass('btn-warning').addClass('btn-primary')
-		              		.html('<i class="fa fa-heart-o fa-pulse" aria-hidden="true"></i> 좋아요 취소');
+		              	$('button.likeCancelBtn').hide().prop('disabled', false).removeClass('btn-warning').addClass('btn-primary').html('<i class="fa fa-heart-o fa-pulse" aria-hidden="true"></i> 좋아요 취소');
 						$('button.likeBtn').show();
 		           },
 		           error: function(){
 		        	   $('button.likeCancelBtn').removeClass('btn-warning').addClass('btn-danger')
 	   	    			.html('<i class="fa fa-exclamation-circle" aria-hidden="true"></i> 오류');
->>>>>>> 73f1fd215d5fbab68a07872ffb03095f31997a10
 		           }
 			    });
 		});

@@ -117,7 +117,7 @@ public class MemberDAOImp implements MemberDAO {
 	public void insertKeywords(SelectKeywordsVO keywords) {
 		sqlSessionTemplate.insert("io.planb.member.dao.MemberDAO.insertKeywords", keywords);
 	}
-
+	
 	// 회원 탈퇴 시 보유 컨텐츠 호출
 	@Override
 	public int selectWithdrawContentCnt(int memberNo) {
@@ -154,5 +154,9 @@ public class MemberDAOImp implements MemberDAO {
 		String type = sqlSessionTemplate.selectOne("io.planb.member.dao.MemberDAO.selectType", no);
 		return type;
 	}
-   
+
+	@Override
+	public void updateDate(MemberVO member) {
+	   sqlSessionTemplate.insert("io.planb.member.dao.MemberDAO.updateDate", member);
+	}
 }

@@ -38,6 +38,8 @@ public class LoginController {
 	public String login(@ModelAttribute("member") MemberVO member, Model model) {
 		MemberVO userVO = service.login(member);
 		
+		
+		service.updateDate(member);
 		// member.getEmail()이랑 email 일치하는 userVO 가 있다면
 		if(userVO != null) {
 			
