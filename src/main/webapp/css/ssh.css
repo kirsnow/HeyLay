@@ -334,6 +334,7 @@
   	 vertical-align: middle;
    }
    
+   /* saveCardBtn */
    a.saveCardBtn,
    a.saveCancelBtn {
 	position: relative;
@@ -350,11 +351,22 @@
    a.saveCancelBtn {
 	color: #03A9F4;
    }
+   
+   /* likeCardBtn */
+   a.likeCardBtn,
+   a.likeCancelBtn:hover {
+	color: 9E9E9E;
+   }
+   
+   a.likeCardBtn:hover,
+   a.likeCancelBtn {
+	color: #03A9F4;
+   }
 	
 	html,body{height:100%}
 	body{margin:0}
 	.body{
-		min-height:82.5%;
+		min-height:83.5%;
 	}
 	.sectionContent{padding-bottom:1.9em}
 	.footer{height:1.9em}	

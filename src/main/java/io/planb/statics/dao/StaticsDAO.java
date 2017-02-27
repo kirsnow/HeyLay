@@ -15,18 +15,6 @@ public class StaticsDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 
-	public List<StaticsVO> selectSavedSource(int no) {
-		List<StaticsVO> staticsList = sqlSessionTemplate.selectList("io.planb.statics.dao.StaticsDAO.selectSavedSource", no);
-		
-		return staticsList;
-	}
-
-	public List<StaticsVO> selectSavedSourceType(int no) {
-		List<StaticsVO> staticsList = sqlSessionTemplate.selectList("io.planb.statics.dao.StaticsDAO.selectSavedSourceType", no);
-		
-		return staticsList;
-	}
-
 	public List<StaticsVO> selectWordCloudList(int memberNo) {
 		List<StaticsVO> wordCloudList = sqlSessionTemplate.selectList("io.planb.statics.dao.StaticsDAO.selectWordCloudList", memberNo);
 		
@@ -73,12 +61,6 @@ public class StaticsDAO {
 
 	public List<StaticsVO> selectLikeSource(int no) {
 		List<StaticsVO> staticsList = sqlSessionTemplate.selectList("io.planb.statics.dao.StaticsDAO.selectLikeSource", no);
-		
-		return staticsList;
-	}
-
-	public List<StaticsVO> selectLikeSourceType(int no) {
-		List<StaticsVO> staticsList = sqlSessionTemplate.selectList("io.planb.statics.dao.StaticsDAO.selectLikeSourceType", no);
 		
 		return staticsList;
 	}

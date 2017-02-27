@@ -1,11 +1,15 @@
 package io.planb.statics.service;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import io.planb.contents.dao.ContentDAO;
+import io.planb.contents.vo.ContentsVO;
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.statics.dao.StaticsDAO;
 import io.planb.statics.vo.StaticsVO;
@@ -16,18 +20,8 @@ public class StaticsService {
 	@Autowired
 	private StaticsDAO dao;
 
-	public List<StaticsVO> selectSavedSource(int no) {
-		List<StaticsVO> staticsList = dao.selectSavedSource(no);
-		
-		return staticsList;
-	}
-
-	public List<StaticsVO> selectSavedSourceType(int no) {
-		List<StaticsVO> staticsList = dao.selectSavedSourceType(no);
-		
-		return staticsList;
-	}
-
+	@Autowired
+	private ContentDAO contentDAO;
 
 	public List<StaticsVO> selectwordCloudList(int memberNo) {
 		List<StaticsVO> wordCloudList = dao.selectWordCloudList(memberNo);
@@ -76,13 +70,6 @@ public class StaticsService {
 		
 		return staticsList;
 	}
-
-	public List<StaticsVO> selectLikeSourceType(int no) {
-		List<StaticsVO> staticsList = dao.selectLikeSourceType(no);
-		
-		return staticsList;
-	}
-
 	
 	public int countTotalSaved(int no) {
 		int countTotalSaved = dao.countTotalSaved(no);	
@@ -111,23 +98,57 @@ public class StaticsService {
 	public int sumSavedMonth(int no) {
 		int sumSavedMonth = dao.sumSavedMonth(no);
 		
-		return sumSavedMonth;
+		DecimalFormat df = new DecimalFormat("00");
+        Calendar currentCalendar = Calendar.getInstance();
+        
+        String month  = df.format(currentCalendar.get(Calendar.MONTH) + 1);
+        
+        int averageSavedMonth = sumSavedMonth / Integer.parseInt(month);
+        
+		return averageSavedMonth;
 	}
 
-	public List<StaticsVO> selectSavedMoreSaved(int no) {
-		List<StaticsVO> savedMoreSavedList = dao.selectSavedMoreSaved(no);
+	public List<ContentsVO> selectSavedMoreSaved(int memberNo) {
+		List<StaticsVO> savedMoreSavedNoList = dao.selectSavedMoreSaved(memberNo);
+		
+		List<ContentsVO> savedMoreSavedList = new ArrayList<>();
+		for(StaticsVO staticsvo : savedMoreSavedNoList) {
+			ContentsVO vo = new ContentsVO();
+			vo.setContentsNo(staticsvo.getNo());
+			
+			ContentsVO contents = contentDAO.getContents(vo);
+			savedMoreSavedList.add(contents);
+		}
 		
 		return savedMoreSavedList;
 	}
 
-	public List<StaticsVO> selectSavedLessSaved(int no) {
-		List<StaticsVO> savedLessSavedList = dao.selectSavedLessSaved(no);
+	public List<ContentsVO> selectSavedLessSaved(int memberNo) {
+		List<StaticsVO> savedLessSavedNoList = dao.selectSavedLessSaved(memberNo);
+		
+		List<ContentsVO> savedLessSavedList = new ArrayList<>();
+		for(StaticsVO staticsvo : savedLessSavedNoList) {
+			ContentsVO vo = new ContentsVO();
+			vo.setContentsNo(staticsvo.getNo());
+			
+			ContentsVO contents = contentDAO.getContents(vo);
+			savedLessSavedList.add(contents);
+		}
 		
 		return savedLessSavedList;
 	}
 
-	public List<StaticsVO> selectSavedLike(int no) {
-		List<StaticsVO> savedLikeList = dao.selectSavedLike(no);
+	public List<ContentsVO> selectSavedLike(int memberNo) {
+		List<StaticsVO> savedLikeNoList = dao.selectSavedLike(memberNo);
+		
+		List<ContentsVO> savedLikeList = new ArrayList<>();
+		for(StaticsVO staticsvo : savedLikeNoList) {
+			ContentsVO vo = new ContentsVO();
+			vo.setContentsNo(staticsvo.getNo());
+			
+			ContentsVO contents = contentDAO.getContents(vo);
+			savedLikeList.add(contents);
+		}
 		
 		return savedLikeList;
 	}
@@ -144,7 +165,7 @@ public class StaticsService {
 					value = statics2.getCnt();
 				}
 			}
-			StaticsVO statics = new StaticsVO(label, value, null);
+			StaticsVO statics = new StaticsVO(0, label, value, null);
 			staticsList.add(statics);
 		}
 		

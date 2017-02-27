@@ -199,14 +199,15 @@
                     </div>
                 </div>
             </div>
-            <div>
-            <a href="#about-us" class="down-btn page-scroll">
+            
+            <div class="space"></div>
+            
+            <a href="#about-us" class="down-btn page-scroll ">
                 <span class="fa fa-angle-down"></span>
             </a>
-            <a href="#main" class="up-btn page-scroll">
+            <a href="#main" class="up-btn page-scroll ">
                 <span class="fa fa-angle-up"></span>
             </a>
-            </div>
         </div>
     </div>
 
@@ -237,7 +238,7 @@
                     <div class="row">
                         <div class="col-md-3 col-sm-3">
                             <div class="team">
-                                <img src="${ pageContext.request.contextPath }/img/evee.png"" class="img-responsive img-circle" alt="...">
+                                <img src="${ pageContext.request.contextPath }/img/evee.png" class="img-responsive img-circle" alt="...">
                                 <br>
                                 <h4>Kim Jeongkyung</h4>
                                 <p class="small">Team Leader / Developer</p>

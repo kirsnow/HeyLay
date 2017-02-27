@@ -77,7 +77,7 @@
                         <div class="col-md-1 text-right text-muted lead" >
                            <strong><c:out value="${loop.count}"/>.</strong>&nbsp;&nbsp;
                         </div>
-                        <div class="col-md-2 text-muted text-left lead" >
+                        <div class="col-md-3 text-muted text-left lead" >
                            <strong><a href="#" title="해당 단어 검색 결과로 가는 URL" class="text-muted">${ keyword.keyword }</a></strong>
                         </div>
                         <div class="col-md-3 text-muted text-right">
