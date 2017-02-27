@@ -39,7 +39,7 @@
 	
 	<!-- Login section  -->
 	<section class="body">
-		 <div class="container marginTop60 sectionContent minHeight300">
+		 <div class="container marginTop60 sectionContent">
 			<div class="row">
 				<div class="page-header text-center col-md-6 col-md-offset-3">
 		             <h1>로그인</h1>
