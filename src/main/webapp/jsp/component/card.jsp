@@ -128,8 +128,7 @@
 					</a>
 					<ul class="dropdown-menu dropdown-menu-right" role="menu">
 						<li>
-							<a href="#" role="button" id="${ card.contentsNo }" class="bugReportBtn nofocus"
-							   data-toggle="modal" data-target="#bugModal" title="오류 신고">
+							<a href="#" role="button" id="${ card.contentsNo }" class="bugReportBtn nofocus" title="오류 신고">
 								<i class="fa fa-bug fa-fw" aria-hidden="true"></i>
 								오류 신고
 							</a>

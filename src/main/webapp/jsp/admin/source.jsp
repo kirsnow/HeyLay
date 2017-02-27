@@ -201,7 +201,7 @@
 	        	location.reload();
 	        },
 	        error:function(jqXHR, textStatus, errorThrown){
-	            alert("에러 발생 ㅅㅂ \n" + textStatus + " : " + errorThrown);
+	            alert("오류\n" + textStatus + " : " + errorThrown);
 	        }
 	    });
 	}
@@ -221,7 +221,7 @@
 	        	location.reload();
 	        },
 	        error:function(jqXHR, textStatus, errorThrown){
-	            alert("에러 발생 ㅅㅂ \n" + textStatus + " : " + errorThrown);
+	            alert("오류\n" + textStatus + " : " + errorThrown);
 	        }
 	    });
 	}
