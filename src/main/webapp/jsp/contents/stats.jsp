@@ -39,13 +39,13 @@
 	}
 	.scene1 {
 		text-align: center;
-	    background: url(/Quration/img/sample/back1.png) no-repeat bottom center;
+	    background: url(/img/sample/back1.png) no-repeat bottom center;
 	    height: 700px;
 	    background-color: #F7F7F7;
 	}
 	.scene2 {
 		text-align: center;
-	    background: url(/Quration/img/sample/back2.png) no-repeat center;
+	    background: url('${ pageContext.request.contextPath }'/img/sample/back2.png) no-repeat center;
 	    background-size: 1200px;
 	    height: 700px;
 	    background-color: #ffffff;

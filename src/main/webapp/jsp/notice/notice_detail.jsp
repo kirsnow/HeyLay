@@ -74,7 +74,13 @@
 	            </div>
 				<div class="row">
 					<div class="text-center col-md-8 col-md-offset-2">
-						<a class="btn btn-primary" href="${ pageContext.request.contextPath }/notice/list.do" role="button" title="공지사항 목록으로 되돌아가는 이동 링크">목록보기</a>
+						<c:if test="${ userVO.type eq 'A' }">
+		                	<a href="${ pageContext.request.contextPath }/jsp/admin/notice_modify.do?no=${ detail.no }" class="btn btn-primary"
+									role="button" title="공지 사항 수정">글 수정</a>
+							<a href="${ pageContext.request.contextPath }/jsp/admin/notice_delete.do?no=${ detail.no }" class="btn btn-default"
+									role="button" title="공지 사항 삭제">글 삭제</a>
+		                </c:if>
+						<a class="btn btn-default" href="${ pageContext.request.contextPath }/notice/list.do" role="button" title="공지사항 목록으로 되돌아가는 이동 링크">목록보기</a>
 					</div>
 				</div>
 			</div>

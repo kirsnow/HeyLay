@@ -63,11 +63,11 @@
 									<textarea rows="15" name="contents" class="form-control" title="공지사항 내용 입력 폼"> </textarea>
 								</div>
 							</div>
-							<div class="row">
-								<div class="col-md-8 col-md-offset-2 marginBottom marginTop">
-									<input type="file" name="attachfile" alt="공지 사항 파일 첨부" class="form-control"/>
-								</div>
-							</div>
+<!-- 							<div class="row"> -->
+<!-- 								<div class="col-md-8 col-md-offset-2 marginBottom marginTop"> -->
+<!-- 									<input type="file" name="attachfile" alt="공지 사항 파일 첨부" class="form-control"/> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
 							
 							<div class="row">
 								<div class="col-md-8 col-md-offset-2 text-center marginTop">

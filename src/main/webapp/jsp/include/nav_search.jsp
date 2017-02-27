@@ -39,7 +39,7 @@
 								<li><a
 									href="${ pageContext.request.contextPath }/drawer.do" class=""
 									title="내카드">
-									<i class="fa fa-hdd-o" aria-hidden="true"></i> 내 카드</a></li>
+									<i class="fa fa-address-card-o" aria-hidden="true"></i> 내 카드</a></li>
 							</c:otherwise>
 						</c:choose>
 						<li class="dropdown">
@@ -52,12 +52,8 @@
 							<ul class="dropdown-menu" role="menu">
 								<li><a
 									href="${ pageContext.request.contextPath }/myPage/mypage.do">
-										<i class="fa fa-vcard-o fa-fw" aria-hidden="true"></i> 회원 정보
+										<i class="fa fa-address-book" aria-hidden="true"></i> 회원 정보
 										수정
-								</a></li>
-								<li><a
-									href="${ pageContext.request.contextPath }/myPage/original_password.do">
-										<i class="fa fa-lock fa-fw" aria-hidden="true"></i> 비밀번호 변경
 								</a></li>
 								<c:if test="${ userVO.type eq 'A'}">
 									<li><a

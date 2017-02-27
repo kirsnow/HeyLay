@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
 import io.planb.admin.help.service.HelpService;
 import io.planb.answer.vo.AnswerVO;
@@ -115,10 +114,10 @@ public class HelpController {
 	
 	/* 공지 사항 등록 */
 	@RequestMapping(value = "/jsp/admin/notice_write.do", method = RequestMethod.POST)
-	public String insertNotice(@RequestParam("attachfile") MultipartFile multipartFile, @ModelAttribute NoticeVO notice) {
-		service.insertNotice(multipartFile, notice);
+	public String insertNotice(/*@RequestParam("attachfile") MultipartFile multipartFile, */@ModelAttribute NoticeVO notice) {
+		service.insertNotice(/*multipartFile, */notice);
 		
-		return "notice/notice_list";
+		return "redirect:/notice/list.do";
 	}
 	
 	/* 공지 사항 수정 폼 이동 */
@@ -132,10 +131,10 @@ public class HelpController {
 	
 	/* 공지 사항 수정 */
 	@RequestMapping("/jsp/admin/notice_modify.do")
-	public String updateNotice(@RequestParam("attachfile") MultipartFile multipartFile, @ModelAttribute NoticeVO notice) {
-		service.updateNotice(multipartFile, notice);
+	public String updateNotice(/*@RequestParam("attachfile") MultipartFile multipartFile, */@ModelAttribute NoticeVO notice) {
+		service.updateNotice(/*multipartFile, */notice);
 		
-		return "notice/notice_list";
+		return "redirect:/notice/list.do";
 	}
 	
 	/* 공지 사항 삭제 */
@@ -143,7 +142,7 @@ public class HelpController {
 	public String deleteNotice(@RequestParam("no") int no) {
 		service.deleteNotice(no);
 		
-		return "notice/notice_list";
+		return "redirect:/notice/list.do";
 	}
 	
 	/* 유해 콘텐츠, 메모 신고 목록 조회 (C: 콘텐츠 / M: 메모) */

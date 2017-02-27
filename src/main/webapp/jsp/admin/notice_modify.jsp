@@ -16,6 +16,7 @@
 <!-- Bootstrap -->
 <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css"
 	type="text/css" rel="stylesheet">
+<link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
 
 <!-- icon-font -->
 <script src="https://use.fontawesome.com/bbddce3010.js"></script>
@@ -26,7 +27,7 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-<title>공지 사항 등록 폼 | Quration: 답을 열어 줄 그런 사람</title>
+<title>공지 사항 수정 폼 | Quration: 답을 열어 줄 그런 사람</title>
 </head>
 <body class="nav-md">
 	<div class="container body">
@@ -38,12 +39,15 @@
 			<!-- page content -->
 			<div class="right_col" role="main">
 				<section>
+					<div class="page-header text-center col-md-8 col-md-offset-2 marginBottom30">
+	 		 			<h1>공지 사항 수정</h1>
+	           		</div>
 					<div id="container">
 						<form id="writeForm" action="${ pageContext.request.contextPath }/jsp/admin/notice_modify.do" method="post" 
 								class="form-horizontal" enctype="multipart/form-data">
 							<input type="hidden" name="no" value="${ notice.no }" />
 							<div class="row">
-								<div class="col-md-2 col-md-offset-2">
+								<div class="col-md-8 col-md-offset-2">
 									<select class="form-control" name="noticeType" id="noticeType">
 										<option value="N">공지 사항</option>
 										<option value="E">이벤트</option>
@@ -51,7 +55,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-8 col-md-offset-2">
+								<div class="col-md-8 col-md-offset-2 marginBottom marginTop">
 									<input type="text" name="title" id="title" placeholder="제목을 입력하세요" alt="공지 사항 제목 작성 text" 
 											class="form-control" value="${ notice.title }" />
 								</div>
@@ -61,13 +65,13 @@
 									<textarea rows="15" cols="200" name="contents" id="contents" class="form-control">${ notice.contents }</textarea>
 								</div>
 							</div>
+<!-- 							<div class="row"> -->
+<!-- 								<div class="col-md-8 col-md-offset-2"> -->
+<!-- 									<input type="file" name="attachfile" alt="공지 사항 파일 첨부" class="form-control"/> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
 							<div class="row">
-								<div class="col-md-8 col-md-offset-2">
-									<input type="file" name="attachfile" alt="공지 사항 파일 첨부" class="form-control"/>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-2 col-md-offset-5">
+								<div class="col-md-2 col-md-offset-5 text-center marginTop">
 									<button type="submit" class="btn btn-primary">수정</button>
 								</div>
 							</div>
