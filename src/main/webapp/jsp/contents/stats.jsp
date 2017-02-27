@@ -45,7 +45,7 @@
 	}
 	.scene2 {
 		text-align: center;
-	    background: url('${ pageContext.request.contextPath }'/img/sample/back2.png) no-repeat center;
+	    background: url(/img/sample/back2.png) no-repeat center;
 	    background-size: 1200px;
 	    height: 700px;
 	    background-color: #ffffff;
