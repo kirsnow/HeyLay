@@ -39,7 +39,7 @@
 	}
 	.scene1 {
 		text-align: center;
-	    background: url('${ pageContext.request.contextPath }'/img/sample/back1.png) no-repeat bottom center;
+	    background: url(/img/sample/back1.png) no-repeat bottom center;
 	    height: 700px;
 	    background-color: #F7F7F7;
 	}
