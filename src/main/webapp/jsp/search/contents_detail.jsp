@@ -172,8 +172,7 @@
 								</c:if>
 								<c:if test="${ not contents.isLiked }">
 									<%-- 로그인 + 카드 미저장 --%>
-									<button type="button" id="${ contents.contentsNo }"
-										title="좋아요" class="btn btn-primary likeBtn" data-toggle="modal" data-target="#saveCardModal">
+									<button type="button" id="${ contents.contentsNo }" title="좋아요" class="btn btn-primary likeBtn">
 										<i class="fa fa-heart" aria-hidden="true"></i> 좋아요
 									</button>
 								</c:if>
@@ -377,12 +376,14 @@
 		var contentsNo;
 		var likeBtn;
 		var likeCancelBtn;
+		var likeCnt;
 
 		$('.likeBtn').click( function() { 
 			
 			likeBtn = $(this);
 			likeCancelBtn = $('.likeCancelBtn');
 			contentsNo = $(this).attr("id");
+			likeCnt = $('.likeCnt').html();
 			
 			$(this).prop('disabled', true).removeClass('btn-info').addClass('btn-warning')
 	   		.html('<i class="fa fa-spinner fa-pulse" aria-hidden="true"></i>');
@@ -394,7 +395,7 @@
 		           success:function(data){
 		              	console.log("I like it!");
 
-						window.location.reload(true);
+// 						window.location.reload(true);
 
 						likeCancelBtn.attr('hidden',false);
 
@@ -402,9 +403,10 @@
 						likeBtn.prop('disabled', false).removeClass('btn-warning').addClass('btn-info')
 							.attr('hidden', true);
 		           		
+						$('.likeCnt').html(likeCnt+=1);
 		           },
 		           error:function(jqXHR, textStatus, errorThrown){
-		               alert("냥냥펀치 \n" + textStatus + " : " + errorThrown);
+		               alert("오류 \n" + textStatus + " : " + errorThrown);
 		           }
 			    });
 		});
@@ -423,16 +425,17 @@
 		           success:function(data){
 			        	console.log("Like Cancel!");
 
-						window.location.reload(true);
+// 						window.location.reload(true);
 
 						/* Success button */
 						$('.likeCancelBtn').prop('disabled', false).removeClass('btn-warning').addClass('btn-info')
 						.attr('hidden',true).html('<i class="fa fa-heart" aria-hidden="true"></i> 좋아요 취소');
 
 						likeBtn.attr('hidden',false).html('<i class="fa fa-heart-o" aria-hidden="true"></i> 좋아요');
+						$('.likeCnt').html(likeCnt-=1);
 		           },
 		           error:function(jqXHR, textStatus, errorThrown){
-		               alert("냥냥펀치 \n" + textStatus + " : " + errorThrown);
+		               alert("오류\n" + textStatus + " : " + errorThrown);
 		           }
 			    });
 		});
