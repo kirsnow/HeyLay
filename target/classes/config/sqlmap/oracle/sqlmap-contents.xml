@@ -96,12 +96,12 @@
 	</sql>
 	
 	<sql id="additionalJoin">
-		inner join Q_SOURCE SOU on SOU.NO = CON.SOURCE_NO
-		inner join Q_DATA_TYPE DAT on DAT.NO = SOU.DATA_TYPE
-		inner join Q_CATEGORY CAT on CAT.NO = CON.CATEGORY_NO
-		left join Q_IMAGE IMG on IMG.CONTENTS_NO = CON.NO
-		left join Q_LIKE LIK on LIK.CONTENTS_NO = CON.NO
-		left join Q_VIEW VIW on VIW.CONTENTS_NO = CON.NO
+		inner join Q_SOURCE SOU on CON.SOURCE_NO = SOU.NO
+		inner join Q_DATA_TYPE DAT on SOU.DATA_TYPE = DAT.NO 
+		inner join Q_CATEGORY CAT on CON.CATEGORY_NO = CAT.NO 
+		left join Q_IMAGE IMG on CON.NO = IMG.CONTENTS_NO
+		left join Q_LIKE LIK on CON.NO = LIK.CONTENTS_NO
+		left join Q_VIEW VIW on CON.NO = VIW.CONTENTS_NO
 	</sql>
 	
 	<sql id="additionalGroup">
@@ -120,8 +120,8 @@
 	</sql>
 	
  	<sql id="savedJoin">
-		left join Q_CONTENTS_SAVED SAV on SAV.CONTENTS_NO = CON.NO
-		left join Q_DIRECTORY DIR on DIR.NO = SAV.DIRECTORY_NO
+		left join Q_CONTENTS_SAVED SAV on CON.NO = SAV.CONTENTS_NO
+		left join Q_DIRECTORY DIR on SAV.DIRECTORY_NO = DIR.NO 
 	</sql>
 	
  	<sql id="savedGroup">
@@ -140,7 +140,7 @@
 	<select id="selectLikedContentsNo" parameterType="int" resultType="int">
 		SELECT contents_no
 		FROM q_like
-		WHERE member_no = #{no}
+		WHERE member_no = #{memberNo}
 		ORDER BY contents_no ASC
 	</select>
 	

@@ -142,11 +142,11 @@
 			           data: {"no" : dirNo, "name" : dirName},
 			           success:function(data){
 			              if(data == "완료")
-			              	alert("완료!");
+			              	alert("수정 완료!");
 			           		window.location.reload(true);
 			           },
 			           error:function(jqXHR, textStatus, errorThrown){
-			               alert("냥냥펀치 \n" + textStatus + " : " + errorThrown);
+			               alert("오류 \n" + textStatus + " : " + errorThrown);
 			           }
 				    });
 	  	      		
@@ -200,11 +200,11 @@
 			           data: {"name" : name},
 			           success:function(data){
 			              if(data == "완료")
-			              	alert("완료!");
+			              	alert("생성 완료!");
 			           		window.location.reload(true);
 			           },
 			           error:function(jqXHR, textStatus, errorThrown){
-			               alert("냥냥펀치 \n" + textStatus + " : " + errorThrown);
+			               alert("오류 \n" + textStatus + " : " + errorThrown);
 			           }
 				  });
 	              
@@ -239,6 +239,8 @@
 		
 		$('.delFormBtn').click(function() {
 			
+			alert("폴더 삭제시 담긴 카드들도 함께 삭제됩니다. 삭제 하시겠습니까?");
+			
 			var checkedTarget = $('div.editDiv input[type=checkbox]:checked');
 			var deleteNoArr = new Array();
 			for(var i = 0; i < checkedTarget.size(); i++) {
@@ -254,11 +256,11 @@
 		           data: {"no" : deleteNoArr},
 		           success:function(data){
 		        	   if(data == "완료")
-		        		   alert("완료");
+		        		   alert("삭제 완료");
 		        		   window.location.reload(true);
 		           },
 		           error:function(jqXHR, textStatus, errorThrown){
-		        	   alert("냥냥펀치 \n" + textStatus + " : " + errorThrown);
+		        	   alert("오류 \n" + textStatus + " : " + errorThrown);
 		           }
 			});
 		});

@@ -56,7 +56,7 @@ function doMember(memberNo) {
 							<li><a href="${ pageContext.request.contextPath }/contents/stats.do" title="내가 검색하고 저장한 통계 분석 페이지 링크">이용 통계</a></li>
 						</ul></li>
 					<li><a title="나만의 커스터 마이징 링크" href="${ pageContext.request.contextPath }/contents/customizing.do"><i class="fa fa-puzzle-piece" aria-hidden="true"></i> 
-						커스터마이징 <span class="fa fa-chevron-right"></span></a>
+						업그레이드 옵션<span class="fa fa-chevron-right"></span></a>
 					</li>
 				</ul>
 			</div>

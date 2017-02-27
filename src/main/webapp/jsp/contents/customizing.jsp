@@ -54,7 +54,7 @@
 				<div class="container sectionContent">
 					<div class="row">
 						<div class="text-center col-md-6 col-md-offset-3 marginBottom marginTop60">
-							<h4><b>회원별 커스터마이징</b></h4>
+							<h4><b>프리미엄으로 서비스 활용도를 높이세요.</b></h4>
 						</div>
 					</div>
 					<div class="row marginTop">

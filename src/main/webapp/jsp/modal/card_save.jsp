@@ -31,7 +31,10 @@
 						<dd class="marginTop"><p class="cardInfo drop-text-3">undefined</p></dd>
 					</dl>
 				</section>
-				<textarea id="memoMessage" class="form-control marginTop" rows="3" placeholder="메모 쓰기..."></textarea>
+				<section class="text-right">
+					<textarea id="memoMessage" class="form-control marginTop" rows="3" placeholder="메모 쓰기..." maxlength="4000"></textarea>
+					<small class="text-muted"><span id="text_length_memoMessage">4,000</span>자 입력 가능</small>
+				</section>
 			</div>
 			
 			<div class="modal-footer">
@@ -73,6 +76,27 @@
 	var contentsNo;
 	var dirNo = '${ dir1stNo }' * 1;
 	
+
+	// 글자수 카운트
+	$('#memoMessage').on('keydown',function(event) {
+		  var input = $(this), display = $('#text_length_memoMessage'), count = 0, limit = 4000;
+
+		  count = input.val().length
+		  remaining = limit - count;
+		  update(remaining);
+
+		  input.keyup(function(e) {
+		    count = $(this).val().length;
+		    remaining = limit - count;
+		    update(remaining);
+		  });
+
+		  function update(count) {
+			var txt = count.toLocaleString("en");
+		    display.html(txt);
+		  }
+		});
+	
 	// Modal - Set cardInfo
 	$('.saveCardBtn').on('click', function() {
 		saveCardBtn = $(this);
@@ -92,7 +116,7 @@
 	$('#saveCardModal').on('shown.bs.modal', function() {
 	  $('#memoMessage').focus();
 	});
-
+	
 	// Modal - Select directory
 	$('a.dirList').on('click', function() {
 		console.log( 'memoMessage: ' + $('#memoMessage').val() );
@@ -121,6 +145,7 @@
         		, 'memoMessage' : $('#memoMessage').val()
 		    }, success: function(result) {
 		    	console.log('카드 담기 성공');
+		    	console.log('result: ' + result);
 		    	
 		    	// Success button
 		    	$('button#putCard').removeClass('btn-warning').addClass('btn-success')
@@ -135,15 +160,7 @@
             	$('input#dirName').val('나의 첫 폴더').attr('readonly', 'readonly');
             	$('#memoMessage').val('');
             	
-            	
             	// page UI
-		    	// add memo (content_detail.jsp)
-		    	if(result.length > 0) $('#addMemo').after(memo).fadeIn("slow", function() {}); 
-		    	
-		    	// add savedCnt (content_detail.jsp)
-		    	var savedCnt = $('li .savedCnt').text()*1;
-		    	$('li .savedCnt').text(savedCnt + 1);
-		    	
 		    	// change Btn (in cards list)
             	$('a#' + contentsNo + '.saveCardBtn').hide();
             	$('a#' + contentsNo + '.saveCancelBtn').show();
@@ -151,7 +168,16 @@
             	// change Btn (content_detail.jsp)
             	$('button.saveCardBtn').hide();
             	$('button.saveCancelBtn').show();
+		    	
+		    	// add savedCnt (content_detail.jsp)
+		    	var savedCnt = $('li .savedCnt').text()*1;
+		    	$('li .savedCnt').text(savedCnt + 1);
             	
+		    	// add memo (content_detail.jsp)
+		    	if(result.length > 0) { 
+		    		$('#addMemo').after(result).fadeIn("slow", function() {}); 
+		    	}
+		    	
 		    }, error : function(result) {
         		console.log('카드 담기 오류');
         		

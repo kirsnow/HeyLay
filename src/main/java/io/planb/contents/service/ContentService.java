@@ -19,23 +19,44 @@ public class ContentService {
 	@Autowired
 	private SearchServiceImp searchService;
 	
-	/* Contents detail */
+	/**
+	 * Display contents detail
+	 * @param contentsNo
+	 * @param q
+	 * @param memberNo
+	 * @return ContentsVO
+	 */
 	public ContentsVO getContentsDetail(int contentsNo, String q, int memberNo) {
 		ContentsVO contents = getContentsByNo(contentsNo);
 		contents = searchService.highlighter(contents, q);
 		
 		if(contents != null) {
 			
+			//조회수 증가
+			contents = this.viewCntUp(memberNo, contents);
+			
 			//이전, 이후 콘텐츠 번호 추출
 			int prevContentsNo = dao.getPrevContentsNo(contentsNo);
 			int nextContentsNo = dao.getNextContentsNo(contentsNo);
 			if(prevContentsNo > 0) contents.setPrevContentsNo(prevContentsNo);
 			if(nextContentsNo > 0) contents.setNextContentsNo(nextContentsNo);
+			
+			//로그인 상태인 경우
+			if (memberNo > 0) {
+				// 회원 저장 여부 체크
+				contents = this.isThisSaved(memberNo, contents);
+				// 회원 좋아요 여부 체크
+				contents = this.isThisLiked(memberNo, contents);
+			}
 		}
 		return contents;
 	}
 	
-	/* Cards List */
+	/**
+	 * Display card list
+	 * @param contentsNo
+	 * @return List<ContentsVO>
+	 */
 	public List<ContentsVO> getCardsByNo(int contentsNo) {
 		ContentsVO vo = new ContentsVO();
 		vo.setContentsNo(contentsNo);
@@ -47,12 +68,12 @@ public class ContentService {
 	public ContentsVO getContentsByNo(int contentsNo) {
 		ContentsVO vo = new ContentsVO();
 		vo.setContentsNo(contentsNo);
-		
+		/*
 		if(dao.selectView(vo) == 0) {
 			dao.insertView(vo);
 		} else {
 			dao.updateView(vo);
-		}
+		}*/
 		
 		ContentsVO contents = dao.getContents(vo);
 		if(contents != null) {
@@ -105,13 +126,15 @@ public class ContentService {
 	}
 
 	public ContentsVO isThisLiked(int memberNo, ContentsVO card) {
-		//해당 회원이 저장한 콘텐츠 번호 목록 추출
+		//해당 회원이 좋아한 콘텐츠 번호 목록 추출
 		List<Integer> likedList = dao.getLikedContentsNo(memberNo);
-		
 		card.setIsLiked(false);
-		//저장한 콘텐츠 여부 확인
+		//좋아한 콘텐츠 여부 확인
 		for(int likedNo : likedList) {
-			if(likedNo == card.getContentsNo()) card.setIsLiked(true); break;
+			if(likedNo == card.getContentsNo()) {
+				card.setIsLiked(true);
+				break;
+			}
 		}
 		return card;
 	}
@@ -215,8 +238,21 @@ public class ContentService {
 //		return contents;
 //	}
 	
-	public void insertView(ContentsVO view) {
-		dao.insertView(view);
+	public ContentsVO viewCntUp(int memberNo, ContentsVO contents) {
+		ContentsVO vo = new ContentsVO();
+		vo.setContentsNo(contents.getContentsNo());
+		vo.setMemberNo(memberNo);
+		
+		int viewCnt = dao.getViewCnt(vo);
+		if(viewCnt == -1) {
+			dao.newViewCnt(vo);
+		} else {
+			dao.addViewCnt(vo);
+		}
+		viewCnt = dao.getViewCnt(vo);
+		contents.setViewCnt(viewCnt);
+		
+		return contents;
 	}
 	
 	public void updateView(ContentsVO view) {

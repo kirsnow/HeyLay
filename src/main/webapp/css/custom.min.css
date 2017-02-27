@@ -407,7 +407,6 @@
 	padding: 0;
 	position: absolute;
 	display: -ms-flexbox;
-	display: flex;
 	z-index: 1
 }
 
