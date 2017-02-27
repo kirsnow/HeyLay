@@ -109,10 +109,10 @@
 								</div>
 							</c:if>
 							<div class="card-labels">
-								<span class="label label-default"> ${ contents.categoryName }
-								</span> <span class="label label-info"> ${ contents.dataTypeName }
-								</span> <a href="${ contents.sourceUrl }" class="label label-primary"
-									target="_blank" title="원본 사이트로 이동(새 창)"> ${ contents.sourceName }
+								<span class="label label-default">${ contents.categoryName }</span>
+								<span class="label label-info">${ contents.dataTypeName }</span>
+								<a href="${ contents.sourceUrl }" class="label label-primary" target="_blank" title="원본 사이트로 이동(새 창)">
+									${ contents.sourceName }
 								</a>
 							</div>
 							<h2 class="card-title marginBottom30">

@@ -135,15 +135,7 @@
             	$('input#dirName').val('나의 첫 폴더').attr('readonly', 'readonly');
             	$('#memoMessage').val('');
             	
-            	
             	// page UI
-		    	// add memo (content_detail.jsp)
-		    	if(result.length > 0) $('#addMemo').after(memo).fadeIn("slow", function() {}); 
-		    	
-		    	// add savedCnt (content_detail.jsp)
-		    	var savedCnt = $('li .savedCnt').text()*1;
-		    	$('li .savedCnt').text(savedCnt + 1);
-		    	
 		    	// change Btn (in cards list)
             	$('a#' + contentsNo + '.saveCardBtn').hide();
             	$('a#' + contentsNo + '.saveCancelBtn').show();
@@ -151,7 +143,14 @@
             	// change Btn (content_detail.jsp)
             	$('button.saveCardBtn').hide();
             	$('button.saveCancelBtn').show();
+		    	
+		    	// add savedCnt (content_detail.jsp)
+		    	var savedCnt = $('li .savedCnt').text()*1;
+		    	$('li .savedCnt').text(savedCnt + 1);
             	
+		    	// add memo (content_detail.jsp)
+		    	if(result.length > 0) $('#addMemo').after(memo).fadeIn("slow"); 
+		    	
 		    }, error : function(result) {
         		console.log('카드 담기 오류');
         		
