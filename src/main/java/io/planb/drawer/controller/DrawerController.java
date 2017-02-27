@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import io.planb.contents.vo.ContentsVO;
 import io.planb.drawer.service.DrawerService;
 import io.planb.drawer.vo.DrawerVO;
 import io.planb.member.vo.MemberVO;
@@ -36,7 +35,6 @@ public class DrawerController {
 			mav.setViewName("redirect:/login/login.do");
 		} else {
 			int memberNo = userVO.getNo();
-			System.out.println("memberNo: " + memberNo);
 			
 			List<DrawerVO> cardsByDays = service.getDrawerList(memberNo, sort);
 			
@@ -46,8 +44,9 @@ public class DrawerController {
 		return mav;
 	}
 	
+	
 	@ResponseBody
-	@RequestMapping(value="/drawer/ajax/save.do")
+	@RequestMapping(value="/drawer/ajax/saveCard.do")
 	public String saveCard(HttpSession session
 			, @RequestParam int contentsNo, @RequestParam int dirNo
 			, @RequestParam String dirName
@@ -59,19 +58,31 @@ public class DrawerController {
 		String result = null;
 		
 		if(userVO == null) {
-			result = "msg: 로그인 후, 카드를 저장할 수 있습니다.";
+			result = "로그인 후 시도해 주십시오.";
 		} else {
-			ContentsVO card = new ContentsVO();
-			card.setMemberNo(userNo);
-			card.setContentsNo(contentsNo);
-			card.setDirectoryNo(dirNo);
-			card.setDirectoryName(dirName);
-			
-			service.saveCard(card);
+			service.saveCard(userNo, contentsNo, dirName, dirNo);
 			
 			if(memoMessage != null && !memoMessage.equals("")) {
 				result = memoService.addMemoAjax(userNo, contentsNo, memoMessage);
 			}
+		}
+		return result;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/drawer/ajax/delCard.do")
+	public String delCard(HttpSession session, @RequestParam int contentsNo) {
+		
+		MemberVO userVO = (MemberVO) session.getAttribute("userVO");
+		int userNo = userVO != null ? userVO.getNo() : 0;
+		
+		String result = null;
+		
+		if(userVO == null) {
+			result = "로그인 후 시도해 주십시오";
+		} else {
+			service.delCard(userNo, contentsNo);
+			result = "Succeed";
 		}
 		return result;
 	}

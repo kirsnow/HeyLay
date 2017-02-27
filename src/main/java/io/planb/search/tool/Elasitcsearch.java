@@ -28,7 +28,7 @@ public class Elasitcsearch {
 	private final int searchSize = 100;
 	private final String ipAmazon = "52.34.4.162";
 	private final String ipBit = "192.168.1.21";
-	private String searchIP = ipAmazon;
+	private String searchIP = ipBit;
 
 	/**
 	 * Elasticsearch URI Search
@@ -42,9 +42,7 @@ public class Elasitcsearch {
 		SearchVO searchResult = null;
 		
 		/* IP setup */
-		if(ip == null) {
-			searchIP = ipAmazon;
-		} else {
+		if(ip != null) {
 			ip = ip.toLowerCase();
 			
 			switch(ip) {

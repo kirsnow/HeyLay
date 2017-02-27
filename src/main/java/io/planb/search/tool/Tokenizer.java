@@ -17,7 +17,7 @@ public class Tokenizer {
 
 	private final String ipAmazon = "52.34.4.162";
 	private final String ipBit = "192.168.1.21";
-	private String searchIP = ipAmazon;
+	private String searchIP = ipBit;
 	
 	public List<QueryVO> analyzeQuery(String q) {
 		List<QueryVO> queryList = null;
