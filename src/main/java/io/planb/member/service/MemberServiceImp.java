@@ -46,7 +46,7 @@ public class MemberServiceImp implements MemberService {
 		member.setNo(nextMeberNo);
 
 		dao.enroll(member);
-
+		
 		dao.firstFolder(nextMeberNo);
 	}
 
@@ -180,7 +180,8 @@ public class MemberServiceImp implements MemberService {
 		int withdrawContentCnt = dao.selectWithdrawContentCnt(memberNo);
 		return withdrawContentCnt;
 	}
-
+	
+	// 관심 키워드 체크 박스
 	@Override
 	public void insertKeywords(ArrayList<String> list, int no) {
 		for (String keyword : list) {
@@ -191,6 +192,7 @@ public class MemberServiceImp implements MemberService {
 			dao.insertKeywords(keywords);
 		}
 	}
+	
 
 	// 계정 찾기
 	@Override
@@ -227,5 +229,10 @@ public class MemberServiceImp implements MemberService {
 		MemberVO userVO = dao.login(member);
 		
 		return userVO;
+	}
+
+	@Override
+	public void updateDate(MemberVO member) {
+		dao.updateDate(member);
 	}
 }

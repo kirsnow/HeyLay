@@ -91,6 +91,7 @@ public class MembershipController {
 		return "완료";
 	}
 	
+	
 	/* 선호 키워드 추가 */
 	@RequestMapping("/jsp/keyword_insert.do")
 	public String insertKeywords(@RequestParam(value="checkboxValues[]") List<String> param, HttpSession session) {
