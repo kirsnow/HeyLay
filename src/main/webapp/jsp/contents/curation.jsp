@@ -12,16 +12,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>카드 추천 | Quration: 답을 열어 줄 그런 사람</title>
 
-<<<<<<< HEAD
-<!-- Bootstrap -->
-<link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
-<link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
-<!-- Bootstrap JS SET -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
-=======
->>>>>>> 8f130fe3336a3c135c82b98bc30b01ccc6c04151
-
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	
 	<!-- 공통css  -->
