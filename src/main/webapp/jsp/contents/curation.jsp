@@ -41,7 +41,7 @@
 		<header>
 			<jsp:include page="/jsp/include/nav_search.jsp" />
 		</header>
-		<div class="main_container marginTop60">
+		<div class="main_container marginTop60 sectionContent">
 			<!-- nav -->
 			<jsp:include page="/jsp/include/nav_personal.jsp" />
 			<!-- /nav -->
@@ -94,9 +94,10 @@
 
 				<!-- /page content -->
 			</div>
-			<!-- footer -->
-			<jsp:include page="/jsp/include/footer.jsp" />
-			<!-- /footer -->
+			<!-- Footer -->
+		    <Footer class="footer">
+				<jsp:include page="/jsp/include/footer.jsp" />
+			</Footer> 
 		</div>
 	</div>
 
