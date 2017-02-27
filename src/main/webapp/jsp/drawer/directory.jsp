@@ -146,7 +146,7 @@
 			           		window.location.reload(true);
 			           },
 			           error:function(jqXHR, textStatus, errorThrown){
-			               alert("냥냥펀치 \n" + textStatus + " : " + errorThrown);
+			               alert("오류 \n" + textStatus + " : " + errorThrown);
 			           }
 				    });
 	  	      		
@@ -204,7 +204,7 @@
 			           		window.location.reload(true);
 			           },
 			           error:function(jqXHR, textStatus, errorThrown){
-			               alert("냥냥펀치 \n" + textStatus + " : " + errorThrown);
+			               alert("오류 \n" + textStatus + " : " + errorThrown);
 			           }
 				  });
 	              
@@ -258,7 +258,7 @@
 		        		   window.location.reload(true);
 		           },
 		           error:function(jqXHR, textStatus, errorThrown){
-		        	   alert("냥냥펀치 \n" + textStatus + " : " + errorThrown);
+		        	   alert("오류 \n" + textStatus + " : " + errorThrown);
 		           }
 			});
 		});
