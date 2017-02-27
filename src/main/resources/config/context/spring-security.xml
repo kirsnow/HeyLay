@@ -28,7 +28,6 @@
     <sec:http auto-config="true" use-expressions="true">
     	<sec:intercept-url pattern="/jsp/admin/**" access="hasAuthority('ROLE_ADMIN')" />
     	<sec:intercept-url pattern="/contents/**" access="isAuthenticated()" />
-    	<sec:intercept-url pattern="/contents**" access="isAuthenticated()" />
     	<sec:intercept-url pattern="/drawer/**" access="isAuthenticated()" />
     	<sec:intercept-url pattern="/drawer**" access="isAuthenticated()" />
     	<sec:intercept-url pattern="/statics/**" access="isAuthenticated()" />
