@@ -7,5 +7,10 @@
 		VALUES(#{memberNo}, #{directoryNo}, #{contentsNo})
 	</insert>
 	
+	<delete id="delteCardSaved" parameterType="contentsVO">
+		DELETE FROM q_contents_saved
+		WHERE contents_no = #{contentsNo} AND member_no = #{memberNo}
+	</delete>
+	
 </mapper>
   

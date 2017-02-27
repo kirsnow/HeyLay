@@ -334,6 +334,7 @@
   	 vertical-align: middle;
    }
    
+   /* saveCardBtn */
    a.saveCardBtn,
    a.saveCancelBtn {
 	position: relative;
@@ -348,6 +349,17 @@
    
    a.saveCardBtn:hover,
    a.saveCancelBtn {
+	color: #03A9F4;
+   }
+   
+   /* likeCardBtn */
+   a.likeCardBtn,
+   a.likeCancelBtn:hover {
+	color: 9E9E9E;
+   }
+   
+   a.likeCardBtn:hover,
+   a.likeCancelBtn {
 	color: #03A9F4;
    }
 	

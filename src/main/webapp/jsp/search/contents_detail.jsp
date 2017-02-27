@@ -131,28 +131,26 @@
 
 				<div class="row marginBottom30">
 					<div role="toolbar" class="toolbar col-xs-12 text-right">
-						<%-- saveCardBtn --%>
+						<%-- 로그인 상태 --%>
 						<c:choose>
 							<c:when test="${ (userVO ne null) and (not empty userVO) }">
-								<c:if test="${ contents.isSaved }">
-									<%-- 로그인 + 카드 저장 --%>
-									<button type="button" id="${ contents.contentsNo }"
-										title="카드 담기 취소" class="btn btn-default saveCancelBtn">
-										<i class="fa fa-bookmark-o" aria-hidden="true"></i> 담기 취소
-									</button>
-								</c:if>
+								<%-- 카드 담기 버튼 --%>
+								<button type="button" id="${ contents.contentsNo }"
+									<c:if test="${ contents.isSaved }">style="display:none"</c:if>
+									title="카드 담기" class="btn btn-primary saveCardBtn" data-toggle="modal" data-target="#saveCardModal">
+									<i class="fa fa-bookmark" aria-hidden="true"></i> 카드 담기
+								</button>
 								
-								<c:if test="${ not contents.isSaved }">
-									<%-- 로그인 + 카드 미저장 --%>
-									<button type="button" id="${ contents.contentsNo }"
-										title="카드 담기" class="btn btn-primary saveCardBtn" data-toggle="modal" data-target="#saveCardModal">
-										<i class="fa fa-bookmark" aria-hidden="true"></i> 카드 담기
-									</button>
-								</c:if>
+								<%-- 카드 담기 취소 버튼 --%>
+								<button type="button" id="${ contents.contentsNo }"
+									<c:if test="${ not contents.isSaved }">style="display:none"</c:if>
+									title="카드 담기 취소" class="btn btn-default saveCancelBtn">
+									<i class="fa fa-bookmark-o" aria-hidden="true"></i> 담기 취소
+								</button>
 							</c:when>
 							
+							<%-- 비로그인 상태 --%>
 							<c:otherwise>
-								<%-- 비로그인 --%>
 								<button type="button" id="${ contents.contentsNo }" onclick="location.href='${ pageContext.request.contextPath }/login/login.do'"
 									title="카드 담기: 로그인이 필요한 서비스입니다" class="btn btn-primary saveCardBtn">
 									<i class="fa fa-bookmark" aria-hidden="true"></i> 카드 담기

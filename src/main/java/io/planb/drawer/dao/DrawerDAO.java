@@ -16,4 +16,8 @@ public class DrawerDAO {
 		sqlSessionTemplate.insert("io.planb.drawer.dao.DrawerDAO.insertCardToSave", card);
 	}
 
+	public void delCard(ContentsVO card) {
+		sqlSessionTemplate.delete("io.planb.drawer.dao.DrawerDAO.delteCardSaved", card);
+	}
+
 }

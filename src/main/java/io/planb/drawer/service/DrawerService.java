@@ -33,9 +33,6 @@ public class DrawerService {
 	public List<ContentsVO> getSavedCardsForMember(int memberNo) {
 		ContentsVO vo = new ContentsVO();
 		vo.setMemberNo(memberNo);
-		
-//		int viewCnt = conService.selectView(vo);
-//		vo.setPersonalVieCnt(viewCnt);
     
 		List<ContentsVO> savedCards = contentDAO.getSavedCards(vo);
 		return savedCards;
@@ -67,10 +64,11 @@ public class DrawerService {
 	public List<DrawerVO> getDrawerList(int memberNo, String sort) {
 		if(sort == null) sort = "directory";
 		// Get saved cards from DB
-		List<ContentsVO> savedCards = getSavedCardsForMember(memberNo);
+		List<ContentsVO> savedCards = this.getSavedCardsForMember(memberNo);
+		savedCards = conService.isThisSaved(memberNo, savedCards);
 		
 		// Get header list
-		Set<String> drawerHeader = getHeaderList(savedCards, sort);
+		Set<String> drawerHeader = this.getHeaderList(savedCards, sort);
 		
 		// Get card list to print
 		List<DrawerVO> drawerList = new ArrayList<>();
@@ -90,12 +88,27 @@ public class DrawerService {
 		return drawerList;
 	}
 	
-	public void saveCard(ContentsVO card) {
+	public void saveCard(int memberNo, int contentsNo, String dirName, int dirNo) {
+		
+		ContentsVO card = new ContentsVO();
+		card.setMemberNo(memberNo);
+		card.setContentsNo(contentsNo);
+		card.setDirectoryNo(dirNo);
+		card.setDirectoryName(dirName);
+		
 		if(card.getDirectoryNo() < 0) {
 			int directoryNo = dirService.newDirectory(card.getMemberNo(), card.getDirectoryName());
 			card.setDirectoryNo(directoryNo);
 		}
 		dao.saveCard(card);
+	}
+
+	public void delCard(int userNo, int contentsNo) {
+		ContentsVO card = new ContentsVO();
+		card.setMemberNo(userNo);
+		card.setContentsNo(contentsNo);
+		
+		dao.delCard(card);
 	}
 	
 }

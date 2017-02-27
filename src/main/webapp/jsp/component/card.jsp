@@ -67,21 +67,22 @@
 		<div class="mdl-card__menu">
 			<div id="save" class="btn-group dropdown pull-right">
 				<c:choose>
-					<%-- 비로그인 --%>
+					<%-- 로그인 상태 --%>
 					<c:when test="${ (userVO ne null) and (not empty userVO) }">
-							<%-- 로그인 + 카드 저장 --%>
-							<c:if test="${ card.isSaved }">
-								<a id="${ card.contentsNo }" title="카드 담기 취소" class="saveCancelBtn nofocus" href="#">
-								<i class="fa fa-bookmark fa-3x" aria-hidden="true"></i></a>
-							</c:if>
-							<%-- 로그인 + 카드 미저장 --%>
-							<c:if test="${ not card.isSaved }">
-								<a id="${ card.contentsNo }" 
-									title="카드 담기" class="saveCardBtn nofocus" data-toggle="modal" data-target="#saveCardModal" href="#">
-								<i class="fa fa-bookmark fa-3x" aria-hidden="true"></i></a>
-							</c:if>
+						<%-- 카드 저장 버튼 --%>
+						<a id="${ card.contentsNo }" title="카드 담기" class="saveCardBtn nofocus" 
+							<c:if test="${ card.isSaved }">style="display: none;"</c:if>
+							data-toggle="modal" data-target="#saveCardModal" href="#">
+						<i class="fa fa-bookmark fa-3x" aria-hidden="true"></i></a>
+						
+						<%-- 카드 저장 취소 버튼 --%>
+						<a id="${ card.contentsNo }" title="카드 담기 취소" class="saveCancelBtn nofocus" 
+							<c:if test="${ not card.isSaved }">style="display: none;"</c:if>
+							href="#">
+						<i class="fa fa-bookmark fa-3x" aria-hidden="true"></i></a>
 					</c:when>
-					<%-- 로그인 + 카드 미저장 --%>
+					
+					<%-- 비로그인 상태 --%>
 					<c:otherwise>
 						<a id="${ card.contentsNo }" href="${ pageContext.request.contextPath }/login/login.do"
 							title="카드 담기: 로그인이 필요한 서비스입니다" class="saveCardBtn">
@@ -105,14 +106,6 @@
 						<i class="fa fa-share-alt fa-lg mdl-color-text--grey-500" aria-hidden="true"></i>
 					</a>
 					<ul class="dropdown-menu dropdown-menu-right" role="menu">
-						<%-- 
-						<li>
-							<a href="#" title="카카오톡으로 공유">
-								<i class="fa fa-commenting fa-fw" aria-hidden="true"></i> 
-								KakaoTalk
-							</a>
-						</li> 
-						--%>
 						<li>
 							<a href="javascript:facebook('${card.contentsNo}')" title="페이스북으로 공유">
 								<i class="fa fa-facebook fa-fw" aria-hidden="true"></i> 
@@ -125,14 +118,6 @@
 								Twitter
 							</a>
 						</li>
-						<%-- 
-						<li>
-							<a href="#" title="에버노트로 공유">
-								<i class="fa fa-sticky-note fa-fw" aria-hidden="true"></i> 
-								Evernote
-							</a>
-						</li> 
-						--%>
 					</ul>
 				</div>
 				<div id="report" class="btn-group dropup" title="신고">

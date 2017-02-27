@@ -76,7 +76,6 @@ public class ContentService {
 	public ContentsVO isThisSaved(int memberNo, ContentsVO card) {
 		//해당 회원이 저장한 콘텐츠 번호 목록 추출
 		List<Integer> savedList = dao.getSavedContentsNo(memberNo);
-		System.out.println("savedList: " + savedList);
 		card.setIsSaved(false);
 		//저장한 콘텐츠 여부 확인
 		for(int savedNo : savedList) {
@@ -85,7 +84,6 @@ public class ContentService {
 				break;
 			}
 		}
-		System.out.println(card.getContentsNo() + " == " + card.getIsSaved());
 		return card;
 	}
 	
