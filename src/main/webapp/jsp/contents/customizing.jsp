@@ -35,6 +35,7 @@
 		ga('send', 'pageview');
 	</script>
 
+
 </head>
 </head>
 <body class="nav-md">
@@ -116,7 +117,6 @@
 				<!-- /page content -->
 				</div>
 			</div>
-
 	<!-- Footer -->
     <Footer class="footer">
 		<jsp:include page="/jsp/include/footer.jsp" />
@@ -124,6 +124,7 @@
 
 	<!-- 공통 js -->
 	<jsp:include page="/jsp/include/commonJs.jsp" />
+
 		</div>
 	</div>
 
