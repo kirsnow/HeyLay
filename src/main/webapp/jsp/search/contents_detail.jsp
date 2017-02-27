@@ -109,11 +109,11 @@
 								</div>
 							</c:if>
 							<div class="card-labels">
-								<span class="label label-default"> ${ contents.categoryName }
-								</span> <span class="label label-info"> ${ contents.dataTypeName }
-								</span> <a href="${ contents.sourceUrl }" class="label label-primary"
-									target="_blank" title="원본 사이트로 이동(새 창)"> ${ contents.sourceName }
-								</a>
+								<span 
+								class="label label-default">${ contents.categoryName }</span><span 
+								class="label label-info">${ contents.dataTypeName }</span><a href="${ contents.sourceUrl }" 
+								class="label label-primary" target="_blank" 
+								title="원본 사이트로 이동(새 창)">${ contents.sourceName }</a>
 							</div>
 							<h2 class="card-title marginBottom30">
 								${ contents.title }
@@ -161,6 +161,7 @@
 						<%-- likeBtn --%>
 						<c:choose>
 							<c:when test="${ (userVO ne null) and (not empty userVO) }">
+<<<<<<< HEAD
 								<c:if test="${ contents.isLiked }">
 									<%-- 로그인 + 카드 저장 --%>
 									<button type="button" id="${ contents.contentsNo }"
@@ -174,6 +175,20 @@
 										<i class="fa fa-heart" aria-hidden="true"></i> 좋아요
 									</button>
 								</c:if>
+=======
+								<%-- 카드 좋아요 버튼 --%>
+								<button type="button" id="${ contents.contentsNo }" 
+									<c:if test="${ contents.isLiked }">style="display:none"</c:if>
+									title="좋아요" class="btn btn-primary likeBtn" data-toggle="modal" data-target="#saveCardModal">
+									<i class="fa fa-heart" aria-hidden="true"></i> 좋아요
+								</button>
+								<%-- 카드 좋아요 취소 버튼 --%>
+								<button type="button" id="${ contents.contentsNo }" 
+									<c:if test="${ not contents.isLiked }">style="display:none"</c:if>
+									title="좋아요 취소" class="btn btn-default likeCancelBtn">
+									<i class="fa fa-heart-o" aria-hidden="true"></i> 좋아요 취소
+								</button>
+>>>>>>> 73f1fd215d5fbab68a07872ffb03095f31997a10
 							</c:when>
 							
 							<c:otherwise>
@@ -220,7 +235,7 @@
 					<ul class="list-unstyled">
 						<li><strong class="viewCnt">${ contents.viewCnt }</strong>회 조회</li>
 						<li><strong class="savedCnt">${ contents.savedCnt }</strong>명이 저장함</li>
-						<li><strong class="likeCnt">${ contents.likeCnt }</strong>명이 좋아함</li>
+						<li><strong class="likedCnt">${ contents.likeCnt }</strong>명이 좋아함</li>
 						<li><a href="${ contents.url }" target="_blank" title="원본 페이지로 이동(새 창)">
 								<i class="fa fa-external-link"aria-hidden="true"></i> 원본 보기
 							</a></li>
@@ -378,13 +393,11 @@
 
 		$('.likeBtn').click( function() { 
 			
-			likeBtn = $(this);
-			likeCancelBtn = $('.likeCancelBtn');
 			contentsNo = $(this).attr("id");
 			likeCnt = $('.likeCnt').html();
 			
 			$(this).prop('disabled', true).removeClass('btn-info').addClass('btn-warning')
-	   		.html('<i class="fa fa-spinner fa-pulse" aria-hidden="true"></i>');
+	   		.html('<i class="fa fa-spinner fa-pulse" aria-hidden="true"></i> 좋아요');
 			
 			$.ajax({
 		           url:"${ pageContext.request.contextPath }/contents/likeCntUp.do",
@@ -393,6 +406,7 @@
 		           success:function(data){
 		              	console.log("I like it!");
 
+<<<<<<< HEAD
 // 						window.location.reload(true);
 
 						likeCancelBtn.attr('hidden',false);
@@ -405,21 +419,38 @@
 		           },
 		           error:function(jqXHR, textStatus, errorThrown){
 		               alert("오류 \n" + textStatus + " : " + errorThrown);
+=======
+		             // page UI
+		             // add likedCnt (content_detail.jsp)
+				    	var likedCnt = $('li .likedCnt').text()*1;
+				    	$('li .likedCnt').text(likedCnt + 1);
+		             
+		             // change Btn (content_detail.jsp)
+		              	$('button.likeBtn').hide().prop('disabled', false).removeClass('btn-warning').addClass('btn-primary')
+		              		.html('<i class="fa fa-heart fa-pulse" aria-hidden="true"></i> 좋아요');
+		              	$('button.likeCancelBtn').show();
+
+		           },
+		           error:function(jqXHR, textStatus, errorThrown){
+		        	   $('button.likeBtn').removeClass('btn-warning').addClass('btn-danger')
+	   	    			.html('<i class="fa fa-exclamation-circle" aria-hidden="true"></i> 오류');
+>>>>>>> 73f1fd215d5fbab68a07872ffb03095f31997a10
 		           }
 			    });
 		});
 		
+		
 		$('.likeCancelBtn').click( function() { 
-			
 			contentsNo = $(this).attr("id");
 			
 			$(this).prop('disabled', true).removeClass('btn-info').addClass('btn-warning')
-	   		.html('<i class="fa fa-spinner fa-pulse" aria-hidden="true"></i>');
+	   		.html('<i class="fa fa-spinner fa-pulse" aria-hidden="true"></i> 좋아요 취소');
 			
 			$.ajax({
 				url:"${ pageContext.request.contextPath }/contents/likeCancel.do",
 		           type:'POST',
 		           data: {"contentsNo" : contentsNo},
+<<<<<<< HEAD
 		           success:function(data){
 			        	console.log("Like Cancel!");
 
@@ -434,6 +465,24 @@
 		           },
 		           error:function(jqXHR, textStatus, errorThrown){
 		               alert("오류\n" + textStatus + " : " + errorThrown);
+=======
+		           success: function(data){
+			        	console.log("Like canceled!");
+
+			             // page UI
+			             // add likedCnt (content_detail.jsp)
+					    	var likedCnt = $('li .likedCnt').text()*1;
+					    	$('li .likedCnt').text(likedCnt - 1);
+			             
+			             // change Btn (content_detail.jsp)
+		              	$('button.likeCancelBtn').hide().prop('disabled', false).removeClass('btn-warning').addClass('btn-primary')
+		              		.html('<i class="fa fa-heart-o fa-pulse" aria-hidden="true"></i> 좋아요 취소');
+						$('button.likeBtn').show();
+		           },
+		           error: function(){
+		        	   $('button.likeCancelBtn').removeClass('btn-warning').addClass('btn-danger')
+	   	    			.html('<i class="fa fa-exclamation-circle" aria-hidden="true"></i> 오류');
+>>>>>>> 73f1fd215d5fbab68a07872ffb03095f31997a10
 		           }
 			    });
 		});

@@ -56,10 +56,6 @@ public class ContentController {
 			// 내 카드 서랍 목록 (로그인 시)
 			List<DirectoryVO> dirList = dirService.directoryList(userNo);
 			mav.addObject("dirList", dirList);
-			// 회원 저장 여부 체크
-			contents = service.isThisSaved(userNo, contents);
-			// 회원 좋아요 여부 체크
-			contents = service.isThisLiked(userNo, contents);
 		}
 
 		mav.setViewName("search/contents_detail");
@@ -157,11 +153,6 @@ public class ContentController {
 		like.setContentsNo(contentsNo);
 
 		service.likeCntUp(like);
-
-		// int likeCnt = service.selectLikeCnt(contentsNo);
-		//
-		// like.setLikeCnt(likeCnt);
-		// System.out.println(likeCnt);
 
 		return "succeed";
 	}

@@ -192,4 +192,26 @@ public class ContentDAO {
 		return cnt;
 	}
 	
+	public int getViewCnt(ContentsVO vo) {
+		int viewCnt = 0;
+		
+		try{
+			viewCnt = sqlSessionTemplate.selectOne("io.planb.contents.dao.ContentDAO.selectViewCnt", vo);
+		} catch(NullPointerException np) {
+			viewCnt = -1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return viewCnt;
+	}
+	
+	public void newViewCnt(ContentsVO vo) {
+		sqlSessionTemplate.insert("io.planb.contents.dao.ContentDAO.insertViewCnt", vo);
+	}
+	
+	public void addViewCnt(ContentsVO vo) {
+		sqlSessionTemplate.update("io.planb.contents.dao.ContentDAO.updateViewCnt", vo);
+	}
+	
 }

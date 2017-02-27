@@ -9,7 +9,7 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 				<h4 class="modal-title text-muted" id="myModalLabel">
-					<i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;
+					<i class="fa fa-comment fa-2x fa-flip-horizontal" aria-hidden="true"></i>&nbsp;
 					<c:choose>
 						<c:when test="${ userVO ne null }">
                    			<c:out value="${ userVO.lastName } ${ userVO.firstName }"/>
@@ -20,8 +20,9 @@
 					</c:choose>
 				</h4>
 			</div>
-			<div class="modal-body">
-				<textarea id="editMemoMessage" class="form-control" rows="7"></textarea>
+			<div class="modal-body text-right">
+				<textarea id="editMemoMessage" class="form-control" rows="7" maxlength="4000"></textarea>
+				<small class="text-muted"><span id="text_length">4,000</span>자 입력 가능</small>
 			</div>
 			<div class="modal-footer">
 				<button type="button" id="saveMemo" class="btn btn-primary btn-block">
@@ -38,6 +39,25 @@
 			.html('<i class="fa fa-pencil" aria-hidden="true"></i> 작성');
 		$('#editMemoMessage').focus()
 	});
+	
+	$('#editMemoMessage').on('keydown',function(event) {
+		  var input = $(this), display = $('#text_length'), count = 0, limit = 4000;
+
+		  count = input.val().length
+		  remaining = limit - count;
+		  update(remaining);
+
+		  input.keyup(function(e) {
+		    count = $(this).val().length;
+		    remaining = limit - count;
+		    update(remaining);
+		  });
+
+		  function update(count) {
+			var txt = count.toLocaleString("en");
+		    display.html(txt);
+		  }
+		});
 	
    	/* 메모 추가 모달에서 작성 버튼 클릭 시, ajax를 통해 DB에 메모 추가 */
     $('button#saveMemo').click(function() {
