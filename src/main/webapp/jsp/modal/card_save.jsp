@@ -121,6 +121,7 @@
         		, 'memoMessage' : $('#memoMessage').val()
 		    }, success: function(result) {
 		    	console.log('카드 담기 성공');
+		    	console.log('result: ' + result);
 		    	
 		    	// Success button
 		    	$('button#putCard').removeClass('btn-warning').addClass('btn-success')
@@ -150,7 +151,7 @@
             	
 		    	// add memo (content_detail.jsp)
 		    	if(result.length > 0) { 
-		    		$('#addMemo').after(memo).fadeIn("slow", function() {}); 
+		    		$('#addMemo').after(result).fadeIn("slow", function() {}); 
 		    	}
 		    	
 		    }, error : function(result) {
