@@ -1,24 +1,16 @@
 package io.planb.admin.help.service;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
-
-import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import io.planb.admin.help.dao.HelpDAO;
 import io.planb.answer.vo.AnswerVO;
-import io.planb.contents.vo.ContentsVO;
 import io.planb.contentsSpam.vo.ContentsSpamVO;
 import io.planb.faq.vo.FaqVO;
-import io.planb.member.vo.MemberVO;
 import io.planb.notice.vo.NoticeVO;
-import io.planb.noticeAttach.vo.NoticeAttachVO;
 import io.planb.question.vo.QuestionVO;
 
 @Service
@@ -26,9 +18,6 @@ public class HelpService {
 	
 	@Autowired
 	private HelpDAO dao;
-	
-	@Autowired
-	private ServletContext servletContext;
 
 	public List<QuestionVO> selectQuestionList() {
 		List<QuestionVO> questionList = dao.selectQuestionList();
@@ -62,119 +51,127 @@ public class HelpService {
 	public void deleteFaq(int no) {
 		dao.deleteFaq(no);
 	}
-
-	public void insertNotice(MultipartFile multipartFile, NoticeVO notice) {
-		// 실행되는 웹어플리케이션의 실제 경로 가져오기
-		String uploadDir = servletContext.getRealPath("/upload/");
-//		System.out.println("uploadDir : " + uploadDir);
-
-		// ModelAndView mav = new ModelAndView("file/uploadResult");
-
-		// System.out.println("OwnerServiceImp id : " + owner.getId());
-
+	
+	public void insertNotice(NoticeVO notice) {
 		dao.insertNotice(notice);
-
-		if (! multipartFile.isEmpty()) {
-
-			// 원본 파일명
-			String oriFileName = multipartFile.getOriginalFilename();
-			// System.out.println("원본 파일명 : " + oriFileName);
-
-			if (oriFileName != null && !oriFileName.equals("")) {
-
-				// 확장자 처리
-				String ext = "";
-				// 뒤쪽에 있는 . 의 위치
-				int index = oriFileName.lastIndexOf(".");
-				if (index != -1) {
-					// 파일명에서 확장자명(.포함)을 추출
-					ext = oriFileName.substring(index);
-				}
-
-				// 파일 사이즈
-				long fileSize = multipartFile.getSize();
-				// System.out.println("파일 사이즈 : " + fileSize);
-
-				// 고유한 파일명 만들기
-				String saveFileName = "quration-" + UUID.randomUUID().toString() + ext;
-				// System.out.println("저장할 파일명 : " + saveFileName);
-
-				// 임시저장된 파일을 원하는 경로에 저장
-				try {
-					multipartFile.transferTo(new File(uploadDir + "/" + saveFileName));
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-
-				NoticeAttachVO noticeAttach = new NoticeAttachVO();
-				noticeAttach.setOriName(oriFileName);
-				noticeAttach.setSavedName(saveFileName);
-				noticeAttach.setFileSize((int) fileSize);
-				
-//				System.out.println("Service notice : " + notice);
-//				System.out.println("Service noticeAttach : " + noticeAttach);
-				
-				dao.insertNoticeAttach(noticeAttach);
-			}
-		}
 	}
 
-	public void updateNotice(MultipartFile multipartFile, NoticeVO notice) {
-		// 실행되는 웹어플리케이션의 실제 경로 가져오기
-		String uploadDir = servletContext.getRealPath("/upload/");
-//		System.out.println("uploadDir : " + uploadDir);
+//	public void insertNotice(MultipartFile multipartFile, NoticeVO notice) {
+//		// 실행되는 웹어플리케이션의 실제 경로 가져오기
+//		String uploadDir = servletContext.getRealPath("/upload/");
+////		System.out.println("uploadDir : " + uploadDir);
+//
+//		// ModelAndView mav = new ModelAndView("file/uploadResult");
+//
+//		// System.out.println("OwnerServiceImp id : " + owner.getId());
+//
+//		dao.insertNotice(notice);
+//
+//		if (! multipartFile.isEmpty()) {
+//
+//			// 원본 파일명
+//			String oriFileName = multipartFile.getOriginalFilename();
+//			// System.out.println("원본 파일명 : " + oriFileName);
+//
+//			if (oriFileName != null && !oriFileName.equals("")) {
+//
+//				// 확장자 처리
+//				String ext = "";
+//				// 뒤쪽에 있는 . 의 위치
+//				int index = oriFileName.lastIndexOf(".");
+//				if (index != -1) {
+//					// 파일명에서 확장자명(.포함)을 추출
+//					ext = oriFileName.substring(index);
+//				}
+//
+//				// 파일 사이즈
+//				long fileSize = multipartFile.getSize();
+//				// System.out.println("파일 사이즈 : " + fileSize);
+//
+//				// 고유한 파일명 만들기
+//				String saveFileName = "quration-" + UUID.randomUUID().toString() + ext;
+//				// System.out.println("저장할 파일명 : " + saveFileName);
+//
+//				// 임시저장된 파일을 원하는 경로에 저장
+//				try {
+//					multipartFile.transferTo(new File(uploadDir + "/" + saveFileName));
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//
+//				NoticeAttachVO noticeAttach = new NoticeAttachVO();
+//				noticeAttach.setOriName(oriFileName);
+//				noticeAttach.setSavedName(saveFileName);
+//				noticeAttach.setFileSize((int) fileSize);
+//				
+////				System.out.println("Service notice : " + notice);
+////				System.out.println("Service noticeAttach : " + noticeAttach);
+//				
+//				dao.insertNoticeAttach(noticeAttach);
+//			}
+//		}
+//	}
 
-		// ModelAndView mav = new ModelAndView("file/uploadResult");
-
-		// System.out.println("OwnerServiceImp id : " + owner.getId());
-
+	public void updateNotice(NoticeVO notice) {
 		dao.updateNotice(notice);
-
-		if (! multipartFile.isEmpty()) {
-
-			// 원본 파일명
-			String oriFileName = multipartFile.getOriginalFilename();
-			// System.out.println("원본 파일명 : " + oriFileName);
-
-			if (oriFileName != null && !oriFileName.equals("")) {
-
-				// 확장자 처리
-				String ext = "";
-				// 뒤쪽에 있는 . 의 위치
-				int index = oriFileName.lastIndexOf(".");
-				if (index != -1) {
-					// 파일명에서 확장자명(.포함)을 추출
-					ext = oriFileName.substring(index);
-				}
-
-				// 파일 사이즈
-				long fileSize = multipartFile.getSize();
-				// System.out.println("파일 사이즈 : " + fileSize);
-
-				// 고유한 파일명 만들기
-				String saveFileName = "quration-" + UUID.randomUUID().toString() + ext;
-				// System.out.println("저장할 파일명 : " + saveFileName);
-
-				// 임시저장된 파일을 원하는 경로에 저장
-				try {
-					multipartFile.transferTo(new File(uploadDir + "/" + saveFileName));
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-
-				NoticeAttachVO noticeAttach = new NoticeAttachVO();
-				noticeAttach.setOriName(oriFileName);
-				noticeAttach.setSavedName(saveFileName);
-				noticeAttach.setFileSize((int) fileSize);
-				noticeAttach.setNoticeNo(notice.getNo());
-				
-//				System.out.println("Service notice : " + notice);
-//				System.out.println("Service noticeAttach : " + noticeAttach);
-				
-				dao.updateNoticeAttach(noticeAttach);
-			}
-		}
 	}
+	
+//	public void updateNotice(MultipartFile multipartFile, NoticeVO notice) {
+//		// 실행되는 웹어플리케이션의 실제 경로 가져오기
+//		String uploadDir = servletContext.getRealPath("/upload/");
+////		System.out.println("uploadDir : " + uploadDir);
+//
+//		// ModelAndView mav = new ModelAndView("file/uploadResult");
+//
+//		// System.out.println("OwnerServiceImp id : " + owner.getId());
+//
+//		dao.updateNotice(notice);
+//
+//		if (! multipartFile.isEmpty()) {
+//
+//			// 원본 파일명
+//			String oriFileName = multipartFile.getOriginalFilename();
+//			// System.out.println("원본 파일명 : " + oriFileName);
+//
+//			if (oriFileName != null && !oriFileName.equals("")) {
+//
+//				// 확장자 처리
+//				String ext = "";
+//				// 뒤쪽에 있는 . 의 위치
+//				int index = oriFileName.lastIndexOf(".");
+//				if (index != -1) {
+//					// 파일명에서 확장자명(.포함)을 추출
+//					ext = oriFileName.substring(index);
+//				}
+//
+//				// 파일 사이즈
+//				long fileSize = multipartFile.getSize();
+//				// System.out.println("파일 사이즈 : " + fileSize);
+//
+//				// 고유한 파일명 만들기
+//				String saveFileName = "quration-" + UUID.randomUUID().toString() + ext;
+//				// System.out.println("저장할 파일명 : " + saveFileName);
+//
+//				// 임시저장된 파일을 원하는 경로에 저장
+//				try {
+//					multipartFile.transferTo(new File(uploadDir + "/" + saveFileName));
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//
+//				NoticeAttachVO noticeAttach = new NoticeAttachVO();
+//				noticeAttach.setOriName(oriFileName);
+//				noticeAttach.setSavedName(saveFileName);
+//				noticeAttach.setFileSize((int) fileSize);
+//				noticeAttach.setNoticeNo(notice.getNo());
+//				
+////				System.out.println("Service notice : " + notice);
+////				System.out.println("Service noticeAttach : " + noticeAttach);
+//				
+//				dao.updateNoticeAttach(noticeAttach);
+//			}
+//		}
+//	}
 
 	public void deleteNotice(int no) {
 		dao.deleteNotice(no);
