@@ -26,6 +26,7 @@ public class LoginController {
 	@RequestMapping(value="/login/login.do", method=RequestMethod.GET)
 	public String loginForm(HttpServletRequest request) {
 		
+		
 		String referrer = request.getHeader("Referer");
 	    request.getSession().setAttribute("prevPage", referrer);
 	    
@@ -37,7 +38,6 @@ public class LoginController {
 	@RequestMapping(value="/login/login.do", method=RequestMethod.POST)
 	public String login(@ModelAttribute("member") MemberVO member, Model model) {
 		MemberVO userVO = service.login(member);
-		
 		
 		service.updateDate(member);
 		// member.getEmail()이랑 email 일치하는 userVO 가 있다면

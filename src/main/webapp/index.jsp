@@ -53,7 +53,6 @@
     border: 1px solid #FFFFFF;
 } 
 
-
   </style>
   </head>
   <body>
@@ -315,19 +314,7 @@
             startDelay: 100
           });
       });
-      
-      //가입 or 로그인 후 검색 이전 키워드 추천용 ajax
-     /*  $(document).ready(function() { 
-      $.ajax({
-          url: "${ pageContext.request.contextPath }/index/recommandKeywordList.do",
-          type : 'get',
-          contentType : "application/json",
-          success: function(result){
-               $("#recommandKeyword").text(result);
-               console.log(result);
-               
-    	}});
-     }); */
+
     </script>
     
   </body>
