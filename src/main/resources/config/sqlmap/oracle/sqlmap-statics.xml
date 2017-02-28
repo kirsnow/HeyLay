@@ -108,8 +108,8 @@
 	
     <select id="selectWordCloudList" parameterType="int" resultType="staticsVO">
 		SELECT keyword as columnName, COUNT(keyword) as cnt 
-			FROM Q_KEYWORDS
-		WHERE MEMBER_NO = #{ memberNo }
+		FROM Q_KEYWORDS
+		WHERE member_no = #{ memberNo } AND status = 'N'
 		GROUP BY keyword
 		ORDER BY cnt DESC 
 	</select> 
@@ -117,6 +117,7 @@
 	<select id="selectAllUserWordCloudList" parameterType="staticsVO" resultType="staticsVO">
 		SELECT keyword as columnName, COUNT(keyword) as cnt 
 		FROM Q_KEYWORDS
+		WHERE status = 'N'
 		GROUP BY keyword
 		ORDER BY cnt DESC 
 	</select>

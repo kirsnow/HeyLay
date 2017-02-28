@@ -21,7 +21,7 @@ public class AdService {
 		
 		boolean exist = false;
 		
-		for(int i = 0; i < 3; i++) {
+		for(int i = 3; i < 6; i++) {
 			exist = false;
 			
 			AdVO ad = null;
@@ -43,10 +43,10 @@ public class AdService {
 //		System.out.println("nameList:" + nameList + ".");
 		
 		List<Integer> locationList = new ArrayList<>();
-		int location = 0;
+		int location = 3;
 		
 		for(int i = 0, j = leftList.size(); i < j; i++) {
-			location = 0;
+			location = 3;
 			for(int k = 0; k < j; k++) {
 				if(i != k && leftList.get(i) > leftList.get(k)) location++;
 			}

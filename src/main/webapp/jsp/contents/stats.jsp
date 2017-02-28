@@ -127,7 +127,7 @@
 						<div class="row scene2">
 							<div class="div col-md-8 col-md-offset-2 scene_wrapper">
 								<div class="row">
-									<div class="div col-md-5">
+									<div class="div col-md-5 marginTop40">
 										<h3 class="marginTop60"> 
 										<c:choose>
 											<c:when test="${ countTodaySaved > countYesSaved }">어제보다 <span class="u_color">${ countTodaySaved - countYesSaved }개</span> 더, </c:when>
@@ -162,7 +162,7 @@
 						<div class="row scene3">
 							<div class="div col-md-12 scene_wrapper">
 								<div class="row">
-									<div class="div col-md-12">
+									<div class="div col-md-12 marginTop40">
 										<h3><span class="scene_n4">월 평균 저장 카드 개수</span><br/>${ averageSavedMonth }개</h3>
 									</div>
 								</div>
@@ -178,7 +178,7 @@
 							</div>
 						</div>
 						<div class="row scene4">
-							<div class="div col-md-12 scene_wrapper">
+							<div class="div col-md-12 scene_wrapper marginTop40">
 								<h3 class="marginTop60">${ userVO.lastName } ${ userVO.firstName } 님이 사랑하는 사이트는 <span class="u_color">${ likeSourceList[0].columnName }</span>입니다.</h3>
 								<div>
 									<c:forEach var="likeSource" items="${ likeSourceList }">

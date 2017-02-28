@@ -179,7 +179,6 @@ public class ContentService {
 	public List<ContentsVO> isThisViewed(int memberNo, List<ContentsVO> cardList) {
 		//해당 회원이 본 콘텐츠 번호 목록 추출
 		List<ContentsVO> viewedList = dao.getViewedContentsNo(memberNo);
-		System.out.println(viewedList);
 		//본 콘텐츠 여부 확인: 저장한 콘텐츠는 savedCnt를 1로, 저장하지 않은 콘텐츠는 savedCnt를 0으로 설정한다.
 		for(ContentsVO card : cardList) {
 			for(ContentsVO viewed : viewedList) {

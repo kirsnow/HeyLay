@@ -77,7 +77,7 @@ public class ContentsController {
 		return "redirect:/jsp/admin/source_list.do";
 	}
 	
-	/* 사이트 차단 (여러개) */
+	/* 사이트 차단 (여러개) -2 */
 	@ResponseBody
 	@RequestMapping(value="/jsp/admin/source_block.do", method=RequestMethod.POST)
 	public String banSource(@RequestParam(value="checkboxValues[]") List<Integer> param) {
@@ -89,7 +89,7 @@ public class ContentsController {
 		return "완료";
 	}
 	
-	/* 사이트 차단 (단일) */
+	/* 사이트 차단 (단일) -2 */
 	@RequestMapping(value="/jsp/admin/source_block.do", method=RequestMethod.GET)
 	public String banSource(@RequestParam(value="no") int no) {
 		service.banSource(no);

@@ -12,7 +12,7 @@
 
 <!-- Bootstrap -->
 <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css"	type="text/css" rel="stylesheet">
-<%-- <link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet"> --%>
+<link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
 
 <!-- icon-font -->
 <script src="https://use.fontawesome.com/bbddce3010.js"></script>

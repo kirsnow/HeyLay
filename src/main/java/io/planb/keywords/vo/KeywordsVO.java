@@ -6,21 +6,13 @@ public class KeywordsVO {
 	private int no;
 	private String keyword;
 	private Date regDate;
+	private String daysAgo;
 	private String status;
 	private int memberNo;
 	private int cnt;
 	
 	public KeywordsVO() {}
 
-	public KeywordsVO(int no, String keyword, Date regDate, String status, int memberNo, int cnt) {
-		super();
-		this.no = no;
-		this.keyword = keyword;
-		this.regDate = regDate;
-		this.status = status;
-		this.memberNo = memberNo;
-		this.cnt = cnt;
-	}
 
 	public int getNo() {
 		return no;
@@ -44,6 +36,14 @@ public class KeywordsVO {
 
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
+	}
+	
+	public String getDaysAgo() {
+		return daysAgo;
+	}
+	
+	public void setDaysAgo(String daysAgo) {
+		this.daysAgo = daysAgo;
 	}
 
 	public String getStatus() {
@@ -72,7 +72,7 @@ public class KeywordsVO {
 
 	@Override
 	public String toString() {
-		return "KeywordsVO [no=" + no + ", keyword=" + keyword + ", regDate=" + regDate + ", status=" + status
-				+ ", memberNo=" + memberNo + ", cnt=" + cnt + "]";
+		return "KeywordsVO [no=" + no + ", keyword=" + keyword + ", regDate=" + regDate + ", daysAgo=" + daysAgo
+				+ ", status=" + status + ", memberNo=" + memberNo + ", cnt=" + cnt + "]";
 	}
 }
