@@ -180,7 +180,7 @@
 							<div class="div col-md-12 scene_wrapper">
 								<h3 class="marginTop60">${ userVO.lastName } ${ userVO.firstName } 님이 사랑하는 사이트는 <span class="u_color">${ likeSourceList[0].columnName }</span>입니다.</h3>
 								<div>
-									<c:forEach var="likeSource" items="${ likeSourceList }" begin=1 end=1>
+									<c:forEach var="likeSource" items="${ likeSourceList }">
 										${ likeSource.columnName }
 									</c:forEach>
 								</div>

@@ -189,8 +189,8 @@
                         <span class="fa fa-bookmark fa-3x"></span>
                         <h4>Web reference</h4>
                         <p class="text-justify">
-                        <span class="text-primary"><b>웹 레퍼런스</b></span>기능 은 사용자가 찾은 컨텐 츠 중 마음에 드는 콘텐츠를 즐겨찾기처럼 저장하고 메모를 남길 수 있는기능입니다.
-                                                       콘텐츠를 가상의 서랍에 넣어두는 ‘내 서랍’ 기능을 사용하면, 언제 어디서나 콘텐츠를 다시 볼 수 있습니다.
+                        <span class="text-primary"><b>웹 레퍼런스</b></span>기능 은 사용자가 찾은 콘텐츠 중 마음에 드는 콘텐츠를  즐겨찾기 처럼 저장하고 메모를 남길 수 있는 기능입니다.
+                                                       콘텐츠가 저장된‘내 서랍’ 기능을 사용하면, 언제 어디서나 콘텐츠를 다시 볼 수 있습니다.
                         </p>
                     </div>
                 </div>
