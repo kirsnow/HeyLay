@@ -104,11 +104,11 @@
                   <div class="col-md-12">
                      <div class="col-md-4 panel border10px">
                         <h4 class="text-center marginBottom30 grayfont"><b>회원 전체의 조회수가 높은 사이트</b></h4>
-                        <svg class="col-md-12 marginBottom col-md-offset-2" id="myGraph4"></svg>
+                        <svg class="col-md-12 marginBottom col-md-offset-3" id="myGraph4"></svg>
                      </div>
                      <div class="col-md-8 panel border10px ">
                         <h4 class="text-center marginBottom30 grayfont"><b>회원 전체의 조회수가 높은 콘텐츠</b></h4>
-                        <svg class="col-md-14 marginBottom" id="myGraph3"></svg>
+                        <div class="col-md-offset-1"><svg class="col-md-12 marginBottom " id="myGraph3"></svg></div>
                      </div>
                   </div>
                </div>
@@ -252,7 +252,7 @@
   			 })
             .duration(200)
             .attr("width", function(d, i) { // 넓이를 지정. 두 번째의 파라미터에 함수를 지정
-               return dataSet[i].viewCnt * 5; // 데이터 값을 그대로 넓이로 반환
+               return dataSet[i].viewCnt * 10; // 데이터 값을 그대로 넓이로 반환
             })
 		  
             .attr("height", h) // 높이를 지정
