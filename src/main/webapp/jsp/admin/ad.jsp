@@ -189,50 +189,23 @@
 			<!-- /footer -->
 		</div>
 	</div>
-
+	
 	<!-- jQuery -->
 	<%-- <script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script> --%>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+	
 	<!-- Bootstrap -->
 	<script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
 
 	<!-- Custom Theme Scripts -->
 	<script src="${ pageContext.request.contextPath }/js/custom.min.js"></script>
-
+	
 	<script>
-// 		$(document).ready(function() {
-// 			var adList = '${ adList }';
-// 			$('.portlet').each(function(i, e) {
-// 				console.log('i : ', i);
-// 				console.log('js adList: ', adList);
-// 				console.log('js adList[i]: ', adList[i]);
-// // 				console.log('el adList: ', '${ adList[0] }');
-// 				alert('${ adList[i] }');
-// 				if('${ adList[0].location }' == (i + 1)) {
-// // 					console.log('${ adList[i].location }: ', '${ adList[i].location }');
-// 				}
-// 			});
-			
-// 			for(var i = 0; i < 3; i++) {
-// 				console.log('i : ', i);
-// 				console.log('adList: ', '${ adList[i] }');
-				
-// 				var adList = '${ adList }';
-// 				console.log('js adList: ', adList);
-				
-// 				if('${ adList[i].location }' == (i + 1)) {
-// 					console.log('${ adList[i].location }: ', '${ adList[i].location }');
-// 				}
-// 			}
-// 		});
-		
 		$(function() {
 			var css_test_idx = 10;
-// 			var quarter = parseInt($(this).width() / 40);
-// 			console.log("quarter : ", quarter);
+	//			var quarter = parseInt($(this).width() / 40);
+	//			console.log("quarter : ", quarter);
 			
 			$(".portlet")
 					.draggable({ axis: "x" })
@@ -249,7 +222,7 @@
 					.find(".portlet-header")
 					.addClass("ui-widget-header ui-corner-all")
 					.prepend("<span class='ui-icon ui-icon-minusthick portlet-toggle'></span>");
-
+	
 			$(".portlet-toggle").on("click", function() {
 				var icon = $(this);
 				icon.toggleClass("ui-icon-minusthick ui-icon-plusthick");
