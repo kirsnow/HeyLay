@@ -66,7 +66,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 text-center marginTop">
-						<a href="${pageContext.request.contextPath }/membership/findAccount.do" class="marginLeft">아이디 찾기</a>/
+						<a href="${pageContext.request.contextPath }/membership/findAccount.do" class="marginLeft">아이디 찾기</a> /
 						<a href="${pageContext.request.contextPath }/membership/findPw.do">비밀번호 찾기</a>
 					</div>
 				</div>

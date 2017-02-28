@@ -110,6 +110,10 @@
 		$('div#saveCardModal div.cardInfo').html(labels);
 		$('div#saveCardModal dt.cardInfo').text(title);
 		$('div#saveCardModal dd p.cardInfo').text(summary + '...');
+		
+		// ready Btn (in cards list)
+    	$('a#' + contentsNo + '.saveCancelBtn').addClass('disabled')
+    		.html('<i class="fa fa-spinner fa-pulse" aria-hidden="true"></i>');
 	})
 	
 	// Modal - Autofocus
@@ -162,7 +166,7 @@
             	
             	// page UI
 		    	// change Btn (in cards list)
-            	$('a#' + contentsNo + '.saveCardBtn').hide();
+            	$('a#' + contentsNo + '.saveCardBtn').hide().html('<i class="fa fa-bookmark" aria-hidden="true"></i>');
             	$('a#' + contentsNo + '.saveCancelBtn').show();
 		    	
             	// change Btn (content_detail.jsp)
@@ -192,6 +196,12 @@
 	
     $('.saveCancelBtn').on('click', function() {
     	contentsNo = $(this).attr('id');
+    	
+    	// ready Btn (in cards list)
+    	$('a#' + contentsNo + '.saveCancelBtn').addClass('disabled')
+    		.html('<i class="fa fa-spinner fa-pulse" aria-hidden="true"></i>');
+    	
+    	// ready Btn (content_detail.jsp)
     	$('button.saveCancelBtn').attr('disabled', 'disabled').removeClass('btn-default').addClass('btn-warning')
    			.html('<i class="fa fa-spinner fa-pulse" aria-hidden="true"></i> 담기 취소');
     	
@@ -209,7 +219,7 @@
 		    	$('li .savedCnt').text(savedCnt - 1);
 		    	
 		    	// change Btn (in cards list)
-            	$('a#' + contentsNo + '.saveCancelBtn').hide();
+            	$('a#' + contentsNo + '.saveCancelBtn').hide().html('<i class="fa fa-bookmark-o" aria-hidden="true"></i>');
             	$('a#' + contentsNo + '.saveCardBtn').show();
 		    	
             	// change Btn (content_detail.jsp)

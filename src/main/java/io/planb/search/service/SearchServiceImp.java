@@ -31,11 +31,16 @@ public class SearchServiceImp {
 			//검색어 세팅
 			searchResult.setQuery(q);
 			
+			//형태소 분석
 			List<QueryVO> queryList = this.analyzeQuery(q);
-			searchResult.setQueryList(queryList);
+			if(queryList.size() > 0) searchResult.setQueryList(queryList);
 			
-			List<ContentsVO> cardList = conService.isThisSaved(memberNo, searchResult.getCards());
-			searchResult.setCards(cardList);
+			if(memberNo > 0) {
+				List<ContentsVO> cardList = searchResult.getCards();
+				// 해당 회원의 저장, 좋아요, 조회 여부 확인
+				cardList = conService.checkMemberActivity(memberNo, searchResult.getCards());
+				searchResult.setCards(cardList);
+			}
 		}
 		
 		//검색 키워드 저장
@@ -45,17 +50,31 @@ public class SearchServiceImp {
 	}
 	
 	public void saveKeywords(String q, SearchVO searchResult, int memberNo) {
-		SearchVO kewordVO = new SearchVO();
-		kewordVO.setQuery(q);
-		kewordVO.setUserNo(memberNo);
-		
-		if(searchResult != null) {
-			kewordVO.setTotal( searchResult.getTotal() );
-		} else {
-			kewordVO.setTotal(0);
+		if(q != null) {
+			SearchVO keywordVO = new SearchVO();
+			keywordVO.setQuery(q);
+			keywordVO.setUserNo(memberNo);
+			
+			if(searchResult != null) {
+				keywordVO.setTotal( searchResult.getTotal() );
+			} else {
+				keywordVO.setTotal(0);
+			}
+			//질의어 저장
+			keywordVO.setKeywordType('Q');
+			dao.saveKeyword(keywordVO);
+			
+			//형태소 분석 결과 중, 명사만 저장
+			if(searchResult.getQueryList() != null) {
+				for(QueryVO vo : searchResult.getQueryList()) {
+					if(vo.getType().equals("명사")) {
+						keywordVO.setQuery(vo.getToken());
+						keywordVO.setKeywordType('N');
+						dao.saveKeyword(keywordVO);
+					}
+				}
+			}
 		}
-		
-		dao.saveKeyword(kewordVO);
 	}
 
 	public ContentsVO highlighter(ContentsVO contents, String q) {

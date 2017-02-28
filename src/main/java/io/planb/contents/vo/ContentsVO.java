@@ -67,7 +67,7 @@ public class ContentsVO {
 	
 	private boolean isSaved;
 	private boolean isLiked;
-	private int personalVieCnt;
+	private int isViewed;
 	private int count;
 	
 	public ContentsVO() {
@@ -311,30 +311,40 @@ public class ContentsVO {
 	public void setIsLiked(boolean isLiked) {
 		this.isLiked = isLiked;
 	}
-	
-	public int getPersonalVieCnt() {
-		return personalVieCnt;
+	public int getIsViewed() {
+		return isViewed;
 	}
-
-	public void setPersonalVieCnt(int personalVieCnt) {
-		this.personalVieCnt = personalVieCnt;
+	public void setIsViewed(int isViewed) {
+		this.isViewed = isViewed;
 	}
-
 	public int getCount() {
 		return count;
 	}
-
 	public void setCount(int count) {
 		this.count = count;
 	}
-	
 	public int getReportCnt() {
 		return reportCnt;
 	}
-
 	public void setReportCnt(int reportCnt) {
 		this.reportCnt = reportCnt;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "ContentsVO [contentsNo=" + contentsNo + ", title=" + title + ", summary=" + summary + ", url=" + url
+				+ ", scrapedDate=" + scrapedDate + ", scrapedDaysAgo=" + scrapedDaysAgo + ", language=" + language
+				+ ", ban=" + ban + ", viewCnt=" + viewCnt + ", likeCnt=" + likeCnt + ", reportCnt=" + reportCnt
+				+ ", sourceNo=" + sourceNo + ", sourceName=" + sourceName + ", sourceUrl=" + sourceUrl
+				+ ", sourceDomain=" + sourceDomain + ", sourceImg=" + sourceImg + ", dataTypeNo=" + dataTypeNo
+				+ ", dataTypeName=" + dataTypeName + ", dataTypeNameEng=" + dataTypeNameEng + ", dataTypeNameFun="
+				+ dataTypeNameFun + ", categoryNo=" + categoryNo + ", categoryName=" + categoryName + ", imgNo=" + imgNo
+				+ ", imgUrl=" + imgUrl + ", imgAlt=" + imgAlt + ", prevContentsNo=" + prevContentsNo
+				+ ", nextContentsNo=" + nextContentsNo + ", memberNo=" + memberNo + ", savedNo=" + savedNo
+				+ ", savedCnt=" + savedCnt + ", savedDate=" + savedDate + ", savedDaysAgo=" + savedDaysAgo
+				+ ", directoryNo=" + directoryNo + ", directoryName=" + directoryName + ", directoryDate="
+				+ directoryDate + ", directoryDaysAgo=" + directoryDaysAgo + ", keyword=" + keyword + ", limit=" + limit
+				+ ", isSaved=" + isSaved + ", isLiked=" + isLiked + ", isViewed=" + isViewed + ", count=" + count + "]";
+	}
+
 }
