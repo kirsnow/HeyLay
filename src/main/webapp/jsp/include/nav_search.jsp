@@ -45,7 +45,7 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"
 							   role="button" aria-expanded="false" title="회원 정보 메뉴 열기"> 
-								<img id="blah" src="${ pageContext.request.contextPath }/img/purin.png" alt="your image" 
+								<img id="blah" src="${ pageContext.request.contextPath }/img/${userVO.profileImg}" alt="your image" 
 								     class="img-circle profile_img" style="width: 30px; height: 30px;"/>
 								<span class="caret"></span>
 							</a>
@@ -55,13 +55,6 @@
 										<i class="fa fa-address-book" aria-hidden="true"></i> 회원 정보
 										수정
 								</a></li>
-								<c:if test="${ userVO.type eq 'A'}">
-									<li><a
-										href="${ pageContext.request.contextPath }/jsp/admin/member_list.do">
-											<i class="fa fa-user-secret fa-fw" aria-hidden="true"></i>
-											관리자 페이지
-									</a></li>
-								</c:if>
 								<li class="divider"></li>
 								<li><a href="<c:url value="/j_spring_security_logout" />">
 									<i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> 로그아웃

@@ -79,7 +79,7 @@
 								</c:choose>
 								
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" title="회원 정보 메뉴 열기">
-									<img id="blah" src="${ pageContext.request.contextPath }/img/purin.png" 
+									<img id="blah" src="${ pageContext.request.contextPath }/img/${userVO.profileImg}" 
 										alt="your image" class="img-circle profile_img" style="width: 30px; height: 30px;"/>
 									<span class="caret"></span>
 								</a>	
@@ -128,11 +128,11 @@
 						<!-- /input-group -->
 					</div>
 				</form>
-                <div id="recommandKeyword" class="col-md-6 col-md-offset-3 marginTop20 font20 grayfont">
+                <div id="recommandKeyword" class="col-md-8 col-md-offset-2 marginTop20 font20 grayfont">
                 	추천 검색어<span class="marginLeft marginRight">:</span> 
                 	       <span class="spanPadding"><a href="search/result.do?q=인공지능">인공지능</a></span>  
-                	       <span class="spanPadding" ><a href="search/result.do?q=java">Java</a></span>  
-                	       <span ><a href="search/result.do?q=python">Python</a></span>
+                	       <span class="spanPadding" ><a href="search/result.do?q=구글">구글</a></span>  
+                	       <span ><a href="search/result.do?q=프로그래밍 언어에 대하여">프로그래밍 언어에 대하여</a></span>
                 </div>
                 
             </div>
