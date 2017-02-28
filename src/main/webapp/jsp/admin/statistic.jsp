@@ -104,23 +104,23 @@
                   <div class="col-md-12">
                      <div class="col-md-4 panel border10px">
                         <h4 class="text-center marginBottom30 grayfont"><b>회원 전체의 조회수가 높은 사이트</b></h4>
-                        <svg class="col-md-14 marginBottom col-md-offset-3" id="myGraph4"></svg>
+                        <svg class="col-md-12 marginBottom col-md-offset-2" id="myGraph4"></svg>
                      </div>
                      <div class="col-md-8 panel border10px ">
                         <h4 class="text-center marginBottom30 grayfont"><b>회원 전체의 조회수가 높은 콘텐츠</b></h4>
-                        <svg class="col-md-11 marginBottom" id="myGraph3"></svg>
+                        <svg class="col-md-12 marginBottom" id="myGraph3"></svg>
                      </div>
                   </div>
                </div>
                <div class="row">
                   <div class="col-md-12">
-                     <div class="col-md-4 panel border10px">
+                     <div class="col-md-6 panel border10px">
                         <h4 class="text-center marginBottom30 grayfont"><b>회원 전체 자주 담은 사이트 타입</b></h4>
-                        <svg class="marginBottom col-md-offset-3" id="myGraph2"></svg>
+                        <svg class="marginBottom col-md-offset-4" id="myGraph2"></svg>
                      </div>
-                     <div class="col-md-4 panel border10px">
+                     <div class="col-md-6 panel border10px">
                         <h4 class="text-center marginBottom30 grayfont"><b>회원 전체 자주 담은 사이트</b></h4>
-                        <svg class="c marginBottom col-md-offset-3" id="myGraph"></svg>
+                        <svg class="c marginBottom col-md-offset-4" id="myGraph"></svg>
                      </div>
                      <div class="col-md-4  marginTop40 marginTop60">
                         <!-- <div class="text-center">
@@ -128,12 +128,12 @@
                            <section id="view-selector"></section>
                            <section id="timeline"></section>
                         </div> -->
-                        <div class="text-center marginTop60">
+                       <!--  <div class="text-center marginTop60">
                            <a href="https://analytics.google.com/analytics/web/?hl=ko&pli=1#dashboard/uwKM73EoRiOPz9RMGZuRGw/a90558257w134284174p138375987/%3F_u.date00%3D20170124%26_u.date01%3D20170124/"
                               class="btn btn-primary marginBottom30" role="button" target="_blank"
                               title="구글 애널리틱스에서 관리자용 통계 더 보기">구글 애널리틱스에서 통계 더 보기
                            </a>
-                        </div>
+                        </div> -->
                      </div>
                   </div>
                </div>
@@ -256,7 +256,7 @@
             })
 		  
             .attr("height", h) // 높이를 지정
-            .attr("x", 450) // X 좌표를 0으로 함
+            .attr("x", 470) // X 좌표를 0으로 함
             .attr("y", function(d, i) { // Y 좌표를 지정함
                return i * 40 // 표시 순서에 20을 곱해 위치를 계산
            
@@ -268,7 +268,7 @@
             .append("text") // text 요소 추가
             .attr("y", function(d, i) { // X 좌표를 지정
                return i * 40 + 20; // 막대그래프의 표시 간격을 맞춤
-            }).attr("x", 40) // Y 좌표를 지정
+            }).attr("x", 10) // Y 좌표를 지정
             .text(function(d, i) { // 데이터 표시
                return dataSet[i].label;
             
@@ -279,7 +279,7 @@
             .append("text") // text 요소 추가
             .attr("y", function(d, i) { // X 좌표를 지정
                return i * 40 + 20; // 막대그래프의 표시 간격을 맞춤
-            }).attr("x", 460) // Y 좌표를 지정
+            }).attr("x", 480) // Y 좌표를 지정
             .text(function(d, i) { // 데이터 표시
                return dataSet[i].value;
             })
