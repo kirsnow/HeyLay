@@ -61,7 +61,7 @@
 
 		<c:if test="${contents.ban == \"Y\"}">
 			<div class="alert alert-warning alert-dismissible" role="alert" id="banAlert">
-				<strong>Warning!</strong> 제한된 콘텐츠입니다. 내 카드 서랍에서 제외하시겠습니까?
+				<strong>Warning!</strong> 제한된 콘텐츠입니다. 내 카드 서랍에서 제외하실 수 있으며 원본으로는 갈 수 없습니다.
 			</div>
 
 			<button class="btn btn-primary banBtn alert-warning" hidden="true" 
@@ -96,8 +96,9 @@
 							<c:if test="${ contents.ban == \"N\" }">
 								<div class="pull-right">
 									<c:if test="${ contents.prevContentsNo > 0 }">
-										<a href="${ pageContext.request.contextPath }/contents.do?no=${ contents.prevContentsNo }"><i class="fa fa-angle-left fa-lg" aria-hidden="true"></i>
-										이전 글</a>
+										<a href="${ pageContext.request.contextPath }/contents.do?no=${ contents.prevContentsNo }">
+											<i class="fa fa-angle-left fa-lg" aria-hidden="true"></i>
+											이전 글</a>
 									</c:if>
 									<c:if test="${ contents.nextContentsNo > 0 }">
 										| <a href="${ pageContext.request.contextPath }/contents.do?no=${ contents.nextContentsNo }">다음 글
@@ -106,11 +107,10 @@
 								</div>
 							</c:if>
 							<div class="card-labels">
-								<span 
-								class="label label-default">${ contents.categoryName }</span><span 
-								class="label label-info">${ contents.dataTypeName }</span><a href="${ contents.sourceUrl }" 
-								class="label label-primary" target="_blank" 
-								title="원본 사이트로 이동(새 창)">${ contents.sourceName }</a>
+								<span class="label label-default">${ contents.categoryName }</span>
+								<span class="label label-info">${ contents.dataTypeName }</span>
+								<a href="${ contents.sourceUrl }" class="label label-primary" target="_blank" 
+									title="원본 사이트로 이동(새 창)">${ contents.sourceName }</a>
 							</div>
 							<h2 class="card-title marginBottom30">
 								${ contents.title }
@@ -216,9 +216,10 @@
 						<li><strong class="viewCnt">${ contents.viewCnt }</strong>회 조회</li>
 						<li><strong class="savedCnt">${ contents.savedCnt }</strong>명이 저장함</li>
 						<li><strong class="likedCnt">${ contents.likeCnt }</strong>명이 좋아함</li>
+						<c:if test="${ contents.ban == \"N\" }">
 						<li><a href="${ contents.url }" target="_blank" title="원본 페이지로 이동(새 창)">
-								<i class="fa fa-external-link"aria-hidden="true"></i> 원본 보기
-							</a></li>
+							<i class="fa fa-external-link"aria-hidden="true"></i> 원본 보기 </a></li>
+						</c:if>
 					</ul>
 				</div>
 				<hr />

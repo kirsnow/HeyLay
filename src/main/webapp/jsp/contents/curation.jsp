@@ -102,6 +102,14 @@
 
 	<!-- 공통 js -->
 	<jsp:include page="/jsp/include/commonJs.jsp" />
+	
+	<!-- Modal -->
+	<jsp:include page="/jsp/modal/card_save.jsp" />
+	<jsp:include page="/jsp/modal/report_bug.jsp" />
+	<jsp:include page="/jsp/modal/report_spam.jsp" />
+	
+	<!-- likeBtn Event -->
+	<jsp:include page="/jsp/component/likBtnEvent.jsp" />
 
 	<!-- Custom Theme Scripts -->
 	<script src="${ pageContext.request.contextPath }/js/custom.min.js"></script>

@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import io.planb.ad.vo.AdVO;
 import io.planb.contents.vo.ContentsVO;
 import io.planb.memo.vo.MemoVO;
 import io.planb.search.tool.Elasitcsearch;
@@ -56,6 +57,11 @@ public class SearchDAOImp {
 	public List<MemoVO> getMemo(int contentsNo) {
 		List<MemoVO> memoList = sqlSessionTemplate.selectList("io.planb.serach.dao.SearchDAO.selectMemoByNo", contentsNo);
 		return memoList;
+	}
+
+	public List<AdVO> getAdList() {
+		List<AdVO> adList = sqlSessionTemplate.selectList("io.planb.admin.ad.dao.AdDAO.selectAdList");
+		return adList;
 	}
 	
 }

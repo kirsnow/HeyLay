@@ -68,6 +68,7 @@ public class ContentsVO {
 	private boolean isSaved;
 	private boolean isLiked;
 	private int isViewed;
+	private boolean isAd;
 	private int count;
 	
 	public ContentsVO() {
@@ -317,6 +318,12 @@ public class ContentsVO {
 	public void setIsViewed(int isViewed) {
 		this.isViewed = isViewed;
 	}
+	public boolean getIsAd() {
+		return isAd;
+	}
+	public void setIsAd(boolean isAd) {
+		this.isAd = isAd;
+	}
 	public int getCount() {
 		return count;
 	}
@@ -344,7 +351,8 @@ public class ContentsVO {
 				+ ", savedCnt=" + savedCnt + ", savedDate=" + savedDate + ", savedDaysAgo=" + savedDaysAgo
 				+ ", directoryNo=" + directoryNo + ", directoryName=" + directoryName + ", directoryDate="
 				+ directoryDate + ", directoryDaysAgo=" + directoryDaysAgo + ", keyword=" + keyword + ", limit=" + limit
-				+ ", isSaved=" + isSaved + ", isLiked=" + isLiked + ", isViewed=" + isViewed + ", count=" + count + "]";
+				+ ", isSaved=" + isSaved + ", isLiked=" + isLiked + ", isViewed=" + isViewed + ", isAd=" + isAd
+				+ ", count=" + count + "]";
 	}
 
 }
