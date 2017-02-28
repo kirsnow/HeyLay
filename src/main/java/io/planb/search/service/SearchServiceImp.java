@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import io.planb.ad.vo.AdVO;
 import io.planb.contents.service.ContentService;
 import io.planb.contents.vo.ContentsVO;
 import io.planb.memo.vo.MemoVO;
@@ -35,12 +36,15 @@ public class SearchServiceImp {
 			List<QueryVO> queryList = this.analyzeQuery(q);
 			if(queryList.size() > 0) searchResult.setQueryList(queryList);
 			
+			List<ContentsVO> cardList = searchResult.getCards();
 			if(memberNo > 0) {
-				List<ContentsVO> cardList = searchResult.getCards();
 				// 해당 회원의 저장, 좋아요, 조회 여부 확인
 				cardList = conService.checkMemberActivity(memberNo, searchResult.getCards());
-				searchResult.setCards(cardList);
 			}
+			//검색결과에 광고 목록 추가
+			cardList = this.setAds(cardList);
+			
+			searchResult.setCards(cardList);
 		}
 		
 		//검색 키워드 저장
@@ -95,6 +99,20 @@ public class SearchServiceImp {
 			contents.setSummary(summary);
 		}
 		return contents;
+	}
+	
+	public List<ContentsVO> setAds(List<ContentsVO> cardList) {
+		List<AdVO> adList = dao.getAdList();
+		
+		for(AdVO ad : adList) {
+			ContentsVO adCard = new ContentsVO();
+			adCard.setIsAd(true);
+			adCard.setTitle(ad.getSiteName());
+			adCard.setImgUrl(ad.getCode());
+			cardList.add(ad.getLocation() + 3, adCard);
+		}
+		
+		return cardList;
 	}
 	
 	public List<ContentsVO> getContentsList(int contentsNo) {
