@@ -39,6 +39,11 @@ public class ContentDAO {
 		List<Integer> likedList = sqlSessionTemplate.selectList("io.planb.dao.ContentDAO.selectLikedContentsNo", memberNo);
 		return likedList;
 	}
+
+	public List<ContentsVO> getViewedContentsNo(int memberNo) {
+		List<ContentsVO> viewedList = sqlSessionTemplate.selectList("io.planb.dao.ContentDAO.selectViewedContentsNo", memberNo);
+		return viewedList;
+	}
 	
 	public int getSavedCnt(int contentsNo) {
 		int savedCount = 0;
@@ -213,5 +218,6 @@ public class ContentDAO {
 	public void addViewCnt(ContentsVO vo) {
 		sqlSessionTemplate.update("io.planb.contents.dao.ContentDAO.updateViewCnt", vo);
 	}
+
 	
 }

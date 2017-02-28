@@ -43,21 +43,21 @@
 			</p>
 			<div class="text-muted text-right">
 				<c:choose>
-					<c:when test="${ (userVO ne null) and (not empty userVO) }">
-						<span>이 카드를 ${ card.personalVieCnt }번 방문했습니다.</span>
-					</c:when>
 					<c:when test="${ card.savedDaysAgo ne null }">
 						<span title="<fmt:formatDate pattern="yyyy. MM. dd." value="${ card.savedDate }"/>"
 							 data-toggle="tooltip" data-placement="left">
-							 ${ card.savedDaysAgo }
+							 ${ card.savedDaysAgo } 저장했습니다.
 						</span>
 					</c:when>
-					<%-- <c:when test="${ (card.scrapedDaysAgo ne null) and (card.savedDaysAgo eq null) }">
+					<c:when test="${ card.isViewed > 0 }">
+						<span>이 카드를 ${ card.isViewed }번 확인했습니다.</span>
+					</c:when>
+					<c:otherwise>
 						<span title="<fmt:formatDate pattern="yyyy. MM. dd." value="${ card.scrapedDate }"/>"
 							 data-toggle="tooltip" data-placement="left">
 							 ${ card.scrapedDaysAgo }
 						</span>
-					</c:when> --%>
+					</c:otherwise>
 				</c:choose>
 			</div>
 			
@@ -70,22 +70,22 @@
 					<%-- 로그인 상태 --%>
 					<c:when test="${ (userVO ne null) and (not empty userVO) }">
 						<%-- 카드 저장 버튼 --%>
-						<a id="${ card.contentsNo }" title="카드 담기" class="saveCardBtn nofocus" 
+						<a id="${ card.contentsNo }" title="카드 담기"  
 							<c:if test="${ card.isSaved }">style="display: none;"</c:if>
-							data-toggle="modal" data-target="#saveCardModal" href="#">
+							class="saveCardBtn nofocus" data-toggle="modal" data-target="#saveCardModal">
 						<i class="fa fa-bookmark fa-3x" aria-hidden="true"></i></a>
 						
 						<%-- 카드 저장 취소 버튼 --%>
-						<a id="${ card.contentsNo }" title="카드 담기 취소" class="saveCancelBtn nofocus" 
+						<a id="${ card.contentsNo }" title="카드 담기 취소"  
 							<c:if test="${ not card.isSaved }">style="display: none;"</c:if>
-							href="#">
+							class="saveCancelBtn nofocus">
 						<i class="fa fa-bookmark fa-3x" aria-hidden="true"></i></a>
 					</c:when>
 					
 					<%-- 비로그인 상태 --%>
 					<c:otherwise>
 						<a id="${ card.contentsNo }" href="${ pageContext.request.contextPath }/login/login.do"
-							title="카드 담기: 로그인이 필요한 서비스입니다" class="saveCardBtn">
+							title="카드 담기: 로그인이 필요한 서비스입니다" class="saveCardBtn nofocus">
 						<i class="fa fa-bookmark fa-3x" aria-hidden="true"></i></a>
 					</c:otherwise>
 				</c:choose>
@@ -100,10 +100,35 @@
 			</a>
 			<!-- buttons (bottom-right) -->
 			<div class="pull-right">
+				<div id="like" class="btn-group dropup">
+					<c:choose>
+						<%-- 로그인 상태 --%>
+						<c:when test="${ (userVO ne null) and (not empty userVO) }">
+							<%-- 카드 좋아요 버튼 --%>
+							<a id="${ card.contentsNo }" title="좋아요"  
+								<c:if test="${ card.isLiked }">style="display: none;"</c:if>
+								class="btn likeBtn nofocus">
+							<i class="fa fa-heart fa-lg" aria-hidden="true"></i></a>
+							
+							<%-- 카드 좋아요 취소 버튼 --%>
+							<a id="${ card.contentsNo }" title="좋아요 취소"  
+								<c:if test="${ not card.isLiked }">style="display: none;"</c:if>
+								class="btn likeCancelBtn nofocus">
+							<i class="fa fa-heart fa-lg" aria-hidden="true"></i></a>
+						</c:when>
+						
+						<%-- 비로그인 상태 --%>
+						<c:otherwise>
+							<a id="${ card.contentsNo }" href="${ pageContext.request.contextPath }/login/login.do"
+								title="좋아요: 로그인이 필요한 서비스입니다" class="btn likeBtn nofocus">
+							<i class="fa fa-heart fa-lg" aria-hidden="true"></i></a>
+						</c:otherwise>
+					</c:choose>
+				</div>
 				<div id="share" class="btn-group dropup">
-					<a href="#" role="button" class="btn dropdown-toggle"
+					<a href="#" role="button" class="dropdown-toggle"
 						data-toggle="dropdown" aria-expanded="false" title="외부 서비스로 공유">
-						<i class="fa fa-share-alt fa-lg mdl-color-text--grey-500" aria-hidden="true"></i>
+						<i class="fa fa-share-alt fa-lg fa-fw mdl-color-text--grey-500" aria-hidden="true"></i>
 					</a>
 					<ul class="dropdown-menu dropdown-menu-right" role="menu">
 						<li>
@@ -166,5 +191,4 @@
 	    var url = "https://quration.herokuapp.com/contents.do?no="+no;
 	    window.open("https://twitter.com/intent/tweet?text=Quration:답을 열어 줄 그런 사람&url=" + url);
 	}
-	
 </script>

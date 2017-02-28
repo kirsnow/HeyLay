@@ -353,15 +353,21 @@
    }
    
    /* likeCardBtn */
-   a.likeCardBtn,
+   a.likeBtn,
    a.likeCancelBtn:hover {
-	color: 9E9E9E;
+	color: #9E9E9E;
    }
    
-   a.likeCardBtn:hover,
+   a.likeBtn:hover,
    a.likeCancelBtn {
-	color: #03A9F4;
+	color: #FF4081;
    }
+   
+   a.disabled {
+	   pointer-events: none;
+	   cursor: default;
+	}
+	
 	
 	html,body{height:100%}
 	body{margin:0}

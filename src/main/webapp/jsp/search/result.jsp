@@ -106,6 +106,9 @@
 	<jsp:include page="/jsp/modal/card_save.jsp" />
 	<jsp:include page="/jsp/modal/report_bug.jsp" />
 	<jsp:include page="/jsp/modal/report_spam.jsp" />
+	
+	<!-- likeBtn Event -->
+	<jsp:include page="/jsp/component/likBtnEvent.jsp" />
     
     <script>
     <!-- google analytics -->
@@ -116,6 +119,7 @@
 		
 		ga('create', 'UA-90558257-1', 'auto');
 		ga('send', 'pageview');
+		
 	</script>
 </body>
 </html>
