@@ -83,7 +83,7 @@
 	</delete>
 	
 	<select id="selectNoticeDetail" parameterType="int" resultType="noticeVO">
-		SELECT no, title, contents, notice_type noticeType, view_cnt viewCnt, to_char(s.reg_date, 'yyyy-mm-dd HH:MI:SS') regDate 
+		SELECT no, title, contents, notice_type noticeType, view_cnt viewCnt, to_char(reg_date, 'yyyy-mm-dd HH:MI:SS') regDate 
 		FROM q_notice
 		WHERE no = #{ no } 
 	</select>

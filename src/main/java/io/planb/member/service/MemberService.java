@@ -43,8 +43,8 @@ public interface MemberService extends UserDetailsService{
 
 	public List<IdentifyQuestionVO> selectIdenQuestion();                       //비밀번호,아이디 찾기용 질문 호출
 
-	public void insertKeywords(ArrayList<String> list, int no);                 //
-
+	public void insertKeywords(ArrayList<String> list, int no);                 //관심 키워드 체크 박스
+	
 	public int selectWithdrawContentCnt(int memberNo);							//회원 탈퇴 시 보유 컨텐츠 호출
 
 	public String selectMemberAccount(MemberVO member);						    //계정 찾기
@@ -56,5 +56,8 @@ public interface MemberService extends UserDetailsService{
 	public String selectType(int no);
 	
 	public UserDetails loadUserByUsername(String name);
+
+	public void updateDate(MemberVO member);									//로그인시 최근 접속기록 업데이트
+
 
 }

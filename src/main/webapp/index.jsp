@@ -74,7 +74,7 @@
 									<c:otherwise>
 										<span class="marginRight">
 											<a href="${ pageContext.request.contextPath }/drawer.do" class="" title="내카드">
-											<i class="fa fa-hdd-o" aria-hidden="true"></i> 내 카드</a></a>
+											<i class="fa fa-address-card-o" aria-hidden="true"></i> 내 카드</a>
 										</span>
 									</c:otherwise>
 								</c:choose>
@@ -86,11 +86,8 @@
 								</a>	
 							
 								<ul class="dropdown-menu list-unstyled pull-right" role="menu">
-									<li><a href="${ pageContext.request.contextPath }/myPage/mypage.do"> <i class="fa fa-vcard-o fa-fw"
-											aria-hidden="true"></i> 회원 정보 수정
-									</a></li>
-									<li><a href="${ pageContext.request.contextPath }/myPage/original_password.do"> <i class="fa fa-lock fa-fw"
-											aria-hidden="true"></i> 비밀번호 변경
+									<li><a href="${ pageContext.request.contextPath }/myPage/mypage.do"> 
+										<i class="fa fa-address-book" aria-hidden="true"></i> 회원 정보 수정
 									</a></li>
 									<li class="divider"></li>
 									<li><a href="<c:url value="/j_spring_security_logout" />"> 
@@ -170,7 +167,7 @@
                         <span class="fa fa-search fa-3x"></span>
                         <h4>Search</h4>
                         <p class="text-justify">
-                       <span class="text-primary"><b>검색 </b></span>기능을  통해  원하는  내용을  다양한 플랫폼을 통해  정보를 찾을  수  있게  자료를  제공합니다.
+                       <span class="text-primary"><b>검색 </b></span>기능으로 다양한 플랫폼을 통해 원하느 정보를 찾을  수  있게  자료를  제공합니다.
                                                     뿐만아니라, 저희 서비스 속 큐레이션 기능이 더해져 검색  정확도와  검색  속도가  상승하여  사용자가  느끼는  검색  품질이  향상됩니다.                   
                         
                         </p>

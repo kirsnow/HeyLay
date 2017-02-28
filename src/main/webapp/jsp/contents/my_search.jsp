@@ -52,10 +52,12 @@
             <div class="container text-center =">
                <div class="row">
                   <div class="col-md-8 col-md-offset-2">
-                     <h3 class="marginBottom"><b>내 검색어 히스토리</b></h3>
-                     <p class="marginBottom">
-                       	<small><i class="fa fa-times" aria-hidden="true"></i>버튼을 클릭하여 해당 검색어를 삭제할 수 있습니다.</small>
-                     </p>
+                     <h3 class="marginBottom marginTop30"><b>내 검색어 히스토리</b></h3>
+					 	<c:if test="${ (keywordList eq null) or (empty keywordList) }">
+						 	 <p>
+	                       		<small><i class="fa fa-times" aria-hidden="true"></i>버튼을 클릭하여 해당 검색어를 삭제할 수 있습니다.</small>
+	                       	 </p>
+                       	</c:if>  
                   </div>
                </div>
                <div class="row">
@@ -78,7 +80,8 @@
                            <strong><c:out value="${loop.count}"/>.</strong>&nbsp;&nbsp;
                         </div>
                         <div class="col-md-3 text-muted text-left lead" >
-                           <strong><a href="#" title="해당 단어 검색 결과로 가는 URL" class="text-muted">${ keyword.keyword }</a></strong>
+                           <strong><a href="javascript:search('${ keyword.keyword }')" title="해당 단어 검색 결과로 가는 URL" class="text-muted">
+                           ${ keyword.keyword }</a></strong>
                         </div>
                         <div class="col-md-3 text-muted text-right">
                            <fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${keyword.regDate}" />
@@ -111,6 +114,11 @@
 		function update(no) {
  			// alert(no);
 			location.href = "${ pageContext.request.contextPath }/contents/update_status.do?no=" + no;
+		}
+		
+		function search(keyword) {
+ 			// alert(no);
+			location.href = "${ pageContext.request.contextPath }/search/result.do?q="+keyword;
 		}
 	</script>
 	<!-- jQuery -->

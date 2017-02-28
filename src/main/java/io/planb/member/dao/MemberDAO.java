@@ -1,5 +1,6 @@
 package io.planb.member.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -43,16 +44,21 @@ public interface MemberDAO {
 
 	public List<IdentifyQuestionVO> selectIdenQuestion();
 
-	public void insertKeywords(SelectKeywordsVO keywords);
-
+	public void insertKeywords(SelectKeywordsVO keywords);  //관심 키워드 체크박스
+	
 	public int selectWithdrawContentCnt(int memberNo);		//회원 탈퇴 시 보유 컨텐츠 호출
 
 	public String selectMemberAccount(MemberVO member);  	//계정 찾기
 
 	public String selectMemberPassword(MemberVO member);    //비밀번호 찾기
 
-	public String checkEmail(String email);		                //계정 중복 확인
+	public String checkEmail(String email);		            //계정 중복 확인
 	
 	public String selectType(int no);
+
+	public void updateDate(MemberVO member);                //로그인시 최근 접속기록 업데이트
+
+	
+
 
 }

@@ -18,6 +18,11 @@
 				 WHERE mm.email = #{ email }) r 
 	</select>
 	
+	<update id="updateDate" parameterType="memberVO">
+		UPDATE q_member
+		SET last_date = now()
+		WHERE no = #{ no }
+	</update>
 	<insert id="enroll" parameterType="memberVO">
 	   insert into Q_member(no, email, password, last_name, first_name, birth, gender, email_receive, country, city, question, answer)
 	    values(#{no}, #{email}, #{password}, #{lastName},#{firstName}, to_date(#{birth}, 'YYYY-MM-DD') , #{gender}, #{emailReceive}, #{country}, #{city}, #{question}, #{answer})
@@ -128,6 +133,7 @@
 		ORDER BY no 
 	</select>
 	
+	<!-- 관심 키워드 체크박스 선택 -->
 	<insert id="insertKeywords" parameterType="selectKeywordsVO">
 		INSERT INTO q_select_keywords (no, keyword, member_no) 
 		VALUES (NEXTVAL('q_select_keywords_no'), #{ keyword }, #{ memberNo }) 
