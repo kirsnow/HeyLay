@@ -67,8 +67,12 @@
 
 	<select id="selectKeywordList" parameterType="int" resultType="keywordsVO">
 		select no, keyword, reg_date as regDate
+		<include refid="regDaysAgo">
+			<property name="which_column" value="reg_date"/>
+			<property name="which_name" value=""/>
+		</include>
 		from q_keywords
-		where status='Y' and member_no = #{ memberNo }
+		where status='Q' and member_no = #{ memberNo }
 		ORDER BY regDate DESC
 		LIMIT 50
 	</select>
@@ -181,6 +185,24 @@
   		SET STATUS='N'
   			WHERE no = #{ no } 
   	</update>
+  	
+  	<!-- SQL scriptlets -->
+	<sql id="regDaysAgo">
+		, case 
+		    when ${which_column} &gt; localtimestamp - interval '60 seconds'
+				then round( extract( second from age(localtimestamp, ${which_column}) ) )||'초 전' 
+		    when ${which_column} &gt; localtimestamp - interval '60 minutes'
+				then extract( minute from age(localtimestamp, ${which_column}) )||'분 전'
+		    when ${which_column} &gt; localtimestamp - interval '12 hour'
+				then extract( hour from age(localtimestamp, ${which_column}) )||'시간 전'
+		    when ${which_column} &gt; current_date + time '00:00'
+				then '오늘' 
+		    when ${which_column} &gt; localtimestamp - interval '1 day'
+				then '어제' 
+		    else to_char(${which_column}, 'YYYY. MM. DD.')
+		end as ${which_name}DaysAgo
+	</sql>
+	
 </mapper>
 
 

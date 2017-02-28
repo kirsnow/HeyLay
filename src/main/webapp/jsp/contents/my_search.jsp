@@ -49,10 +49,10 @@
          <div class="right_col body" role="main">
             <!-- page content -->
 
-            <div class="container text-center =">
+            <div class="container text-center">
                <div class="row">
-                  <div class="col-md-8 col-md-offset-2">
-                     <h3 class="marginBottom marginTop30"><b>내 검색어 히스토리</b></h3>
+                  <div class="col-md-11">
+                     <h3 class="marginBottom30 marginTop30"><b>내 검색어 히스토리</b></h3>
 					 	<c:if test="${ (keywordList eq null) or (empty keywordList) }">
 						 	 <p>
 	                       		<small><i class="fa fa-times" aria-hidden="true"></i>버튼을 클릭하여 해당 검색어를 삭제할 수 있습니다.</small>
@@ -74,27 +74,22 @@
                         </div>
                      </c:when>
                      <c:otherwise>
-                     <c:forEach var="keyword" items="${ keywordList }" varStatus="loop">
-                     <div class="col-md-offset-4 col-md-7">
-                        <div class="col-md-1 text-right text-muted lead" >
-                           <strong><c:out value="${loop.count}"/>.</strong>&nbsp;&nbsp;
-                        </div>
-                        <div class="col-md-3 text-muted text-left lead" >
-                           <strong><a href="javascript:search('${ keyword.keyword }')" title="해당 단어 검색 결과로 가는 URL" class="text-muted">
-                           ${ keyword.keyword }</a></strong>
-                        </div>
-                        <div class="col-md-3 text-muted text-right">
-                           <fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${keyword.regDate}" />
-                        </div>
-                        <div class="col-md-1 text-left">
-                           <a href="javascript:update('${keyword.no}')"><i class="fa fa-times" aria-hidden="true"></i></a>
-                        </div>
-                     </div>
-                     </c:forEach>
-                        <div class="row">
-                           <div class="col-md-6 col-md-offset-3 marginBottom100">
-                           </div>
-                        </div>
+	                     <c:forEach var="keyword" items="${ keywordList }" varStatus="loop">
+		                     <div class="col-md-offset-1 col-md-10">
+			                     <dl class="dl-horizontal">
+			                        <dt style="text-align:right"><c:out value="${loop.count}"/>.</dt>
+			                        <dd class="text-left">
+			                           <a href="javascript:search('${ keyword.keyword }')" title="'${ keyword.keyword }' 검색">
+			                           ${ keyword.keyword }</a>
+			                           <small class="text-muted marginLeft" title="<fmt:formatDate pattern="yyyy. MM. dd." value="${ keyword.regDate }"/>"
+								 			data-toggle="tooltip" data-placement="bottom">${ keyword.daysAgo }</small>
+			                           <a href="javascript:update('${keyword.no}')" class="text-danger marginLeft30" title="검색어 삭제">
+			                           		<i class="fa fa-times" aria-hidden="true"></i>
+			                           </a>
+			                        </dd>
+			                     </dl>
+		                     </div>
+	                     </c:forEach>
                      </c:otherwise>
                   </c:choose>
                </div>
