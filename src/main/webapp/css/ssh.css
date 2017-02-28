@@ -345,11 +345,13 @@
    a.saveCardBtn,
    a.saveCancelBtn:hover {
 	color: #ccc;
+	cursor: pointer;
    }
    
    a.saveCardBtn:hover,
    a.saveCancelBtn {
 	color: #03A9F4;
+	cursor: pointer;
    }
    
    /* likeCardBtn */
@@ -389,8 +391,8 @@
 	}
 	
 	.circleLoading{
-		 font-size:60px;
-		 color : gray;
+	 font-size:60px;
+	 color : gray;
 	}
 	
 	label, input[type="radio"] {

@@ -18,13 +18,10 @@
 				${ card.imgUrl }
 			</div>
 			<div class="mdl-card__title">
-				<p class="card-title mdl-card__title-text drop-text-2" title="<c:out value="${ plainTitle }" />" 
-					data-toggle="tooltip" data-placement="bottom">
+				<p class="card-title mdl-card__title-text drop-text-2" title="${ card.title }">
 				${ card.title }</p>
 			</div>
 		</c:if>
-		
-		
 	
 		<c:if test="${ not card.isAd }">
 			<!-- card top: contents source -->
