@@ -167,7 +167,7 @@
                         <span class="fa fa-search fa-3x"></span>
                         <h4>Search</h4>
                         <p class="text-justify">
-                       <span class="text-primary"><b>검색 </b></span>기능을  통해  원하는  내용을  다양한 플랫폼을 통해  정보를 찾을  수  있게  자료를  제공합니다.
+                       <span class="text-primary"><b>검색 </b></span>기능으로 다양한 플랫폼을 통해 원하느 정보를 찾을  수  있게  자료를  제공합니다.
                                                     뿐만아니라, 저희 서비스 속 큐레이션 기능이 더해져 검색  정확도와  검색  속도가  상승하여  사용자가  느끼는  검색  품질이  향상됩니다.                   
                         
                         </p>
