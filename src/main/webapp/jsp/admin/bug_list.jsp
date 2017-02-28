@@ -57,7 +57,7 @@
 									<thead>
 										<tr>
 											<th></th>
-											<th>오류 이미지</th>
+<!-- 											<th>오류 이미지</th> -->
 											<th class="ber">계정</th>
 											<th class="bar">작성일</th>
 											<th class="bar">PC 사양</th>
@@ -67,9 +67,9 @@
 										<c:forEach var="bug" items="${ bugList }">
 											<tr>
 												<td><input type="checkbox" class="no" value="${ bug.no }" alt="체크박스 폼" /></td>
-												<td><img alt="오류 이미지"
-													src="${ pageContext.request.contextPath }/img/portfolio/04.jpg"
-													width="100px"></td>
+<!-- 												<td><img alt="오류 이미지" -->
+<%-- 													src="${ pageContext.request.contextPath }/img/portfolio/04.jpg" --%>
+<!-- 													width="100px"></td> -->
 												<td>${ bug.email }</td>
 												<td>${ bug.regDate }</td>
 												<td><a href="${ pageContext.request.contextPath }/jsp/admin/bug_detail.do?no=${ bug.no }"

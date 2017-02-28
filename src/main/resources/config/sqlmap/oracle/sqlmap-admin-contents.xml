@@ -58,7 +58,7 @@
 	</delete>
 	
 	<select id="selectBugList" resultType="bugVO">
-		SELECT no, email, reg_date regDate, device, os, cpu, ram 
+		SELECT no, email, to_char(reg_date, 'yyyy-mm-dd HH:MI:SS') regDate, device, os, cpu, ram 
 		FROM q_bug 
 		ORDER BY no 
 	</select>
@@ -70,7 +70,7 @@
 	</select>
 	
 	<select id="selectBugDetail" parameterType="int" resultType="bugVO">
-		SELECT no, email, url, user_input userInput, reg_date regDate, device, os, cpu, ram
+		SELECT no, email, url, user_input userInput, to_char(reg_date, 'yyyy-mm-dd HH:MI:SS') regDate, device, os, cpu, ram
 		FROM q_bug
 		WHERE no = #{ no } 
 	</select>
