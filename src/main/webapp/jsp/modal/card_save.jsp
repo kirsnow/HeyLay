@@ -52,11 +52,11 @@
 							<ul class="dropdown-menu dropdown-menu-right" role="menu">
 								<c:if test="${ (dirList ne null) and (not empty dirList) }">
 									<c:forEach var="dir" items="${ dirList }" varStatus="loop">
-										<li role="presentation"><a role="menuitem" tabindex="-1" href="#" id="${ dir.no }" class="dirList">${ dir.name }</a></li>
+										<li role="presentation"><a role="menuitem" tabindex="-1" id="${ dir.no }" class="dirList">${ dir.name }</a></li>
 									</c:forEach>
 									<li class="divider"></li>
 								</c:if>
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="#" id="-1" class="newDirectory" >+ 새 폴더</a></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1" id="-1" class="newDirectory" >+ 새 폴더</a></li>
 							</ul>
 						</div>
 						<div class="btn-group" role="group">
@@ -192,6 +192,11 @@
 	
     $('.saveCancelBtn').on('click', function() {
     	contentsNo = $(this).attr('id');
+    	
+    	// ready Btn (in cards list)
+    	$('a#' + contentsNo + '.saveCancelBtn').addClass('disabled');
+    	
+    	// ready Btn (content_detail.jsp)
     	$('button.saveCancelBtn').attr('disabled', 'disabled').removeClass('btn-default').addClass('btn-warning')
    			.html('<i class="fa fa-spinner fa-pulse" aria-hidden="true"></i> 담기 취소');
     	

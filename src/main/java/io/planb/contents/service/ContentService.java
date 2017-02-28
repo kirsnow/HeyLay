@@ -43,10 +43,8 @@ public class ContentService {
 			
 			//로그인 상태인 경우
 			if (memberNo > 0) {
-				// 회원 저장 여부 체크
-				contents = this.isThisSaved(memberNo, contents);
-				// 회원 좋아요 여부 체크
-				contents = this.isThisLiked(memberNo, contents);
+				// 해당 회원의 저장, 좋아요, 조회 여부 확인
+				contents = this.checkMemberActivity(memberNo, contents);
 			}
 		}
 		return contents;
@@ -68,12 +66,6 @@ public class ContentService {
 	public ContentsVO getContentsByNo(int contentsNo) {
 		ContentsVO vo = new ContentsVO();
 		vo.setContentsNo(contentsNo);
-		/*
-		if(dao.selectView(vo) == 0) {
-			dao.insertView(vo);
-		} else {
-			dao.updateView(vo);
-		}*/
 		
 		ContentsVO contents = dao.getContents(vo);
 		if(contents != null) {
@@ -92,6 +84,20 @@ public class ContentService {
 		} else {
 			dao.updateView(view);
 		}
+	}
+	
+	public ContentsVO checkMemberActivity(int memberNo, ContentsVO card) {
+		card = this.isThisSaved(memberNo, card);
+		card = this.isThisLiked(memberNo, card);
+		card = this.isThisViewed(memberNo, card);
+		return card;
+	}
+	
+	public List<ContentsVO> checkMemberActivity(int memberNo, List<ContentsVO> cardList) {
+		cardList = this.isThisSaved(memberNo, cardList);
+		cardList = this.isThisLiked(memberNo, cardList);
+		cardList = this.isThisViewed(memberNo, cardList);
+		return cardList;
 	}
 	
 	public ContentsVO isThisSaved(int memberNo, ContentsVO card) {
@@ -140,15 +146,46 @@ public class ContentService {
 	}
 
 	public List<ContentsVO> isThisLiked(int memberNo, List<ContentsVO> cardList) {
-		//해당 회원이 저장한 콘텐츠 번호 목록 추출
+		//해당 회원이 좋아한 콘텐츠 번호 목록 추출
 		List<Integer> likedList = dao.getLikedContentsNo(memberNo);
 		
-		//저장한 콘텐츠 여부 확인: 저장한 콘텐츠는 savedCnt를 1로, 저장하지 않은 콘텐츠는 savedCnt를 0으로 설정한다.
-		for(int likedNo : likedList) {
-			for(ContentsVO card : cardList) {
-				card.setIsLiked(false);
+		//좋아한 콘텐츠 여부 확인: 저장한 콘텐츠는 isLiked를 true로, 저장하지 않은 콘텐츠는 isLiked를 false로 설정한다.
+		for(ContentsVO card : cardList) {
+			card.setIsLiked(false);
+			for(int likedNo : likedList) {
 				if(likedNo == card.getContentsNo()) {
 					card.setIsLiked(true);
+					break;
+				}
+			}
+		}
+		return cardList;
+	}
+
+	public ContentsVO isThisViewed(int memberNo, ContentsVO card) {
+		//해당 회원이 본 콘텐츠 번호 목록 추출
+		List<ContentsVO> viewedList = dao.getViewedContentsNo(memberNo);
+		card.setIsViewed(0);
+		//본 콘텐츠 여부 확인
+		for(ContentsVO viewed : viewedList) {
+			if(viewed.getContentsNo() == card.getContentsNo()) {
+				card.setIsViewed(viewed.getIsViewed());
+				break;
+			}
+		}
+		return card;
+	}
+	
+	public List<ContentsVO> isThisViewed(int memberNo, List<ContentsVO> cardList) {
+		//해당 회원이 본 콘텐츠 번호 목록 추출
+		List<ContentsVO> viewedList = dao.getViewedContentsNo(memberNo);
+		System.out.println(viewedList);
+		//본 콘텐츠 여부 확인: 저장한 콘텐츠는 savedCnt를 1로, 저장하지 않은 콘텐츠는 savedCnt를 0으로 설정한다.
+		for(ContentsVO card : cardList) {
+			for(ContentsVO viewed : viewedList) {
+				card.setIsViewed(0);
+				if(viewed.getContentsNo() == card.getContentsNo()) {
+					card.setIsViewed(viewed.getViewCnt());
 					break;
 				}
 			}
@@ -179,14 +216,15 @@ public class ContentService {
 		return popularList;
 	}
 	
-	public List<ContentsVO> selectCustomSourceList(int no) {
-		List<ContentsVO> customSourceList = dao.selectCustomSourceList(no);
+	public List<ContentsVO> selectCustomSourceList(int memberNo) {
+		List<ContentsVO> customSourceList = dao.selectCustomSourceList(memberNo);
+		customSourceList = this.checkMemberActivity(memberNo, customSourceList);
 		
 		return customSourceList;
 	}
 
-	public List<ContentsVO> selectCustomKeywordList(int no) {
-		List<KeywordsVO> keywordList = dao.selectUserKeywordList(no);
+	public List<ContentsVO> selectCustomKeywordList(int memberNo) {
+		List<KeywordsVO> keywordList = dao.selectUserKeywordList(memberNo);
 		String keywords = "";
 		
 		if(keywordList.isEmpty()) return null;
@@ -197,6 +235,7 @@ public class ContentService {
 		}
 		
 		List<ContentsVO> customKeywordList = dao.selectCustomCuration(keywords);
+		customKeywordList = this.checkMemberActivity(memberNo, customKeywordList);
 		
 		return customKeywordList;
 	}

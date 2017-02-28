@@ -128,6 +128,7 @@
 		, SAV.NO, DIR.NO
 	</sql>
 	
+	
 	<!-- 특정 회원이 저장한 콘텐츠 번호 목록을 추출한다 -->
 	<select id="selectSavedContentsNo" parameterType="int" resultType="int">
 		SELECT contents_no
@@ -140,6 +141,14 @@
 	<select id="selectLikedContentsNo" parameterType="int" resultType="int">
 		SELECT contents_no
 		FROM q_like
+		WHERE member_no = #{memberNo}
+		ORDER BY contents_no ASC
+	</select>
+	
+	<!-- 특정 회원이 본 콘텐츠 번호 목록을 추출한다 -->
+	<select id="selectViewedContentsNo" parameterType="int" resultType="contentsVO">
+		SELECT member_no as memberNo, contents_no as contentsNo, count as viewCnt
+		FROM q_view
 		WHERE member_no = #{memberNo}
 		ORDER BY contents_no ASC
 	</select>

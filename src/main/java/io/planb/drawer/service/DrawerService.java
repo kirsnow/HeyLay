@@ -35,6 +35,9 @@ public class DrawerService {
 		vo.setMemberNo(memberNo);
     
 		List<ContentsVO> savedCards = contentDAO.getSavedCards(vo);
+		// 해당 회원의 저장, 좋아요, 조회 여부 확인
+		savedCards = conService.checkMemberActivity(memberNo, savedCards);
+		
 		return savedCards;
 	}
 	
@@ -65,7 +68,6 @@ public class DrawerService {
 		if(sort == null) sort = "directory";
 		// Get saved cards from DB
 		List<ContentsVO> savedCards = this.getSavedCardsForMember(memberNo);
-		savedCards = conService.isThisSaved(memberNo, savedCards);
 		
 		// Get header list
 		Set<String> drawerHeader = this.getHeaderList(savedCards, sort);
@@ -80,6 +82,7 @@ public class DrawerService {
 					cardList.add(card);
 				}
 			}
+
 			DrawerVO drawer = new DrawerVO();
 			drawer.setHeader(header);
 			drawer.setCards(cardList);

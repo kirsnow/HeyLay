@@ -18,11 +18,6 @@
 				 WHERE mm.email = #{ email }) r 
 	</select>
 	
-	<update id="updateDate" parameterType="memberVO">
-		UPDATE q_member
-		SET last_date = now()
-		WHERE no = #{ no }
-	</update>
 	<insert id="enroll" parameterType="memberVO">
 	   insert into Q_member(no, email, password, last_name, first_name, birth, gender, email_receive, country, city, question, answer)
 	    values(#{no}, #{email}, #{password}, #{lastName},#{firstName}, to_date(#{birth}, 'YYYY-MM-DD') , #{gender}, #{emailReceive}, #{country}, #{city}, #{question}, #{answer})
@@ -74,6 +69,13 @@
 		set password = #{password}
 		where no = #{no} and password= #{beforePassword}
 	</update> 
+	
+	<!-- 로그인시 last_date 변경  -->
+	<update id="updateDate" parameterType="memberVO">
+		UPDATE Q_member
+		SET last_date = now()
+		WHERE no = #{ no }
+	</update>
 	
 	<!-- 회원 정보 수정 -->
 	<update id="mypageUpdate" parameterType="memberVO">
