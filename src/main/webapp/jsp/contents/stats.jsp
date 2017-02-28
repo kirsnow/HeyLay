@@ -120,25 +120,26 @@
 					<div class="container text-center">
 						<div class="row scene1">
 							<div class="div col-md-12 scene_wrapper">
-								<h3 class="marginTop60">${ userVO.lastName } ${ userVO.firstName } 님은 큐레이션을 통해,<br/>총 <span class="u_color">${ countTotalSaved }</span>개의 카드를 만났습니다.</h3>
+								<h3 class="marginTop60">${ userVO.lastName } ${ userVO.firstName } 님은 큐레이션을 통해,
+								<br/>총 <span class="u_color">${ countTotalSaved }</span>개의 카드를 만나고 있습니다.</h3>
 							</div>
 						</div>
 						<div class="row scene2">
 							<div class="div col-md-8 col-md-offset-2 scene_wrapper">
 								<div class="row">
-									<div class="div col-md-4">
-										<h3 class="marginTop60">어제보다는 
+									<div class="div col-md-5 marginTop40">
+										<h3 class="marginTop60"> 
 										<c:choose>
-											<c:when test="${ countTodaySaved > countYesSaved }"> <span class="u_color">${ countTodaySaved - countYesSaved }개</span> 더, </c:when>
-											<c:when test="${ countTodaySaved eq countYesSaved }"> <span class="u_color">${ countTodaySaved - countYesSaved }개</span> 같게, </c:when>
-											<c:otherwise> <span class="u_color">${ countYesSaved - countTodaySaved }개</span> 덜, </c:otherwise>
+											<c:when test="${ countTodaySaved > countYesSaved }">어제보다 <span class="u_color">${ countTodaySaved - countYesSaved }개</span> 더, </c:when>
+											<c:when test="${ countTodaySaved eq countYesSaved }">어제와 같게, </c:when>
+											<c:otherwise> 어제보다는<span class="u_color"> ${ countYesSaved - countTodaySaved }개</span> 덜, </c:otherwise>
 										</c:choose>
 										<br/>
-										그저께보다는 
+										
 										<c:choose>
-											<c:when test="${ countTodaySaved > countBeforeYesSaved }"> <span class="u_color">${ countTodaySaved - countBeforeYesSaved }개</span> 더, </c:when>
-											<c:when test="${ countTodaySaved eq countBeforeYesSaved }"> <span class="u_color">${ countTodaySaved - countBeforeYesSaved }개</span> 같게, </c:when>
-											<c:otherwise> <span class="u_color">${ countBeforeYesSaved - countTodaySaved }개</span> 덜, </c:otherwise>
+											<c:when test="${ countTodaySaved > countBeforeYesSaved }">이틀 전 보다 <span class="u_color">${ countTodaySaved - countBeforeYesSaved }개</span> 더, </c:when>
+											<c:when test="${ countTodaySaved eq countBeforeYesSaved }">이틀 전과는 같게, </c:when>
+											<c:otherwise> 어제보다는<span class="u_color">이틀 전 보다는 ${ countBeforeYesSaved - countTodaySaved }개</span> 덜, </c:otherwise>
 										</c:choose>
 										<br/>
 										카드를 담으셨습니다.
@@ -146,7 +147,7 @@
 									</div>
 								</div>
 								<div class="row tCenter">
-									<div class="div col-md-2"><h3><span class="scene_n3">그저께</span><br/> ${ countBeforeYesSaved }개</h3></div>
+									<div class="div col-md-2"><h3><span class="scene_n3">이틀 전</span><br/> ${ countBeforeYesSaved }개</h3></div>
 									<div class="div col-md-2">
 										<c:choose>
 											<c:when test="${ countBeforeYesSaved > countYesSaved }"><i class="fa fa-chevron-right fa-5x" aria-hidden="true"></i></c:when>
@@ -161,7 +162,7 @@
 						<div class="row scene3">
 							<div class="div col-md-12 scene_wrapper">
 								<div class="row">
-									<div class="div col-md-12">
+									<div class="div col-md-12 marginTop40">
 										<h3><span class="scene_n4">월 평균 저장 카드 개수</span><br/>${ averageSavedMonth }개</h3>
 									</div>
 								</div>
@@ -177,11 +178,14 @@
 							</div>
 						</div>
 						<div class="row scene4">
-							<div class="div col-md-12 scene_wrapper">
+							<div class="div col-md-12 scene_wrapper marginTop40">
 								<h3 class="marginTop60">${ userVO.lastName } ${ userVO.firstName } 님이 사랑하는 사이트는 <span class="u_color">${ likeSourceList[0].columnName }</span>입니다.</h3>
-								<c:forEach var="likeSource" items="${ likeSourceList }">
-									${ likeSource.columnName }
-								</c:forEach>
+								<div>
+									<c:forEach var="likeSource" items="${ likeSourceList }">
+										${ likeSource.columnName }
+									</c:forEach>
+								</div>
+							
 							</div>
 						</div>
 						<div class="row scene5">

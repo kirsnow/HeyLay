@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import io.planb.ad.vo.AdVO;
 import io.planb.contents.service.ContentService;
 import io.planb.contents.vo.ContentsVO;
 import io.planb.memo.vo.MemoVO;
@@ -31,10 +32,18 @@ public class SearchServiceImp {
 			//검색어 세팅
 			searchResult.setQuery(q);
 			
+			//형태소 분석
 			List<QueryVO> queryList = this.analyzeQuery(q);
-			searchResult.setQueryList(queryList);
+			if(queryList.size() > 0) searchResult.setQueryList(queryList);
 			
-			List<ContentsVO> cardList = conService.isThisSaved(memberNo, searchResult.getCards());
+			List<ContentsVO> cardList = searchResult.getCards();
+			if(memberNo > 0) {
+				// 해당 회원의 저장, 좋아요, 조회 여부 확인
+				cardList = conService.checkMemberActivity(memberNo, searchResult.getCards());
+			}
+			//검색결과에 광고 목록 추가
+			cardList = this.setAds(cardList);
+			
 			searchResult.setCards(cardList);
 		}
 		
@@ -45,17 +54,31 @@ public class SearchServiceImp {
 	}
 	
 	public void saveKeywords(String q, SearchVO searchResult, int memberNo) {
-		SearchVO kewordVO = new SearchVO();
-		kewordVO.setQuery(q);
-		kewordVO.setUserNo(memberNo);
-		
-		if(searchResult != null) {
-			kewordVO.setTotal( searchResult.getTotal() );
-		} else {
-			kewordVO.setTotal(0);
+		if(q != null) {
+			SearchVO keywordVO = new SearchVO();
+			keywordVO.setQuery(q);
+			keywordVO.setUserNo(memberNo);
+			
+			if(searchResult != null) {
+				keywordVO.setTotal( searchResult.getTotal() );
+			} else {
+				keywordVO.setTotal(0);
+			}
+			//질의어 저장
+			keywordVO.setKeywordType('Q');
+			dao.saveKeyword(keywordVO);
+			
+			//형태소 분석 결과 중, 명사만 저장
+			if(searchResult.getQueryList() != null) {
+				for(QueryVO vo : searchResult.getQueryList()) {
+					if(vo.getType().equals("명사")) {
+						keywordVO.setQuery(vo.getToken());
+						keywordVO.setKeywordType('N');
+						dao.saveKeyword(keywordVO);
+					}
+				}
+			}
 		}
-		
-		dao.saveKeyword(kewordVO);
 	}
 
 	public ContentsVO highlighter(ContentsVO contents, String q) {
@@ -76,6 +99,20 @@ public class SearchServiceImp {
 			contents.setSummary(summary);
 		}
 		return contents;
+	}
+	
+	public List<ContentsVO> setAds(List<ContentsVO> cardList) {
+		List<AdVO> adList = dao.getAdList();
+		
+		for(AdVO ad : adList) {
+			ContentsVO adCard = new ContentsVO();
+			adCard.setIsAd(true);
+			adCard.setTitle(ad.getSiteName());
+			adCard.setImgUrl(ad.getCode());
+			cardList.add(ad.getLocation() + 3, adCard);
+		}
+		
+		return cardList;
 	}
 	
 	public List<ContentsVO> getContentsList(int contentsNo) {

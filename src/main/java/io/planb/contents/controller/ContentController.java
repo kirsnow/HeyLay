@@ -68,20 +68,28 @@ public class ContentController {
 	/* 큐레이션 */
 	@RequestMapping("/contents/curation.do")
 	public String curation(Model model, HttpSession session) {
-		MemberVO member = (MemberVO) session.getAttribute("userVO");
+		MemberVO user = (MemberVO) session.getAttribute("userVO");
+		int userNo = user.getNo();
 
 		// 전체 유저가 많이 본 콘텐츠 top 3 (쿼리 수정 완료)
 		List<ContentsVO> popularList = service.selectPopularList();
+		popularList = service.checkMemberActivity(userNo, popularList);	// 해당 회원의 저장, 좋아요, 조회 여부 확인
 		model.addAttribute("popularList", popularList);
 
 		// 내가 제일 많이 담은 사이트의 콘텐츠 중 전체 유저가 많이 본 콘텐츠 top 3
-		List<ContentsVO> customSourceList = service.selectCustomSourceList(member.getNo());
+		List<ContentsVO> customSourceList = service.selectCustomSourceList(userNo);
+		customSourceList = service.checkMemberActivity(userNo, customSourceList);	// 해당 회원의 저장, 좋아요, 조회 여부 확인
 		model.addAttribute("customSourceList", customSourceList);
 
 		// 관심 키워드 & 검색 키워드 해당 콘텐츠 중 전체 유저가 많이 본 콘텐츠 top 3
-		List<ContentsVO> customKeywordList = service.selectCustomKeywordList(member.getNo());
+		List<ContentsVO> customKeywordList = service.selectCustomKeywordList(userNo);
+		customKeywordList = service.checkMemberActivity(userNo, customKeywordList);	// 해당 회원의 저장, 좋아요, 조회 여부 확인
 		model.addAttribute("customKeywordList", customKeywordList);
-
+		
+		// 내 카드 서랍 목록 (로그인 시)
+		List<DirectoryVO> dirList = dirService.directoryList(userNo);
+		model.addAttribute("dirList", dirList);
+		
 		return "contents/curation";
 	}
 

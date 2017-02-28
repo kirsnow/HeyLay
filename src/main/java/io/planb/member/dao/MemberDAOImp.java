@@ -154,9 +154,10 @@ public class MemberDAOImp implements MemberDAO {
 		String type = sqlSessionTemplate.selectOne("io.planb.member.dao.MemberDAO.selectType", no);
 		return type;
 	}
-
+	
+	// 로그인 이후 last_date 업데이트
 	@Override
 	public void updateDate(MemberVO member) {
-	   sqlSessionTemplate.insert("io.planb.member.dao.MemberDAO.updateDate", member);
+	   sqlSessionTemplate.update("io.planb.member.dao.MemberDAO.updateDate", member);
 	}
 }
