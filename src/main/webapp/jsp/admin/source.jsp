@@ -14,8 +14,8 @@
 <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 
 <!-- Bootstrap -->
-<link href="${ pageContext.request.contextPath }/css/bootstrap.min.css"
-	type="text/css" rel="stylesheet">
+<link href="${ pageContext.request.contextPath }/css/bootstrap.min.css"	type="text/css" rel="stylesheet">
+<link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
 
 <!-- icon-font -->
 <script src="https://use.fontawesome.com/bbddce3010.js"></script>
@@ -39,42 +39,42 @@
 			<div class="right_col" role="main">
 				<section>
 					<div id="container">
-						<div class="row">
-							<div class="col-md-12">&nbsp;</div>
-						</div>
-						<div class="row well">
-							<form id="contentForm" action="${ pageContext.request.contextPath }/jsp/admin/source_add.do" 
-									class="form-horizontal" method="post" enctype="multipart/form-data">
-								<div class="form-group col-md-2">
-									<select class="form-control" name="dataType" id="dataType">
-										<c:forEach var="dt" items="${ dataTypeList }">
-											<option value="${ dt.no }">${ dt.dataType }</option>
-										</c:forEach>
-									</select>
-								</div>
-								<div class="form-group col-md-12">
-									<div class="row">
-										<div class="col-md-2">
-											<span><input type="text" name="name" id="name" class="form-control" placeholder="콘텐츠 이름" alt="콘텐츠 이름 작성" /></span>
-										</div>
-										<div class="col-md-2">
-											<span><input type="text" name="url" id="url" class="form-control" placeholder="콘텐츠  URL" alt="콘텐츠 URL 작성" /></span>
-										</div>
-									</div>
-								</div>
-								<div class="form-group col-md-12">
-									<div class="row">
-										<div class="col-md-3">
-											<span><input type="text" name="logoImg" id="logoImg" class="form-control" placeholder="콘텐츠 이미지 주소" alt="콘텐츠 이미지 주소 작성" /></span>
-										</div>
-										<div class="col-md-1">
-											<span><button type="submit" class="btn btn-default">추가</button></span>
-										</div>
-									</div>
-								</div>
-							</form>
-						</div>
-						<div class="row">
+<!-- 						<div class="row marginTop40"> -->
+<!-- 							<div class="col-md-12">&nbsp;</div> -->
+<!-- 						</div> -->
+<!-- 						<div class="row well"> -->
+<%-- 							<form id="contentForm" action="${ pageContext.request.contextPath }/jsp/admin/source_add.do"  --%>
+<!-- 									class="form-horizontal" method="post" enctype="multipart/form-data"> -->
+<!-- 								<div class="form-group col-md-2"> -->
+<!-- 									<select class="form-control" name="dataType" id="dataType"> -->
+<%-- 										<c:forEach var="dt" items="${ dataTypeList }"> --%>
+<%-- 											<option value="${ dt.no }">${ dt.dataType }</option> --%>
+<%-- 										</c:forEach> --%>
+<!-- 									</select> -->
+<!-- 								</div> -->
+<!-- 								<div class="form-group col-md-12"> -->
+<!-- 									<div class="row"> -->
+<!-- 										<div class="col-md-2"> -->
+<!-- 											<span><input type="text" name="name" id="name" class="form-control" placeholder="콘텐츠 이름" alt="콘텐츠 이름 작성" /></span> -->
+<!-- 										</div> -->
+<!-- 										<div class="col-md-2"> -->
+<!-- 											<span><input type="text" name="url" id="url" class="form-control" placeholder="콘텐츠  URL" alt="콘텐츠 URL 작성" /></span> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 								<div class="form-group col-md-12"> -->
+<!-- 									<div class="row"> -->
+<!-- 										<div class="col-md-3"> -->
+<!-- 											<span><input type="text" name="logoImg" id="logoImg" class="form-control" placeholder="콘텐츠 이미지 주소" alt="콘텐츠 이미지 주소 작성" /></span> -->
+<!-- 										</div> -->
+<!-- 										<div class="col-md-1"> -->
+<!-- 											<span><button type="submit" class="btn btn-default">추가</button></span> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 							</form> -->
+<!-- 						</div> -->
+						<div class="row marginTop40">
 							<div class="col-md-2">총 콘텐츠 소스 ${ sourceCnt } 개</div>
 							<div class="col-md-2 col-md-push-8">
 								<select class="form-control" id="viewTypeList">
@@ -85,21 +85,21 @@
 								</select>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-md-12">&nbsp;</div>
-						</div>
-						<div class="row well">
-							<div class="col-md-2">
-								<input type="checkbox" id="allSelectToggle" alt="전체 선택" />
-								<label>전체 선택</label>
-							</div>
-							<div class="col-md-2">
-								<a href="javascript:blockSource()" class="btn btn-default"
-									role="button" title="선택한 콘텐츠 소스 차단">차단</a>
-								<a href="javascript:deleteSource()" class="btn btn-default"
-									role="button" title="선택한 콘텐츠 소스 삭제">삭제</a>
-							</div>
-						</div>
+<!-- 						<div class="row"> -->
+<!-- 							<div class="col-md-12">&nbsp;</div> -->
+<!-- 						</div> -->
+<!-- 						<div class="row well"> -->
+<!-- 							<div class="col-md-2"> -->
+<!-- 								<input type="checkbox" id="allSelectToggle" alt="전체 선택" /> -->
+<!-- 								<label>전체 선택</label> -->
+<!-- 							</div> -->
+<!-- 							<div class="col-md-2"> -->
+<!-- 								<a href="javascript:blockSource()" class="btn btn-default" -->
+<!-- 									role="button" title="선택한 콘텐츠 소스 차단">차단</a> -->
+<!-- <!-- 								<a href="javascript:deleteSource()" class="btn btn-default" -->
+<!-- <!-- 									role="button" title="선택한 콘텐츠 소스 삭제">삭제</a> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
 						<div class="row">
 							<div class="table-responsive">
 								<table class="table">
@@ -124,10 +124,21 @@
 													<a href="${ source.url }" target="_blank" title="해당 사이트로 가는 링크">${ source.url }</a>
 												</td>
 												<td>	
-													<div><a href="${ pageContext.request.contextPath }/jsp/admin/source_block.do?no=${ source.no }" class="btn btn-default btn-xs"
-															role="button" title="선택한 콘텐츠 소스 차단">차단</a></div>
-													<div><a href="${ pageContext.request.contextPath }/jsp/admin/source_delete.do?no=${ source.no }" class="btn btn-default btn-xs"
-															role="button" title="선택한 콘텐츠 소스 삭제">삭제</a></div>
+													<div>
+														<c:choose>
+															<c:when test="${ source.dataType == 5 }">
+																<button class="btn btn-default btn-xs" disabled="disabled">차단 대기</button>
+															</c:when>
+															<c:otherwise>
+																<button onclick="location.href='${ pageContext.request.contextPath }/jsp/admin/source_block.do?no=${ source.no }'" 
+																	class="btn btn-default btn-xs">차단 대기</button>
+<!-- 																<a href=""  -->
+<!-- 																	role="button" title="선택한 콘텐츠 소스 차단 대기"></a> -->
+															</c:otherwise>
+														</c:choose>
+													</div>
+<%-- 													<div><a href="${ pageContext.request.contextPath }/jsp/admin/source_delete.do?no=${ source.no }" class="btn btn-default btn-xs" --%>
+<!-- 															role="button" title="선택한 콘텐츠 소스 삭제">삭제</a></div> -->
 												</td>
 											</tr>
 										</c:forEach>

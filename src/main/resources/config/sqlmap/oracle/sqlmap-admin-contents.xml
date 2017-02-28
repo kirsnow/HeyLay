@@ -88,7 +88,7 @@
 	
 	<update id="banSource" parameterType="int">
 		UPDATE q_source 
-		SET data_type = -1 
+		SET data_type = 5 
 		WHERE no = #{ no } 
 	</update>
 	
