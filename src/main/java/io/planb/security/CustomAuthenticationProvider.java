@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import io.planb.member.service.MemberService;
+import io.planb.member.vo.MemberVO;
 
 //@Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
@@ -32,9 +33,12 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 		// member.getEmail()이랑 email 일치하는 userVO가 없으면
 		if(userVO == null) throw new UsernameNotFoundException(auth.getName());
 		
+		MemberVO member = (MemberVO) userVO;
+
 		// member.getPassword()랑 userVO.getPassword가 일치하지 않으면
 		if(! userVO.getPassword().equals(auth.getCredentials())) throw new BadCredentialsException("잘못된 비밀번호입니다. 다시 시도하세요.");
 		
+		service.updateDate(member);
 		Collection<? extends GrantedAuthority> authorities = userVO.getAuthorities();
 		
 		return new UsernamePasswordAuthenticationToken(userVO, null, authorities);

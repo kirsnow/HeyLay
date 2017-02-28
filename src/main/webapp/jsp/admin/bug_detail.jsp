@@ -47,7 +47,7 @@
 							</div>
 							<div class="pull-right">
 								<a class="btn btn-default"
-									href="${ pageContext.request.contextPath }/jsp/admin/bug_list.jsp"
+									href="${ pageContext.request.contextPath }/jsp/admin/bug_list.do"
 									role="button" title="공지사항 목록으로 되돌아가는 이동 링크">목록보기</a>
 							</div>
 						</div>
@@ -55,10 +55,10 @@
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<div class="row">
-										<div class="col-md-2">beak100@gmail.com</div>
-										<span class="col-md-2">2016.12.22</span>
+										<div class="col-md-2">${ bug.email }</div>
+										<span class="col-md-2">${ bug.regDate }</span>
 										<div class="pull-right">
-											<a href="#" target="_blank" title="해당 페이지로 가는 링크">http://www.quration.com/jsp/content/lala.jsp</a>
+											<a href="#" target="_blank" title="해당 페이지로 가는 링크">${ bug.url }</a>
 										</div>
 									</div>
 								</div>
@@ -126,10 +126,10 @@
 										<%=os%>
 										<hr>
 										<div class="marginLeft">
-											<div>클릭이 안 돼요 ㅠㅠ</div>
-											<div>
-												<img alt="오류 이미지" src="${ pageContext.request.contextPath }/img/portfolio/04.jpg" width="500px">
-											</div>
+											<div>${ bug.userInput }</div>
+<!-- 											<div> -->
+<%-- 												<img alt="오류 이미지" src="${ pageContext.request.contextPath }/img/portfolio/04.jpg" width="500px"> --%>
+<!-- 											</div> -->
 										</div>
 									</div>
 								</div>
