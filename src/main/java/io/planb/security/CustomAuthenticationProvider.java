@@ -28,7 +28,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
 		UserDetails userVO = service.loadUserByUsername(auth.getName());
 		
-		System.out.println("CustomAuthenticationProvider userVO: " + userVO);
+//		System.out.println("CustomAuthenticationProvider userVO: " + userVO);
 		
 		// member.getEmail()이랑 email 일치하는 userVO가 없으면
 		if(userVO == null) throw new UsernameNotFoundException(auth.getName());
