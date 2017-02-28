@@ -108,7 +108,7 @@
                      </div>
                      <div class="col-md-8 panel border10px ">
                         <h4 class="text-center marginBottom30 grayfont"><b>회원 전체의 조회수가 높은 콘텐츠</b></h4>
-                        <svg class="col-md-12 marginBottom" id="myGraph3"></svg>
+                        <svg class="col-md-14 marginBottom" id="myGraph3"></svg>
                      </div>
                   </div>
                </div>
