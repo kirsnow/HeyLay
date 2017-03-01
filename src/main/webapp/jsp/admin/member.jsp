@@ -10,12 +10,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<!-- Bootstrap -->
-<link href="${ pageContext.request.contextPath }/css/bootstrap.min.css"	type="text/css" rel="stylesheet">
-<link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
-
-<!-- icon-font -->
-<script src="https://use.fontawesome.com/bbddce3010.js"></script>
+	<!-- 공통css  -->
+ 	<jsp:include page="/jsp/include/css.jsp" />
+ 	
 <title>회원 관리 | Quration: 답을 열어 줄 그런 사람</title>
 </head>
 <body class="nav-md">
@@ -27,7 +24,7 @@
 
 			<!-- page content -->
 			<div class="right_col" role="main">
-				<section>
+				<section class="minHeight">
 					<div id="container">
 						<div class="row marginTop40">
 							<div class="col-md-2">총 회원 ${ memberCnt } 명</div>
@@ -137,8 +134,9 @@
 
 <!-- jQuery -->
 <script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
+
+<!-- 공통 js -->
+<jsp:include page="/jsp/include/commonJs.jsp" />
 
 <!-- Custom Theme Scripts -->
 <script src="${ pageContext.request.contextPath }/js/custom.min.js"></script>
