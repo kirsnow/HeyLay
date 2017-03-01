@@ -46,7 +46,7 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"
 							   role="button" aria-expanded="false" title="회원 정보 메뉴 열기"> 
 								<img src="${ pageContext.request.contextPath }/img/${userVO.profileImg}" alt="your image" 
-								     class="img-circle profile_img" style="width: 30px; height: 30px;"/>
+								     class="img-circle profile_img bla" style="width: 30px; height: 30px;"/>
 								<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu" role="menu">

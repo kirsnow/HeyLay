@@ -116,7 +116,7 @@
 								</c:when>
 								<c:otherwise>
 									<img id="blah" src="${ pageContext.request.contextPath }/img/${userVO.profileImg}" 
-											alt="your image"  style="width: 250px; height: 250px;"/>
+										class="bla" alt="your image"  style="width: 250px; height: 250px;"/>
 								</c:otherwise>
 							</c:choose>
 
@@ -242,7 +242,7 @@
 				var reader = new FileReader();
 
 				reader.onload = function(e) {
-					$('#blah').attr('src', e.target.result);
+					$('.bla').attr('src', e.target.result);
 				}
 
 				reader.readAsDataURL(input.files[0]);
