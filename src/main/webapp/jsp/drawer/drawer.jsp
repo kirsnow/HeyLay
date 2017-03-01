@@ -50,8 +50,6 @@
         <div class="right_col" role="main">
         	<div class="body">
 	            <section class="container sectionContent minHeight">
-	                <c:choose>
-						<c:when test="${ (cardsByDays eq null) or (empty cardsByDays) }">
 							<div class="row">
 								<div class="col-xs-12">
 									Sort: 
@@ -62,6 +60,8 @@
 									| <a href="${ pageContext.request.contextPath }/directory.do">폴더 관리</a>
 								</div>
 							</div>
+	                <c:choose>
+						<c:when test="${ (cardsByDays eq null) or (empty cardsByDays) }">
 							<div class="row">
 								<p class="lead text-center marginTop60">아직 저장한 카드가 없습니다 &#58;O</p>
 							</div>
@@ -71,20 +71,9 @@
 						</c:when>
 						<c:otherwise>
 							<div class="row">
-								<div class="col-xs-12">
-									Sort: 
-									<a href="${ pageContext.request.contextPath }/drawer.do?sort=directory">Directory</a>
-									| <a href="${ pageContext.request.contextPath }/drawer.do?sort=days">Days</a>
-									| <a href="${ pageContext.request.contextPath }/drawer.do?sort=type">Type</a>
-									| <a href="${ pageContext.request.contextPath }/drawer.do?sort=source">Source</a>
-									| <a href="${ pageContext.request.contextPath }/directory.do">폴더 관리</a>
-								</div>
-							</div>
-							<div class="row">
 								<c:forEach var="drawer" items="${ cardsByDays }" varStatus="loop">
 									<h4 class="col-xs-12 text-muted">
-										${ drawer.header } 
-										<small>${ fn:length(drawer.cards) }건</small>
+										${ drawer.header } <small>${ fn:length(drawer.cards) }건</small>
 									</h4>
 									<c:set var="cards" value="${ drawer.cards }" scope="request" />
 									<section class="col-xs-12 card-container mdl-grid">

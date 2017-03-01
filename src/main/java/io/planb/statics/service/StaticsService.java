@@ -3,13 +3,17 @@ package io.planb.statics.service;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import io.planb.contents.dao.ContentDAO;
 import io.planb.contents.vo.ContentsVO;
+import io.planb.drawer.service.DrawerService;
+import io.planb.drawer.vo.DrawerVO;
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.statics.dao.StaticsDAO;
 import io.planb.statics.vo.StaticsVO;
@@ -22,6 +26,9 @@ public class StaticsService {
 
 	@Autowired
 	private ContentDAO contentDAO;
+	
+	@Autowired
+	private DrawerService drawerService;
 
 	public List<StaticsVO> selectwordCloudList(int memberNo) {
 		List<StaticsVO> wordCloudList = dao.selectWordCloudList(memberNo);
@@ -69,6 +76,17 @@ public class StaticsService {
 		List<StaticsVO> staticsList = dao.selectLikeSource(no);
 		
 		return staticsList;
+	}
+	
+	public List<ContentsVO> userStats(int memberNo) {
+		List<ContentsVO> savedList = drawerService.getSavedCardsForMember(memberNo);
+		List<DrawerVO> drawerList = drawerService.getDrawerList(memberNo, "days");
+		
+		Map<String, Object> stats = new HashMap<String, Object>();
+		stats.put("cards", savedList);
+		stats.put("drawerList", drawerList);
+		
+		return savedList;
 	}
 	
 	public int countTotalSaved(int no) {

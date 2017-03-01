@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -119,13 +120,30 @@
 				<section>
 					<div class="container text-center">
 						<div class="row scene1">
-							<div class="div col-md-12 scene_wrapper">
-								<h3 class="marginTop60">${ userVO.lastName } ${ userVO.firstName } 님은 큐레이션을 통해,
-								<br/>총 <span class="u_color">${ countTotalSaved }</span>개의 카드를 만나고 있습니다.</h3>
-							</div>
+							<c:choose>
+								<c:when test="${ (cards eq null) or (empty cards) }">
+									<div class="div col-md-12 scene_wrapper text-muted">
+										<h3 class="marginTop60"><span class="text-primary">${ userVO.lastName }${ userVO.firstName }</span>님, 아직 이용하신 카드가 없네요 &#58;&#40;</h3> 
+									</div>
+									<div class="text-center marginTop80 minHeight700">
+										<jsp:include page="/jsp/component/search_suggestion.jsp" />
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div class="div col-md-12 scene_wrapper text-muted">
+										<h3 class="marginTop60"><span class="text-primary">${ userVO.lastName }${ userVO.firstName }</span>님, 지금까지 </h3> 
+										<h3 class="">카드 <span class="text-primary">${ fn:length(cards) }</span>개를 만나셨네요 &#58;&#41;</h3>
+										<span class="fa-stack fa-5x">
+											<i class="fa fa-sticky-note-o fa-stack-2x" aria-hidden="true"></i>
+											<i class="fa fa-stack-1x" aria-hidden="true">${ fn:length(cards) }</i>
+										</span>
+									</div>
+								</c:otherwise>
+							</c:choose>
 						</div>
 						<div class="row scene2">
 							<div class="div col-md-8 col-md-offset-2 scene_wrapper">
+						<%-- 
 								<div class="row">
 									<div class="div col-md-5">
 										<h3 class="marginTop60"> 
@@ -191,6 +209,7 @@
 						<div class="row scene5">
 							<div class="div col-md-12 scene_wrapper">
 								<h3 class="marginTop60">${ userVO.lastName } ${ userVO.firstName } 회원님이 담은 카드 중<br/>가장 많은 분들의 사랑을 받은 카드입니다.</h3>
+								--%>
 <%-- 								<c:forEach var="savedMoreSaved" items="${ savedMoreSavedList }"> --%>
 <!-- 									<div> -->
 <%-- 										<img alt="" src="${ savedMoreSaved.data }"> --%>

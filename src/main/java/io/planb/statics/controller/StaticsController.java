@@ -30,43 +30,55 @@ public class StaticsController {
 	@RequestMapping("/contents/stats.do")
 	public String stats(HttpSession session, Model model) {
 		MemberVO member = (MemberVO) session.getAttribute("userVO");
-		int no = member.getNo();
+		int memberNo = member.getNo();
 		
-		/* 담은 카드 총 개수 */
+		List<ContentsVO> savedCards = service.userStats(memberNo);
+		model.addAttribute("cards", savedCards);
+		
+		/* 담은 카드 총 개수 
 		int countTotalSaved = service.countTotalSaved(no);
 		model.addAttribute("countTotalSaved", countTotalSaved);
+		 * */
 		
-		/* 오늘 담은 카드 개수 */
+		/* 오늘 담은 카드 개수 
 		int countTodaySaved = service.countTodaySaved(no);
 		model.addAttribute("countTodaySaved", countTodaySaved);
+		 * */
 		
-		/* 어제 담은 카드 개수 */
+		/* 어제 담은 카드 개수 
 		int countYesSaved = service.countYesSaved(no);
 		model.addAttribute("countYesSaved", countYesSaved);
+		 * */
 		
-		/* 그제 담은 카드 개수 */
+		/* 그제 담은 카드 개수 
 		int countBeforeYesSaved = service.countBeforeYesSaved(no);
 		model.addAttribute("countBeforeYesSaved", countBeforeYesSaved);
+		 * */
 		
-		/* 월 평균 저장 개수 */
+		/* 월 평균 저장 개수 
 		int averageSavedMonth = service.sumSavedMonth(no);
 		model.addAttribute("averageSavedMonth", averageSavedMonth);
+		 * */
 		
-		/* 제일 좋아요 많이 누른 사이트 3 */
+		/* 제일 좋아요 많이 누른 사이트 3 
 		List<StaticsVO> likeSourceList = service.selectLikeSource(no);
 		model.addAttribute("likeSourceList", likeSourceList);
+		 * */
 		
-		/* 내가 담은 카드들 중 다른 사람들이 많이 담은 카드 3 */
+		/* 내가 담은 카드들 중 다른 사람들이 많이 담은 카드 3 
 		List<ContentsVO> savedMoreSavedList = service.selectSavedMoreSaved(no);
 		model.addAttribute("savedMoreSavedList", savedMoreSavedList);
+		 * */
 		
-		/* 내가 담은 카드들 중 다른 사람들은 안 담은 카드 3 */
+		/* 내가 담은 카드들 중 다른 사람들은 안 담은 카드 3 
 		List<ContentsVO> savedLessSavedList = service.selectSavedLessSaved(no);
 		model.addAttribute("savedLessSavedList", savedLessSavedList);
+		 * */
 		
-		/* 내가 담은 카드들 중 다른 사람들이 좋아요 많이 누른 카드 10 */
+		/* 내가 담은 카드들 중 다른 사람들이 좋아요 많이 누른 카드 10 
 		List<ContentsVO> savedLikeList = service.selectSavedLike(no);
 		model.addAttribute("savedLikeList", savedLikeList);
+		 * */
 		
 		return "contents/stats";
 	}

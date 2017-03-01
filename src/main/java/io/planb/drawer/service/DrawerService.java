@@ -1,5 +1,6 @@
 package io.planb.drawer.service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -53,9 +54,11 @@ public class DrawerService {
 	}
 	
 	public String getCompare(ContentsVO card, String sort) {
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy. MM. dd.");
 		String compare = null;
 		switch(sort) {
-			case "days": compare = card.getSavedDaysAgo(); break;
+			case "days": compare = sdf.format(card.getSavedDate()); break;
 			case "type": compare = card.getDataTypeName(); break;
 			case "source": compare = card.getSourceName(); break;
 			case "directory": compare = card.getDirectoryName(); break;
