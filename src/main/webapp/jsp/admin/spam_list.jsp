@@ -13,32 +13,28 @@
 <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
 <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 
-<!-- Bootstrap -->
-<link href="${ pageContext.request.contextPath }/css/bootstrap.min.css"
-	type="text/css" rel="stylesheet">
-<link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
+	<!-- 공통css  -->
+ 	<jsp:include page="/jsp/include/css.jsp" />
 
-<!-- icon-font -->
-<script src="https://use.fontawesome.com/bbddce3010.js"></script>
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	    <![endif]-->
+	    
 <title>스팸 신고 리스트 | Quration: 답을 열어 줄 그런 사람</title>
 </head>
 <body class="nav-md">
 	<div class="container body">
-		<div class="main_container">
+		<div class="main_container ">
 			<!-- nav -->
 			<jsp:include page="/jsp/include/nav_admin.jsp" />
 			<!-- /nav -->
-
+		
 			<!-- page content -->
 			<div class="right_col" role="main">
-				<section>
+				<section class="minHeight">
 					<div id="container">
 						<div class="row marginTop40">
 							<div class="col-md-2">총 신고 건수 ${ spamCnt } 개</div>
@@ -116,7 +112,9 @@
 			<!-- /page content -->
 
 			<!-- footer -->
-			<jsp:include page="/jsp/include/footer.jsp" />
+			<Footer class="footer">
+				<jsp:include page="/jsp/include/footer.jsp" />
+			</Footer> 
 			<!-- /footer -->
 		</div>
 	</div>
@@ -125,8 +123,9 @@
 <!-- jQuery -->
 <script
 	src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
+
+<!-- 공통 js -->
+<jsp:include page="/jsp/include/commonJs.jsp" />
 
 <!-- Custom Theme Scripts -->
 <script src="${ pageContext.request.contextPath }/js/custom.min.js"></script>
