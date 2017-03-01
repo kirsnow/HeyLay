@@ -64,7 +64,7 @@
 	        		</div>
 	             	<div class="row">
 		                <div class="text-center col-md-6 col-md-offset-3 marginTop ">
-		                  	<a href="javascript:setSeywords()" class="btn btn-primary marginRight marginBottom100" role="button" title="휴면 계정으로 설정">키워드 선택 완료</a>
+		                  	<a href="javascript:setSeywords()" class="btn btn-primary marginRight marginBottom100" role="button" title="키워드 선택 완료">키워드 선택 완료</a>
 	<!-- 	                     <button type="submit" class="btn btn-primary marginRight" >키워드 선택 완료</button> -->
 		                     <button type="reset" class="btn marginBottom100">초기화</button>
 		                  </div>

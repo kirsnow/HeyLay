@@ -56,7 +56,13 @@
 							<small>선호 키워드와 검색한 키워드를 바탕으로 추천해 드립니다.</small>
 						</h4>
 						<c:if test="${ empty customKeywordList }">
-							<div class="col-md-6 col-md-offset-3 text-center">선호 키워드를 선택하거나, 검색하지 않았습니다. Quration을 이용해 볼까요!</div>
+							<div class="col-xs-11 well marginLeft30 marginTop">
+								<p>이런, 아직 이용하신 키워드가 없군요 &#58;&#40;</p>
+								<small class="text-muted">
+									<a href="${ pageContext.request.contextPath }/login/interest.do" title="선호 키워드 선택 페이지로 이동">선호 키워드를 선택</a>하거나, 검색한 후에 카드를 추천해드립니다.
+								</small>
+								<jsp:include page="/jsp/component/search_suggestion.jsp"/>
+							</div>
 						</c:if>
 						<c:set var="cards" value="${ customKeywordList }" scope="request" />
 						<section class="col-xs-12 card-container mdl-grid">
@@ -65,12 +71,18 @@
 					</div>
 					
 					<div class="row">
-						<h4 class="col-xs-12 text-muted">
+						<h4 class="col-xs-12 text-muted marginTop30">
 							사이트 맞춤 추천 
 							<small>${ userVO.lastName} ${ userVO.firstName } 님이 가장 많은 카드를 담은 사이트의 콘텐츠를 추천해 드립니다.</small>
 						</h4>
 						<c:if test="${ empty customSourceList }">
-							<div class="col-md-6 col-md-offset-3 text-center">카드를 담지 않았습니다. 카드를 담아 볼까요!</div>
+							<div class="col-xs-11 well marginLeft30 marginTop">
+								<p>이런, 아직 담은 카드가 없습니다. &#58;&#40;</p>
+								<small class="text-muted">
+									카드를 내 서랍에 담으면 새로운 카드를 추천해드립니다.
+								</small>
+								<jsp:include page="/jsp/component/search_suggestion.jsp"/>
+							</div>
 						</c:if>
 						<c:set var="cards" value="${ customSourceList }" scope="request" />
 						<section class="col-xs-12 card-container mdl-grid">
@@ -79,7 +91,7 @@
 					</div>
 					
 					<div class="row">
-						<h4 class="col-xs-12 text-muted">
+						<h4 class="col-xs-12 text-muted marginTop30">
 							인기 콘텐츠 추천 
 							<small>다른 사용자들이 많이 본 콘텐츠를 추천해 드립니다.</small>
 						</h4>
