@@ -46,7 +46,7 @@ public class ProfileFormController {
 			MemberVO userVO = (MemberVO) session.getAttribute("userVO");
 			member.setNo(userVO.getNo());
 		
-			String saveFileName = service.mypageUpdate(multipartFile, member);
+			String oriFileName = service.mypageUpdate(multipartFile, member);
 			
 			//System.out.println(multipartFile + ":" + member);
 			
@@ -54,7 +54,7 @@ public class ProfileFormController {
 			mav.setViewName("myPage/profile_form");
 			mav.addObject("userVO",member);
 			
-			userVO.setProfileImg(saveFileName);
+			userVO.setProfileImg(oriFileName);
 			session.setAttribute("userVO", userVO);
 			
 			return mav;	
