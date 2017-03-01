@@ -70,13 +70,20 @@ public class Elasitcsearch {
 			q = URLEncoder.encode(q, "UTF-8");
 			
 			/* 기본 검색
-			*/
 			String restAPI = "http://" + searchIP + ":9200/_all/_search?pretty=true" 
 					+ "&q=" + q;
 			if(searchSize > 0) restAPI += "&size=" + searchSize;
+			*/
 			
+			/**/
+			 String restAPI = "http://" + searchIP + ":9200/contents/_search?pretty=true&source="
+			 		 + "{\"query\":{\"multi_match\":{\"query\":\"" + q + "\""
+					 + ",\"fields\":[\"title\",\"summary\"],\"type\":\"best_fields\"}},\"size\":100"
+					 + ",\"highlight\":{\"fields\":{\"title\":{},\"summary\":{}}"
+					 + ",\"pre_tags\":[\"<mark>\"],\"post_tags\":[\"</mark>\"]}}";
+			 
 			/* 검색: 하이라이트 필드 추가
-			String restAPI = "http://" + searchIP + ":9200/contents/_search?size=" + searchSize
+			String restAPI = "http://" + searchIP + ":9200/_all/_search?size=" + searchSize
 					+ "&source={"
 					+ "\"query\":{\"multi_match\":{"
 					+ 	"\"query\":\"" + q

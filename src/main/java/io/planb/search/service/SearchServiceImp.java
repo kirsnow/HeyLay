@@ -115,10 +115,10 @@ public class SearchServiceImp {
 			ContentsVO adCard = new ContentsVO();
 			adCard.setIsAd(true);
 			adCard.setTitle(ad.getSiteName());
-			adCard.setImgUrl(ad.getCode() + startLocation);
+			adCard.setImgUrl(ad.getCode());
 			
 			
-			cardList.add(ad.getLocation(), adCard);
+			cardList.add(ad.getLocation() + startLocation, adCard);
 		}
 		
 		return cardList;
