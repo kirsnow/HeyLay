@@ -26,9 +26,9 @@ public class SearchServiceImp {
 		
 		//검색 실행
 		SearchVO searchResult = dao.searchResult(q, ip);
-		
 		//검색결과가 있는 경우
 		if(searchResult != null) {
+			System.out.println("searchResult: " + searchResult.getTotal());
 			//검색어 세팅
 			searchResult.setQuery(q);
 			
@@ -69,7 +69,9 @@ public class SearchServiceImp {
 			dao.saveKeyword(keywordVO);
 			
 			//형태소 분석 결과 중, 명사만 저장
-			if(searchResult.getQueryList() != null) {
+			if(searchResult != null && 
+				searchResult.getQueryList() != null) {
+				
 				for(QueryVO vo : searchResult.getQueryList()) {
 					if(vo.getType().equals("명사")) {
 						keywordVO.setQuery(vo.getToken());
@@ -104,12 +106,19 @@ public class SearchServiceImp {
 	public List<ContentsVO> setAds(List<ContentsVO> cardList) {
 		List<AdVO> adList = dao.getAdList();
 		
+		int startLocation = 0;
+		if(cardList.size() < adList.get(0).getLocation()) {
+			startLocation = cardList.size() - adList.get(0).getLocation();
+		}
+		
 		for(AdVO ad : adList) {
 			ContentsVO adCard = new ContentsVO();
 			adCard.setIsAd(true);
 			adCard.setTitle(ad.getSiteName());
-			adCard.setImgUrl(ad.getCode());
-			cardList.add(ad.getLocation() + 3, adCard);
+			adCard.setImgUrl(ad.getCode() + startLocation);
+			
+			
+			cardList.add(ad.getLocation(), adCard);
 		}
 		
 		return cardList;

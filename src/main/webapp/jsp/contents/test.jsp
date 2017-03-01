@@ -27,7 +27,7 @@
 		</header>
 
 		<article>
-			<p id="status">File API & FileReader API not supported</p>
+			<p id="status">File API  FileReader API not supported</p>
 			<p>
 				<input type=file>
 			</p>
