@@ -82,7 +82,7 @@
 					<!-- /Search result filter -->
 					--%>
 					
-					<section class="col-xs-12 col-md-9 col-md-pull-3 card-container mdl-grid">
+					<section class="col-xs-12 card-container mdl-grid">
 						<c:set var="cards" value="${ searchResult.cards }" scope="request" />
 						<jsp:include page="/jsp/component/card.jsp" />
 					</section>
