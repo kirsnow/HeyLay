@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import io.planb.contents.dao.ContentDAO;
 import io.planb.contents.vo.ContentsVO;
 import io.planb.drawer.service.DrawerService;
-import io.planb.drawer.vo.DrawerVO;
 import io.planb.keywords.vo.KeywordsVO;
 import io.planb.statics.dao.StaticsDAO;
 import io.planb.statics.vo.StaticsVO;
@@ -80,13 +79,14 @@ public class StaticsService {
 	
 	public List<ContentsVO> userStats(int memberNo) {
 		List<ContentsVO> savedList = drawerService.getSavedCardsForMember(memberNo);
-		List<DrawerVO> drawerList = drawerService.getDrawerList(memberNo, "days");
+		
+		List<ContentsVO> lastSaved = new ArrayList<ContentsVO>();
+		lastSaved.add(savedList.get(0));
 		
 		Map<String, Object> stats = new HashMap<String, Object>();
 		stats.put("cards", savedList);
-		stats.put("drawerList", drawerList);
 		
-		return savedList;
+		return lastSaved;
 	}
 	
 	public int countTotalSaved(int no) {
