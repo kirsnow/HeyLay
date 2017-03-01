@@ -112,6 +112,21 @@ public class ContentDAO {
 		sqlSessionTemplate.insert("io.planb.contents.dao.ContentDAO.insertCardToSave", card);
 	}
 	
+	public int getMostSavedSource(int no) {
+		
+		int mostSavedSourceNo = -1;
+		
+		try {
+			mostSavedSourceNo = sqlSessionTemplate.selectOne("io.planb.contents.dao.ContentDAO.selectMostSavedSource", no);
+		} catch(NullPointerException np) {
+			mostSavedSourceNo = -1;
+		} catch(Exception e) {
+			mostSavedSourceNo = -1;
+		}
+		
+		return mostSavedSourceNo;
+	}
+	
 	public List<ContentsVO> selectCustomSourceList(int no) {
 		List<ContentsVO> customSourceList = sqlSessionTemplate.selectList("io.planb.contents.dao.ContentDAO.selectCustomSourceList", no);
 		

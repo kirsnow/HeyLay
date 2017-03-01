@@ -45,7 +45,7 @@ function doMember(memberNo) {
 						</ul></li>
 					<li><a title="사이트 및 카드 관리 메뉴 보기"><i class="fa fa-desktop"></i> 사이트 관리 <span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
-							<li><a href="${ pageContext.request.contextPath }/jsp/admin/source_list.do" title="콘텐츠 소스 관리 페이지로 이동">콘텐츠 소스</a></li>
+							<%--<li><a href="${ pageContext.request.contextPath }/jsp/admin/source_list.do" title="콘텐츠 소스 관리 페이지로 이동">콘텐츠 소스</a></li> --%>
 							<li><a href="${ pageContext.request.contextPath }/jsp/admin/spam_list.do" title="유해 콘텐츠 신고 관리 페이지로 이동">유해 콘텐츠 신고</a></li>
 							<li><a href="${ pageContext.request.contextPath }/jsp/admin/spam_content_list.do" title="유해 콘텐츠 관리 페이지로 이동">유해 콘텐츠</a></li>
 							<li><a href="${ pageContext.request.contextPath }/jsp/admin/bug_list.do" title="오류 신고 관리 페이지로 이동">오류 신고</a></li>

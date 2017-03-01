@@ -40,13 +40,13 @@
 	}
 	.scene1 {
 		text-align: center;
-	    background: url(/img/sample/back1.png) no-repeat bottom center;
+	    <%-- background: url(/img/sample/back1.png) no-repeat bottom center; --%>
 	    height: 700px;
 	    background-color: #F7F7F7;
 	}
 	.scene2 {
 		text-align: center;
-	    background: url(/img/sample/back2.png) no-repeat center;
+	    <%-- background: url(/img/sample/back2.png) no-repeat center; --%>
 	    background-size: 1200px;
 	    height: 700px;
 	    background-color: #ffffff;
@@ -133,10 +133,14 @@
 									<div class="div col-md-12 scene_wrapper text-muted">
 										<h3 class="marginTop60"><span class="text-primary">${ userVO.lastName }${ userVO.firstName }</span>님, 지금까지 </h3> 
 										<h3 class="">카드 <span class="text-primary">${ fn:length(cards) }</span>개를 만나셨네요 &#58;&#41;</h3>
-										<span class="fa-stack fa-5x">
+										<p class="fa-stack fa-5x marginTop20">
 											<i class="fa fa-sticky-note-o fa-stack-2x" aria-hidden="true"></i>
 											<i class="fa fa-stack-1x" aria-hidden="true">${ fn:length(cards) }</i>
-										</span>
+										</p>
+										
+										<section class="card-container mdl-grid">
+											<jsp:include page="/jsp/component/card.jsp" />
+										</section>
 									</div>
 								</c:otherwise>
 							</c:choose>

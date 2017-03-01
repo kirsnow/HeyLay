@@ -103,12 +103,14 @@ public class ContentService {
 	public ContentsVO isThisSaved(int memberNo, ContentsVO card) {
 		//해당 회원이 저장한 콘텐츠 번호 목록 추출
 		List<Integer> savedList = dao.getSavedContentsNo(memberNo);
-		card.setIsSaved(false);
-		//저장한 콘텐츠 여부 확인
-		for(int savedNo : savedList) {
-			if(savedNo == card.getContentsNo()) {
-				card.setIsSaved(true);
-				break;
+		if(savedList.size() > 0) {
+			card.setIsSaved(false);
+			//저장한 콘텐츠 여부 확인
+			for(int savedNo : savedList) {
+				if(savedNo == card.getContentsNo()) {
+					card.setIsSaved(true);
+					break;
+				}
 			}
 		}
 		return card;
@@ -117,14 +119,15 @@ public class ContentService {
 	public List<ContentsVO> isThisSaved(int memberNo, List<ContentsVO> cardList) {
 		//해당 회원이 저장한 콘텐츠 번호 목록 추출
 		List<Integer> savedList = dao.getSavedContentsNo(memberNo);
-		
-		//저장한 콘텐츠 여부 확인: 저장한 콘텐츠는 savedCnt를 1로, 저장하지 않은 콘텐츠는 savedCnt를 0으로 설정한다.
-		for(ContentsVO card : cardList) {
-			card.setIsSaved(false);
-			for(int savedNo : savedList) {
-				if(savedNo == card.getContentsNo()) {
-					card.setIsSaved(true);	
-					break;
+		if(savedList.size() > 0) {
+			//저장한 콘텐츠 여부 확인: 저장한 콘텐츠는 savedCnt를 1로, 저장하지 않은 콘텐츠는 savedCnt를 0으로 설정한다.
+			for(ContentsVO card : cardList) {
+				card.setIsSaved(false);
+				for(int savedNo : savedList) {
+					if(savedNo == card.getContentsNo()) {
+						card.setIsSaved(true);	
+						break;
+					}
 				}
 			}
 		}
@@ -134,12 +137,14 @@ public class ContentService {
 	public ContentsVO isThisLiked(int memberNo, ContentsVO card) {
 		//해당 회원이 좋아한 콘텐츠 번호 목록 추출
 		List<Integer> likedList = dao.getLikedContentsNo(memberNo);
-		card.setIsLiked(false);
-		//좋아한 콘텐츠 여부 확인
-		for(int likedNo : likedList) {
-			if(likedNo == card.getContentsNo()) {
-				card.setIsLiked(true);
-				break;
+		if(likedList.size() > 0) {
+			card.setIsLiked(false);
+			//좋아한 콘텐츠 여부 확인
+			for(int likedNo : likedList) {
+				if(likedNo == card.getContentsNo()) {
+					card.setIsLiked(true);
+					break;
+				}
 			}
 		}
 		return card;
@@ -148,14 +153,15 @@ public class ContentService {
 	public List<ContentsVO> isThisLiked(int memberNo, List<ContentsVO> cardList) {
 		//해당 회원이 좋아한 콘텐츠 번호 목록 추출
 		List<Integer> likedList = dao.getLikedContentsNo(memberNo);
-		
-		//좋아한 콘텐츠 여부 확인: 저장한 콘텐츠는 isLiked를 true로, 저장하지 않은 콘텐츠는 isLiked를 false로 설정한다.
-		for(ContentsVO card : cardList) {
-			card.setIsLiked(false);
-			for(int likedNo : likedList) {
-				if(likedNo == card.getContentsNo()) {
-					card.setIsLiked(true);
-					break;
+		if(likedList.size() > 0) {
+			//좋아한 콘텐츠 여부 확인: 저장한 콘텐츠는 isLiked를 true로, 저장하지 않은 콘텐츠는 isLiked를 false로 설정한다.
+			for(ContentsVO card : cardList) {
+				card.setIsLiked(false);
+				for(int likedNo : likedList) {
+					if(likedNo == card.getContentsNo()) {
+						card.setIsLiked(true);
+						break;
+					}
 				}
 			}
 		}
@@ -165,12 +171,14 @@ public class ContentService {
 	public ContentsVO isThisViewed(int memberNo, ContentsVO card) {
 		//해당 회원이 본 콘텐츠 번호 목록 추출
 		List<ContentsVO> viewedList = dao.getViewedContentsNo(memberNo);
-		card.setIsViewed(0);
-		//본 콘텐츠 여부 확인
-		for(ContentsVO viewed : viewedList) {
-			if(viewed.getContentsNo() == card.getContentsNo()) {
-				card.setIsViewed(viewed.getIsViewed());
-				break;
+		if(viewedList.size() > 0) {
+			card.setIsViewed(0);
+			//본 콘텐츠 여부 확인
+			for(ContentsVO viewed : viewedList) {
+				if(viewed.getContentsNo() == card.getContentsNo()) {
+					card.setIsViewed(viewed.getIsViewed());
+					break;
+				}
 			}
 		}
 		return card;
@@ -179,13 +187,15 @@ public class ContentService {
 	public List<ContentsVO> isThisViewed(int memberNo, List<ContentsVO> cardList) {
 		//해당 회원이 본 콘텐츠 번호 목록 추출
 		List<ContentsVO> viewedList = dao.getViewedContentsNo(memberNo);
-		//본 콘텐츠 여부 확인: 저장한 콘텐츠는 savedCnt를 1로, 저장하지 않은 콘텐츠는 savedCnt를 0으로 설정한다.
-		for(ContentsVO card : cardList) {
-			for(ContentsVO viewed : viewedList) {
-				card.setIsViewed(0);
-				if(viewed.getContentsNo() == card.getContentsNo()) {
-					card.setIsViewed(viewed.getViewCnt());
-					break;
+		if(viewedList.size() > 0) {
+			//본 콘텐츠 여부 확인: 저장한 콘텐츠는 savedCnt를 1로, 저장하지 않은 콘텐츠는 savedCnt를 0으로 설정한다.
+			for(ContentsVO card : cardList) {
+				for(ContentsVO viewed : viewedList) {
+					card.setIsViewed(0);
+					if(viewed.getContentsNo() == card.getContentsNo()) {
+						card.setIsViewed(viewed.getViewCnt());
+						break;
+					}
 				}
 			}
 		}
@@ -216,8 +226,16 @@ public class ContentService {
 	}
 	
 	public List<ContentsVO> selectCustomSourceList(int memberNo) {
-		List<ContentsVO> customSourceList = dao.selectCustomSourceList(memberNo);
-		customSourceList = this.checkMemberActivity(memberNo, customSourceList);
+		/*List<ContentsVO> customSourceList = dao.selectCustomSourceList(memberNo);*/
+		int sourceNo = dao.getMostSavedSource(memberNo);
+		if(sourceNo < 0) return null;
+		
+		ContentsVO vo = new ContentsVO();
+		vo.setSourceNo(sourceNo);
+		vo.setLimit(3);
+		
+		List<ContentsVO> customSourceList = dao.getCardsList(vo);
+		if(customSourceList != null) customSourceList = this.checkMemberActivity(memberNo, customSourceList);
 		
 		return customSourceList;
 	}
@@ -233,8 +251,11 @@ public class ContentService {
 			keywords += keywordList.get(i).getKeyword();
 		}
 		
-		List<ContentsVO> customKeywordList = dao.selectCustomCuration(keywords);
-		customKeywordList = this.checkMemberActivity(memberNo, customKeywordList);
+		ContentsVO vo = new ContentsVO();
+		vo.setKeyword(keywords);
+		vo.setLimit(3);
+		List<ContentsVO> customKeywordList = dao.getCardsList(vo);	//dao.selectCustomCuration(keywords);
+		if(customKeywordList != null) customKeywordList = this.checkMemberActivity(memberNo, customKeywordList);
 		
 		return customKeywordList;
 	}

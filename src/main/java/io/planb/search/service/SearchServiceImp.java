@@ -32,10 +32,6 @@ public class SearchServiceImp {
 			//검색어 세팅
 			searchResult.setQuery(q);
 			
-			//형태소 분석
-			List<QueryVO> queryList = this.analyzeQuery(q);
-			if(queryList.size() > 0) searchResult.setQueryList(queryList);
-			
 			List<ContentsVO> cardList = searchResult.getCards();
 			if(memberNo > 0) {
 				// 해당 회원의 저장, 좋아요, 조회 여부 확인

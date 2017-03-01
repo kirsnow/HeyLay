@@ -22,6 +22,21 @@
 		ORDER BY viewCnt DESC 
 		LIMIT 3 
 	</select>
+	
+	<select id="selectMostSavedSource" parameterType="int" resultType="int">
+		SELECT
+				cr.source_no
+				FROM q_contents cr
+				INNER JOIN q_contents_saved cs ON cs.contents_no = cr.no
+				INNER JOIN q_member mm ON mm.no = cs.member_no
+				INNER JOIN q_source ss ON ss.no = cr.source_no
+				WHERE mm.no = #{ no }
+				AND cr.ban = 'N'
+				AND ss.data_type > 0
+				GROUP BY cr.source_no
+				ORDER BY COUNT(cr.source_no) DESC
+				LIMIT 1
+	</select>
 
 	<select id="selectCustomSourceList" parameterType="int"	resultType="contentsVO">
 		SELECT CO.NO contentsNo, CO.TITLE as title, CO.SUMMARY as summary, CO.URL as url
