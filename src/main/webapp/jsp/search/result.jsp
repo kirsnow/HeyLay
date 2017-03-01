@@ -64,6 +64,7 @@
 					</div>
         		</div>
 				<div class="row">
+					<%-- 
 					<!-- Search result filter -->
 					<aside class="col-xs-12 col-md-3 col-md-push-9">
 						<div class="well marginTop20">
@@ -79,6 +80,7 @@
 						</div>
 					</aside>
 					<!-- /Search result filter -->
+					--%>
 					
 					<section class="col-xs-12 col-md-9 col-md-pull-3 card-container mdl-grid">
 						<c:set var="cards" value="${ searchResult.cards }" scope="request" />
