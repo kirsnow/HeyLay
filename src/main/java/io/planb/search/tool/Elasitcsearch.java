@@ -11,6 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import io.planb.contents.vo.ContentsVO;
+import io.planb.search.vo.QueryVO;
 import io.planb.search.vo.SearchVO;
 import io.planb.tools.JsonReader;
 
@@ -29,7 +30,7 @@ public class Elasitcsearch {
 	private final String ipAmazon = "52.34.4.162";
 	private final String ipBit = "192.168.0.25";
 	private String searchIP = ipAmazon;
-
+	
 	/**
 	 * Elasticsearch URI Search
 	 * https://www.elastic.co/guide/en/elasticsearch/reference/5.2/search-uri-request.html
@@ -39,7 +40,7 @@ public class Elasitcsearch {
 	 * @return SearchVO
 	 */
 	public SearchVO searchURI(String q, String ip) {
-		SearchVO searchResult = null;
+		SearchVO searchResult = new SearchVO();
 		
 		/* IP setup */
 		if(ip != null) {
@@ -64,10 +65,21 @@ public class Elasitcsearch {
 			}
 		}
 		
+		//형태소 분석
+		Tokenizer tokenizer = new Tokenizer();
+		List<QueryVO> queryList = tokenizer.analyzeQuery(q);
+		System.out.println("queryList.size(): " + queryList.size());
+		
 		/* Search */
 		try {
+			
 			q = URLDecoder.decode(q, "UTF-8");
 			q = URLEncoder.encode(q, "UTF-8");
+			
+			String qToken1st = queryList.size() > 0 ? queryList.get(0).getToken() : q;
+			qToken1st = URLDecoder.decode(qToken1st, "UTF-8");
+			qToken1st = URLEncoder.encode(qToken1st, "UTF-8");
+			
 			
 			/* 기본 검색
 			String restAPI = "http://" + searchIP + ":9200/_all/_search?pretty=true" 
@@ -75,14 +87,15 @@ public class Elasitcsearch {
 			if(searchSize > 0) restAPI += "&size=" + searchSize;
 			*/
 			
-			/**/
+			/*검색: 하이라이트
 			 String restAPI = "http://" + searchIP + ":9200/contents/_search?pretty=true&source="
 			 		 + "{\"query\":{\"multi_match\":{\"query\":\"" + q + "\""
-					 + ",\"fields\":[\"title\",\"summary\"],\"type\":\"best_fields\"}},\"size\":100"
+					 + ",\"fields\":[\"title\",\"summary\"],\"type\":\"best_fields\"}},\"size\":" + searchSize
 					 + ",\"highlight\":{\"fields\":{\"title\":{},\"summary\":{}}"
 					 + ",\"pre_tags\":[\"<mark>\"],\"post_tags\":[\"</mark>\"]}}";
+			*/
 			 
-			/* 검색: 하이라이트 필드 추가
+			/* 검색: 하이라이트 + 퍼지
 			String restAPI = "http://" + searchIP + ":9200/_all/_search?size=" + searchSize
 					+ "&source={"
 					+ "\"query\":{\"multi_match\":{"
@@ -95,10 +108,20 @@ public class Elasitcsearch {
 					+ "}}&pretty=true";
 			*/
 			
+			/* 검색: 하이라이트 + 퍼지 + 첫어절 필수 포함 */
+			String restAPI = "http://" + searchIP + ":9200/contents/_search?size=" + searchSize +"&pretty=true&"
+					+ "source={\"query\":{\"bool\":{\"must\":[{\"multi_match\":{"
+					+ "\"query\":\"" + q +"\",\"type\":\"best_fields\""
+					+ ",\"fields\":[\"title\",\"summary\"],\"fuzziness\":\"AUTO\",\"prefix_length\":2}}]"
+					+ ",\"should\":[{\"multi_match\":{\"query\":\"" + qToken1st + "\",\"type\":\"best_fields\""
+					+ ",\"fields\":[\"title\",\"summary\"],\"fuzziness\":\"AUTO\",\"prefix_length\":2}}]}}"
+					+ ",\"highlight\":{\"fields\":{\"title\":{},\"summary\":{}},\"pre_tags\":[\"<mark>\"],\"post_tags\":[\"</mark>\"]}}}";
+			
 			System.out.println("restAPI: " + restAPI);
 			JsonReader jsonReader = new JsonReader();
 			JSONObject json = jsonReader.readJsonFromUrl(restAPI);
 			searchResult = parseJsonToSearchHeader(json);
+			if(searchResult != null && queryList.size() > 0) searchResult.setQueryList(queryList);
 			
 		} catch(JSONException | IOException e) {
 			e.printStackTrace();
@@ -133,13 +156,10 @@ public class Elasitcsearch {
 	 */
 	private SearchVO parseJsonToSearchHeader(JSONObject json) {
 		SearchVO searchResult = null;
-		System.out.println("parseJsonToSearchHeader started");
-		System.out.println("json: " + json);
 		
 		if(json.has("hits")) {
 			JSONObject hits = json.getJSONObject("hits");
 			int total = hits.has("total") ? hits.getInt("total") : 0;
-			System.out.println("total: " + total);
 			
 			if(total != 0) {
 				//Search result
@@ -163,12 +183,10 @@ public class Elasitcsearch {
 		for(int i=0; i<hitsArray.length(); i++) {
 			
 			JSONObject results = hitsArray.getJSONObject(i);
-			System.out.println("results");
 			ContentsVO contentsVO = new ContentsVO();
 			
 			JSONObject document = results.has("_source") ? results.getJSONObject("_source") : null;
 			if(document != null) {
-				System.out.println("document");
 				//Document Contents
 				String summary	 	  = document.has("summary")		 ? document.getString("summary")		 : null;
 				int no				  = document.has("no")			 ? document.getInt("no")				 : 1;
