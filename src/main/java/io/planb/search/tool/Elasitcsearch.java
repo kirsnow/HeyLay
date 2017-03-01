@@ -27,8 +27,8 @@ public class Elasitcsearch {
      */
 	private final int searchSize = 100;
 	private final String ipAmazon = "52.34.4.162";
-	private final String ipBit = "192.168.0.205";
-	private String searchIP = ipBit;
+	private final String ipBit = "192.168.0.25";
+	private String searchIP = ipAmazon;
 
 	/**
 	 * Elasticsearch URI Search
@@ -70,23 +70,23 @@ public class Elasitcsearch {
 			q = URLEncoder.encode(q, "UTF-8");
 			
 			/* 기본 검색
-			String restAPI = "http://" + searchIP + ":9200/_all/_search?pretty=true" 
-							+ "&q=" + q;
-				if(searchSize > 0) restAPI += "&size=" + searchSize;
 			*/
+			String restAPI = "http://" + searchIP + ":9200/_all/_search?pretty=true" 
+					+ "&q=" + q;
+			if(searchSize > 0) restAPI += "&size=" + searchSize;
 			
-			/* 검색: 하이라이트 필드 추가 */
-			String restAPI = "http://" + searchIP + ":9200/contents/_search?source={"
+			/* 검색: 하이라이트 필드 추가
+			String restAPI = "http://" + searchIP + ":9200/contents/_search?size=" + searchSize
+					+ "&source={"
 					+ "\"query\":{\"multi_match\":{"
 					+ 	"\"query\":\"" + q
-					+	"\",\"fields\":[\"title\",\"summary\",\"source\"],\"type\":\"best_fields\"}"
-					+ "},\"size\":" + searchSize
+					+ "\",\"fields\":[\"title\",\"summary\"],\"type\":\"best_fields\""
+					+ ",\"fuzziness\":\"AUTO\",\"prefix_length\":2}}"
 					+ ",\"highlight\":{"
-					+ 	"\"fields\":{"
-					+ 		"\"title\":{},\"summary\":{}},"
-					+ 		"\"pre_tags\":[\"<mark>\"],\"post_tags\":[\"</mark>\"]"
-					+ "}"
-					+ "}&pretty=true";
+					+ 	"\"fields\":{\"title\":{},\"summary\":{}}"
+					+ "	,\"pre_tags\":[\"<mark>\"],\"post_tags\":[\"</mark>\"]"
+					+ "}}&pretty=true";
+			*/
 			
 			System.out.println("restAPI: " + restAPI);
 			JsonReader jsonReader = new JsonReader();
@@ -126,10 +126,14 @@ public class Elasitcsearch {
 	 */
 	private SearchVO parseJsonToSearchHeader(JSONObject json) {
 		SearchVO searchResult = null;
+		System.out.println("parseJsonToSearchHeader started");
+		System.out.println("json: " + json);
 		
 		if(json.has("hits")) {
 			JSONObject hits = json.getJSONObject("hits");
 			int total = hits.has("total") ? hits.getInt("total") : 0;
+			System.out.println("total: " + total);
+			
 			if(total != 0) {
 				//Search result
 				searchResult = new SearchVO();
@@ -152,10 +156,12 @@ public class Elasitcsearch {
 		for(int i=0; i<hitsArray.length(); i++) {
 			
 			JSONObject results = hitsArray.getJSONObject(i);
+			System.out.println("results");
 			ContentsVO contentsVO = new ContentsVO();
 			
 			JSONObject document = results.has("_source") ? results.getJSONObject("_source") : null;
 			if(document != null) {
+				System.out.println("document");
 				//Document Contents
 				String summary	 	  = document.has("summary")		 ? document.getString("summary")		 : null;
 				int no				  = document.has("no")			 ? document.getInt("no")				 : 1;
