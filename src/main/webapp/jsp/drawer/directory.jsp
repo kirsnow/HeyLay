@@ -12,17 +12,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>폴더 수정 모드 | Quration: 답을 열어 줄 그런 사람</title>
 
-<!-- Bootstrap -->
-<link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css" rel="stylesheet">
-<link href="${ pageContext.request.contextPath }/css/ssh.css" type="text/css" rel="stylesheet">
+
+<!-- 공통css  -->
+<jsp:include page="/jsp/include/css.jsp" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<!-- icon-font -->
-<script src="https://use.fontawesome.com/bbddce3010.js"></script>
-
-<!-- MDL Hosted start -->
-<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-light_blue.min.css" />
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -56,7 +49,7 @@
 				<!-- page content -->
 
 				<div class="container">
-					<form>
+					<form class="sectionContent minHeight">
 						<div class="row">
 							<div class="pull-right">
 								<button type="button" class="btn btn-default addFormBtn" title="폴더 추가 버튼">추가</button>
@@ -97,16 +90,19 @@
 				<!-- /page content -->
 			</div>
 			<!-- footer -->
-			<jsp:include page="/jsp/include/footer.jsp" />
+			<Footer class="footer">
+				<jsp:include page="/jsp/include/footer.jsp" />
+			</Footer> 
 			<!-- /footer -->
 		</div>
 	</div>
 
 	<!-- jQuery -->
 	<script src="${ pageContext.request.contextPath }/js/jquery.min.js"></script>
-	<!-- Bootstrap -->
-	<script src="${ pageContext.request.contextPath }/js/bootstrap.min.js"></script>
 
+	<!-- 공통 js -->
+	<jsp:include page="/jsp/include/commonJs.jsp" />
+	
 	<!-- Custom Theme Scripts -->
 	<script src="${ pageContext.request.contextPath }/js/custom.min.js"></script>
 	
