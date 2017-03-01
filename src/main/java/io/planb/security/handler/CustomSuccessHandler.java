@@ -30,10 +30,10 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
 			session.setAttribute("userVO", userVO);
 			
 //			System.out.println("session userVO: " + session.getAttribute("userVO"));
-			
-			if(userVO.getSelectKeywords() == 0) {
+			if(userVO.getType().equals("A")) {
+				redirectStrategy.sendRedirect(request, response, "/jsp/admin/member_list.do");
+			} else if(userVO.getSelectKeywords() == 0) {
 				redirectStrategy.sendRedirect(request, response, "/login/interest.do");
-				
 			} else {
 //				String redirectUrl = (String) session.getAttribute("prevPage");
 ////				System.out.println("redirectUrl: " + redirectUrl);

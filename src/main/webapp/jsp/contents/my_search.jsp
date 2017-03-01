@@ -53,7 +53,7 @@
                <div class="row">
                   <div class="col-md-11">
                      <h3 class="marginBottom30 marginTop30"><b>내 검색어 히스토리</b></h3>
-					 	<c:if test="${ (keywordList eq null) or (empty keywordList) }">
+					 	<c:if test="${ (keywordList ne null) or (not empty keywordList) }">
 						 	 <p>
 	                       		<small><i class="fa fa-times" aria-hidden="true"></i>버튼을 클릭하여 해당 검색어를 삭제할 수 있습니다.</small>
 	                       	 </p>
