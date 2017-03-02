@@ -84,7 +84,7 @@ public class MemoServiceImp {
 			memoHtmlTag += "<div id=\"" + memo.getNo() + "\" class=\"mdl-card mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-shadow--3dp\">";
 			memoHtmlTag += "	<div class=\"mdl-card__title mdl-color-text--grey-500\">";
 			memoHtmlTag += "		<h5 class=\"author mdl-card__title-text\">";
-			memoHtmlTag += 				memo.getFirstName() + " " + memo.getLastName();
+			memoHtmlTag += 				memo.getLastName() + " " + memo.getFirstName();
 			memoHtmlTag += "		</h5>";
 			memoHtmlTag += "	</div>";
 			memoHtmlTag += "	<div class=\"content mdl-card__supporting-text mdl-color-text--grey-800\">";
