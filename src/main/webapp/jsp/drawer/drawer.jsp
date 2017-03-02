@@ -53,10 +53,10 @@
 							<div class="row">
 								<div class="col-xs-12">
 									Sort: 
-									<a href="${ pageContext.request.contextPath }/drawer.do?sort=directory">Directory</a>
-									| <a href="${ pageContext.request.contextPath }/drawer.do?sort=days">Days</a>
-									| <a href="${ pageContext.request.contextPath }/drawer.do?sort=type">Type</a>
-									| <a href="${ pageContext.request.contextPath }/drawer.do?sort=source">Source</a>
+									<a href="${ pageContext.request.contextPath }/drawer.do?sort=directory">폴더별</a>
+									| <a href="${ pageContext.request.contextPath }/drawer.do?sort=days">날짜별</a>
+									| <a href="${ pageContext.request.contextPath }/drawer.do?sort=type">자료유형별</a>
+									| <a href="${ pageContext.request.contextPath }/drawer.do?sort=source">사이트별</a>
 									| <a href="${ pageContext.request.contextPath }/directory.do">폴더 관리</a>
 								</div>
 							</div>
