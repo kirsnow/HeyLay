@@ -93,7 +93,7 @@
 				
 			</div>
 		</div>	
-		<!-- <div class="row">
+	    <div class="row">
 			<div class="col-md-6 col-md-offset-3">
 				<div class="panel panel-default">
 				  	<div class="panel-body">
@@ -102,7 +102,7 @@
 					</div>
 				</div>
 			</div>
-		</div> -->
+		</div> 
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3 text-center marginBottom30">
 				<button type="submit" class="btn btn-primary marginRight">작성완료</button>
