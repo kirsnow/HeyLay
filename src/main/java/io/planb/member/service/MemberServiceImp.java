@@ -91,11 +91,12 @@ public class MemberServiceImp implements MemberService {
 		// System.out.println("OwnerServiceImp id : " + owner.getId());
 
 		String saveFileName = "";
+		String oriFileName = "";
 
 		if (!multipartFile.isEmpty()) {
 
 			// 원본 파일명
-			String oriFileName = multipartFile.getOriginalFilename();
+			oriFileName = multipartFile.getOriginalFilename();
 			// System.out.println("원본 파일명 : " + oriFileName);
 
 			if (oriFileName != null && !oriFileName.equals("")) {
@@ -124,7 +125,7 @@ public class MemberServiceImp implements MemberService {
 					e.printStackTrace();
 				}
 
-				member.setProfileImg(saveFileName);
+				member.setProfileImg(oriFileName);
 
 				// System.out.println("saveFileName : " + saveFileName);
 				// System.out.println("Service noticeAttach : " + noticeAttach);
@@ -133,7 +134,7 @@ public class MemberServiceImp implements MemberService {
 
 			}
 		}
-		return saveFileName;
+		return oriFileName;
 	}
 
 	@Override

@@ -21,9 +21,6 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     
-	<!-- Custom Theme Scripts -->
-	<script src="${ pageContext.request.contextPath }/js/custom.min.js"></script>
- 	
  	<!-- google analytics -->
 	<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -121,12 +118,13 @@
     <Footer class="footer">
 		<jsp:include page="/jsp/include/footer.jsp" />
 	</Footer> 
+		</div>
+	</div>
 
 	<!-- 공통 js -->
 	<jsp:include page="/jsp/include/commonJs.jsp" />
-
-		</div>
-	</div>
+	<!-- Custom Theme Scripts -->
+	<script src="${ pageContext.request.contextPath }/js/custom.min.js"></script>
 
 	<script type="text/javascript">
 		function doAction() {
@@ -144,11 +142,11 @@
 		}
 	</script>
 	
-	<script src="paypal-button.min.js?merchant=YOUR_MERCHANT_ID"
-    		data-button="buynow"
-    		data-name="My product"
-    		data-amount="1.00"
-   		 	async
-	></script>
+<!-- 	<script src="paypal-button.min.js?merchant=YOUR_MERCHANT_ID" -->
+<!--     		data-button="buynow" -->
+<!--     		data-name="My product" -->
+<!--     		data-amount="1.00" -->
+<!--    		 	async -->
+<!-- 	></script> -->
 </body>
 </html>
