@@ -25,7 +25,7 @@
  			<if test="dataTypeNo != 0">and DAT.NO = #{dataTypeNo}</if>
  			<if test="categoryNo != 0">and CAT.NO = #{categoryNo}</if>
  			<if test="keyword != null">and CON.TITLE ~* #{keyword}</if>
- 			<if test="limit != null">and CON.BAN = 'N'</if>
+ 			<if test="limit != 0">and CON.BAN = 'N'</if>
 		</where>
  		
  		group by CON.NO
