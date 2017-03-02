@@ -19,12 +19,12 @@
  			
 		<where>
 			<if test="contentsNo != 0"> and CON.NO = #{contentsNo}</if>
-			<if test="memberNo != 0">and SAV.MEMBER_NO = #{memberNo}</if>
-			<if test="savedNo != 0">and SAV.NO = #{savedNo}</if>
- 			<if test="sourceNo != 0">and SOU.NO = #{sourceNo}</if>
+			<if test="memberNo != 0">and SAV.MEMBER_NO = #{memberNo} and CON.BAN = 'N'</if>
+			<if test="savedNo != 0">and SAV.NO = #{savedNo} and CON.BAN = 'N'</if>
+ 			<if test="sourceNo != 0">and SOU.NO = #{sourceNo} and CON.BAN = 'N'</if>
  			<if test="dataTypeNo != 0">and DAT.NO = #{dataTypeNo}</if>
  			<if test="categoryNo != 0">and CAT.NO = #{categoryNo}</if>
- 			<if test="keyword != null">and CON.TITLE ~* #{keyword}</if>
+ 			<if test="keyword != null">and CON.TITLE ~* #{keyword} and CON.BAN = 'N'</if>
 		</where>
  		
  		group by CON.NO
