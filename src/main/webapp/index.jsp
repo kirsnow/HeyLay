@@ -54,6 +54,14 @@
     border: 1px solid #FFFFFF;
 } 
 
+#overview-video {
+	background: url('img/IndexMain.jpg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	text-align: center;
+}
   </style>
   </head>
   <body>
@@ -132,7 +140,7 @@
                 <div id="recommandKeyword" class="col-md-8 col-md-offset-2 marginTop20 font20 grayfont">
                 	추천 검색어<span class="marginLeft marginRight">:</span> 
                 	       <span class="spanPadding"><a href="search/result.do?q=인공지능">인공지능</a></span>  
-                	       <span class="spanPadding" ><a href="search/result.do?q=구글">구글</a></span>  
+                	       <span class="spanPadding" ><a href="search/result.do?q=에듀테크">에듀테크</a></span>  
                 	       <span ><a href="search/result.do?q=프로그래밍 언어에 대하여">프로그래밍 언어에 대하여</a></span>
                 </div>
                 
@@ -208,14 +216,23 @@
         </div>
     </div>
 
-    <!-- Call-to-Action Section -->
+   <%--  <!-- Call-to-Action Section -->
     <div id="cta">
         <div class="container text-center">
            <a href="${ pageContext.request.contextPath }/contact/qna.do"  class="btn go-to-btn">Contact Us</a> 
         </div>
+    </div> --%>
+	
+	<!-- Video Section -->
+	   <div id="overview-video">
+        <div class="overlay">
+            <div class="container">
+                <a href="https://youtu.be/cBEePEmikZs">
+                    <span class="fa fa-play"></span>
+                </a>
+            </div>
+        </div>
     </div>
-
-
 
     <!-- About Us Section -->
     <div id="about-us">
