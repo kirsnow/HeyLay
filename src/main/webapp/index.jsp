@@ -19,7 +19,8 @@
 	  ga('create', 'UA-90558257-1', 'auto');
 	  ga('send', 'pageview');
 	</script>
-    
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
     <script src="${ pageContext.request.contextPath }/js/jquery-3.1.1.min.js"></script>
 	 	
     <!-- Bootstrap CSS SET -->
