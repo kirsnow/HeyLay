@@ -75,7 +75,7 @@
                      </c:when>
                      <c:otherwise>
 	                     <c:forEach var="keyword" items="${ keywordList }" varStatus="loop">
-		                     <div class="col-md-offset-1 col-md-10">
+		                     <div class="col-md-offset-3 col-md-10">
 			                     <dl class="dl-horizontal">
 			                        <dt style="text-align:right"><c:out value="${loop.count}"/>.</dt>
 			                        <dd class="text-left">

@@ -188,10 +188,8 @@
 								Report <span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="#" role="button" id="${ contents.contentsNo }"
-									class="bugReportBtn nofocus" data-toggle="modal"
-									data-target="#bugModal" title="오류 신고"> <i
-										class="fa fa-bug fa-fw" aria-hidden="true"></i> 오류 신고
+								<li><a href="${ pageContext.request.contextPath }/contact/bug.do">
+							 		<i class="fa fa-bug fa-fw" aria-hidden="true"></i> 오류 신고
 								</a></li>
 								<li><a href="#" role="button" id="${ contents.contentsNo }"
 									class="spamReportBtn nofocus" data-toggle="modal"

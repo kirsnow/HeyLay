@@ -168,7 +168,8 @@
 						</a>
 						<ul class="dropdown-menu dropdown-menu-right" role="menu">
 							<li>
-								<a href="#" role="button" id="${ card.contentsNo }" class="bugReportBtn nofocus" title="오류 신고">
+								<a
+							href="${ pageContext.request.contextPath }/contact/bug.do">
 									<i class="fa fa-bug fa-fw" aria-hidden="true"></i>
 									오류 신고
 								</a>
