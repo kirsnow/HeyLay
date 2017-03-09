@@ -53,6 +53,14 @@
     border: 1px solid #FFFFFF;
 } 
 
+#overview-video {
+	background: url('img/IndexMain.jpg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	text-align: center;
+}
   </style>
   </head>
   <body>
@@ -207,14 +215,23 @@
         </div>
     </div>
 
-    <!-- Call-to-Action Section -->
+   <%--  <!-- Call-to-Action Section -->
     <div id="cta">
         <div class="container text-center">
            <a href="${ pageContext.request.contextPath }/contact/qna.do"  class="btn go-to-btn">Contact Us</a> 
         </div>
+    </div> --%>
+	
+	<!-- Video Section -->
+	   <div id="overview-video">
+        <div class="overlay">
+            <div class="container">
+                <a href="https://youtu.be/cBEePEmikZs">
+                    <span class="fa fa-play"></span>
+                </a>
+            </div>
+        </div>
     </div>
-
-
 
     <!-- About Us Section -->
     <div id="about-us">

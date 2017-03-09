@@ -242,7 +242,7 @@ a.down-btn span.fa.fa-angle-down {
 }
 
 #overview-video {
-	background: url(../img/bg2.jpg);
+	background: url('img/IndexMain.jpg');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
