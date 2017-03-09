@@ -53,14 +53,6 @@
     border: 1px solid #FFFFFF;
 } 
 
-#overview-video {
-	background: url('img/IndexMain.jpg');
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-attachment: scroll;
-	text-align: center;
-}
   </style>
   </head>
   <body>
@@ -206,7 +198,7 @@
             
             <div class="space"></div>
             
-            <a href="#about-us" class="down-btn page-scroll ">
+            <a href="#overview-video" class="down-btn page-scroll ">
                 <span class="fa fa-angle-down"></span>
             </a>
             <a href="#main" class="up-btn page-scroll ">
@@ -223,14 +215,14 @@
     </div> --%>
 	
 	<!-- Video Section -->
-	   <div id="overview-video">
-        <div class="overlay">
-            <div class="container">
-                <a href="https://youtu.be/cBEePEmikZs">
-                    <span class="fa fa-play"></span>
-                </a>
-            </div>
-        </div>
+   	<div id="overview-video">
+    	<div class="overlay">
+	    	<div class="container">
+		        <iframe id="player" type="text/html" width="610" height="360"
+						src="https://www.youtube.com/embed/cBEePEmikZs" style="border:0px">
+				</iframe>
+			</div>
+		</div>
     </div>
 
     <!-- About Us Section -->

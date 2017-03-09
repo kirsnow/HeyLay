@@ -251,10 +251,10 @@ a.down-btn span.fa.fa-angle-down {
 }
 
 #overview-video .overlay{
-	background: rgba(34, 34, 34, 0.85);
-	height: auto;
+	background: black;
+	height: 360;
 	min-height: 200px;
-	padding: 12% 0 ;
+	
 }
 
 #overview-video a span.fa.fa-play {
