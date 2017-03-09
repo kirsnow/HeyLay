@@ -131,7 +131,7 @@
                 <div id="recommandKeyword" class="col-md-8 col-md-offset-2 marginTop20 font20 grayfont">
                 	추천 검색어<span class="marginLeft marginRight">:</span> 
                 	       <span class="spanPadding"><a href="search/result.do?q=인공지능">인공지능</a></span>  
-                	       <span class="spanPadding" ><a href="search/result.do?q=구글">구글</a></span>  
+                	       <span class="spanPadding" ><a href="search/result.do?q=에듀테크">에듀테크</a></span>  
                 	       <span ><a href="search/result.do?q=프로그래밍 언어에 대하여">프로그래밍 언어에 대하여</a></span>
                 </div>
                 
