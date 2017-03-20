@@ -2,6 +2,7 @@ package io.planb.contents.service;
 
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -246,10 +247,19 @@ public class ContentService {
 		
 		if(keywordList.isEmpty()) return null;
 		
-		for(int i = 0, j = keywordList.size(); i < j; i++) {
-			if(i != 0) keywords += "|";
+		keywords += "'";
+		for(int i = 0; i < keywordList.size(); i++) {
+			if(i > 0) keywords += "|";
 			keywords += keywordList.get(i).getKeyword();
 		}
+		keywords += "'";
+		
+		//escape &, <, >, ", ', `, , !, @, $, %, (, ), =, +, -, {, }, [, and ]
+		keywords = StringUtils.replaceEach(keywords
+			, new String[]{"&", "<", ">", "\"", "'", "`", " ", "!", "@", "$"
+					, "%", "(", ")", "=", "+", "-", "{", "}", "[", "]"}
+			, new String[]{"&amp;", "&lt;", "&gt;", "&quot;", "&#39;", "&#96;", "&nbsp;", "&#33;", "&#64;", "&#36;"
+					, "&#37;", "&#40;", "&#41;", "&#61;", "&#43;", "&minus;", "&#123;", "&#125;", "&#91;", "&#93;"});
 		
 		ContentsVO vo = new ContentsVO();
 		vo.setKeyword(keywords);
