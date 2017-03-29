@@ -5,7 +5,13 @@
   <head>
      <!-- Basic Page Needs -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
+    
+     <!--[if lt IE 9]>
+	 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Quration: 답을 열어 줄 그런 사람</title>
    
