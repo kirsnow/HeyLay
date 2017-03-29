@@ -8,9 +8,9 @@
     
     <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
     
-     <!--[if lt IE 9]>
-	 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    
+    <!-- IE8이하에서 HTML5 태그 쓰는법  -->
+    <!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Quration: 답을 열어 줄 그런 사람</title>
