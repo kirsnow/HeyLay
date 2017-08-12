@@ -28,5 +28,6 @@
 		<typeAlias type="io.planb.member.vo.SelectKeywordsVO" alias="selectKeywordsVO" />
 		<typeAlias type="io.planb.source.vo.SourceVO" alias="sourceVO" />
 		<typeAlias type="io.planb.statics.vo.StaticsVO" alias="staticsVO" />
+		
 	</typeAliases>
 </configuration>

@@ -148,7 +148,8 @@
 							
 							<%-- 비로그인 상태 --%>
 							<c:otherwise>
-								<button type="button" id="${ contents.contentsNo }" onclick="location.href='${ pageContext.request.contextPath }/login/login.do'"
+								<button type="button" id="${ contents.contentsNo }" 
+										onclick="location.href='${ pageContext.request.contextPath }/login/login.do'"
 									title="카드 담기: 로그인이 필요한 서비스입니다" class="btn btn-primary saveCardBtn">
 									<i class="fa fa-bookmark" aria-hidden="true"></i> 카드 담기
 								</button>
@@ -173,7 +174,8 @@
 							</c:when>
 							<c:otherwise>
 								<%-- 비로그인 --%>
-								<button type="button" id="${ contents.contentsNo }" onclick="location.href='${ pageContext.request.contextPath }/login/login.do'"
+								<button type="button" id="${ contents.contentsNo }" 
+									onclick="location.href='${ pageContext.request.contextPath }/login/login.do'"
 									title="좋아요: 로그인이 필요한 서비스입니다" class="btn btn-primary likeBtn">
 									<i class="fa fa-heart" aria-hidden="true"></i> 좋아요
 								</button>
@@ -226,14 +228,12 @@
 						<i class="fa fa-share-alt" aria-hidden="true"></i> 공유
 					</p>
 					<ul class="list-unstyled" role="menu">
-						<!-- <li><a href="#" title="카카오톡으로 공유"><i class="fa fa-commenting fa-fw" aria-hidden="true"></i> KakaoTalk</a></li> -->
 						<li><a href="javascript:facebook('${contents.contentsNo}')" title="페이스북으로 공유">
 							<i class="fa fa-facebook fa-fw" aria-hidden="true"></i> Facebook
 						</a></li>
 						<li><a href="javascript:twitter('${contents.contentsNo}')" title="트위터로 공유">
 							<i class="fa fa-twitter fa-fw" aria-hidden="true"></i> Twitter
 						</a></li>
-						<!-- <li><a href="#" title="에버노트로 공유"><i class="fa fa-sticky-note fa-fw" aria-hidden="true"></i> Evernote</a></li> -->
 					</ul>
 				</div>
 			</aside>
@@ -417,7 +417,9 @@
 					    	$('li .likedCnt').text(likedCnt - 1);
 			             
 			             // change Btn (content_detail.jsp)
-		              	$('button.likeCancelBtn').hide().prop('disabled', false).removeClass('btn-warning').addClass('btn-primary').html('<i class="fa fa-heart-o fa-pulse" aria-hidden="true"></i> 좋아요 취소');
+		              	$('button.likeCancelBtn').hide().prop('disabled', false)
+		              			.removeClass('btn-warning').addClass('btn-primary')
+		              			.html('<i class="fa fa-heart-o fa-pulse" aria-hidden="true"></i> 좋아요 취소');
 						$('button.likeBtn').show();
 		           },
 		           error: function(){
